@@ -1,4 +1,6 @@
 Cake::Application.routes.draw do
+  resources :authentications
+
   get "dashboard/index"
 
   get "home/index"
@@ -56,7 +58,7 @@ Cake::Application.routes.draw do
   # just remember to delete public/index.html.
   #root :to => "home#index"
   authenticate :user do
-  root :to => "home#index"
+    root :to => "home#index"
   end
   root :to => "devise:sessions#new"
 
@@ -65,4 +67,6 @@ Cake::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+  #
+  match '/auth/:provider/callback' => 'authentications#create'
 end
