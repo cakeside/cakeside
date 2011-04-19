@@ -54,3 +54,24 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+.auth_provider img {
+  display: block;
+}
+
+.auth_provider {
+  float: left;
+  text-decoration: none;
+  margin-right: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.clear {
+  clear: both;
+  height: 0;
+  overflow: hidden;
+}
+.width100{width: 100%;}
+.width50{width: 50%;}
+.floatLeft{float:left;}
+.floatRight{float:right;}
+

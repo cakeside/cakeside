@@ -1,11 +1,13 @@
 Cake::Application.routes.draw do
+  match '/auth/:provider/callback' => 'authentications#create'
+  devise_for :users, :controllers => {:registrations => 'registrations'}
   resources :authentications
-
   get "dashboard/index"
-
   get "home/index"
-
-  devise_for :users
+  authenticate :user do
+    root :to => "home#index"
+  end
+  root :to => "devise:sessions#new"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -57,10 +59,6 @@ Cake::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   #root :to => "home#index"
-  authenticate :user do
-    root :to => "home#index"
-  end
-  root :to => "devise:sessions#new"
 
   # See how all your routes lay out with "rake routes"
 
@@ -68,5 +66,4 @@ Cake::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
   #
-  match '/auth/:provider/callback' => 'authentications#create'
 end
