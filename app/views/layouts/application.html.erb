@@ -14,16 +14,16 @@
 </head>
 <body>
 
-  <div id="main" style="background-color: pink;"><!-- Main starts here -->
+  <div id="main"><!-- Main starts here -->
     <header>
     <div id="header"><!-- Header starts here -->
-      <div class="searchBar" style="background-color: pink;">
+      <div class="searchBar">
         <div class="search">
           <div class="txt"><input type="text" /></div>
           <div class="searchBt"><input type="button" value="search" /></div>
         </div>
         <% if user_signed_in? %>
-          <%= current_user.email %>
+          welcome back <%= link_to current_user.email, edit_user_registration_path %>
           <div class="signOut">
             <%= link_to "sign out", destroy_user_session_path, :class => 'blah' %> </p>
           </div>
@@ -35,20 +35,15 @@
         <% end %>
       </div>
 
-      <div class="logo" style="background-color: pink;">
-        <a href="#"><img src="images/logo.png" alt="" /></a>
-      </div>
-
       <div class="menu">
         <ul id="menu">
-          <li class="home"><a href="#">home</a></li>
-          <li class="commit"><a href="#">our commitment</a></li>
-          <li class="organic"><a href="#">organic vegetables</a></li>
+          <li class="home"><%= link_to "home", home_index_path %></li>
+          <li class="commit"><a href="#">creations</a></li>
           <li class="contact"><a href="#">contact us</a></li>
         </ul>
       </div>
       <div class="subs">
-        <p>SUBCRIBE to RSS</p><img src="images/rss.png" alt="" />
+        <p>SUBCRIBE to RSS</p><img src="/images/rss.png" alt="" />
       </div>
     </div><!-- Header ends here -->
     </header>
@@ -69,12 +64,12 @@
         <div class="footerHolder">
           <div class="footerLeft">
             <p class="left">Address:</p>
-            <p class="right">123 Street St<br /> Vancouver BC<br /> Canada</p>
+            <p class="right">123 Street St<br /> Calgary AB<br /> Canada</p>
           </div>
 
           <div class="footerRight">
             <p class="left">Phone: <br /> Fax: <br />Email: <br /> Twitter:</p>
-            <p class="right">1 800 600 0000 <br /> 1 800 600 0000 <br /> organic@organic.com <br /> @organics</p>
+            <p class="right">1 800 600 0000 <br /> 1 800 600 0000 <br /> cake@cakeside.com <br /> @cakeside</p>
           </div>
           <div class="clear"></div>
         </div>
@@ -85,8 +80,8 @@
     <div id="contentBottom"></div><!-- Content ends here -->
 
     <div class="bottomHolder">
-      <div class="copy">Copyright 2011 CakeSide</div>
-      <div class="design"><a href="http://studio7designs.com">Design by STUDIO7DESIGNS</a></div>
+      <div class="copy">&copy; 2011 CakeSide Inc.</div>
+      <div class="design"><a href="#">SuLuMo</a></div>
     </div>
   </div><!-- Main ends here -->
 
