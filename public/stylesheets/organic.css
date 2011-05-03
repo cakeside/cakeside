@@ -214,8 +214,12 @@ width:978px;
 margin:0px auto;
 }
 #content h1{ background: none; }
+#content h2{ background: none; }
 #content h3{ background: none; }
 #content p{ background: none; }
+#content label{ background: none; }
+#content form{ background: none; }
+#content a{ background: none; }
 
 .welcomeHolder{
 background:url(../images/welcomeTop.png) no-repeat top center;
