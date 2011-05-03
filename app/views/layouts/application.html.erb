@@ -8,39 +8,158 @@
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="stylesheet" media="handheld" href="stylesheets/handheld.css?v=2">
   <script src="javascripts/libs/modernizr-1.7.min.js"></script>
   <%= stylesheet_link_tag :all %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <div id="container">
-    <header>
 
-      <div id="user-nav">
+  <div id="main" style="background-color: pink;"><!-- Main starts here -->
+    <header>
+    <div id="header"><!-- Header starts here -->
+      <div class="searchBar" style="background-color: pink;">
+        <div class="search">
+          <div class="txt"><input type="text" /></div>
+          <div class="searchBt"><input type="button" value="search" /></div>
+        </div>
         <% if user_signed_in? %>
-          signed in as: <%= current_user.email %>. Not you?
-          <%= link_to "sign out", destroy_user_session_path %> </p>
+          <%= current_user.email %>
+          <div class="signOut">
+            <%= link_to "sign out", destroy_user_session_path, :class => 'blah' %> </p>
+          </div>
         <% else %>
-          <%= link_to "sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+          <%= link_to "sign up", new_user_registration_path %> or 
+          <div class="signIn">
+            <%= link_to "sign in", new_user_session_path %>
+          </div>
         <% end %>
       </div>
 
+      <div class="logo" style="background-color: pink;">
+        <a href="#"><img src="images/logo.png" alt="" /></a>
+      </div>
+
+      <div class="menu">
+        <ul id="menu">
+          <li class="home"><a href="#">home</a></li>
+          <li class="commit"><a href="#">our commitment</a></li>
+          <li class="organic"><a href="#">organic vegetables</a></li>
+          <li class="contact"><a href="#">contact us</a></li>
+        </ul>
+      </div>
+      <div class="subs">
+        <p>SUBCRIBE to RSS</p><img src="images/rss.png" alt="" />
+      </div>
+    </div><!-- Header ends here -->
     </header>
 
-    <div id="main" role="main">
+    <div class="clear"></div>
+
+    <div id="contentTop"></div><!-- Content starts here -->
+    <div id="content">
+
+      <div class="welcomeHolder">
+        <div class="welcome">
+          <img src="images/img01.jpg" alt="" />
+          <h1>Welcome to CakeSide</h1>
+          <p><em>Introduce your company here. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </em></p>  
+          <p align="right"><input type="button" value="VIEW OUR PACKAGES" class="view" /></p> 
+          <div class="clear"></div>
+        </div>
+        <div class="welcomeBottom"></div>
+      </div>
+
+      <div class="heading">Why Organic?</div>
 
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-
       <%= yield %>
 
+      <div class="organic">
+        <div class="organicHolder">
+          <div class="organicContent">
+            <img src="images/img02.jpg" alt="" />
+            <h2>Header One</h2>
+            <p>Organic fruit and vegetables Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+          </div>
+        </div>
+
+        <div class="organicHolder">
+          <div class="organicContent">
+            <img src="images/img03.jpg" alt="" />
+            <h2>Header Two</h2>
+            <p>Organic fruit and vegetables Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+          </div>
+        </div>
+
+        <div class="organicHolder">
+          <div class="organicContent">
+            <img src="images/img04.jpg" alt="" />
+            <h2>Header Three</h2>
+            <p>Organic fruit and vegetables Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="space"></div>
+
+      <div class="organic">
+        <div class="organicHolder">
+          <div class="organicContent">
+            <img src="images/img05.jpg" alt="" />
+            <h2>Header Four</h2>
+            <p>Organic fruit and vegetables Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+          </div>
+        </div>
+
+        <div class="organicHolder">
+          <div class="organicContent">
+            <img src="images/img06.jpg" alt="" />
+            <h2>Header Five</h2>
+            <p>Organic fruit and vegetables Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </p>
+          </div>
+        </div>
+
+        <div class="organicHolder">
+          <div class="vegetable">
+            <h3>Learn About Our Organic Vegetables</h3>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+
+      <div class="hr"></div>
+      <div class="space"></div>
+
+      <footer>
+      <div id="footer"><!-- Footer starts here -->
+
+        <div class="contactHeading">Contact Us</div>
+        <div class="footerHolder">
+          <div class="footerLeft">
+            <p class="left">Address:</p>
+            <p class="right">123 Street St<br /> Vancouver BC<br /> Canada</p>
+          </div>
+
+          <div class="footerRight">
+            <p class="left">Phone: <br /> Fax: <br />Email: <br /> Twitter:</p>
+            <p class="right">1 800 600 0000 <br /> 1 800 600 0000 <br /> organic@organic.com <br /> @organics</p>
+          </div>
+          <div class="clear"></div>
+        </div>
+
+      </div><!-- Footer ends here -->
+      </footer>
     </div>
+    <div id="contentBottom"></div><!-- Content ends here -->
 
-    <footer>
+    <div class="bottomHolder">
+      <div class="copy">Copyright 2011 CakeSide</div>
+      <div class="design"><a href="http://studio7designs.com">Design by STUDIO7DESIGNS</a></div>
+    </div>
+  </div><!-- Main ends here -->
 
-    </footer>
-  </div>
+
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
   <%= javascript_include_tag :all %>
@@ -52,8 +171,8 @@
   <script>
     var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']]; // Change UA-XXXXX-X to be your site's ID
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-    s.parentNode.insertBefore(g,s)}(document,'script'));
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
   </script>
 </body>
 </html>
