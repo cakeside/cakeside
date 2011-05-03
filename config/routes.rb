@@ -1,4 +1,6 @@
 Cake::Application.routes.draw do
+  resources :creations
+
   get "dashboard/index"
 
   get "home/index"
