@@ -5,19 +5,23 @@
     <p>
       <%= image_tag @creation.image_url.to_s, :class => 'photo' %>
     </p>
+    <p> submitted on: <%= @creation.created_at %> </p>
   </div>
   <div class="width50 floatRight">
     <p>
       <strong>Story:</strong>
       <%= @creation.story %>
     </p>
+    <div class="space"></div>
     <p>
-<div class="space"></div>
-    <% if @creation.user == current_user %>
-      <%= link_to 'Edit', edit_creation_path(@creation) %> |
-      <%= button_to 'delete', @creation, :method => :delete %>
-    <% end %>
-      <%= link_to 'Back', creations_path %>
+        <% if @creation.user == current_user %>
+          <%= link_to 'Edit', edit_creation_path(@creation) %> |
+          <%= button_to 'delete', @creation, :method => :delete %>
+        <% end %>
+        <% if signed_in? %>
+          <%= link_to "add creation", new_creation_path %>
+        <% end %>
+        <%= link_to 'Back', creations_path %>
     </p>
   </div>
 </div>

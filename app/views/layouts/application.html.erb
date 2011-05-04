@@ -7,11 +7,11 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="/favicon.ico">
-  <script src="javascripts/libs/modernizr-1.7.min.js"></script>
-  <%= stylesheet_link_tag :all %>
-  <%= csrf_meta_tag %>
-  <%= yield :head %>
+<link rel="shortcut icon" href="/favicon.ico">
+<script src="javascripts/libs/modernizr-1.7.min.js"></script>
+<%= stylesheet_link_tag :all %>
+<%= csrf_meta_tag %>
+<%= yield :head %>
 </head>
 <body>
   <div id="main"><!-- Main starts here -->
@@ -35,13 +35,13 @@
 
       <div class="menu">
         <ul id="menu">
-          <li class="home"><%= link_to "home", home_index_path %></li>
-          <li class="commit"><%= link_to "browse", creations_path %></li>
-          <li class="contact"><a href="#contact">contact us</a></li>
+          <li class="small"><%= link_to "home", home_index_path %></li>
+          <li class="medium"><%= link_to "browse", creations_path %></li>
+          <li class="large"><a href="#contact">contact us</a></li>
         </ul>
       </div>
       <div class="subs">
-        <p>SUBCRIBE to RSS</p><img src="/images/rss.png" alt="" />
+        <a href="<%= url_for home_index_path %>.xml"><p>SUBCRIBE to RSS</p><img src="/images/rss.png" alt="" /></a>
       </div>
     </div><!-- Header ends here -->
     </header>
@@ -85,14 +85,14 @@
     </div>
     <div id="contentBottom"></div><!-- Content ends here -->
 
+  </div><!-- Main ends here -->
     <div class="bottomHolder">
-      <div class="copy">&copy; 2011 CakeSide Inc.</div>
+      <div class="copy"><p>&copy; 2011 CakeSide Inc.</p></div>
       <div class="design"><a href="#">SuLuMo</a></div>
     </div>
-  </div><!-- Main ends here -->
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-  <%= javascript_include_tag :all %>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<%= javascript_include_tag :all %>
 
   <!--[if lt IE 7 ]>
   <script src="javascripts/libs/dd_belatedpng.js"></script>

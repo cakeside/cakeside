@@ -1,16 +1,16 @@
 *{
 margin:0px;
 padding:0px;
+background-color: #000;
 }
+div {background-color: #fff;}
+input {background-color: #fff;}
+textarea {background-color: #fff;}
+i {background-color: #fff;}
+strong {background-color: #fff;}
 
-img {
-border:none;	
-}
-
-.clear{
-clear:both;	
-}
-
+img { border:none;	}
+.clear{ clear:both;	}
 
 .space{
 clear:both;
@@ -28,8 +28,8 @@ body{
 #main{
 	width:1200px;
 	margin:0px auto;
-	height:1400px;
-  background-color: #ff00ba;
+  background-color: pink;
+  /* background-color: #ff00ba; */
   /*background-color: #f99cf9; */
 }
 
@@ -134,42 +134,32 @@ background: none;
 	color:#ffffff;
 }
 
-.menu .home a{
+.menu .small a{
 background:url(../images/homeA.png) no-repeat bottom center;
 padding:10px 22px 5px;
 }
 
-.menu .home a:hover{
+.menu .small a:hover{
 background:url(../images/homeAhover.png) no-repeat bottom center;
 padding:10px 22px 5px;
 }
 
-.menu .commit a{
+.menu .medium a{
 background:url(../images/commitA.png) no-repeat bottom center;
 padding:10px 18px 5px;
 }
 
-.menu .commit a:hover{
+.menu .medium a:hover{
 background:url(../images/commitAhover.png) no-repeat bottom center;
 padding:10px 18px 5px;
 }
 
-.menu .organic a{
-background:url(../images/organicA.png) no-repeat bottom center;
-padding:10px 18px 5px;
-}
-
-.menu .organic a:hover{
-background:url(../images/organicAhover.png) no-repeat bottom center;
-padding:10px 18px 5px;
-}
-
-.menu .contact a{
+.menu .large a{
 background:url(../images/contactA.png) no-repeat bottom center;
 padding:10px 22px 5px;
 }
 
-.menu .contact a:hover{
+.menu .large a:hover{
 background:url(../images/contactAhover.png) no-repeat bottom center;
 padding:10px 22px 5px;
 }
@@ -183,9 +173,7 @@ margin-top:60px;
 margin-bottom:-10px;
 }
 
-.subs img{
-float:right;	
-}
+.subs img{ float:right;	}
 
 .subs p{
 float:left;	
@@ -402,7 +390,7 @@ width:auto;
 
 .bottomHolder{
 	font-size:12px;
-	color:#26120f;
+	color:#fff;
 	margin:5px auto;
 	width:980px;
 }
@@ -410,20 +398,23 @@ width:auto;
 .copy{
 float:left;	
 width:auto;
+	color:#fff;
 }
+.copy p{ color:#fff; }
 
 .design{
 	float:right;
 	width:auto;
+  color:#fff;
 }
 
 .design a{
-	color:#26120f;
+	color:#fff;
 	text-decoration:none;
 }
 
 .design a:hover{
-	color:#26120f;
+	color:#fff;
 	text-decoration:underline;
 }
 

@@ -16,66 +16,34 @@
 <div class="heading">Mmm... Cake!</div>
 
 <div class="organic">
-  <div class="organicHolder">
-    <div class="organicContent">
-      <a href="<%= url_for @creations[0] %>">
-        <%= image_tag @creations[0].image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt=> @creations[0].name %>
-      </a>
-      <h2><%= @creations[0].name %></h2>
-      <p><%= @creations[0].story %></p>
+<% @creations.reverse.each_with_index do |creation, index| %>
+    <div class="organicHolder">
+      <div class="organicContent">
+        <a href="<%= url_for creation %>">
+          <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt => creation.name %>
+        </a>
+        <h2><%= creation.name %></h2>
+        <p><%= creation.story %> <%= link_to 'more...', creation %></p>
+      </div>
     </div>
-  </div>
-
-  <div class="organicHolder">
-    <div class="organicContent">
-      <a href="<%= url_for @creations[1] %>">
-      <%= image_tag @creations[1].image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt=> @creations[1].name %>
-      </a>
-      <h2><%= @creations[1].name %></h2>
-      <p><%= @creations[1].story %></p>
-    </div>
-  </div>
-
-  <div class="organicHolder">
-    <div class="organicContent">
-      <a href="<%= url_for @creations[2] %>">
-      <%= image_tag @creations[2].image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt=> @creations[2].name %>
-      </a>
-      <h2><%= @creations[2].name %></h2>
-      <p><%= @creations[2].story %></p>
-    </div>
-  </div>
-</div>
-
-<div class="space"></div>
-
-<div class="organic">
-  <div class="organicHolder">
-    <div class="organicContent">
-      <a href="<%= url_for @creations[3] %>">
-      <%= image_tag @creations[3].image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt=> @creations[3].name %>
-      </a>
-      <h2><%= @creations[3].name %></h2>
-      <p><%= @creations[3].story %></p>
-    </div>
-  </div>
-
-  <div class="organicHolder">
-    <div class="organicContent">
-      <a href="<%= url_for @creations[4] %>">
-      <%= image_tag @creations[4].image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt=> @creations[4].name %>
-      </a>
-      <h2><%= @creations[4].name %></h2>
-      <p><%= @creations[4].story %></p>
-    </div>
-  </div>
-
+    <% if index == 4 %>
   <div class="organicHolder">
     <div class="vegetable">
       <h3>Learn About Our Cakes</h3>
     </div>
   </div>
+    <% end %>
+    <% if (index +1) % 3 == 0 %>
 </div>
+
+<div class="space"></div>
+<div class="organic">
+
+  <% end %>
+
+<% end %>
+</div>
+
 <div class="clear"></div>
 
 <div class="hr"></div>
