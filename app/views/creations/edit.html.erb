@@ -1,6 +1,35 @@
-<h1>Editing creation</h1>
 
-<%= render 'form' %>
+<div class="welcomeHolder">
+  <div class="welcome">
+    <%= image_tag "cakes/Camouflage_Truck.jpg", :alt=>"camouflage truck cake", :class=>"photo", :width=>"417px", :height=>"205px" %>
+    <h1>Browse All Creations</h1>
+    <p><em>What time is it? Nana, nana, naaaaana caake time!</em></p>  
+    <p>Check out our communities most recent cake work.</p>
+    <p align="right">
+    <a href="<%= url_for my_creations_path %>"><input type="button" value="MY CREATIONS" class="view" /></a>
+    </p> 
+    <div class="clear"></div>
+  </div>
+  <div class="welcomeBottom"></div>
+</div>
+
+<div class="heading">Editing creation</div>
+
+<div class="width100 floatLeft">
+  <div class="width50 floatLeft">
+    <%= render 'form' %>
+  </div>
+  <div class="width50 floatRight">
+    <p>
+      <%= image_tag @creation.image_url.to_s, :class => 'photo' %>
+    </p>
+  </div>
+</div>
 
 <%= link_to 'Show', @creation %> |
 <%= link_to 'Back', creations_path %>
+
+<div class="space"></div>
+<div class="clear"></div>
+<div class="hr"></div>
+<div class="space"></div>

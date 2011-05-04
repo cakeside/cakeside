@@ -8,3 +8,9 @@
 .floatLeft{float:left;}
 .floatRight{float:right;}
 .image{margin-left:auto; margin-right:auto; display:block;}
+.photo{
+	border:1px solid #bababa;
+	padding:2px;
+	background-color:#ccc;
+	margin:6px 18px 2px 5px;
+}

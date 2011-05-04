@@ -1,15 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="heading"><%= @creation.name %></div>
 
-<p>
-  <b>Name:</b>
-  <%= @creation.name %>
-</p>
+<div class="width100 floatLeft">
+  <div class="width50 floatLeft">
+    <p>
+      <%= image_tag @creation.image_url.to_s, :class => 'photo' %>
+    </p>
+  </div>
+  <div class="width50 floatRight">
+    <p>
+      <strong>Story:</strong>
+      <%= @creation.story %>
+    </p>
+    <p>
+<div class="space"></div>
+    <% if @creation.user == current_user %>
+      <%= link_to 'Edit', edit_creation_path(@creation) %> |
+      <%= button_to 'delete', @creation, :method => :delete %>
+    <% end %>
+      <%= link_to 'Back', creations_path %>
+    </p>
+  </div>
+</div>
 
-<p>
-  <b>Story:</b>
-  <%= @creation.story %>
-</p>
-
-
-<%= link_to 'Edit', edit_creation_path(@creation) %> |
-<%= link_to 'Back', creations_path %>
+<div class="space"></div>
+<div class="clear"></div>
+<div class="hr"></div>
+<div class="space"></div>

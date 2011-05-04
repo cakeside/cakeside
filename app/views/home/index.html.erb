@@ -1,10 +1,13 @@
 <div class="welcomeHolder">
   <div class="welcome">
-    <img src="/images/img01.jpg" alt="" />
+    <a href="<%= url_for @creations[0] %>">
+      <%= image_tag @creations[0].image_url.to_s, :width => 417, :height => 205, :class => 'photo' %>
+    </a>
     <h1>Welcome to the CakeSide</h1>
     <p><em>Introduce your company here. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </em></p>  
-    <p align="right"><input type="button" value="MY CREATIONS" class="view" /></p> 
-    <%= link_to "mine", my_creations_path %>
+    <p align="right">
+    <a href="<%= url_for my_creations_path %>"><input type="button" value="MY CREATIONS" class="view" /></a>
+    </p> 
     <div class="clear"></div>
   </div>
   <div class="welcomeBottom"></div>
@@ -15,25 +18,31 @@
 <div class="organic">
   <div class="organicHolder">
     <div class="organicContent">
-      <a href="#"><img src="/images/img02.jpg" alt="" /></a>
+      <a href="<%= url_for @creations[0] %>">
+        <%= image_tag @creations[0].image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt=> @creations[0].name %>
+      </a>
       <h2><%= @creations[0].name %></h2>
-      <p><%= @creations[0].story %> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+      <p><%= @creations[0].story %></p>
     </div>
   </div>
 
   <div class="organicHolder">
     <div class="organicContent">
-      <img src="/images/img03.jpg" alt="" />
+      <a href="<%= url_for @creations[1] %>">
+      <%= image_tag @creations[1].image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt=> @creations[1].name %>
+      </a>
       <h2><%= @creations[1].name %></h2>
-      <p><%= @creations[1].story %>Organic fruit and vegetables Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+      <p><%= @creations[1].story %></p>
     </div>
   </div>
 
   <div class="organicHolder">
     <div class="organicContent">
-      <img src="/images/img04.jpg" alt="" />
+      <a href="<%= url_for @creations[2] %>">
+      <%= image_tag @creations[2].image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt=> @creations[2].name %>
+      </a>
       <h2><%= @creations[2].name %></h2>
-      <p><%= @creations[2].story %>Organic fruit and vegetables Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </p>
+      <p><%= @creations[2].story %></p>
     </div>
   </div>
 </div>
@@ -43,17 +52,21 @@
 <div class="organic">
   <div class="organicHolder">
     <div class="organicContent">
-      <img src="/images/img05.jpg" alt="" />
+      <a href="<%= url_for @creations[3] %>">
+      <%= image_tag @creations[3].image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt=> @creations[3].name %>
+      </a>
       <h2><%= @creations[3].name %></h2>
-      <p><%= @creations[3].story %>Organic fruit and vegetables Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+      <p><%= @creations[3].story %></p>
     </div>
   </div>
 
   <div class="organicHolder">
     <div class="organicContent">
-      <img src="/images/img06.jpg" alt="" />
+      <a href="<%= url_for @creations[4] %>">
+      <%= image_tag @creations[4].image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt=> @creations[4].name %>
+      </a>
       <h2><%= @creations[4].name %></h2>
-      <p><%= @creations[4].story %>Organic fruit and vegetables Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim </p>
+      <p><%= @creations[4].story %></p>
     </div>
   </div>
 

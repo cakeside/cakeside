@@ -1,29 +1,46 @@
-<div class="heading">The most recent creations</div>
+<div class="heading">My Creations</div>
 
-<div class="organic">
-<% @creations.reverse.each_with_index do |creation, index| %>
-    <div class="organicHolder">
-      <div class="organicContent">
-        <a href="#"><img src="/images/img02.jpg" alt="" /></a>
-        <h2><%= index %>. <%= creation.name %></h2>
-        <p><%= creation.story %></p>
-        <p>
-        <%= link_to 'more...', creation %>
-        <%= link_to 'edit', edit_creation_path(creation) %> |
-        <%= link_to 'destroy', creation, :confirm => 'Are you sure?', :method => :delete %>
-        </p>
-      </div>
-    </div>
-  <% if index % 3 == 1 %>
+<div class="floatRight">
+<%= link_to "add creation", new_creation_path(@creation) %>
 </div>
+<% if @creations.length == 0 %>
 
-<div class="space"></div>
-<div class="organic">
+  <div class="width100">
+    <p> you have no creations.  </p>
+  </div>
+
+<% else %>
+
+  <div class="organic">
+  <% @creations.reverse.each_with_index do |creation, index| %>
+      <div class="organicHolder">
+        <div class="organicContent">
+          <a href="<%= url_for creation %>">
+            <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo" %>
+          </a>
+          <h2><%= creation.name %></h2>
+          <p><%= creation.story %></p>
+          <p>
+          <%= link_to 'more...', creation %>
+          <% if creation.user == current_user %>
+            <%= link_to 'edit', edit_creation_path(creation) %> |
+            <%= button_to 'delete', creation, :method => :delete %>
+          <% end %>
+          </p>
+        </div>
+      </div>
+      <% if (index +1) % 3 == 0 %>
+  </div>
+
+  <div class="space"></div>
+  <div class="organic">
+
+    <% end %>
 
   <% end %>
 
+  </div>
 <% end %>
-</div>
 
 
 <div class="space"></div>

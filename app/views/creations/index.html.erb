@@ -1,22 +1,41 @@
+
+<div class="welcomeHolder">
+  <div class="welcome">
+    <a href="<%= url_for @creations[0] %>">
+      <%= image_tag @creations[0].image_url.to_s, :width => 417, :height => 205, :class => 'photo' %>
+    </a>
+    <h1>Browse All Creations</h1>
+    <p><em>What time is it? Nana, nana, naaaaana caake time!</em></p>  
+    <p>Check out our communities most recent cake work.</p>
+    <p align="right">
+    <a href="<%= url_for my_creations_path %>"><input type="button" value="MY CREATIONS" class="view" /></a>
+    </p> 
+    <div class="clear"></div>
+  </div>
+  <div class="welcomeBottom"></div>
+</div>
+
 <div class="heading">The most recent creations</div>
 
 <div class="organic">
 <% @creations.reverse.each_with_index do |creation, index| %>
     <div class="organicHolder">
       <div class="organicContent">
-        <a href="#"><img src="/images/img02.jpg" alt="" /></a>
-        <h2><%= index %>. <%= creation.name %></h2>
+        <a href="<%= url_for creation %>">
+          <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt => creation.name %>
+        </a>
+        <h2><%= creation.name %></h2>
         <p><%= creation.story %></p>
         <p>
         <%= link_to 'more...', creation %>
         <% if creation.user == current_user %>
           <%= link_to 'edit', edit_creation_path(creation) %> |
-          <%= link_to 'destroy', creation, :confirm => 'Are you sure?', :method => :delete %>
+          <%= button_to 'delete', creation, :method => :delete %>
         <% end %>
         </p>
       </div>
     </div>
-  <% if index % 3 == 1 %>
+    <% if (index +1) % 3 == 0 %>
 </div>
 
 <div class="space"></div>

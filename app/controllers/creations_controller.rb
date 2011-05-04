@@ -41,7 +41,7 @@ class CreationsController < ApplicationController
   # POST /creations
   # POST /creations.xml
   def create
-    @creation = Creation.new(params[:creation])
+    @creation = current_user.creations.create(params[:creation])
 
     respond_to do |format|
       if @creation.save
