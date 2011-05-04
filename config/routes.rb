@@ -6,6 +6,7 @@ Cake::Application.routes.draw do
   get "home/index"
 
   devise_for :users
+  match 'my_creations' => 'creations#mine', :as => 'my_creations', :method => 'GET'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

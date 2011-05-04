@@ -1,4 +1,5 @@
 class CreationsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:show, :index]
   # GET /creations
   # GET /creations.xml
   def index
@@ -34,7 +35,7 @@ class CreationsController < ApplicationController
 
   # GET /creations/1/edit
   def edit
-    @creation = Creation.find(params[:id])
+    @creation = current_user.creations.find(params[:id])
   end
 
   # POST /creations
@@ -56,7 +57,7 @@ class CreationsController < ApplicationController
   # PUT /creations/1
   # PUT /creations/1.xml
   def update
-    @creation = Creation.find(params[:id])
+    @creation = current_user.creations.find(params[:id])
 
     respond_to do |format|
       if @creation.update_attributes(params[:creation])
@@ -72,12 +73,21 @@ class CreationsController < ApplicationController
   # DELETE /creations/1
   # DELETE /creations/1.xml
   def destroy
-    @creation = Creation.find(params[:id])
+    @creation = current_user.creations.find(params[:id])
     @creation.destroy
 
     respond_to do |format|
       format.html { redirect_to(creations_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  def mine
+    @creations = current_user.creations
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @creations }
     end
   end
 end

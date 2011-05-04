@@ -9,10 +9,8 @@
         <p><%= creation.story %></p>
         <p>
         <%= link_to 'more...', creation %>
-        <% if creation.user == current_user %>
-          <%= link_to 'edit', edit_creation_path(creation) %> |
-          <%= link_to 'destroy', creation, :confirm => 'Are you sure?', :method => :delete %>
-        <% end %>
+        <%= link_to 'edit', edit_creation_path(creation) %> |
+        <%= link_to 'destroy', creation, :confirm => 'Are you sure?', :method => :delete %>
         </p>
       </div>
     </div>
