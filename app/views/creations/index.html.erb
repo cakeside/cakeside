@@ -1,13 +1,11 @@
 <div class="heading">The most recent creations</div>
 
-<% @creations.reverse.each_with_index do |creation, index| %>
-  <% if index % 3 == 0 %>
 <div class="organic">
-  <% end %>
+<% @creations.reverse.each_with_index do |creation, index| %>
     <div class="organicHolder">
       <div class="organicContent">
         <a href="#"><img src="/images/img02.jpg" alt="" /></a>
-        <h2><%= creation.name %></h2>
+        <h2><%= index %>. <%= creation.name %></h2>
         <p><%= creation.story %></p>
         <p>
         <%= link_to 'more...', creation %>
@@ -16,11 +14,16 @@
         </p>
       </div>
     </div>
-  <% if index % 3 == 0 %>
+  <% if index % 3 == 1 %>
 </div>
+
+<div class="space"></div>
+<div class="organic">
+
   <% end %>
 
 <% end %>
+</div>
 
 
 <div class="space"></div>
