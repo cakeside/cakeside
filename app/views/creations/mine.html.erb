@@ -19,13 +19,9 @@
             <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo" %>
           </a>
           <h2><%= creation.name %></h2>
-          <p><%= creation.story %></p>
+          <p><%= creation.story %> <%= link_to 'more...', creation %></p>
           <p>
-          <%= link_to 'more...', creation %>
-          <% if creation.user == current_user %>
-            <%= link_to 'edit', edit_creation_path(creation) %> |
-            <%= button_to 'delete', creation, :method => :delete %>
-          <% end %>
+          
           </p>
         </div>
       </div>

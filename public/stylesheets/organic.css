@@ -1,7 +1,6 @@
 *{
 margin:0px;
 padding:0px;
-background-color: #f99cf9;
 }
 
 img {
@@ -30,6 +29,8 @@ body{
 	width:1200px;
 	margin:0px auto;
 	height:1400px;
+  background-color: #ff00ba;
+  /*background-color: #f99cf9; */
 }
 
 #header{
@@ -107,10 +108,12 @@ padding-left:20px;
 float:left;	
 margin-top:75px;
 width:auto;
+background: none;
 }
 
 .menu ul{
 	margin:0px 15px;
+  background: none;
 }
 
 .menu ul li{
@@ -119,6 +122,7 @@ width:auto;
 	font-size:15px;
 	color:#6b4916;
 	font-weight:bold;
+  background: none;
 }
 
 .menu ul li a{
@@ -360,7 +364,7 @@ z-index:100;
 }
 
 .footerHolder{
-	background:url(../images/footerBg.jpg) no-repeat center bottom;
+	background:url(../images/footerBg.png) no-repeat center bottom;
 	font-size:17px;
 	font-style:italic;
 	font-weight:bold;
