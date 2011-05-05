@@ -12,19 +12,53 @@
       <strong>Story:</strong>
       <%= @creation.story %>
     </p>
+    <p>
+      <strong>Artist:</strong>
+      <%= link_to @creation.user.email, profile_path(@creation.user) %>
+    </p>
     <div class="space"></div>
     <p>
         <% if @creation.user == current_user %>
           <%= link_to 'Edit', edit_creation_path(@creation) %> |
-          <%= button_to 'delete', @creation, :method => :delete %>
+          <%= button_to 'Delete', @creation, :method => :delete %>
         <% end %>
         <% if signed_in? %>
-          <%= link_to "add creation", new_creation_path %>
+          <%= link_to "Add Creation", new_creation_path %>
         <% end %>
+        <div class="space"></div>
         <%= link_to 'Back', creations_path %>
     </p>
   </div>
 </div>
+<div class="space"></div>
+<div class="clear"></div>
+
+<div class="heading">
+  <%= @creation.user.email.to_s.pluralize %> other creations
+  <%= link_to 'view more...', profile_path(@creation.user), :class=>"floatRight" %> 
+</div>
+
+<% other_creations = @creation.user.creations.last(4) %>
+
+<% if other_creations.length > 0 %>
+  <div class="organic">
+    <% other_creations.each do |creation| %>
+      <% if creation != @creation %>
+        <div class="organicHolder">
+          <div class="organicContent">
+            <a href="<%= url_for creation %>">
+              <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt => creation.name %>
+            </a>
+            <h2><%= creation.name %></h2>
+            <p><%= creation.story %> <%= link_to 'more...', creation %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+<%= link_to 'view more...', profile_path(@creation.user), :class=>"floatRight" %> 
+
 
 <div class="space"></div>
 <div class="clear"></div>

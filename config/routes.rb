@@ -1,12 +1,16 @@
 Cake::Application.routes.draw do
   resources :creations
-
-  get "dashboard/index"
-
   get "home/index"
 
   devise_for :users
   match 'my_creations' => 'creations#mine', :as => 'my_creations', :method => 'GET'
+  match 'profiles' => 'profiles#index', :as => 'all_profiles', :method => 'GET'
+  match 'profiles/:id' => 'profiles#show', :as => 'profile', :method => 'GET'
+
+  authenticate :user do
+  root :to => "home#index"
+  end
+  root :to => "devise:sessions#new"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -58,10 +62,6 @@ Cake::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   #root :to => "home#index"
-  authenticate :user do
-  root :to => "home#index"
-  end
-  root :to => "devise:sessions#new"
 
   # See how all your routes lay out with "rake routes"
 

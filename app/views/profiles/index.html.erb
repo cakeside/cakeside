@@ -1,0 +1,26 @@
+
+<div class="heading">All <%= @profiles.length %> profiles</div>
+
+<table class="simple-table">
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>email</th>
+      <th>member since</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @profiles.each do |profile| %>
+    <tr>
+      <td><%= link_to 'unknown', profile_path(profile) %></td>
+      <td><%= profile.email %></td>
+      <td><%= profile.created_at %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<div class="clear"></div>
+
+<div class="hr"></div>
+<div class="space"></div>

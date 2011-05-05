@@ -14,3 +14,25 @@
 	background-color:#ccc;
 	margin:6px 18px 2px 5px;
 }
+.simple-table
+{
+	font-size: 10px;
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+}
+.simple-table td
+{
+	border: 1px solid #ccc;
+	padding: 6px 8px;
+}
+.simple-table tfoot td
+{
+	border: none;
+	font-weight:bold;
+	text-align:right;
+}
+.simple-table thead th
+{
+    text-align:center;
+}

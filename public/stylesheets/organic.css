@@ -8,6 +8,9 @@ input {background-color: #fff;}
 textarea {background-color: #fff;}
 i {background-color: #fff;}
 strong {background-color: #fff;}
+table {background-color: #fff;}
+td {background-color: #fff;}
+th {background-color: #fff;}
 
 img { border:none;	}
 .clear{ clear:both;	}
