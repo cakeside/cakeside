@@ -4,8 +4,8 @@ Cake::Application.routes.draw do
 
   devise_for :users
   match 'my_creations' => 'creations#mine', :as => 'my_creations', :method => 'GET'
-  match 'profiles' => 'profiles#index', :as => 'all_profiles', :method => 'GET'
-  match 'profiles/:id' => 'profiles#show', :as => 'profile', :method => 'GET'
+  match 'artists' => 'profiles#index', :as => 'all_profiles', :method => 'GET'
+  match 'artists/:id' => 'profiles#show', :as => 'profile', :method => 'GET'
 
   authenticate :user do
   root :to => "home#index"

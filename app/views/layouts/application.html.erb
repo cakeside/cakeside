@@ -52,7 +52,7 @@
     <div id="content">
       <p class="floatRight" style="padding: 0px 20px 0px 0px;">
         <% if user_signed_in? %>
-          welcome back <%= link_to current_user.email, edit_user_registration_path %>
+          signed in as <%= link_to current_user.name, edit_user_registration_path %>
         <% else %>
           <%= link_to "sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
         <% end %>

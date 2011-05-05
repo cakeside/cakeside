@@ -14,7 +14,7 @@
     </p>
     <p>
       <strong>Artist:</strong>
-      <%= link_to @creation.user.email, profile_path(@creation.user) %>
+      <%= link_to @creation.user.name, profile_path(@creation.user) %>
     </p>
     <div class="space"></div>
     <p>
@@ -34,7 +34,7 @@
 <div class="clear"></div>
 
 <div class="heading">
-  <%= @creation.user.email.to_s.pluralize %> other creations
+  <%= @creation.user.name.to_s.pluralize %> other creations
   <%= link_to 'view more...', profile_path(@creation.user), :class=>"floatRight" %> 
 </div>
 
