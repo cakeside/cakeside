@@ -134,6 +134,7 @@ GEM
     rake (0.8.7)
     rest-client (1.6.1)
       mime-types (>= 1.16)
+    rmagick (2.13.1)
     rspec (2.5.0)
       rspec-core (~> 2.5.0)
       rspec-expectations (~> 2.5.0)
@@ -177,6 +178,7 @@ DEPENDENCIES
   jquery-rails
   omniauth
   rails (= 3.0.3)
+  rmagick
   rspec-rails
   sqlite3-ruby
   webrat

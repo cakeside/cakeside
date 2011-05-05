@@ -12,7 +12,7 @@ gem 'jquery-rails'
 gem 'carrierwave'
 gem 'RedCloth', '>= 4.1.1'
 gem 'omniauth'
-#gem 'rmagick'
+gem 'rmagick'
 
 # Use unicorn as the web server
 # gem 'unicorn'
