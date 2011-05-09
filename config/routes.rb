@@ -7,10 +7,11 @@ Cake::Application.routes.draw do
   match 'artists' => 'profiles#index', :as => 'all_profiles', :method => 'GET'
   match 'artists/:id' => 'profiles#show', :as => 'profile', :method => 'GET'
 
-  authenticate :user do
+  # authenticate :user do
+  #   root :to => "home#index"
+  # end
+  # root :to => "devise:sessions#new"
   root :to => "home#index"
-  end
-  root :to => "devise:sessions#new"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
