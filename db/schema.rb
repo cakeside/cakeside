@@ -12,6 +12,14 @@
 
 ActiveRecord::Schema.define(:version => 20110505035236) do
 
+  create_table "authentications", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "creations", :force => true do |t|
     t.string   "name"
     t.text     "story"

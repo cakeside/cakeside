@@ -1,8 +1,10 @@
 Cake::Application.routes.draw do
   resources :creations
+  resources :authentications
   get "home/index"
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => 'registrations'}
+  match '/auth/:provider/callback' => 'authentications#create'
   match 'my_creations' => 'creations#mine', :as => 'my_creations', :method => 'GET'
   match 'artists' => 'profiles#index', :as => 'all_profiles', :method => 'GET'
   match 'artists/:id' => 'profiles#show', :as => 'profile', :method => 'GET'
@@ -69,4 +71,5 @@ Cake::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+  #
 end
