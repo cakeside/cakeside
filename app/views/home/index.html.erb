@@ -1,8 +1,14 @@
 <div class="welcomeHolder">
   <div class="welcome">
+    <% if @creations.any? %>
     <a href="<%= url_for @creations[0] %>">
       <%= image_tag @creations[0].image_url.to_s, :width => 417, :height => 205, :class => 'photo' %>
     </a>
+    <% else %>
+    <a href="<%= url_for @creations[0] %>">
+      <%= image_tag "cakes/Camouflage_Truck.jpg", :width => 417, :height => 205, :class => 'photo' %>
+    </a>
+    <% end %>
     <h1>Welcome to the CakeSide</h1>
     <p><em>An online community for cake artists, enthusiasists and eaters.</em></p>
     <p align="right">
