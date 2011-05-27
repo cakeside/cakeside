@@ -3,7 +3,6 @@ class CreationsController < ApplicationController
   # GET /creations
   # GET /creations.xml
   def index
-    # @creations = Creation.search params[:search], :include => :user, :match_mode => :boolean
     @creations = Creation.all
 
     respond_to do |format|
