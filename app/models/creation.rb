@@ -7,6 +7,5 @@ class Creation < ActiveRecord::Base
 
   define_index do
     indexes :name
-    indexes user.name :as => :artist, :sortable => true
   end
 end

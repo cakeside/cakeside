@@ -5,6 +5,7 @@ gem 'rails'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'rake', '~> 0.8.7'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'devise'
 gem 'heroku'
@@ -17,7 +18,8 @@ gem 'bcrypt-ruby'
 gem 'json'
 gem 'thinking-sphinx'
 #gem 'postgres'
-#gem 'pg'
+#gem 'postgres-pr'
+gem 'pg'
 
 # Use unicorn as the web server
 # gem 'unicorn'
