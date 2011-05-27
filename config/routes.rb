@@ -1,4 +1,6 @@
 Cake::Application.routes.draw do
+  get "search/index"
+
   resources :creations
   resources :authentications
   get "home/index"
