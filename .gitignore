@@ -5,3 +5,4 @@ tmp/**/*
 *.swp
 public/uploads/
 db/sphinx/development/*
+log/*
