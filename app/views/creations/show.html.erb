@@ -1,39 +1,34 @@
-<div class="heading"><%= @creation.name %></div>
+<div><%= @creation.name %></div>
 
 <div class="width100 floatLeft">
   <div class="width50 floatLeft">
     <p>
-      <%= image_tag @creation.image_url.to_s, :class => 'photo' %>
+    <%= image_tag @creation.image_url.to_s, :class => 'photo' %>
     </p>
     <p> submitted on: <%= @creation.created_at %> </p>
   </div>
   <div class="width50 floatRight">
     <p>
-      <strong>Story:</strong>
-      <%= @creation.story %>
+    <strong>Story:</strong>
+    <%= @creation.story %>
     </p>
     <p>
-      <strong>Artist:</strong>
-      <%= link_to @creation.user.name, profile_path(@creation.user) %>
+    <strong>Artist:</strong>
+    <%= link_to @creation.user.name, profile_path(@creation.user) %>
     </p>
-    <div class="space"></div>
     <p>
-        <% if @creation.user == current_user %>
-          <%= link_to 'Edit', edit_creation_path(@creation) %> |
-          <%= button_to 'Delete', @creation, :method => :delete %>
-        <% end %>
-        <% if signed_in? %>
-          <%= link_to "Add Creation", new_creation_path %>
-        <% end %>
-        <div class="space"></div>
-        <%= link_to 'Back', creations_path %>
+    <% if @creation.user == current_user %>
+      <%= link_to 'Edit', edit_creation_path(@creation) %> |
+      <%= button_to 'Delete', @creation, :method => :delete %>
+    <% end %>
+    <% if signed_in? %>
+      <%= link_to "Add Creation", new_creation_path %>
+    <% end %>
+    <%= link_to 'Back', creations_path %>
     </p>
   </div>
 </div>
-<div class="space"></div>
-<div class="clear"></div>
-
-<div class="heading">
+<div>
   <%= @creation.user.name.to_s.pluralize %> other creations
   <%= link_to 'view more...', profile_path(@creation.user), :class=>"floatRight" %> 
 </div>
@@ -41,26 +36,14 @@
 <% other_creations = @creation.user.creations.last(4) %>
 
 <% if other_creations.length > 0 %>
-  <div class="organic">
-    <% other_creations.each do |creation| %>
-      <% if creation != @creation %>
-        <div class="organicHolder">
-          <div class="organicContent">
-            <a href="<%= url_for creation %>">
-              <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt => creation.name %>
-            </a>
-            <h2><%= creation.name %></h2>
-            <p><%= creation.story %> <%= link_to 'more...', creation %></p>
-          </div>
-        </div>
-      <% end %>
+  <% other_creations.each do |creation| %>
+    <% if creation != @creation %>
+      <a href="<%= url_for creation %>">
+        <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt => creation.name %>
+      </a>
+      <h2><%= creation.name %></h2>
+      <p><%= creation.story %> <%= link_to 'more...', creation %></p>
     <% end %>
-  </div>
+  <% end %>
 <% end %>
 <%= link_to 'view more...', profile_path(@creation.user), :class=>"floatRight" %> 
-
-
-<div class="space"></div>
-<div class="clear"></div>
-<div class="hr"></div>
-<div class="space"></div>

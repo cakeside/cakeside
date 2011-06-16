@@ -1,56 +1,20 @@
-<div class="welcomeHolder">
-  <div class="welcome">
-    <% if @creations.any? %>
-    <a href="<%= url_for @creations[0] %>">
-      <%= image_tag @creations[0].image_url.to_s, :width => 417, :height => 205, :class => 'photo' %>
-    </a>
-    <% else %>
-    <a href="<%= url_for @creations[0] %>">
-      <%= image_tag "cakes/Camouflage_Truck.jpg", :width => 417, :height => 205, :class => 'photo' %>
-    </a>
-    <% end %>
-    <h1>Welcome to the CakeSide</h1>
-    <p><em>An online community for cake artists, enthusiasists and eaters.</em></p>
-    <p align="right">
-    <a href="<%= url_for my_creations_path %>"><input type="button" value="MY CREATIONS" class="view" /></a>
-    </p> 
-    <div class="clear"></div>
-  </div>
-  <div class="welcomeBottom"></div>
-</div>
-
-<div class="heading">Mmm... Cake!</div>
-
-<div class="organic">
-<% @creations.reverse.each_with_index do |creation, index| %>
-    <div class="organicHolder">
-      <div class="organicContent">
-        <a href="<%= url_for creation %>">
-          <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt => creation.name %>
-        </a>
-        <h2><%= creation.name %></h2>
-        <p><%= creation.story %> <%= link_to 'more...', creation %></p>
-      </div>
-    </div>
-    <% if index == 4 %>
-  <div class="organicHolder">
-    <div class="vegetable">
-      <h3>Learn About Our Cakes</h3>
-    </div>
-  </div>
-    <% end %>
-    <% if (index +1) % 3 == 0 %>
-</div>
-
-<div class="space"></div>
-<div class="organic">
-
-  <% end %>
-
+<% if @creations.any? %>
+  <a href="<%= url_for @creations[0] %>">
+    <%= image_tag @creations[0].image_url.to_s, :width => 417, :height => 205, :class => 'photo' %>
+  </a>
+<% else %>
+  <a href="<%= url_for @creations[0] %>">
+    <%= image_tag "cakes/Camouflage_Truck.jpg", :width => 417, :height => 205, :class => 'photo' %>
+  </a>
 <% end %>
-</div>
+<h1>Welcome to the CakeSide</h1>
+<p><em>An online community for cake artists, enthusiasists and eaters.</em></p>
+<a href="<%= url_for my_creations_path %>"> My Creations </a>
 
-<div class="clear"></div>
-
-<div class="hr"></div>
-<div class="space"></div>
+<% @creations.reverse.each_with_index do |creation, index| %>
+  <a href="<%= url_for creation %>">
+    <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt => creation.name %>
+  </a>
+  <h2><%= creation.name %></h2>
+  <p><%= creation.story %> <%= link_to 'more...', creation %></p>
+<% end %>

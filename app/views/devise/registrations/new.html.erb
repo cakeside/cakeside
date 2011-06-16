@@ -1,16 +1,9 @@
+<%= image_tag "cakes/Haunted_House.jpg", :alt=>"camouflage truck cake", :class=>"photo", :width=>"417px", :height=>"205px" %>
+<h1>C'mon In... </h1>
+<p>&quot;You don't make friends with salad&quot; - Homer Simpson<p>
+<p>Already have an account. Then <%= link_to "sign in", new_user_session_path %>.</p>
 
-<div class="welcomeHolder">
-  <div class="welcome">
-    <%= image_tag "cakes/Haunted_House.jpg", :alt=>"camouflage truck cake", :class=>"photo", :width=>"417px", :height=>"205px" %>
-    <h1>C'mon In... </h1>
-    <p>&quot;You don't make friends with salad&quot; - Homer Simpson<p>
-    <p>Already have an account. Then <%= link_to "sign in", new_user_session_path %>.</p>
-    <div class="clear"></div>
-  </div>
-  <div class="welcomeBottom"></div>
-</div>
-
-<div class="heading">Sign up</div>
+<div>Sign up</div>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -31,8 +24,3 @@
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>
-
-<div class="space"></div>
-<div class="clear"></div>
-<div class="hr"></div>
-<div class="space"></div>

@@ -14,88 +14,29 @@
 <%= yield :head %>
 </head>
 <body>
-  <div id="main"><!-- Main starts here -->
-    <header>
-    <div id="header"><!-- Header starts here -->
-      <div class="searchBar">
-        <div class="search">
-          <% form_tag(search_index_path, :method => "get") do %>
-            <div class="txt">
-              <%= text_field_tag(:q) %>
-            </div>
-            <div class="searchBt">
-              <%= submit_tag("search") %>
-            </div>
-          <% end %>
-        </div>
-        <% if user_signed_in? %>
-          <div class="signOut">
-            <%= link_to "sign out", destroy_user_session_path %> </p>
-          </div>
-        <% else %>
-          <div class="signIn">
-            <%= link_to "sign in", new_user_session_path %>
-          </div>
-        <% end %>
-      </div>
 
-      <div class="menu">
-        <ul id="menu">
-          <li class="small"><%= link_to "home", home_index_path %></li>
-          <li class="medium"><%= link_to "browse", creations_path %></li>
-          <li class="large"><a href="#contact">contact us</a></li>
-        </ul>
-      </div>
-      <div class="subs">
-        <a href="<%= url_for home_index_path %>.xml"><p>SUBCRIBE to RSS</p><img src="/images/rss.png" alt="" /></a>
-      </div>
-    </div><!-- Header ends here -->
-    </header>
+<% form_tag(search_index_path, :method => "get") do %>
+    <%= text_field_tag(:q) %>
+    <%= submit_tag("search") %>
+<% end %>
 
-    <div class="clear"></div>
+<% if user_signed_in? %>
+    <%= link_to "sign out", destroy_user_session_path %> </p>
+<% else %>
+    <%= link_to "sign in", new_user_session_path %>
+<% end %>
 
-    <div id="contentTop"></div><!-- Content starts here -->
-    <div id="content">
-      <p class="floatRight" style="padding: 0px 20px 0px 0px;">
-        <% if user_signed_in? %>
-          signed in as <%= link_to current_user.name, edit_user_registration_path %>
-        <% else %>
-          <%= link_to "sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-        <% end %>
-      </p>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <div class="clear"></div>
+<%= link_to "home", home_index_path %>
+<%= link_to "browse", creations_path %>
+<a href="<%= url_for home_index_path %>.xml"><p>SUBCRIBE to RSS</p></a>
 
-      <%= yield %>
+<% if user_signed_in? %>
+  signed in as <%= link_to current_user.name, edit_user_registration_path %>
+<% else %>
+  <%= link_to "sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+<% end %>
 
-      <footer>
-      <div id="footer"><!-- Footer starts here -->
-        <a id="contact" href="#"></a>
-        <div class="contactHeading">Contact Us</div>
-        <div class="footerHolder">
-          <div class="footerLeft">
-            <p class="left">Address:</p>
-            <p class="right">123 Street St<br /> Calgary AB<br /> Canada</p>
-          </div>
-
-          <div class="footerRight">
-            <p class="left">Phone: <br /> Fax: <br />Email: <br /> Twitter:</p>
-            <p class="right">1 800 600 0000 <br /> 1 800 600 0000 <br /> cake@cakeside.com <br /> @cakeside</p>
-          </div>
-          <div class="clear"></div>
-        </div>
-
-      </div><!-- Footer ends here -->
-      </footer>
-    </div>
-    <div id="contentBottom"></div><!-- Content ends here -->
-
-  </div><!-- Main ends here -->
-    <div class="bottomHolder">
-      <div class="copy"><p>&copy; 2011 CakeSide Inc.</p></div>
-      <div class="design"><a href="#">SuLuMo</a></div>
-    </div>
+<%= yield %>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <%= javascript_include_tag :all %>
