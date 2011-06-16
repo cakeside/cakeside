@@ -5,7 +5,7 @@ gem 'rails'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'rake', '~> 0.8.7'
+gem 'rake'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'devise'
 gem 'heroku'
