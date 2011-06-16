@@ -1,14 +1,19 @@
-<img src="" width="417px" heigh="205px" alt="" class="photo" />
 <h1><%= @profile.name %></h1>
+<%= image_tag avatar_url(@profile), :class => "photo" %> 
+<% if @profile == current_user %>
+  <a href="http://en.gravatar.com/">change your photo</a>
+<% end %>
 <p><em>A member since <%= @profile.created_at %>, with <%= @profile.creations.length %> creations.</em></p>
 
-<div><%= @profile.name %></div>
+<hr />
 
 <% @profile.creations.reverse.each_with_index do |creation, index| %>
+  <div class="product_box">
   <a href="<%= url_for creation %>">
     <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt => creation.name %>
   </a>
   <h2><%= creation.name %></h2>
   <p><%= creation.story %> <%= link_to 'more...', creation %></p>
+</div>
 <% end %>
 

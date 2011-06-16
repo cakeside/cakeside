@@ -6,7 +6,7 @@ body {
 	margin: 0px;
 	padding: 0px;
 	color: #241a10;
-	background:#c9e4ec url(../images/template/page_bg.gif);
+	background:#c9e4ec url(/images/template/page_bg.gif);
 }
 a, a:link, a:active, a:visited {
 	color: #605646;
@@ -15,7 +15,7 @@ a:hover {
 	text-decoration:none;
 }
 #page_bg {
-	background:url(../images/template/ribbon.gif) no-repeat center 108px;
+	background:url(/images/template/ribbon.gif) no-repeat center 108px;
 }
 #container {
 	width:850px;
@@ -25,7 +25,7 @@ a:hover {
 #header {
 	height: 108px;
 	padding: 0px;
-	background-image:url(../images/template/header_bg.jpg);
+	background-image:url(/images/template/header_bg.jpg);
 	background-position:top;
 	background-repeat:no-repeat;
 }
@@ -43,7 +43,7 @@ a:hover {
 }
 #mainContent {
 	padding:0px;
-	background:#fffdee url(../images/template/body_top_shadow.jpg);
+	background:#fffdee url(/images/template/body_top_shadow.jpg);
 	background-repeat:repeat-x;
 	background-position:top;
 	min-height:400px;
@@ -166,7 +166,7 @@ ul#navigation ul.second-level li.hover a, ul#navigation ul.second-level li:hover
 
 /*Tag Menu*/
 .tag {
-	background-image:url(../images/template/tag_bottom.gif);
+	background-image:url(/images/template/tag_bottom.gif);
 	background-repeat:no-repeat;
 	background-position:0px bottom;
 	width:148px;
@@ -184,10 +184,10 @@ ul#navigation ul.second-level li.hover a, ul#navigation ul.second-level li:hover
 	padding:0 0 0 15px;
 	margin:0px 0px 0px 8px; /* used to center the menu on its bg image */
 	line-height:22px;
-	background:url(../images/template/tag_line.gif) no-repeat 0 bottom;
+	background:url(/images/template/tag_line.gif) no-repeat 0 bottom;
 }
 .tag a, .tag a:link, .tag a:visited {
-	background-image:url(../images/template/tag_icon.gif);
+	background-image:url(/images/template/tag_icon.gif);
 	background-position:left;
 	background-repeat:no-repeat;
 	display:block;
@@ -226,7 +226,7 @@ ul#navigation ul.second-level li.hover a, ul#navigation ul.second-level li:hover
 	border:0px;
 	padding:3px 0px 0px 6px;
 	margin:0px 0px 0px 5px;
-	background-image:url(../images/template/search.gif);
+	background-image:url(/images/template/search.gif);
 	background-repeat:no-repeat;
 	background-position:left;
 	width:105px;
@@ -238,7 +238,7 @@ ul#navigation ul.second-level li.hover a, ul#navigation ul.second-level li:hover
 }
 /*Shopping Cart On the Menu*/
 #shopping_cart_summary {
-	background:url(../images/template/we_accept.gif) no-repeat;
+	background:url(/images/template/we_accept.gif) no-repeat;
 	width:142px;
 	height:71px;
 	color:#8f6637;
@@ -339,7 +339,7 @@ ul.ticklist {
 }
 ul.ticklist li {
 	list-style:none;
-	background-image:url(../images/template/icon_tick.gif);
+	background-image:url(/images/template/icon_tick.gif);
 	background-position:left 3px; /*the number here moves the tick down*/
 	background-repeat:no-repeat;
 	margin:0px 0px 5px 0px;
@@ -369,10 +369,11 @@ th { /*top row of the table*/
 	background-color:#FFFFFF;
 }
 /*SHOP*/
-
+ /* 285px 140px   287px 190px  */
+ /* 130px 87px    132px 137px  */
 .product_box {
-	width:132px; /*140px minus padding*/
-	height:137px;
+	width:287px; /*140px minus padding*/
+	height:220px;
 	float:left;
 	background-color:#FFFFFF;
 	border:1px solid #e2dacf;
@@ -417,24 +418,23 @@ th { /*top row of the table*/
 .pink {
 	color:#f07398;
 }
-#contact {
+.cute_form {
 	border:0;
-	width:480px;
 }
-#contact label {
+.cute_form label {
 	float:left;
-	width:80px;
-	margin-right:15px;
+	width:180px;
+	margin-right:5px;
 	clear:left;
 	color:#f07398;
 	font-weight:bold;
 	text-align:right;
 	height:32px;
 }
-#contact input, #contact textarea {
+.cute_form input, .cute_form textarea {
 	margin-right:40px;
 }
-#contact #submit {
+.cute_form .submit_button {
 	clear:left;
 	margin-left:95px;
 }

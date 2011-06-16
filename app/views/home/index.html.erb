@@ -1,20 +1,26 @@
-<% if @creations.any? %>
-  <a href="<%= url_for @creations[0] %>">
-    <%= image_tag @creations[0].image_url.to_s, :width => 417, :height => 205, :class => 'photo' %>
-  </a>
-<% else %>
-  <a href="<%= url_for @creations[0] %>">
-    <%= image_tag "cakes/Camouflage_Truck.jpg", :width => 417, :height => 205, :class => 'photo' %>
-  </a>
-<% end %>
 <h1>Welcome to the CakeSide</h1>
 <p><em>An online community for cake artists, enthusiasists and eaters.</em></p>
-<a href="<%= url_for my_creations_path %>"> My Creations </a>
+<div class="inner_right">
+  <a href="shop.html"><img src="/images/template/button_coffee.jpg" border="0" alt="Coffee" /></a> 
+  <br />
+  <br />
+  <a href="shop.html"><img src="/images/template/button_chocolate.jpg" border="0" alt="Coffee" /></a> 
+</div>
+<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada facilisis erat, id sollicitudin leo sollicitudin in. Quisque quis elit eget neque convallis imperdiet in ut odio. Nunc vel lectus turpis, nec tincidunt ipsum. Pellentesque turpis tellus, pulvinar vehicula sodales a, sollicitudin egestas mauris. </p>
+<ul class="ticklist">
+  <li>Vestibulum aliquet</li>
+  <li>Enim sit amet bibendum venenatis</li>
+  <li>Dolor risus ornare orci, ac mollis </li>
+</ul>
+<p>Eros rhoncus convallis. Aliquam condimentum rhoncus ante a elementum. Praesent massa ligula, fermentum ac aliquet eu, ultricies a elit. Aliquam tincidunt lacus in nisi volutpat eleifend. urna in vulputate porttitor, mi est placerat tellus, at sagittis risus enim sit amet sapien. </p>
 
+<br /><br /><br /><br />
 <% @creations.reverse.each_with_index do |creation, index| %>
-  <a href="<%= url_for creation %>">
-    <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt => creation.name %>
-  </a>
-  <h2><%= creation.name %></h2>
-  <p><%= creation.story %> <%= link_to 'more...', creation %></p>
+  <div class="product_box">
+    <h2><%= creation.name %></h2>
+    <a href="<%= url_for creation %>">
+      <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :alt => creation.name %>
+    </a>
+    <p><%= creation.story %> <%= link_to 'more...', creation %></p>
+  </div>
 <% end %>

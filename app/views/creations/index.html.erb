@@ -1,28 +1,13 @@
-
-<% if @creations.any? %>
-  <a href="<%= url_for @creations[0] %>">
-    <%= image_tag @creations[0].image_url.to_s, :width => 417, :height => 205, :class => 'photo' %>
-  </a>
-<% else %>
-  <a href="<%= url_for @creations[0] %>">
-    <%= image_tag "cakes/Camouflage_Truck.jpg", :width => 417, :height => 205, :class => 'photo' %>
-  </a>
-<% end %>
-
 <h1>Browse All Creations</h1>
 <p><em>What time is it? Nana, nana, naaaaana caake time!</em></p>  
 <p>Check out our communities most recent cake work.</p>
-<a href="<%= url_for my_creations_path %>"> My Creations </a>
 
-<div>The most recent creations</div>
-
-<div>
-  <% @creations.reverse.each_with_index do |creation, index| %>
-    <a href="<%= url_for creation %>">
-      <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt => creation.name %>
-    </a>
-    <h2><%= creation.name %></h2>
-    <p><%= creation.story %> <%= link_to 'more...', creation %></p>
-  <% end %>
+<% @creations.reverse.each_with_index do |creation, index| %>
+<div class="product_box">
+  <a href="<%= url_for creation %>">
+    <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt => creation.name %>
+  </a>
+  <h2><%= creation.name %></h2>
+  <p><%= creation.story %> <%= link_to 'more...', creation %></p>
 </div>
-
+<% end %>

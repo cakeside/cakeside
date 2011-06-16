@@ -1,18 +1,18 @@
-<div>My Creations</div>
+<h1>My Creations</h1>
 
-<div class="floatRight">
 <%= link_to "add creation", new_creation_path(@creation) %>
-</div>
+
+<hr />
 <% if @creations.length == 0 %>
-  <div class="width100">
     <p> you have no creations.  </p>
-  </div>
 <% else %>
   <% @creations.reverse.each_with_index do |creation, index| %>
-          <a href="<%= url_for creation %>">
-            <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo" %>
-          </a>
-          <h2><%= creation.name %></h2>
-          <p><%= creation.story %> <%= link_to 'more...', creation %></p>
+    <div class="product_box">
+      <h2><%= creation.name %></h2>
+      <a href="<%= url_for creation %>">
+        <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo" %>
+      </a>
+      <p><%= creation.story %> <%= link_to 'more...', creation %></p>
+    </div>
   <% end %>
 <% end %>
