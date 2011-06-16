@@ -8,12 +8,49 @@
   <meta name="author" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="/favicon.ico">
-<script src="javascripts/libs/modernizr-1.7.min.js"></script>
+<script src="/javascripts/libs/modernizr-1.7.min.js"></script>
 <%= stylesheet_link_tag :all %>
 <%= csrf_meta_tag %>
 <%= yield :head %>
 </head>
 <body>
+
+
+<!-- start ribbon background -->
+<div id="page_bg">
+  <!-- start content -->
+  <div id="container">
+    <!-- start header -->
+    <div id="header">
+      <div id="header_logo"> <a href="index.html#"><img src="/images/template/logo.png" alt="Logo" width="322" height="56" border="0" /></a> </div>
+      <div id="header_slogan"><img src="/images/template/slogan.png" alt="Gourmet Online Shop" width="213" height="40" /></div>
+    </div>
+    <!-- end header -->
+    <div id="menu_container">
+      <ul id="navigation">
+        <li class="current"><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="shop.html">Products</a>
+          <ul class="second-level">
+            <li> <a href="index.html#">Product 1</a> </li>
+            <li> <a href="index.html#">Product 2</a> </li>
+            <li> <a href="index.html#">Product 3</a> </li>
+            <li> <a href="index.html#">Product 4</a> </li>
+            <li> <a href="index.html#">Product 5</a> </li>
+          </ul>
+        </li>
+        <li><a href="index.html#">Gifts</a></li>
+        <li><a href="index.html#">Stores</a></li>
+        <li><a href="index.html#">FAQ</a></li>
+        <li class="last"><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div id="mainContent">
+      <!-- start body content -->
+      <div id="right_side">
+        <div id="s1" class="slide"> <img style="display: none;" src="/images/template/banner_cupcakes.jpg" alt="" width="666" height="226" /> <img style="display: none;" src="/images/template/banner_weddings.jpg" alt="" width="666" height="226" /> </div>
+        <div id="body_text">
+          <!-- begin main page content -->
 
 <% form_tag(search_index_path, :method => "get") do %>
     <%= text_field_tag(:q) %>
@@ -37,6 +74,59 @@
 <% end %>
 
 <%= yield %>
+          <!-- end main page content -->
+        </div>
+      </div>
+      <!-- end body content -->
+      <div id="left_side">
+        <!-- start left menu -->
+        <div style="position:relative; margin-top:-47px; width:147px; height:93px; background:url(/images/template/tag_top.gif);"></div>
+        <div class="tag">
+          <ul>
+            <li><a href="index.html#">Father's Day</a></li>
+            <li><a href="index.html#">Chocolates</a></li>
+            <li><a href="index.html#">Fudge</a></li>
+            <li><a href="index.html#">Lollies</a></li>
+            <li><a href="index.html#">Hampers</a></li>
+            <li><a href="index.html#">Special Diet</a></li>
+            <li><a href="index.html#">On Sale</a></li>
+          </ul>
+          <p>&nbsp; </p>
+        </div>
+        <!-- end left menu -->
+        <!-- start search tag -->
+        <div id="search_box">
+          <form action="index.html#" method="get" name="search">
+            <div>
+              <div id="search_box_inner">
+                <input name="search_query" id="search_query" type="text" style="" value="    SEARCH" onfocus="if(this.value=='    SEARCH')this.value='';" />
+              </div>
+              <!-- set padding-top:1px in IE 6 and 7 if statement -->
+              <div id="search_box_go">
+                <input type="image" src="/images/template/go.gif" alt="Go!" style="margin:0px; padding:0px;" />
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- end search -->
+        <div id="shopping_cart_summary">
+          <div> <a href="index.html#">3 Items</a> | <a href="index.html#">$2.00</a> </div>
+          <div> <a href="index.html#">Check out</a> </div>
+        </div>
+      </div>
+      <hr class="clear" />
+    </div>
+    <!-- start footer -->
+    <div id="footer">
+      <div style="float:left">&copy; Candy Cakes</div>
+      <div style="float:right; "><a href="http://themeforest.net/user/dtbaker/portfolio?ref=dtbaker">Template design by dtbaker</a> | <a href="index.html#">Privacy Policy</a> | <a href="sitemap.php">Site Map</a></div>
+    </div>
+    <!-- end footer -->
+  </div>
+</div>
+<!-- end content --><script type="text/javascript">
+
+
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <%= javascript_include_tag :all %>
@@ -53,3 +143,4 @@
   </script>
 </body>
 </html>
+
