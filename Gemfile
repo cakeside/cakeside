@@ -19,7 +19,7 @@ gem 'json'
 gem 'thinking-sphinx'
 #gem 'postgres'
 #gem 'postgres-pr'
-gem 'pg'
+# gem 'pg'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -42,4 +42,7 @@ gem 'pg'
  group :development, :test do
    gem 'webrat'
    gem 'rspec-rails'
+ end
+ group :production do
+   gem 'pg'
  end
