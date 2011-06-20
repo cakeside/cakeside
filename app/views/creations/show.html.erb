@@ -27,16 +27,14 @@
 
 <h3> other creations by <%= @creation.user.name.to_s %> <em><%= link_to 'view more...', profile_path(@creation.user) %> </em> </h3>
 <% other_creations = @creation.user.creations.last(4) %>
-<% if other_creations.length > 0 %>
-  <% other_creations.each do |creation| %>
-    <% if creation != @creation %>
-    <div class="product_box">
-      <a href="<%= url_for creation %>">
-        <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt => creation.name %>
-      </a>
-      <h2><%= @creation.name %></h2>
-      <p><%= creation.story %> <%= link_to 'more...', creation %></p>
-    </div>
-    <% end %>
+<% other_creations.each do |creation| %>
+  <% if creation != @creation %>
+  <div class="product_box">
+    <a href="<%= url_for creation %>">
+      <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt => creation.name %>
+    </a>
+    <h2><%= @creation.name %></h2>
+    <p><%= creation.short_story %> <%= link_to 'more...', creation %></p>
+  </div>
   <% end %>
 <% end %>

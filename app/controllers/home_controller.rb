@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @creations = Creation.all.take(5).reverse
+    @creations = Creation.all.reverse.take(6)
 
     respond_to do |format|
       format.html # index.html.erb

@@ -18,6 +18,15 @@
 <div id="page_bg">
   <!-- start content -->
   <div id="container">
+    <div class="floatRight" style="padding-top:20px; padding-right:5px;">
+      <% if user_signed_in? %>
+        signed in as <%= link_to current_user.name, edit_user_registration_path %> |
+        <a href="<%= url_for my_creations_path %>">my creations</a> |
+        <%= link_to "sign out", destroy_user_session_path %>
+      <% else %>
+        <%= link_to "sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+      <% end %>
+    </div>
     <!-- start header -->
     <div id="header">
       <div id="header_logo"> <a href="/"><img src="/images/template/logo.png" alt="Logo" width="322" height="56" border="0" /></a> </div>
@@ -26,27 +35,21 @@
     <!-- end header -->
     <div id="menu_container">
       <ul id="navigation">
-        <li class="current"><%= link_to "home", home_index_path %></li>
-        <li><%= link_to "Browse", creations_path %></li>
-        <li class="last"><a href="contact.html">Contact</a></li>
+        <li><%= link_to "home", home_index_path %></li>
+        <li><%= link_to "artists", all_profiles_path %></li>
+        <li class="last"><%= link_to "Browse", creations_path %></li>
       </ul>
     </div>
     <div id="mainContent">
       <!-- start body content -->
       <div id="right_side">
-        <div id="s1" class="slide"> <img style="display: none;" src="/images/template/banner_cupcakes.jpg" alt="" width="666" height="226" /> <img style="display: none;" src="/images/template/banner_weddings.jpg" alt="" width="666" height="226" /> </div>
+        <div id="s1" class="slide"> 
+          <img style="display: none;" src="/images/template/banner_cupcakes.jpg" alt="" width="666" height="226" /> 
+          <img style="display: none;" src="/images/template/banner_weddings.jpg" alt="" width="666" height="226" />
+        </div>
         <div id="body_text">
           <!-- begin main page content -->
 
-<div class="floatRight">
-<% if user_signed_in? %>
-  signed in as <%= link_to current_user.name, edit_user_registration_path %> |
-  <a href="<%= url_for my_creations_path %>">my creations</a> |
-  <%= link_to "sign out", destroy_user_session_path %>
-<% else %>
-  <%= link_to "sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-<% end %>
-</div>
 
 <%= yield %>
 
@@ -90,10 +93,9 @@
     </div>
     <!-- start footer -->
     <div id="footer">
-      <div class="floatLeft">&copy; Candy Cakes</div>
+      <div class="floatLeft">&copy; 2011 CakeSide</div>
       <div class="floatRight">
-        <a href="/">Privacy Policy</a> | 
-        <a href="sitemap.php">Site Map</a>
+        <a href="/">Privacy Policy</a>
       </div>
     </div>
     <!-- end footer -->

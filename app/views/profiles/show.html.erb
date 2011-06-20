@@ -1,5 +1,5 @@
 <h1><%= @profile.name %></h1>
-<%= image_tag avatar_url(@profile), :class => "photo" %> 
+<%= image_tag avatar_url(@profile) + '&s=200', :class => "photo" %> 
 <% if @profile == current_user %>
   <a href="http://en.gravatar.com/">change your photo</a>
 <% end %>
@@ -13,7 +13,7 @@
     <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt => creation.name %>
   </a>
   <h2><%= creation.name %></h2>
-  <p><%= creation.story %> <%= link_to 'more...', creation %></p>
+  <p><%= creation.short_story %> <%= link_to 'more...', creation %></p>
 </div>
 <% end %>
 

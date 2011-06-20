@@ -9,4 +9,9 @@ class Creation < ActiveRecord::Base
     indexes :name
     indexes story
   end
+
+  def short_story
+    story.split[0...10].join(' ')
+  end
+
 end

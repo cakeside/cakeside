@@ -1,19 +1,19 @@
 
-<div>All <%= @profiles.length %> profiles</div>
+<h1>All <%= @profiles.length %> profiles</h1>
 
 <table class="simple-table">
   <thead>
     <tr>
+      <th></th>
       <th>name</th>
-      <th>email</th>
       <th>member since</th>
     </tr>
   </thead>
   <tbody>
   <% @profiles.each do |profile| %>
     <tr>
+      <td> <%= image_tag avatar_url(profile), :class => "photo" %> </td>
       <td><%= link_to profile.name, profile_path(profile) %></td>
-      <td><%= profile.email %></td>
       <td><%= profile.created_at %></td>
     </tr>
   <% end %>

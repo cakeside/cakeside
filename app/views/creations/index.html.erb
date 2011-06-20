@@ -8,6 +8,6 @@
     <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt => creation.name %>
   </a>
   <h2><%= creation.name %></h2>
-  <p><%= creation.story %> <%= link_to 'more...', creation %></p>
+  <p><%= creation.short_story %> <%= link_to 'more...', creation %></p>
 </div>
 <% end %>
