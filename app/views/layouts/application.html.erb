@@ -36,23 +36,20 @@
     <div id="menu_container">
       <ul id="navigation">
         <li><%= link_to "home", home_index_path %></li>
-        <li><%= link_to "artists", all_profiles_path %></li>
-        <li class="last"><%= link_to "Browse", creations_path %></li>
+        <li><%= link_to "browse", creations_path %></li>
+        <li class="last"><%= link_to "artists", all_profiles_path %></li>
       </ul>
     </div>
     <div id="mainContent">
       <!-- start body content -->
       <div id="right_side">
-        <div id="s1" class="slide"> 
+        <div id="s1" class="hidden"> 
           <img style="display: none;" src="/images/template/banner_cupcakes.jpg" alt="" width="666" height="226" /> 
           <img style="display: none;" src="/images/template/banner_weddings.jpg" alt="" width="666" height="226" />
         </div>
         <div id="body_text">
           <!-- begin main page content -->
-
-
-<%= yield %>
-
+          <%= yield %>
           <!-- end main page content -->
         </div>
       </div>
@@ -106,10 +103,11 @@
 <%= javascript_include_tag :all %>
 <script type="text/javascript" src="/javascripts/template/jquery.cycle.all.js"></script>
 <script type="text/javascript" src="/javascripts/template/hide-select.js"></script>
+
 <script type="text/javascript">
-	$(function() {
-    $('#s1').cycle({fx:'fade',speed:1500,timeout:4000});
-	});
+$(function() {
+  <%= yield :script %>
+});
 </script>
 
   <!--[if lt IE 7 ]>

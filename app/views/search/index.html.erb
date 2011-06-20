@@ -1,14 +1,14 @@
 <h1>Search Results</h1>
 <p><em>What time is it? Nana, nana, naaaaana caake time!</em></p>  
-<p>Check out our communities most recent cake work.</p>
-<a href="<%= url_for my_creations_path %>"> my creations </a>
 
-<div>The most recent creations</div>
+<h2>You searched for <%= search %></h2>
 
-<% @creations.reverse.each_with_index do |creation, index| %>
+<% @creations.reverse.each do |creation| %>
+<div class="product_box">
   <a href="<%= url_for creation %>">
     <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt => creation.name %>
   </a>
   <h2><%= creation.name %></h2>
-  <p><%= creation.story %> <%= link_to 'more...', creation %></p>
+  <p><%= creation.short_story %> <%= link_to 'more...', creation %></p>
+</div>
 <% end %>

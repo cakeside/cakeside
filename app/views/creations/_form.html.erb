@@ -11,10 +11,10 @@
   <% end %>
 
   <fieldset class="cute_form">
-    <%= f.label :image %>
-    <%= f.file_field :image, :class => "forms"  %>
-    <%= f.label :remote_image_url, "or image url" %>
-    <%= f.file_field :remote_image_url, :class => "forms"  %>
+    <%= f.label :image, 'data-editable' => 'false' %>
+    <%= f.file_field :image, :class => "forms", 'data-editable' => 'false'   %>
+    <%= f.label :remote_image_url, "or image url", 'data-editable' => 'false'  %>
+    <%= f.text_field :remote_image_url, :class => "forms", 'data-editable' => 'false'  %>
     <%= f.label :name %>
     <%= f.text_field :name, :class => "forms" %>
     <%= f.label :story %>

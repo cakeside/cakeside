@@ -2,7 +2,7 @@
 <p><em>What time is it? Nana, nana, naaaaana caake time!</em></p>  
 <p>Check out our communities most recent cake work.</p>
 
-<% @creations.reverse.each_with_index do |creation, index| %>
+<% @creations.reverse.each do |creation| %>
 <div class="product_box">
   <a href="<%= url_for creation %>">
     <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt => creation.name %>

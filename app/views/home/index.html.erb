@@ -1,8 +1,15 @@
+<% content_for :script do %>
+  $('#s1').removeClass('hidden');
+  $('#s1').addClass('slide');
+  $('#s1').cycle({fx:'fade',speed:1500,timeout:4000});
+<% end %>
+
+
 <h1>Welcome to the CakeSide</h1>
 <p><em>An online community for cake artists, enthusiasists and eaters.</em></p>
 <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada facilisis erat, id sollicitudin leo sollicitudin in. Quisque quis elit eget neque convallis imperdiet in ut odio. Nunc vel lectus turpis, nec tincidunt ipsum. Pellentesque turpis tellus, pulvinar vehicula sodales a, sollicitudin egestas mauris. </p>
 
-<% @creations.each_with_index do |creation, index| %>
+<% @creations.each do |creation| %>
   <div class="product_box">
     <h2><%= creation.name %></h2>
     <a href="<%= url_for creation %>">

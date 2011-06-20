@@ -1,18 +1,12 @@
-<h1>Browse All Creations</h1>
-<p><em>What time is it? Nana, nana, naaaaana caake time!</em></p>  
-<p>Check out our communities most recent cake work.</p>
+<% content_for :script do %>
+  $('label[data-editable="false"]').addClass('hidden');
+  $('input[data-editable="false"]').addClass('hidden');
+<% end %>
 
-<h2>Editing creation <%= @creation.name %></h2>
+<h1>Editing creation <em><%= @creation.name %></em></h1>
 
-<div class="width100 floatLeft">
-  <div class="width50 floatLeft">
-    <%= render 'form' %>
-  </div>
-  <div class="width50 floatRight">
-    <p>
-    <%= image_tag @creation.image_url.to_s, :class => 'photo' %>
-    </p>
-  </div>
-</div>
+<%= image_tag @creation.image_url.to_s, :class => 'photo' %>
+<%= render 'form' %>
+
 
 <%= link_to 'Show', @creation %> |

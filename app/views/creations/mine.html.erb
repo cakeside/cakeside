@@ -1,6 +1,8 @@
 <h1>My Creations</h1>
 
-<%= link_to "add creation", new_creation_path(@creation) %>
+<div class="floatRight">
+  <%= link_to "add new creation", new_creation_path(@creation) %>
+</div>
 
 <hr />
 <% if @creations.length == 0 %>
