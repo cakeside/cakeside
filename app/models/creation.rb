@@ -11,7 +11,7 @@ class Creation < ActiveRecord::Base
   end
 
   def short_story
-    story.split[0...10].join(' ')
+    story.split[0...8].join(' ') + '...'
   end
 
 end

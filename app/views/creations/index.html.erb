@@ -4,10 +4,10 @@
 
 <% @creations.reverse.each do |creation| %>
 <div class="product_box">
+  <h2><%= creation.name %></h2>
   <a href="<%= url_for creation %>">
     <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt => creation.name %>
   </a>
-  <h2><%= creation.name %></h2>
   <p><%= creation.short_story %> <%= link_to 'more...', creation %></p>
 </div>
 <% end %>

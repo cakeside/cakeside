@@ -1,38 +1,42 @@
-<h1><%= @creation.name %> by <em> <%= link_to @creation.user.name, profile_path(@creation.user) %> </em> </h1>
 
 <% if signed_in? %>
   <div class="floatRight">
     <%= link_to "Add Creation", new_creation_path %>
   </div>
 <% end %>
+<% if @creation.user == current_user %>
+  <h1><%= @creation.name %> <%= link_to '(edit)', edit_creation_path(@creation), :class => 'smallFont' %> by <em> <%= link_to @creation.user.name, profile_path(@creation.user) %> </em> </h1>
+<% else %>
+  <h1><%= @creation.name %> by <em> <%= link_to @creation.user.name, profile_path(@creation.user) %> </em> </h1>
+<% end %>
 
 <div class="width100 floatLeft">
-  <div class="width25 floatLeft">
-    <p> <%= @creation.story %> </p>
-  </div>
-  <div class="width75 floatRight">
-    <p> <%= image_tag @creation.image_url.to_s, :class => 'photo' %> </p>
+    <p> 
+    <%= image_tag @creation.image_url.to_s, :class => ['photo','floatRight'], :alt => @creation.name %>
+    <%= @creation.story %> 
+    <% if @creation.user == current_user %>
+      <%= link_to '(edit)', edit_creation_path(@creation), :class => 'smallFont' %>
+    <% end %>
+    </p>
     <p> submitted on: <%= @creation.created_at %> </p>
     <% if @creation.user == current_user %>
-      <%= link_to 'Edit', edit_creation_path(@creation) %>
       <%= button_to 'Delete', @creation, :method => :delete %>
     <% end %>
-  </div>
 </div>
 
 <hr />
 <hr class="clear" />
 
-<h3> other creations by <%= @creation.user.name.to_s %> <em><%= link_to 'view more...', profile_path(@creation.user) %> </em> </h3>
+<h3> other creations by <%= @creation.user.name.to_s %> <em><%= link_to 'view all', profile_path(@creation.user) %> </em> </h3>
 <% other_creations = @creation.user.creations.last(4).reverse %>
 <% other_creations.each do |creation| %>
   <% if creation != @creation %>
   <div class="product_box">
-    <a href="<%= url_for creation %>">
-      <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt => creation.name %>
-    </a>
     <h2><%= @creation.name %></h2>
-    <p><%= creation.short_story %> <%= link_to 'more...', creation %></p>
+    <a href="<%= url_for creation %>">
+      <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :alt => creation.name %>
+    </a>
+    <p><%= creation.short_story %> <%= link_to 'more', creation %></p>
   </div>
   <% end %>
 <% end %>

@@ -6,14 +6,16 @@
     <tr>
       <th></th>
       <th>name</th>
+      <th>creations</th>
       <th>member since</th>
     </tr>
   </thead>
   <tbody>
   <% @profiles.each do |profile| %>
     <tr>
-      <td> <%= image_tag avatar_url(profile), :class => "photo" %> </td>
+      <td><a href="<%= url_for profile_path(profile) %>"><%= image_tag avatar_url(profile), :class => "photo" %></a></td>
       <td><%= link_to profile.name, profile_path(profile) %></td>
+      <td><a href="<%= url_for profile_path(profile) %>"><%= profile.creations.length %> creations</a></td>
       <td><%= profile.created_at %></td>
     </tr>
   <% end %>

@@ -3,10 +3,9 @@
   $('input[data-editable="false"]').addClass('hidden');
 <% end %>
 
+<%= link_to 'Show', @creation, :class => 'floatRight' %>
 <h1>Editing creation <em><%= @creation.name %></em></h1>
 
-<%= image_tag @creation.image_url.to_s, :class => 'photo' %>
+<%= image_tag @creation.image_url.to_s, :class => ['photo'] %>
 <%= render 'form' %>
 
-
-<%= link_to 'Show', @creation %> |
