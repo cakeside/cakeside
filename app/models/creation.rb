@@ -6,7 +6,7 @@ class Creation < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   define_index do
-    indexes :name
+    indexes :name, :sortable => true
     indexes story
   end
 
