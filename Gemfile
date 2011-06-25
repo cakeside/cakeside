@@ -17,9 +17,7 @@ gem 'rmagick'
 gem 'bcrypt-ruby'
 gem 'json'
 gem 'thinking-sphinx'
-#gem 'postgres'
-#gem 'postgres-pr'
-# gem 'pg'
+gem 'fog'
 
 # Use unicorn as the web server
 # gem 'unicorn'
