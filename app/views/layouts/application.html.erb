@@ -72,7 +72,7 @@
         <!-- end left menu -->
         <!-- start search tag -->
         <div id="search_box">
-          <% form_tag(search_index_path, :method => "get", :name => "search") do %>
+          <%= form_tag(search_index_path, :method => "get", :name => "search") do %>
               <div id="search_box_inner">
                 <input name="q" id="search_query" type="text" style="" value="    SEARCH" onfocus="if(this.value=='    SEARCH')this.value='';" />
                 <%# <%= text_field_tag(:q) %>
