@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
   def index
-    @creations = Creation.search params[:q], :include => :user, :match_mode => :boolean
+    @creations = Creation.search params[:q], :include => :user, :match_mode => :any
     @search = params[:q]
   end
 
