@@ -1,6 +1,11 @@
 <h1>Search Results for <em><%= @search %></em></h1>
 <p><em>What time is it? Nana, nana, naaaaana caake time!</em></p>  
 
+<%= form_tag(search_index_path, :method => "get", :name => "search") do %>
+  <input name="q" type="text" value="<%= @search %>" />
+  <%= submit_tag("search") %>
+<% end %>
+
 <% @creations.reverse.each do |creation| %>
 <div class="product_box">
   <h2><%= creation.name %></h2>
