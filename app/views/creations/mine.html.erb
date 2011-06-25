@@ -1,9 +1,9 @@
-<%= link_to "add new creation", new_creation_path(@creation), :class => 'floatRight' %>
+<%= link_to "share my creation", new_creation_path(@creation), :class => 'floatRight' %>
 <h1>My Creations</h1>
 
 <% if @creations.length == 0 %>
   <p> 
-  you have no creations.  <%= link_to "add new creation", new_creation_path(@creation), :class => 'floatRight' %>
+  You have no creations. Would you like to <%= link_to "share your creation?", new_creation_path(@creation) %>
  </p>
 <% else %>
   <% @creations.reverse.each do |creation| %>

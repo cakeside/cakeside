@@ -1,7 +1,7 @@
 
 <% if signed_in? %>
   <div class="floatRight">
-    <%= link_to "Add Creation", new_creation_path %>
+    <%= link_to "share my creation", new_creation_path %>
   </div>
 <% end %>
 <% if @creation.user == current_user %>
