@@ -18,6 +18,7 @@ gem 'bcrypt-ruby'
 gem 'json'
 gem 'thinking-sphinx'
 gem 'fog'
+gem 'kaminari'
 
 # Use unicorn as the web server
 # gem 'unicorn'

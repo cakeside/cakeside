@@ -21,7 +21,7 @@ describe CreationsController do
 
   describe "GET index" do
     it "assigns all creations as @creations" do
-      Creation.stub(:all) { [mock_creation] }
+      Creation.stub(:page) { [mock_creation] }
       get :index
       assigns(:creations).should eq([mock_creation])
     end

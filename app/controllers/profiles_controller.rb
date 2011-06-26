@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
 
   def index
-    @profiles = User.all
+    @profiles = User.page(params[:page]).per(10)
   end
 
   def show

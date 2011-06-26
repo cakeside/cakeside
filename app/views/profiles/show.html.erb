@@ -1,3 +1,7 @@
+<% content_for :title do %>
+  <%= @profile.name %>
+<% end %>
+
 <%= image_tag avatar_url(@profile) + '&s=200', :class => ['photo', 'floatLeft'] %> 
 <h1><%= @profile.name %></h1>
 <p><em>A member since <%= @profile.created_at %>, with <%= @profile.creations.length %> creations.</em></p>

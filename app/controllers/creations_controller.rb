@@ -3,7 +3,7 @@ class CreationsController < ApplicationController
   # GET /creations
   # GET /creations.xml
   def index
-    @creations = Creation.all
+    @creations = Creation.page(params[:page]).per(6)
 
     respond_to do |format|
       format.html # index.html.erb

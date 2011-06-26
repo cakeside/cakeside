@@ -1,3 +1,6 @@
+<% content_for :title do %>
+  Editing creation <%= @creation.name %>
+<% end %>
 <% content_for :script do %>
   $('label[data-editable="false"]').addClass('hidden');
   $('input[data-editable="false"]').addClass('hidden');
