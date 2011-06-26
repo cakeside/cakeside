@@ -1,0 +1,13 @@
+role :web, "cakeside.com"
+
+task :search_libs, :roles => :web do
+  run "ls -x1 /usr/lib | grep -i xml"
+end
+
+task :count_libs, :roles => :web do
+  run "ls -x1 /usr/lib | wc -l"
+end
+
+task :show_free_space, :roles => :web do
+  run "df -h /"
+end
