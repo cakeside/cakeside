@@ -5,6 +5,7 @@
   <input name="q" type="text" value="<%= @search %>" />
   <%= submit_tag("search") %>
 <% end %>
+<br />
 
 <% @creations.reverse.each do |creation| %>
 <div class="product_box">
@@ -12,6 +13,6 @@
   <a href="<%= url_for creation %>">
     <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :alt => creation.name %>
   </a>
-  <p><%= creation.short_story %> <%= link_to 'more...', creation %></p>
+  <p><%= creation.short_story %> <%= link_to 'more', creation %></p>
 </div>
 <% end %>
