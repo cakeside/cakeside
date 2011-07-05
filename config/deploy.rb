@@ -23,3 +23,20 @@ ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "amazon-cakeside", "cakesid
 #     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
 #   end
 # end
+#
+#
+namespace :deploy do
+  task :start, :roles => :app do
+#    run "cd #{current_release} & rake thinking_sphinx:create RAILS_ENV=production & rake thinking_sphinx:start RAILS_ENV=production"
+    run "touch #{current_release}/tmp/restart.txt"
+  end
+
+  task :stop, :roles => :app do
+    # Do nothing.
+  end
+
+  desc "Restart Application"
+  task :restart, :roles => :app do
+    run "touch #{current_release}/tmp/restart.txt"
+  end
+end
