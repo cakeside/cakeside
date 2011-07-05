@@ -14,3 +14,21 @@ end
 task :show_free_space, :roles => :web do
   run "df -h /"
 end
+
+
+task :stop_sphinx , :roles => :app do
+  run "cd #{current_path} && rake thinking_sphinx:stop RAILS_ENV=production"
+end
+
+task :start_sphinx, :roles => :app do
+  run "cd #{current_path} && rake thinking_sphinx:configure RAILS_ENV=production && rake thinking_sphinx:start RAILS_ENV=production"
+end
+
+task :index_sphinx, :roles => :app do
+  run "cd #{current_path} && rvm use 1.9.2 && rake thinking_sphinx:index RAILS_ENV=production"
+end
+
+task :restart_sphinx, :roles => :app do
+  stop_sphinx
+  start_sphinx
+end  
