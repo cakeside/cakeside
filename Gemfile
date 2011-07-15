@@ -19,6 +19,7 @@ gem 'json'
 gem 'thinking-sphinx'
 gem 'fog'
 gem 'kaminari'
+gem 'acts-as-taggable-on'
 
 # Use unicorn as the web server
 # gem 'unicorn'
