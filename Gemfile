@@ -8,7 +8,7 @@ gem 'heroku'
 gem 'jquery-rails'
 gem 'carrierwave'
 gem 'RedCloth', '>= 4.1.1'
-gem 'omniauth'
+gem 'omniauth', '>=0.2.6'
 gem 'rmagick'
 gem 'bcrypt-ruby'
 gem 'json'
@@ -30,7 +30,6 @@ group :test do
   gem 'guard-livereload'
   gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'growl', :require => false if RUBY_PLATFORM =~ /darwin/i
-  # linux part is not tested
   gem 'rb-inotify', :require => false if RUBY_PLATFORM =~ /linux/i
   gem 'libnotify', :require => false if RUBY_PLATFORM =~ /linux/i
 end
