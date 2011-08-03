@@ -29,6 +29,12 @@
         </td>
       </tr>
     </table>
+    <% for category in Category.all %>
+    <div>
+      <%= check_box_tag "creation[category_ids][]", category.id, @creation.categories.include?(category) %>
+      <%= category.name %>
+    </div>
+    <% end %>
     <%= f.label :story %>
     <%= f.text_area :story, :class => "forms"  %>
     <input type="image" id="submit" name="submit" src="/images/template/button_submit.gif" title="Submit Message" />

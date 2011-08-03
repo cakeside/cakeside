@@ -25,6 +25,10 @@
     <% if @creation.user == current_user %>
       <%= button_to 'Delete', @creation, :method => :delete %>
     <% end %>
+    <p>categories</p>
+    <% @creation.categories.each do |category| %>
+      <p><%= category.name %></p>
+    <% end %>
 </div>
 
 <hr />
