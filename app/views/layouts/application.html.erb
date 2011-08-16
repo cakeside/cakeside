@@ -62,7 +62,7 @@
         <div class="tag">
           <ul>
           <% Category.all.each do |category| %>
-            <li><a href='/'><%= category.name %></a></li>
+            <li><a href='/categories/<%= category.slug %>'><%= category.name %></a></li>
           <% end %>
           </ul>
           <p>&nbsp; </p>
