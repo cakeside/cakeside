@@ -2,9 +2,9 @@ source 'http://rubygems.org'
 
 gem 'rails'
 gem 'rake'
-gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'sqlite3-ruby', :require => 'sqlite3', :group => [:development,:test]
 gem 'devise'
-gem 'heroku'
+# gem 'heroku'
 gem 'jquery-rails'
 gem 'carrierwave'
 gem 'RedCloth', '>= 4.1.1'
@@ -15,7 +15,7 @@ gem 'json'
 gem 'thinking-sphinx'
 gem 'fog'
 gem 'kaminari'
-gem 'acts-as-taggable-on'
+# gem 'acts-as-taggable-on'
 gem 'capistrano'
 
 group :development, :test do
