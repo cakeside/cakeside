@@ -11,6 +11,13 @@ role :db,  "ec2-50-17-28-146.compute-1.amazonaws.com", :primary => true # This i
 
 set :user, "ubuntu"
 set :use_sudo, false
+
+$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
+require "rvm/capistrano"                              
+require 'bundler/capistrano'
+set :rvm_ruby_string, '1.9.2@cakeside'
+set :rvm_type, :user
+
 ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "amazon-cakeside", "cakeside.pem")] 
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
