@@ -1,16 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @category.name %>
-</p>
 
-<ul>
-<% @creations.each do |creation| %>
-  <li><%= creation.name %>
+<% content_for :title do %>
+  All Creations in <%= @category.name %>
 <% end %>
-</ul>
+<h1>All Creations in <%= @category.name %></h1>
 
+<% @creations.reverse.each do |creation| %>
+<div class="product_box">
+  <h2><%= creation.name %></h2>
+  <a href="<%= url_for creation %>"> <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :alt => creation.name %> </a>
+  <p><%= creation.short_story %> <%= link_to 'more', creation %></p>
+</div>
+<% end %>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<hr class="clear" />
+<p> <%= paginate @creations %> </p>
