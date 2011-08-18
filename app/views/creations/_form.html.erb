@@ -23,7 +23,19 @@
     
     <%= f.label :remote_image_url, "Or Image URL", 'data-editable' => 'false'  %>
     <%= f.text_field :remote_image_url, :class => "forms", 'data-editable' => 'false'  %>
+<<<<<<< HEAD
     
+=======
+        </td>
+      </tr>
+    </table>
+    <% for category in Category.all %>
+    <div>
+      <%= check_box_tag "creation[category_ids][]", category.id, @creation.categories.include?(category) %>
+      <%= category.name %>
+    </div>
+    <% end %>
+>>>>>>> 14662b4931b60767612fd42baeef7c21e83a80d4
     <%= f.label :story %>
     <%= f.text_area :story, :class => "forms"  %>
 	<label></label>

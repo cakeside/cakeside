@@ -42,7 +42,7 @@ class CreationsController < ApplicationController
   # POST /creations.xml
   def create
     @creation = current_user.creations.create(params[:creation])
-
+    @creation.category_ids = params[:creation][:category_ids] ||= []
     respond_to do |format|
       if @creation.save
         format.html { redirect_to(@creation, :notice => 'Creation was successfully created.') }
@@ -58,6 +58,7 @@ class CreationsController < ApplicationController
   # PUT /creations/1.xml
   def update
     @creation = current_user.creations.find(params[:id])
+    @creation.category_ids = params[:creation][:category_ids] ||= []
 
     respond_to do |format|
       if @creation.update_attributes(params[:creation])

@@ -61,13 +61,9 @@
         <div style="position:relative; margin-top:-47px; width:147px; height:93px; background:url(/images/template/tag_top.gif);"></div>
         <div class="tag">
           <ul>
-            <li><a href="/">Father's Day</a></li>
-            <li><a href="/">Chocolates</a></li>
-            <li><a href="/">Fudge</a></li>
-            <li><a href="/">Lollies</a></li>
-            <li><a href="/">Hampers</a></li>
-            <li><a href="/">Special Diet</a></li>
-            <li><a href="/">On Sale</a></li>
+          <% Category.all.each do |category| %>
+            <li><a href='/categories/<%= category.slug %>'><%= category.name %></a></li>
+          <% end %>
           </ul>
           <p>&nbsp; </p>
         </div>
