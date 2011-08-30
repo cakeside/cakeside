@@ -17,15 +17,15 @@
     <%# <%= f.text_field :remote_image_url, :class => "forms", 'data-editable' => 'false'  %>
     <%= f.label :name %>
     <%= f.text_field :name, :class => "forms" %>
-    <table>
-      <tr>
-        <td>
-    <%= f.label :image, 'data-editable' => 'false' %>
+    
+    <%= f.label :image, "Upload Image",'data-editable' => 'false' %>
     <%= f.file_field :image, :class => "forms", 'data-editable' => 'false'   %>
-        </td>
-        <td>
-    <%= f.label :remote_image_url, "or image url", 'data-editable' => 'false'  %>
+    
+    <%= f.label :remote_image_url, "Or Image URL", 'data-editable' => 'false'  %>
     <%= f.text_field :remote_image_url, :class => "forms", 'data-editable' => 'false'  %>
+<<<<<<< HEAD
+    
+=======
         </td>
       </tr>
     </table>
@@ -35,8 +35,10 @@
       <%= category.name %>
     </div>
     <% end %>
+>>>>>>> 14662b4931b60767612fd42baeef7c21e83a80d4
     <%= f.label :story %>
     <%= f.text_area :story, :class => "forms"  %>
+	<label></label>
     <input type="image" id="submit" name="submit" src="/images/template/button_submit.gif" title="Submit Message" />
   </fieldset>
 <% end %>
