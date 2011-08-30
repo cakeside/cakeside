@@ -11,6 +11,7 @@ role :db,  "ec2-50-16-149-107.compute-1.amazonaws.com", :primary => true # This 
 
 set :user, "cakeside"
 set :use_sudo, false
+set :rvm_type, :system
 
 $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require "rvm/capistrano"                              
