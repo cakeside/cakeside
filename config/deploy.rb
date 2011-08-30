@@ -11,13 +11,13 @@ role :db,  "ec2-50-16-149-107.compute-1.amazonaws.com", :primary => true # This 
 
 set :user, "cakeside"
 set :use_sudo, false
-set :rvm_type, :system
 
 $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require "rvm/capistrano"                              
 # require 'bundler/capistrano'
 set :rvm_ruby_string, '1.9.2@cakeside'
-set :rvm_type, :user
+# set :rvm_type, :user
+set :rvm_type, :system
 
 ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "amazon-cakeside", "cakeside.pem")] 
 # if you're still using the script/reaper helper you will need
