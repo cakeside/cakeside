@@ -3,18 +3,18 @@ set :repository,  "git@cakeartist.unfuddle.com:cakeartist/cake.git"
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
-set :deploy_to, "/home/ubuntu/apps/#{application}"
+set :deploy_to, "/home/cakeside/apps/#{application}"
 
-role :web, "ec2-50-17-28-146.compute-1.amazonaws.com"                          # Your HTTP server, Apache/etc
-role :app, "ec2-50-17-28-146.compute-1.amazonaws.com"                          # This may be the same as your `Web` server
-role :db,  "ec2-50-17-28-146.compute-1.amazonaws.com", :primary => true # This is where Rails migrations will run
+role :web, "ec2-50-16-149-107.compute-1.amazonaws.com"                          # Your HTTP server, Apache/etc
+role :app, "ec2-50-16-149-107.compute-1.amazonaws.com"                          # This may be the same as your `Web` server
+role :db,  "ec2-50-16-149-107.compute-1.amazonaws.com", :primary => true # This is where Rails migrations will run
 
-set :user, "ubuntu"
+set :user, "cakeside"
 set :use_sudo, false
 
 $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require "rvm/capistrano"                              
-require 'bundler/capistrano'
+# require 'bundler/capistrano'
 set :rvm_ruby_string, '1.9.2@cakeside'
 set :rvm_type, :user
 
