@@ -8,12 +8,12 @@ a:link { color: #333; }
 a:hover { color: #000; }
 
 /* header */
-#hd { background: #193D44 url(../images/hd-bg.jpg); height: 120px; }
-#hd .top { height: 80px; width: 100%; background: url(../images/hd-graphic.jpg) no-repeat right; }
+#hd { background: #193D44 url(../arx/hd-bg.jpg); height: 120px; }
+#hd .top { height: 80px; width: 100%; background: url(../arx/hd-graphic.jpg) no-repeat right; }
 #hd .top .logo { margin: 20px 0 0 -10px; }
 #hd .search { top: -35px; height: 0; }
-#hd .search form { background: url(../images/frm-search-bg.png) no-repeat; }
-#hd .search input[type=submit] { background: url(../images/btn-search.png) no-repeat; border: none; margin-left: 5px; }
+#hd .search form { background: url(../arx/frm-search-bg.png) no-repeat; }
+#hd .search input[type=submit] { background: url(../arx/btn-search.png) no-repeat; border: none; margin-left: 5px; }
 #hd .search input[type=text] { background: none; border: none; width: 140px; position: relative; top: -2px; outline: none; }
 #hd .info { text-align: left; color: #CED8D9; padding-top: 12px; }
 #hd .info .dull { color: #647F84; }
@@ -28,28 +28,28 @@ a:hover { color: #000; }
 #bd .sidebar .summary .shaddow { position: absolute; left: -15px; top: 65px; }
 #bd .sidebar .menu { background: #F0F2F2; margin-left: -10px; font-size: 14px; font-weight: bold; color: #333333; margin-bottom: 30px; }
 #bd .sidebar .menu li { margin-left: 0; }
-#bd .sidebar .menu li.level_1 { background: url(../images/hr.png) bottom repeat-x; padding: 6px 10px; }
+#bd .sidebar .menu li.level_1 { background: url(../arx/hr.png) bottom repeat-x; padding: 6px 10px; }
 #bd .sidebar .menu li.level_1:last-child { background: none; }
 #bd .sidebar .menu ul.level_2 { margin-bottom: 0; margin-top: 5px; }
 #bd .sidebar .menu li.level_2 { padding: 6px 0 6px 15px; }
 #bd .sidebar .menu a { text-decoration: none; color: #333333; width: 100%; display: block; }
 #bd .sidebar .menu a:hover { text-decoration: none; color: #666666; }
 /* icons */
-#bd .sidebar .menu .enrollment-none-status { background: url(../images/icon-check-green.png) no-repeat right center; }
-#bd .sidebar .menu .enrollment-requires-review-status { background: url(../images/icon-check-green.png) no-repeat right center; }
-#bd .sidebar .menu .enrollment-warning-status { background: url(../images/icon-check-green.png) no-repeat right center; }
-#bd .sidebar .menu .enrollment-green-status { background: url(../images/icon-check-green.png) no-repeat right center; }
-#bd .sidebar .menu .enrollment-error-status { background: url(../images/icon-no-red.png) no-repeat right center; }
-#bd .sidebar .menu .enrollment-question-mark-status { background: url(../images/icon-no-yellow.png) no-repeat right center; }
-#bd .sidebar .menu .enrollment-unknown-status { background: url(../images/icon-check-green.png) no-repeat right center; }
+#bd .sidebar .menu .enrollment-none-status { background: url(../arx/icon-check-green.png) no-repeat right center; }
+#bd .sidebar .menu .enrollment-requires-review-status { background: url(../arx/icon-check-green.png) no-repeat right center; }
+#bd .sidebar .menu .enrollment-warning-status { background: url(../arx/icon-check-green.png) no-repeat right center; }
+#bd .sidebar .menu .enrollment-green-status { background: url(../arx/icon-check-green.png) no-repeat right center; }
+#bd .sidebar .menu .enrollment-error-status { background: url(../arx/icon-no-red.png) no-repeat right center; }
+#bd .sidebar .menu .enrollment-question-mark-status { background: url(../arx/icon-no-yellow.png) no-repeat right center; }
+#bd .sidebar .menu .enrollment-unknown-status { background: url(../arx/icon-check-green.png) no-repeat right center; }
 
 #bd .content { margin-bottom: 30px; }
 #bd .content .helpbox { background: #F0F2F2; padding: 10px 15px 10px 10px; margin: 0 -15px 0 -5px; }
 #bd .content .helpbox  p { margin-bottom: 0; }
 #bd .content .helpbox  li { margin-left: 15px; }
 #bd .content table { width: 100%; }
-#bd .content table thead { background: url(../images/hr.png) bottom repeat-x; }
-#bd .content table tbody { background: url(../images/hr-light.png) bottom repeat-x; }
+#bd .content table thead { background: url(../arx/hr.png) bottom repeat-x; }
+#bd .content table tbody { background: url(../arx/hr-light.png) bottom repeat-x; }
 #bd .content table td,
 #bd .content table th { padding: 3px 0; white-space: nowrap; }
 #bd .content table th { font-weight: bold; text-align: right; }
@@ -62,10 +62,10 @@ a:hover { color: #000; }
 #bd .content .direction { margin-top: 10px; font-weight: bold; color: #999999; }
 #bd .content .direction a { color: #333333; text-decoration: none; }
 #bd .content .direction a:hover { color: #000; text-decoration: none; }
-#bd .content .direction .next { background: url(../images/arrow-right.jpg) no-repeat right center; padding-right: 10px; }
-#bd .content .direction .previous { background: url(../images/arrow-left.jpg) no-repeat left center; padding-left: 10px; }
-#bd .content .direction .next.disabled { background: url(../images/arrow-right-deactive.jpg) no-repeat right center; }
-#bd .content .direction .previous.disabled { background: url(../images/arrow-left-deactive.jpg) no-repeat left center; }
+#bd .content .direction .next { background: url(../arx/arrow-right.jpg) no-repeat right center; padding-right: 10px; }
+#bd .content .direction .previous { background: url(../arx/arrow-left.jpg) no-repeat left center; padding-left: 10px; }
+#bd .content .direction .next.disabled { background: url(../arx/arrow-right-deactive.jpg) no-repeat right center; }
+#bd .content .direction .previous.disabled { background: url(../arx/arrow-left-deactive.jpg) no-repeat left center; }
 
 /* footer */
 #ft { background: #F0F2F2; color: #8DA1A5; padding: 26px 0; }
