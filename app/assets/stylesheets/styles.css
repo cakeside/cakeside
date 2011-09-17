@@ -6,7 +6,7 @@ body {
 	margin: 0px;
 	padding: 0px;
 	color: #241a10;
-	background:#c9e4ec url(/images/template/page_bg.gif);
+	background:#c9e4ec url(/assets/template/page_bg.gif);
 }
 a, a:link, a:active, a:visited {
 	color: #605646;
@@ -15,7 +15,7 @@ a:hover {
 	text-decoration:none;
 }
 #page_bg {
-	background:url(/images/template/ribbon.gif) no-repeat center 108px;
+	background:url(/assets/template/ribbon.gif) no-repeat center 108px;
 }
 #container {
 	width:850px;
@@ -25,7 +25,7 @@ a:hover {
 #header {
 	height: 108px;
 	padding: 0px;
-	background-image:url(/images/template/header_bg.jpg);
+	background-image:url(/assets/template/header_bg.jpg);
 	background-position:top;
 	background-repeat:no-repeat;
 }
@@ -43,7 +43,7 @@ a:hover {
 }
 #mainContent {
 	padding:0px;
-	background:#fffdee url(/images/template/body_top_shadow.jpg);
+	background:#fffdee url(/assets/template/body_top_shadow.jpg);
 	background-repeat:repeat-x;
 	background-position:top;
 	min-height:400px;
@@ -166,7 +166,7 @@ ul#navigation ul.second-level li.hover a, ul#navigation ul.second-level li:hover
 
 /*Tag Menu*/
 .tag {
-	background-image:url(/images/template/tag_bottom.gif);
+	background-image:url(/assets/template/tag_bottom.gif);
 	background-repeat:no-repeat;
 	background-position:0px bottom;
 	width:148px;
@@ -184,10 +184,10 @@ ul#navigation ul.second-level li.hover a, ul#navigation ul.second-level li:hover
 	padding:0 0 0 15px;
 	margin:0px 0px 0px 8px; /* used to center the menu on its bg image */
 	line-height:22px;
-	background:url(/images/template/tag_line.gif) no-repeat 0 bottom;
+	background:url(/assets/template/tag_line.gif) no-repeat 0 bottom;
 }
 .tag a, .tag a:link, .tag a:visited {
-	background-image:url(/images/template/tag_icon.gif);
+	background-image:url(/assets/template/tag_icon.gif);
 	background-position:left;
 	background-repeat:no-repeat;
 	display:block;
@@ -226,7 +226,7 @@ ul#navigation ul.second-level li.hover a, ul#navigation ul.second-level li:hover
 	border:0px;
 	padding:3px 0px 0px 6px;
 	margin:0px 0px 0px 5px;
-	background-image:url(/images/template/search.gif);
+	background-image:url(/assets/template/search.gif);
 	background-repeat:no-repeat;
 	background-position:left;
 	width:105px;
@@ -238,7 +238,7 @@ ul#navigation ul.second-level li.hover a, ul#navigation ul.second-level li:hover
 }
 /*Shopping Cart On the Menu*/
 #shopping_cart_summary {
-	background:url(/images/template/we_accept.gif) no-repeat;
+	background:url(/assets/template/we_accept.gif) no-repeat;
 	width:142px;
 	height:71px;
 	color:#8f6637;
@@ -339,7 +339,7 @@ ul.ticklist {
 }
 ul.ticklist li {
 	list-style:none;
-	background-image:url(/images/template/icon_tick.gif);
+	background-image:url(/assets/template/icon_tick.gif);
 	background-position:left 3px; /*the number here moves the tick down*/
 	background-repeat:no-repeat;
 	margin:0px 0px 5px 0px;
