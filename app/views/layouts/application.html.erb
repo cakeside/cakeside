@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title><%= yield(:title) || "untitled" %> - CakeSide</title>
   <link rel="shortcut icon" href="/favicon.ico">
+  <link href='http://fonts.googleapis.com/css?family=Julee' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
@@ -31,7 +32,7 @@
 			<div class="clear"></div>
 			<div class="info">
 				<div class="grid_3 dull">
-					<strong>Cakeside</strong>
+					<strong style='font-family:"Julee", cursive;font-size: 2em;color:pink;'>Cakeside.com</strong>
 				</div>
 				<div class="grid_3 arrow">
           <% if user_signed_in? %>
@@ -59,10 +60,15 @@
 			<div class="grid_3 sidebar">
 				<div class="summary">
 					<div class="shaddow"><img src="assets/arx/shaddow-left.png" /></div>
-					<p>Credits Remaining:</p>
-					<p class="credits">2,050.00</p>
-					<p><span class="fright">0.00</span>Credits Spent:</p>
-					<p><span class="fright">0.00</span>Salary Spent:</p>
+          <% if user_signed_in? %>
+            <%= image_tag avatar_url(current_user) + '&s=200', :class => ['photo', ''] %> 
+            <p class="credits"><%= current_user.name %></p>
+            <p><span class="fright">0</span>Total Creations</p>
+            <p><span class="fright">0</span>Total Likes</p>
+          <% else %>
+            <p class="credits"><%= link_to "Sign Up", new_user_registration_path, :style => 'color:#fff;' %></p> 
+            <p>or <%= link_to "Sign In", new_user_session_path, :style => 'color:#fff;' %></p>
+          <% end %>
 				</div><!-- /.summary -->
 				<div class="menu">
 					<ul class="level_1 nojot">
@@ -86,127 +92,6 @@
         <p class="alert"><%= alert %></p>
         <%= yield %>
         <!-- end main page content -->
-
-				<h1>AD&D Insurance</h1>
-				<div class="grid_6 alpha">
-					<p>Accident Insurance helps protect you and your family from the financial burden that can result from a serious accidental injury or death. It pays tax-free, lump-sum benefits for accidental death or the accidental loss (or loss of use) of limbs, sight, hearing or mobility. Additional coverage or other benefits may also be provided such as retraining or day care benefits. Coverage is in effect 24 hours a day, whether you are at work or not.</p>
-					<p>Core AD&D is provided to you by the company at no cost. Coverage is 3x annual salary to a maximum of $800,000. Core AD&D is for the employee only.</p>
-					<p>You can purchase additional units for yourself, <a href="">this is a link</a> spouse and dependent children. Optional Employee and Spousal AD&D has a maximum of $500,000. Dependent children can receive coverage up to a maximum of $50,000.</p>
-					<p>For more information, Click here. (Provide details of coverage, schedule of loss, limitations/exclusions)</p>
-					<h3 class="nobottom">Option 1</h3>
-					<ul>
-						<li>asd fasdf sad fasd fasdf asdf</li>
-						<li>asd fasdf sad fasd fasdf asdf asdfasd fasdf sadf asdf asdf asdf sdaf sadf sf sadf asdf asdf asdf asdfasdf asdfasdf asdf asdf.</li>
-						<li>asd fasdf sad fasd fasdf asdf</li>
-						<li>asd fasdf sad fasd fasdf asdf</li>
-					</ul>
-				</div>
-				<div class="grid_3 omega helpbox">
-					<h4>Did You Know?</h4>
-					<ul>
-						<li>AD&D insurance also offers additional benefits such as home and vehicle alteration, or daycare benefits can be paid in some circumstances.</li>
-						<li>AD&D insurance also offers additional benefits such as home and vehicle alteration, or daycare benefits can be paid in some circumstances.</li>
-					</ul>
-				</div>
-				<div class="clear"></div>
-				
-				<h2 class="nobottom">Employee AD&D Insurance</h2>
-				<table>
-					<thead>
-						<tr>
-							<th></th>
-							<th>Cost</th>
-							<th>Credits</th>
-							<th>Payroll</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="tleft"><select><option>Core ($0.00)</option></select></td>
-							<td>$ 0.00</td>
-							<td>0.00</td>
-							<td>$ 0.00</td>
-						</tr>
-					</tbody>
-				</table>
-				
-				<h3>Employee AD&D Insurance Beneficiaries</h3>
-				
-				<h2>Beneficiaries</h2>
-				<table class="autospace nobottom">
-					<thead>
-						<tr>
-							<th>First Name</th>
-							<th>Last Name</th>
-							<th>Relationship</th>
-							<th>Is Minor</th>
-							<th>Trustee</th>
-							<th style="width:275px">Allocation (as Percentage)</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Robert</td>
-							<td>Smith</td>
-							<td>Child</td>
-							<td>Yes</td>
-							<td>John Smith</td>
-							<td><input type="text" value="0" /><span style="margin-left:5px;">%</span><input type="button" value="Edit" /><input type="button" value="delete" /></td>
-						</tr>
-					</tbody>
-					<tfoot>
-						<tr>
-							<td colspan="5">** Allocations do not total 100%</td>
-							<td style="padding-left: 6px;">0</td>
-						</tr>
-					</tfoot>
-				</table>
-				<input type="button" value="Add" />
-				<div class="gap"></div>
-				
-				<h2 class="nobottom">Spousal AD&D Insurance</h2>
-				<table>
-					<thead>
-						<tr>
-							<th></th>
-							<th>Cost</th>
-							<th>Credits</th>
-							<th>Payroll</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="tleft"><select><option>None ($0.00)</option></select></td>
-							<td>$ 0.00</td>
-							<td>0.00</td>
-							<td>$ 0.00</td>
-						</tr>
-					</tbody>
-				</table>
-				
-				<h2 class="nobottom">Child AD&D Insurance</h2>
-				<table class="nobottom">
-					<thead>
-						<tr>
-							<th></th>
-							<th>Cost</th>
-							<th>Credits</th>
-							<th>Payroll</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="tleft"><select><option>None ($0.00)</option></select></td>
-							<td>$ 0.00</td>
-							<td>0.00</td>
-							<td>$ 0.00</td>
-						</tr>
-					</tbody>
-				</table>
-				<div class="direction">
-					<div class="next fright"><a href="">Next</a></div>
-					<div class="previous disabled">Previous</div>
-				</div>
 			</div>
 		</div>
 	</div><!-- /#bd -->
