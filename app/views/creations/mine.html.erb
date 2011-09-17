@@ -1,7 +1,7 @@
 <% content_for :title do %>
   My Creations
 <% end %>
-<%= link_to "share my creation", new_creation_path(@creation), :class => 'floatRight' %>
+<%= link_to "share my creation", new_creation_path(@creation), :class => 'fright' %>
 <h1>My Creations</h1>
 
 <% if @creations.length == 0 %>
@@ -13,7 +13,7 @@
     <div class="product_box">
       <h2><%= creation.name %></h2>
       <a href="<%= url_for creation %>">
-        <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo" %>
+        <%= image_tag creation.image_url.to_s, :class => "photo" %>
       </a>
       <p><%= creation.short_story %> <%= link_to 'more', creation %></p>
     </div>

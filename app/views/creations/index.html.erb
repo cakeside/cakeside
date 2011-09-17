@@ -9,7 +9,7 @@
 <div class="product_box">
   <h2><%= creation.name %></h2>
   <a href="<%= url_for creation %>">
-    <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt => creation.name %>
+    <%= image_tag creation.image_url.to_s, :class => "photo", :alt => creation.name %>
   </a>
   <p><%= creation.short_story %> <%= link_to 'more', creation %></p>
 </div>
