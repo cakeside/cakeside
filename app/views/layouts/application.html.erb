@@ -32,25 +32,13 @@
 			<div class="clear"></div>
 			<div class="info">
 				<div class="grid_3 dull">
-					<strong class="fright" style='font-family:"Julee", cursive;font-size: 1.5em;color:pink;'>yummy...</strong>
+					<strong class="fright" style='font-family:"Julee", cursive;font-size: 1.5em;color:pink;'>crazy, delicious...</strong>
 				</div>
-				<div class="grid_3 arrow">
-          <% if user_signed_in? %>
-            <strong>Name:</strong> <%= link_to current_user.name, edit_user_registration_path %>
-          <% else %>
-            &nbsp;
-          <% end %>
-				</div>
+				<div class="grid_3 arrow"> &nbsp; </div>
+				<div class="grid_3"> &nbsp; </div>
 				<div class="grid_3">
           <% if user_signed_in? %>
-            <a href="<%= url_for my_creations_path %>"><strong>My Creations</strong></a>
-          <% else %>
-            &nbsp;
-          <% end %>
-				</div>
-				<div class="grid_3">
-          <% if user_signed_in? %>
-            <strong><%= link_to "Sign Out", destroy_user_session_path %></strong>
+            <%= link_to "Sign Out", destroy_user_session_path, :class => 'fright', :style => 'font-family:"Julee", cursive;font-size: 2em;color:pink;' %>
           <% else %>
             <strong>
               <%= link_to "Sign Up", new_user_registration_path, :style => 'font-family:"Julee", cursive;font-size: 2em;color:pink;' %> 
@@ -70,7 +58,7 @@
 				<div class="summary">
 					<div class="shaddow"><img src="assets/arx/shaddow-left.png" /></div>
             <%= image_tag avatar_url(current_user) + '&s=200', :class => ['photo', ''] %> 
-            <p class="credits"><%= current_user.name %></p>
+            <p class="credits"><%= current_user.name %> <%= link_to '(edit)', edit_user_registration_path, :style => 'font-size:small;' %></p>
             <p><span class="fright">0</span>Total Creations</p>
             <p><span class="fright">0</span>Total Likes</p>
 				</div><!-- /.summary -->
@@ -78,6 +66,10 @@
 				<div class="menu">
 					<ul class="level_1 nojot">
 						<li class="level_1"><%= link_to "Welcome", home_index_path %></li>
+          <% if user_signed_in? %>
+            <li class="level_1"><a href="<%= url_for my_creations_path %>">Mine</a></li>
+            <li class="level_1"><a href="<%= url_for new_creation_path %>">Share</a></li>
+          <% end %>
 						<li class="level_1"><%= link_to "Browse", creations_path %></li>
 						<li class="level_1"><%= link_to "Artists", all_profiles_path %></li>
 						<li class="level_1"><a href="">Categories</a>

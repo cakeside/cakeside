@@ -22,12 +22,12 @@ a:hover { color: #000; }
 #hd .info .arrow img { position: absolute; left: -15px; top: 28px; }
 
 /* body */
-#bd { background: #fff; padding-top: 60px; }
+#bd { background: #fff; padding-top: 10px; }
 #bd .sidebar .summary { background: #990000; color: #fff; padding: 10px; margin-left: -10px; margin-bottom: 20px; position: relative; }
 #bd .sidebar .summary p { margin-bottom: 5px; }
 #bd .sidebar .summary p.credits { font-size: 28px; margin-bottom: 10px; line-height: 28px; }
 #bd .sidebar .summary .shaddow { position: absolute; left: -15px; top: 65px; }
-#bd .sidebar .menu { background: #F0F2F2; margin-left: -10px; font-size: 14px; font-weight: bold; color: #333333; margin-bottom: 30px; }
+#bd .sidebar .menu { background: #fff; margin-left: -10px; font-size: 14px; font-weight: bold; color: #333333; margin-bottom: 30px; }
 #bd .sidebar .menu li { margin-left: 0; }
 #bd .sidebar .menu li.level_1 { background: url(arx/hr.png) bottom repeat-x; padding: 6px 10px; }
 #bd .sidebar .menu li.level_1:last-child { background: none; }
