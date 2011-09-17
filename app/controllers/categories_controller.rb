@@ -13,7 +13,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.xml
   def show
-    @category = Category.where(:slug => params[:id])
+    @category = Category.where(:slug => params[:id]).first
     @creations = Creation.joins(:categories).where(:categories => {:slug => params[:id]}).page(params[:page]).per(6)
 
     respond_to do |format|
