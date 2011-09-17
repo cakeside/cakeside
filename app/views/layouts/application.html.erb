@@ -10,7 +10,7 @@
   <link rel="shortcut icon" href="/favicon.ico">
   <script src="/assets/libs/modernizr-1.7.min.js"></script>
   <%= stylesheet_link_tag "application" %>
-  <%= csrf_meta_tag %>
+  <%= csrf_meta_tags %>
   <%= yield :head %>
 </head>
 <body>
@@ -109,7 +109,7 @@ $(function() {
 </script>
 
   <!--[if lt IE 7 ]>
-  <script src="/javascripts/libs/dd_belatedpng.js"></script>
+  <script src="/assets/libs/dd_belatedpng.js"></script>
   <script> DD_belatedPNG.fix('img, .png_bg');</script>
   <![endif]-->
   <script type="text/javascript">
