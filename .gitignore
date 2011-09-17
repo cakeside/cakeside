@@ -6,3 +6,4 @@ tmp
 public/uploads/
 db/sphinx/
 log/*
+.DS_Store
