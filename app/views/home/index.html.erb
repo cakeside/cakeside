@@ -2,9 +2,6 @@
   Welcome to the CakeSide
 <% end %>
 <% content_for :script do %>
-  $('#s1').removeClass('hidden');
-  $('#s1').addClass('slide');
-  $('#s1').cycle({fx:'fade',speed:1500,timeout:4000});
 <% end %>
 
 <h1>Welcome to the CakeSide</h1>
@@ -15,7 +12,7 @@
   <div class="product_box">
     <h2><%= creation.name %></h2>
     <a href="<%= url_for creation %>">
-      <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :alt => creation.name %>
+      <%= image_tag creation.image_url.to_s, :alt => creation.name %>
     </a>
     <p><%= creation.short_story %> <%= link_to 'more', creation %></p>
   </div>

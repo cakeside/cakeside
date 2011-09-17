@@ -20,7 +20,7 @@
 	<div id="hd">
 		<div class="container_12">
 			<div class="grid_12 top">
-				<div class="logo"><img src="assets/arx/arc-resources-ltd.png" alt="arc-resources-ltd" width="205" height="38" /></div>
+				<div class="logo"><img src="/assets/cakeside-logo.png" alt="arc-resources-ltd" width="205" /></div>
 			</div>
 			<div class="clear"></div>
       <div class="grid_3 push_9 search">
@@ -32,23 +32,31 @@
 			<div class="clear"></div>
 			<div class="info">
 				<div class="grid_3 dull">
-					<strong style='font-family:"Julee", cursive;font-size: 2em;color:pink;'>Cakeside.com</strong>
+					<strong class="fright" style='font-family:"Julee", cursive;font-size: 1.5em;color:pink;'>yummy...</strong>
 				</div>
 				<div class="grid_3 arrow">
           <% if user_signed_in? %>
             <strong>Name:</strong> <%= link_to current_user.name, edit_user_registration_path %>
+          <% else %>
+            &nbsp;
           <% end %>
 				</div>
 				<div class="grid_3">
           <% if user_signed_in? %>
             <a href="<%= url_for my_creations_path %>"><strong>My Creations</strong></a>
+          <% else %>
+            &nbsp;
           <% end %>
 				</div>
 				<div class="grid_3">
           <% if user_signed_in? %>
             <strong><%= link_to "Sign Out", destroy_user_session_path %></strong>
           <% else %>
-            <strong><%= link_to "Sign Up", new_user_registration_path %> or <%= link_to "Sign In", new_user_session_path %></strong>
+            <strong>
+              <%= link_to "Sign Up", new_user_registration_path, :style => 'font-family:"Julee", cursive;font-size: 2em;color:pink;' %> 
+              or 
+              <%= link_to "Sign In", new_user_session_path, :style => 'font-family:"Julee", cursive;font-size: 2em;color:pink;' %>
+            </strong>
           <% end %>
 				</div>
 			</div>
@@ -58,25 +66,21 @@
 	<div id="bd">
 		<div class="container_12">
 			<div class="grid_3 sidebar">
+        <% if user_signed_in? %>
 				<div class="summary">
 					<div class="shaddow"><img src="assets/arx/shaddow-left.png" /></div>
-          <% if user_signed_in? %>
             <%= image_tag avatar_url(current_user) + '&s=200', :class => ['photo', ''] %> 
             <p class="credits"><%= current_user.name %></p>
             <p><span class="fright">0</span>Total Creations</p>
             <p><span class="fright">0</span>Total Likes</p>
-          <% else %>
-            <p class="credits"><%= link_to "Sign Up", new_user_registration_path, :style => 'color:#fff;' %></p> 
-            <p>or <%= link_to "Sign In", new_user_session_path, :style => 'color:#fff;' %></p>
-          <% end %>
 				</div><!-- /.summary -->
+        <% end %>
 				<div class="menu">
 					<ul class="level_1 nojot">
-						<li class="level_1"><span class="fright"><img src="assets/arx/icon-check-green.png" /></span><%= link_to "Welcome", home_index_path %></li>
-						<li class="level_1"><span class="fright"><img src="assets/arx/icon-check-green.png" /></span><%= link_to "Browse", creations_path %></li>
-						<li class="level_1"><span class="fright"><img src="assets/arx/icon-check-green.png" /></span><%= link_to "Artists", all_profiles_path %></li>
-						<li class="level_1"><span class="fright"><img src="assets/arx/icon-check-green.png" /></span>
-							<a href="">Categories</a>
+						<li class="level_1"><%= link_to "Welcome", home_index_path %></li>
+						<li class="level_1"><%= link_to "Browse", creations_path %></li>
+						<li class="level_1"><%= link_to "Artists", all_profiles_path %></li>
+						<li class="level_1"><a href="">Categories</a>
 							<ul class="level_2 nojot">
               <% Category.all.each do |category| %>
                 <li class="level_2"><a href='/categories/<%= category.slug %>'><%= category.name %></a></li>
@@ -99,7 +103,7 @@
 			<div class="grid_3">
 				<h3>Help</h3>
 				<p>support</p>
-				<img src="assets/arx/icon-phone.png" /><span class="phone">1-800-cakeside</span>
+				<img src="/assets/arx/icon-phone.png" /><span class="phone">1-800-cakeside</span>
 			</div>
 			<div class="grid_9">
 				<h3>Quick Links</h3>
