@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= yield(:title) || "untitled" %> - CakeSide</title>
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link href='http://fonts.googleapis.com/css?family=Julee' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag "application" %>
+  <%= csrf_meta_tags %>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <%= javascript_include_tag "application" %>
+  <%= yield :head %>
+</head>
+<body>
+	<div id="hd">
+		<div class="container_12">
+      <div class="grid_6 alpha">
+				<div class="logo"><img src="/assets/cakeside-logo.png" alt="arc-resources-ltd" width="100%" /></div>
+      </div>
+      <div style="margin-top:100px;">
+      <form>
+        <div class="grid_2 alpha">
+            <input type="text" style="height:20px;" />
+        </div>
+        <div class="grid_2">
+            <input type="text" style="height:20px;" />
+        </div>
+        <div class="grid_1">
+            <input type="submit" value="Sign In" style="width:100%;height:28px;" />
+        </div>
+        <div class="grid_1 omega">
+          &nbsp;
+        </div>
+      </form>
+    </div>
+		</div>
+	</div><!-- /#hd -->
+	
+	<div id="bd">
+		<div class="container_12">
+			<div class="grid_3 alpha">
+			</div>
+			<div class="grid_9 omega">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+			</div>
+		</div>
+	</div><!-- /#bd -->
+	
+	<div id="ft">
+		<div class="container_12">
+			<div class="grid_3">
+				<h3>Help</h3>
+				<p>support</p>
+				<img src="/assets/arx/icon-phone.png" /><span class="phone">1-800-cakeside</span>
+			</div>
+			<div class="grid_9">
+				<h3>Quick Links</h3>
+				<ul class="nojot">
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+					<li><a href="/terms.html">Terms and Conditions</a></li>
+				</ul>
+			</div>
+		</div>
+	</div><!-- /#ft -->
+
+  <script type="text/javascript">
+    var _gaq=[['_setAccount','UA-24090020-1'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+</body>
+</html>
