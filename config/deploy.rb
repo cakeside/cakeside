@@ -14,7 +14,7 @@ set :use_sudo, false
 
 $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require "rvm/capistrano"                              
-require 'bundler/capistrano'
+# require 'bundler/capistrano'
 set :rvm_ruby_string, '1.9.2-p290@cakeside'
 # set :rvm_type, :user
 set :rvm_type, :system
@@ -40,18 +40,18 @@ ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "amazon-cakeside", "cakesid
 # end
 #
 #
-# namespace :deploy do
-#   task :start, :roles => :app do
-#     run "cd #{current_release} & rvm use 1.9.2 & rake thinking_sphinx:create RAILS_ENV=production & rake thinking_sphinx:start RAILS_ENV=production"
-#     run "touch #{current_release}/tmp/restart.txt"
-#   end
-# 
-#   task :stop, :roles => :app do
-#     # Do nothing.
-#   end
-# 
-#   desc "Restart Application"
-#   task :restart, :roles => :app do
-#     run "touch #{current_release}/tmp/restart.txt"
-#   end
-# end
+namespace :deploy do
+  task :start, :roles => :app do
+    run "cd #{current_release} & rvm use 1.9.2 & rake thinking_sphinx:create RAILS_ENV=production & rake thinking_sphinx:start RAILS_ENV=production"
+    run "touch #{current_release}/tmp/restart.txt"
+  end
+
+  task :stop, :roles => :app do
+    # Do nothing.
+  end
+
+  desc "Restart Application"
+  task :restart, :roles => :app do
+    run "touch #{current_release}/tmp/restart.txt"
+  end
+end
