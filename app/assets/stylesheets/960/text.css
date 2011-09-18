@@ -67,7 +67,7 @@ figure {
 ----------------------------------------------------------------------------------------------------*/
 
 h1 {
-  font-size: 24px; background: url(../arx/hr.png) bottom repeat-x; padding-bottom: 10px;
+  font-size: 24px; background: url(/assets/arx/hr.png) bottom repeat-x; padding-bottom: 10px;
 }
 
 h2 {

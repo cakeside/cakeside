@@ -5,15 +5,27 @@
 <% end %>
 
 <h1>Welcome to the CakeSide</h1>
-<p><em>An online community for cake artists, enthusiasists and eaters.</em></p>
-<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada facilisis erat, id sollicitudin leo sollicitudin in. Quisque quis elit eget neque convallis imperdiet in ut odio. Nunc vel lectus turpis, nec tincidunt ipsum. Pellentesque turpis tellus, pulvinar vehicula sodales a, sollicitudin egestas mauris. </p>
+<div class="grid_6 alpha">
+  <p><em>An online community for cake artists, enthusiasists and eaters.</em></p>
+  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada facilisis erat, id sollicitudin leo sollicitudin in. Quisque quis elit eget neque convallis imperdiet in ut odio. Nunc vel lectus turpis, nec tincidunt ipsum. Pellentesque turpis tellus, pulvinar vehicula sodales a, sollicitudin egestas mauris. </p>
+  <% @creations.each do |creation| %>
+    <div>
+      <h2><%= creation.name %></h2>
+      <a href="<%= url_for creation %>"><%= image_tag creation.image_url.to_s, :alt => creation.name %></a>
+      <p><%= creation.short_story %> <%= link_to 'more', creation %></p>
+    </div>
+  <% end %>
+</div>
+<div class="grid_3 omega helpbox">
+  <h4>What time is it?... cake time</h4>
+  <ul>
+    <li>Connect with thousands of other cake lovers like yourself.</li>
+  </ul>
+</div>
+<div class="clear"></div>
 
-<% @creations.each do |creation| %>
-  <div class="product_box">
-    <h2><%= creation.name %></h2>
-    <a href="<%= url_for creation %>">
-      <%= image_tag creation.image_url.to_s, :alt => creation.name %>
-    </a>
-    <p><%= creation.short_story %> <%= link_to 'more', creation %></p>
-  </div>
-<% end %>
+
+
+
+
+
