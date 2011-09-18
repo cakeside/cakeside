@@ -17,15 +17,6 @@
         <li><%= category.name %></li>
       <% end %>
     </ul>
-    <h3> other creations by <%= @creation.user.name.to_s %> <em><%= link_to 'view all', profile_path(@creation.user) %> </em> </h3>
-    <% other_creations = @creation.user.creations.last(4).reverse %>
-    <% other_creations.each do |creation| %>
-      <% if creation != @creation %>
-        <h2><%= @creation.name %></h2>
-        <a href="<%= url_for creation %>"><%= image_tag creation.image_url.to_s, :alt => creation.name %></a>
-        <p><%= creation.short_story %> <%= link_to 'more', creation %></p>
-      <% end %>
-    <% end %>
   </div>
 
   <div class="grid_4 omega">
@@ -43,4 +34,18 @@
   </div>
 </div>
 
+<div class="clear" ></div>
+<!--
+<div class="grid_9 alpha omega">
+  <h3> other creations by <%= @creation.user.name.to_s %> <em><%= link_to 'view all', profile_path(@creation.user) %> </em> </h3>
+  <% other_creations = @creation.user.creations.last(4).reverse %>
+  <% other_creations.each do |creation| %>
+    <% if creation != @creation %>
+      <h2><%= @creation.name %></h2>
+      <a href="<%= url_for creation %>"><%= image_tag creation.image_url.to_s, :alt => creation.name %></a>
+      <p><%= creation.short_story %> <%= link_to 'more', creation %></p>
+    <% end %>
+  <% end %>
+</div>
 <div class="clear" />
+  -->
