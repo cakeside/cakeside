@@ -2,47 +2,35 @@
   C'mon In...
 <% end %>
 
-<h1>C'mon In... </h1>
-<p>&quot;You don't make friends with salad&quot; - Homer Simpson<p>
-<p>Already have an account. Then <%= link_to "sign in", new_user_session_path %>.</p>
+<div class="grid_9 alpha omega">
+  <div class="grid_5 alpha">
+    <h1>Sign up</h1>
 
-<hr />
-<h2>Sign up</h2>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+      <p><%= f.label :name %><br />
+      <%= f.text_field :name, :class => "forms" %></p>
 
-  <p><%= f.label :name %><br />
-  <%= f.text_field :name, :class => "forms" %></p>
+      <p><%= f.label :email %><br />
+      <%= f.email_field :email, :class => "forms"  %></p>
 
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email, :class => "forms"  %></p>
+      <p><%= f.label :password %><br />
+      <%= f.password_field :password, :class => "forms"  %></p>
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password, :class => "forms"  %></p>
+      <p><%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, :class => "forms"  %></p>
 
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation, :class => "forms"  %></p>
+      <p><%= f.submit "Sign up" %></p>
+    <% end %>
 
-  <p><%= f.submit "Sign up" %></p>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
-<p>or</p>
-<h2>Sign up through one of these services</h2>
-<a href="/auth/twitter" class="auth_provider">
-  <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>
-  Twitter
-</a>
-<a href="/auth/facebook" class="auth_provider">
-  <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>
-  Facebook
-</a>
-<a href="/auth/google_apps" class="auth_provider">
-  <%= image_tag "google_64.png", :size => "64x64", :alt => "Google" %>
-  Google
-</a>
-<a href="/auth/open_id" class="auth_provider">
-  <%= image_tag "openid_64.png", :size => "64x64", :alt => "OpenID" %>
-  OpenID
-</a>
+    <%= render :partial => "devise/shared/links" %>
+  </div>
+  <div class="grid_4 omega">
+    <h2>Sign up through one of these services</h2>
+    <a href="/auth/twitter" class="auth_provider"><%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>Twitter</a>
+    <a href="/auth/facebook" class="auth_provider"><%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>Facebook</a>
+    <a href="/auth/google_apps" class="auth_provider"><%= image_tag "google_64.png", :size => "64x64", :alt => "Google" %>Google</a>
+    <a href="/auth/open_id" class="auth_provider"><%= image_tag "openid_64.png", :size => "64x64", :alt => "OpenID" %>OpenID</a>
+  </div>
+</div>
