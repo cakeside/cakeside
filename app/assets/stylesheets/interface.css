@@ -1,4 +1,4 @@
-body { color: #333; font-size: 12px; height: auto; background: #F0F2F2; }
+body { color: #333; font-size: 12px; height: auto; background: #000; }
 
 /* Sections */
 
@@ -8,8 +8,7 @@ a:link { color: #333; }
 a:hover { color: #000; }
 
 /* header */
-#hd { background: #193D44 url(/assets/hd-bg.png); height: 120px; }
-/* #hd .top { height: 80px; width: 100%; background: url(arx/hd-graphic.jpg) no-repeat right; } */
+#hd { background: #fff url(/assets/hd-bg.png); height: 120px; }
 #hd .top { height: 80px; width: 100%; ; }
 #hd .top .logo { margin: 20px 0 0 -10px; }
 #hd .search { top: -35px; height: 0; }
