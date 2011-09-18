@@ -2,36 +2,61 @@
   Update My Account
 <% end %>
 
-<%= link_to "my other authentications", authentications_path, :class => 'floatRight' %>
-<h1>Update My Account</h1>
-<p>
-If you prefer not to change your password, then just leave it blank.
-</p>
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="grid_9 alpha omega">
+  <div class="grid_6 alpha">
 
-  <fieldset class="cute_form">
-  <%= f.label :name %>
-  <%= f.text_field :name, :class => "forms" %>
+    <h1>Update My Account</h1>
+    <p>
+    If you prefer not to change your password, then just leave it blank.
+    </p>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <%= devise_error_messages! %>
 
-  <%= f.label :email %>
-  <%= f.email_field :email, :class => "forms"  %>
+      <fieldset>
+        <p>
+        <%= f.label :name, :style => 'display:block;' %>
+        <%= f.text_field :name %>
+        </p>
 
-  <%= f.label :password %> 
-  <%= f.password_field :password, :class => "forms"  %>
+        <p>
+        <%= f.label :email, :style => 'display:block;' %>
+        <%= f.email_field :email %>
+        </p>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation, :class => "forms"  %>
+        <p>
+        <%= f.label :password, :style => 'display:block;' %> 
+        <%= f.password_field :password %>
+        </p>
 
-  <%= f.label :current_password %>
-  <%= f.password_field :current_password, :class => "forms"  %>
+        <p>
+        <%= f.label :password_confirmation, :style => 'display:block;' %>
+        <%= f.password_field :password_confirmation %>
+        </p>
 
-  <input type="image" src="/images/template/button_submit.gif" class="submit_button" />
-  </fieldset>
-<% end %>
+        <p>
+        <%= f.label :current_password, :style => 'display:block;' %>
+        <%= f.password_field :current_password %>
+        </p>
 
-<h2>Cancel My Account</h2>
+        <input type="submit" value="update" />
+      </fieldset>
+    <% end %>
+  </div>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %></p>
+  <div class="grid_3 omega">
+    <div class="helpbox">
+      <h4>other</h4>
+      <ul>
+        <li><%= link_to "my other authentications", authentications_path %></li>
+        <li><a href="http://en.gravatar.com/">change your photo</a></li>
+      </ul>
+    </div>
+    <div class="helpbox">
+      <h4>Cancel My Account</h4>
+      <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %></p>
+    </div>
+  </div>
+</div>
+<div class="clear" />
 
-<%= link_to "Back", :back %>
+
