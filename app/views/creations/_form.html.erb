@@ -3,42 +3,46 @@
     <div id="error_explanation">
       <h2><%= pluralize(@creation.errors.count, "error") %> prohibited this creation from being saved:</h2>
       <ul>
-      <% @creation.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @creation.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
   <fieldset class="cute_form">
-    <%# <%= f.label :image, 'data-editable' => 'false' %>
-    <%# <%= f.file_field :image, :class => "forms", 'data-editable' => 'false'   %>
-    <%# <%= f.label :remote_image_url, "or image url", 'data-editable' => 'false'  %>
-    <%# <%= f.text_field :remote_image_url, :class => "forms", 'data-editable' => 'false'  %>
-    <%= f.label :name %>
+    <p>
+    <%= f.label :name %><br />
     <%= f.text_field :name, :class => "forms" %>
-    
-    <%= f.label :image, "Upload Image",'data-editable' => 'false' %>
-    <%= f.file_field :image, :class => "forms", 'data-editable' => 'false'   %>
-    
-    <%= f.label :remote_image_url, "Or Image URL", 'data-editable' => 'false'  %>
-    <%= f.text_field :remote_image_url, :class => "forms", 'data-editable' => 'false'  %>
-<<<<<<< HEAD
-    
-=======
-        </td>
-      </tr>
-    </table>
-    <% for category in Category.all %>
-    <div>
-      <%= check_box_tag "creation[category_ids][]", category.id, @creation.categories.include?(category) %>
-      <%= category.name %>
+    </p>
+
+    <div class="grid_4 alpha">
+      <p>
+      <%= f.label :image, "Upload Image",'data-editable' => 'false' %><br />
+      <%= f.file_field :image, :class => "forms", 'data-editable' => 'false'   %>
+      </p>
     </div>
-    <% end %>
->>>>>>> 14662b4931b60767612fd42baeef7c21e83a80d4
-    <%= f.label :story %>
-    <%= f.text_area :story, :class => "forms"  %>
-	<label></label>
-    <input type="image" id="submit" name="submit" src="/images/template/button_submit.gif" title="Submit Message" />
+    <div class="grid_5 omega">
+      <p>
+      <%= f.label :remote_image_url, "Or Image URL", 'data-editable' => 'false'  %><br />
+      <%= f.text_field :remote_image_url, :class => "forms", 'data-editable' => 'false'  %>
+      </p>
+    </div>
+
+    <div class="grid_4 alpha">
+      <% for category in Category.all %>
+        <div>
+          <%= check_box_tag "creation[category_ids][]", category.id, @creation.categories.include?(category) %>
+          <%= category.name %>
+        </div>
+      <% end %>
+    </div>
+    <div class="grid_5 omega">
+      <p>
+      <%= f.label :story %><br />
+      <%= f.text_area :story, :class => "forms"  %>
+      </p>
+    </div>
+    <input type="submit" id="submit" name="submit" value="share" />
   </fieldset>
 <% end %>

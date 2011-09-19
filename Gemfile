@@ -33,7 +33,17 @@ group :test do
   gem 'growl_notify', :require => false if RUBY_PLATFORM =~ /darwin/i
   # gem 'rb-inotify', :require => false if RUBY_PLATFORM =~ /linux/i
   # gem 'libnotify', :require => false if RUBY_PLATFORM =~ /linux/i
+  # Pretty printed test output
+  gem 'turn', :require => false
 end
 group :production do
   gem 'pg'
+end
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails', "  ~> 3.1.0"
+  gem 'coffee-rails', "~> 3.1.0"
+  gem 'uglifier'
 end

@@ -1,117 +1,112 @@
-<!doctype html>
-<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]--><!--[if IE 7 ]><html lang="en" class="no-js ie7"> <![endif]--><!--[if IE 8 ]><html lang="en" class="no-js ie8"> <![endif]--><!--[if IE 9 ]><html lang="en" class="no-js ie9"> <![endif]--><!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title><%= yield(:title) || "untitled" %> - CakeSide</title>
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="/favicon.ico">
-  <script src="/javascripts/libs/modernizr-1.7.min.js"></script>
-  <%= stylesheet_link_tag :all %>
-  <%= csrf_meta_tag %>
+  <link href='http://fonts.googleapis.com/css?family=Julee' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag "application" %>
+  <%= csrf_meta_tags %>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <%= javascript_include_tag "application" %>
+  <script type="text/javascript">
+  $(function() {
+    <%= yield :script %>
+  });
+  </script>
   <%= yield :head %>
 </head>
 <body>
-<!-- start ribbon background -->
-<div id="page_bg">
-  <!-- start content -->
-  <div id="container">
-    <div class="floatRight" style="padding-top:20px; padding-right:5px;">
-      <% if user_signed_in? %>
-        signed in as <%= link_to current_user.name, edit_user_registration_path %> |
-        <a href="<%= url_for my_creations_path %>">my creations</a> |
-        <%= link_to "sign out", destroy_user_session_path %>
-      <% else %>
-        <%= link_to "sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-      <% end %>
-    </div>
-    <!-- start header -->
-    <div id="header">
-      <div id="header_logo"> <a href="/"><img src="/images/template/logo.png" alt="Logo" width="322" height="56" border="0" /></a> </div>
-      <div id="header_slogan"><img src="/images/template/slogan.png" alt="Gourmet Online Shop" width="213" height="40" /></div>
-    </div>
-    <!-- end header -->
-    <div id="menu_container">
-      <ul id="navigation">
-        <li><%= link_to "home", home_index_path %></li>
-        <li><%= link_to "browse", creations_path %></li>
-        <li class="last"><%= link_to "artists", all_profiles_path %></li>
-      </ul>
-    </div>
-    <div id="mainContent">
-      <!-- start body content -->
-      <div id="right_side">
-        <div id="s1" class="hidden"> 
-          <img style="display: none;" src="/images/template/banner_cupcakes.jpg" alt="" width="666" height="226" /> 
-          <img style="display: none;" src="/images/template/banner_weddings.jpg" alt="" width="666" height="226" />
-        </div>
-        <div id="body_text">
-          <!-- begin main page content -->
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
-          <%= yield %>
-          <!-- end main page content -->
-        </div>
+	<div id="hd">
+		<div class="container_12">
+			<div class="grid_12 top">
+				<div class="logo"><img src="/assets/cakeside-logo.png" alt="arc-resources-ltd" width="205" /></div>
+			</div>
+			<div class="clear"></div>
+      <div class="grid_3 push_9 search">
+        <%= form_tag(search_index_path, :method => "get", :name => "search") do %>
+          <input type="submit" value="" />
+          <input name="q" type="text" />
+        <% end %>
       </div>
-      <!-- end body content -->
-      <div id="left_side">
-        <!-- start left menu -->
-        <div style="position:relative; margin-top:-47px; width:147px; height:93px; background:url(/images/template/tag_top.gif);"></div>
-        <div class="tag">
-          <ul>
-          <% Category.all.each do |category| %>
-            <li><a href='/categories/<%= category.slug %>'><%= category.name %></a></li>
+			<div class="clear"></div>
+			<div class="info">
+				<div class="grid_3 dull">
+					<strong class="fright" style='font-family:"Julee", cursive;font-size: 1.5em;color:pink;'>crazy, delicious...</strong>
+				</div>
+				<div class="grid_3 arrow"> &nbsp; </div>
+				<div class="grid_3"> &nbsp; </div>
+				<div class="grid_3">
+          <% if user_signed_in? %>
+            <%= link_to "Sign Out", destroy_user_session_path, :class => 'fright', :style => 'font-family:"Julee", cursive;font-size: 2em;color:pink;' %>
+          <% else %>
+            <strong>
+              <%= link_to "Sign Up", new_user_registration_path, :style => 'font-family:"Julee", cursive;font-size: 2em;color:pink;' %> 
+              or 
+              <%= link_to "Sign In", new_user_session_path, :style => 'font-family:"Julee", cursive;font-size: 2em;color:pink;' %>
+            </strong>
           <% end %>
-          </ul>
-          <p>&nbsp; </p>
-        </div>
-        <!-- end left menu -->
-        <!-- start search tag -->
-        <div id="search_box">
-          <%= form_tag(search_index_path, :method => "get", :name => "search") do %>
-              <div id="search_box_inner">
-                <input name="q" id="search_query" type="text" style="" value="    SEARCH" onfocus="if(this.value=='    SEARCH')this.value='';" />
-                <%# <%= text_field_tag(:q) %>
-              </div>
-              <!-- set padding-top:1px in IE 6 and 7 if statement -->
-              <div id="search_box_go">
-                <input type="image" src="/images/template/go.gif" alt="Go!" style="margin:0px; padding:0px;" />
-                <%# <%= submit_tag("search") %>
-              </div>
+				</div>
+			</div>
+		</div>
+	</div><!-- /#hd -->
+	
+	<div id="bd">
+		<div class="container_12">
+			<div class="grid_3 sidebar">
+        <% if user_signed_in? %>
+				<div class="summary">
+					<div class="shaddow"><img src="assets/arx/shaddow-left.png" /></div>
+            <%= image_tag avatar_url(current_user) + '&s=200', :class => ['photo', ''] %> 
+            <p class="credits"><%= current_user.name %> <%= link_to '(edit)', edit_user_registration_path, :style => 'font-size:small;' %></p>
+            <p><span class="fright">0</span>Total Creations</p>
+            <p><span class="fright">0</span>Total Likes</p>
+				</div><!-- /.summary -->
+        <% end %>
+				<div class="menu">
+					<ul class="level_1 nojot">
+						<li class="level_1"><%= link_to "Welcome", home_index_path %></li>
+          <% if user_signed_in? %>
+            <li class="level_1"><a href="<%= url_for my_creations_path %>">Mine</a></li>
+            <li class="level_1"><a href="<%= url_for new_creation_path %>">Share</a></li>
           <% end %>
-        </div>
-        <!-- end search -->
-      </div>
-      <hr class="clear" />
-    </div>
-    <!-- start footer -->
-    <div id="footer">
-      <div class="floatLeft">&copy; 2011 CakeSide</div>
-      <div class="floatRight">
-        <a href="/privacy.html">Privacy Policy</a>
-      </div>
-    </div>
-    <!-- end footer -->
-  </div>
-</div>
-<!-- end content -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-<%= javascript_include_tag :all %>
-<script type="text/javascript" src="/javascripts/template/jquery.cycle.all.js"></script>
-<script type="text/javascript" src="/javascripts/template/hide-select.js"></script>
+						<li class="level_1"><%= link_to "Browse", creations_path %></li>
+						<li class="level_1"><%= link_to "Artists", all_profiles_path %></li>
+						<li class="level_1"><a href="">Categories</a>
+							<ul class="level_2 nojot">
+              <% Category.all.each do |category| %>
+                <li class="level_2"><a href='/categories/<%= category.slug %>'><%= category.name %></a></li>
+              <% end %>
+							</ul>
+						</li>
+					</ul>
+				</div><!-- /.menu -->
+			</div>
+			<div class="grid_9 content">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+			</div>
+		</div>
+	</div><!-- /#bd -->
+	
+	<div id="ft">
+		<div class="container_12">
+			<div class="grid_3">
+				<h3>Help</h3>
+				<p>support</p>
+				<img src="/assets/arx/icon-phone.png" /><span class="phone">1-800-cakeside</span>
+			</div>
+			<div class="grid_9">
+				<h3>Quick Links</h3>
+				<ul class="nojot">
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+					<li><a href="/terms.html">Terms and Conditions</a></li>
+				</ul>
+			</div>
+		</div>
+	</div><!-- /#ft -->
 
-<script type="text/javascript">
-$(function() {
-  <%= yield :script %>
-});
-</script>
-
-  <!--[if lt IE 7 ]>
-  <script src="/javascripts/libs/dd_belatedpng.js"></script>
-  <script> DD_belatedPNG.fix('img, .png_bg');</script>
-  <![endif]-->
   <script type="text/javascript">
     var _gaq=[['_setAccount','UA-24090020-1'],['_trackPageview']];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;

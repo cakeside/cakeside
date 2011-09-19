@@ -1,0 +1,70 @@
+body { color: #333; font-size: 12px; height: auto; background: #000; }
+
+/* Sections */
+
+a:visited,
+a:active,
+a:link { color: #333; }
+a:hover { color: #000; }
+
+/* header */
+#hd { background: #fff url(/assets/hd-bg.png); height: 120px; }
+#hd .top { height: 80px; width: 100%; ; }
+#hd .top .logo { margin: 20px 0 0 -10px; }
+#hd .search { top: -35px; height: 0; }
+#hd .search form { background: #fff; }
+#hd .search input[type=submit] { background: url(/assets/arx/btn-search.png) no-repeat; border: none; margin-left: 5px; }
+#hd .search input[type=text] { background: none; border: none; width: 140px; position: relative; top: -2px; outline: none; }
+#hd .info { text-align: left; color: #CED8D9; padding-top: 12px; }
+#hd .info .dull { color: #647F84; }
+#hd .info .arrow { position: relative; }
+#hd .info .arrow img { position: absolute; left: -15px; top: 28px; }
+
+/* body */
+#bd { background: #fff; padding-top: 10px; }
+#bd .sidebar .summary { background: #990000; color: #fff; padding: 10px; margin-left: -10px; margin-bottom: 20px; position: relative; }
+#bd .sidebar .summary p { margin-bottom: 5px; }
+#bd .sidebar .summary p.credits { font-size: 28px; margin-bottom: 10px; line-height: 28px; }
+#bd .sidebar .summary .shaddow { position: absolute; left: -15px; top: 65px; }
+#bd .sidebar .menu { background: #fff; margin-left: -10px; font-size: 14px; font-weight: bold; color: #333333; margin-bottom: 30px; }
+#bd .sidebar .menu li { margin-left: 0; }
+#bd .sidebar .menu li.level_1 { background: url(/assets/arx/hr.png) bottom repeat-x; padding: 6px 10px; }
+#bd .sidebar .menu li.level_1:last-child { background: none; }
+#bd .sidebar .menu ul.level_2 { margin-bottom: 0; margin-top: 5px; }
+#bd .sidebar .menu li.level_2 { padding: 6px 0 6px 15px; }
+#bd .sidebar .menu a { text-decoration: none; color: #333333; width: 100%; display: block; }
+#bd .sidebar .menu a:hover { text-decoration: none; color: #666666; }
+
+#bd .content { margin-bottom: 30px; }
+#bd .content .helpbox { background: #F0F2F2; padding: 10px 15px 10px 10px; margin: 0 -15px 0 -5px; }
+#bd .content .helpbox  p { margin-bottom: 0; }
+#bd .content .helpbox  li { margin-left: 15px; }
+#bd .content table { width: 100%; }
+#bd .content table thead { background: url(/assets/arx/hr.png) bottom repeat-x; }
+#bd .content table tbody { background: url(/assets/arx/hr-light.png) bottom repeat-x; }
+#bd .content table td,
+#bd .content table th { padding: 3px 0; white-space: nowrap; }
+#bd .content table th { font-weight: bold; text-align: right; }
+#bd .content table td { text-align: right; width: 100px; padding: 8px 0; }
+#bd .content table td.tleft { text-align: left; width: auto; }
+#bd .content table.autospace td,
+#bd .content table.autospace th { width: auto; text-align: left; }
+#bd .content table tfoot { color: #FF0000; }
+#bd .content table input[type=button] { margin-left: 5px; }
+#bd .content .direction { margin-top: 10px; font-weight: bold; color: #999999; }
+#bd .content .direction a { color: #333333; text-decoration: none; }
+#bd .content .direction a:hover { color: #000; text-decoration: none; }
+#bd .content .direction .next { background: url(/assets/arx/arrow-right.jpg) no-repeat right center; padding-right: 10px; }
+#bd .content .direction .previous { background: url(/assets/arx/arrow-left.jpg) no-repeat left center; padding-left: 10px; }
+#bd .content .direction .next.disabled { background: url(/assets/arx/arrow-right-deactive.jpg) no-repeat right center; }
+#bd .content .direction .previous.disabled { background: url(/assets/arx/arrow-left-deactive.jpg) no-repeat left center; }
+
+/* footer */
+#ft { background: #000; color: #fff; padding: 26px 0; }
+#ft h3 { font-size: 14px; }
+#ft h3 { margin-bottom: 10px; }
+#ft p { margin-bottom: 5px; }
+#ft .phone { font-size: 16px; font-weight: bold; padding-left: 5px; vertical-align: middle; }
+#ft a { color: pink; text-decoration: none; }
+#ft a:hover { color: #535E62; }
+#ft li { margin-bottom: 5px; }

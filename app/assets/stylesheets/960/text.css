@@ -1,0 +1,118 @@
+/*
+  960 Grid System ~ Text CSS.
+  Learn more ~ http://960.gs/
+
+  Licensed under GPL and MIT.
+*/
+
+/* `Basic HTML
+----------------------------------------------------------------------------------------------------*/
+
+body {
+  font: 12px/18px Arial, 'Helvetica Neue', 'Liberation Sans', FreeSans, sans-serif;
+}
+
+pre,
+code {
+  font-family: 'DejaVu Sans Mono', Monaco, Consolas, monospace;
+}
+
+hr {
+  border: 0 #ccc solid;
+  border-top-width: 1px;
+  clear: both;
+  height: 0;
+}
+
+a:visited,
+a:active,
+a:link { text-decoration: underline; }
+a:hover { text-decoration: underline; }
+
+/* `Spacing
+----------------------------------------------------------------------------------------------------*/
+
+ol {
+  list-style: decimal;
+}
+
+ul {
+  list-style: disc;
+}
+
+li {
+  margin-left: 15px;
+}
+
+p,
+dl,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul,
+pre,
+table,
+address,
+fieldset,
+figure {
+  margin-bottom: 20px;
+}
+
+/* `Headings
+----------------------------------------------------------------------------------------------------*/
+
+h1 {
+  font-size: 24px; background: url(/assets/arx/hr.png) bottom repeat-x; padding-bottom: 10px;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+h3 {
+  font-size: 14px;
+}
+
+h4 {
+  font-size: 14px; color: #990000; margin-bottom: 5px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  font-size: 14px;
+}
+
+/* `Global Classes
+----------------------------------------------------------------------------------------------------*/
+
+.clear			{ clear:both; }
+.cleft		{clear:left;}
+.cright 	{clear: right; }
+
+.fleft		{ float:left; }
+.fright	{ float:right; }
+.hidden			{ display: none;}
+
+.tleft		{ text-align:left; }
+.tright		{ text-align:right; }
+.tcenter	{ text-align:center; }
+.tjustify	{ text-align:justify; }
+
+.bold			{ font-weight:bold; }
+.italic			{ font-style:italic; }
+.underline		{ border-bottom:1px solid; }
+
+ul.nojot { list-style: none; }
+ul.nojot li { margin-left: 0; }
+
+.nobottom { margin-bottom: 0; padding-bottom: 0; }
+.gap { margin-bottom: 30px; width: 100%; }
+.nowrap { white-space: nowrap; }

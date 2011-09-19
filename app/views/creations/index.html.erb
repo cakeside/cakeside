@@ -1,19 +1,18 @@
 <% content_for :title do %>
   Browse All Creations
 <% end %>
-<h1>Browse All Creations</h1>
-<p><em>What time is it? Nana, nana, naaaaana caake time!</em></p>  
-<p>Check out our communities most recent cake work.</p>
 
-<% @creations.reverse.each do |creation| %>
-<div class="product_box">
-  <h2><%= creation.name %></h2>
-  <a href="<%= url_for creation %>">
-    <%= image_tag creation.image_url.to_s, :width => "285px", :height => "140px", :class => "photo", :alt => creation.name %>
-  </a>
-  <p><%= creation.short_story %> <%= link_to 'more', creation %></p>
+<div class="grid_9 alpha omega">
+  <h1>Browse All Creations</h1>
+  <p><em>What time is it? Nana, nana, naaaaana caake time!</em></p>  
+  <p>Check out our communities most recent cake work.</p>
+
+  <% @creations.reverse.each do |creation| %>
+    <h2><%= creation.name %></h2>
+    <a href="<%= url_for creation %>"><%= image_tag creation.image_url.to_s, :class => "photo", :alt => creation.name %></a>
+    <p><%= creation.short_story %> <%= link_to 'more', creation %></p>
+  <% end %>
+
+  <p> <%= paginate @creations %> </p>
 </div>
-<% end %>
-
-<hr class="clear" />
-<p> <%= paginate @creations %> </p>
+<div class="clear" />

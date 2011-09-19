@@ -2,28 +2,29 @@
   All <%= @profiles.length %> profiles
 <% end %>
 
-<h1>All <%= @profiles.length %> profiles</h1>
+<div class="grid_9 alpha omega">
+  <h1>All <%= @profiles.length %> profiles</h1>
+  <table class="simple-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>name</th>
+        <th>creations</th>
+        <th>member since</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @profiles.each do |profile| %>
+        <tr>
+          <td><a href="<%= url_for profile_path(profile) %>"><%= image_tag avatar_url(profile), :class => "photo", :alt => profile.name %></a></td>
+          <td><%= link_to profile.name, profile_path(profile) %></td>
+          <td><a href="<%= url_for profile_path(profile) %>"><%= profile.creations.length %>creations</a></td>
+          <td><%= profile.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<table class="simple-table">
-  <thead>
-    <tr>
-      <th></th>
-      <th>name</th>
-      <th>creations</th>
-      <th>member since</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @profiles.each do |profile| %>
-    <tr>
-      <td><a href="<%= url_for profile_path(profile) %>"><%= image_tag avatar_url(profile), :class => "photo" %></a></td>
-      <td><%= link_to profile.name, profile_path(profile) %></td>
-      <td><a href="<%= url_for profile_path(profile) %>"><%= profile.creations.length %> creations</a></td>
-      <td><%= profile.created_at %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-
-<hr class="clear" />
-<p> <%= paginate @profiles %> </p>
+  <p> <%= paginate @profiles %> </p>
+</div>
+<div class="clear" />
