@@ -12,10 +12,9 @@ gem 'omniauth', '>=0.2.6'
 gem 'rmagick'
 gem 'bcrypt-ruby'
 gem 'json'
-gem 'thinking-sphinx', :git => 'git://github.com/freelancing-god/thinking-sphinx.git', :branch => 'rails3'
+gem 'thinking-sphinx'
 gem 'fog'
 gem 'kaminari'
-# gem 'acts-as-taggable-on'
 gem 'capistrano'
 
 group :development, :test do
