@@ -2,6 +2,7 @@ load 'deploy' if respond_to?(:namespace) # cap2 differentiator
 Dir['vendor/gems/*/recipes/*.rb','vendor/plugins/*/recipes/*.rb'].each { |plugin| load(plugin) }
 
 load 'config/deploy' # remove this line to skip loading any of the default tasks
+load 'deploy/assets'
 
 task :search_libs, :roles => :web do
   run "ls -x1 /usr/lib | grep -i xml"
@@ -25,7 +26,7 @@ task :start_sphinx, :roles => :app do
 end
 
 task :index_sphinx, :roles => :app do
-  run "cd #{current_path} && rvm use 1.9.2 && rake thinking_sphinx:index RAILS_ENV=production"
+  run "cd #{current_path} && rake thinking_sphinx:index RAILS_ENV=production"
 end
 
 task :restart_sphinx, :roles => :app do
