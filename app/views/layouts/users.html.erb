@@ -12,70 +12,68 @@
     <%= yield :head %>
   </head>
   <body>
-    <div id="hd">
+    <div style="background: #000 url(/assets/sunset.png) no-repeat; border: none; margin-top:10px; margin-left:auto; margin-right:auto;width:1024px;height:768px;">
       <div class="container_12">
         <div class="grid_6 alpha">
           <div class="logo"><img src="/assets/cakeside-logo.png" alt="arc-resources-ltd" width="100%" /></div>
         </div>
-        <div style="margin-top:100px;">
-          <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-            <div class="grid_2 alpha">
-              <%= f.email_field :email, :style => "height:20px;" %>
-            </div>
-            <div class="grid_2">
-              <%= f.password_field :password, :style => "height:20px;"  %>
-            </div>
-            <div class="grid_1">
-              <%= f.submit "Sign in", :style => "width:100%;height:28px;"%>
-            </div>
-            <div class="grid_1 omega">
-              &nbsp;
-              <!--
-              <%# <% if devise_mapping.rememberable? -%>
-              <%#   <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
-              <%# <% end -%>
-              <%# <%= render :partial => "devise/shared/links" %>
-              -->
-            </div>
-          <% end %>
+        <div class="grid_6 omega">
+          <div style="margin-top:100px;">
+            <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+              <div class="grid_2 alpha">
+                <%= f.email_field :email, :style => "height:20px;" %>
+              </div>
+              <div class="grid_2">
+                <%= f.password_field :password, :style => "height:20px;"  %>
+              </div>
+              <div class="grid_1">
+                <%= f.submit "Sign in", :style => "width:100%;height:28px;"%>
+              </div>
+              <div class="grid_1 omega"> &nbsp; </div>
+            <% end %>
+          </div>
         </div>
-      </div>
-    </div><!-- /#hd -->
-
-    <div id="bd">
-      <div class="container_12">
-        <div class="grid_3 alpha">
-        </div>
-        <div class="grid_9 omega">
+        <div class="clear"></div>
+        <div class="grid_6 alpha">
+          &nbsp;
           <p class="notice"><%= notice %></p>
           <p class="alert"><%= alert %></p>
-          <%= yield %>
+        </div>
+        <div class="grid_5">
+          <%# <%= yield %>
+          <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+            <%= devise_error_messages! %>
+            <p><%= f.label :name %><br /> <%= f.text_field :name, :class => "forms" %></p>
+            <p><%= f.label :email %><br /> <%= f.email_field :email, :class => "forms"  %></p>
+            <p><%= f.label :password %><br /> <%= f.password_field :password, :class => "forms"  %></p>
+            <p><%= f.label :password_confirmation %><br /> <%= f.password_field :password_confirmation, :class => "forms"  %></p>
+            <p><%= f.submit "Sign up" %></p>
+          <% end %>
+          <%= render :partial => "devise/shared/links" %>
+        </div>
+        <div class="grid_1 omega">
+          &nbsp;
+        </div>
+        <div class="clear"></div>
+        <div>
+          <div class="grid_4 alpha">
+            &nbsp;
+          </div>
+          <div class="grid_4" style="color:pink;margin-top:180px;">
+            &nbsp;
+            contact us | terms and conditions | privacy policy
+          </div>
+          <div class="grid_4 omega">
+            &nbsp;
+          </div>
         </div>
       </div>
-    </div><!-- /#bd -->
-
-    <div id="ft">
-      <div class="container_12">
-        <div class="grid_3">
-          <h3>Help</h3>
-          <p>support</p>
-          <img src="/assets/arx/icon-phone.png" /><span class="phone">1-800-cakeside</span>
-        </div>
-        <div class="grid_9">
-          <h3>Quick Links</h3>
-          <ul class="nojot">
-            <li><a href="/privacy.html">Privacy Policy</a></li>
-            <li><a href="/terms.html">Terms and Conditions</a></li>
-          </ul>
-        </div>
-      </div>
-    </div><!-- /#ft -->
-
+    </div>
     <script type="text/javascript">
       var _gaq=[['_setAccount','UA-24090020-1'],['_trackPageview']];
       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
        s.parentNode.insertBefore(g,s)}(document,'script'));
-      </script>
-    </body>
-  </html>
+    </script>
+  </body>
+</html>
