@@ -47,10 +47,10 @@ module Cake
 
     config.to_prepare {
       Devise::SessionsController.layout "users"
-      Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "devise" }
-      Devise::ConfirmationsController.layout "devise"
-      Devise::UnlocksController.layout "devise"            
-      Devise::PasswordsController.layout "devise"  
+      Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "users" }
+      Devise::ConfirmationsController.layout "application"
+      Devise::UnlocksController.layout "application"            
+      Devise::PasswordsController.layout "application"  
     }
 
   end
