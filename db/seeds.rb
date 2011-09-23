@@ -8,7 +8,7 @@
 Category.create(:name => 'Fondant', :slug => 'fondant')
 Category.create(:name => 'Butter Cream', :slug => 'butter-cream')
 Category.create(:name => 'Cup Cake', :slug => 'cup-cake')
-Category.create(:name => '3 Tier', :slug => '3-tier')
+Category.create(:name => 'Tiered', :slug => 'tiered')
 Category.create(:name => '3D', :slug => '3d')
 Category.create(:name => 'Birthday', :slug => 'birthday')
 Category.create(:name => 'Wedding', :slug => 'wedding')
