@@ -11,7 +11,7 @@
   <% @creations.each do |creation| %>
     <div>
       <h2><%= creation.name %></h2>
-      <a href="<%= url_for creation %>"><%= image_tag creation.image_url.to_s, :alt => creation.name %></a>
+      <a href="<%= url_for creation %>"><%= image_tag creation.image.thumb.url, :alt => creation.name %></a>
       <p><%= creation.short_story %> <%= link_to 'more', creation %></p>
     </div>
   <% end %>

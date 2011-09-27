@@ -5,6 +5,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or ImageScience support:
   include CarrierWave::RMagick
   # include CarrierWave::ImageScience
+  include CarrierWave::MimeTypes
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
@@ -27,8 +28,14 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def default_url
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
-
+  #
   # Process files as they are uploaded:
+
+  process :set_content_type
+  # process :resize_to_fit => [420, 300]
+  process :resize_to_fit => [560, 400]
+  # process :resize_to_fit => [140, 100]
+  process :convert => 'png'
   # process :scale => [200, 300]
   #
   # def scale(width, height)
@@ -37,18 +44,21 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb do
-    process :resize_to_limit => [300, 139]
+    process :resize_to_fill => [140, 100]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  # def extension_white_list
-  #   %w(jpg jpeg gif png)
-  # end
+  def extension_white_list
+    %w(jpg jpeg gif png)
+  end
 
   # Override the filename of the uploaded files:
   # def filename
   #   "something.jpg" if original_filename
   # end
+  def filename
+    super.chomp(File.extname(super)) + '.png'
+  end
 
 end

@@ -11,7 +11,7 @@
   <% else %>
     <% @creations.reverse.each do |creation| %>
       <h2><%= creation.name %></h2>
-      <a href="<%= url_for creation %>"><%= image_tag creation.image_url.to_s, :class => "photo" %></a>
+      <a href="<%= url_for creation %>"><%= image_tag creation.image.thumb.url, :class => "photo" %></a>
       <p><%= creation.short_story %> <%= link_to 'more', creation %></p>
     <% end %>
   <% end %>
