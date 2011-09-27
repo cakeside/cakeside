@@ -21,10 +21,10 @@
           <div style="margin-top:100px;">
             <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
               <div class="grid_2 alpha">
-                <%= f.email_field :email, :style => "height:20px;" %>
+                <%= f.email_field :email, :style => "height:20px;", :size => 20 %>
               </div>
               <div class="grid_2">
-                <%= f.password_field :password, :style => "height:20px;"  %>
+                <%= f.password_field :password, :style => "height:20px;", :size => 20 %>
               </div>
               <div class="grid_1">
                 <%= f.submit "Sign in", :style => "width:100%;height:28px;"%>
