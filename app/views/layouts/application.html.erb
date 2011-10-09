@@ -26,10 +26,12 @@
       <div class="grid_3 push_9 search">
         <%= form_tag(search_index_path, :method => "get", :name => "search") do %>
           <input type="submit" value="" />
-          <input name="q" type="text" />
+          <input name="q" type="text" placeholder="search" />
         <% end %>
       </div>
 			<div class="clear"></div>
+
+
 			<div class="info">
 				<div class="grid_3 dull">
 					<strong class="fright" style='font-family:"Julee", cursive;font-size: 1.5em;color:pink;'>crazy, delicious...</strong>
@@ -48,6 +50,23 @@
           <% end %>
 				</div>
 			</div>
+
+
+      <div style="background: #fff;">
+      <div class="grid_6"> 
+        <%= form_tag(search_index_path, :method => "get", :name => "search") do %>
+          <input name="q" type="text" placeholder="search" />
+          <input type="submit" value="" />
+        <% end %>
+      </div>
+      <div class="grid_2"> My Creations </div>
+      <div class="grid_2"> Artist </div>
+      <div class="grid_2"> Help </div>
+      <div class="clear" />
+      </div>
+
+
+
 		</div>
 	</div><!-- /#hd -->
 	
