@@ -58,6 +58,7 @@ class CreationsController < ApplicationController
   # PUT /creations/1.xml
   def update
     @creation = current_user.creations.find(params[:id])
+    puts "creation is #{@creation.class}"
     @creation.category_ids = params[:creation][:category_ids] ||= []
 
     respond_to do |format|

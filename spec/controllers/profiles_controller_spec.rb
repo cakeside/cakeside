@@ -21,7 +21,7 @@ describe ProfilesController do
 
   describe "GET 'show'" do
     it "should be successful" do
-      User.stub(:find).with(mock_user.id){ mock_user }
+      User.stub(:find).with(mock_user.id.to_s){ mock_user }
       get :show, :id => mock_user.id
       response.should be_success
     end

@@ -91,21 +91,22 @@ describe CreationsController do
       it "updates the requested creation" do
         # Creation.stub(:find).with("37") { mock_creation }
         mock_user.stub(:creations){ mock_creation }
-        mock_creation.should_receive(:update_attributes).with({'these' => 'params'})
+        mock_creation.should_receive(:update_attributes).with({'these' => 'params', 'category_ids' => []})
         put :update, :id => "37", :creation => {'these' => 'params'}
       end
 
       it "assigns the requested creation as @creation" do
         # Creation.stub(:find) { mock_creation(:update_attributes => true) }
-        mock_user.stub(:creations){ mock_creation(:update_attributes => true) }
-        put :update, :id => "1"
-        assigns(:creation).should be(mock_creation)
+        creation = mock_creation(:update_attributes => true, :category_ids => [])
+        mock_user.stub(:creations){ creation }
+        put :update, :id => "1", :creation => { :category_ids => [] }
+        assigns(:creation).should be(creation)
       end
 
       it "redirects to the creation" do
         # Creation.stub(:find) { mock_creation(:update_attributes => true) }
         mock_user.stub(:creations){ mock_creation(:update_attributes => true) }
-        put :update, :id => "1"
+        put :update, :id => "1", :creation => { :category_ids => [] }
         response.should redirect_to(creation_url(mock_creation))
       end
     end
@@ -114,14 +115,14 @@ describe CreationsController do
       it "assigns the creation as @creation" do
         mock_user.stub(:creations){ mock_creation(:update_attributes => false) }
         # Creation.stub(:find) { mock_creation(:update_attributes => false) }
-        put :update, :id => "1"
+        put :update, :id => "1", :creation => { :category_ids => [] }
         assigns(:creation).should be(mock_creation)
       end
 
       it "re-renders the 'edit' template" do
         mock_user.stub(:creations){ mock_creation(:update_attributes => false) }
         # Creation.stub(:find) { mock_creation(:update_attributes => false) }
-        put :update, :id => "1"
+        put :update, :id => "1", :creation => { :category_ids => [] }
         response.should render_template("edit")
       end
     end
