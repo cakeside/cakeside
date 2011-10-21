@@ -3,17 +3,15 @@ require 'spec_helper'
 describe ProfilesController do
   include Devise::TestHelpers
 
-  def mock_user(stubs={})
-    @mock_user ||= mock_model(User, stubs).as_null_object
-  end
+  let(:user) { FactoryGirl.build(:user) }
 
   before (:each) do
-    request.env['warden'] = mock(Warden, :authenticate => mock_user, :authenticate! => mock_user)
+    request.env['warden'] = mock(Warden, :authenticate => user, :authenticate! => user)
   end
 
   describe "GET 'index'" do
     it "should be successful" do
-      User.stub(:all){ mock_user }
+      User.stub(:all){ user }
       get 'index'
       response.should be_success
     end
@@ -21,8 +19,8 @@ describe ProfilesController do
 
   describe "GET 'show'" do
     it "should be successful" do
-      User.stub(:find).with(mock_user.id.to_s){ mock_user }
-      get :show, :id => mock_user.id
+      User.stub(:find).with(user.id.to_s){ user }
+      get :show, :id => user.id
       response.should be_success
     end
   end
