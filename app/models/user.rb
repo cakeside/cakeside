@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :creations, :dependent => :destroy
 
   def apply_omniauth(omniauth)
+    puts omniauth
     self.email = omniauth['user_info']['email'] if email.blank?
     authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
   end
