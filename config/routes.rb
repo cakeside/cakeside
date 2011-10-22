@@ -1,7 +1,6 @@
 Cake::Application.routes.draw do
   resources :creations
-  resources :authentications
-  resources :categories
+
   get "home/index"
   get "profiles/index"
   get "profiles/show"
@@ -13,5 +12,8 @@ Cake::Application.routes.draw do
   match 'artists' => 'profiles#index', :as => 'all_profiles', :method => 'GET'
   match 'artists/:id' => 'profiles#show', :as => 'profile', :method => 'GET'
   match 'profiles/show/:id' => 'profiles#show', :as => 'profile', :method => 'GET'
+  match 'categories/:id' => 'categories#show', :method => 'GET'
+  match 'authentications' => 'authentications#index', :method => 'GET'
+
   root :to => "home#index"
 end

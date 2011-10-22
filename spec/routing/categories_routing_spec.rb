@@ -4,8 +4,9 @@ describe CategoriesController do
   describe "routing" do
 
     it "routes to #show" do
-      get("/categories/fondant").should route_to("categories#show", :id => "fondant")
+      get("/categories/fondant").should route_to("categories#show", :id => "fondant", :method => 'GET')
     end
 
   end
 end
+
