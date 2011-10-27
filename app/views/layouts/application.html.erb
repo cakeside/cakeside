@@ -24,6 +24,7 @@
         </div>
         <div class="clear"></div>
         <div class="grid_3 push_9 search">
+          <%= link_to "add creation", new_creation_path %>
           <% if user_signed_in? %>
             Hi <%= link_to current_user.name, edit_user_registration_path %>
             <%= link_to "Sign Out", destroy_user_session_path %>
