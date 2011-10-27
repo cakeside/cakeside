@@ -1,127 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title><%= yield(:title) || "untitled" %> - CakeSide</title>
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link href='http://fonts.googleapis.com/css?family=Julee' rel='stylesheet' type='text/css'>
-  <%= stylesheet_link_tag "application" %>
-  <%= csrf_meta_tags %>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-  <%= javascript_include_tag "application" %>
-  <script type="text/javascript">
-  $(function() {
-    <%= yield :script %>
-  });
-  </script>
-  <%= yield :head %>
-</head>
-<body>
-	<div id="hd">
-		<div class="container_12">
-			<div class="grid_12 top">
-				<div class="logo"><img src="/assets/cakeside-logo.png" alt="arc-resources-ltd" width="205" /></div>
-			</div>
-			<div class="clear"></div>
-      <div class="grid_3 push_9 search">
-        <%= form_tag(search_index_path, :method => "get", :name => "search") do %>
-          <input type="submit" value="" />
-          <input name="q" type="text" placeholder="search" />
-        <% end %>
-      </div>
-			<div class="clear"></div>
-
-
-			<div class="info">
-				<div class="grid_3 dull">
-					<strong class="fright" style='font-family:"Julee", cursive;font-size: 1.5em;color:pink;'>crazy, delicious...</strong>
-				</div>
-				<div class="grid_3 arrow"> &nbsp; </div>
-				<div class="grid_3"> &nbsp; </div>
-				<div class="grid_3">
+  <head>
+    <meta charset="UTF-8">
+    <title><%= yield(:title) || "untitled" %> - CakeSide</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Julee' rel='stylesheet' type='text/css'>
+    <%= stylesheet_link_tag "application" %>
+    <%= csrf_meta_tags %>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <%= javascript_include_tag "application" %>
+    <script type="text/javascript">
+      $(function() {
+          <%= yield :script %>
+      });
+    </script>
+    <%= yield :head %>
+  </head>
+  <body>
+    <div id="hd">
+      <div class="container_12">
+        <div class="grid_12 top">
+          <div class="logo"><img src="/assets/cakeside-logo.png" alt="cakeside" width="205" /></div>
+        </div>
+        <div class="clear"></div>
+        <div class="grid_3 push_9 search">
           <% if user_signed_in? %>
+            Hi <%= current_user.name %>
             <%= link_to "Sign Out", destroy_user_session_path, :class => 'fright', :style => 'font-family:"Julee", cursive;font-size: 2em;color:pink;' %>
           <% else %>
             <strong>
-              <%= link_to "Sign Up", new_user_registration_path, :style => 'font-family:"Julee", cursive;font-size: 2em;color:pink;' %> 
-              or 
+              <%= link_to "Sign Up", new_user_registration_path, :style => 'font-family:"Julee", cursive;font-size: 2em;color:pink;' %> or 
               <%= link_to "Sign In", new_user_session_path, :style => 'font-family:"Julee", cursive;font-size: 2em;color:pink;' %>
             </strong>
           <% end %>
-				</div>
-			</div>
-
-
-      <div style="background: #fff;">
-      <div class="grid_6"> 
-        <%= form_tag(search_index_path, :method => "get", :name => "search") do %>
-          <input name="q" type="text" placeholder="search" />
-          <input type="submit" value="" />
-        <% end %>
-      </div>
-      <div class="grid_2"> My Creations </div>
-      <div class="grid_2"> Artist </div>
-      <div class="grid_2"> Help </div>
-      <div class="clear" />
-      </div>
-
-
-
-		</div>
-	</div><!-- /#hd -->
-	
-	<div id="bd">
-		<div class="container_12">
-			<div class="grid_3 sidebar">
-				<div class="menu">
-					<ul class="level_1 nojot">
-						<li class="level_1"><%= link_to "Welcome", home_index_path %></li>
-          <% if user_signed_in? %>
-            <li class="level_1"><a href="<%= url_for my_creations_path %>">Mine</a></li>
-            <li class="level_1"><a href="<%= url_for new_creation_path %>">Share</a></li>
+        </div>
+        <div class="clear"></div>
+        <div class="info">
+          <div class="grid_3 dull"></div>
+          <div class="grid_3 arrow"> &nbsp; </div>
+          <div class="grid_3"> &nbsp; </div>
+          <div class="grid_3"> &nbsp; </div>
+        </div>
+    </div><!-- /#hd -->
+    <div id="bd">
+      <div class="container_12">
+        <div class="grid_6"> 
+          <%= form_tag(search_index_path, :method => "get", :name => "search") do %>
+            <input name="q" type="text" placeholder="search" />
+            <input type="submit" value="search" />
           <% end %>
-						<li class="level_1"><%= link_to "Browse", creations_path %></li>
-						<li class="level_1"><%= link_to "Artists", all_profiles_path %></li>
-						<li class="level_1"><a href="">Categories</a>
-							<ul class="level_2 nojot">
-              <% Category.all.each do |category| %>
-                <li class="level_2"><a href='/categories/<%= category.slug %>'><%= category.name %></a></li>
-              <% end %>
-							</ul>
-						</li>
-					</ul>
-				</div><!-- /.menu -->
-			</div>
-			<div class="grid_9 content">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-        <%= yield %>
-			</div>
-		</div>
-	</div><!-- /#bd -->
-	
-	<div id="ft">
-		<div class="container_12">
-			<div class="grid_3">
-				<h3>Help</h3>
-				<p>support</p>
-				<img src="/assets/arx/icon-phone.png" /><span class="phone">1-800-cakeside</span>
-			</div>
-			<div class="grid_9">
-				<h3>Quick Links</h3>
-				<ul class="nojot">
-          <li><a href="/privacy.html">Privacy Policy</a></li>
-					<li><a href="/terms.html">Terms and Conditions</a></li>
-				</ul>
-			</div>
-		</div>
-	</div><!-- /#ft -->
-
-  <script type="text/javascript">
-    var _gaq=[['_setAccount','UA-24090020-1'],['_trackPageview']];
-    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
-  </script>
-</body>
+        </div>
+        <div class="grid_2"> &nbsp; </div>
+        <div class="grid_2"> <%= link_to "Artist", all_profiles_path %> </div>
+        <div class="grid_2"> Help </div>
+        <div class="clear"></div>
+        <div class="grid_3 sidebar">
+          <div class="menu">
+            <ul class="level_1 nojot">
+              <li class="level_1">Categories
+              <ul class="level_2 nojot">
+                <% Category.all.each do |category| %>
+                  <li class="level_2"><a href='/categories/<%= category.slug %>'><%= category.name %></a></li>
+                <% end %>
+              </ul>
+              </li>
+            </ul>
+          </div><!-- /.menu -->
+        </div>
+        <div class="grid_9 content">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+          <%= yield %>
+        </div>
+      </div>
+    </div><!-- /#bd -->
+    <div id="ft">
+      <div class="container_12">
+        <div class="grid_3">
+          <h3>Help</h3>
+          <p>support</p>
+          <img src="/assets/arx/icon-phone.png" /><span class="phone">1-800-cakeside</span>
+        </div>
+        <div class="grid_9">
+          <h3>Quick Links</h3>
+          <ul class="nojot">
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="/terms.html">Terms and Conditions</a></li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- /#ft -->
+    <script type="text/javascript">
+      var _gaq=[['_setAccount','UA-24090020-1'],['_trackPageview']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+       g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+       s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+  </body>
 </html>
