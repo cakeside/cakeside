@@ -25,12 +25,11 @@
         <div class="clear"></div>
         <div class="grid_3 push_9 search">
           <% if user_signed_in? %>
-            Hi <%= current_user.name %>
-            <%= link_to "Sign Out", destroy_user_session_path, :class => 'fright', :style => 'font-family:"Julee", cursive;font-size: 2em;color:pink;' %>
+            Hi <%= link_to current_user.name, edit_user_registration_path %>
+            <%= link_to "Sign Out", destroy_user_session_path %>
           <% else %>
             <strong>
-              <%= link_to "Sign Up", new_user_registration_path, :style => 'font-family:"Julee", cursive;font-size: 2em;color:pink;' %> or 
-              <%= link_to "Sign In", new_user_session_path, :style => 'font-family:"Julee", cursive;font-size: 2em;color:pink;' %>
+              <%= link_to "Sign Up", new_user_registration_path %> or <%= link_to "Sign In", new_user_session_path %>
             </strong>
           <% end %>
         </div>
