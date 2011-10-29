@@ -22,6 +22,7 @@ Cake::Application.routes.draw do
 
   # /categories
   match 'categories/:id' => 'categories#show', :method => 'GET'
+  get 'categories/show'
 
   # /authentications
   match 'authentications' => 'authentications#index', :method => 'GET'
