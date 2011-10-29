@@ -8,9 +8,9 @@ a:link { color: #333; }
 a:hover { color: #000; }
 
 /* header */
-#hd { background: #fff url(/assets/hd-bg.png); height: 120px; }
+#hd { background: #fff ;  }
 #hd .top { height: 80px; width: 100%; ; }
-#hd .top .logo { margin: 20px 0 0 -10px; }
+#hd .top .logo { margin: 0 0 0 -10px; }
 #hd .search { top: -35px; height: 0; }
 #hd .search form { background: #fff; }
 #hd .search input[type=submit] { background: url(/assets/arx/btn-search.png) no-repeat; border: none; margin-left: 5px; }
@@ -21,7 +21,7 @@ a:hover { color: #000; }
 #hd .info .arrow img { position: absolute; left: -15px; top: 28px; }
 
 /* body */
-#bd { background: #fff; padding-top: 10px; }
+#bd { background: #fff; padding-top: 0px; }
 #bd .sidebar .summary { background: #990000; color: #fff; padding: 10px; margin-left: -10px; margin-bottom: 20px; position: relative; }
 #bd .sidebar .summary p { margin-bottom: 5px; }
 #bd .sidebar .summary p.credits { font-size: 28px; margin-bottom: 10px; line-height: 28px; }

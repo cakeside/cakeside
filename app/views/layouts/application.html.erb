@@ -18,9 +18,12 @@
   </head>
   <body>
     <div id="hd">
-      <div class="container_12">
+      <div class="container_12" style="background: #fff url(/assets/header.png) no-repeat;">
         <div class="grid_12 top">
-          <div class="logo"><img src="/assets/cakeside-logo.png" alt="cakeside" width="205" /></div>
+          <div class="logo">
+            <a href="<%= url_for home_index_path %>">
+            <img src="/assets/cakeside-logo.png" alt="cakeside" width="150" /></div>
+            </a>
         </div>
         <div class="clear"></div>
         <div class="grid_3 push_9 search">
@@ -29,18 +32,11 @@
             Hi <%= link_to current_user.name, edit_user_registration_path %>
             <%= link_to "Sign Out", destroy_user_session_path %>
           <% else %>
-            <strong>
-              <%= link_to "Sign Up", new_user_registration_path %> or <%= link_to "Sign In", new_user_session_path %>
-            </strong>
+            <%= link_to "Sign Up", new_user_registration_path %> or <%= link_to "Sign In", new_user_session_path %>
           <% end %>
         </div>
         <div class="clear"></div>
-        <div class="info">
-          <div class="grid_3 dull"></div>
-          <div class="grid_3 arrow"> &nbsp; </div>
-          <div class="grid_3"> &nbsp; </div>
-          <div class="grid_3"> &nbsp; </div>
-        </div>
+      </div>
     </div><!-- /#hd -->
     <div id="bd">
       <div class="container_12">
