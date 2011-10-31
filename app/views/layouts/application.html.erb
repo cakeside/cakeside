@@ -19,18 +19,20 @@
   <body>
     <div id="hd">
       <div class="container_12" style="background: #fff url(/assets/header.png) no-repeat;">
-        <div class="grid_12 top">
+        <div class="grid_5 alpha">
           <div class="logo">
-            <a href="<%= url_for home_index_path %>">
-            <img src="/assets/cakeside-logo.png" alt="cakeside" width="150" /></div>
-            </a>
+            <a href="<%= url_for home_index_path %>"><img src="/assets/cakeside-logo.png" alt="cakeside" width="150" /></a>
+          </div>
         </div>
-        <div class="clear"></div>
-        <div class="grid_3 push_9 search">
-          <%= link_to "add creation", new_creation_path %>
+        <div class="grid_2" style="text-align: center;">
+          <%= link_to "Add My Creation", new_creation_path %>
+        </div>
+        <div class="grid_3">
+          &nbsp;
+        </div>
+        <div class="grid_2 omega">
           <% if user_signed_in? %>
-            Hi <%= link_to current_user.name, edit_user_registration_path %>
-            <%= link_to "Sign Out", destroy_user_session_path %>
+            Hi <%= link_to current_user.name, edit_user_registration_path %> <%= link_to "Sign Out", destroy_user_session_path %>
           <% else %>
             <%= link_to "Sign Up", new_user_registration_path %> or <%= link_to "Sign In", new_user_session_path %>
           <% end %>
@@ -40,15 +42,15 @@
     </div><!-- /#hd -->
     <div id="bd">
       <div class="container_12">
-        <div class="grid_6"> 
+        <div class="grid_6 alpha search"> 
           <%= form_tag(search_index_path, :method => "get", :name => "search") do %>
             <input name="q" type="text" placeholder="search" />
-            <input type="submit" value="search" />
+            <input type="submit" value="" />
           <% end %>
         </div>
-        <div class="grid_2"> &nbsp; </div>
         <div class="grid_2"> <%= link_to "Artist", all_profiles_path %> </div>
         <div class="grid_2"> Help </div>
+        <div class="grid_2 omega"> &nbsp; </div>
         <div class="clear"></div>
         <div class="grid_3 sidebar">
           <div class="menu">
