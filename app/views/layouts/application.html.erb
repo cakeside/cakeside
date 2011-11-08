@@ -59,14 +59,11 @@
 
         <div class="grid_4 sidebar">
           <div class="menu">
-            <ul class="level_1 nojot">
-              <li class="level_1">Categories
-              <ul class="level_2 nojot">
-                <% Category.all.each do |category| %>
-                  <li class="level_2"><a href='/categories/<%= category.slug %>'><%= category.name %></a></li>
-                <% end %>
-              </ul>
-              </li>
+            <h1 style="background: url(/assets/Menu.png) no-repeat;">Categories</h1>
+            <ul class="level_2 nojot">
+              <% Category.all.each do |category| %>
+                <li class="level_2"><a href='/categories/<%= category.slug %>'><%= category.name %></a></li>
+              <% end %>
             </ul>
           </div><!-- /.menu -->
         </div>

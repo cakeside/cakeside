@@ -22,12 +22,10 @@ a:hover { color: #000; }
 #bd .sidebar .summary p { margin-bottom: 5px; }
 #bd .sidebar .summary p.credits { font-size: 28px; margin-bottom: 10px; line-height: 28px; }
 #bd .sidebar .summary .shaddow { position: absolute; left: -15px; top: 65px; }
-#bd .sidebar .menu { background: #fff; margin-left: -10px; font-size: 14px; font-weight: bold; color: #333333; margin-bottom: 30px; }
-#bd .sidebar .menu li { margin-left: 0; }
-#bd .sidebar .menu li.level_1 { background: url(/assets/arx/hr.png) bottom repeat-x; padding: 6px 10px; }
-#bd .sidebar .menu li.level_1:last-child { background: none; }
-#bd .sidebar .menu ul.level_2 { margin-bottom: 0; margin-top: 5px; }
-#bd .sidebar .menu li.level_2 { padding: 6px 0 6px 15px; }
+#bd .sidebar .menu { font-size: 20px; }
+#bd .sidebar .menu h1 { padding: 20px 0 12px 30px;  }
+#bd .sidebar .menu ul.level_2 { height: 375px; margin-bottom: 0; padding: 10px 0 70px 0; background: url(/assets/sidebar.png) no-repeat;  }
+#bd .sidebar .menu li.level_2 { padding: 0 0 10px 20px; }
 #bd .sidebar .menu a { text-decoration: none; color: #333333; width: 100%; display: block; }
 #bd .sidebar .menu a:hover { text-decoration: none; color: #666666; }
 
