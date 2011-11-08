@@ -2,17 +2,28 @@
   Browse All Creations
 <% end %>
 
-<div class="grid_9 alpha omega">
-  <h1>Browse All Creations</h1>
-  <p><em>What time is it? Nana, nana, naaaaana caake time!</em></p>  
-  <p>Check out our communities most recent cake work.</p>
-
-  <% @creations.reverse.each do |creation| %>
-    <h2><%= creation.name %></h2>
-    <a href="<%= url_for creation %>"><%= image_tag creation.image.thumb.url, :class => "photo", :alt => creation.name %></a>
-    <p><%= creation.short_story %> <%= link_to 'more', creation %></p>
+<h1>Browse All Creations</h1>
+<% @creations.each_with_index do |creation, index| %>
+  <% if index % 4 == 0  %>
+    <div class="grid_2 alpha">
+      <a href="<%= url_for creation %>"><%= image_tag creation.image.thumb.url, :alt => creation.name %></a>
+      <p><%= creation.name %> <br /><%= link_to creation.user.name, creation %></p>
+    </div>
+  <% elsif (index+1) % 4 == 0  %>
+    <div class="grid_2 omega">
+      <a href="<%= url_for creation %>"><%= image_tag creation.image.thumb.url, :alt => creation.name %></a>
+      <p><%= creation.name %> <br /><%= link_to creation.user.name, creation %></p>
+    </div>
+    <div class="clear"></div>
+  <% else %>
+    <div class="grid_2">
+      <a href="<%= url_for creation %>"><%= image_tag creation.image.thumb.url, :alt => creation.name %></a>
+      <p><%= creation.name %> <br /><%= link_to creation.user.name, creation %></p>
+    </div>
   <% end %>
+<% end %>
+<div class="clear"></div>
+<div class="grid_3 alpha"> &nbsp; </div>
+<div class="grid_2"> <p> <%= paginate @creations %> </p> </div>
+<div class="grid_3 omega"> &nbsp; </div>
 
-  <p> <%= paginate @creations %> </p>
-</div>
-<div class="clear" />

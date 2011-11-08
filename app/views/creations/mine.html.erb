@@ -2,26 +2,25 @@
   My Creations
 <% end %>
 
-<div class="grid_6 alpha">
-  <h1>My Creations</h1>
-  <% if @creations.length == 0 %>
-    <p> 
-    You have no creations. Would you like to <%= link_to "share your creation?", new_creation_path(@creation) %>
-    </p>
+<h1>My Creations</h1>
+<% @creations.each_with_index do |creation, index| %>
+  <% if index % 4 == 0  %>
+    <div class="grid_2 alpha">
+      <a href="<%= url_for creation %>"><%= image_tag creation.image.thumb.url, :alt => creation.name %></a>
+      <p><%= creation.name %> <br /><%= link_to creation.user.name, creation %></p>
+    </div>
+  <% elsif (index+1) % 4 == 0  %>
+    <div class="grid_2 omega">
+      <a href="<%= url_for creation %>"><%= image_tag creation.image.thumb.url, :alt => creation.name %></a>
+      <p><%= creation.name %> <br /><%= link_to creation.user.name, creation %></p>
+    </div>
+    <div class="clear"></div>
   <% else %>
-    <% @creations.reverse.each do |creation| %>
-      <h2><%= creation.name %></h2>
-      <a href="<%= url_for creation %>"><%= image_tag creation.image.thumb.url, :class => "photo" %></a>
-      <p><%= creation.short_story %> <%= link_to 'more', creation %></p>
-    <% end %>
+    <div class="grid_2">
+      <a href="<%= url_for creation %>"><%= image_tag creation.image.thumb.url, :alt => creation.name %></a>
+      <p><%= creation.name %> <br /><%= link_to creation.user.name, creation %></p>
+    </div>
   <% end %>
-</div>
-<div class="grid_3 omega">
-  <div class="helpbox">
-    <h4>Secondary</h4>
-    <ul>
-      <li><%= link_to "share my creation", new_creation_path %></li>
-    </ul>
-  </div>
-</div>
-<div class="clear" />
+<% end %>
+<div class="clear"></div>
+

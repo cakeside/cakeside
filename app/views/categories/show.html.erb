@@ -2,18 +2,25 @@
   All Creations in <%= @category.name %>
 <% end %>
 
-<div class="grid_9 alpha omega">
-  <h1>All Creations in <em><%= @category.name %></em></h1>
-
-  <% @creations.reverse.each do |creation| %>
-    <div class="product_box">
-      <h2><%= creation.name %></h2>
-      <a href="<%= url_for creation %>"> <%= image_tag creation.image.thumb.url, :alt => creation.name %> </a>
-      <p><%= creation.short_story %> <%= link_to 'more', creation %></p>
+<h1>Category <em><%= @category.name %></em></h1>
+<% @creations.each_with_index do |creation, index| %>
+  <% if index % 4 == 0  %>
+    <div class="grid_2 alpha">
+      <a href="<%= url_for creation %>"><%= image_tag creation.image.thumb.url, :alt => creation.name %></a>
+      <p><%= creation.name %> <br /><%= link_to creation.user.name, creation %></p>
+    </div>
+  <% elsif (index+1) % 4 == 0  %>
+    <div class="grid_2 omega">
+      <a href="<%= url_for creation %>"><%= image_tag creation.image.thumb.url, :alt => creation.name %></a>
+      <p><%= creation.name %> <br /><%= link_to creation.user.name, creation %></p>
+    </div>
+    <div class="clear"></div>
+  <% else %>
+    <div class="grid_2">
+      <a href="<%= url_for creation %>"><%= image_tag creation.image.thumb.url, :alt => creation.name %></a>
+      <p><%= creation.name %> <br /><%= link_to creation.user.name, creation %></p>
     </div>
   <% end %>
-
-  <hr class="clear" />
-  <p> <%= paginate @creations %> </p>
-</div>
+<% end %>
 <div class="clear"></div>
+<p> <%= paginate @creations %> </p>
