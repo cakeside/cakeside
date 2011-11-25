@@ -6,7 +6,6 @@ Cake::Application.routes.draw do
 
   # /creations
   resources :creations
-  match 'my_creations' => 'creations#mine', :as => 'my_creations', :method => 'GET'
 
   # /profiles
   get "profiles/index"

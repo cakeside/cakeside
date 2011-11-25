@@ -58,12 +58,4 @@ class CreationsController < ApplicationController
       format.html { redirect_to(creations_url) }
     end
   end
-
-  def mine
-    @creations = current_user.creations
-
-    respond_to do |format|
-      format.html # index.html.erb
-    end
-  end
 end
