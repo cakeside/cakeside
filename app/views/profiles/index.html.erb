@@ -2,7 +2,7 @@
   All <%= @profiles.length %> profiles
 <% end %>
 
-<div class="grid_9 alpha omega">
+<div class="grid_12 alpha omega">
   <h1>All <%= @profiles.length %> profiles</h1>
   <table class="simple-table">
     <thead>
@@ -18,8 +18,8 @@
         <tr>
           <td><a href="<%= url_for profile_path(profile) %>"><%= image_tag avatar_url(profile), :class => "photo", :alt => profile.name %></a></td>
           <td><%= link_to profile.name, profile_path(profile) %></td>
-          <td><a href="<%= url_for profile_path(profile) %>"><%= profile.creations.length %>creations</a></td>
-          <td><%= profile.created_at %></td>
+          <td><a href="<%= url_for profile_path(profile) %>"><%= profile.creations.length %> creations</a></td>
+          <td><%= profile.created_at.to_s :foomat %></td>
         </tr>
       <% end %>
     </tbody>
