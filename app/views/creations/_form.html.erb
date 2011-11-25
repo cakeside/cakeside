@@ -10,39 +10,31 @@
     </div>
   <% end %>
 
-  <fieldset class="cute_form">
+  <fieldset>
     <p>
     <%= f.label :name %><br />
     <%= f.text_field :name, :class => "forms" %>
     </p>
-
-    <div class="grid_4 alpha">
-      <p>
-      <%= f.label :image, "Upload Image",'data-editable' => 'false' %><br />
-      <%= f.file_field :image, :class => "forms", 'data-editable' => 'false'   %>
-      </p>
-    </div>
-    <div class="grid_5 omega">
-      <p>
-      <%= f.label :remote_image_url, "Or Image URL", 'data-editable' => 'false'  %><br />
-      <%= f.text_field :remote_image_url, :class => "forms", 'data-editable' => 'false'  %>
-      </p>
-    </div>
-
-    <div class="grid_4 alpha">
-      <% for category in Category.all %>
-        <div>
+    <p>
+    <%= f.label :image, "Upload Image" %><br />
+    <%= f.file_field :image, :class => "forms" %>
+    </p>
+    <p>
+    <%= f.label :remote_image_url, "Or Image URL" %><br />
+    <%= f.text_field :remote_image_url, :class => "forms" %>
+    </p>
+    <p>
+    <%= f.label :story %><br />
+    <%= f.text_area :story, :class => "forms"  %>
+    </p>
+    <% for category in Category.all %>
+      <div>
+        <label>
           <%= check_box_tag "creation[category_ids][]", category.id, @creation.categories.include?(category) %>
           <%= category.name %>
-        </div>
-      <% end %>
-    </div>
-    <div class="grid_5 omega">
-      <p>
-      <%= f.label :story %><br />
-      <%= f.text_area :story, :class => "forms"  %>
-      </p>
-    </div>
+        </label>
+      </div>
+    <% end %>
     <input type="submit" id="submit" name="submit" value="share" />
   </fieldset>
 <% end %>
