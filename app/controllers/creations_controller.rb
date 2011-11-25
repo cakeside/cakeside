@@ -8,6 +8,7 @@ class CreationsController < ApplicationController
   # GET /creations/1
   def show
     @creation = Creation.find(params[:id])
+    @profile = @creation.user
     @creations = @creation.user.creations.page(params[:page]).per(8)
   end
 

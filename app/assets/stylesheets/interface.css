@@ -18,7 +18,8 @@ a:hover { color: #000; }
 
 /* body */
 #bd { background: #fff; padding-top: 0px; }
-#bd .sidebar .summary { background: #000; color: #fff; padding: 10px;  position: relative; }
+#bd .sidebar .summary { background: #000; color: #fff; padding: 5px; }
+#bd .sidebar .summary img { margin-left: auto; margin-right:auto;display:block; }
 #bd .sidebar .summary p { margin-bottom: 5px; }
 #bd .sidebar .menu { font-size: 20px; }
 #bd .sidebar .menu h1 { padding: 20px 0 12px 30px;  }

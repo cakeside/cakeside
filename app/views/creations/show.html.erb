@@ -2,41 +2,38 @@
   <%= @creation.name %> by <%= @creation.user.name %>
 <% end %>
 
-<div class="grid_12 alpha omega">
+<% content_for :sidebar do %>
+  <%= render "shared/their_profile_sidebar" %>
+<% end %>
+
+<div class="grid_9">
   <% if @creation.user == current_user %>
     <h1><%= @creation.name %> <%= link_to '(edit)', edit_creation_path(@creation), :class => 'smallFont' %> by <em> <%= link_to @creation.user.name, profile_path(@creation.user) %> </em> </h1>
   <% else %>
     <h1><%= @creation.name %> by <em> <%= link_to @creation.user.name, profile_path(@creation.user) %> </em> </h1>
   <% end %>
-
-  <div class="grid_5 alpha">
-    <p><%= @creation.story %></p>
-    <h3>categories</h3>
-    <ul>
-      <% @creation.categories.each do |category| %>
-        <li><%= category.name %></li>
-      <% end %>
-    </ul>
-  </div>
-
-  <div class="grid_4 omega">
-    <%= image_tag @creation.image_url.to_s, :class => ['photo'], :alt => @creation.name %>
-    <div class="grid_3 alpha">
-      <p> submitted on: <%= @creation.created_at %> </p>
-    </div>
-    <div class="grid_1 omega">
-      <% if @creation.user == current_user %>
-        <%= button_to 'Delete', @creation, :method => :delete %>
-      <% else %>
-        &nbsp;
-      <% end %>
-    </div>
-  </div>
 </div>
+<div class="clear"></div>
 
-<div class="clear" ></div>
-<div class="grid_12 alpha omega">
+<div class="grid_9 alpha omega">
+
+  <%= image_tag @creation.image_url.to_s, :class => ['photo'], :alt => @creation.name %>
+
+</div>
+<div class="clear"></div>
+
+<div class="grid_9">
+  <p> submitted on: <%= @creation.created_at %>
+    <% @creation.categories.each do |category| %>
+      <a href="/categories/<%= category.slug %>"><%= category.name %></a>
+    <% end %> 
+  </p>
+  <p><%= @creation.story %></p>
+</div>
+<div class="clear"></div>
+
+<div class="grid_9 alpha omega">
   <h3> other creations by <%= @creation.user.name.to_s %> <em><%= link_to 'view all', profile_path(@creation.user) %> </em> </h3>
   <%= render "shared/creation_thumbs" %>
 </div>
-<div class="clear" />
+<div class="clear"></div>
