@@ -8,7 +8,7 @@
 
 <div class="grid_9 alpha omega">
     <h1><%= @profile.name %></h1>
-    <p><em>A member since <%= @profile.created_at %>, with <%= @profile.creations.length %> creations.</em></p>
+    <p><em>A member since <%= @profile.created_at.to_s :foomat %>, with <%= @profile.creations.length %> creations.</em></p>
 </div>
 <div class="clear"></div>
 <%= render "shared/creation_thumbs" %>
