@@ -1,7 +1,10 @@
 
 <div class="summary">
   <img src="<%= avatar_url current_user %>&amp;s=200" alt="<%= current_user.name %>" class="photo" />
-  <p><%= current_user.name %></p>
+  <a href="http://en.gravatar.com/" target="_blank" class="fright" style="color:#fff;">(change)</a>
+  <p><%= current_user.name %>   </p>
+  <p>member since: <%= current_user.created_at.to_s :foomat %></p>
+  <p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
 </div><!-- /.summary -->
 
 <div class="menu">
