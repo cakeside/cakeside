@@ -2,7 +2,7 @@
   <%= @creation.name %> by <%= @creation.user.name %>
 <% end %>
 
-<div class="grid_9 alpha omega">
+<div class="grid_12 alpha omega">
   <% if @creation.user == current_user %>
     <h1><%= @creation.name %> <%= link_to '(edit)', edit_creation_path(@creation), :class => 'smallFont' %> by <em> <%= link_to @creation.user.name, profile_path(@creation.user) %> </em> </h1>
   <% else %>
@@ -35,17 +35,8 @@
 </div>
 
 <div class="clear" ></div>
-<!--
-<div class="grid_9 alpha omega">
+<div class="grid_12 alpha omega">
   <h3> other creations by <%= @creation.user.name.to_s %> <em><%= link_to 'view all', profile_path(@creation.user) %> </em> </h3>
-  <% other_creations = @creation.user.creations.last(4).reverse %>
-  <% other_creations.each do |creation| %>
-    <% if creation != @creation %>
-      <h2><%= @creation.name %></h2>
-      <a href="<%= url_for creation %>"><%= image_tag creation.image_url.to_s, :alt => creation.name %></a>
-      <p><%= creation.short_story %> <%= link_to 'more', creation %></p>
-    <% end %>
-  <% end %>
+  <%= render "shared/creation_thumbs" %>
 </div>
 <div class="clear" />
-  -->
