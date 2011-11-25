@@ -18,10 +18,8 @@ a:hover { color: #000; }
 
 /* body */
 #bd { background: #fff; padding-top: 0px; }
-#bd .sidebar .summary { background: #990000; color: #fff; padding: 10px; margin-left: -10px; margin-bottom: 20px; position: relative; }
+#bd .sidebar .summary { background: #000; color: #fff; padding: 10px;  position: relative; }
 #bd .sidebar .summary p { margin-bottom: 5px; }
-#bd .sidebar .summary p.credits { font-size: 28px; margin-bottom: 10px; line-height: 28px; }
-#bd .sidebar .summary .shaddow { position: absolute; left: -15px; top: 65px; }
 #bd .sidebar .menu { font-size: 20px; }
 #bd .sidebar .menu h1 { padding: 20px 0 12px 30px;  }
 #bd .sidebar .menu ul.level_2 { height: 375px; margin-bottom: 0; padding: 10px 0 70px 0; background: url(/assets/sidebar.png) no-repeat;  }

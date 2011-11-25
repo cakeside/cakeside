@@ -2,24 +2,9 @@
   Welcome to the CakeSide
 <% end %>
 
-<h1>Recently Added Creations</h1>
-<% @creations.each_with_index do |creation, index| %>
-  <% if index % 4 == 0  %>
-    <div class="grid_2 alpha">
-      <a href="<%= url_for creation %>"><%= image_tag creation.image.thumb.url, :alt => creation.name %></a>
-      <p><%= creation.name %> <br /><%= link_to creation.user.name, creation %></p>
-    </div>
-  <% elsif (index+1) % 4 == 0  %>
-    <div class="grid_2 omega">
-      <a href="<%= url_for creation %>"><%= image_tag creation.image.thumb.url, :alt => creation.name %></a>
-      <p><%= creation.name %> <br /><%= link_to creation.user.name, creation %></p>
-    </div>
-    <div class="clear"></div>
-  <% else %>
-    <div class="grid_2">
-      <a href="<%= url_for creation %>"><%= image_tag creation.image.thumb.url, :alt => creation.name %></a>
-      <p><%= creation.name %> <br /><%= link_to creation.user.name, creation %></p>
-    </div>
-  <% end %>
+<% content_for :sidebar do %>
+  <%= render "shared/categories_sidebar" %>
 <% end %>
-<div class="clear"></div>
+
+<h1>Recently Added Creations</h1>
+<%= render "shared/creation_thumbs" %>

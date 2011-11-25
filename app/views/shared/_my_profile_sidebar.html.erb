@@ -1,0 +1,14 @@
+
+<div class="summary">
+  <img src="<%= avatar_url current_user %>&amp;s=200" alt="<%= current_user.name %>" />
+  <p><%= current_user.name %></p>
+</div><!-- /.summary -->
+
+<div class="menu">
+  <ul class="level_2 nojot">
+    <li class="level_2"> <%= link_to "My Creations", profiles_mine_path %></li>
+    <li class="level_2"> <%= link_to "Add Creation", new_creation_path %></li>
+    <li class="level_2"><a href="http://en.gravatar.com/" target="_blank">Change My Photo</a></li>
+    <li class="level_2"> <%= link_to "Edit", edit_user_registration_path %> </li>
+  </ul>
+</div><!-- /.menu -->

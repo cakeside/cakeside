@@ -1,6 +1,12 @@
 <% content_for :title do %>
   Update My Account
 <% end %>
+<% content_for :stylesheets do %>
+<% end %>
+
+<% content_for :sidebar do %>
+  <%= render "shared/my_profile_sidebar" %>
+<% end %>
 
 <div class="grid_9 alpha omega">
   <div class="grid_6 alpha">
@@ -47,7 +53,6 @@
     <div class="helpbox">
       <h4>other</h4>
       <ul>
-        <li><%= link_to "my other authentications", authentications_path %></li>
         <li><a href="http://en.gravatar.com/">change your photo</a></li>
       </ul>
     </div>

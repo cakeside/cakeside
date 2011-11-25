@@ -9,4 +9,8 @@ class ProfilesController < ApplicationController
     @profile = User.find(params[:id])
   end
 
+  def mine
+    @creations = current_user.creations.page(params[:page]).per(16)
+  end
+
 end

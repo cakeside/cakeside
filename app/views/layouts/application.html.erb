@@ -6,6 +6,7 @@
     <link rel="shortcut icon" href="/favicon.ico">
     <link href='http://fonts.googleapis.com/css?family=Julee' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag "application" %>
+    <style type="text/css"><%= yield :stylesheets %></style>
     <%= csrf_meta_tags %>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <%= javascript_include_tag "application" %>
@@ -32,7 +33,9 @@
         </div>
         <div class="grid_2 omega">
           <% if user_signed_in? %>
-            Hi <%= link_to current_user.name, edit_user_registration_path %> <%= link_to "Sign Out", destroy_user_session_path %>
+
+            Hi <%= link_to current_user.name, profiles_mine_path %>
+            <%= link_to "Sign Out", destroy_user_session_path %>
           <% else %>
             <%= link_to "Sign Up", new_user_registration_path %> or <%= link_to "Sign In", new_user_session_path %>
           <% end %>
@@ -57,17 +60,10 @@
         <div class="grid_2 omega"> &nbsp; </div>
         <div class="clear"></div>
 
-        <div class="grid_4 sidebar">
-          <div class="menu">
-            <h1 style="background: url(/assets/Menu.png) no-repeat;">Categories</h1>
-            <ul class="level_2 nojot">
-              <% Category.all.each do |category| %>
-                <li class="level_2"><a href='/categories/<%= category.slug %>'><%= category.name %></a></li>
-              <% end %>
-            </ul>
-          </div><!-- /.menu -->
+        <div class="grid_3 sidebar">
+          <%= yield :sidebar %>
         </div>
-        <div class="grid_8 content">
+        <div class="grid_9 content">
           <p class="notice"><%= notice %></p>
           <p class="alert"><%= alert %></p>
           <%= yield %>

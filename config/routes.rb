@@ -11,6 +11,7 @@ Cake::Application.routes.draw do
   # /profiles
   get "profiles/index"
   get "profiles/show"
+  get "profiles/mine"
   match 'profiles/show/:id' => 'profiles#show', :as => 'profile', :method => 'GET'
 
   # /search
@@ -23,10 +24,6 @@ Cake::Application.routes.draw do
   # /categories
   match 'categories/:id' => 'categories#show', :method => 'GET'
   get 'categories/show'
-
-  # /authentications
-  match 'authentications' => 'authentications#index', :method => 'GET'
-  match '/auth/:provider/callback' => 'authentications#create'
 
   # /users
   devise_for :users, :controllers => {:registrations => 'registrations'}
