@@ -6,37 +6,40 @@
   <%= render "shared/their_profile_sidebar" %>
 <% end %>
 
-<div class="grid_9">
   <% if @creation.user == current_user %>
     <h1><%= @creation.name %> <%= link_to '(edit)', edit_creation_path(@creation), :class => 'smallFont' %> by <em> <%= link_to @creation.user.name, profile_path(@creation.user) %> </em> </h1>
   <% else %>
     <h1><%= @creation.name %> by <em> <%= link_to @creation.user.name, profile_path(@creation.user) %> </em> </h1>
   <% end %>
-</div>
-<div class="clear"></div>
 
-<div class="grid_9 alpha omega">
 
-  <%= image_tag @creation.image_url.to_s, :class => ['photo'], :alt => @creation.name %>
-
-</div>
-<div class="clear"></div>
-
-<div class="grid_9">
-  <div class="fright">
-    <iframe src="http://www.facebook.com/plugins/like.php?href=<%= request.url %>" scrolling="no" frameborder="0" style="border:none; width:350px; height:30px"></iframe>
+<div class="row">
+  <div class="span12">
+  <ul class="media-grid">
+    <li>
+      <a href="#"> <img class="thumbnail" src="<%= @creation.image_url.to_s%>" alt="<%= @creation.name %>"> </a>
+    </li>
+  </ul>
   </div>
-  <p> submitted on: <%= @creation.created_at.to_s :foomat %>
-    <% @creation.categories.each do |category| %>
-      <span class="label notice"> <a href="/categories/<%= category.slug %>"><%= category.name %></a> </span>
-    <% end %> 
-  </p>
-  <p><%= @creation.story %></p>
+  <div class="span4">
+    <p><%= @creation.story %></p>
+  </div>
 </div>
-<div class="clear"></div>
+<div class="row">
+  <div class="span8">
+    <iframe src="http://www.facebook.com/plugins/like.php?href=<%= request.url %>" scrolling="no" frameborder="0" style="border:none; width:350px; height:30px"></iframe>
+    </p>
+  </div>
+  <div class="span6">
+    <p> submitted on: <%= @creation.created_at.to_s :foomat %>
+      <% @creation.categories.each do |category| %>
+        <span class="label notice"> <a href="/categories/<%= category.slug %>"><%= category.name %></a> </span>
+      <% end %> 
+  </div>
+</div>
 
-<div class="grid_9 alpha omega">
+<div class="row">
   <h3> other creations by <%= @creation.user.name.to_s %> <em><%= link_to 'view all', profile_path(@creation.user) %> </em> </h3>
-  <%= render "shared/creation_thumbs" %>
 </div>
-<div class="clear"></div>
+
+<%= render "shared/creation_thumbs" %>
