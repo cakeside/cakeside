@@ -1,17 +1,11 @@
+<h2><%= current_user.name %></h2>
+<img src="<%= avatar_url current_user %>&amp;s=200" alt="<%= current_user.name %>" class="photo" />
+<p>member since: <%= current_user.created_at.to_s :foomat %></p>
+<p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
 
-<div class="summary">
-  <img src="<%= avatar_url current_user %>&amp;s=200" alt="<%= current_user.name %>" class="photo" />
-  <a href="http://en.gravatar.com/" target="_blank" class="fright" style="color:#fff;">(change)</a>
-  <p><%= current_user.name %>   </p>
-  <p>member since: <%= current_user.created_at.to_s :foomat %></p>
-  <p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
-</div><!-- /.summary -->
-
-<div class="menu">
-  <ul class="level_2 nojot">
-    <li class="level_2"> <%= link_to "My Creations", profiles_mine_path %></li>
-    <li class="level_2"> <%= link_to "Share Creation", new_creation_path %></li>
-    <li class="level_2"><a href="http://en.gravatar.com/" target="_blank">Change My Photo</a></li>
-    <li class="level_2"> <%= link_to "Edit", edit_user_registration_path %> </li>
-  </ul>
-</div><!-- /.menu -->
+<ul>
+    <li> <%= link_to "My Creations", profiles_mine_path %></li>
+    <li> <%= link_to "Share Creation", new_creation_path %></li>
+    <li><a href="http://en.gravatar.com/" target="_blank">Change My Photo</a></li>
+    <li> <%= link_to "Edit", edit_user_registration_path %> </li>
+</ul>
