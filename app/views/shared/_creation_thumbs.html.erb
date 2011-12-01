@@ -1,40 +1,37 @@
+<ul class="media-grid">
+<% @creations.each do |creation| %>
+  <li>
+  <a href="<%= url_for creation %>"> <img class="thumbnail" src="<%= creation.image.thumb.url %>" alt="<%= creation.name %>"> </a>
+  </li>
+<% end %>
+</ul>
+
 <% @creations.each_with_index do |creation, index| %>
   <% if index % 4 == 0  %>
     <div class="row">
-
       <div class="span4">
         <h2><%= creation.name %></h2>
-        <p> 
-        <!--<a href="<%= url_for creation %>"><%= image_tag creation.image.thumb.url, :alt => creation.name %></a> -->
-        <%= creation.short_story %>
-        </p>
+        <p> <%= creation.short_story %> </p>
         <p><a class="btn" href="<%= url_for creation %>">View details &raquo;</a></p>
       </div>
-
   <% elsif (index+1) % 4 == 0  %>
-
       <div class="span4">
         <h2><%= creation.name %></h2>
-        <p> 
-        <!--<a href="<%= url_for creation %>"><%= image_tag creation.image.thumb.url, :alt => creation.name %></a> -->
-        <%= creation.short_story %>
-        </p>
+        <p> <%= creation.short_story %> </p>
         <p><a class="btn" href="<%= url_for creation %>">View details &raquo;</a></p>
       </div>
-
     </div><!-- end row -->
     <hr>
   <% else %>
-
       <div class="span4">
         <h2><%= creation.name %></h2>
-        <p> 
-        <!--<a href="<%= url_for creation %>"><%= image_tag creation.image.thumb.url, :alt => creation.name %></a> -->
-        <%= creation.short_story %>
-        </p>
+        <p> <%= creation.short_story %> </p>
         <p><a class="btn" href="<%= url_for creation %>">View details &raquo;</a></p>
       </div>
-
   <% end %>
 <% end %>
+
+
 <p> <%= paginate @creations %> </p>
+
+
