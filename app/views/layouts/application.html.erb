@@ -1,91 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <title><%= yield(:title) || "CakeSide" %></title>
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link href='http://fonts.googleapis.com/css?family=Julee' rel='stylesheet' type='text/css'>
-    <%= stylesheet_link_tag "application" %>
-    <style type="text/css"><%= yield :stylesheets %></style>
+    <title>Bootstrap, from Twitter</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- Le styles -->
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+    <style type="text/css">
+      body { padding-top: 60px; }
+    </style>
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
     <%= csrf_meta_tags %>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <%= javascript_include_tag "application" %>
-    <script type="text/javascript">
-      $(function() {
-          <%= yield :script %>
-      });
-    </script>
-    <%= yield :head %>
   </head>
   <body>
-    <div id="hd">
-      <div class="container_12" style="background: #fff url(/assets/header.png) no-repeat;">
-        <div class="grid_5 alpha">
-          <div class="logo">
-            <a href="<%= url_for home_index_path %>"><img src="/assets/cakeside-logo.png" alt="cakeside" width="150" /></a>
-          </div>
-        </div>
-        <div class="grid_2" style="text-align: center;">
-          <%= link_to "Add My Creation", new_creation_path %>
-        </div>
-        <div class="grid_3">
-          &nbsp;
-        </div>
-        <div class="grid_2 omega">
-          <% if user_signed_in? %>
 
-            Hi <%= link_to current_user.name, profiles_mine_path %>
-            <%= link_to "Sign Out", destroy_user_session_path %>
-          <% else %>
-            <%= link_to "Sign Up", new_user_registration_path %> or <%= link_to "Sign In", new_user_session_path %>
-          <% end %>
-        </div>
-        <div class="clear"></div>
-      </div>
-    </div><!-- /#hd -->
-    <div id="bd">
-      <div class="container_12">
-        <div class="grid_6 alpha search"> 
-          <%= form_tag(search_index_path, :method => "get", :name => "search") do %>
-            <input name="q" type="text" placeholder="search" />
-            <input type="submit" value="" />
-          <% end %>
-        </div>
-        <div class="grid_2" style="background: url(/assets/rectangle.png) no-repeat;height:36px;text-align:center;"> 
-          <%= link_to "Artist", all_profiles_path, :style => "padding: 5px 5px 0px 0px;" %> 
-        </div>
-        <div class="grid_2" style="background: url(/assets/rectangle.png) no-repeat;height:36px;text-align:center;">
-          Help 
-        </div>
-        <div class="grid_2 omega"> &nbsp; </div>
-        <div class="clear"></div>
+   <div class="topbar" data-dropdown="dropdown" >
+      <div class="topbar-inner">
+        <div class="container">
+          <h3><a href="<%= url_for home_index_path %>"><img src="/assets/cakeside-logo.png" alt="cakeside" height="20" />cakeside</a></h3>
 
-        <div class="grid_3 sidebar">
-          <%= yield :sidebar %>
-        </div>
-        <div class="grid_9 content">
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
-          <%= yield %>
-        </div>
-      </div>
-    </div><!-- /#bd -->
-    <div id="ft">
-      <div class="container_12">
-        <div class="grid_3">
-          <h3>Help</h3>
-          <p>support</p>
-          <img src="/assets/arx/icon-phone.png" /><span class="phone">1-800-cakeside</span>
-        </div>
-        <div class="grid_9">
-          <h3>Quick Links</h3>
-          <ul class="nojot">
-            <li><a href="/privacy.html">Privacy Policy</a></li>
-            <li><a href="/terms.html">Terms and Conditions</a></li>
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><%= link_to "Share", new_creation_path %></li>
+            <li><%= link_to "Artist", all_profiles_path  %></li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle">Help</a>
+              <ul class="dropdown-menu">
+                <li><a href="/privacy.html">Privacy Policy</a></li>
+                <li><a href="/terms.html">Terms and Conditions</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Another link</a></li>
+              </ul>
+            </li>
+
           </ul>
+          <%= form_tag(search_index_path, :method => "get", :name => "search", :class => "pull-left") do %>
+            <input name="q" type="text" placeholder="Search" />
+            <input type="submit" value="search" />
+          <% end %>
+          <ul class="nav secondary-nav">
+            <li class="dropdown">
+          <% if user_signed_in? %>
+            <a href="<%= url_for profiles_mine_path %>" class="dropdown-toggle"><%= current_user.name %></a>
+          <% else %>
+            <a href="<%= url_for new_user_session_path %>" class="dropdown-toggle">sign in</a>
+            <!-- 
+            <a href="<%= url_for new_user_registration_path %>" class="dropdown-toggle">sign up</a>
+            -->
+          <% end %>
+              <ul class="dropdown-menu">
+                <li><a href="#">Secondary link</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Another link</a></li>
+              </ul>
+            </li>
+          </ul>
+
+        </div>
+      </div><!-- /topbar-inner -->
+    </div><!-- /topbar -->
+
+
+
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>Hello, world!</h1>
+        <p>Vestibulum id ligula porta felis euismod semper. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+        <p><a class="btn primary large">Learn more &raquo;</a></p>
+      </div>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="span6">
+          <h2>Heading</h2>
+          <p>Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+        </div>
+        <div class="span5">
+          <h2>Heading</h2>
+           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
+       </div>
+        <div class="span5">
+          <h2>Heading</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn" href="#">View details &raquo;</a></p>
         </div>
       </div>
-    </div><!-- /#ft -->
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+
+      <footer>
+        <p>&copy; Cakeside 2011</p>
+      </footer>
+
+    </div> <!-- /container -->
+
     <script type="text/javascript">
       var _gaq=[['_setAccount','UA-24090020-1'],['_trackPageview']];
       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
