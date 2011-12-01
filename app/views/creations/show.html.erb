@@ -28,7 +28,7 @@
   </div>
   <p> submitted on: <%= @creation.created_at.to_s :foomat %>
     <% @creation.categories.each do |category| %>
-      <a href="/categories/<%= category.slug %>"><%= category.name %></a>
+      <span class="label notice"> <a href="/categories/<%= category.slug %>"><%= category.name %></a> </span>
     <% end %> 
   </p>
   <p><%= @creation.story %></p>
