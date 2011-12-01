@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <!-- Le styles -->
     <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
@@ -25,91 +25,90 @@
   </head>
   <body>
 
-   <div class="topbar" data-dropdown="dropdown" >
+    <div class="topbar" data-dropdown="dropdown" >
       <div class="topbar-inner">
-        <div class="container">
-          <h3><a href="<%= url_for home_index_path %>"><img src="/assets/cakeside-logo.png" alt="cakeside" height="20" />cakeside</a></h3>
-
+        <div class="container-fluid">
+          <a class="brand" href="<%= url_for home_index_path %>">Cake<em>side</em></a>
           <ul class="nav">
             <li class="active"><a href="#">Home</a></li>
             <li><%= link_to "Share", new_creation_path %></li>
             <li><%= link_to "Artist", all_profiles_path  %></li>
-
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle">Help</a>
-              <ul class="dropdown-menu">
-                <li><a href="/privacy.html">Privacy Policy</a></li>
-                <li><a href="/terms.html">Terms and Conditions</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Another link</a></li>
-              </ul>
+            <a href="#" class="dropdown-toggle">Help</a>
+            <ul class="dropdown-menu">
+              <li><a href="/privacy.html">Privacy Policy</a></li>
+              <li><a href="/terms.html">Terms and Conditions</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Another link</a></li>
+            </ul>
             </li>
-
           </ul>
+
           <%= form_tag(search_index_path, :method => "get", :name => "search", :class => "pull-left") do %>
             <input name="q" type="text" placeholder="Search" />
             <input type="submit" value="search" />
           <% end %>
-          <ul class="nav secondary-nav">
-            <li class="dropdown">
-          <% if user_signed_in? %>
-            <a href="<%= url_for profiles_mine_path %>" class="dropdown-toggle"><%= current_user.name %></a>
-          <% else %>
-            <a href="<%= url_for new_user_session_path %>" class="dropdown-toggle">sign in</a>
-            <!-- 
-            <a href="<%= url_for new_user_registration_path %>" class="dropdown-toggle">sign up</a>
-            -->
-          <% end %>
-              <ul class="dropdown-menu">
-                <li><a href="#">Secondary link</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Another link</a></li>
-              </ul>
-            </li>
-          </ul>
 
+          <% if user_signed_in? %>
+            <p class="pull-right">Logged in as <%= link_to profiles_mine_path current_user.name %></p>
+          <% else %>
+            <p class="pull-right">
+              <a href="<%= url_for new_user_session_path %>">sign in</a> or
+              <a href="<%= url_for new_user_registration_path %>">sign up</a>
+            </p>
+          <% end %>
         </div>
       </div><!-- /topbar-inner -->
     </div><!-- /topbar -->
 
+    <div class="container-fluid">
 
-
-
-    <div class="container">
-
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
-        <h1>Hello, world!</h1>
-        <p>Vestibulum id ligula porta felis euismod semper. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-        <p><a class="btn primary large">Learn more &raquo;</a></p>
-      </div>
-
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="span6">
-          <h2>Heading</h2>
-          <p>Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>
-        <div class="span5">
-          <h2>Heading</h2>
-           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-       </div>
-        <div class="span5">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+      <div class="sidebar">
+        <div class="well">
+          <h5>Sidebar</h5>
+          <ul>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
         </div>
       </div>
 
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
+      <div class="content">
+        <!-- Main hero unit for a primary marketing message or call to action -->
+        <div class="hero-unit">
+          <h1>Hello, world!</h1>
+          <p>Vestibulum id ligula porta felis euismod semper. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+          <p><a class="btn primary large">Learn more &raquo;</a></p>
+        </div>
+
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="span6">
+            <h2>Heading</h2>
+            <p>Etiam porta sem malesuada magna mollis euismod. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
+            <p><a class="btn" href="#">View details &raquo;</a></p>
+          </div>
+          <div class="span5">
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn" href="#">View details &raquo;</a></p>
+          </div>
+          <div class="span5">
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn" href="#">View details &raquo;</a></p>
+          </div>
+        </div>
+
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+      </div>
 
       <footer>
-        <p>&copy; Cakeside 2011</p>
+      <p>&copy; Cakeside 2011</p>
       </footer>
 
     </div> <!-- /container -->
@@ -119,6 +118,6 @@
       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
        s.parentNode.insertBefore(g,s)}(document,'script'));
-    </script>
-  </body>
-</html>
+      </script>
+    </body>
+  </html>
