@@ -11,30 +11,55 @@
   <% end %>
 
   <fieldset>
-    <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name, :class => "forms" %>
-    </p>
-    <p>
-    <%= f.label :image, "Upload Image" %><br />
-    <%= f.file_field :image, :class => "forms" %>
-    </p>
-    <p>
-    <%= f.label :remote_image_url, "Or Image URL" %><br />
-    <%= f.text_field :remote_image_url, :class => "forms" %>
-    </p>
-    <p>
-    <%= f.label :story %><br />
-    <%= f.text_area :story, :class => "forms"  %>
-    </p>
-    <% for category in Category.all %>
-      <div>
-        <label>
-          <%= check_box_tag "creation[category_ids][]", category.id, @creation.categories.include?(category) %>
-          <%= category.name %>
-        </label>
+    <legend>Share a new creation</legend>
+    <div class="clearfix">
+      <%= f.label :name %>
+      <div class="input">
+        <%= f.text_field :name, :class => "xlarge" %>
       </div>
-    <% end %>
-    <input type="submit" id="submit" name="submit" value="share" />
+    </div><!-- /clearfix -->
+    <div class="clearfix">
+      <%= f.label :image, "Upload Image" %>
+      <div class="input">
+        <%= f.file_field :image, :class => "input-file" %>
+      </div>
+    </div><!-- /clearfix -->
+    <div class="clearfix">
+      <%= f.label :remote_image_url, "Or Image URL" %><br />
+      <div class="input">
+        <%= f.text_field :remote_image_url, :class=>"xlarge" %>
+      </div>
+    </div><!-- /clearfix -->
+    <div class="clearfix">
+      <%= f.label :story %><br />
+      <div class="input">
+        <%= f.text_area :story, :class =>"xxlarge", :rows => "3" %>
+        <span class="help-block">
+          Block of help text to describe the field above if need be.
+        </span>
+      </div>
+    </div><!-- /clearfix -->
+    <div class="clearfix">
+      <label id="optionsCheckboxes">Categories</label>
+      <div class="input">
+        <ul class="inputs-list">
+          <% for category in Category.all %>
+            <li>
+            <label>
+              <%= check_box_tag "creation[category_ids][]", category.id, @creation.categories.include?(category) %>
+              <span><%= category.name %></span>
+            </label>
+            </li>
+          <% end %>
+        </ul>
+        <span class="help-block">
+          <strong>Note:</strong> Labels surround all the options for much larger click areas and a more usable form.
+        </span>
+      </div>
+    </div><!-- /clearfix -->
+
+    <div class="actions">
+      <input type="submit" class="btn primary" value="Save changes">&nbsp;<button type="reset" class="btn">Cancel</button>
+    </div>
   </fieldset>
 <% end %>

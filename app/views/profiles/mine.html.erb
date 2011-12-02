@@ -8,5 +8,11 @@
   <%= render "shared/my_profile_sidebar" %>
 <% end %>
 
-<h1>My Creations</h1>
+<ul class="tabs">
+  <li class="active"> <%= link_to "Profile", profiles_mine_path %></li>
+  <li><a href="#">Messages</a></li>
+  <li> <%= link_to "Settings", edit_user_registration_path %> </li>
+  <li><a href="#">Contact</a></li>
+</ul>
+
 <%= render "shared/creation_thumbs" %>
