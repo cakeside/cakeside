@@ -1,30 +1,40 @@
 <% content_for :title do %>
-  All <%= @profiles.length %> profiles
+  <%= pluralize @profiles.length, "artist" %>
 <% end %>
 
-<div class="grid_12 alpha omega">
-  <h1>All <%= @profiles.length %> profiles</h1>
-  <table class="simple-table">
-    <thead>
-      <tr>
-        <th></th>
-        <th>name</th>
-        <th>creations</th>
-        <th>member since</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @profiles.each do |profile| %>
+<div class="row">
+  <div class="span16">
+    <h1><%= pluralize @profiles.length, "artist" %></h1>
+    <table class="bordered-table zebra-striped">
+      <thead>
         <tr>
-          <td><a href="<%= url_for profile_path(profile) %>"><%= image_tag avatar_url(profile), :class => "photo", :alt => profile.name %></a></td>
-          <td><%= link_to profile.name, profile_path(profile) %></td>
-          <td><a href="<%= url_for profile_path(profile) %>"><%= profile.creations.length %> creations</a></td>
-          <td><%= profile.created_at.to_s :foomat %></td>
+          <th></th>
+          <th>name</th>
+          <th>creations</th>
+          <th>member since</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-
+      </thead>
+      <tbody>
+        <% @profiles.each do |profile| %>
+          <tr>
+            <td>
+              <ul class="media-grid">
+                <li>
+                <a href="<%= url_for profile_path(profile) %>">
+                  <%= image_tag avatar_url(profile), :class => "thumbnail", :alt => profile.name %>
+                </a>
+                </li>
+              </ul>
+            </td>
+            <td><%= link_to profile.name, profile_path(profile) %></td>
+            <td><a href="<%= url_for profile_path(profile) %>"><%= profile.creations.length %> creations</a></td>
+            <td><%= profile.created_at.to_s :foomat %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
   <p> <%= paginate @profiles %> </p>
 </div>
-<div class="clear" />
