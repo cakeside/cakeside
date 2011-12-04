@@ -10,9 +10,24 @@
 
 <ul class="tabs">
   <li class="active"> <%= link_to "Profile", profiles_mine_path %></li>
+  <li> <%= link_to "Share", new_creation_path %></li>
   <li><a href="#">Messages</a></li>
   <li> <%= link_to "Settings", edit_user_registration_path %> </li>
   <li><a href="#">Contact</a></li>
 </ul>
 
-<%= render "shared/creation_thumbs" %>
+<div class="row">
+  <div class="span4">
+    <div class="media-grid">
+      <a href="<%= url_for profile_path(current_user) %>"><img src="<%= avatar_url current_user %>&amp;s=200" alt="<%= current_user.name %>" /></a>
+    </div>
+    <h2><%= current_user.name %></h2>
+    <p>member since: <%= current_user.created_at.to_s :foomat %></p>
+    <p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
+    <a href="http://en.gravatar.com/" target="_blank">Change My Photo</a>
+  </div>
+  <div class="span12">
+    <%= render "shared/creation_image_gallery" %>
+  </div>
+</div>
+<%= render "shared/creation_text_gallery" %>

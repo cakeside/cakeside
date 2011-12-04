@@ -20,5 +20,14 @@
 <%#   <p><a class="btn primary large">Learn more &raquo;</a></p>%>
 <%# </div>%>
 
-<h2>Share My Latest Creation</h2>
-<%= render 'form' %>
+
+<div class="row">
+  <div class="span12">
+    <%= render 'form' %>
+  </div>
+  <div class="span4">
+    <div class="media-grid">
+      <a href="<%= url_for profile_path(current_user) %>"><img src="<%= avatar_url current_user %>&amp;s=200" alt="<%= current_user.name %>" /></a>
+    </div>
+  </div>
+</div>

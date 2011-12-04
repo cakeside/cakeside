@@ -2,44 +2,48 @@
   <%= @creation.name %> by <%= @creation.user.name %>
 <% end %>
 
-<% content_for :sidebar do %>
-  <%= render "shared/their_profile_sidebar" %>
-<% end %>
-
+<div class="page-header">
   <% if @creation.user == current_user %>
-    <h1><%= @creation.name %> <%= link_to '(edit)', edit_creation_path(@creation), :class => 'smallFont' %> by <em> <%= link_to @creation.user.name, profile_path(@creation.user) %> </em> </h1>
+    <h1><%= @creation.name %> <small><%= link_to '(edit)', edit_creation_path(@creation) %> by <%= link_to @creation.user.name, profile_path(@creation.user) %> </small> </h1>
   <% else %>
-    <h1><%= @creation.name %> by <em> <%= link_to @creation.user.name, profile_path(@creation.user) %> </em> </h1>
+    <h1><%= @creation.name %> <small> by <%= link_to @creation.user.name, profile_path(@creation.user) %> </small> </h1>
   <% end %>
-
+</div>
 
 <div class="row">
-  <div class="span12">
-  <ul class="media-grid">
-    <li>
-      <a href="#"> <img class="thumbnail" src="<%= @creation.image_url.to_s%>" alt="<%= @creation.name %>"> </a>
-    </li>
-  </ul>
-  </div>
-  <div class="span4">
-    <p><%= @creation.story %></p>
+  <div class="span16">
+    <div class="media-grid">
+      <a href="<%= url_for creation_path(@creation) %>"><img class="thumbnail" src="<%= @creation.image_url.to_s%>" alt="<%= @creation.name %>"></a>
+    </div>
   </div>
 </div>
+
 <div class="row">
-  <div class="span8">
+  <div class="span11">
     <iframe src="http://www.facebook.com/plugins/like.php?href=<%= request.url %>" scrolling="no" frameborder="0" style="border:none; width:350px; height:30px"></iframe>
     </p>
   </div>
-  <div class="span6">
+  <div class="span5">
     <p> submitted on: <%= @creation.created_at.to_s :foomat %>
-      <% @creation.categories.each do |category| %>
-        <span class="label notice"> <a href="/categories/<%= category.slug %>"><%= category.name %></a> </span>
-      <% end %> 
+    <% @creation.categories.each do |category| %>
+      <span class="label notice"> <a href="/categories/<%= category.slug %>"><%= category.name %></a> </span>
+    <% end %> 
   </div>
 </div>
 
 <div class="row">
-  <h3> other creations by <%= @creation.user.name.to_s %> <em><%= link_to 'view all', profile_path(@creation.user) %> </em> </h3>
+  <div class="span16">
+    <h3>What's the story morning glory?</h3>
+    <p><%= @creation.story %></p>
+  </div>
 </div>
 
-<%= render "shared/creation_thumbs" %>
+<div class="row">
+  <div class="span12">
+    <%= render "shared/creation_image_gallery" %>
+  </div>
+  <div class="span4 media-grid">
+    <a href="<%= url_for profile_path @creation.user %>"><img src="<%= avatar_url @creation.user %>&amp;s=200" alt="<%= @creation.user.name %>" /></a>
+  </div>
+</div>
+<%= render "shared/creation_text_gallery" %>

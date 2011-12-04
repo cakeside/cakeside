@@ -1,16 +1,21 @@
 <% content_for :title do %>
   Editing creation <%= @creation.name %>
 <% end %>
-<% content_for :script do %>
-  $('label[data-editable="false"]').addClass('hidden');
-  $('input[data-editable="false"]').addClass('hidden');
-<% end %>
 
-
-<div class="grid_9 alpha omega">
-  <%= link_to 'Show', @creation, :class => 'fright' %>
-  <h1>Editing creation <em><%= @creation.name %></em></h1>
-
-  <%= image_tag @creation.image_url.to_s, :class => ['photo'] %>
-  <%= render 'form' %>
+<div class="row">
+  <div class="span16">
+    <h1>Editing creation <em><%= @creation.name %></em></h1>
+  </div>
+</div>
+<div class="row">
+  <div class="span4">
+    <div class="media-grid">
+      <a href="<%= url_for creation_path(@creation) %>">
+        <%= image_tag @creation.image_url.to_s, :class => "thumbnail", :style => "width:235px;" %>
+      </a>
+    </div>
+  </div>
+  <div class="span12">
+    <%= render 'form' %>
+  </div>
 </div>

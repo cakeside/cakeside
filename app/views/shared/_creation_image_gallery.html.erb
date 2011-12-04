@@ -1,0 +1,5 @@
+<ul class="media-grid">
+  <% @creations.each do |creation| %>
+    <li><a href="<%= url_for creation %>"><img class="thumbnail" src="<%= creation.image.thumb.url %>" alt="<%= creation.name %>"></a></li>
+  <% end %>
+</ul>

@@ -1,13 +1,6 @@
 <% content_for :title do %>
   Update My Account
 <% end %>
-<% content_for :stylesheets do %>
-<% end %>
-
-<% content_for :sidebar do %>
-  <%= render "shared/my_profile_sidebar" %>
-<% end %>
-
 <ul class="tabs">
   <li> <%= link_to "Profile", profiles_mine_path %></li>
   <li> <%= link_to "Share", new_creation_path %></li>
@@ -15,9 +8,8 @@
   <li class="active"> <%= link_to "Settings", edit_user_registration_path %> </li>
   <li><a href="#">Contact</a></li>
 </ul>
-
 <div class="row">
-  <div class="span8">
+  <div class="span12">
     <h1>Settings</h1>
     <p> If you prefer not to change your password, then just leave it blank.  </p>
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
@@ -50,10 +42,12 @@
       </fieldset>
     <% end %>
   </div>
-  <div class="span4">&nbsp;</div>
   <div class="span4">
+    <div class="media-grid">
+      <a href="<%= url_for profile_path(current_user) %>"><img src="<%= avatar_url current_user %>&amp;s=200" alt="<%= current_user.name %>" /></a>
+    </div>
+    <a href="http://en.gravatar.com/" target="_blank">Change My Photo</a>
     <h4>Cancel My Account</h4>
     <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => "btn danger" %></p>
-    <a href="http://en.gravatar.com/" target="_blank">Change My Photo</a>
   </div>
 </div>

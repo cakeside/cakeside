@@ -2,10 +2,11 @@
   All Creations in <%= @category.name %>
 <% end %>
 
-<% content_for :sidebar do %>
-  <%= render "shared/categories_sidebar" %>
-<% end %>
+<div class="row">
+  <div class="span16">
+    <h1>Category <em><%= @category.name %></em></h1>
+    <%= render "shared/creation_image_gallery" %>
+  </div>
+</div>
 
-<h1>Category <em><%= @category.name %></em></h1>
-
-<%= render "shared/creation_thumbs" %>
+<%= render "shared/creation_text_gallery" %>
