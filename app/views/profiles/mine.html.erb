@@ -1,12 +1,6 @@
 <% content_for :title do %>
   My profile
 <% end %>
-<% content_for :stylesheets do %>
-<% end %>
-
-<% content_for :sidebar do %>
-  <%= render "shared/my_profile_sidebar" %>
-<% end %>
 
 <ul class="tabs">
   <li class="active"> <%= link_to "Profile", profiles_mine_path %></li>
