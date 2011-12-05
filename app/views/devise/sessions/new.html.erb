@@ -13,7 +13,7 @@
             <%= f.password_field :password, :style => "height:20px;", :placeholder => 'Password',:size => 20 %>
           </div>
           <div class="span1">
-            <%= f.submit "Sign in", :style => "width:100%;height:28px;"%>
+            <%= f.submit "Sign in", :style => "width:100%;height:28px;", :class => "btn"%>
           </div>
           <div class="span1"> &nbsp; </div>
         <% end %>
@@ -23,8 +23,6 @@
   <div class="row">
     <div class="span10">
       &nbsp;
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
       <%= devise_error_messages! %>
     </div>
     <div class="span5">
@@ -63,7 +61,7 @@
 
 </div>
 
-
+<!--
 <h1>Sign in</h1>
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <fieldset>
@@ -73,22 +71,22 @@
       <div class="input">
         <%= f.email_field :email, :class => "xlarge" %>
       </div>
-    </div><!-- /clearfix -->
+    </div>
     <div class="clearfix">
       <%= f.label :password %>
       <div class="input">
         <%= f.password_field :password, :class => "xlarge"  %></p>
       </div>
-    </div><!-- /clearfix -->
+    </div>
 
     <% if devise_mapping.rememberable? -%>
-      <!-- <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p> -->
-    <div class="clearfix">
-      <label>
-        <%= f.check_box :remember_me %>
-        <span>Remember me</span>
-      </label>
-    </div><!-- /clearfix -->
+      <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
+      <div class="clearfix">
+        <label>
+          <%= f.check_box :remember_me %>
+          <span>Remember me</span>
+        </label>
+      </div>
     <% end -%>
     <div class="actions">
       <input type="submit" class="btn primary" value="Sign in">&nbsp;<button type="reset" class="btn">Cancel</button>
@@ -96,4 +94,4 @@
   </fieldset>
 <% end %>
 <%= render :partial => "devise/shared/links" %>
-
+-->
