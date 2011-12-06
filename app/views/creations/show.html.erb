@@ -3,11 +3,18 @@
 <% end %>
 
 <div class="page-header">
-  <% if @creation.user == current_user %>
-    <h1><%= @creation.name %> <small><%= link_to '(edit)', edit_creation_path(@creation) %> by <%= link_to @creation.user.name, profile_path(@creation.user) %> </small> </h1>
-  <% else %>
-    <h1><%= @creation.name %> <small> by <%= link_to @creation.user.name, profile_path(@creation.user) %> </small> </h1>
-  <% end %>
+  <h1>
+    <%= @creation.name %> 
+    <small>
+      <% if @creation.user == current_user %>
+        <%= link_to '(edit)', edit_creation_path(@creation) %> 
+      <% end %>
+      submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> 
+    </small> 
+  </h1>
+  <% @creation.categories.each do |category| %>
+    <span class="label notice"><a href="/categories/<%= category.slug %>"><%= category.name %></a></span>
+  <% end %> 
 </div>
 
 <div class="row">
@@ -32,9 +39,6 @@
   </div>
   <div class="span5">
     <p> submitted on: <%= @creation.created_at.to_s :foomat %>
-    <% @creation.categories.each do |category| %>
-      <span class="label notice"> <a href="/categories/<%= category.slug %>"><%= category.name %></a> </span>
-    <% end %> 
   </div>
 </div>
 
@@ -44,7 +48,6 @@
     <p><%= @creation.story %></p>
   </div>
 </div>
-
 <div class="row">
   <div class="span12">
     <%= render "shared/creation_image_gallery" %>

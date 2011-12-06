@@ -46,7 +46,7 @@ module Cake
     config.assets.version = '1.0'
 
     config.to_prepare {
-      # Devise::SessionsController.layout "users"
+      Devise::SessionsController.layout "blank"
       # Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "users" }
       Devise::ConfirmationsController.layout "application"
       Devise::UnlocksController.layout "application"
