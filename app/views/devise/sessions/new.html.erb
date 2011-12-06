@@ -1,8 +1,8 @@
 <div class="row">
-  <div class="span16"  style="background: url(/assets/sunset.png) top center no-repeat #FBE47E;">
+  <div class="span16">
     <div class="row">
       <div class="span5">
-        <div class="logo"><img src="/assets/cakeside-logo.png" width="100%"/></div>
+        <div class="logo"><a href="/"><img src="/assets/cakeside-logo.png" width="100%"/></a></div>
       </div>
       <div class="span5 offset6">
         <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
@@ -16,16 +16,19 @@
         <% end %>
       </div>
     </div>
+    <div class="row"> <div class="span16">&nbsp;</div> </div>
+    <div class="row"> <div class="span16">&nbsp;</div> </div>
+    <div class="row"> <div class="span16">&nbsp;</div> </div>
     <div class="row">
       <div class="span10"> 
         <%= devise_error_messages! %>
         <h1>Follow your interests</h1>
-        <p>Instant updates from your friends, industry experts, favorite celebrities, and what’s happening around the world.</p>
+        <p>Instant updates from your friends, industry experts, and what’s happening around the world.</p>
       </div>
       <div class="span5 offset1">
         <h3>New to CakeSide? <em>Join Today!</em></h3>
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-          <p><%= f.text_field :name, :placeholder => 'Full Name', :class =>"xlarge"%></p>
+          <p><%= f.text_field :name, :placeholder => 'Full name', :class =>"xlarge"%></p>
           <p><%= f.email_field :email, :placeholder => 'Email', :class=> "xlarge"%></p>
           <p><%= f.password_field :password, :placeholder => 'Password', :class=> "xlarge"%></p>
           <p><%= f.password_field :password_confirmation, :placeholder => 'Confirm Password', :class=> "xlarge"%></p>
@@ -34,7 +37,6 @@
       </div>
     </div>
   </div>
-  <div class="span16"> &nbsp; </div>
 </div>
 <!--
 <h1>Sign in</h1>
