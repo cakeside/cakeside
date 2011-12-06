@@ -11,7 +11,7 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <!-- Le styles -->
-   <%= stylesheet_link_tag :application %>
+    <%= stylesheet_link_tag :application %>
     <style type="text/css">
       body { padding-top: 60px; }
     </style>
@@ -35,7 +35,7 @@
             <a href="#" class="dropdown-toggle">Categories</a>
             <ul class="dropdown-menu">
               <% Category.all.each do |category| %>
-              <li><a href="/categories/<%= category.slug %>"><%= category.name %></a></li>
+                <li><a href="/categories/<%= category.slug %>"><%= category.name %></a></li>
               <% end %>
             </ul>
             </li>
@@ -56,8 +56,10 @@
             <p class="pull-right">Logged in as <%= link_to current_user.name, profiles_mine_path %> | <%= link_to "sign out", destroy_user_session_path %></p>
           <% else %>
             <p class="pull-right">
-              <a href="<%= url_for new_user_session_path %>">sign in</a> or
-              <a href="<%= url_for new_user_registration_path %>">sign up</a>
+            <a href="<%= url_for new_user_session_path %>">sign in</a> 
+            <!--
+            or <a href="<%= url_for new_user_registration_path %>">sign up</a>
+            -->
             </p>
           <% end %>
         </div>
@@ -77,6 +79,6 @@
 
     </div> <!-- /container -->
 
-<%= render "shared/google_analytics" %>
-    </body>
-  </html>
+    <%= render "shared/google_analytics" %>
+  </body>
+</html>
