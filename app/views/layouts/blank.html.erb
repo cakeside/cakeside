@@ -10,10 +10,12 @@
   </head>
   <%# <body style="background: url(/assets/sunset.png) no-repeat center 20px #FBE47E;">%>
     <body style="background: url(/assets/bg-header.png) repeat-x center 0px #fff;">
-      <div style="background: url(/assets/sunset.png) no-repeat center 20px;">
+      <div style="background: url(/assets/sunset.png) no-repeat center 0px;">
         <div class="container">
           <div class="content">
-            <%= yield %>
+            <div style="height:625px;">
+              <%= yield %>
+            </div>
             <footer>
             <p>&copy; Cakeside 2011</p>
             </footer>
