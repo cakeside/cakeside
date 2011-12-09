@@ -2,9 +2,11 @@
   Welcome to the CakeSide
 <% end %>
 
+<% if !user_signed_in? %>
 <div class="hero-unit">
   <h1>Hello, cake enthusiast!</h1>
   <p>Interested in making cakes, eating cakes, or celebrating cakes? Then you came to the right place.</p>
   <p><a href="<%= url_for new_user_session_path %>" class="btn primary large">Learn more &raquo;</a></p>
 </div>
+<% end %>
 <%= render "shared/creation_image_gallery" %>
