@@ -48,7 +48,11 @@
     <p><%= @creation.story %></p>
   </div>
 </div>
+<hr>
 <div class="row">
+  <div class="span16">
+    <h1>Other Creations by <small><%= @creation.user.name %></small></h1>
+  </div>
   <div class="span12">
     <%= render "shared/creation_image_gallery" %>
   </div>
