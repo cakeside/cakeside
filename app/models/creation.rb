@@ -5,6 +5,7 @@ class Creation < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :categories, :join_table => 'creations_categories', :uniq => true, :autosave => true
   mount_uploader :image, ImageUploader
+  has_many :photos, :dependent => :destroy
 
   define_index do
     indexes :name, :sortable => true
