@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title><%= yield(:title) || "CakeSide" %></title>
-    <title>Bootstrap, from Twitter</title>
+    <title>Welcome to CakeSide, a place for cake enthusiasts to share their proud creations!</title>
     <meta name="description" content="">
     <meta name="author" content="">
     <!--[if lt IE 9]>
@@ -24,7 +24,7 @@
     <div class="topbar" data-dropdown="dropdown" >
       <div class="topbar-inner">
         <div class="container">
-          <a class="brand" href="<%= url_for home_index_path %>">Cake<em>side</em></a>
+          <a class="brand" href="<%= url_for home_index_path %>">Cake<em>Side</em></a>
           <ul class="nav">
             <li><a href="<%= url_for home_index_path %>">Home</a></li>
             <li><%= link_to "Share", new_creation_path, :style => "color:#48ce62;" %></li>
@@ -71,7 +71,7 @@
       </div>
 
       <footer>
-      <p>Copyright &copy; CakeSide 2012 | Contact Us <a href="http://twitter.com/cakeside">@cakeside</a> | <a href="https://www.facebook.com/pages/CakeSide/214607468615074">facebook</a></p>
+      <p>Copyright &copy; 2012 CakeSide Inc. | <a href="/terms.html"> Terms</a> &amp; <a href="/privacy.html"> Privacy</a> | Contact Us <a href="http://twitter.com/cakeside">@cakeside</a> | <a href="https://www.facebook.com/pages/CakeSide/214607468615074">facebook</a></p>
       </footer>
 
     </div> <!-- /container -->
