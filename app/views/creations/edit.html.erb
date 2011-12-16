@@ -19,3 +19,17 @@
     <%= render 'form' %>
   </div>
 </div>
+
+<div class="photo">
+  <%= render :partial => 'photos/photo', :collection => @creation.photos %>
+  <% unless @creation.new_record? %>
+      <%= form_tag(creation_photos_path(@creation), :method => "post", :multipart => true) do |f| %>
+      <%= fields_for Photo.new do |f| %>
+        <%= f.file_field :image, :rel => creation_photos_path(@creation) %>
+        <div class="actions">
+          <input type="submit" class="btn primary" value="Save changes">&nbsp;<button type="reset" class="btn">Cancel</button>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

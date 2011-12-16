@@ -5,7 +5,9 @@ Cake::Application.routes.draw do
   get "home/index"
 
   # /creations
-  resources :creations
+  resources :creations do
+    resources :photos, :only => [:create, :destroy]
+  end
 
   # /profiles
   get "profiles/index"
