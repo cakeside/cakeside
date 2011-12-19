@@ -14,22 +14,30 @@
         <%= image_tag @creation.image_url.to_s, :class => "thumbnail", :style => "width:235px;" %>
       </a>
     </div>
+
+    <% if @creation.photos.length < 3 %>
+      <% unless @creation.new_record? %>
+        <%= form_tag(creation_photos_path(@creation), :method => "post", :multipart => true) do |f| %>
+          <%= fields_for Photo.new do |f| %>
+            <%= f.file_field :image, :rel => creation_photos_path(@creation) %>
+            <input type="submit" class="btn primary" value="add another photo" />
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+
   </div>
   <div class="span12">
     <%= render 'form' %>
   </div>
 </div>
 
-<div class="photo">
-  <%= render :partial => 'photos/photo', :collection => @creation.photos %>
-  <% unless @creation.new_record? %>
-      <%= form_tag(creation_photos_path(@creation), :method => "post", :multipart => true) do |f| %>
-      <%= fields_for Photo.new do |f| %>
-        <%= f.file_field :image, :rel => creation_photos_path(@creation) %>
-        <div class="actions">
-          <input type="submit" class="btn primary" value="Save changes">&nbsp;<button type="reset" class="btn">Cancel</button>
-        </div>
-      <% end %>
-    <% end %>
+<div class="row">
+  <div class="span1">&nbsp;</div>
+  <% @creation.photos.each do |photo| %>
+    <div class="span5 media-grid">
+      <p><%= image_tag photo.image_url(:thumb) %></p>
+      <p><%= link_to "Delete »", creation_photo_path(@creation, photo), :class => 'btn', :method => :delete, :confirm => "Are you sure?" %></p>
+    </div>
   <% end %>
 </div>
