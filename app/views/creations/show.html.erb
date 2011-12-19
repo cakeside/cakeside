@@ -28,11 +28,6 @@
       <% @creation.photos.each do |photo| %>
         <li> <a href=""><img class="thumbnail" src="<%= photo.image.thumb.url.to_s%>" alt="<%= photo.image %>"></a> </li>
       <% end %>
-      <!--
-      <li> <a href=""><img class="thumbnail" src="<%= @creation.image.thumb.url.to_s%>" alt="<%= @creation.name %>"></a> </li>
-      <li> <a href=""><img class="thumbnail" src="<%= @creation.image.thumb.url.to_s%>" alt="<%= @creation.name %>"></a> </li>
-      <li> <a href=""><img class="thumbnail" src="<%= @creation.image.thumb.url.to_s%>" alt="<%= @creation.name %>"></a> </li>
-      -->
     </ul>
   </div>
 </div>
@@ -65,3 +60,4 @@
     <a href="<%= url_for profile_path @creation.user %>"><img src="<%= avatar_url @creation.user %>&amp;s=200" alt="<%= @creation.user.name %>" /></a>
   </div>
 </div>
+

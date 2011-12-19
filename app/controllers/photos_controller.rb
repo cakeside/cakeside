@@ -5,7 +5,9 @@ class PhotosController < ApplicationController
 
   def create
     respond_to do |format|
-      unless @photo.save
+      if @photo.save
+        format.html { redirect_to(@creation, :notice => 'A new photo was added to the album.') }
+      else
         flash[:error] = "could not upload photo"
       end
     end
@@ -13,7 +15,9 @@ class PhotosController < ApplicationController
 
   def destroy
     respond_to do |format|
-      unless @photo.destroy
+      if @photo.destroy
+        format.html { redirect_to(@creation, :notice => 'A new photo was added to the album.') }
+      else
         flash[:error] = "photo could not be deleted"
       end
     end
