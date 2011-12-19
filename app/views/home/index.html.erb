@@ -3,11 +3,10 @@
 <% end %>
 
 <% if !user_signed_in? %>
-<div class="hero-unit">
-  <h1>Hello, cake enthusiast!</h1>
-  <p>Interested in celebrating your passion for cakes? Do you make cakes, sell cakes, or just love eating them? Then you've come to the right place! CakeSide is a community where you can share and connect with other cake fanatics like yourself!</p>
-  <p><a href="<%= url_for new_user_session_path %>" class="btn primary large">Learn more &raquo;</a></p>
-</div>
-<%= render "shared/creation_image_gallery" %>
+  <div class="hero-unit">
+    <h1>Hello, cake enthusiast!</h1>
+    <p>Interested in celebrating your passion for cakes? Do you make cakes, sell cakes, or just love eating them? Then you've come to the right place! CakeSide is a community where you can share and connect with other cake fanatics like yourself!</p>
+    <p><a href="<%= url_for new_user_session_path %>" class="btn primary large">Learn more &raquo;</a></p>
+  </div>
 <% end %>
 <%= render "shared/creation_image_gallery" %>
