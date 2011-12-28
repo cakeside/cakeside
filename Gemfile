@@ -2,18 +2,14 @@ source 'http://rubygems.org'
 
 gem 'rails'
 gem 'rake'
-gem 'sqlite3-ruby', :require => 'sqlite3', :group => [:development,:test]
 gem 'devise'
-# gem 'heroku'
 gem 'jquery-rails'
 gem 'carrierwave'
 gem 'RedCloth'
-#gem 'omniauth'
-#gem 'omniauth-openid'
 gem 'rmagick'
 gem 'bcrypt-ruby'
 gem 'json'
-gem 'thinking-sphinx'
+# gem 'thinking-sphinx'
 gem 'fog'
 gem 'kaminari'
 gem 'capistrano'
@@ -22,6 +18,7 @@ group :development, :test do
   gem 'webrat'
   gem 'rspec-rails'
   gem 'jasmine'
+  gem 'sqlite3-ruby', :require => 'sqlite3', :group => [:development,:test]
 end
 group :test do
   gem 'factory_girl_rails'
