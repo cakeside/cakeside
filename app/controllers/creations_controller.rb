@@ -28,7 +28,11 @@ class CreationsController < ApplicationController
     @creation.category_ids = params[:creation][:category_ids] ||= []
     respond_to do |format|
       if @creation.save
-        format.html { redirect_to(@creation, :notice => 'Creation was successfully created.') }
+        if params[:creation][:image].blank? 
+          format.html { redirect_to(@creation, :notice => 'Creation was successfully created.') }
+        else
+          format.html { render :action => "crop" }
+        end
       else
         format.html { render :action => "new" }
       end
@@ -58,4 +62,9 @@ class CreationsController < ApplicationController
       format.html { redirect_to(creations_url) }
     end
   end
+
+  def crop
+    
+  end
+
 end
