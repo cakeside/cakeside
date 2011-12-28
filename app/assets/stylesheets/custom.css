@@ -1,2 +1,20 @@
 .fright{float:right;}
 .hidden{display:none;}
+
+footer {
+	margin-top:19px;
+  	padding-top:19px;
+    background: none repeat scroll 0 0 #333333;
+    border-top: medium none;
+}
+footer a {
+    color: #FFFFFF;
+}
+footer h3 {
+    color: #999999;
+}
+
+footer #footer-floor {
+    background: none repeat scroll 0 0 #1B1B1B;
+	padding-top: 9px;
+}
