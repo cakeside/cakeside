@@ -9,16 +9,19 @@
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <%= stylesheet_link_tag :application %>
+<%= stylesheet_link_tag :application %>
+<%= stylesheet_link_tag params[:controller] %>
     <style type="text/css">
       body { padding-top: 60px; }
     </style>
-    <link rel="shortcut icon" href="/assets/favicon.ico">
-    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/assets/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/assets/apple-touch-icon-114x114.png">
+<link rel="shortcut icon" href="/assets/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/assets/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/assets/apple-touch-icon-114x114.png">
+<%= javascript_include_tag :application %>
+<%= javascript_include_tag params[:controller] %>
+<%= yield :head %>
     <%= csrf_meta_tags %>
-    <%= javascript_include_tag "application" %>
   </head>
   <body>
     <div class="topbar" data-dropdown="dropdown" >
