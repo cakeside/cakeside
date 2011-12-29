@@ -3,3 +3,5 @@
     <li><a href="<%= url_for creation %>"><img class="thumbnail" src="<%= creation.image.thumb.url %>" alt="<%= creation.name %>"></a></li>
   <% end %>
 </ul>
+
+<%= render "shared/paging" %>

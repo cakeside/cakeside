@@ -8,7 +8,7 @@ class Creation < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   attr_accessor :crop_x, :crop_y, :crop_h, :crop_w
-  after_update :reprocess
+  after_update :reprocess_image, :if => :cropping?
 
   define_index do
     indexes :name, :sortable => true
@@ -28,7 +28,7 @@ class Creation < ActiveRecord::Base
     @geometry = {:width => img.columns, :height => img.rows }
   end
 
-  def reprocess
+  def reprocess_image
     self.image.recreate_versions!
   end
 

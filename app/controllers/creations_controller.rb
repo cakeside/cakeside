@@ -74,8 +74,14 @@ class CreationsController < ApplicationController
     @creation.crop_y = params[:creation]["crop_y"]
     @creation.crop_h = params[:creation]["crop_h"]
     @creation.crop_w = params[:creation]["crop_w"]
-    @creation.save
-    redirect_to(@creation, :notice => 'Creation was successfully cropped.')
+    @creation.reprocess_image
+    respond_to do |format|
+      if @creation.save
+        format.html { redirect_to(@creation, :notice => 'Creation was successfully cropped.') }
+      else
+        format.html { render :action => "new" }
+      end
+    end
   end
 
 end
