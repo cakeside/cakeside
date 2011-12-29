@@ -32,9 +32,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :thumb do
-    # process :manualcrop
     process :resize_to_fill => [210, 150]
-    # process :resize_to_fit => [210, 150]
   end
 
   def manualcrop
