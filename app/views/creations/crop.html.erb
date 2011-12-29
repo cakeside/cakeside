@@ -1,11 +1,18 @@
 <% content_for :head do %>
+  <style type="text/css">
+.preview {
+  width:210px;
+  height:150px;
+  overflow:hidden;
+}
+  </style>
 <script type="text/javascript" charset="utf-8">
 $(function() {
     try{
   $('#cropbox').Jcrop({
     onChange: update_crop,
     onSelect: update_crop,
-    setSelect: [0, 0, 500, 500],
+    setSelect: [0, 0, 660, 470],
     aspectRatio: 1
   });
   }catch(e){
@@ -14,8 +21,8 @@ $(function() {
 });
 
 function update_crop(coords) {
-    var rx = 100/coords.w;
-    var ry = 100/coords.h;
+    var rx = 210/coords.w;
+    var ry = 150/coords.h;
     var lw = $('#cropbox').width();
     var lh = $('#cropbox').height();
     var ratio = <%= @creation.profile_geometry[:width] %> / lw ;

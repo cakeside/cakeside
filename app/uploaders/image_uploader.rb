@@ -33,7 +33,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   process :set_content_type
   # process :resize_to_fit => [700, 540]
-  # process :resize_to_fit => [660, 470]
+  process :resize_to_fit => [660, 470]
   process :convert => 'png'
   # process :scale => [200, 300]
   #
@@ -42,9 +42,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :large do 
-    process :resize_to_fit => [660, 470]
-  end
+  # version :large do 
+  #   process :resize_to_fit => [660, 470]
+  # end
 
   version :thumb do
     process :manualcrop
