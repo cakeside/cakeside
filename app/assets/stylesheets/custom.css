@@ -1,2 +1,7 @@
 .fright{float:right;}
 .hidden{display:none;}
+.preview {
+  width:100px;
+  height:100px;
+  overflow:hidden;
+}

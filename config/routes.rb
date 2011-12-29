@@ -8,6 +8,8 @@ Cake::Application.routes.draw do
   resources :creations do
     resources :photos, :only => [:create, :destroy]
   end
+  match 'creations/crop/:id' => 'creations#crop', :method => 'GET'
+  # match 'creations/crop_update' => 'creations#crop_update', :as => 'crop_update', :method => 'POST'
 
   # /profiles
   get "profiles/index"

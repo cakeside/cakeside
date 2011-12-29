@@ -7,6 +7,9 @@ class Creation < ActiveRecord::Base
   has_many :photos, :dependent => :destroy
   mount_uploader :image, ImageUploader
 
+  attr_accessor :crop_x, :crop_y, :crop_h, :crop_w
+  after_update :reprocess
+
   define_index do
     indexes :name, :sortable => true
     indexes story
@@ -14,6 +17,19 @@ class Creation < ActiveRecord::Base
 
   def short_story
     story.split[0...50].join(' ') + '...'
+  end
+
+  def cropping?
+    !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
+  end
+
+  def profile_geometry
+    img = Magick::Image::read('http://cakeside.dev'+self.image_url).first
+    @geometry = {:width => img.columns, :height => img.rows }
+  end
+
+  def reprocess
+    self.image.recreate_versions!
   end
 
 end
