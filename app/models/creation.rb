@@ -29,7 +29,12 @@ class Creation < ActiveRecord::Base
   end
 
   def reprocess_image
-    self.image.recreate_versions!
+    begin
+      self.image.recreate_versions!
+    rescue Exception => e
+      logger.error e.message
+      logger.error e.backtrace.inspect
+    end
   end
 
 end
