@@ -11,6 +11,8 @@ class Creation < ActiveRecord::Base
   attr_accessor :crop_x, :crop_y, :crop_h, :crop_w
   after_update :reprocess_image, :if => :cropping?
 
+  default_scope order("created_at DESC")
+
   define_index do
     indexes :name, :sortable => true
     indexes story
