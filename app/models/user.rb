@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
 
   has_many :creations, :dependent => :destroy
+  has_many :likes, :dependent => :destroy
 
   def apply_omniauth(omniauth)
     puts omniauth

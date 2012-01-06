@@ -1,4 +1,5 @@
 Cake::Application.routes.draw do
+
   root :to => "home#index"
 
   # /home
@@ -7,6 +8,7 @@ Cake::Application.routes.draw do
   # /creations
   resources :creations do
     resources :photos, :only => [:create, :destroy]
+    resources :likes
   end
   match 'creations/crop/:id' => 'creations#crop', :method => 'GET'
   match 'creations/crop_update/:id' => 'creations#crop_update', :as => 'creations_crop_update', :method => 'POST'

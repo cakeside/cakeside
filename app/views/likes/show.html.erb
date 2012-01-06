@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @like.user_id %>
+</p>
+
+<p>
+  <b>Creation:</b>
+  <%= @like.creation_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_creation_like_path(@like) %> |
+<%= link_to 'Back', creation_likes_path %>
