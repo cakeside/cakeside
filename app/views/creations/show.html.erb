@@ -42,15 +42,14 @@
 </div>
 
 <div class="row">
-  <div class="span16">
+  <div class="span1">
     <%= button_to "+1", creation_likes_path(:creation_id => @creation.id), :method => :post %>
+  </div>
+  <div class="span1">
     <%= pluralize(@creation.likes.length, 'like') %>
-    <h3>artists who like this creation</h3>
-    <ul class="media-grid">
-    <% @creation.likes.each do |like| %>
-        <a href="<%= url_for profile_path(like.user) %>"><img src="<%= avatar_url like.user %>&amp;s=200" alt="<%= like.user.name %>" /></a>
-    <% end %>
-    </ul>
+  </div>
+  <div class="span2 offset12">
+    <%= link_to 'fanclub', creation_likes_path(:creation_id => @creation.id) %>
   </div>
 </div>
 

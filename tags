@@ -102,6 +102,7 @@ CreateAuthentications	db/migrate/20110419012853_create_authentications.rb	/^clas
 CreateCategories	db/migrate/20110803020957_create_categories.rb	/^class CreateCategories < ActiveRecord::Migration$/;"	c
 CreateCreationCategoryJoinTable	db/migrate/20110803021631_create_creation_category_join_table.rb	/^class CreateCreationCategoryJoinTable < ActiveRecord::Migration$/;"	c
 CreateCreations	db/migrate/20110503032142_create_creations.rb	/^class CreateCreations < ActiveRecord::Migration$/;"	c
+CreateLikes	db/migrate/20120106021715_create_likes.rb	/^class CreateLikes < ActiveRecord::Migration$/;"	c
 CreatePhotos	db/migrate/20111216042304_create_photos.rb	/^class CreatePhotos < ActiveRecord::Migration$/;"	c
 Creation	app/models/creation.rb	/^class Creation < ActiveRecord::Base$/;"	c
 CreationsController	app/controllers/creations_controller.rb	/^class CreationsController < ApplicationController$/;"	c
@@ -179,6 +180,9 @@ Kaminari	spec/support/kaminari.rb	/^module Kaminari::ActionViewExtension::Instan
 LEADERS_AND_TRAILERS	doc/api/ActiveSupport/Multibyte/Unicode.html	/^				<dt><a name="LEADERS_AND_TRAILERS">LEADERS_AND_TRAILERS<\/a><\/dt>$/;"	a
 LEADERS_PAT	doc/api/ActiveSupport/Multibyte/Unicode.html	/^				<dt><a name="LEADERS_PAT">LEADERS_PAT<\/a><\/dt>$/;"	a
 LOST_CONNECTION_ERROR_MESSAGES	doc/api/ActiveRecord/ConnectionAdapters/MysqlAdapter.html	/^				<dt><a name="LOST_CONNECTION_ERROR_MESSAGES">LOST_CONNECTION_ERROR_MESSAGES<\/a><\/dt>$/;"	a
+Like	app/models/like.rb	/^class Like < ActiveRecord::Base$/;"	c
+LikesController	app/controllers/likes_controller.rb	/^class LikesController < ApplicationController$/;"	c
+LikesHelper	app/helpers/likes_helper.rb	/^module LikesHelper$/;"	m
 MAGENTA	doc/api/ActiveSupport/LogSubscriber.html	/^				<dt><a name="MAGENTA">MAGENTA<\/a><\/dt>$/;"	a
 MAPPING	doc/api/ActiveSupport/TimeZone.html	/^				<dt><a name="MAPPING">MAPPING<\/a><\/dt>$/;"	a
 MAX_BUFFER_SIZE	doc/api/ActiveSupport/BufferedLogger.html	/^				<dt><a name="MAX_BUFFER_SIZE">MAX_BUFFER_SIZE<\/a><\/dt>$/;"	a
@@ -306,6 +310,7 @@ case.top	vendor/assets/javascripts/bootstrap-twipsy.js	/^            tp = {top: 
 chain	doc/api/ActiveSupport/Callbacks/Callback.html	/^				<a name="chain"><\/a>$/;"	a
 chain=	doc/api/ActiveSupport/Callbacks/Callback.html	/^				<a name="chain="><\/a>$/;"	a
 change	db/migrate/20111216042304_create_photos.rb	/^  def change$/;"	f	class:CreatePhotos
+change	db/migrate/20120106021715_create_likes.rb	/^  def change$/;"	f	class:CreateLikes
 code	doc/api/ActiveResource/Response.html	/^				<a name="code"><\/a>$/;"	a
 code	doc/api/ActiveSupport/Multibyte/Unicode/Codepoint.html	/^				<a name="code"><\/a>$/;"	a
 code=	doc/api/ActiveResource/Response.html	/^				<a name="code="><\/a>$/;"	a
@@ -325,6 +330,7 @@ controller=	doc/api/ActionView/TestCase/Behavior.html	/^				<a name="controller=
 controller_path	doc/api/ActionView/TestCase/TestController.html	/^				<a name="controller_path"><\/a>$/;"	a
 controller_path=	doc/api/ActionView/TestCase/TestController.html	/^				<a name="controller_path="><\/a>$/;"	a
 create	app/controllers/creations_controller.rb	/^  def create$/;"	f	class:CreationsController
+create	app/controllers/likes_controller.rb	/^  def create$/;"	f	class:LikesController
 create	app/controllers/photos_controller.rb	/^  def create$/;"	f	class:PhotosController
 create	app/controllers/registrations_controller.rb	/^  def create$/;"	f	class:RegistrationsController
 createDragger	vendor/assets/javascripts/jquery.Jcrop.js	/^    function createDragger(ord) \/\/{{{$/;"	f
@@ -348,6 +354,7 @@ default	doc/api/ActiveRecord/ConnectionAdapters/Column.html	/^				<a name="defau
 default_normalization_form	doc/api/ActiveSupport/Multibyte/Unicode.html	/^				<a name="default_normalization_form"><\/a>$/;"	a
 default_normalization_form=	doc/api/ActiveSupport/Multibyte/Unicode.html	/^				<a name="default_normalization_form="><\/a>$/;"	a
 destroy	app/controllers/creations_controller.rb	/^  def destroy$/;"	f	class:CreationsController
+destroy	app/controllers/likes_controller.rb	/^  def destroy$/;"	f	class:LikesController
 destroy	app/controllers/photos_controller.rb	/^  def destroy$/;"	f	class:PhotosController
 destroy	vendor/assets/javascripts/jquery.Jcrop.js	/^    function destroy() \/\/{{{$/;"	f
 disableCrop	vendor/assets/javascripts/jquery.Jcrop.js	/^    function disableCrop() \/\/{{{$/;"	f
@@ -370,6 +377,7 @@ duration	doc/api/ActiveSupport/Notifications/Event.html	/^				<a name="duration"
 eager_load_values	doc/api/ActiveRecord/QueryMethods.html	/^				<a name="eager_load_values"><\/a>$/;"	a
 eager_load_values=	doc/api/ActiveRecord/QueryMethods.html	/^				<a name="eager_load_values="><\/a>$/;"	a
 edit	app/controllers/creations_controller.rb	/^  def edit$/;"	f	class:CreationsController
+edit	app/controllers/likes_controller.rb	/^  def edit$/;"	f	class:LikesController
 element	doc/api/ActiveModel/Name.html	/^				<a name="element"><\/a>$/;"	a
 enableCrop	vendor/assets/javascripts/jquery.Jcrop.js	/^    function enableCrop() \/\/{{{$/;"	f
 end	doc/api/ActiveSupport/Notifications/Event.html	/^				<a name="end"><\/a>$/;"	a
@@ -381,12 +389,13 @@ extension_white_list	app/uploaders/image_uploader.rb	/^  def extension_white_lis
 extension_white_list	app/uploaders/photo_uploader.rb	/^  def extension_white_list$/;"	f	class:PhotoUploader
 extensions	doc/api/ActiveRecord/Relation.html	/^				<a name="extensions"><\/a>$/;"	a
 extensions=	doc/api/ActiveRecord/Relation.html	/^				<a name="extensions="><\/a>$/;"	a
-filename	app/uploaders/image_uploader.rb	/^  def filename $/;"	f	class:ImageUploader
+filename	app/uploaders/image_uploader.rb	/^  def filename$/;"	f	class:ImageUploader
 filename	app/uploaders/photo_uploader.rb	/^  def filename$/;"	f	class:PhotoUploader
 filename	doc/api/ActiveRecord/MigrationProxy.html	/^				<a name="filename"><\/a>$/;"	a
 filename=	doc/api/ActiveRecord/MigrationProxy.html	/^				<a name="filename="><\/a>$/;"	a
 filter	doc/api/ActiveSupport/Callbacks/Callback.html	/^				<a name="filter"><\/a>$/;"	a
 filter=	doc/api/ActiveSupport/Callbacks/Callback.html	/^				<a name="filter="><\/a>$/;"	a
+find_creation	app/controllers/likes_controller.rb	/^  def find_creation$/;"	f	class:LikesController
 find_creation	app/controllers/photos_controller.rb	/^  def find_creation$/;"	f	class:PhotosController
 find_or_build_photo	app/controllers/photos_controller.rb	/^  def find_or_build_photo$/;"	f	class:PhotosController
 finder	doc/api/ActiveRecord/DynamicFinderMatch.html	/^				<a name="finder"><\/a>$/;"	a
@@ -437,6 +446,7 @@ includes_values	doc/api/ActiveRecord/QueryMethods.html	/^				<a name="includes_v
 includes_values=	doc/api/ActiveRecord/QueryMethods.html	/^				<a name="includes_values="><\/a>$/;"	a
 index	app/controllers/creations_controller.rb	/^  def index$/;"	f	class:CreationsController
 index	app/controllers/home_controller.rb	/^  def index$/;"	f	class:HomeController
+index	app/controllers/likes_controller.rb	/^  def index$/;"	f	class:LikesController
 index	app/controllers/profiles_controller.rb	/^  def index$/;"	f	class:ProfilesController
 index	app/controllers/search_controller.rb	/^  def index$/;"	f	class:SearchController
 instantiator	doc/api/ActiveRecord/DynamicFinderMatch.html	/^				<a name="instantiator"><\/a>$/;"	a
@@ -2915,6 +2925,7 @@ namespace.events.spyOn	spec/javascripts/helpers/jasmine_jquery-1.3.1.js	/^  name
 namespace.events.spyOn.handler	spec/javascripts/helpers/jasmine_jquery-1.3.1.js	/^      var handler = function(e) {$/;"	f
 namespace.events.wasTriggered	spec/javascripts/helpers/jasmine_jquery-1.3.1.js	/^    },$/;"	m
 new	app/controllers/creations_controller.rb	/^  def new$/;"	f	class:CreationsController
+new	app/controllers/likes_controller.rb	/^  def new$/;"	f	class:LikesController
 newSelection	vendor/assets/javascripts/jquery.Jcrop.js	/^    function newSelection(e) \/\/{{{$/;"	f
 newTracker	vendor/assets/javascripts/jquery.Jcrop.js	/^    function newTracker() \/\/{{{$/;"	f
 new_record	doc/api/ActiveRecord/SessionStore/SqlBypass.html	/^				<a name="new_record"><\/a>$/;"	a
@@ -3011,6 +3022,7 @@ setSelectRaw	vendor/assets/javascripts/jquery.Jcrop.js	/^    function setSelectR
 short_story	app/models/creation.rb	/^  def short_story$/;"	f	class:Creation
 show	app/controllers/categories_controller.rb	/^  def show$/;"	f	class:CategoriesController
 show	app/controllers/creations_controller.rb	/^  def show$/;"	f	class:CreationsController
+show	app/controllers/likes_controller.rb	/^  def show$/;"	f	class:LikesController
 show	app/controllers/profiles_controller.rb	/^  def show$/;"	f	class:ProfilesController
 silence	doc/api/ActiveSupport/Cache/Store.html	/^				<a name="silence"><\/a>$/;"	a
 singular	doc/api/ActiveModel/Name.html	/^				<a name="singular"><\/a>$/;"	a
@@ -3069,9 +3081,11 @@ up	db/migrate/20110803021631_create_creation_category_join_table.rb	/^  def self
 up	db/migrate/20110808024353_add_slug_to_categories.rb	/^  def self.up$/;"	F	class:AddSlugToCategories
 up	db/migrate/20111125071349_drop_authentications.rb	/^  def up$/;"	f	class:DropAuthentications
 update	app/controllers/creations_controller.rb	/^  def update$/;"	f	class:CreationsController
+update	app/controllers/likes_controller.rb	/^  def update$/;"	f	class:LikesController
 uppercase_mapping	doc/api/ActiveSupport/Multibyte/Unicode/Codepoint.html	/^				<a name="uppercase_mapping"><\/a>$/;"	a
 uppercase_mapping=	doc/api/ActiveSupport/Multibyte/Unicode/Codepoint.html	/^				<a name="uppercase_mapping="><\/a>$/;"	a
 user	doc/api/ActiveResource/Connection.html	/^				<a name="user"><\/a>$/;"	a
+valid_attributes	spec/controllers/likes_controller_spec.rb	/^  def valid_attributes$/;"	f
 value	doc/api/ActiveSupport/Duration.html	/^				<a name="value"><\/a>$/;"	a
 value=	doc/api/ActiveSupport/Duration.html	/^				<a name="value="><\/a>$/;"	a
 version	doc/api/ActiveRecord/MigrationProxy.html	/^				<a name="version"><\/a>$/;"	a

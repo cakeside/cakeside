@@ -39,5 +39,4 @@ class Creation < ActiveRecord::Base
       logger.error e.backtrace.inspect
     end
   end
-
 end

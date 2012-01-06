@@ -1,25 +1,19 @@
-<h1>Listing likes</h1>
-
-<table>
-  <tr>
-    <th>User</th>
-    <th>Creation</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @likes.each do |like| %>
-  <tr>
-    <td><%= like.user_id %></td>
-    <td><%= like.creation_id %></td>
-    <td><%= link_to 'Show', creation_like_path(like) %></td>
-    <td><%= link_to 'Edit', edit_creation_like_path(like) %></td>
-    <%# <td><%= link_to 'Destroy', like, confirm: 'Are you sure?', method: :delete %></td>%>
-  </tr>
+<% content_for :title do %>
+  <%= @creation.name %> by <%= @creation.user.name %> - fanclub
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New Like', new_creation_like_path %>
+<div class="page-header">
+  <h1> fans of  <%= link_to @creation.name, creation_path(@creation) %> <small> submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> </small> </h1>
+  <% @creation.categories.each do |category| %>
+    <span class="label notice"><a href="/categories/<%= category.slug %>"><%= category.name %></a></span>
+  <% end %> 
+</div>
+<div class="row">
+  <div class="span16">
+    <ul class="media-grid">
+      <% @creation.likes.each do |like| %>
+        <a href="<%= url_for profile_path(like.user) %>"><img src="<%= avatar_url like.user %>&amp;s=200" alt="<%= like.user.name %>" /></a>
+      <% end %>
+    </ul>
+  </div>
+</div>
