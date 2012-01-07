@@ -45,10 +45,10 @@
   <div class="span1">
     <%= button_to "+1", creation_likes_path(:creation_id => @creation.id), :method => :post %>
   </div>
-  <div class="span1">
+  <div class="span2">
     <%= pluralize(@creation.likes.length, 'like') %>
   </div>
-  <div class="span2 offset12">
+  <div class="span2 offset11">
     <%= link_to 'fanclub', creation_likes_path(:creation_id => @creation.id) %>
   </div>
 </div>
