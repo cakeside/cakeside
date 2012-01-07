@@ -30,31 +30,8 @@ describe LikesController do
   describe "GET index" do
     it "assigns all likes as @likes" do
       like = Like.create! valid_attributes
-      get :index
+      get :index, :creation_id => "1"
       assigns(:likes).should eq([like])
-    end
-  end
-
-  describe "GET show" do
-    it "assigns the requested like as @like" do
-      like = Like.create! valid_attributes
-      get :show, :id => like.id
-      assigns(:like).should eq(like)
-    end
-  end
-
-  describe "GET new" do
-    it "assigns a new like as @like" do
-      get :new
-      assigns(:like).should be_a_new(Like)
-    end
-  end
-
-  describe "GET edit" do
-    it "assigns the requested like as @like" do
-      like = Like.create! valid_attributes
-      get :edit, :id => like.id
-      assigns(:like).should eq(like)
     end
   end
 
@@ -77,81 +54,5 @@ describe LikesController do
         response.should redirect_to(Like.last)
       end
     end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved like as @like" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Like.any_instance.stub(:save).and_return(false)
-        post :create, :like => {}
-        assigns(:like).should be_a_new(Like)
-      end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Like.any_instance.stub(:save).and_return(false)
-        post :create, :like => {}
-        response.should render_template("new")
-      end
-    end
   end
-
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested like" do
-        like = Like.create! valid_attributes
-        # Assuming there are no other likes in the database, this
-        # specifies that the Like created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Like.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => like.id, :like => {'these' => 'params'}
-      end
-
-      it "assigns the requested like as @like" do
-        like = Like.create! valid_attributes
-        put :update, :id => like.id, :like => valid_attributes
-        assigns(:like).should eq(like)
-      end
-
-      it "redirects to the like" do
-        like = Like.create! valid_attributes
-        put :update, :id => like.id, :like => valid_attributes
-        response.should redirect_to(like)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns the like as @like" do
-        like = Like.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Like.any_instance.stub(:save).and_return(false)
-        put :update, :id => like.id, :like => {}
-        assigns(:like).should eq(like)
-      end
-
-      it "re-renders the 'edit' template" do
-        like = Like.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Like.any_instance.stub(:save).and_return(false)
-        put :update, :id => like.id, :like => {}
-        response.should render_template("edit")
-      end
-    end
-  end
-
-  describe "DELETE destroy" do
-    it "destroys the requested like" do
-      like = Like.create! valid_attributes
-      expect {
-        delete :destroy, :id => like.id
-      }.to change(Like, :count).by(-1)
-    end
-
-    it "redirects to the likes list" do
-      like = Like.create! valid_attributes
-      delete :destroy, :id => like.id
-      response.should redirect_to(likes_url)
-    end
-  end
-
 end
