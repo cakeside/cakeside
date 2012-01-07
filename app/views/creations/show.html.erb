@@ -18,6 +18,19 @@
 </div>
 
 <div class="row">
+  <div class="span1">
+    <% if current_user == @creation.user %>
+      &nbsp;
+    <% else %>
+      <%= button_to "+1", creation_likes_path(:creation_id => @creation.id), :method => :post %>
+    <% end %>
+  </div>
+  <div class="span3 offset12">
+    <%= link_to 'fanclub (' + pluralize(@creation.likes.length, 'like') + ')', creation_likes_path(:creation_id => @creation.id) %>
+  </div>
+</div>
+
+<div class="row">
   <div class="span12">
     <div class="media-grid">
       <a href="<%= url_for creation_path(@creation) %>"><img class="thumbnail" src="<%= @creation.image_url(:large).to_s%>" alt="<%= @creation.name %>"></a>
@@ -38,18 +51,6 @@
         <li> <a href=""><img class="thumbnail" src="<%= photo.image.thumb.url.to_s%>" alt="<%= photo.image %>"></a> </li>
       <% end %>
     </ul>
-  </div>
-</div>
-
-<div class="row">
-  <div class="span1">
-    <%= button_to "+1", creation_likes_path(:creation_id => @creation.id), :method => :post %>
-  </div>
-  <div class="span2">
-    <%= pluralize(@creation.likes.length, 'like') %>
-  </div>
-  <div class="span2 offset11">
-    <%= link_to 'fanclub', creation_likes_path(:creation_id => @creation.id) %>
   </div>
 </div>
 

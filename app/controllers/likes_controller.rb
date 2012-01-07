@@ -9,9 +9,11 @@ class LikesController < ApplicationController
 
   # POST /likes
   def create
-    @like = @creation.likes.create(params[:like])
-    @like.user_id = current_user.id
-
+    if( current_user == @creation.user )
+      redirect_to @creation, :notice => "You can't like your own stuff"
+      return
+    end
+    @like = current_user.like(@creation)
     if @like.save
        redirect_to @creation, :notice => 'Like was successfully created.'
     else
@@ -21,7 +23,7 @@ class LikesController < ApplicationController
 
   private
   def find_creation
-    @creation = current_user.creations.find(params[:creation_id])
+    @creation = Creation.find(params[:creation_id])
     raise ActiveRecord::RecordNotFound unless @creation
   end
 end

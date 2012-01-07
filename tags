@@ -282,7 +282,6 @@ api.setOptions	vendor/assets/javascripts/jquery.Jcrop.js	/^      setSelect: setS
 api.setSelect	vendor/assets/javascripts/jquery.Jcrop.js	/^      animateTo: animateTo,$/;"	p
 api.tellScaled	vendor/assets/javascripts/jquery.Jcrop.js	/^      tellSelect: tellSelect,$/;"	p
 api.tellSelect	vendor/assets/javascripts/jquery.Jcrop.js	/^      setOptions: setOptionsNew,$/;"	p
-apply_omniauth	app/models/user.rb	/^  def apply_omniauth(omniauth)$/;"	f	class:User
 attribute	doc/api/ActiveRecord/AttributeAssignmentError.html	/^				<a name="attribute"><\/a>$/;"	a
 attribute_names	doc/api/ActiveRecord/DynamicFinderMatch.html	/^				<a name="attribute_names"><\/a>$/;"	a
 attribute_names	doc/api/ActiveRecord/DynamicScopeMatch.html	/^				<a name="attribute_names"><\/a>$/;"	a
@@ -354,7 +353,6 @@ default	doc/api/ActiveRecord/ConnectionAdapters/Column.html	/^				<a name="defau
 default_normalization_form	doc/api/ActiveSupport/Multibyte/Unicode.html	/^				<a name="default_normalization_form"><\/a>$/;"	a
 default_normalization_form=	doc/api/ActiveSupport/Multibyte/Unicode.html	/^				<a name="default_normalization_form="><\/a>$/;"	a
 destroy	app/controllers/creations_controller.rb	/^  def destroy$/;"	f	class:CreationsController
-destroy	app/controllers/likes_controller.rb	/^  def destroy$/;"	f	class:LikesController
 destroy	app/controllers/photos_controller.rb	/^  def destroy$/;"	f	class:PhotosController
 destroy	vendor/assets/javascripts/jquery.Jcrop.js	/^    function destroy() \/\/{{{$/;"	f
 disableCrop	vendor/assets/javascripts/jquery.Jcrop.js	/^    function disableCrop() \/\/{{{$/;"	f
@@ -377,7 +375,6 @@ duration	doc/api/ActiveSupport/Notifications/Event.html	/^				<a name="duration"
 eager_load_values	doc/api/ActiveRecord/QueryMethods.html	/^				<a name="eager_load_values"><\/a>$/;"	a
 eager_load_values=	doc/api/ActiveRecord/QueryMethods.html	/^				<a name="eager_load_values="><\/a>$/;"	a
 edit	app/controllers/creations_controller.rb	/^  def edit$/;"	f	class:CreationsController
-edit	app/controllers/likes_controller.rb	/^  def edit$/;"	f	class:LikesController
 element	doc/api/ActiveModel/Name.html	/^				<a name="element"><\/a>$/;"	a
 enableCrop	vendor/assets/javascripts/jquery.Jcrop.js	/^    function enableCrop() \/\/{{{$/;"	f
 end	doc/api/ActiveSupport/Notifications/Event.html	/^				<a name="end"><\/a>$/;"	a
@@ -479,6 +476,7 @@ level	doc/api/ActiveSupport/BufferedLogger.html	/^				<a name="level"><\/a>$/;"	
 level	doc/api/ActiveSupport/LogSubscriber/TestHelper/MockLogger.html	/^				<a name="level"><\/a>$/;"	a
 level=	doc/api/ActiveSupport/BufferedLogger.html	/^				<a name="level="><\/a>$/;"	a
 level=	doc/api/ActiveSupport/LogSubscriber/TestHelper/MockLogger.html	/^				<a name="level="><\/a>$/;"	a
+likes	app/models/user.rb	/^  def likes( creation )$/;"	f	class:User
 limit	doc/api/ActiveRecord/ConnectionAdapters/Column.html	/^				<a name="limit"><\/a>$/;"	a
 limit_value	doc/api/ActiveRecord/QueryMethods.html	/^				<a name="limit_value"><\/a>$/;"	a
 limit_value=	doc/api/ActiveRecord/QueryMethods.html	/^				<a name="limit_value="><\/a>$/;"	a
@@ -2925,7 +2923,6 @@ namespace.events.spyOn	spec/javascripts/helpers/jasmine_jquery-1.3.1.js	/^  name
 namespace.events.spyOn.handler	spec/javascripts/helpers/jasmine_jquery-1.3.1.js	/^      var handler = function(e) {$/;"	f
 namespace.events.wasTriggered	spec/javascripts/helpers/jasmine_jquery-1.3.1.js	/^    },$/;"	m
 new	app/controllers/creations_controller.rb	/^  def new$/;"	f	class:CreationsController
-new	app/controllers/likes_controller.rb	/^  def new$/;"	f	class:LikesController
 newSelection	vendor/assets/javascripts/jquery.Jcrop.js	/^    function newSelection(e) \/\/{{{$/;"	f
 newTracker	vendor/assets/javascripts/jquery.Jcrop.js	/^    function newTracker() \/\/{{{$/;"	f
 new_record	doc/api/ActiveRecord/SessionStore/SqlBypass.html	/^				<a name="new_record"><\/a>$/;"	a
@@ -2963,7 +2960,6 @@ partial_path	doc/api/ActiveModel/Name.html	/^				<a name="partial_path"><\/a>$/;
 parts	doc/api/ActiveSupport/Duration.html	/^				<a name="parts"><\/a>$/;"	a
 parts=	doc/api/ActiveSupport/Duration.html	/^				<a name="parts="><\/a>$/;"	a
 password	doc/api/ActiveResource/Connection.html	/^				<a name="password"><\/a>$/;"	a
-password_required?	app/models/user.rb	/^  def password_required?$/;"	f	class:User
 path	doc/api/ActionController/Caching/Actions/ActionCachePath.html	/^				<a name="path"><\/a>$/;"	a
 path	doc/api/ActiveResource/Request.html	/^				<a name="path"><\/a>$/;"	a
 path=	doc/api/ActiveResource/Request.html	/^				<a name="path="><\/a>$/;"	a
@@ -3022,7 +3018,6 @@ setSelectRaw	vendor/assets/javascripts/jquery.Jcrop.js	/^    function setSelectR
 short_story	app/models/creation.rb	/^  def short_story$/;"	f	class:Creation
 show	app/controllers/categories_controller.rb	/^  def show$/;"	f	class:CategoriesController
 show	app/controllers/creations_controller.rb	/^  def show$/;"	f	class:CreationsController
-show	app/controllers/likes_controller.rb	/^  def show$/;"	f	class:LikesController
 show	app/controllers/profiles_controller.rb	/^  def show$/;"	f	class:ProfilesController
 silence	doc/api/ActiveSupport/Cache/Store.html	/^				<a name="silence"><\/a>$/;"	a
 singular	doc/api/ActiveModel/Name.html	/^				<a name="singular"><\/a>$/;"	a
@@ -3081,7 +3076,6 @@ up	db/migrate/20110803021631_create_creation_category_join_table.rb	/^  def self
 up	db/migrate/20110808024353_add_slug_to_categories.rb	/^  def self.up$/;"	F	class:AddSlugToCategories
 up	db/migrate/20111125071349_drop_authentications.rb	/^  def up$/;"	f	class:DropAuthentications
 update	app/controllers/creations_controller.rb	/^  def update$/;"	f	class:CreationsController
-update	app/controllers/likes_controller.rb	/^  def update$/;"	f	class:LikesController
 uppercase_mapping	doc/api/ActiveSupport/Multibyte/Unicode/Codepoint.html	/^				<a name="uppercase_mapping"><\/a>$/;"	a
 uppercase_mapping=	doc/api/ActiveSupport/Multibyte/Unicode/Codepoint.html	/^				<a name="uppercase_mapping="><\/a>$/;"	a
 user	doc/api/ActiveResource/Connection.html	/^				<a name="user"><\/a>$/;"	a
