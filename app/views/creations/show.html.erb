@@ -19,7 +19,7 @@
 
 <div class="row">
   <div class="span1">
-    <% if current_user == @creation.user %>
+    <% if current_user == @creation.user || current_user.already_likes(@creation) %>
       &nbsp;
     <% else %>
       <%= button_to "+1", creation_likes_path(:creation_id => @creation.id), :method => :post %>

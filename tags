@@ -269,6 +269,7 @@ YELLOW	doc/api/ActiveSupport/LogSubscriber.html	/^				<dt><a name="YELLOW">YELLO
 abstract_class	doc/api/ActiveRecord/Base.html	/^				<a name="abstract_class"><\/a>$/;"	a
 abstract_class=	doc/api/ActiveRecord/Base.html	/^				<a name="abstract_class="><\/a>$/;"	a
 active_record	doc/api/ActiveRecord/Reflection/MacroReflection.html	/^				<a name="active_record"><\/a>$/;"	a
+already_likes	app/models/user.rb	/^  def already_likes(creation)$/;"	f	class:User
 animateTo	vendor/assets/javascripts/jquery.Jcrop.js	/^    function animateTo(a, callback) \/\/{{{$/;"	f
 animateTo.queueAnimator	vendor/assets/javascripts/jquery.Jcrop.js	/^      function queueAnimator() {$/;"	f
 api.animateTo	vendor/assets/javascripts/jquery.Jcrop.js	/^      setImage: setImage,$/;"	p
@@ -476,7 +477,7 @@ level	doc/api/ActiveSupport/BufferedLogger.html	/^				<a name="level"><\/a>$/;"	
 level	doc/api/ActiveSupport/LogSubscriber/TestHelper/MockLogger.html	/^				<a name="level"><\/a>$/;"	a
 level=	doc/api/ActiveSupport/BufferedLogger.html	/^				<a name="level="><\/a>$/;"	a
 level=	doc/api/ActiveSupport/LogSubscriber/TestHelper/MockLogger.html	/^				<a name="level="><\/a>$/;"	a
-likes	app/models/user.rb	/^  def likes( creation )$/;"	f	class:User
+like	app/models/user.rb	/^  def like( creation )$/;"	f	class:User
 limit	doc/api/ActiveRecord/ConnectionAdapters/Column.html	/^				<a name="limit"><\/a>$/;"	a
 limit_value	doc/api/ActiveRecord/QueryMethods.html	/^				<a name="limit_value"><\/a>$/;"	a
 limit_value=	doc/api/ActiveRecord/QueryMethods.html	/^				<a name="limit_value="><\/a>$/;"	a

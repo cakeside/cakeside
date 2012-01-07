@@ -8,15 +8,18 @@ class User < ActiveRecord::Base
 
   def like( creation )
     if self.already_likes(creation)
+      logger.info 'already likes creation'
       likes.find { |like| like.user == self }
     else
+      logger.info 'add creation'
       creation.likes.create({:user => self})
     end
   end
 
   def already_likes(creation)
-    likes.any? do |like|
-      like.user == self
-    end
+    Like.where("user_id = ? AND creation_id = ?", self.id, creation.id).exists?
+    # likes.any? do |like|
+    #   like.user == self && like.creation == creation
+    # end
   end
 end
