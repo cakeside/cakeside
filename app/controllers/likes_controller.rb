@@ -15,7 +15,7 @@ class LikesController < ApplicationController
     end
     @like = current_user.like(@creation)
     if @like.save
-       redirect_to @creation, :notice => 'Like was successfully created.'
+       redirect_to @creation, :notice => 'Welcome to the fanclub!'
     else
        redirect_to @creation
     end
