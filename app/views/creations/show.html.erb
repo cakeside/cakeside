@@ -26,7 +26,7 @@
     <% end %>
   </div>
   <div class="span3 offset12">
-    <%= link_to 'fanclub (' + pluralize(@creation.likes.length, 'like') + ')', creation_likes_path(:creation_id => @creation.id) %>
+    <%= link_to 'fanclub (' + pluralize(@creation.likes.length, 'fan') + ')', creation_likes_path(:creation_id => @creation.id) %>
   </div>
 </div>
 
