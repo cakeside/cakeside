@@ -12,7 +12,7 @@ $(function() {
   $('#cropbox').Jcrop({
     onChange: update_crop,
     onSelect: update_crop,
-    setSelect: [100, 100, 210, 150],
+    setSelect: [50, 50, 210, 150],
     aspectRatio: 1.4
   });
   }catch(e){
@@ -51,6 +51,7 @@ function update_crop(coords) {
 </div>
 <div class="row">
     <div class="span12">
+	<h3>Do you want to crop the image as well?</h3>
       <%= image_tag @creation.image_url, :id => "cropbox" %>
     </div>
     <div class="span4">
@@ -62,13 +63,12 @@ function update_crop(coords) {
 </div>
 <div class="row">
   <div class="span16">
-    <h2>Next</h2>
     <%= form_for @creation, :url => creations_crop_update_path(@creation) do |f| %>
         <% for attribute in [:crop_x, :crop_y, :crop_h, :crop_w] %>
             <%= f.hidden_field attribute, :id => attribute %>
         <% end %>
-        <div class="well">
-          <%= f.submit "Publish", :class => "btn large primary" %>
+        <div class="actions">
+          <%= f.submit "Crop and Publish", :class => "btn large primary" %>
           <%# <a class="btn large primary" href="#">Publish</a>%>
           <a class="btn large" href="<%= url_for creation_path(@creation) %>">Skip</a>
         </div>

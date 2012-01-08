@@ -47,6 +47,9 @@
       <a href="<%= url_for profile_path(current_user) %>"><img src="<%= avatar_url current_user %>&amp;s=200" alt="<%= current_user.name %>" /></a>
     </div>
     <a href="http://en.gravatar.com/" target="_blank">Change My Photo</a>
+    <p>member since: <%= current_user.created_at.to_s :foomat %></p>
+    <p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
+
     <h4>Cancel My Account</h4>
     <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => "btn danger" %></p>
   </div>
