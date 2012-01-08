@@ -16,11 +16,12 @@
     </div>
 
     <% if @creation.photos.length < 3 %>
+		<h3>Add more photos</h3>
       <% unless @creation.new_record? %>
         <%= form_tag(creation_photos_path(@creation), :method => "post", :multipart => true) do |f| %>
           <%= fields_for Photo.new do |f| %>
             <%= f.file_field :image, :rel => creation_photos_path(@creation) %>
-            <input type="submit" class="btn primary" value="add another photo" />
+            <input type="submit" class="btn primary" value="Add photo" />
           <% end %>
         <% end %>
       <% end %>
