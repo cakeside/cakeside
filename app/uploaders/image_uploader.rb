@@ -55,7 +55,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   def filename
     # @name = Digest::MD5.hexdigest(super.chomp(File.extname(super)))
     # "#{@name}.png"
-    super.chomp(File.extname(super)) + '.png'
+    if original_filename 
+      super.chomp(File.extname(super)) + '.png'
+    end
   end
   # def filename 
   #   if original_filename 
