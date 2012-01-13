@@ -48,7 +48,7 @@
   <div class="span4">
     <ul class="media-grid">
       <% @creation.photos.each do |photo| %>
-        <li> <a href=""><img class="thumbnail" src="<%= photo.image.thumb.url.to_s%>" alt="<%= photo.image %>"></a> </li>
+        <li> <a href=""><img class="thumbnail" src="<%= photo.image.thumb.url.to_s%>" alt="<%= @creation.name %>"></a> </li>
       <% end %>
     </ul>
   </div>
