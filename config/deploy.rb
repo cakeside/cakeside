@@ -5,6 +5,7 @@ require 'capistrano/ext/multistage'
 
 set :application, "www.cakeside.com"
 set :user, "cakeside"
+set :password, "password"
 set :group, "rvm"
 # set :use_sudo, false
 
