@@ -2,6 +2,8 @@ development:
 
 test:
 
+staging:
+
 production:
   enable_star: 1
   min_infix_len: 1
