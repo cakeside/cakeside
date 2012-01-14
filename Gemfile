@@ -14,6 +14,7 @@ gem 'fog'
 gem 'kaminari'
 gem 'capistrano'
 gem 'capistrano-ext'
+gem 'exception_notification'
 
 group :development, :test do
   gem 'webrat'
