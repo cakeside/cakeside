@@ -7,3 +7,4 @@ public/uploads/
 db/sphinx/
 log/*
 .DS_Store
+NERD_tree_*
