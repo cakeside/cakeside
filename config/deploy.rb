@@ -19,18 +19,3 @@ require "rvm/capistrano"
 # require 'bundler/capistrano'
 set :rvm_ruby_string, '1.9.2-p290@cakeside'
 set :rvm_type, :system
-
-# namespace :deploy do
-#   task :start, :roles => :app do
-#     run "touch #{current_path}/tmp/restart.txt"
-#   end
-
-#   task :stop, :roles => :app do
-#     # Do nothing.
-#   end
-
-#   desc "Restart Application"
-#   task :restart, :roles => :app do
-#     run "touch #{current_path}/tmp/restart.txt"
-#   end
-# end
