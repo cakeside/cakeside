@@ -4,14 +4,11 @@
 
 <% if !user_signed_in? %>
 <div class="hero-unit">
-  <h1>Hello cake enthusiast!</h1>
-<p>&nbsp;</p>  
-  <p>Do you <strong>make</strong> cakes, <strong>sell</strong> cakes, or just <strong>love</strong> eating them?</p>
-  <p>Then you've come to the right place!</p>
+  <h1>Welcome cake enthusiast!</h1>
+  <p><strong>Make</strong> cakes, <strong>sell</strong> cakes, or just <strong>love</strong> eating them? You've come to the right place!</p>
+  <p>CakeSide is a free site to <strong>share</strong> your cake <strong>creations</strong> and <strong>ideas</strong> with other cake fanatics like yourself!</p>
   <br />
-<p>CakeSide is a free site to <strong>share</strong> your cake <strong>creations</strong> and <strong>ideas</strong> with other cake fanatics like yourself!</p>
-  <br />
-  <p><a href="<%= url_for new_user_session_path %>" class="btn primary large">Learn more &raquo;</a></p>
+  <p><a href="<%= url_for new_user_session_path %>" class="btn primary large">Sign me up &raquo;</a></p>
 </div>
 <% end %>
 <%= render "shared/creation_image_gallery" %>

@@ -1,12 +1,12 @@
 <div class="row">
   <div class="span16">
     <div class="row">
-      <div class="span5">
-        <div class="logo"><a href="/"><img src="/assets/cakeside-logo.png" width="100%"/></a></div>
+      <div class="span8 offset2">
+        <div class="logo"><img src="/assets/cakeside-logo.png" width="100%" alt="cakeside logo"/></div>
       </div>
-      <div class="span5 offset6">
+      <div class="span5 offset1">
         <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-          <fieldset>
+          <fieldset style="padding-top:118px;">
             <%= f.email_field :email, :placeholder => 'Email', :size => 20, :class=> "span2" %>
             <%= f.password_field :password, :placeholder => 'Password',:size => 20 , :class=> "span2" %>
             <%= f.submit "Sign In", :class => "btn" %>
@@ -24,13 +24,13 @@
         <% if notice %><p class="alert-message success"><%= notice %></p> <% end %>
         <% if alert %><p class="alert-message error"><%= alert %></p><% end %>
         <%= devise_error_messages! %>
-        <h2>Why CakeSide?</h2>
+        <h3>Why CakeSide?</h3>
         <p>CakeSide is a community dedicated to giving cake artists, bakers, creators, hobbyists, and of course cake lovers a place to share ideas and creations. Explore your creativity and find your inspiration. Resources shared here are all user driven.</p>
-        <h2>About Us</h2>
+        <h3>About Us</h3>
         <p>We are a passionate team dedicated to improve the cake sharing experience. Frustrated with the lack of community that provides more than just photo sharing, CakeSide was born. All features of this site will be user inspired. We love to listen so feel free to give us feedback. Check back often to see what's new in the CakeSide community!</p>
       </div>
       <div class="span5 offset1">
-        <h3>New to CakeSide? <em>Join Today!</em></h3>
+        <h3>New to CakeSide? <em>Join Us!</em></h3>
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
           <p><%= f.text_field :name, :placeholder => 'Full name', :class =>"xlarge"%></p>
           <p><%= f.email_field :email, :placeholder => 'Email', :class=> "xlarge"%></p>

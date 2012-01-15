@@ -18,3 +18,18 @@ footer #footer-floor {
     background: none repeat scroll 0 0 #1B1B1B;
 	padding-top: 9px;
 }
+
+.hero-unit {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  padding-top: 20px;
+}
+.hero-unit h1 {
+  margin-bottom: 20px;
+  font-size: 40px;
+}
+
+.logo {
+	padding-left: 30px;
+    padding-top: 30px;
+}
