@@ -6,9 +6,9 @@ describe User do
       # creation = Creation.new
       creation = FactoryGirl.build(:creation)
       user = FactoryGirl.create(:user)
-      user.like(creation)
-      user.like(creation)
-      creation.likes.length.should eq(1)
+      user.add_favorite(creation)
+      user.add_favorite(creation)
+      creation.favorites.length.should eq(1)
     end
   end
 end

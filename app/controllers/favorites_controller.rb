@@ -1,20 +1,20 @@
-class LikesController < ApplicationController
+class FavoritesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_creation
 
-  # GET /likes
+  # GET /favorites
   def index
-    @likes = @creation.likes
+    @favorites = @creation.favorites
   end
 
-  # POST /likes
+  # POST /favorites
   def create
     if( current_user == @creation.user )
-      redirect_to @creation, :notice => "You can't like your own stuff"
+      redirect_to @creation, :notice => "You can't favorite your own stuff"
       return
     end
-    @like = current_user.like(@creation)
-    if @like.save
+    @favorite = current_user.add_favorite(@creation)
+    if @favorite.save
        redirect_to @creation, :notice => 'Welcome to the fanclub!'
     else
        redirect_to @creation

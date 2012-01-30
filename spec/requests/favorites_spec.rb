@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe "Likes" do
-  describe "GET /likes" do
+describe "Favorites" do
+  describe "GET /favorites" do
     it "works! (now write some real specs)" do
       # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get creation_likes_path
+      get creation_favorites_path
       response.status.should be(200)
     end
   end

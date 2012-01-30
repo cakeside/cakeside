@@ -4,22 +4,19 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   has_many :creations, :dependent => :destroy
-  has_many :likes, :dependent => :destroy
+  has_many :favorites, :dependent => :destroy
 
-  def like( creation )
+  def add_favorite( creation )
     if self.already_likes(creation)
       logger.info 'already likes creation'
-      likes.find { |like| like.user == self }
+      favorites.find { |favorite| favorite.user == self }
     else
       logger.info 'add creation'
-      creation.likes.create({:user => self})
+      creation.favorites.create({:user => self})
     end
   end
 
   def already_likes(creation)
-    Like.where("user_id = ? AND creation_id = ?", self.id, creation.id).exists?
-    # likes.any? do |like|
-    #   like.user == self && like.creation == creation
-    # end
+    Favorite.where("user_id = ? AND creation_id = ?", self.id, creation.id).exists?
   end
 end

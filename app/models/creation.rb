@@ -5,7 +5,7 @@ class Creation < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :categories, :join_table => 'creations_categories', :uniq => true, :autosave => true
   has_many :photos, :dependent => :destroy
-  has_many :likes, :dependent => :destroy
+  has_many :favorites, :dependent => :destroy
   mount_uploader :image, ImageUploader
 
   attr_accessor :crop_x, :crop_y, :crop_h, :crop_w

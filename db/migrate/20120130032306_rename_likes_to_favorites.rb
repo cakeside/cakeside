@@ -1,5 +1,5 @@
 class RenameLikesToFavorites < ActiveRecord::Migration
   def change
-    rename_table :like, :favorite
+    rename_table :likes, :favorites
   end
 end

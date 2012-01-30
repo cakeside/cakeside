@@ -11,8 +11,8 @@
 <div class="row">
   <div class="span16">
     <ul class="media-grid">
-      <% @creation.likes.each do |like| %>
-        <a href="<%= url_for profile_path(like.user) %>"><img src="<%= avatar_url like.user %>&amp;s=200" alt="<%= like.user.name %>" /></a>
+      <% @creation.favorites.each do |favorite| %>
+        <a href="<%= url_for profile_path(favorite.user) %>"><img src="<%= avatar_url favorite.user %>&amp;s=200" alt="<%= favorite.user.name %>" /></a>
       <% end %>
     </ul>
   </div>

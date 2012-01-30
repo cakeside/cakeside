@@ -31,14 +31,14 @@
       <div class="span10">
         <p> 
         submitted on: <%= @creation.created_at.to_s :foomat %> |
-        <%= link_to 'fanclub (' + pluralize(@creation.likes.length, 'fan') + ')', creation_likes_path(:creation_id => @creation.id)%> 
+        <%= link_to 'fanclub (' + pluralize(@creation.favorites.length, 'fan') + ')', creation_favorites_path(:creation_id => @creation.id)%> 
         </p>
       </div>
       <div class="span2">
          <iframe src="http://www.facebook.com/plugins/like.php?href=<%= request.url %>" scrolling="no" frameborder="0" style="border:none; width:350px; height:30px"></iframe> 
         <% if user_signed_in? %>
           <% unless current_user == @creation.user || current_user.already_likes(@creation) %>
-            <%= button_to "Favorite", creation_likes_path(:creation_id => @creation.id), :method => :post, :class => 'btn success' %>
+            <%= button_to "Favorite", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn success' %>
           <% end %>
         <% end %>
       </div>

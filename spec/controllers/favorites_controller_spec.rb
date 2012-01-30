@@ -18,7 +18,7 @@ require 'spec_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-describe LikesController do
+describe FavoritesController do
 
   # This should return the minimal set of attributes required to create a valid
   # Like. As you add validations to Like, be sure to
@@ -28,30 +28,30 @@ describe LikesController do
   end
 
   describe "GET index" do
-    it "assigns all likes as @likes" do
-      like = Like.create! valid_attributes
+    it "assigns all favorites as @favorites" do
+      favorite = Favorite.create! valid_attributes
       get :index, :creation_id => "1"
-      assigns(:likes).should eq([like])
+      assigns(:favorites).should eq([favorite])
     end
   end
 
   describe "POST create" do
     describe "with valid params" do
-      it "creates a new Like" do
+      it "creates a new Favorite" do
         expect {
-          post :create, :like => valid_attributes
-        }.to change(Like, :count).by(1)
+          post :create, :favorite => valid_attributes
+        }.to change(Favorite, :count).by(1)
       end
 
-      it "assigns a newly created like as @like" do
-        post :create, :like => valid_attributes
-        assigns(:like).should be_a(Like)
-        assigns(:like).should be_persisted
+      it "assigns a newly created favorite as @favorite" do
+        post :create, :favorite => valid_attributes
+        assigns(:favorite).should be_a(favorite)
+        assigns(:favorite).should be_persisted
       end
 
-      it "redirects to the created like" do
-        post :create, :like => valid_attributes
-        response.should redirect_to(Like.last)
+      it "redirects to the created favorite" do
+        post :create, :favorite => valid_attributes
+        response.should redirect_to(Favorite.last)
       end
     end
   end
