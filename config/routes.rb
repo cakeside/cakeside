@@ -4,6 +4,8 @@ Cake::Application.routes.draw do
 
   # /home
   get "home/index"
+  get "home/about_us"
+  get "home/why_cakeside"
 
   # /creations
   resources :creations do
