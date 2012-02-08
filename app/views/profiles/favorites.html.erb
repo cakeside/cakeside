@@ -3,8 +3,8 @@
 <% end %>
 
 <ul class="tabs">
-  <li class="active"> <%= link_to "Profile", profiles_mine_path %></li>
-  <li> <%= link_to "Favorites", profiles_favorites_path %></li>
+  <li> <%= link_to "Profile", profiles_mine_path %></li>
+  <li class="active"> <%= link_to "Favorites", profiles_favorites_path %></li>
   <li> <%= link_to "Share", new_creation_path %></li>
   <li> <%= link_to "Settings", edit_user_registration_path %> </li>
 </ul>
@@ -20,6 +20,11 @@
     <a href="http://en.gravatar.com/" target="_blank">Change My Photo</a>
   </div>
   <div class="span12">
-    <%= render "shared/creation_image_gallery" %>
+    <h2>My Favorites</h2>
+    <ul class="media-grid">
+      <% @creations.each do |creation| %>
+        <li><a href="<%= url_for creation %>"><img class="thumbnail" src="<%= creation.image.thumb.url %>" alt="<%= creation.name %>"></a></li>
+      <% end %>
+    </ul>
   </div>
 </div>

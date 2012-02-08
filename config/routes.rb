@@ -19,6 +19,7 @@ Cake::Application.routes.draw do
   get "profiles/index"
   get "profiles/show"
   get "profiles/mine"
+  get "profiles/favorites"
   match 'profiles/show/:id' => 'profiles#show', :as => 'profile', :method => 'GET'
 
   # /search
