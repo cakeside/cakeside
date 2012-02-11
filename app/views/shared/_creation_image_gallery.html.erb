@@ -1,5 +1,5 @@
 <h2>Recent Creations</h2>
-<ul class="media-grid">
+<ul class="thumbnails">
   <% @creations.each do |creation| %>
     <% if( creation.favorites.count > 0)  %>
       <li><a href="<%= url_for creation %>"><img class="thumbnail" src="<%= creation.image.thumb.url %>" alt="<%= creation.name %>"><%= creation.favorites.count%></a></li>
