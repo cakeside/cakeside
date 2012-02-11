@@ -37,7 +37,6 @@
           <div class="nav-collapse">
             <ul class="nav">
               <li><a href="<%= url_for home_index_path %>">Home</a></li>
-              <li><%= link_to "Share", new_creation_path, :style => "color:#48ce62;" %></li>
               <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories<b class="caret"></b></a>
               <ul class="dropdown-menu">
@@ -61,10 +60,22 @@
             <%# <input type="submit" value="search" />%>
           <% end %>
           <ul class="nav pull-right">
-          <% if user_signed_in? %>
-            <li><%= link_to current_user.name, profiles_mine_path %> </li>
+            <li><%= link_to "Share", new_creation_path, :style => "color:#48ce62;" %></li>
             <li class="divider-vertical"></li>
-            <li> <%= link_to "sign out", destroy_user_session_path %> </li>
+          <% if user_signed_in? %>
+            <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <%= current_user.name %>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "My Profile", profiles_mine_path %></li>
+                <li><%= link_to "My Favorites", profiles_favorites_path %></li>
+                <li><%= link_to "My Settings", edit_user_registration_path %></li>
+                <li class="divider"></li>
+                <li> <%= link_to "Sign Out", destroy_user_session_path %> </li>
+              </ul>
+            </li>
           <% else %>
             <li> <a href="<%= url_for new_user_session_path %>">sign in</a> </li>
           <% end %>
