@@ -85,8 +85,20 @@
     </div><!-- /navbar -->
     <div class="container">
       <div class="content">
-        <% if notice %><p class="alert-message success"><%= notice %></p> <% end %>
-        <% if alert %><p class="alert-message error"><%= alert %></p><% end %>
+        <% if notice %>
+          <div class="alert alert-success">
+            <a class="close">×</a>
+            <h4 class="alert-heading">Well done!</h4>
+            <p><%= notice %></p>
+          </div>
+        <% end %>
+        <% if alert %>
+          <div class="alert alert-error">
+            <a class="close">×</a>
+            <h4 class="alert-heading">Ooops!</h4>
+            <%= alert %>
+          </div>
+        <% end %>
         <%= yield %>
       </div>
     </div> <!-- /container -->
