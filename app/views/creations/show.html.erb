@@ -28,7 +28,7 @@
     <iframe src="http://www.facebook.com/plugins/like.php?href=<%= request.url %>" scrolling="no" frameborder="0" style="border:none; width:350px; height:30px"></iframe> 
     <% if user_signed_in? %>
       <% unless current_user == @creation.user || current_user.already_likes(@creation) %>
-        <%= button_to "Favorite", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn success' %>
+        <%= button_to "Add to favorites", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-success' %>
       <% end %>
     <% end %>
   </div>
