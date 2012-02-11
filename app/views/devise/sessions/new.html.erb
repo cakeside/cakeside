@@ -16,28 +16,28 @@
 </script>
 
 <div class="row">
-  <div class="span16">
+  <div class="span12">
     <div class="row">
-      <div class="span8 offset2">
+      <div class="span7">
         <div class="logo"><img src="/assets/cakeside-logo.png" width="100%" alt="cakeside logo"/></div>
       </div>
-      <div class="span5 offset1">
+      <div class="span5">
         <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
           <fieldset style="padding-top:118px;">
             <%= f.email_field :email, :placeholder => 'Email', :size => 20, :class=> "span2" %>
             <%= f.password_field :password, :placeholder => 'Password',:size => 20 , :class=> "span2" %>
-            <%= f.submit "Sign In", :class => "btn" %>
+            <%= f.submit "Sign In", :class => "btn" %><br />
             <%= f.check_box :remember_me %> Remember me
             <%= link_to "Forgot it?", new_password_path(resource_name) %>
           </fieldset>
         <% end %>
       </div>
     </div>
-    <div class="row"> <div class="span16">&nbsp;</div> </div>
-    <div class="row"> <div class="span16">&nbsp;</div> </div>
-    <div class="row"> <div class="span16">&nbsp;</div> </div>
+    <div class="row"> <div class="span12">&nbsp;</div> </div>
+    <div class="row"> <div class="span12">&nbsp;</div> </div>
+    <div class="row"> <div class="span12">&nbsp;</div> </div>
     <div class="row">
-      <div class="span10"> 
+      <div class="span7"> 
         <% if notice %><p class="alert-message success"><%= notice %></p> <% end %>
         <% if alert %><p class="alert-message error"><%= alert %></p><% end %>
         <%= devise_error_messages! %>
@@ -46,7 +46,7 @@
         <h3>About Us</h3>
         <p>We are a passionate team dedicated to improving the cake sharing experience. Frustrated with the lack of community that provides more than just photo sharing, CakeSide was born. All features of this site will be user inspired. We love to listen so feel free to give us <a href="http://cakeside.wufoo.com/forms/z7x3k1/" target="_blank">feedback</a>. Check back often to see what's new in the CakeSide community!</p>
       </div>
-      <div class="span5 offset1">
+      <div class="span5">
         <h3>New to CakeSide? <em>Join Us!</em></h3>
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
           <p><%= f.text_field :name, :placeholder => 'Full name', :class =>"xlarge"%></p>
