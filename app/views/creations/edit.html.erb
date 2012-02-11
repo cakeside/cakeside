@@ -3,20 +3,21 @@
 <% end %>
 
 <div class="row">
-  <div class="span16">
+  <div class="span12">
     <h1>Editing creation <em><%= @creation.name %></em></h1>
   </div>
 </div>
 <div class="row">
-  <div class="span4">
-    <div class="media-grid">
+  <div class="span3">
+    <ul class="thumbnails">
+      <li>
       <a href="<%= url_for creation_path(@creation) %>">
         <%= image_tag @creation.image_url.to_s, :class => "thumbnail", :style => "width:235px;" %>
       </a>
-    </div>
-
+      </li>
+    </ul>
     <% if @creation.photos.length < 3 %>
-		<h3>Add more photos</h3>
+      <h3>Add more photos</h3>
       <% unless @creation.new_record? %>
         <%= form_tag(creation_photos_path(@creation), :method => "post", :multipart => true) do |f| %>
           <%= fields_for Photo.new do |f| %>
@@ -26,19 +27,20 @@
         <% end %>
       <% end %>
     <% end %>
-
   </div>
-  <div class="span12">
+  <div class="span9">
     <%= render 'form' %>
+    <ul class="thumbnails">
+      <% @creation.photos.each do |photo| %>
+        <li>
+        <div class="thumbnail">
+          <%= image_tag photo.image_url(:thumb) %>
+          <div class="caption">
+            <p><%= link_to "Delete »", creation_photo_path(@creation, photo), :class => 'btn', :method => :delete, :confirm => "Are you sure?" %></p>
+          </div>
+        </div>
+        </li>
+      <% end %>
+    </ul>
   </div>
-</div>
-
-<div class="row">
-  <div class="span1">&nbsp;</div>
-  <% @creation.photos.each do |photo| %>
-    <div class="span5 media-grid">
-      <p><%= image_tag photo.image_url(:thumb) %></p>
-      <p><%= link_to "Delete »", creation_photo_path(@creation, photo), :class => 'btn', :method => :delete, :confirm => "Are you sure?" %></p>
-    </div>
-  <% end %>
 </div>

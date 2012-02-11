@@ -1,55 +1,56 @@
 <% content_for :title do %>
   Update My Account
 <% end %>
-<ul class="tabs">
+<ul class="nav nav-tabs">
   <li> <%= link_to "Profile", profiles_mine_path %></li>
   <li> <%= link_to "Favorites", profiles_favorites_path %></li>
   <li> <%= link_to "Share", new_creation_path %></li>
   <li class="active"> <%= link_to "Settings", edit_user_registration_path %> </li>
 </ul>
 <div class="row">
-  <div class="span12">
+  <div class="span9">
     <h1>Settings</h1>
     <p> If you prefer not to change your password, then just leave it blank.  </p>
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class=> "form-horizontal" }) do |f| %>
       <%= devise_error_messages! %>
       <fieldset>
         <legend>Update your settings</legend>
-        <div class="clearfix">
-          <%= f.label :name  %>
-          <div class="input"> <%= f.text_field :name, :class => "xlarge" %> </div>
-        </div><!-- /clearfix -->
-        <div class="clearfix">
-          <%= f.label :email  %>
-          <div class="input"> <%= f.email_field :email, :class => "xlarge"  %> </div>
-        </div><!-- /clearfix -->
-        <div class="clearfix">
-          <%= f.label :password %> 
-          <div class="input"> <%= f.password_field :password, :class => "xlarge"  %> </div>
-        </div><!-- /clearfix -->
-        <div class="clearfix">
-          <%= f.label :password_confirmation %> 
-          <div class="input"> <%= f.password_field :password_confirmation, :class => "xlarge" %> </div>
-        </div><!-- /clearfix -->
-        <div class="clearfix">
-          <%= f.label :current_password %> 
-          <div class="input"> <%= f.password_field :current_password, :class => "xlarge" %> </div>
-        </div><!-- /clearfix -->
-        <div class="actions">
-          <input type="submit" class="btn primary" value="Save changes">&nbsp;<button type="reset" class="btn">Cancel</button>
+        <div class="control-group">
+          <%= f.label :name, :class => "control-label"  %>
+          <div class="controls"> <%= f.text_field :name, :class => "input-xlarge" %> </div>
+        </div><!-- /control-group -->
+        <div class="control-group">
+          <%= f.label :email, :class => "control-label"  %>
+          <div class="controls"> <%= f.email_field :email, :class => "input-xlarge"  %> </div>
+        </div><!-- /control-group -->
+        <div class="control-group">
+          <%= f.label :password, :class => "control-label" %> 
+          <div class="controls"> <%= f.password_field :password, :class => "input-xlarge"  %> </div>
+        </div><!-- /control-group -->
+        <div class="control-group">
+          <%= f.label :password_confirmation, :class => "control-label" %> 
+          <div class="controls"> <%= f.password_field :password_confirmation, :class => "input-xlarge" %> </div>
+        </div><!-- /control-group -->
+        <div class="control-group">
+          <%= f.label :current_password, :class => "control-label" %> 
+          <div class="controls"> <%= f.password_field :current_password, :class => "input-xlarge" %> </div>
+        </div><!-- /control-group -->
+        <div class="form-actions">
+          <input type="submit" class="btn btn-primary" value="Save changes" />
+          <button type="reset" class="btn">Cancel</button>
         </div>
       </fieldset>
     <% end %>
   </div>
-  <div class="span4">
-    <div class="media-grid">
-      <a href="<%= url_for profile_path(current_user) %>"><img src="<%= avatar_url current_user %>&amp;s=200" alt="<%= current_user.name %>" /></a>
-    </div>
+  <div class="span3">
+    <ul class="thumbnails">
+      <li><a href="<%= url_for profile_path(current_user) %>"><img src="<%= avatar_url current_user %>&amp;s=200" alt="<%= current_user.name %>" /></a></li>
+    </ul>
     <a href="http://en.gravatar.com/" target="_blank">Change My Photo</a>
     <p>member since: <%= current_user.created_at.to_s :foomat %></p>
     <p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
 
     <h4>Cancel My Account</h4>
-    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => "btn danger" %></p>
+    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger" %></p>
   </div>
 </div>

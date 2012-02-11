@@ -2,7 +2,7 @@
   My profile
 <% end %>
 
-<ul class="tabs">
+<ul class="nav nav-tabs">
   <li class="active"> <%= link_to "Profile", profiles_mine_path %></li>
   <li> <%= link_to "Favorites", profiles_favorites_path %></li>
   <li> <%= link_to "Share", new_creation_path %></li>
@@ -10,16 +10,16 @@
 </ul>
 
 <div class="row">
-  <div class="span4">
-    <div class="media-grid">
-      <a href="<%= url_for profile_path(current_user) %>"><img src="<%= avatar_url current_user %>&amp;s=200" alt="<%= current_user.name %>" /></a>
-    </div>
+  <div class="span3">
+    <ul class="thumbnails">
+      <li><a href="<%= url_for profile_path(current_user) %>"><img src="<%= avatar_url current_user %>&amp;s=200" alt="<%= current_user.name %>" /></a></li>
+    </ul>
     <h3><%= current_user.name %></h3>
     <p>member since: <%= current_user.created_at.to_s :foomat %></p>
     <p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
     <a href="http://en.gravatar.com/" target="_blank">Change My Photo</a>
   </div>
-  <div class="span12">
+  <div class="span9">
     <%= render "shared/creation_image_gallery" %>
   </div>
 </div>

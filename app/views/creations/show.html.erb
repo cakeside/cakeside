@@ -13,22 +13,51 @@
     </small> 
   </h1>
   <% @creation.categories.each do |category| %>
-    <span class="label notice"><a href="/categories/<%= category.slug %>"><%= category.name %></a></span>
+    <span class="label"><a href="/categories/<%= category.slug %>"><%= category.name %></a></span>
   <% end %> 
 </div>
 
 <div class="row">
-  <div class="span16">
+  <div class="span12">
+<ul class="thumbnails">
+        <li class="span8">
+          <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/360x268"></a>
+        </li>
+        <li class="span2">
+          <a class="thumbnail" href="#"> <img alt="" src="http://placehold.it/160x120"> </a>
+        </li>
+        <li class="span2">
+          <a class="thumbnail" href="#"> <img alt="" src="http://placehold.it/160x120"> </a>
+        </li>
+        <li class="span2">
+          <a class="thumbnail" href="#"> <img alt="" src="http://placehold.it/160x120"> </a>
+        </li>
+        <li class="span2">
+          <a class="thumbnail" href="#"> <img alt="" src="http://placehold.it/160x120"> </a>
+        </li>
+        <li class="span2">
+          <a class="thumbnail" href="#"> <img alt="" src="http://placehold.it/160x120"> </a>
+        </li>
+        <li class="span2">
+          <a class="thumbnail" href="#"> <img alt="" src="http://placehold.it/160x120"> </a>
+        </li>
+        <li class="span2">
+          <a class="thumbnail" href="#"> <img alt="" src="http://placehold.it/160x120"> </a>
+        </li>
+        <li class="span2">
+          <a class="thumbnail" href="#"> <img alt="" src="http://placehold.it/160x120"> </a>
+        </li>
+      </ul>
   </div>
 </div>
 
 <div class="row">
-  <div class="span12">
-    <div class="media-grid">
-      <a href="<%= url_for creation_path(@creation) %>"><img class="thumbnail" src="<%= @creation.image_url(:large).to_s%>" alt="<%= @creation.name %>"></a>
-    </div>
+  <div class="span9">
+    <ul class="thumbnails">
+      <li><a href="<%= url_for creation_path(@creation) %>"><img class="thumbnail" src="<%= @creation.image_url(:large).to_s %>" alt="<%= @creation.name %>"></a></li>
+    </ul>
     <div class="row">
-      <div class="span10">
+      <div class="span7">
         <p> 
         submitted on: <%= @creation.created_at.to_s :foomat %> |
         <%= link_to 'fanclub (' + pluralize(@creation.favorites.length, 'fan') + ')', creation_favorites_path(:creation_id => @creation.id)%> 
@@ -44,31 +73,25 @@
       </div>
     </div>
   </div>
-
-  <div class="span4">
-    <ul class="media-grid">
+  <div class="span3">
+    <ul class="thumbnails">
       <% @creation.photos.each do |photo| %>
-        <li> <a href=""><img class="thumbnail" src="<%= photo.image.thumb.url.to_s%>" alt="<%= @creation.name %>"></a> </li>
+        <li> <a href=""><img src="<%= photo.image.thumb.url.to_s%>" alt="<%= @creation.name %>"></a> </li>
       <% end %>
     </ul>
   </div>
 </div>
 
 <div class="row">
-  <div class="span16">
+  <div class="span12">
     <h3>Description</h3>
     <p><%= @creation.story %></p>
   </div>
 </div>
 <hr>
 <div class="row">
-  <div class="span16">
-    <h1>Other Creations by <small><%= @creation.user.name %></small></h1>
-  </div>
   <div class="span12">
+    <h1>Other Creations by <small><%= @creation.user.name %></small></h1>
     <%= render "shared/creation_image_gallery" %>
   </div>
-  <div class="span4 media-grid">
-  </div>
-
 </div>

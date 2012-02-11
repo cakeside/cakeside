@@ -1,8 +1,8 @@
 <% content_for :title do %>
-  My profile
+  My Favorites
 <% end %>
 
-<ul class="tabs">
+<ul class="nav nav-tabs">
   <li> <%= link_to "Profile", profiles_mine_path %></li>
   <li class="active"> <%= link_to "Favorites", profiles_favorites_path %></li>
   <li> <%= link_to "Share", new_creation_path %></li>
@@ -10,7 +10,7 @@
 </ul>
 
 <div class="row">
-  <div class="span4">
+  <div class="span3">
     <div class="media-grid">
       <a href="<%= url_for profile_path(current_user) %>"><img src="<%= avatar_url current_user %>&amp;s=200" alt="<%= current_user.name %>" /></a>
     </div>
@@ -19,9 +19,9 @@
     <p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
     <a href="http://en.gravatar.com/" target="_blank">Change My Photo</a>
   </div>
-  <div class="span12">
+  <div class="span9">
     <h2>My Favorites</h2>
-    <ul class="media-grid">
+    <ul class="thumbnails">
       <% @creations.each do |creation| %>
         <li><a href="<%= url_for creation %>"><img class="thumbnail" src="<%= creation.image.thumb.url %>" alt="<%= creation.name %>"></a></li>
       <% end %>

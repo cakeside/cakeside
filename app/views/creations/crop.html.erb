@@ -8,16 +8,12 @@
   </style>
 <script type="text/javascript" charset="utf-8">
 $(function() {
-    try{
   $('#cropbox').Jcrop({
     onChange: update_crop,
     onSelect: update_crop,
-    setSelect: [50, 50, 210, 150],
+    setSelect: [100, 100, 210, 150],
     aspectRatio: 1.4
   });
-  }catch(e){
-  alert(e);
-  }
 });
 
 function update_crop(coords) {
@@ -50,11 +46,11 @@ function update_crop(coords) {
   </div>
 </div>
 <div class="row">
-    <div class="span12">
+    <div class="span9">
 	<h3>Do you want to crop the image as well?</h3>
       <%= image_tag @creation.image_url, :id => "cropbox" %>
     </div>
-    <div class="span4">
+    <div class="span3">
       <h3>Crop Preview</h3>
       <div class="preview">
           <%= image_tag @creation.image_url, :id => "preview" %>
@@ -62,15 +58,14 @@ function update_crop(coords) {
     </div>
 </div>
 <div class="row">
-  <div class="span16">
+  <div class="span12">
     <%= form_for @creation, :url => creations_crop_update_path(@creation) do |f| %>
         <% for attribute in [:crop_x, :crop_y, :crop_h, :crop_w] %>
             <%= f.hidden_field attribute, :id => attribute %>
         <% end %>
-        <div class="actions">
-          <%= f.submit "Crop and Publish", :class => "btn large primary" %>
-          <%# <a class="btn large primary" href="#">Publish</a>%>
-          <a class="btn large" href="<%= url_for creation_path(@creation) %>">Skip</a>
+        <div class="form-actions">
+          <%= f.submit "Crop and Publish", :class => "btn btn-large btn-primary" %>
+          <a class="btn btn-large" href="<%= url_for creation_path(@creation) %>">Skip</a>
         </div>
     <% end %>
   </div>

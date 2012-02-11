@@ -1,4 +1,4 @@
-<%= form_for(@creation, :html => {:multipart => true}) do |f| %>
+<%= form_for(@creation, :html => {:multipart => true, :class => "form-horizontal"}) do |f| %>
   <% if @creation.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@creation.errors.count, "error") %> prohibited this creation from being saved:</h2>
@@ -12,56 +12,53 @@
 
   <fieldset>
     <legend>Share a new creation</legend>
-    <div class="clearfix">
-      <%= f.label :name %>
-      <div class="input">
-        <%= f.text_field :name, :class => "xlarge" %>
+    <div class="control-group">
+      <%= f.label :name, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :name, :class => "input-xlarge" %>
       </div>
-    </div><!-- /clearfix -->
-    <div class="clearfix">
+    </div><!-- /control-group -->
+    <div class="control-group">
       <%= f.label :image, "Upload Main Image" %>
-      <div class="input">
+      <div class="controls">
         <%= f.file_field :image, :class => "input-file" %>
       </div>
-    </div><!-- /clearfix -->
+    </div><!-- /control-group -->
     <!--
-    <div class="clearfix">
+    <div class="control-group">
       <%= f.label :remote_image_url, "Or Image URL" %><br />
-      <div class="input">
-        <%= f.text_field :remote_image_url, :class=>"xlarge" %>
+      <div class="controls">
+        <%= f.text_field :remote_image_url, :class=>"input-xlarge" %>
       </div>
     </div>
     -->
-    <div class="clearfix">
+    <div class="control-group">
       <%= f.label :story, "Description" %><br />
-      <div class="input">
-        <%= f.text_area :story, :class =>"xxlarge", :rows => "3" %>
-        <span class="help-block">
+      <div class="controls">
+        <%= f.text_area :story, :class =>"input-xlarge", :rows => "3" %>
+        <p class="help-block">
           Tell us the story or description of the creation.
-        </span>
+        </p>
       </div>
-    </div><!-- /clearfix -->
-    <div class="clearfix">
-      <label id="optionsCheckboxes">Categories</label>
-      <div class="input">
-        <ul class="inputs-list">
-          <% for category in Category.all %>
-            <li>
-            <label>
-              <%= check_box_tag "creation[category_ids][]", category.id, @creation.categories.include?(category) %>
-              <span><%= category.name %></span>
-            </label>
-            </li>
-          <% end %>
-        </ul>
-        <span class="help-block">
-          <strong>Note:</strong> Help us categorize your creation by checking off one or more from the above list.
-        </span>
+    </div><!-- /control-group -->
+    <div class="control-group">
+      <label class="control-label">Categories</label>
+      <div class="controls">
+        <% for category in Category.all %>
+          <label class="checkbox">
+            <%= check_box_tag "creation[category_ids][]", category.id, @creation.categories.include?(category) %>
+            <%= category.name %>
+          </label>
+        <% end %>
+        <p class="help-block">
+        <strong>Note:</strong> 
+        Help us categorize your creation by checking off one or more from the above list.
+        </p>
       </div>
-    </div><!-- /clearfix -->
-
-    <div class="actions">
-      <input type="submit" class="btn primary" value="Save changes">&nbsp;<button type="reset" class="btn">Cancel</button>
+    </div><!-- /control-group -->
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Save changes</button>
+      <button type="reset" class="btn">Cancel</button>
     </div>
   </fieldset>
 <% end %>
