@@ -1,4 +1,3 @@
-<h2>Recent Creations</h2>
 <ul class="thumbnails">
   <% @creations.each do |creation| %>
     <li class="span3">
@@ -6,7 +5,7 @@
       <div class="caption">
         <h5><%= creation.name %></h5>
         <a href="<%= url_for creation %>">
-          <img src="<%= creation.image.thumb.url %>" alt="<%= creation.name %>">
+          <img src="<%= creation.image.thumb.url %>" alt="<%= creation.name %>" width="260px" height="180px" />
         </a>
         <p><%= link_to creation.favorites.count, creation_favorites_path(:creation_id => creation.id) %><i class="icon-heart"></i></p>
       </div>

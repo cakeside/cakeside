@@ -10,74 +10,56 @@
         <%= link_to '(edit)', edit_creation_path(@creation) %> 
       <% end %>
       submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> 
-    </small> 
-  </h1>
-  <% @creation.categories.each do |category| %>
-    <span class="label"><a href="/categories/<%= category.slug %>"><%= category.name %></a></span>
-  <% end %> 
-</div>
-
-<div class="row">
-  <div class="span12">
-<ul class="thumbnails">
-        <li class="span8">
-          <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/360x268"></a>
-        </li>
-        <li class="span2">
-          <a class="thumbnail" href="#"> <img alt="" src="http://placehold.it/160x120"> </a>
-        </li>
-        <li class="span2">
-          <a class="thumbnail" href="#"> <img alt="" src="http://placehold.it/160x120"> </a>
-        </li>
-        <li class="span2">
-          <a class="thumbnail" href="#"> <img alt="" src="http://placehold.it/160x120"> </a>
-        </li>
-        <li class="span2">
-          <a class="thumbnail" href="#"> <img alt="" src="http://placehold.it/160x120"> </a>
-        </li>
-        <li class="span2">
-          <a class="thumbnail" href="#"> <img alt="" src="http://placehold.it/160x120"> </a>
-        </li>
-        <li class="span2">
-          <a class="thumbnail" href="#"> <img alt="" src="http://placehold.it/160x120"> </a>
-        </li>
-        <li class="span2">
-          <a class="thumbnail" href="#"> <img alt="" src="http://placehold.it/160x120"> </a>
-        </li>
-        <li class="span2">
-          <a class="thumbnail" href="#"> <img alt="" src="http://placehold.it/160x120"> </a>
-        </li>
-      </ul>
-  </div>
+  </small> 
+</h1>
+<% @creation.categories.each do |category| %>
+  <span class="label"><a href="/categories/<%= category.slug %>"><%= category.name %></a></span>
+<% end %> 
 </div>
 
 <div class="row">
   <div class="span9">
-    <ul class="thumbnails">
-      <li><a href="<%= url_for creation_path(@creation) %>"><img class="thumbnail" src="<%= @creation.image_url(:large).to_s %>" alt="<%= @creation.name %>"></a></li>
-    </ul>
-    <div class="row">
-      <div class="span7">
-        <p> 
-        submitted on: <%= @creation.created_at.to_s :foomat %> |
-        <%= link_to 'fanclub (' + pluralize(@creation.favorites.length, 'fan') + ')', creation_favorites_path(:creation_id => @creation.id)%> 
-        </p>
-      </div>
-      <div class="span2">
-         <iframe src="http://www.facebook.com/plugins/like.php?href=<%= request.url %>" scrolling="no" frameborder="0" style="border:none; width:350px; height:30px"></iframe> 
-        <% if user_signed_in? %>
-          <% unless current_user == @creation.user || current_user.already_likes(@creation) %>
-            <%= button_to "Favorite", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn success' %>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
+    <p> 
+    submitted on <%= @creation.created_at.to_s :foomat %> |
+    <%= link_to 'fanclub (' + pluralize(@creation.favorites.length, 'fan') + ')', creation_favorites_path(:creation_id => @creation.id)%> 
+    </p>
   </div>
   <div class="span3">
-    <ul class="thumbnails">
-      <% @creation.photos.each do |photo| %>
-        <li> <a href=""><img src="<%= photo.image.thumb.url.to_s%>" alt="<%= @creation.name %>"></a> </li>
+    <iframe src="http://www.facebook.com/plugins/like.php?href=<%= request.url %>" scrolling="no" frameborder="0" style="border:none; width:350px; height:30px"></iframe> 
+    <% if user_signed_in? %>
+      <% unless current_user == @creation.user || current_user.already_likes(@creation) %>
+        <%= button_to "Favorite", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn success' %>
       <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <ul class="thumbnails">
+      <li class="span8">
+      <a class="thumbnail" href="<%= url_for creation_path(@creation) %>"><img src="<%= @creation.image_url(:large).to_s %>" alt="<%= @creation.name %>"></a>
+      </li>
+      <% @creation.photos.each do |photo| %>
+        <li class="span2">
+          <a class="thumbnail" href="#"><img alt="<%= @creation.name %>" src="<%= photo.image.thumb.url.to_s%>"></a>
+        </li>
+      <% end %>
+      <li class="span2">
+      <a class="thumbnail" href="#"> <img alt="" src="http://placehold.it/160x120"> </a>
+      </li>
+      <li class="span2">
+      <a class="thumbnail" href="#"> <img alt="" src="http://placehold.it/160x120"> </a>
+      </li>
+      <li class="span2">
+      <a class="thumbnail" href="#"> <img alt="" src="http://placehold.it/160x120"> </a>
+      </li>
+      <li class="span2">
+      <a class="thumbnail" href="#"> <img alt="" src="http://placehold.it/160x120"> </a>
+      </li>
+      <li class="span2">
+      <a class="thumbnail" href="#"> <img alt="" src="http://placehold.it/160x120"> </a>
+      </li>
     </ul>
   </div>
 </div>
@@ -91,7 +73,7 @@
 <hr>
 <div class="row">
   <div class="span12">
-    <h1>Other Creations by <small><%= @creation.user.name %></small></h1>
+    <h1>Other Creations by <small><%= link_to @creation.user.name, profile_path(@creation.user) %></small></h1>
     <%= render "shared/creation_image_gallery" %>
   </div>
 </div>
