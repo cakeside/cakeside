@@ -18,20 +18,26 @@
 </div>
 
 <div class="row">
-  <div class="span9">
+  <div class="span12">
     <p> 
     submitted on <%= @creation.created_at.to_s :foomat %> |
     <%= link_to 'fanclub (' + pluralize(@creation.favorites.length, 'fan') + ')', creation_favorites_path(:creation_id => @creation.id)%> 
     </p>
   </div>
-  <div class="span3">
-    <iframe src="http://www.facebook.com/plugins/like.php?href=<%= request.url %>" scrolling="no" frameborder="0" style="border:none; width:350px; height:30px"></iframe> 
-    <% if user_signed_in? %>
-      <% unless current_user == @creation.user || current_user.already_likes(@creation) %>
-        <%= button_to "Add to favorites", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-success' %>
-      <% end %>
-    <% end %>
-  </div>
+</div>
+
+<div class="row">
+	<div class="span6"> 
+	    <iframe src="http://www.facebook.com/plugins/like.php?href=<%= request.url %>" scrolling="no" frameborder="0" style="border:none; width:350px; height:30px; float:left;">
+		</iframe>
+	  </div>
+	<div class="span2">
+		<% if user_signed_in? %>
+	      <% unless current_user == @creation.user || current_user.already_likes(@creation) %>
+	        <%= button_to "Add to favorites", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary' %>
+	      <% end %>
+	    <% end %>
+	</div>
 </div>
 
 <div class="row">
