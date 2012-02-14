@@ -3,7 +3,7 @@
     <li class="span3">
     <div class="thumbnail">
       <div class="caption">
-        <h5><%= creation.name %></h5>
+        <h5><%= creation.name.split[0...4].join(' ') %></h5>
         <a href="<%= url_for creation %>">
           <img src="<%= creation.image.thumb.url %>" alt="<%= creation.name %>" width="260px" height="180px" />
         </a>
