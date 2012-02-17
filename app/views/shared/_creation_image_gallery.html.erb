@@ -4,6 +4,7 @@
     <div class="thumbnail">
       <div class="caption">
         <h5><%= creation.name.split[0...4].join(' ') %></h5>
+        <h6><a href="<% url_for profile_path(creation.user) %>"><%= creation.user.name %></a></h6>
         <a href="<%= url_for creation %>">
           <img src="<%= creation.image.thumb.url %>" alt="<%= creation.name %>" width="260px" height="180px" />
         </a>
