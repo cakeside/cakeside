@@ -5,6 +5,9 @@
   height:150px;
   overflow:hidden;
 }
+.jcrop img {
+  max-width:none;
+}
   </style>
 <script type="text/javascript" charset="utf-8">
 $(function() {
@@ -46,11 +49,11 @@ function update_crop(coords) {
   </div>
 </div>
 <div class="row">
-    <div class="span9">
-	<h3>Do you want to crop the image as well?</h3>
+    <div class="span9 jcrop">
+      <h3>Do you want to crop the image as well?</h3>
       <%= image_tag @creation.image_url, :id => "cropbox" %>
     </div>
-    <div class="span3">
+    <div class="span3 jcrop">
       <h3>Crop Preview</h3>
       <div class="preview">
           <%= image_tag @creation.image_url, :id => "preview" %>
