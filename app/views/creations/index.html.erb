@@ -1,29 +1,14 @@
 <% content_for :title do %>
-  Browse All Creations
+  Welcome to CakeSide
 <% end %>
 
-<h1>Browse All Creations</h1>
-<% @creations.each_with_index do |creation, index| %>
-  <% if index % 4 == 0  %>
-    <div class="grid_2 alpha">
-      <a href="<%= url_for creation %>"><%= image_tag creation.image.thumb.url, :alt => creation.name %></a>
-      <p><%= creation.name %> <br /><%= link_to creation.user.name, creation %></p>
-    </div>
-  <% elsif (index+1) % 4 == 0  %>
-    <div class="grid_2 omega">
-      <a href="<%= url_for creation %>"><%= image_tag creation.image.thumb.url, :alt => creation.name %></a>
-      <p><%= creation.name %> <br /><%= link_to creation.user.name, creation %></p>
-    </div>
-    <div class="clear"></div>
-  <% else %>
-    <div class="grid_2">
-      <a href="<%= url_for creation %>"><%= image_tag creation.image.thumb.url, :alt => creation.name %></a>
-      <p><%= creation.name %> <br /><%= link_to creation.user.name, creation %></p>
-    </div>
-  <% end %>
+<% if !user_signed_in? %>
+<div class="hero-unit">
+  <h1>Welcome cake enthusiast!</h1>
+  <p><strong>Make</strong> cakes, <strong>sell</strong> cakes, or just <strong>love</strong> eating them? You've come to the right place!</p>
+  <p>CakeSide is a free site to <strong>share</strong> your cake <strong>creations</strong> and <strong>ideas</strong> with other cake fanatics like yourself!</p>
+  <br />
+  <p><a href="<%= url_for new_user_session_path %>" class="btn btn-large">Sign me up &raquo;</a></p>
+</div>
 <% end %>
-<div class="clear"></div>
-<div class="grid_3 alpha"> &nbsp; </div>
-<div class="grid_2"> <p> <%= paginate @creations %> </p> </div>
-<div class="grid_3 omega"> &nbsp; </div>
-
+<%= render "shared/creation_image_gallery" %>

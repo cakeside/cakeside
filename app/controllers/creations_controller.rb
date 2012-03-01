@@ -2,7 +2,7 @@ class CreationsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
   # GET /creations
   def index
-    @creations = Creation.page(params[:page]).per(9)
+    @creations = Creation.page(params[:page]).per(16)
   end
 
   # GET /creations/1

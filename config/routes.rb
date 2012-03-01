@@ -1,9 +1,9 @@
 Cake::Application.routes.draw do
 
-  root :to => "home#index"
+  root :to => "creations#index"
 
   # /home
-  get "home/index"
+  get "home/index" # to be removed
   get "home/about_us"
   get "home/why_cakeside"
 
