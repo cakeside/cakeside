@@ -15,6 +15,9 @@ gem 'kaminari'
 gem 'capistrano'
 gem 'capistrano-ext'
 gem 'exception_notification'
+gem 'activeadmin'
+gem 'sass-rails'
+gem 'meta_search', '>= 1.1.0.pre'
 
 group :development, :test do
   gem 'webrat'
