@@ -36,6 +36,8 @@
       <% unless current_user == @creation.user || current_user.already_likes(@creation) %>
         <%= button_to "Add to favorites", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary' %>
       <% end %>
+    <% else %>
+        <%= button_to "Add to favorites", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary' %>
     <% end %>
   </div>
 </div>
