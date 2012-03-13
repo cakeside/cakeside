@@ -13,7 +13,7 @@ Cake::Application.routes.draw do
   # /creations
   resources :creations do
     resources :photos, :only => [:create, :destroy]
-    resources :favorites, :onlye => [:index, :create]
+    resources :favorites, :only => [:index, :create]
   end
   match 'creations/crop/:id' => 'creations#crop', :method => 'GET'
   match 'creations/crop_update/:id' => 'creations#crop_update', :as => 'creations_crop_update', :method => 'POST'
