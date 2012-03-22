@@ -8,7 +8,7 @@
     <small>
       <% if current_user.owns(@creation) %>
         <%= link_to '(edit)', edit_creation_path(@creation) %> 
-        <%= link_to '(delete)', creation_path(@creation),:confirm => "Are you sure", :method => :delete %> 
+        <%= link_to 'Delete', creation_path(@creation),:confirm => "Are you sure", :method => :delete, :class => 'btn btn-danger' %> 
       <% end %>
       submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> 
   </small> 
