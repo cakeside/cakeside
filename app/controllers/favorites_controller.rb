@@ -9,7 +9,7 @@ class FavoritesController < ApplicationController
 
   # POST /favorites
   def create
-    if( current_user == @creation.user )
+    if( current_user.owns @creation )
       redirect_to @creation, :notice => "You can't favorite your own stuff"
       return
     end

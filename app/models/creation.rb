@@ -39,4 +39,7 @@ class Creation < ActiveRecord::Base
       logger.error e.backtrace.inspect
     end
   end
+  def is_owned_by(user)
+    @user == user
+  end
 end
