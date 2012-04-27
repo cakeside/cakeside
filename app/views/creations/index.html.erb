@@ -3,12 +3,47 @@
 <% end %>
 
 <% if !user_signed_in? %>
-<div class="hero-unit">
-  <h1>Welcome cake enthusiast!</h1>
-  <p><strong>Make</strong> cakes, <strong>sell</strong> cakes, or just <strong>love</strong> eating them? You've come to the right place!</p>
-  <p>CakeSide is a free site to <strong>share</strong> your cake <strong>creations</strong> and <strong>ideas</strong> with other cake fanatics like yourself!</p>
-  <br />
-  <p><a href="<%= url_for new_user_session_path %>" class="btn btn-large">Sign me up &raquo;</a></p>
-</div>
+  <div class="hero-unit">
+    <h1>Welcome cake enthusiast!</h1>
+    <p><strong>Make</strong> cakes, <strong>sell</strong> cakes, or just <strong>love</strong> eating them? You've come to the right place!</p>
+    <p>CakeSide is a free site to <strong>share</strong> your cake <strong>creations</strong> and <strong>ideas</strong> with other cake fanatics like yourself!</p>
+
+    <div class="row">
+      <div class="span12">
+        <a href="<%= url_for new_user_session_path %>" class="btn btn-large">Sign me up &raquo;</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="marketing">
+    <div class="row">
+      <div class="span4">
+        <img class="bs-icon" src="/assets/cupcake_share.png">
+        <h2>Share your creativity</h2>
+        <p>Find interesting ideas and show off your originality with other passionate CakeSide members.</p>
+      </div>
+      <div class="span4">
+        <img class="bs-icon" src="/assets/cupcake_promote.png">
+        <h2>Promote yourself</h2>
+        <p>Get recognized for your work and connect with customers as well as fellow artists looking for your unique style.</p>
+      </div>
+      <div class="span4">
+        <img class="bs-icon" src="/assets/cupcake_inspire.png">
+        <h2>Inspire a community</h2>
+        <p>Upload creations, teach with tutorials, and create a vibrant community for everything cakes.</p>
+      </div>
+    </div><!--/row-->
+    <div class="row">
+      <p style="text-align: center;">
+      Still interested...? <a href="<%= url_for new_user_session_path %>">sign up now</a>
+      </p>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="span12">
+        <h2>Recently uploaded creations</h2>
+      </div>
+    </div>	
+  </div>
 <% end %>
 <%= render "shared/creation_image_gallery" %>
