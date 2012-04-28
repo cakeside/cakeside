@@ -14,6 +14,7 @@ set :repository,  "git@cakeartist.unfuddle.com:cakeartist/cake.git"
 set :deploy_to, "/home/cakeside/apps/#{application}"
 set :deploy_via, :remote_cache
 set :deploy_env, 'production'
+set :scm_verbose, true
 
 $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require "rvm/capistrano"                              
