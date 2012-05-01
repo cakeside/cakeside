@@ -16,7 +16,7 @@ set :deploy_via, :remote_cache
 set :deploy_env, 'production'
 set :scm_verbose, true
 
-#$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
+$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require "rvm/capistrano"                              
 #require 'bundler/capistrano'                 # loads RVM's capistrano plugin
 set :rvm_ruby_string, 'ruby-1.9.2-p290@cakeside'
