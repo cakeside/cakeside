@@ -266,6 +266,7 @@ DEPENDENCIES
   RedCloth
   activeadmin
   bcrypt-ruby
+  bourbon (= 1.4.0)
   capistrano
   capistrano-ext
   capybara
