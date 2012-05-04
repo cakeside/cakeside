@@ -22,12 +22,6 @@
     <link rel="apple-touch-icon" sizes="72x72" href="/assets/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="/assets/apple-touch-icon-114x114.png">
     <%= javascript_include_tag :application %>
-    <!--[if IE]>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
-    <script>
-      CFInstall.check({ mode: "overlay" });
-    </script>
-    <![endif]-->
     <%= yield :head %>
     <%= csrf_meta_tags %>
   </head>
@@ -147,5 +141,11 @@
     </div>	
     </footer>
     <%= render "shared/google_analytics" %>
+    <!--[if IE]>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+    <script>
+      CFInstall.check({ mode: "overlay" });
+    </script>
+    <![endif]-->
   </body>
 </html>
