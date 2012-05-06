@@ -6,13 +6,3 @@ require 'rake'
 require 'ruby_gntp'
 
 Cake::Application.load_tasks
-
-#task :blah => :spec do
-task :blah do
-  GNTP.notify({
-    :app_name => 'cakeside',
-    :title => 'welcome to the cakeside',
-    :text => 'blah',
-    :icon => 'http://www.mokhan.ca/images/profile_2010.jpg'
-  })
-end
