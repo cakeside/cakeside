@@ -40,7 +40,6 @@ group :test do
   # gem 'libnotify', :require => false if RUBY_PLATFORM =~ /linux/i
   # Pretty printed test output
   gem 'turn', :require => false
-  gem 'ruby_gntp'
 end
 group :production do
   gem 'pg'
