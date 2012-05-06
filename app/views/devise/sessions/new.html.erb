@@ -3,7 +3,6 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-    $('#submit-registration').attr('disabled', 'disabled');
     $('#accepted').click(function(){
       if( $('#accepted').is(':checked')){
         $('#submit-registration').removeAttr('disabled');
@@ -53,7 +52,7 @@
           <p><%= f.email_field :email, :placeholder => 'Email', :class=> "xlarge"%></p>
           <p><%= f.password_field :password, :placeholder => 'Password', :class=> "xlarge"%></p>
           <p><%= f.password_field :password_confirmation, :placeholder => 'Confirm Password', :class=> "xlarge"%></p>
-          <p><input id="accepted" name="accepted" type="checkbox" value="" /> I have read the <a href="/terms.html">terms and conditions</a> and the <a href="/privacy.html">privacy policy</a></p>
+          <p><input id="accepted" name="accepted" type="checkbox" value="" checked="checked" /> I have read the <a href="/terms.html">terms and conditions</a> and the <a href="/privacy.html">privacy policy</a></p>
           <p><%= f.submit "Sign up", :style => "height:28px;", :class => "btn primary", :id => "submit-registration" %></p>
         <% end %>
       </div>
