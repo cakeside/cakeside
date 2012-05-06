@@ -17,6 +17,7 @@ gem 'capistrano'
 gem 'capistrano-ext'
 gem 'rvm-capistrano'
 gem 'exception_notification'
+gem "formtastic", "~> 2.1.1"
 gem 'activeadmin'
 gem 'sass-rails'
 gem 'meta_search', '>= 1.1.0.pre'
