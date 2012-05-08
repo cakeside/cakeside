@@ -15,7 +15,6 @@ task :show_free_space, :roles => :web do
   run "df -h /"
 end
 
-
 task :stop_sphinx , :roles => :app do
   run "cd #{current_path} && rake thinking_sphinx:stop RAILS_ENV=production"
 end
@@ -32,3 +31,8 @@ task :restart_sphinx, :roles => :app do
   stop_sphinx
   start_sphinx
 end  
+
+task :update_bundler do
+  run "bundle install --gemfile #{release_path}/Gemfile"
+  #run "bundle exec rake db:migrate"
+end
