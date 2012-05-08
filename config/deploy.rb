@@ -2,7 +2,7 @@ $:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require "rvm/capistrano"
 set :rvm_ruby_string, 'ruby-1.9.2-p290@cakeside'
 set :rvm_type, :system
-#require 'bundler/capistrano'                 # loads RVM's capistrano plugin
+require 'bundler/capistrano'                 # loads RVM's capistrano plugin
 set :stages, %w(production staging)
 set :default_stage, "staging"
 require 'capistrano/ext/multistage'
@@ -18,8 +18,9 @@ set :deploy_to, "/home/cakeside/apps/#{application}"
 set :scm, :git
 set :repository,  "git@cakeartist.unfuddle.com:cakeartist/cake.git"
 set :keep_releases, 3
+set :branch, "master"
 set :deploy_env, 'production'
-#set :scm_verbose, true
+set :scm_verbose, true
 
 # ugly workaround for bug https://github.com/capistrano/capistrano/issues/81
 before "deploy:assets:precompile", "bundle:install"
