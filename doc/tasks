@@ -1,0 +1,14 @@
+* git blame to find out what happend with favorites:user_id
+* update capistrano to deploy from tags.
+* update cap to use rails_env instead of hard coding prod
+* writes tests around adding a favorite.
+* fix broken tests.
+* deploy to rc
+* start adding more tests.
+* create new cakeside aws account
+* create image of live
+* find out if you can run an aws image locally.
+* upgrade live image to better rvm installation using capistrano.
+  * rvm implode
+* postgress from commandline would be good.
+* rspec learning (do some).
