@@ -12,7 +12,9 @@
   <div class="span16">
     <ul class="media-grid">
       <% @creation.favorites.each do |favorite| %>
-        <a href="<%= url_for profile_path(favorite.user) %>"><img src="<%= avatar_url favorite.user %>&amp;s=200" alt="<%= favorite.user.name %>" /></a>
+        <a href="<%= url_for profile_path(favorite.user) %>">
+          <img src="<%= avatar_url favorite.user %>&amp;s=200" alt="<%= favorite.user.name %>" />
+        </a>
       <% end %>
     </ul>
   </div>

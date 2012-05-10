@@ -20,22 +20,21 @@ Cake::Application.routes.draw do
 
   # /profiles
   get "profiles/index"
-  get "profiles/show"
-  get "profiles/mine"
   get "profiles/favorites"
-  match 'profiles/show/:id' => 'profiles#show', :as => 'profile', :method => 'GET'
+  match 'profiles/:id' => 'profiles#show', :as => 'profile', :method => 'GET'
+  #match 'profiles/show/:id' => 'profiles#show', :as => 'profile', :method => 'GET'
   match 'profiles/mine' => 'profiles#mine', :as => 'user_root', :method => 'GET'
-
-  # /search
-  get "search/index"
 
   # /artists
   match 'artists' => 'profiles#index', :as => 'all_profiles', :method => 'GET'
-  match 'artists/:id' => 'profiles#show', :as => 'profile', :method => 'GET'
+  match 'artists/:id' => 'profiles#show', :as => 'artist', :method => 'GET'
 
   # /categories
   match 'categories/:id' => 'categories#show', :method => 'GET'
   get 'categories/show'
+
+  # /search
+  get "search/index"
 
   # /users
   devise_for :users, :controllers => {:registrations => 'registrations'}
