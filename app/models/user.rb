@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
       favorites.find { |favorite| favorite.user == self }
     else
       logger.info 'add creation'
-      creation.favorites.create({:user_id => self.id})
+      #creation.favorites.create({:user_id => self.id})
+      creation.favorites.create({:user => self})
     end
   end
 
