@@ -21,9 +21,10 @@ Cake::Application.routes.draw do
   # /profiles
   get "profiles/index"
   get "profiles/favorites"
+  get "profiles/mine"
   match 'profiles/:id' => 'profiles#show', :as => 'profile', :method => 'GET'
   #match 'profiles/show/:id' => 'profiles#show', :as => 'profile', :method => 'GET'
-  match 'profiles/mine' => 'profiles#mine', :as => 'user_root', :method => 'GET'
+  match 'profiles/mine' => 'profiles#mine', :as => 'profiles_mine', :method => 'GET'
 
   # /artists
   match 'artists' => 'profiles#index', :as => 'all_profiles', :method => 'GET'
