@@ -30,7 +30,7 @@ end
 task :restart_sphinx, :roles => :app do
   stop_sphinx
   start_sphinx
-end  
+end
 
 task :update_bundler do
   run "bundle install --gemfile #{release_path}/Gemfile"

@@ -1,12 +1,13 @@
-* git blame to find out what happend with favorites:user_id
+(x) git blame to find out what happend with favorites:user_id
+  * could not figure out. production is using the version of code that uses self and it is fine.
 * update capistrano to deploy from tags.
 * update cap to use rails_env instead of hard coding prod
 * writes tests around adding a favorite.
 * fix broken tests.
-* deploy to rc
+(x) deploy to rc
 * start adding more tests.
 * create new cakeside aws account
-* create image of live
+(x) create image of live
 * find out if you can run an aws image locally.
 * upgrade live image to better rvm installation using capistrano.
   * rvm implode
