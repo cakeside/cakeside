@@ -1,1 +1,1 @@
-rvm ruby-1.9.2-p290@cakeside --create
+rvm use ruby-1.9.2-p290@cakeside --create
