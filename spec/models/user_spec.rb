@@ -3,8 +3,7 @@ require 'spec_helper'
 describe User do
   describe "when a user already likes a creation" do 
     it "should not let the user like it again" do
-      # creation = Creation.new
-      creation = FactoryGirl.build(:creation)
+      creation = FactoryGirl.create(:creation)
       user = FactoryGirl.create(:user)
       user.add_favorite(creation)
       user.add_favorite(creation)

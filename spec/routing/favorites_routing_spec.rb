@@ -4,11 +4,19 @@ describe FavoritesController do
   describe "routing" do
 
     it "routes to #index" do
-      get("/creations/1/favorites").should route_to("favorites#index")
+      get("/creations/1/favorites").should route_to({
+        :controller => "favorites",
+        :action => "index",
+        :creation_id => "1"
+      })
     end
 
     it "routes to #create" do
-      post("/creations/1/favorites").should route_to("favorites#create")
+      post("/creations/1/favorites").should route_to({
+        :controller => "favorites",
+        :action => "create",
+        :creation_id => "1"
+      })
     end
   end
 end
