@@ -4,7 +4,7 @@
 <% content_for :head do %>
   <script type="text/javascript" charset="utf-8">
     $(function(){
-        $('#edit_user').validate();
+      $('#edit_user').validate();
     });
   </script>
 <% end %>
@@ -44,7 +44,7 @@
         </div><!-- /control-group -->
         <div class="control-group">
           <%= f.label :website, :class => "control-label" %> 
-          <div class="controls"> <%= f.text_field :website, :class => "input-xlarge, url", :placeholder => "http://cakeside.com" %> </div>
+          <div class="controls"> <%= f.url_field :website, :class => "input-xlarge, url", :placeholder => "http://cakeside.com" %> </div>
         </div><!-- /control-group -->
         <div class="form-actions">
           <input type="submit" class="btn btn-primary" value="Save changes" />
