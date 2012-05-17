@@ -1,6 +1,13 @@
 <% content_for :title do %>
   Update My Account
 <% end %>
+<% content_for :head do %>
+  <script type="text/javascript" charset="utf-8">
+    $(function(){
+        $('#edit_user').validate();
+    });
+  </script>
+<% end %>
 <ul class="nav nav-tabs">
   <li> <%= link_to "Profile", profiles_mine_path %></li>
   <li> <%= link_to "Favorites", profiles_favorites_path %></li>
@@ -37,7 +44,7 @@
         </div><!-- /control-group -->
         <div class="control-group">
           <%= f.label :website, :class => "control-label" %> 
-          <div class="controls"> <%= f.text_field :website, :class => "input-xlarge" %> </div>
+          <div class="controls"> <%= f.text_field :website, :class => "input-xlarge, url", :placeholder => "http://cakeside.com" %> </div>
         </div><!-- /control-group -->
         <div class="form-actions">
           <input type="submit" class="btn btn-primary" value="Save changes" />

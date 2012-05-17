@@ -10,4 +10,5 @@
 //= require jquery.Jcrop
 //= require jquery.color
 //= require bootstrap
+//= require jquery.validate
 //= require_tree .
