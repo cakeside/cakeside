@@ -3,6 +3,11 @@ class RegistrationsController < Devise::RegistrationsController
     super
     session[:omniauth] = nil unless @user.new_record?
   end
+
+  #def update
+    #logger.log(params)
+    #super
+  #end
   
   private
   
