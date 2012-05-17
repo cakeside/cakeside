@@ -5,3 +5,10 @@ require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
 Cake::Application.load_tasks
+
+task :deploy_rc do
+  sh "cap staging deploy"
+end
+task :deploy_live do
+  sh "cap production deploy"
+end
