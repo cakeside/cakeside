@@ -4,13 +4,8 @@ class RegistrationsController < Devise::RegistrationsController
     session[:omniauth] = nil unless @user.new_record?
   end
 
-  #def update
-    #logger.log(params)
-    #super
-  #end
-  
   private
-  
+
   def build_resource(*args)
     super
     if session[:omniauth]
