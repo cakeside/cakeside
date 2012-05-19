@@ -21,4 +21,17 @@ describe CategoriesController do
       assigns(:creations).should eq(@creations)
     end
   end
+
+  context "when there is NO category that matches the slug" do
+
+  end
+
+  context "when there is a category that matches the slug" do
+    context "when there are creations in the category" do
+
+    end
+    context "when there are no creations in the category" do
+
+    end
+  end
 end
