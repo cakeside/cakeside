@@ -48,11 +48,11 @@
         </div><!-- /control-group -->
 		<div class="control-group">
           <%= f.label :twitter, :class => "control-label" %> 
-          <div class="controls"> <%= f.text_field :twitter, :class => "input-xlarge", :placeholder => "@CakeSide" %> </div>
+          <div class="controls"> <%= f.text_field :twitter, :class => "input-xlarge", :placeholder => "CakeSide", :maxlength => "255" %> </div>
         </div><!-- /control-group -->
 		<div class="control-group">
           <%= f.label :facebook, :class => "control-label" %> 
-          <div class="controls"> <%= f.text_field :facebook, :class => "input-xlarge", :placeholder => "http://www.facebook.com/your_profile" %> </div>
+          <div class="controls"> <%= f.text_field :facebook, :class => "input-xlarge", :placeholder => "http://www.facebook.com/your_profile", :maxlength => "255" %> </div>
         </div><!-- /control-group -->
         <div class="form-actions">
           <input type="submit" class="btn btn-primary" value="Save changes" />
