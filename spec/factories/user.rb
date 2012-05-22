@@ -4,6 +4,6 @@ FactoryGirl.define do
     name 'mo'
     email 'mo@cakeside.com'
     password 'password'
-    website 'cakeside.com'
+    website 'http://cakeside.com'
   end
 end

@@ -11,7 +11,6 @@ describe CreationsController do
   end
 
   before (:each) do
-    puts "WEBSITE #{user.website}"
     request.env['warden'] = mock(Warden, :authenticate => user, :authenticate! => user)
   end
 

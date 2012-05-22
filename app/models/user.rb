@@ -10,7 +10,7 @@ end
 
 class User < ActiveRecord::Base
   validates :name,  :presence => true
-  validates :website, :format => URI::regexp(%w(http https)), :presence => false
+  validates :website, :format => URI::regexp(%w(http https)), :allow_blank => true
   #validates_with UrlValidation
   has_many :authentications
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
