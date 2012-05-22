@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   validates :name,  :presence => true
   has_many :authentications
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
-  attr_accessible :name, :email, :website, :password, :password_confirmation, :remember_me
+  attr_accessible :name, :email, :website, :twitter, :facebook, :password, :password_confirmation, :remember_me
   has_many :creations, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
 
