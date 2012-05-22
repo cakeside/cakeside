@@ -25,3 +25,9 @@ class User < ActiveRecord::Base
     creation.user == self
   end
 end
+
+class UrlValidation < ActiveModel::Validator
+  def validate(record)
+    
+  end
+end
