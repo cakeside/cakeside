@@ -1,6 +1,17 @@
+class UrlValidation < ActiveModel::Validator
+  def validate(record)
+    if(record.website.starts_with? 'http://')
+
+    else
+      record.errors[:website] << 'is invalid'
+    end
+  end
+end
+
 class User < ActiveRecord::Base
   validates :name,  :presence => true
   validates :website, :format => URI::regexp(%w(http https)), :presence => false
+  #validates_with UrlValidation
   has_many :authentications
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   attr_accessible :name, :email, :website, :twitter, :facebook, :password, :password_confirmation, :remember_me
@@ -26,8 +37,3 @@ class User < ActiveRecord::Base
   end
 end
 
-class UrlValidation < ActiveModel::Validator
-  def validate(record)
-    
-  end
-end

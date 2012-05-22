@@ -1,6 +1,9 @@
-Factory.define :user, :class => User do |u|
-  u.id 1002
-  u.name 'mo'
-  u.email 'mo@cakeside.com'
-  u.password 'password'
+FactoryGirl.define do
+  factory :user, class: User do
+    id 1002
+    name 'mo'
+    email 'mo@cakeside.com'
+    password 'password'
+    website 'cakeside.com'
+  end
 end

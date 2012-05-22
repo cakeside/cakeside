@@ -1,4 +1,6 @@
-Factory.define :category, :class => Category do |c|
-  c.name 'blah'
-  c.slug 'blah'
+FactoryGirl.define do
+  factory :category, class: Category do
+    name 'blah'
+    slug 'blah'
+  end
 end

@@ -3,8 +3,8 @@ require 'spec_helper'
 describe PhotosController do
   include Devise::TestHelpers
 
-  let(:user){ Factory.create(:user) }
-  let(:creation){ Factory.create(:creation) }
+  let(:user){ FactoryGirl.create(:user) }
+  let(:creation){ FactoryGirl.create(:creation) }
 
   def mock_creation(stubs={})
     @mock_creation ||= mock_model(Creation, stubs).as_null_object

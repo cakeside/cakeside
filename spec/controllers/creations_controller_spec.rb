@@ -3,14 +3,15 @@ require 'spec_helper'
 describe CreationsController do
   include Devise::TestHelpers
 
-  let(:user){ Factory.create(:user) }
-  let(:creation){ Factory.create(:creation) }
+  let(:user){ FactoryGirl.build(:user) }
+  let(:creation){ FactoryGirl.build(:creation) }
 
   def mock_creation(stubs={})
     @mock_creation ||= mock_model(Creation, stubs).as_null_object
   end
 
   before (:each) do
+    puts "WEBSITE #{user.website}"
     request.env['warden'] = mock(Warden, :authenticate => user, :authenticate! => user)
   end
 
