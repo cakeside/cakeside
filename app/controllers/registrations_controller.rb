@@ -1,7 +1,17 @@
 class RegistrationsController < Devise::RegistrationsController
-  def create
-    super
-    session[:omniauth] = nil unless @user.new_record?
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    if @user.update_without_password(params[:user])
+      sign_in @user, :bypass => true
+      flash[:notice]= 'Your settings have been updated successfully!'
+      redirect_to profiles_mine_path
+    else
+      render "edit"
+    end
   end
 
   private
@@ -14,4 +24,3 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 end
-
