@@ -1,1 +1,1 @@
-nmap ,t :w\|:!rspec spec/models<cr>
+nmap ,t :w\|:!script/test<cr>
