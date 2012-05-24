@@ -5,12 +5,22 @@ class RegistrationsController < Devise::RegistrationsController
 
   def update
     @user = current_user
-    if @user.update_without_password(params[:user])
-      sign_in @user, :bypass => true
-      flash[:notice]= 'Your settings have been updated successfully!'
-      redirect_to profiles_mine_path
+    if params[:user][:password].blank? 
+      if @user.update_without_password(params[:user])
+        sign_in @user, :bypass => true
+        flash[:notice]= 'Your settings have been updated successfully!'
+        redirect_to profiles_mine_path
+      else
+        render "edit"
+      end
     else
-      render "edit"
+      if @user.update_with_password(params[:user])
+        sign_in @user, :bypass => true
+        flash[:notice]= 'Your settings have been updated successfully!'
+        redirect_to profiles_mine_path
+      else
+        render "edit"
+      end
     end
   end
 
