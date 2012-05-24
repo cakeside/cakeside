@@ -15,8 +15,8 @@
   <div class="span3">
     <a href="<%= url_for profile_path(@profile) %>"><img src="<%= avatar_url @profile %>&amp;s=200" alt="<%= @profile.name %>" /></a>
     <a  href="<%= @profile.website %>">website</a>
-    <% if @profile.email.eql? "mo@mokhan.ca" %>
-      <a href="https://twitter.com/mocheen" class="twitter-follow-button" data-show-count="false">Follow @mocheen</a>
+    <% unless @profile.twitter.blank? %>
+      <a href="https://twitter.com/<%= @profile.twitter %>" class="twitter-follow-button" data-show-count="false">Follow @<%= @profile.twitter %></a>
       <script src="//platform.twitter.com/widgets.js" type="text/javascript"></script>
     <% end %>
   </div>
