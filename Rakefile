@@ -12,3 +12,7 @@ end
 task :deploy_live do
   sh "cap production deploy"
 end
+
+task :install_keys do
+  sh "cp doc/keys/*.pem ~/.ssh/amazon-cakeside/"
+end
