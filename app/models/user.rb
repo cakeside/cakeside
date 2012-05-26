@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   validates :website, :format => URI::regexp(%w(http https)), :allow_blank => true
   #validates_with UrlValidation
   has_many :authentications
+  has_many :interests
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   attr_accessible :name, :email, :website, :twitter, :facebook, :password, :password_confirmation, :remember_me
   has_many :creations, :dependent => :destroy
