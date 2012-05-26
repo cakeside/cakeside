@@ -5,7 +5,7 @@ class CreateUsersInterestsJoinTable < ActiveRecord::Migration
       t.integer :interest_id
     end
   end
-
   def down
+    drop_table :users_interests
   end
 end
