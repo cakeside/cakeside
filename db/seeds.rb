@@ -5,14 +5,21 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
-Category.create(:name => 'Fondant', :slug => 'fondant')
-Category.create(:name => 'Butter Cream', :slug => 'butter-cream')
-Category.create(:name => 'Cup Cake', :slug => 'cup-cake')
-Category.create(:name => 'Tiered', :slug => 'tiered')
-Category.create(:name => '3D', :slug => '3d')
-Category.create(:name => 'Birthday', :slug => 'birthday')
-Category.create(:name => 'Wedding', :slug => 'wedding')
-Category.create(:name => 'Holiday', :slug => 'holiday')
-Category.create(:name => 'Theme', :slug => 'theme')
-Category.create(:name => 'Anniversary', :slug => 'anniversary')
-Category.create(:name => 'Baby Shower', :slug => 'baby-shower')
+unless Category.any? 
+  Category.create(:name => 'Fondant', :slug => 'fondant')
+  Category.create(:name => 'Butter Cream', :slug => 'butter-cream')
+  Category.create(:name => 'Cup Cake', :slug => 'cup-cake')
+  Category.create(:name => 'Tiered', :slug => 'tiered')
+  Category.create(:name => '3D', :slug => '3d')
+  Category.create(:name => 'Birthday', :slug => 'birthday')
+  Category.create(:name => 'Wedding', :slug => 'wedding')
+  Category.create(:name => 'Holiday', :slug => 'holiday')
+  Category.create(:name => 'Theme', :slug => 'theme')
+  Category.create(:name => 'Anniversary', :slug => 'anniversary')
+  Category.create(:name => 'Baby Shower', :slug => 'baby-shower')
+end
+unless Interest.any? 
+  Interest.create(:name => 'Hobbyist')
+  Interest.create(:name => 'Professional')
+  Interest.create(:name => 'Home Based Business')
+end

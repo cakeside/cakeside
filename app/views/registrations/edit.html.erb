@@ -54,6 +54,14 @@
           <%= f.label :facebook, :class => "control-label" %> 
           <div class="controls"> <%= f.text_field :facebook, :class => "input-xlarge", :placeholder => "http://www.facebook.com/your_profile", :maxlength => "255" %> </div>
         </div><!-- /control-group -->
+        <div class="control-group">
+          <% for interest in Interest.all %>
+            <label class="checkbox">
+              <%= check_box_tag "user[interest_ids][]", interest.id, current_user.interests.include?(interest) %>
+              <%= interest.name %>
+            </label>
+          <% end %>
+        </div><!-- /control-group -->
         <div class="form-actions">
           <input type="submit" class="btn btn-primary" value="Save changes" />
           <button type="reset" class="btn">Cancel</button>
