@@ -1,5 +1,9 @@
-#require_relative '../../app/controllers/registrations_controller'
 require 'spec_helper'
+#module Devise
+  #class RegistrationsController
+
+  #end
+#end
 
 describe RegistrationsController do
   before (:each) do
@@ -7,24 +11,24 @@ describe RegistrationsController do
   end
   let(:user){ FactoryGirl.build(:user) }
 
-  context "when updating a users website" do
+  context "when updating a users profile settings not including their password" do
     it "should update their website" do
       controller = RegistrationsController.new
-      #controller.update
 
       blah = {
         :current_password =>'',
         :email => '',
         :facebook => '',
-        :name =>'',
+        #:name =>'',
         :password => '',
         :password_confirmation => '',
         :twitter => '',
         :website => '',
       }
 
-      user.should_receive[:update_without_password].with(blah)
-      put :update, :user => blah
+      #user.should_receive[:update_without_password].with(blah)
+      #controller.update
+      put :update, :user => {:hello => "mo"}
     end
     it "should not change their password" do
       

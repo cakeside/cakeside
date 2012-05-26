@@ -4,6 +4,8 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def update
+    params "PARAMS: #{params[:user]}"
+    logger.info("PARAMS: #{params[:user]}")
     @user = current_user
     if params[:user][:password].blank? 
       if @user.update_without_password(params[:user])
