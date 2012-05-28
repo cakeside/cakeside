@@ -21,6 +21,7 @@ gem "formtastic", "~> 2.1.1"
 gem 'activeadmin'
 gem 'sass-rails'
 gem 'meta_search', '>= 1.1.0.pre'
+gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'webrat'
@@ -33,12 +34,6 @@ group :test do
   gem 'capybara'
   gem 'guard-rspec'
   gem 'guard-livereload'
-  #gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
-  #gem 'growl', :require => false if RUBY_PLATFORM =~ /darwin/i
-  #gem 'growl_notify', :require => false if RUBY_PLATFORM =~ /darwin/i
-  # gem 'rb-inotify', :require => false if RUBY_PLATFORM =~ /linux/i
-  # gem 'libnotify', :require => false if RUBY_PLATFORM =~ /linux/i
-  # Pretty printed test output
   gem 'turn', :require => false
 end
 group :production do

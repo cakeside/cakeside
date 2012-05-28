@@ -9,6 +9,6 @@
 //= require jquery-ui
 //= require jquery.Jcrop
 //= require jquery.color
-//= require bootstrap
 //= require jquery.validate
+//= require bootstrap
 //= require_tree .

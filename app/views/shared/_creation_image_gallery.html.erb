@@ -7,7 +7,7 @@
           <div class="caption">
             <h5><a href="<%= url_for creation %>"><%= short_name(creation, 20) %></a></h5>
             <h6><a href="<%= url_for profile_path(creation.user) %>"><%= creation.user.name %></a></h6>
-            <a href="<%= url_for creation %>"><img src="<%= creation.image.thumb.url %>" alt="<%= creation.name %>" width="260" height="180" /></a>
+            <a href="<%= url_for creation %>"><img src="<%= creation.image.thumb.url %>" alt="<%= creation.name %>" /></a>
             <p>
             <% if creation.favorites.count > 0 %>
               <a href="<%= url_for creation_favorites_path(:creation_id => creation.id) %>"><%= creation.favorites.count %><i class="icon-heart"></i></a>
