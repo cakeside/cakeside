@@ -1,6 +1,4 @@
-<% content_for :title do %>
-  <%= @creation.name %> by <%= @creation.user.name %>
-<% end %>
+<% provide(:title, "#{@creation.name} by #{@creation.user.name}") -%>
 
 <div class="page-header">
   <h1>
