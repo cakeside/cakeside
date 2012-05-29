@@ -5,7 +5,7 @@
   <script type="text/javascript" charset="utf-8">
   $(function(){
     $('#edit_user').validate();
-    $('#city').autocomplete({
+    $('#user_city').autocomplete({
       source: function(request, response){
         $.ajax({
           url: 'http://ws.geonames.org/searchJSON',
@@ -65,12 +65,10 @@
           <%= f.label :current_password, :class => "control-label" %> 
           <div class="controls"> <%= f.password_field :current_password, :class => "input-xlarge" %> </div>
         </div><!-- /control-group -->
-
         <div class="control-group">
-          <label class="control-label" for="city">City</label>
-          <div class="controls"> <input id="city" type="text" class="input-xlarge" /> </div>
+          <%= f.label :city, :class => 'control-label' %>
+          <div class="controls"> <%= f.text_field :city, :class => "input-xlarge" %> </div>
         </div><!-- /control-group -->
-
         <div class="control-group">
           <%= f.label :website, :class => "control-label" %> 
           <div class="controls"> <%= f.url_field :website, :class => "input-xlarge, url", :placeholder => "http://cakeside.com" %> </div>

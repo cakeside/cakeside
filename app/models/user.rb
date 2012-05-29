@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :authentications
   has_and_belongs_to_many :interests, :join_table => 'users_interests', :uniq => true, :autosave => true
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
-  attr_accessible :name, :email, :website, :twitter, :facebook, :password, :password_confirmation, :remember_me
+  attr_accessible :name, :email, :website, :twitter, :facebook, :city, :password, :password_confirmation, :remember_me
   has_many :creations, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
 
