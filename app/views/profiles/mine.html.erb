@@ -23,7 +23,7 @@
     <p>Twitter: <a href="https://twitter.com/<%= current_user.twitter %>" target="_blank" class="twitter-follow-button" data-show-count="false">@<%= current_user.twitter %></a></p>
 	<p>Facebook:<a  href="<%= current_user.facebook %>" target="_blank"> <%= current_user.facebook %></a></p>
 
-<a href='<%= link_to "Settings", edit_user_registration_path %>' target="_blank">Change my information</a>
+	<p><%= link_to "Change My Information", edit_user_registration_path %></p>
 
 
   </div>
