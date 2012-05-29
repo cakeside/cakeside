@@ -15,9 +15,17 @@
       <li><a href="<%= url_for profile_path(current_user) %>"><img src="<%= avatar_url current_user %>&amp;s=200" alt="<%= current_user.name %>" /></a></li>
     </ul>
     <h3><%= current_user.name %></h3>
+    <a href="http://en.gravatar.com/" target="_blank">Change My Photo</a>
     <p>member since: <%= current_user.created_at.to_s :foomat %></p>
     <p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
-    <a href="http://en.gravatar.com/" target="_blank">Change My Photo</a>
+	<hr>
+    <p>Website or blog: <a  href="<%= current_user.website %>" target="_blank"><%= current_user.website %></a></p>
+    <p>Twitter: <a href="https://twitter.com/<%= current_user.twitter %>" target="_blank" class="twitter-follow-button" data-show-count="false">@<%= current_user.twitter %></a></p>
+	<p>Facebook:<a  href="<%= current_user.facebook %>" target="_blank"> <%= current_user.facebook %></a></p>
+
+<a href='<%= link_to "Settings", edit_user_registration_path %>' target="_blank">Change my information</a>
+
+
   </div>
   <div class="span9">
     <%= render "shared/creation_image_gallery" %>
