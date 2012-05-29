@@ -9,3 +9,4 @@ log/*
 .DS_Store
 NERD_tree_*
 tags
+.sass-cache/
