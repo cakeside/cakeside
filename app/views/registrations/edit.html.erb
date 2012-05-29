@@ -3,9 +3,32 @@
 <% end %>
 <% content_for :head do %>
   <script type="text/javascript" charset="utf-8">
-    $(function(){
-      $('#edit_user').validate();
+  $(function(){
+    $('#edit_user').validate();
+    $('#city').autocomplete({
+      source: function(request, response){
+        $.ajax({
+          url: 'http://ws.geonames.org/searchJSON',
+          dataType: "jsonp",
+          data: {
+            featureClass: "P",
+            style: 'full',
+            maxRows: 12,
+            name_startsWith: request.term
+          },
+          success: function(data){
+            response( $.map(data.geonames, function(item){
+                return {
+                  label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
+                  value: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName
+                }
+            }));
+          }
+        });
+      },
+      minlength:2
     });
+  });
   </script>
 <% end %>
 <ul class="nav nav-tabs">
@@ -42,6 +65,12 @@
           <%= f.label :current_password, :class => "control-label" %> 
           <div class="controls"> <%= f.password_field :current_password, :class => "input-xlarge" %> </div>
         </div><!-- /control-group -->
+
+        <div class="control-group">
+          <label class="control-label" for="city">City</label>
+          <div class="controls"> <input id="city" type="text" class="input-xlarge" /> </div>
+        </div><!-- /control-group -->
+
         <div class="control-group">
           <%= f.label :website, :class => "control-label" %> 
           <div class="controls"> <%= f.url_field :website, :class => "input-xlarge, url", :placeholder => "http://cakeside.com" %> </div>
