@@ -89,8 +89,12 @@
           <%= f.label :facebook, :class => "control-label" %> 
           <div class="controls"> <%= f.text_field :facebook, :class => "input-xlarge", :placeholder => "http://www.facebook.com/your_profile", :maxlength => "255" %> </div>
         </div><!-- /control-group -->
+        <p class="help-block">
+        <strong>Note:</strong> 
+        Help us better serve you by checking off what best describes you?
+        </p>
         <div class="control-group">
-          <label class="control-label">Categories</label>
+          <label class="control-label">Interests:</label>
           <div class="controls">
             <% for interest in Interest.all %>
               <label class="checkbox">
@@ -99,10 +103,6 @@
               </label>
             <% end %>
           </div>
-          <p class="help-block">
-          <strong>Note:</strong> 
-          Help us better serve you by checking off your interest from the above list.
-          </p>
         </div><!-- /control-group -->
         <div class="form-actions">
           <input type="submit" class="btn btn-primary" value="Save changes" />
