@@ -1,11 +1,7 @@
 <% content_for :title do %>
   All Creations in <%= @category.name %>
 <% end %>
-
-<div class="row">
-  <div class="span12">
-    <h1>Category <em><%= @category.name %></em></h1>
-    <hr />
-  </div>
+<div class="page-header">
+  <h1>Category <em><%= @category.name %></em></h1>
 </div>
 <%= render "shared/a_12_column_gallery" %>
