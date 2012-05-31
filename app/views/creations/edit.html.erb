@@ -1,14 +1,11 @@
 <% content_for :title do %>
   Editing creation <%= @creation.name %>
 <% end %>
-
-<div class="row">
-  <div class="span12">
-    <h1>Editing creation <em><%= @creation.name %></em></h1>
-  </div>
+<div class="page-header">
+  <h1><small>Edit</small> <%= @creation.name %></h1>
 </div>
 <div class="row">
-  <div class="span3">
+  <div class="span4">
     <ul class="thumbnails">
       <li>
       <a href="<%= url_for creation_path(@creation) %>">
@@ -28,7 +25,7 @@
       <% end %>
     <% end %>
   </div>
-  <div class="span9">
+  <div class="span8">
     <%= render 'form' %>
     <ul class="thumbnails">
       <% @creation.photos.each do |photo| %>
