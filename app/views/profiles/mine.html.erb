@@ -13,7 +13,7 @@
       <li><a href="<%= url_for profile_path(current_user) %>"><img src="<%= avatar_url current_user %>&amp;s=200" alt="<%= current_user.name %>" /></a></li>
     </ul>
     <h3><%= current_user.name %></h3>
-    <a href="http://en.gravatar.com/" target="_blank">Change My Photo</a>
+    <a href="http://gravatar.com/emails" target="_blank">Change My Photo</a>
     <p>member since: <%= current_user.created_at.to_s :foomat %></p>
     <p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
     <hr>
