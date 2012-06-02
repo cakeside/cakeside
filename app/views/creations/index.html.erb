@@ -3,14 +3,12 @@
     <h1>Welcome cake enthusiast!</h1>
     <p><strong>Make</strong> cakes, <strong>sell</strong> cakes, or just <strong>love</strong> eating them? You've come to the right place!</p>
     <p>CakeSide is a free site to <strong>share</strong> your cake <strong>creations</strong> and <strong>ideas</strong> with other cake fanatics like yourself!</p>
-
     <div class="row">
       <div class="span12">
         <a href="<%= url_for new_user_session_path %>" class="btn btn-large">Sign me up &raquo;</a>
       </div>
     </div>
   </div>
-
   <div class="marketing">
     <div class="row">
       <div class="span4">
@@ -35,11 +33,9 @@
       </p>
     </div>
     <hr>
-    <div class="row">
-      <div class="span12">
-        <h2>Recently uploaded creations</h2>
-      </div>
-    </div>	
   </div>
 <% end %>
+<div class="page-header">
+  <h1>Recently uploaded creations</h1>
+</div>	
 <%= render "shared/a_12_column_gallery" %>

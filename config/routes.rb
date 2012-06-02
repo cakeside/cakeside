@@ -23,7 +23,6 @@ Cake::Application.routes.draw do
   get "profiles/favorites"
   get "profiles/mine"
   match 'profiles/:id' => 'profiles#show', :as => 'profile', :method => 'GET'
-  match 'profiles/show/:id' => 'profiles#show', :as => 'profile', :method => 'GET'
   match 'profiles/mine' => 'profiles#mine', :as => 'profiles_mine', :method => 'GET'
 
   # /artists
@@ -39,5 +38,5 @@ Cake::Application.routes.draw do
 
   # /users
   devise_for :users, :controllers => {:registrations => 'registrations'}
-
+  devise_for :user, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
 end

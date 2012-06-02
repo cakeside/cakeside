@@ -1,4 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
+  #force_ssl
   def edit
     @user = current_user
   end

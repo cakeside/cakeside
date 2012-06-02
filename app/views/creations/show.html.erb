@@ -1,5 +1,4 @@
 <% provide(:title, "#{@creation.name} by #{@creation.user.name}") -%>
-
 <div class="page-header">
   <h1>
     <%= @creation.name %> 
@@ -10,12 +9,11 @@
       <% end %>
       submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> 
   </small> 
-  </h1>
-  <% @creation.categories.each do |category| %>
-    <span class="label"><a href="/categories/<%= category.slug %>"><%= category.name %></a></span>
-  <% end %> 
+</h1>
+<% @creation.categories.each do |category| %>
+  <span class="label"><a href="/categories/<%= category.slug %>"><%= category.name %></a></span>
+<% end %> 
 </div>
-
 <div class="row">
   <div class="span12">
     <p> 
@@ -24,11 +22,9 @@
     </p>
   </div>
 </div>
-
 <div class="row">
   <div class="span6"> 
-    <iframe src="http://www.facebook.com/plugins/like.php?href=<%= request.url %>" scrolling="no" frameborder="0" style="border:none; width:350px; height:30px; float:left;">
-    </iframe>
+    <iframe src="http://www.facebook.com/plugins/like.php?href=<%= request.url %>" scrolling="no" frameborder="0" style="border:none; width:350px; height:30px; float:left;"></iframe>
   </div>
   <div class="span2">
     <% if user_signed_in? %>
@@ -36,11 +32,10 @@
         <%= button_to "Add to favorites", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary' %>
       <% end %>
     <% else %>
-        <%= button_to "Add to favorites", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary' %>
+      <%= button_to "Add to favorites", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary' %>
     <% end %>
   </div>
 </div>
-
 <div class="row">
   <div class="span12">
     <ul class="thumbnails">
@@ -55,7 +50,6 @@
     </ul>
   </div>
 </div>
-
 <div class="row">
   <div class="span12">
     <h3>Description</h3>

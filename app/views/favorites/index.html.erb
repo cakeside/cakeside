@@ -1,7 +1,6 @@
 <% content_for :title do %>
   <%= @creation.name %> by <%= @creation.user.name %> - fanclub
 <% end %>
-
 <div class="page-header">
   <h1> fans of  <%= link_to @creation.name, creation_path(@creation) %> <small> submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> </small> </h1>
   <% @creation.categories.each do |category| %>
