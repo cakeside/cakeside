@@ -18,7 +18,7 @@ set :deploy_to, "/home/cakeside/apps/#{application}"
 set :scm, :git
 set :repository,  "git@bitbucket.org:mocheen/cakeside.git"
 set :keep_releases, 3
-set :branch, "master"
+set :branch, ENV["branch"] || "master"
 set :deploy_env, 'production'
 set :scm_verbose, true
 
