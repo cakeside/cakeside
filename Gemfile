@@ -16,6 +16,7 @@ gem 'kaminari'
 gem 'capistrano'
 gem 'capistrano-ext'
 gem 'rvm-capistrano'
+gem 'capistrano-gitflow'
 gem 'exception_notification'
 gem "formtastic", "~> 2.1.1"
 gem 'activeadmin'

@@ -6,6 +6,7 @@ set :rvm_type, :system
 set :stages, %w(production staging)
 set :default_stage, "staging"
 require 'capistrano/ext/multistage'
+require 'capistrano/gitflow'
 set :application, "www.cakeside.com"
 set :deploy_via, :remote_cache
 set :user, "cakeside"
@@ -18,7 +19,7 @@ set :deploy_to, "/home/cakeside/apps/#{application}"
 set :scm, :git
 set :repository,  "git@bitbucket.org:mocheen/cakeside.git"
 set :keep_releases, 3
-set :branch, ENV["branch"] || "master"
+set :branch, "master"
 set :deploy_env, 'production'
 set :scm_verbose, true
 
