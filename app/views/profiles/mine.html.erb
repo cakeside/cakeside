@@ -15,6 +15,11 @@
         <p>Facebook:<a  href="<%= current_user.facebook %>" target="_blank"> <%= current_user.facebook %></a></p>
       </div>
     </div>
+  </div>
+  <div class="span6">
+  <%= render "shared/creation_image_gallery" %>
+  </div>
+  <div class="span3">
     <div style="padding: 8px 0;" class="well">
       <ul class="nav nav-list">
         <li class="nav-header">Creations</li>
@@ -29,5 +34,4 @@
       </ul>
     </div>
   </div>
-  <%= render "shared/a_9_column_gallery" %>
 </div>
