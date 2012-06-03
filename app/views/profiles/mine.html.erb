@@ -10,6 +10,7 @@
         <p>member since: <%= current_user.created_at.to_s :foomat %></p>
         <p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
         <hr>
+        <p><%= current_user.city %></p>
         <p>Website or blog: <a  href="<%= current_user.website %>" target="_blank"><%= current_user.website %></a></p>
         <p>Twitter: <a href="https://twitter.com/<%= current_user.twitter %>" target="_blank" class="twitter-follow-button" data-show-count="false">@<%= current_user.twitter %></a></p>
         <p>Facebook:<a  href="<%= current_user.facebook %>" target="_blank"> <%= current_user.facebook %></a></p>

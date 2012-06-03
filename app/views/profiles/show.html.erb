@@ -17,6 +17,7 @@
         <h5><%= current_user.name %></h5>
         <p>member since: <%= current_user.created_at.to_s :foomat %></p>
         <p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
+        <p><%= current_user.city %></p>
         <% unless @profile.website.blank? %>
           <p><a  href="<%= @profile.website %>" target="_blank"><%= @profile.website %></a></p>
         <% end %>
