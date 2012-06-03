@@ -43,10 +43,23 @@
       <a class="thumbnail" href="<%= url_for creation_path(@creation) %>"><img src="<%= @creation.image_url(:large).to_s %>" alt="<%= @creation.name %>" /></a>
       </li>
       <% @creation.photos.each do |photo| %>
-        <li class="span2">
+        <li class="span4">
         <a class="thumbnail" href="#"><img alt="<%= @creation.name %>" src="<%= photo.image.thumb.url.to_s%>"></a>
         </li>
       <% end %>
+      <% if @creation.user == current_user %>
+        <% if @creation.photos.length < 3 %>
+          <h3>Add another photo</h3>
+          <% unless @creation.new_record? %>
+            <%= form_tag(creation_photos_path(@creation), :method => "post", :multipart => true) do |f| %>
+              <%= fields_for Photo.new do |f| %>
+                <%= f.file_field :image, :rel => creation_photos_path(@creation) %>
+                <input type="submit" class="btn primary" value="Add photo" />
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end -%>
     </ul>
   </div>
 </div>
