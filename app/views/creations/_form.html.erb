@@ -1,14 +1,4 @@
 <%= form_for(@creation, :html => {:multipart => true, :class => "form-horizontal"}) do |f| %>
-  <% if @creation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@creation.errors.count, "error") %> prohibited this creation from being saved:</h2>
-      <ul>
-        <% @creation.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
   <fieldset>
     <legend>Share a new creation</legend>
     <div class="control-group">
@@ -16,30 +6,22 @@
       <div class="controls">
         <%= f.text_field :name, :class => "input-xlarge" %>
       </div>
-    </div><!-- /control-group -->
+    </div>
     <div class="control-group">
-      <%= f.label :image, "Upload Main Image" %>
+      <%= f.label :image, "Upload Main Image", :class => "control-label" %>
       <div class="controls">
         <%= f.file_field :image, :class => "input-file" %>
       </div>
-    </div><!-- /control-group -->
-    <!--
-    <div class="control-group">
-      <%= f.label :remote_image_url, "Or Image URL" %><br />
-      <div class="controls">
-        <%= f.text_field :remote_image_url, :class=>"input-xlarge" %>
-      </div>
     </div>
-    -->
     <div class="control-group">
-      <%= f.label :story, "Description" %><br />
+      <%= f.label :story, "Description", :class=> "control-label" %>
       <div class="controls">
         <%= f.text_area :story, :class =>"input-xlarge", :rows => "3" %>
         <p class="help-block">
-          Tell us the story or description of the creation.
+        Tell us the story or description of the creation.
         </p>
       </div>
-    </div><!-- /control-group -->
+    </div>
     <div class="control-group">
       <label class="control-label">Categories</label>
       <div class="controls">
@@ -54,7 +36,7 @@
         Help us categorize your creation by checking off one or more from the above list.
         </p>
       </div>
-    </div><!-- /control-group -->
+    </div>
     <div class="form-actions">
       <button type="submit" class="btn btn-primary">Save changes</button>
       <a href="<%= url_for @creation %>" class="btn">Cancel</a>

@@ -34,6 +34,7 @@ class CreationsController < ApplicationController
           format.html { render :action => "crop" }
         end
       else
+        flash[:error] = @creation.errors.full_messages
         format.html { render :action => "new" }
       end
     end
