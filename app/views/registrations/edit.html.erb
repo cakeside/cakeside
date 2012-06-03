@@ -39,7 +39,16 @@ minlength:2,
 </script>
 <% end %>
 <div class="row">
-  <div class="span4">
+  <div class="span3">
+    <div class="thumbnail">
+      <img src="<%= avatar_url current_user %>&amp;s=260" alt="<%= current_user.name %>" />
+      <div class="caption">
+        <h5><%= current_user.name %></h5>
+        <p>member since: <%= current_user.created_at.to_s :foomat %></p>
+        <p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
+        <p><a class="btn btn-primary" href="http://gravatar.com/emails" target="_blank">Change My Picture</a></p>
+      </div>
+    </div>
     <div style="padding: 8px 0;" class="well">
       <ul class="nav nav-list">
         <li class="nav-header">Creations</li>
@@ -54,24 +63,10 @@ minlength:2,
         <li><a href="#"><i class="icon-flag"></i> Help</a></li>
       </ul>
     </div>
-
-    <ul class="thumbnails">
-      <li><a href="<%= url_for profile_path(current_user) %>"><img src="<%= avatar_url current_user %>&amp;s=200" alt="<%= current_user.name %>" /></a></li>
-    </ul>
-    <a href="http://gravatar.com/emails" target="_blank">Change My Photo</a>
-    <p>member since: <%= current_user.created_at.to_s :foomat %></p>
-    <p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
-    <hr>
-    <p>Website or blog: <a  href="<%= current_user.website %>" target="_blank"><%= current_user.website %></a></p>
-    <p>Twitter: <a href="https://twitter.com/<%= current_user.twitter %>" target="_blank" class="twitter-follow-button" data-show-count="false">@<%= current_user.twitter %></a></p>
-    <p>Facebook:<a  href="<%= current_user.facebook %>" target="_blank"> <%= current_user.facebook %></a></p>
-    <hr />
-
     <h4>Cancel My Account</h4>
     <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger" %></p>
-
   </div>
-  <div class="span8">
+  <div class="span9">
     <h1>Settings</h1>
     <p> If you prefer not to change your password, then just leave it blank.  </p>
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class=> "form-horizontal" }) do |f| %>
