@@ -29,7 +29,13 @@
   <div class="container">
     <div class="row">
       <div class="span12">
-        <p>Copyright &copy; 2012 CakeSide Inc. | <a href="/terms.html">Terms</a> &amp; <a href="/privacy.html">Privacy</a> | Contact Us <a href="http://twitter.com/cakeside">@cakeside</a> | <a href="https://www.facebook.com/pages/CakeSide/214607468615074">facebook</a></p>
+        <p>
+        Copyright &copy; 2012 CakeSide Inc. | 
+        <a href="/terms.html">Terms</a> &amp; <a href="/privacy.html">Privacy</a> | 
+        Contact Us <a href="http://twitter.com/cakeside">@cakeside</a> | 
+        <a href="https://www.facebook.com/pages/CakeSide/214607468615074">facebook</a>
+        <% if Rails.env.staging? || Rails.env.development? %><a href="http://validator.w3.org/check?uri=referer" target="_blank">valid html</a><% end %>
+        </p>
       </div>
     </div>
   </div>

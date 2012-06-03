@@ -7,9 +7,7 @@
     <title><%= full_title(yield(:title)) %></title>
     <%= stylesheet_link_tag :application %>
     <style type="text/css">
-      body {
-        padding-top: 60px;
-      }
+      body { padding-top: 60px; }
     </style>
     <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -30,12 +28,7 @@
     </div> <!-- /container -->
     <%= render "shared/footer" %>
     <%= render "shared/uservoice_feedback"%>
-    <!--[if IE]>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
-    <script>
-      CFInstall.check({ mode: "overlay" });
-    </script>
-    <![endif]-->
+    <%= render "shared/chrome_frame"%>
     <%= render "shared/google_analytics" %>
   </body>
 </html>
