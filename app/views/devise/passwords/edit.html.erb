@@ -1,19 +1,27 @@
-<h1>C'mon In... </h1>
-<p>&quot;You don't make friends with salad&quot; - Homer Simpson<p>
+<div class="row">
+  <div class="span12">
+    <h1>Reset My Password</h1>
+    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }, :class => "form-horizontal") do |f| %>
+      <fieldset>
+        <legend>Enter your new password and confirm it</legend>
+        <div class="control-group">
+          <%= f.label :password, "New password", :class => "control-label" %>
+          <div class="controls">
+            <%= f.password_field :password, :class=> "input-xlarge" %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :password_confirmation, "Confirm new password", :class => "control-label" %>
+          <div class="controls">
+            <%= f.password_field :password_confirmation, :class => "input-xlarge" %>
+          </div>
+        </div>
+        <div class="form-actions">
+          <%= f.hidden_field :reset_password_token %>
+          <%= f.submit "Change my password", :class => 'btn btn-primary' %>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+</div>
 
-<div>Change your password</div>
-
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
-
-  <p><%= f.label :password, "New password" %><br />
-  <%= f.password_field :password %></p>
-
-  <p><%= f.label :password_confirmation, "Confirm new password" %><br />
-  <%= f.password_field :password_confirmation %></p>
-
-  <p><%= f.submit "Change my password" %></p>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>

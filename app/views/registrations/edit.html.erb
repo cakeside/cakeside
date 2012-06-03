@@ -58,7 +58,6 @@ minlength:2,
         <li class="nav-header">Account</li>
         <li><a href="<%= url_for profiles_mine_path %>"><i class="icon-user"></i> Profile</a></li>
         <li class="active"><a href="<%= url_for edit_user_registration_path %>"><i class="icon-cog"></i> Settings</a></li>
-        <li><a href="<%= url_for edit_user_password_path(current_user) %>"><i class="icon-cog"></i> Change My Password</a></li>
         <li class="divider"></li>
         <li><a href="#"><i class="icon-flag"></i> Help</a></li>
       </ul>
@@ -75,42 +74,41 @@ minlength:2,
         <div class="control-group">
           <%= f.label :name, :class => "control-label"  %>
           <div class="controls"> <%= f.text_field :name, :class => "input-xlarge" %> </div>
-        </div><!-- /control-group -->
+        </div>
         <div class="control-group">
           <%= f.label :email, :class => "control-label"  %>
           <div class="controls"> <%= f.email_field :email, :class => "input-xlarge"  %> </div>
-        </div><!-- /control-group -->
+        </div>
         <div class="control-group">
           <%= f.label :password, :class => "control-label" %> 
           <div class="controls"> <%= f.password_field :password, :class => "input-xlarge"  %> </div>
-        </div><!-- /control-group -->
+        </div>
         <div class="control-group">
-          <%= f.label :password_confirmation, :class => "control-label" %> 
+          <%= f.label :password_confirmation, "Confirm password", :class => "control-label" %> 
           <div class="controls"> <%= f.password_field :password_confirmation, :class => "input-xlarge" %> </div>
-        </div><!-- /control-group -->
+        </div>
         <div class="control-group">
           <%= f.label :current_password, :class => "control-label" %> 
           <div class="controls"> <%= f.password_field :current_password, :class => "input-xlarge" %> </div>
-        </div><!-- /control-group -->
+        </div>
         <div class="control-group">
           <%= f.label :city, :class => 'control-label' %>
           <div class="controls"> <%= f.text_field :city, :class => "input-xlarge" %> </div>
-        </div><!-- /control-group -->
+        </div>
         <div class="control-group">
           <%= f.label :website, :class => "control-label" %> 
           <div class="controls"> <%= f.url_field :website, :class => "input-xlarge, url", :placeholder => "http://cakeside.com" %> </div>
-        </div><!-- /control-group -->
+        </div>
         <div class="control-group">
           <%= f.label :twitter, :class => "control-label" %> 
           <div class="controls"> <%= f.text_field :twitter, :class => "input-xlarge", :placeholder => "without the @ sign", :maxlength => "255" %> </div>
-        </div><!-- /control-group -->
+        </div>
         <div class="control-group">
           <%= f.label :facebook, :class => "control-label" %> 
           <div class="controls"> <%= f.text_field :facebook, :class => "input-xlarge", :placeholder => "http://www.facebook.com/your_profile", :maxlength => "255" %> </div>
-        </div><!-- /control-group -->
+        </div>
         <p class="help-block">
-        <strong>Note:</strong> 
-        Help us better serve you by checking off what best describes you?
+        <strong>Note:</strong> Help us better serve you by checking off what best describes you?
         </p>
         <div class="control-group">
           <label class="control-label">Interests:</label>
