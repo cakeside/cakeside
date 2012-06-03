@@ -1,26 +1,33 @@
 <% content_for :title do %>
   My profile
 <% end %>
-<ul class="nav nav-tabs">
-  <li class="active"> <%= link_to "Profile", profiles_mine_path %></li>
-  <li> <%= link_to "Favorites", profiles_favorites_path %></li>
-  <li> <%= link_to "Add Creation", new_creation_path %></li>
-  <li> <%= link_to "Settings", edit_user_registration_path %> </li>
-</ul>
 <div class="row">
   <div class="span3">
-    <ul class="thumbnails">
-      <li><a href="<%= url_for profile_path(current_user) %>"><img src="<%= avatar_url current_user %>&amp;s=200" alt="<%= current_user.name %>" /></a></li>
-    </ul>
-    <h3><%= current_user.name %></h3>
-    <a href="http://gravatar.com/emails" target="_blank">Change My Photo</a>
-    <p>member since: <%= current_user.created_at.to_s :foomat %></p>
-    <p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
-    <hr>
-    <p>Website or blog: <a  href="<%= current_user.website %>" target="_blank"><%= current_user.website %></a></p>
-    <p>Twitter: <a href="https://twitter.com/<%= current_user.twitter %>" target="_blank" class="twitter-follow-button" data-show-count="false">@<%= current_user.twitter %></a></p>
-    <p>Facebook:<a  href="<%= current_user.facebook %>" target="_blank"> <%= current_user.facebook %></a></p>
-    <p><%= link_to "Change My Information", edit_user_registration_path %></p>
+    <div class="thumbnail">
+      <img src="<%= avatar_url current_user %>&amp;s=260" alt="<%= current_user.name %>" />
+      <div class="caption">
+        <h5><%= current_user.name %></h5>
+        <p>member since: <%= current_user.created_at.to_s :foomat %></p>
+        <p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
+        <hr>
+        <p>Website or blog: <a  href="<%= current_user.website %>" target="_blank"><%= current_user.website %></a></p>
+        <p>Twitter: <a href="https://twitter.com/<%= current_user.twitter %>" target="_blank" class="twitter-follow-button" data-show-count="false">@<%= current_user.twitter %></a></p>
+        <p>Facebook:<a  href="<%= current_user.facebook %>" target="_blank"> <%= current_user.facebook %></a></p>
+      </div>
+    </div>
+    <div style="padding: 8px 0;" class="well">
+      <ul class="nav nav-list">
+        <li class="nav-header">Creations</li>
+        <li><a href="<%= url_for root_path %>"><i class="icon-white icon-home"></i> Home</a></li>
+        <li><a href="<%= url_for profiles_favorites_path -%>"><i class="icon-book"></i> My Favorites</a></li>
+        <li><a href="<%= new_creation_path %>"><i class="icon-pencil"></i> Add Creation</a></li>
+        <li class="nav-header">Account</li>
+        <li class="active"><a href="<%= url_for profiles_mine_path %>"><i class="icon-user"></i> Profile</a></li>
+        <li><a href="<%= url_for edit_user_registration_path %>"><i class="icon-cog"></i> Settings</a></li>
+        <li class="divider"></li>
+        <li><a href="#"><i class="icon-flag"></i> Help</a></li>
+      </ul>
+    </div>
   </div>
   <%= render "shared/a_9_column_gallery" %>
 </div>
