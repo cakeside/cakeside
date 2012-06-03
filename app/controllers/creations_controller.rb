@@ -44,7 +44,6 @@ class CreationsController < ApplicationController
   def update
     @creation = current_user.creations.find(params[:id])
     @creation.category_ids = params[:creation][:category_ids] ||= []
-    logger.info params
 
     respond_to do |format|
       if @creation.update_attributes(params[:creation])

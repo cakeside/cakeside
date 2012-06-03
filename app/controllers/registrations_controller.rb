@@ -6,6 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def update
     @user = current_user
+    @user.interest_ids = params[:user][:interest_ids] ||= []
     if params[:user][:password].blank? 
       if @user.update_without_password(params[:user])
         sign_in @user, :bypass => true
