@@ -1,17 +1,17 @@
 <% content_for :head do %>
-<script type="text/javascript">
-$(document).ready(function(){
-  $('#accepted').click(function(){
-    if( $('#accepted').is(':checked')){
-      $('#submit-registration').removeAttr('disabled');
-    }
-    else{
-      $('#submit-registration').attr('disabled', 'disabled');
-    }
-  });
-});
-</script>
-<% end %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+        $('#accepted').click(function(){
+          if( $('#accepted').is(':checked')){
+          $('#submit-registration').removeAttr('disabled');
+          }
+          else{
+          $('#submit-registration').attr('disabled', 'disabled');
+          }
+          });
+        });
+      </script>
+    <% end %>
     <div class="row">
       <div class="span12">
         <div class="row">
@@ -19,34 +19,53 @@ $(document).ready(function(){
             <img src="/assets/cakeside-logo.png" alt="" />
             <h3>Why CakeSide?</h3>
             <p>CakeSide is a community dedicated to giving cake artists, bakers, creators, hobbyists, and of course cake lovers a place to share ideas and creations. Explore your creativity and find your inspiration. Resources shared here are all user driven.</p>
+            <h3>About Us</h3>
+            <p>We are a passionate team dedicated to improving the cake sharing experience. Frustrated with the lack of community that provides more than just photo sharing, CakeSide was born. All features of this site will be user inspired. We love to listen so feel free to give us <a href="http://cakeside.uservoice.com/" target="_blank">feedback</a>. Check back often to see what's new in the CakeSide community!</p>
           </div>
           <div class="span6">
-            <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :class=> 'form-horizontal') do |f| %>
+            <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "well form-inline"}) do |f| %>
+              <legend>Got an account? Login!</legend>
+              <%= f.email_field :email, :placeholder => 'Email', :class=> "input-medium" %>
+              <%= f.password_field :password, :placeholder => 'Password', :class=> "input-medium" %>
+              <%= f.submit "Sign In", :class => "btn" %>
+              <br />
+              <label for="checkbox" class="checkbox"><%= f.check_box :remember_me %> Remember me <%= link_to "Forgot it?", new_password_path(resource_name) %></label>
+            <% end %>
+            <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class=> 'form-horizontal' }) do |f| %>
               <fieldset>
-                <legend>Register <small>or <%= link_to "Sign in", new_user_session_path %></small></legend>
+                <legend>New to CakeSide? Join Us!</legend>
               </fieldset>
               <div class="control-group">
+                <%= f.label :name, 'Full Name', :class => "control-label" %>
                 <div class="controls">
                   <%= f.text_field :name, :placeholder => 'Full Name' %>
                 </div>
               </div>
               <div class="control-group">
+                <%= f.label :email, 'Email', :class => "control-label" %>
                 <div class="controls">
                   <%= f.email_field :email, :placeholder => 'Email' %>
                 </div>
               </div>
               <div class="control-group">
+                <%= f.label :password, 'Password', :class => "control-label" %>
                 <div class="controls">
                   <%= f.password_field :password, :placeholder => 'Password' %>
                 </div>
               </div>
               <div class="control-group">
+                <%= f.label :password_confirmation, 'Password Confirmation', :class => "control-label" %>
                 <div class="controls">
                   <%= f.password_field :password_confirmation, :placeholder => 'Password Confirmation' %>
                 </div>
               </div>
+              <div class="control-group">
+                <label for="accepted" class="control-label"></label>
+                <div class="controls">
+                  <input id="accepted" name="accepted" type="checkbox" value="" checked="checked" /> I have read the <a href="/terms.html">terms and conditions</a> and the <a href="/privacy.html">privacy policy</a>
+                </div>
+              </div>
               <div class="form-actions">
-                <p> <input id="accepted" name="accepted" type="checkbox" value="" checked="checked" /> I have read the <a href="/terms.html">terms and conditions</a> and the <a href="/privacy.html">privacy policy</a> </p>
                 <%= f.submit "Sign up", :id => 'submit-registration', :class=> "btn btn-primary" %>
               </div>
             <% end %>
