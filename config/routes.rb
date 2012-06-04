@@ -7,8 +7,8 @@ Cake::Application.routes.draw do
   root :to => "creations#index"
 
   # /home
-  get "home/about_us"
-  get "home/why_cakeside"
+  match "about_us" => "home#about_us"
+  match "why_cakeside" => "home#why_cakeside"
 
   # /creations
   resources :creations do
@@ -19,15 +19,10 @@ Cake::Application.routes.draw do
   match 'creations/crop_update/:id' => 'creations#crop_update', :as => 'creations_crop_update', :method => 'POST'
 
   # /profiles
-  get "profiles/index"
-  get "profiles/favorites"
-  get "profiles/mine"
+  match "profiles" => "profiles#index", :as => 'profiles', :method => "GET"
   match 'profiles/:id' => 'profiles#show', :as => 'profile', :method => 'GET'
-  match 'profiles/mine' => 'profiles#mine', :as => 'profiles_mine', :method => 'GET'
-
-  # /artists
-  match 'artists' => 'profiles#index', :as => 'all_profiles', :method => 'GET'
-  match 'artists/:id' => 'profiles#show', :as => 'artist', :method => 'GET'
+  match 'mine' => 'profiles#mine', :as => 'profiles_mine', :method => 'GET'
+  match 'favorites' => 'profiles#favorites', :as => 'profiles_favorites', :method => 'GET'
 
   # /categories
   match 'categories/:id' => 'categories#show', :method => 'GET'

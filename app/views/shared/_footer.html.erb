@@ -9,8 +9,8 @@
         <% unless user_signed_in? %>
           <li> <a href="<%= url_for new_user_session_path %>">Sign-Up</a> </li>
         <% end %>
-        <li> <a href="/home/about_us">About Us</a> </li>
-        <li> <a href="/home/why_cakeside">Why CakeSide?</a> </li>
+        <li> <a href="<%= url_for about_us_path %>">About Us</a> </li>
+        <li> <a href="<%= url_for why_cakeside_path %>">Why CakeSide?</a> </li>
       </ul>
     </div>
     <div class="span4">

@@ -2,100 +2,100 @@
 <% content_for :head do %>
   <script type="text/javascript" charset="utf-8">
     $(function(){ DeviseUsers.Edit.initialize(jQuery); });
-    </script>
-  <% end %>
-  <div class="row">
-    <div class="span3">
-      <div class="thumbnail">
-        <img src="<%= avatar_url current_user %>&amp;s=260" alt="<%= current_user.name %>" />
-        <div class="caption">
-          <h5><%= current_user.name %></h5>
-          <p>member since: <%= current_user.created_at.to_s :foomat %></p>
-          <p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
-          <p><a class="btn btn-primary" href="http://gravatar.com/emails" target="_blank">Change My Picture</a></p>
+  </script>
+<% end %>
+<div class="row">
+  <div class="span3">
+    <div style="padding: 8px 0;" class="well">
+      <ul class="nav nav-list">
+        <li class="nav-header">Creations</li>
+        <li><a href="<%= url_for root_path %>"><i class="icon-white icon-home"></i> Home</a></li>
+        <li><a href="<%= url_for profiles_favorites_path -%>"><i class="icon-book"></i> My Favorites</a></li>
+        <li><a href="<%= new_creation_path %>"><i class="icon-pencil"></i> Add Creation</a></li>
+        <li class="nav-header">Account</li>
+        <li><a href="<%= url_for profiles_mine_path %>"><i class="icon-user"></i> Profile</a></li>
+        <li class="active"><a href="<%= url_for edit_user_registration_path %>"><i class="icon-cog"></i> Settings</a></li>
+        <li class="divider"></li>
+        <li><a href="http://cakeside.uservoice.com/"><i class="icon-flag"></i> Help</a></li>
+      </ul>
+    </div>
+    <h4>Cancel My Account</h4>
+    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger" %></p>
+  </div>
+  <div class="span6">
+    <h1>Settings</h1>
+    <p> If you prefer not to change your password, then just leave it blank.  </p>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class=> "form-horizontal" }) do |f| %>
+      <fieldset>
+        <legend>Update your settings</legend>
+        <div class="control-group">
+          <%= f.label :name, :class => "control-label"  %>
+          <div class="controls"> <%= f.text_field :name, :class => "input-xlarge" %> </div>
         </div>
+        <div class="control-group">
+          <%= f.label :email, :class => "control-label"  %>
+          <div class="controls"> <%= f.email_field :email, :class => "input-xlarge"  %> </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :password, :class => "control-label" %> 
+          <div class="controls"> <%= f.password_field :password, :class => "input-xlarge"  %> </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :password_confirmation, "Confirm password", :class => "control-label" %> 
+          <div class="controls"> <%= f.password_field :password_confirmation, :class => "input-xlarge" %> </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :current_password, :class => "control-label" %> 
+          <div class="controls"> <%= f.password_field :current_password, :class => "input-xlarge" %> </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :city, :class => 'control-label' %>
+          <div class="controls"> <%= f.text_field :city, :class => "input-xlarge" %> </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :website, :class => "control-label" %> 
+          <div class="controls"> <%= f.url_field :website, :class => "input-xlarge, url", :placeholder => "http://cakeside.com" %> </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :twitter, "Twitter username @", :class => "control-label" %> 
+          <div class="controls"> <%= f.text_field :twitter, :class => "input-xlarge", :placeholder => "without the @ sign", :maxlength => "255" %> </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :facebook, :class => "control-label" %> 
+          <div class="controls"> <%= f.text_field :facebook, :class => "input-xlarge", :placeholder => "http://www.facebook.com/your_profile", :maxlength => "255" %> </div>
+        </div>
+        <p class="help-block">
+        <strong>Note:</strong> Help us better serve you by checking off what best describes you?
+        </p>
+        <div class="control-group">
+          <label class="control-label">About me?</label>
+          <div class="controls">
+            <% for interest in Interest.all %>
+              <label class="checkbox">
+                <%= check_box_tag "user[interest_ids][]", interest.id, current_user.interests.include?(interest) %>
+                <%= interest.name %>
+              </label>
+            <% end %>
+          </div>
+        </div><!-- /control-group -->
+        <div class="form-actions">
+          <input type="submit" class="btn btn-primary" value="Save changes" />
+          <button type="reset" class="btn">Cancel</button>
+        </div>
+        <%= f.hidden_field :latitude %>
+        <%= f.hidden_field :longitude %>
+      </fieldset>
+    <% end %>
+  </div>
+  <div class="span3">
+    <div class="thumbnail">
+      <img src="<%= avatar_url current_user %>&amp;s=260" alt="<%= current_user.name %>" />
+      <div class="caption">
+        <h5><%= current_user.name %></h5>
+        <p>member since: <%= current_user.created_at.to_s :foomat %></p>
+        <p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
+        <p><a class="btn btn-primary" href="http://gravatar.com/emails" target="_blank">Change My Picture</a></p>
       </div>
-    </div>
-    <div class="span6">
-      <h1>Settings</h1>
-      <p> If you prefer not to change your password, then just leave it blank.  </p>
-      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class=> "form-horizontal" }) do |f| %>
-        <fieldset>
-          <legend>Update your settings</legend>
-          <div class="control-group">
-            <%= f.label :name, :class => "control-label"  %>
-            <div class="controls"> <%= f.text_field :name, :class => "input-xlarge" %> </div>
-          </div>
-          <div class="control-group">
-            <%= f.label :email, :class => "control-label"  %>
-            <div class="controls"> <%= f.email_field :email, :class => "input-xlarge"  %> </div>
-          </div>
-          <div class="control-group">
-            <%= f.label :password, :class => "control-label" %> 
-            <div class="controls"> <%= f.password_field :password, :class => "input-xlarge"  %> </div>
-          </div>
-          <div class="control-group">
-            <%= f.label :password_confirmation, "Confirm password", :class => "control-label" %> 
-            <div class="controls"> <%= f.password_field :password_confirmation, :class => "input-xlarge" %> </div>
-          </div>
-          <div class="control-group">
-            <%= f.label :current_password, :class => "control-label" %> 
-            <div class="controls"> <%= f.password_field :current_password, :class => "input-xlarge" %> </div>
-          </div>
-          <div class="control-group">
-            <%= f.label :city, :class => 'control-label' %>
-            <div class="controls"> <%= f.text_field :city, :class => "input-xlarge" %> </div>
-          </div>
-          <div class="control-group">
-            <%= f.label :website, :class => "control-label" %> 
-            <div class="controls"> <%= f.url_field :website, :class => "input-xlarge, url", :placeholder => "http://cakeside.com" %> </div>
-          </div>
-          <div class="control-group">
-            <%= f.label :twitter, :class => "control-label" %> 
-            <div class="controls"> <%= f.text_field :twitter, :class => "input-xlarge", :placeholder => "without the @ sign", :maxlength => "255" %> </div>
-          </div>
-          <div class="control-group">
-            <%= f.label :facebook, :class => "control-label" %> 
-            <div class="controls"> <%= f.text_field :facebook, :class => "input-xlarge", :placeholder => "http://www.facebook.com/your_profile", :maxlength => "255" %> </div>
-          </div>
-          <p class="help-block">
-          <strong>Note:</strong> Help us better serve you by checking off what best describes you?
-          </p>
-          <div class="control-group">
-            <label class="control-label">Interests:</label>
-            <div class="controls">
-              <% for interest in Interest.all %>
-                <label class="checkbox">
-                  <%= check_box_tag "user[interest_ids][]", interest.id, current_user.interests.include?(interest) %>
-                  <%= interest.name %>
-                </label>
-              <% end %>
-            </div>
-          </div><!-- /control-group -->
-          <div class="form-actions">
-            <input type="submit" class="btn btn-primary" value="Save changes" />
-            <button type="reset" class="btn">Cancel</button>
-          </div>
-          <%= f.hidden_field :latitude %>
-          <%= f.hidden_field :longitude %>
-        </fieldset>
-      <% end %>
-    </div>
-    <div class="span3">
-      <div style="padding: 8px 0;" class="well">
-        <ul class="nav nav-list">
-          <li class="nav-header">Creations</li>
-          <li><a href="<%= url_for root_path %>"><i class="icon-white icon-home"></i> Home</a></li>
-          <li><a href="<%= url_for profiles_favorites_path -%>"><i class="icon-book"></i> My Favorites</a></li>
-          <li><a href="<%= new_creation_path %>"><i class="icon-pencil"></i> Add Creation</a></li>
-          <li class="nav-header">Account</li>
-          <li><a href="<%= url_for profiles_mine_path %>"><i class="icon-user"></i> Profile</a></li>
-          <li class="active"><a href="<%= url_for edit_user_registration_path %>"><i class="icon-cog"></i> Settings</a></li>
-          <li class="divider"></li>
-          <li><a href="http://cakeside.uservoice.com/"><i class="icon-flag"></i> Help</a></li>
-        </ul>
-      </div>
-      <h4>Cancel My Account</h4>
-      <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger" %></p>
     </div>
   </div>
+</div>
