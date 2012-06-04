@@ -19,7 +19,11 @@ unless Category.any?
   Category.create(:name => 'Baby Shower', :slug => 'baby-shower')
 end
 unless Interest.any? 
-  Interest.create(:name => 'Hobbyist')
-  Interest.create(:name => 'Professional')
-  Interest.create(:name => 'Home Based Business')
+  Interest.create(:name => 'I own a bakery')
+  Interest.create(:name => 'I work for a bakery')
+  Interest.create(:name => 'I sell baking supplies')
+  Interest.create(:name => 'I teach baking/decorating class')
+  Interest.create(:name => 'My business is from home')
+  Interest.create(:name => 'Baking is my hobby')
+  Interest.create(:name => 'Just Looking')
 end
