@@ -25,6 +25,7 @@
       <img src="<%= avatar_url current_user %>&amp;s=260" alt="<%= current_user.name %>" />
       <div class="caption">
         <h5><%= current_user.name %></h5>
+        <p> <%= link_to "My Public Profile", profile_path(current_user) %></p>
         <p>member since: <%= current_user.created_at.to_s :foomat %></p>
         <p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
         <hr>
