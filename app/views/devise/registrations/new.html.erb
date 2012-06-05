@@ -31,7 +31,7 @@
               <%= f.password_field :password, :placeholder => 'Password', :class=> "input-medium" %>
               <%= f.submit "Sign In", :class => "btn" %>
               <br />
-              <label for="checkbox" class="checkbox"><%= f.check_box :remember_me %> Remember me <%= link_to "Forgot it?", new_password_path(resource_name) %></label>
+              <label for="checkbox" class="checkbox"><%= f.check_box :remember_me %> Remember me <%= link_to "Forgot your password?", new_password_path(resource_name) %></label>
             <% end %>
             <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class=> 'form-horizontal' }) do |f| %>
               <fieldset>
@@ -71,7 +71,6 @@
                 <%= f.submit "Sign up", :id => 'submit-registration', :class=> "btn btn-primary" %>
               </div>
             <% end %>
-            <%= render :partial => "devise/shared/links" %>
           </div>
         </div>
       </div>
