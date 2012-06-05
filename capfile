@@ -36,3 +36,12 @@ task :update_bundler do
   run "bundle install --gemfile #{release_path}/Gemfile"
   run "cd #{release_path} && bundle exec rake db:migrate RAILS_ENV=production && bundle exec rake db:seed RAILS_ENV=production"
 end
+
+task :backup_db do
+  run "pg_dump -U postgress cakeside_production -f #{filename}"
+end
+
+task :restore_db do
+  run "psql -U postgress -d #{destination_db} -f #{dumpfile}"
+end
+
