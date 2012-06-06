@@ -2,16 +2,16 @@ class ProfilesController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
 
   def index
-    @profiles = User.page(params[:page]).per(16)
+    @profiles = User.all
   end
 
   def show
     @profile = User.find(params[:id])
-    @creations = @profile.creations.page(params[:page]).per(16)
+    @creations = @profile.creations.page(params[:page]).per(18)
   end
 
   def mine
-    @creations = current_user.creations.page(params[:page]).per(16)
+    @creations = current_user.creations.page(params[:page]).per(100)
   end
 
   def favorites
