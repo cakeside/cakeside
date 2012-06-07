@@ -13,11 +13,6 @@ class Creation < ActiveRecord::Base
 
   default_scope order("created_at DESC")
 
-  define_index do
-    indexes :name, :sortable => true
-    indexes story
-  end
-
   def short_story
     story.split[0...50].join(' ') + '...'
   end

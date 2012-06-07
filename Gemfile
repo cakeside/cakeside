@@ -3,20 +3,14 @@ source 'http://rubygems.org'
 gem 'rails'
 gem 'rake'
 gem 'devise'
-gem 'bourbon', '1.4.0'
 gem 'jquery-rails'
 gem 'carrierwave'
-gem 'RedCloth'
 gem 'rmagick'
-gem 'bcrypt-ruby'
-gem 'json'
-gem 'fog'
 gem 'kaminari'
 gem 'exception_notification'
-gem "formtastic", "~> 2.1.1"
+gem "formtastic"
 gem 'activeadmin'
 gem 'sass-rails'
-gem 'meta_search', '>= 1.1.0.pre'
 gem 'bootstrap-sass'
 #gem 'unicorn'
 group :development, :test do
@@ -34,7 +28,6 @@ group :test do
   gem 'capybara'
   gem 'guard-rspec'
   gem 'guard-livereload'
-  gem 'turn', :require => false
 end
 group :production do
   gem 'pg'
