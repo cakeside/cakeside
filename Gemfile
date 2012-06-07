@@ -13,6 +13,8 @@ gem 'activeadmin'
 gem 'sass-rails'
 gem 'bootstrap-sass'
 #gem 'unicorn'
+gem 'acts_as_commentable_with_threading'
+
 group :development, :test do
   gem 'webrat'
   gem 'rspec-rails'
