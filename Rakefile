@@ -13,6 +13,7 @@ end
 namespace :deploy do
   task :staging do
     sh "cap staging deploy"
+    sh "cap staging deploy:migrations"
   end
   task :production, :tag do |t, args|
     tag_to_deploy = args.tag
@@ -22,6 +23,7 @@ namespace :deploy do
     else
       puts "deploying to production from tag #{tag_to_deploy}"
       sh "cap production deploy -s tag=#{tag_to_deploy}"
+      sh "cap production deploy:migrations"
     end
   end
 end
