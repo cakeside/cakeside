@@ -11,7 +11,7 @@ task :install_keys do
 end
 
 namespace :deploy do
-  task :staging do
+  task :staging => :spec do
     sh "cap staging deploy"
     sh "cap staging deploy:migrations"
     sh "curl http://staging.cakeside.com/ > /dev/null"
