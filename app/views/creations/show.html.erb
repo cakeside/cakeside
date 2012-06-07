@@ -8,11 +8,11 @@
         <%= link_to 'Delete', creation_path(@creation),:confirm => "Are you sure", :method => :delete, :class => 'btn btn-danger' %> 
       <% end %>
       submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> 
-  </small> 
-</h1>
-<% @creation.categories.each do |category| %>
-  <span class="label"><a href="/categories/<%= category.slug %>"><%= category.name %></a></span>
-<% end %> 
+    </small> 
+  </h1>
+  <% @creation.categories.each do |category| %>
+    <span class="label"><a href="/categories/<%= category.slug %>"><%= category.name %></a></span>
+  <% end %> 
 </div>
 <div class="row">
   <div class="span12">
@@ -67,5 +67,22 @@
   <div class="span12">
     <h3>Description</h3>
     <p><%= @creation.story %></p>
+  </div>
+</div>
+<div class="row">
+  <div class="span12">
+    <h3>Comments <small><%= pluralize @creation.comment_threads.length, "comment" %></small></h3>
+    <% unless user_signed_in? %>
+      <p><%= link_to "sign in", new_user_session_path %>  to comment </p>
+    <% end -%>
+    <table class="table table-striped">
+      <% @creation.comment_threads.each do |comment| %>
+        <tr>
+          <td><%= gravatar_for comment.user %></td>
+          <td><%= comment.body %></td>
+          <td><%= comment.created_at.to_s :foomat %></td>
+        </tr>
+      <% end -%>
+    </table>
   </div>
 </div>
