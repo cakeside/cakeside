@@ -1,7 +1,7 @@
 load 'deploy' if respond_to?(:namespace) # cap2 differentiator
-load 'deploy/assets'
+#load 'deploy/assets'
 Dir['vendor/gems/*/recipes/*.rb','vendor/plugins/*/recipes/*.rb'].each { |plugin| load(plugin) }
-load 'config/deploy' # remove this line to skip loading any of the default tasks
+#load 'config/deploy' # remove this line to skip loading any of the default tasks
 
 task :search_libs, :roles => :web do
   run "ls -x1 /usr/lib | grep -i xml"
@@ -33,8 +33,8 @@ task :restart_sphinx, :roles => :app do
 end
 
 task :update_bundler do
-  run "bundle install --gemfile #{release_path}/Gemfile"
-  run "cd #{release_path} && bundle exec rake db:migrate RAILS_ENV=production && bundle exec rake db:seed RAILS_ENV=production"
+  #run "bundle install --gemfile #{release_path}/Gemfile"
+  #run "cd #{release_path} && bundle exec rake db:migrate RAILS_ENV=production && bundle exec rake db:seed RAILS_ENV=production"
 end
 
 task :backup_db do

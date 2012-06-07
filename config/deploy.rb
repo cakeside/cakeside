@@ -24,7 +24,7 @@ set :deploy_env, 'production'
 set :scm_verbose, true
 
 # ugly workaround for bug https://github.com/capistrano/capistrano/issues/81
-before "deploy:assets:precompile", "update_bundler"
+#before "deploy:assets:precompile", "update_bundler"
 
 # remove old releases
-#after "deploy", "deploy:cleanup"
+after "deploy", "deploy:cleanup"
