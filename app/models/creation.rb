@@ -1,4 +1,5 @@
 class Creation < ActiveRecord::Base
+  acts_as_commentable
   validates :name,  :presence => true
   validates :image,  :presence => true
   attr_accessible :user_id, :story, :name, :image, :remote_image_url
