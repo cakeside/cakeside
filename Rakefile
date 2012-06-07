@@ -14,7 +14,7 @@ namespace :deploy do
   task :staging do
     sh "cap staging deploy"
     sh "cap staging deploy:migrations"
-    sh "wget http://staging.cakeside.com/ > /dev/null"
+    sh "curl http://staging.cakeside.com/ > /dev/null"
   end
   task :production, :tag do |t, args|
     tag_to_deploy = args.tag
@@ -25,7 +25,7 @@ namespace :deploy do
       puts "deploying to production from tag #{tag_to_deploy}"
       sh "cap production deploy -s tag=#{tag_to_deploy}"
       sh "cap production deploy:migrations"
-      sh "wget http://cakeside.com/ > /dev/null"
+      sh "curl http://cakeside.com/ > /dev/null"
     end
   end
 end

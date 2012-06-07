@@ -13,7 +13,6 @@ set :user, "cakeside"
 set :password, "password"
 set :group, "rvm"
 set :use_sudo, false
-# set :use_sudo, false
 set :deploy_to, "/home/cakeside/apps/#{application}"
 
 set :scm, :git
