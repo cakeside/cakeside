@@ -7,7 +7,7 @@
         <%= link_to '(edit)', edit_creation_path(@creation) %> 
         <%= link_to 'Delete', creation_path(@creation),:confirm => "Are you sure", :method => :delete, :class => 'btn btn-danger' %> 
       <% end %>
-      submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> on <%= @creation.created_at.to_s :foomat %> 
+      submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> on <%= @creation.created_at.to_s :foomat %> with <%= link_to pluralize(@creation.favorites.length, 'fan'), creation_favorites_path(:creation_id => @creation.id)%>
   </small> 
 </h1>
 <% @creation.categories.each do |category| %>
