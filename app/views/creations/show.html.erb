@@ -66,15 +66,18 @@
 <div class="row">
   <div class="span12">
     <h3>Description</h3>
+    <hr />
     <p><%= @creation.story %></p>
   </div>
 </div>
+<br />
 <div class="row">
   <div class="span12">
-    <h3>Comments <small><%= pluralize @creation.comment_threads.length, "comment" %></small></h3>
     <% unless user_signed_in? %>
-      <p><%= link_to "sign in", new_user_session_path %>  to comment </p>
+      <p style="float:right;"><%= link_to "sign in", new_user_session_path %>  to comment </p>
     <% end -%>
+    <h3>Comments <small><%= pluralize @creation.comment_threads.length, "comment" %></small></h3>
+    <hr />
     <table class="table table-striped">
       <% @creation.comment_threads.each do |comment| %>
         <tr>
@@ -84,12 +87,31 @@
         </tr>
       <% end -%>
     </table>
-    <%= form_tag(creation_comments_path(@creation), :method => "post", :html => { :class => "form-horizontal"}) do |f| %>
-      <%= fields_for Comment.new do |f| %>
-        <label>Add a comment</label>
-        <%= f.text_area :body, :class => "span12" %>
-        <input type="submit" class="btn" value="Add Comment" />
-      <% end %>
-    <% end %>
   </div>
 </div>
+<% if user_signed_in? %>
+  <div class="row">
+    <div class="span12">
+      <h3>Add New Comment</h3>
+      <hr />
+      <div class="row">
+        <div class="span3">
+          <div class="thumbnail">
+            <%= gravatar_for(current_user, {:size => 260 }) %>
+            <div class="caption">
+              <h5><%= current_user.name %></h5>
+            </div>
+          </div>
+        </div>
+        <div class="span9">
+          <%= form_tag(creation_comments_path(@creation), :method => "post", :html => { :class => "form-horizontal"}) do |f| %>
+            <%= fields_for Comment.new do |f| %>
+              <%= f.text_area :body, :class => "span9" %>
+              <input type="submit" class="btn" value="Add Comment" />
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
