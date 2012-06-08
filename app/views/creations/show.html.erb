@@ -7,34 +7,12 @@
         <%= link_to '(edit)', edit_creation_path(@creation) %> 
         <%= link_to 'Delete', creation_path(@creation),:confirm => "Are you sure", :method => :delete, :class => 'btn btn-danger' %> 
       <% end %>
-      submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> 
+      submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> on <%= @creation.created_at.to_s :foomat %> 
   </small> 
 </h1>
 <% @creation.categories.each do |category| %>
   <span class="label"><a href="/categories/<%= category.slug %>"><%= category.name %></a></span>
 <% end %> 
-</div>
-<div class="row">
-  <div class="span12">
-    <p> 
-    submitted on <%= @creation.created_at.to_s :foomat %> |
-    <%= link_to 'fanclub (' + pluralize(@creation.favorites.length, 'fan') + ')', creation_favorites_path(:creation_id => @creation.id)%> 
-    </p>
-  </div>
-</div>
-<div class="row">
-  <div class="span6"> 
-    <iframe src="http://www.facebook.com/plugins/like.php?href=<%= request.url %>" scrolling="no" frameborder="0" style="border:none; width:350px; height:30px; float:left;"></iframe>
-  </div>
-  <div class="span2">
-    <% if user_signed_in? %>
-      <% unless current_user == @creation.user || current_user.already_likes(@creation) %>
-        <%= button_to "Add to favorites", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary' %>
-      <% end %>
-    <% else %>
-      <%= button_to "Add to favorites", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary' %>
-    <% end %>
-  </div>
 </div>
 <div class="row">
   <div class="span12">
@@ -71,6 +49,25 @@
         <% end %>
       <% end -%>
     </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="span7">
+    <iframe src="http://www.facebook.com/plugins/like.php?href=<%= request.url %>" scrolling="no" frameborder="0" style="border:none; width:350px; height:30px; float:left;"></iframe>
+  </div>
+  <div class="span2">
+    <% if user_signed_in? %>
+      <% unless current_user == @creation.user || current_user.already_likes(@creation) %>
+        <%= button_to "Add to favorites", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary' %>
+      <% end %>
+    <% else %>
+      <%= button_to "Add to favorites", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary' %>
+    <% end %>
+  </div>
+  <div class="span2 offset1">
+    <p>
+    <%= link_to 'fanclub (' + pluralize(@creation.favorites.length, 'fan') + ')', creation_favorites_path(:creation_id => @creation.id)%> 
+    </p>
   </div>
 </div>
 <div class="row">
