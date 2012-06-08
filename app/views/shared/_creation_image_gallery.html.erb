@@ -6,11 +6,12 @@
       <div class="caption">
         <h5><a href="<%= url_for creation %>"><%= short_name(creation, 20) %></a></h5>
         <h6><a href="<%= url_for profile_path(creation.user) %>"><%= creation.user.name %></a></h6>
-        <p>
         <% if creation.favorites.count > 0 %>
-          <a href="<%= url_for creation_favorites_path(:creation_id => creation.id) %>"><%= creation.favorites.count %><i class="icon-heart"></i></a>
-        <% else %>&nbsp;<% end %>
-        </p>
+          <span> <a href="<%= url_for creation_favorites_path(:creation_id => creation.id) %>"><%= creation.favorites.count %><i class="icon-heart"></i></a> </span>
+        <% else %>
+          <span>&nbsp;</span>
+        <% end %>
+        <span class="badge badge-success" title="<%= creation.comment_threads.count %> comments"><%= creation.comment_threads.count %> </span>
       </div>
     </div>
     </li>
