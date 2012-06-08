@@ -3,6 +3,12 @@
 <% end %>
 <div class="row">
   <div class="span3">
+    <div class="thumbnail">
+      <img src="<%= avatar_url current_user %>&amp;s=260" alt="<%= current_user.name %>" />
+      <div class="caption">
+        <h5><%= current_user.name %></h5>
+      </div>
+    </div>
     <div style="padding: 8px 0;" class="well">
       <ul class="nav nav-list">
         <li class="nav-header">Creations</li>
@@ -20,18 +26,5 @@
   </div>
   <div class="span6">
     <%= render 'form' %>
-  </div>
-  <div class="span3">
-
-    <div class="thumbnail">
-      <img src="<%= avatar_url current_user %>&amp;s=260" alt="<%= current_user.name %>" />
-      <div class="caption">
-        <h5><%= current_user.name %></h5>
-        <p>member since: <%= current_user.created_at.to_s :foomat %></p>
-        <p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
-      </div>
-    </div>
-
-
   </div>
 </div>
