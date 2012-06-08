@@ -8,11 +8,11 @@
         <%= link_to 'Delete', creation_path(@creation),:confirm => "Are you sure", :method => :delete, :class => 'btn btn-danger' %> 
       <% end %>
       submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> 
-    </small> 
-  </h1>
-  <% @creation.categories.each do |category| %>
-    <span class="label"><a href="/categories/<%= category.slug %>"><%= category.name %></a></span>
-  <% end %> 
+  </small> 
+</h1>
+<% @creation.categories.each do |category| %>
+  <span class="label"><a href="/categories/<%= category.slug %>"><%= category.name %></a></span>
+<% end %> 
 </div>
 <div class="row">
   <div class="span12">
@@ -84,5 +84,12 @@
         </tr>
       <% end -%>
     </table>
+    <%= form_tag(creation_comments_path(@creation), :method => "post", :html => { :class => "form-horizontal"}) do |f| %>
+      <%= fields_for Comment.new do |f| %>
+        <label>Add a comment</label>
+        <%= f.text_area :body, :class => "span12" %>
+        <input type="submit" class="btn" value="Add Comment" />
+      <% end %>
+    <% end %>
   </div>
 </div>
