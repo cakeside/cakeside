@@ -30,6 +30,7 @@ group :test do
   gem 'capybara'
   gem 'guard-rspec'
   gem 'guard-livereload'
+  gem 'fakes-rspec'
 end
 group :production do
   gem 'pg'
