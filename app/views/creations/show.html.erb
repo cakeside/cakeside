@@ -5,7 +5,6 @@
     <small>
       <% if @creation.user == current_user %>
         <%= link_to '(edit)', edit_creation_path(@creation) %> 
-        <%= link_to 'Delete', creation_path(@creation),:confirm => "Are you sure", :method => :delete, :class => 'btn btn-danger' %> 
       <% end %>
       submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> on <%= @creation.created_at.to_s :foomat %> with <%= link_to pluralize(@creation.favorites.length, 'fan'), creation_favorites_path(:creation_id => @creation.id)%>
   </small> 
@@ -72,7 +71,7 @@
 </div>
 <div class="row">
   <div class="span12">
-    <h3>Description</h3>
+    <h3>Description <% if @creation.user == current_user %><small><%= link_to '(edit)', edit_creation_path(@creation) %></small><% end %></h3>
     <hr />
     <p><%= @creation.story %></p>
   </div>

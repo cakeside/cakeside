@@ -5,7 +5,30 @@
   <h1><small>Edit</small> <%= @creation.name %></h1>
 </div>
 <div class="row">
-  <div class="span4">
+  <div class="span3">
+    <div class="thumbnail">
+      <img src="<%= avatar_url current_user %>&amp;s=260" alt="<%= current_user.name %>" />
+      <div class="caption">
+        <h5><%= current_user.name %></h5>
+      </div>
+    </div>
+  </div>
+  <div class="span6">
+    <%= render 'form' %>
+    <ul class="thumbnails">
+      <% @creation.photos.each do |photo| %>
+        <li>
+          <div class="thumbnail">
+            <%= image_tag photo.image_url(:thumb) %>
+            <div class="caption">
+              <p><%= link_to "Delete »", creation_photo_path(@creation, photo), :class => 'btn', :method => :delete, :confirm => "Are you sure?" %></p>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="span3">
     <ul class="thumbnails">
       <li>
       <a href="<%= url_for creation_path(@creation) %>">
@@ -13,8 +36,10 @@
       </a>
       </li>
     </ul>
+    <p>Second thoughts? <%= link_to 'Delete', creation_path(@creation),:confirm => "Are you sure", :method => :delete, :class => 'btn btn-danger' %> </p>
+    <hr />
     <% if @creation.photos.length < 3 %>
-      <h3>Add more photos</h3>
+      <h3>Add another photo</h3>
       <% unless @creation.new_record? %>
         <%= form_tag(creation_photos_path(@creation), :method => "post", :multipart => true) do |f| %>
           <%= fields_for Photo.new do |f| %>
@@ -24,20 +49,5 @@
         <% end %>
       <% end %>
     <% end %>
-  </div>
-  <div class="span8">
-    <%= render 'form' %>
-    <ul class="thumbnails">
-      <% @creation.photos.each do |photo| %>
-        <li>
-        <div class="thumbnail">
-          <%= image_tag photo.image_url(:thumb) %>
-          <div class="caption">
-            <p><%= link_to "Delete »", creation_photo_path(@creation, photo), :class => 'btn', :method => :delete, :confirm => "Are you sure?" %></p>
-          </div>
-        </div>
-        </li>
-      <% end %>
-    </ul>
   </div>
 </div>
