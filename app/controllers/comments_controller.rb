@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
       redirect_to creation_path(creation)
     else
       flash[:error] = "Ooops... we couldn't save your comment at this time."
-      render 'new'
+      #render 'creations/new'
     end
   end
 end

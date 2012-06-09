@@ -4,13 +4,14 @@ require 'fakes-rspec'
 
 describe CommentsController do
   let(:sut) { CommentsController.new }
+
   describe 'when commenting on a creation' do
     let(:comment) { fake }
 
     it "should save the new comment" do
       comment.should have_received(:save)
     end
-    it "should displa a message indicated that the comment was saved" do
+    it "should display a message indicated that the comment was saved" do
       @flash_hash[:notice].should_not be_nil
     end
     it "should not display an errors" do
