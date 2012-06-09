@@ -38,6 +38,7 @@ end
 group :production do
   gem 'pg'
   gem 'fog'
+  gem 'newrelic_rpm'
 end
 group :assets do
   gem 'sass-rails'
