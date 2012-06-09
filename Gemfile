@@ -24,12 +24,13 @@ group :development, :test do
   gem 'capistrano-ext'
   gem 'rvm-capistrano'
   gem 'capistrano-gitflow'
-end
-group :test do
-  gem 'factory_girl_rails'
-  gem 'capybara'
   gem 'guard-rspec'
   gem 'guard-livereload'
+end
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'capybara'
   gem 'fakes-rspec'
 end
 group :production do
