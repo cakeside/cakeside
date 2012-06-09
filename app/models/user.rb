@@ -21,10 +21,8 @@ class User < ActiveRecord::Base
 
   def add_favorite( creation )
     if self.already_likes(creation)
-      logger.info 'already likes creation'
       favorites.find { |favorite| favorite.user == self }
     else
-      logger.info 'add creation'
       creation.favorites.create({:user_id => self.id})
     end
   end

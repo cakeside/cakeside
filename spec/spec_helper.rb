@@ -26,3 +26,6 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 end
+
+Devise.stretches = 1
+Rails.logger.level = 4
