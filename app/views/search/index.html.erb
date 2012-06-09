@@ -1,6 +1,4 @@
-<% content_for :title do %>
-  Search Results for <%= @search %>
-<% end %>
+<% content_for :title do %>Search Results for <%= @search %><% end %>
 <div class="row">
   <div class="span12">
     <h1>Search Results for <em><%= @search %></em></h1>
@@ -12,7 +10,7 @@
   <% @members.each do |artist| %>
     <div class="span3">
       <div class="thumbnail">
-        <img src="<%= avatar_url artist %>&amp;s=260" alt="<%= artist.name %>" />
+        <a href="<%= url_for profile_path(artist) %>"><img src="<%= avatar_url artist %>&amp;s=260" alt="<%= artist.name %>" /></a>
         <div class="caption">
           <h5><%= artist.name %></h5>
         </div>
