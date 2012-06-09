@@ -18,14 +18,14 @@
   <div class="span12">
     <ul class="thumbnails">
       <li class="span9">
-      <a class="thumbnail" href="<%= url_for creation_path(@creation) %>">
-        <img src="<%= @creation.image_url(:large).to_s %>" alt="<%= @creation.name %>" class="span9" />
-      </a>
+        <a class="thumbnail" href="#">
+          <img src="<%= @creation.image_url(:large).to_s %>" alt="<%= @creation.name %>" width="100%" />
+        </a>
       </li>
       <% @creation.photos.each do |photo| %>
         <li class="span3">
         <a class="thumbnail" href="#">
-          <img src="<%= photo.image.thumb.url.to_s %>" alt="<%= @creation.name %>" class="span3">
+          <img src="<%= photo.image.thumb.url.to_s %>" alt="<%= @creation.name %>" width="100%">
         </a>
         </li>
       <% end %>
