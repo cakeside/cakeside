@@ -17,6 +17,9 @@ describe CommentsController do
     it "should not display an errors" do
       @flash_hash[:error].should be_nil
     end
+    it "should redirect to the creation#show page" do
+     
+    end
     before(:each) do
       creation = fake
       user = fake
