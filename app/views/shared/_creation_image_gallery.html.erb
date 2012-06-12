@@ -11,7 +11,11 @@
         <% else %>
           <span>&nbsp;</span>
         <% end %>
-        <span class="badge badge-success" title="<%= creation.comment_threads.count %> comments"><%= creation.comment_threads.count %> </span>
+        <% if creation.comment_threads.count > 0 %>
+          <span class="badge badge-success" title="<%= creation.comment_threads.count %> comments"><%= creation.comment_threads.count %> </span>
+        <% else %>
+          <span>&nbsp;</span>
+        <% end %>
       </div>
     </div>
     </li>
