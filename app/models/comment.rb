@@ -25,6 +25,10 @@ class Comment < ActiveRecord::Base
     c
   end
 
+  def self.create_for(user,creation,body)
+    self.build_from(creation, user.id, body)
+  end
+
   #helper method to check if a comment has children
   def has_children?
     self.children.size > 0

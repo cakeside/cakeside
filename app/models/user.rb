@@ -35,5 +35,8 @@ class User < ActiveRecord::Base
   def owns(creation)
     creation.user == self
   end
-end
 
+  def comment_on(creation, comment)
+    Comment.create_for(self, creation, comment)
+  end
+end
