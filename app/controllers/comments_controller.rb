@@ -6,14 +6,12 @@ class CommentsController < ApplicationController
   end
 
   def create
-    creation = Creation.find(params[:creation_id])
-    comment = Comment.build_from(creation, current_user.id, params[:comment][:body])
-    if comment.save
-      flash[:notice] = "Your comment was added!"
-      redirect_to creation_path(creation)
-    else
-      flash[:error] = "Ooops... we couldn't save your comment at this time."
-      render 'new'
-    end
+    command_for(CommentOnCreationCommand).run(params)
+    flash[:notice] = params[:comment][:body]
+    redirect_to :controller => 'creations', :action => 'show', :id => params[:creation_id]
+  end
+
+  def command_for(command)
+    command.new(current_user)
   end
 end
