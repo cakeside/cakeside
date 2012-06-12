@@ -10,8 +10,4 @@ class CommentsController < ApplicationController
     flash[:notice] = params[:comment][:body]
     redirect_to :controller => 'creations', :action => 'show', :id => params[:creation_id]
   end
-
-  def command_for(command)
-    command.new(current_user)
-  end
 end
