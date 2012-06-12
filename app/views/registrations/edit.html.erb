@@ -1,4 +1,4 @@
-<% content_for :title do %>Update My Account<% end %>
+<% provide(:title, "Update My Account") -%>
 <% content_for :head do %>
   <script type="text/javascript" charset="utf-8">
     $(function(){ DeviseUsers.Edit.initialize(jQuery); });

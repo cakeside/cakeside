@@ -1,4 +1,4 @@
-<% content_for :title do %>Search Results for <%= @search %><% end %>
+<% provide(:title, "#{@search}") -%>
 <div class="row">
   <div class="span12">
     <h1>Search Results for <em><%= @search %></em></h1>

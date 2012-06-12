@@ -1,6 +1,4 @@
-<% content_for :title do %>
-  <%= @profile.name %>
-<% end %>
+<% provide(:title, "#{profile.name}") -%>
 <div class="row">
   <div class="span12">
     <h1>
