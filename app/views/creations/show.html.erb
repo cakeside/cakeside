@@ -11,7 +11,7 @@
   </small> 
 </h1>
 <% @creation.categories.each do |category| %>
-  <span class="label"><a href="/categories/<%= category.slug %>"><%= category.name %></a></span>
+  <a href="/categories/<%= category.slug %>"><span class="label"><%= category.name %></span></a>
 <% end %> 
 </div>
 <div class="row">
@@ -79,6 +79,7 @@
 </div>
 <br />
 <div class="row">
+  <a href="#" id="comments"></a>
   <div class="span12">
     <% unless user_signed_in? %>
       <p style="float:right;"><%= link_to "sign in", new_user_session_path %>  to comment </p>
@@ -88,9 +89,11 @@
     <table class="table table-striped">
       <% @creation.comment_threads.each do |comment| %>
         <tr>
-          <td><%= gravatar_for comment.user %></td>
-          <td><%= comment.body %></td>
-          <td><%= comment.created_at.to_s :foomat %></td>
+          <td> <%= gravatar_for(comment.user) %> </td>
+          <td>
+            <h5>On <%= comment.created_at.to_s :foomat %> <%= comment.user.name %> said...</h5>
+            <p><%= comment.body %></p>
+          </td>
         </tr>
       <% end -%>
     </table>

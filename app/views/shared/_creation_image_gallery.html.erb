@@ -2,20 +2,18 @@
   <% @creations.each do |creation| %>
     <li class="span3">
     <div class="thumbnail">
-      <a href="<%= url_for creation %>"><img src="<%= creation.image.thumb.url %>" alt="<%= creation.name %>" rel="nofollow" width="260" /></a>
       <div class="caption">
         <h5><a href="<%= url_for creation %>"><%= short_name(creation, 20) %></a></h5>
         <h6><a href="<%= url_for profile_path(creation.user) %>"><%= creation.user.name %></a></h6>
+      </div>
+      <a href="<%= url_for creation %>"><img src="<%= creation.image.thumb.url %>" alt="<%= creation.name %>" rel="nofollow" width="260" /></a>
+      <div class="caption">
         <% if creation.favorites.count > 0 %>
           <span> <a href="<%= url_for creation_favorites_path(:creation_id => creation.id) %>"><%= creation.favorites.count %><i class="icon-heart"></i></a> </span>
         <% else %>
           <span>&nbsp;</span>
         <% end %>
-        <% if creation.comment_threads.count > 0 %>
-          <span class="badge badge-success" title="<%= creation.comment_threads.count %> comments"><%= creation.comment_threads.count %> </span>
-        <% else %>
-          <span>&nbsp;</span>
-        <% end %>
+        <a href="<%= url_for creation %>#comments"><span class="badge badge-success" title="<%= pluralize( creation.comment_threads.count, "comments") %>"><%= creation.comment_threads.count %></span></a>
       </div>
     </div>
     </li>
