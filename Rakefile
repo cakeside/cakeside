@@ -6,22 +6,26 @@ require 'rake'
 
 Cake::Application.load_tasks
 
+desc "install ssh keys"
 task :install_keys do
   sh "cp doc/keys/*.pem ~/.ssh/amazon-cakeside/"
 end
 
 namespace :ssh do
+  desc "deploy to staging server"
   task :staging do
     sh "ssh ubuntu@ec2-23-22-119-121.compute-1.amazonaws.com -i ~/.ssh/amazon-cakeside/stagingcakesidecom.pem"
   end
 end
 
 namespace :deploy do
+  desc "deploy to staging server"
   task :staging => :spec do
     sh "cap staging deploy"
     sh "cap staging deploy:migrations"
     sh "curl http://staging.cakeside.com/ > /dev/null"
   end
+  desc "deploy to production server"
   task :production, :tag do |t, args|
     tag_to_deploy = args.tag
     if tag_to_deploy.blank?
