@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
 
   def create
     command_for(CommentOnCreationCommand).run(params)
-    flash[:notice] = params[:comment][:body]
+    flash[:notice] = "Nice Comment!"
     redirect_to :controller => 'creations', :action => 'show', :id => params[:creation_id]
   end
 end

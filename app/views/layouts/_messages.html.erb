@@ -6,17 +6,10 @@
         <% Array(value).uniq.each do |message| -%>
         <div class="alert alert-<%= key %>">
           <a class="close" data-dismiss="alert" href="#">×</a>
-          <h4 class="alert-heading"><%= key.to_s.titleize -%>!</h4>
+          <!-- <h4 class="alert-heading"><%= key.to_s.titleize -%>!</h4> -->
           <%= message %>
         </div>
         <% end -%>
-        <!--
-        <div class="alert alert-<%= key %>">
-          <a class="close" data-dismiss="alert" href="#">×</a>
-          <h4 class="alert-heading"><%= key.to_s.titleize -%>!</h4>
-          <%= value %>
-        </div>
-        -->
       <% end -%>
     </div>
   </div>
