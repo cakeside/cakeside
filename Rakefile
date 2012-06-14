@@ -10,6 +10,12 @@ task :install_keys do
   sh "cp doc/keys/*.pem ~/.ssh/amazon-cakeside/"
 end
 
+namespace :ssh do
+  task :staging do
+    sh "ssh ubuntu@ec2-23-22-119-121.compute-1.amazonaws.com -i ~/.ssh/amazon-cakeside/stagingcakesidecom.pem"
+  end
+end
+
 namespace :deploy do
   task :staging => :spec do
     sh "cap staging deploy"
