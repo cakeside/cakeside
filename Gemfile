@@ -14,6 +14,7 @@ gem 'sass-rails'
 gem 'bootstrap-sass'
 #gem 'unicorn'
 gem 'acts_as_commentable_with_threading'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'webrat'
@@ -38,7 +39,6 @@ end
 group :production do
   gem 'pg'
   gem 'fog'
-  gem 'newrelic_rpm'
 end
 group :assets do
   gem 'sass-rails'
