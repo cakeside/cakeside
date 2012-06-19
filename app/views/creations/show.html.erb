@@ -32,7 +32,7 @@
       <% if @creation.user == current_user %>
         <% if @creation.photos.length < 3 %>
           <div class="span3 visible-desktop">
-            <h4>Add another photo</h4>
+            <h4>Add more photos to this creation</h4>
             <% unless @creation.new_record? %>
               <%= form_tag(creation_photos_path(@creation), :method => "post", :multipart => true, :html => {:class => ''}) do |f| %>
                 <%= fields_for Photo.new do |f| %>
