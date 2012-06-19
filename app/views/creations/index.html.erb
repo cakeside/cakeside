@@ -1,38 +1,54 @@
-<% if !user_signed_in? %>
-  <div class="hero-unit">
-    <h1>Welcome cake enthusiast!</h1>
-    <p><strong>Make</strong> cakes, <strong>sell</strong> cakes, or just <strong>love</strong> eating them? You've come to the right place!</p>
-    <p>CakeSide is a free site to <strong>share</strong> your cake <strong>creations</strong> and <strong>ideas</strong> with other cake fanatics like yourself!</p>
-    <div class="row">
-      <div class="span12">
-        <a href="<%= url_for new_user_session_path %>" class="btn btn-large">Sign me up &raquo;</a>
+<% if user_signed_in?  -%>
+  <%= render "shared/a_12_column_gallery" %>
+<% else -%>
+  <div class="row">
+    <div class="span6">
+      <div id="myCarousel" class="carousel slide">
+        <div class="carousel-inner">
+          <% @creations.each_with_index do |creation, index| %>
+            <div class="item<%= index == 0 ?  ' active' : ''-%>">
+              <img alt="<%= creation.name %>" src="<%= creation.image.large.url %>" style="display:block; margin-left:auto; margin-right:auto;" />
+              <div class="carousel-caption">
+                <h4><%= creation.name %></h4>
+                <p><%= creation.story %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+      </div>
+    </div>
+    <div class="span6">
+    </div>
+  </div>
+  <div class="row">
+    <div class="span12">
+      <div class="marketing">
+        <div class="row">
+          <div class="span4">
+            <img class="bs-icon" src="/assets/cupcake_share.png" alt="share your creativity" />
+            <h2>Share your creativity</h2>
+            <p>Show off your originality and find interesting ideas with fellow passionate CakeSide artists.</p>
+          </div>
+          <div class="span4">
+            <img class="bs-icon" src="/assets/cupcake_promote.png" alt="promote yourself">
+            <h2>Promote yourself</h2>
+            <p>Get recognized for your work and connect with other artists with unique styles. </p>
+          </div>
+          <div class="span4">
+            <img class="bs-icon" src="/assets/cupcake_inspire.png" alt="inspire a community">
+            <h2>Inspire a community</h2>
+            <p>Upload creations, teach with tutorials, and create a vibrant community for everything cake.</p>
+          </div>
+        </div>
+        <div class="row">
+          <p style="text-align: center;">
+          Still interested...? <a href="<%= url_for new_user_session_path %>">sign up now</a>
+          </p>
+        </div>
+        <hr>
       </div>
     </div>
   </div>
-  <div class="marketing">
-    <div class="row">
-      <div class="span4">
-        <img class="bs-icon" src="/assets/cupcake_share.png" alt="share your creativity">
-        <h2>Share your creativity</h2>
-        <p>Show off your originality and find interesting ideas with fellow passionate CakeSide artists.</p>
-      </div>
-      <div class="span4">
-        <img class="bs-icon" src="/assets/cupcake_promote.png" alt="promote yourself">
-        <h2>Promote yourself</h2>
-        <p>Get recognized for your work and connect with other artists with unique styles. </p>
-      </div>
-      <div class="span4">
-        <img class="bs-icon" src="/assets/cupcake_inspire.png" alt="inspire a community">
-        <h2>Inspire a community</h2>
-        <p>Upload creations, teach with tutorials, and create a vibrant community for everything cake.</p>
-      </div>
-    </div>
-    <div class="row">
-      <p style="text-align: center;">
-      Still interested...? <a href="<%= url_for new_user_session_path %>">sign up now</a>
-      </p>
-    </div>
-    <hr>
-  </div>
-<% end %>
-<%= render "shared/a_12_column_gallery" %>
+<% end -%>
