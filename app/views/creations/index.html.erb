@@ -19,7 +19,17 @@
         <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
       </div>
     </div>
-    <div class="span6">
+    <div class="span6" style="background: url(/assets/sunset.png) no-repeat center 0px;opacity:0.8;">
+      <img src="/assets/cakeside-logo.png" alt="" />
+      <div style="padding-left:10px;padding-right:10px;">
+        <h3>Why CakeSide?</h3>
+        <p>CakeSide is a community dedicated to giving cake artists, bakers, creators, hobbyists, and of course cake lovers a place to share ideas and creations. Explore your creativity and find your inspiration. Resources shared here are all user driven.</p>
+        <h3>About Us</h3>
+        <p>We are a passionate team dedicated to improving the cake sharing experience. Frustrated with the lack of community that provides more than just photo sharing, CakeSide was born. All features of this site will be user inspired. We love to listen so feel free to give us <a href="http://cakeside.uservoice.com/" target="_blank">feedback</a>. Check back often to see what's new in the CakeSide community!</p>
+      </div>
+      <p style="text-align: center;">
+        <a href="<%= url_for new_user_session_path %>" class="btn btn-primary btn-large">Sign Up Now!</a> or <%= link_to "sign in", new_user_session_path %>
+      </p>
     </div>
   </div>
   <div class="row">
@@ -43,9 +53,7 @@
           </div>
         </div>
         <div class="row">
-          <p style="text-align: center;">
-          Still interested...? <a href="<%= url_for new_user_session_path %>">sign up now</a>
-          </p>
+          <p style="text-align: center;"> Still interested...? <a href="<%= url_for new_user_session_path %>">sign up now</a> </p>
         </div>
         <hr>
       </div>
