@@ -20,7 +20,7 @@ task :update_bundler do
 end
 
 task :backup_db do
-  filename= "#{Time.now.strftime('%Y-%m-%d')}.sql"
+  filename = "#{deploy_env}-#{Time.now.strftime('%Y-%m-%d')}.sql"
   run "pg_dump cakeside_production > ~/db/backups/#{filename}"
   download("db/backups/#{filename}", "db/backups/", :via => :scp, :recursive => true)
 end
