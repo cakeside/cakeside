@@ -26,6 +26,6 @@ task :backup_db do
 end
 
 task :restore_db do
+  upload("db/backups/#{filename}", "db/backups/#{filename}", :via => :scp)
   run "psql -U postgress -d #{destination_db} -f #{dumpfile}"
 end
-
