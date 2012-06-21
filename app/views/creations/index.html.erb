@@ -1,6 +1,4 @@
-<% if user_signed_in?  -%>
-  <%= render "shared/a_12_column_gallery" %>
-<% else -%>
+<% unless user_signed_in?  -%>
   <div class="row">
     <div class="span6">
       <div id="myCarousel" class="carousel slide">
@@ -19,7 +17,7 @@
         <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
       </div>
     </div>
-    <div class="span6" style="background: url(/assets/sunset.png) no-repeat center 0px;opacity:0.8;">
+    <div class="span6">
       <img src="/assets/cakeside-logo.png" alt="" />
       <div style="padding-left:10px;padding-right:10px;">
         <h3>Why CakeSide?</h3>
@@ -60,3 +58,4 @@
     </div>
   </div>
 <% end -%>
+<%= render "shared/a_12_column_gallery" %>
