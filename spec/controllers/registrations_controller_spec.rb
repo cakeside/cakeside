@@ -30,30 +30,4 @@ describe RegistrationsController do
       user.should have_received(:update_without_password,@payload[:user])
     end
   end
-  describe "when updating a users pasword" do
-    before(:each) do
-      @payload = {
-        :user => {
-          :current_password => '',
-          :email => 'mo@mokhan.ca',
-          :facebook => 'mo',
-          :name =>'mo',
-          :password => 'secret',
-          :password_confirmation => 'secret',
-          :twitter => 'mocheen',
-          :website => 'http://mokhan.ca/',
-          :interest_ids => []
-        }
-      }
-      sut.stub(:current_user).and_return(user)
-      sut.stub(:params).and_return(@payload)
-      sut.stub(:update_with_password).and_return(true)
-      sut.stub(:render).and_return(true)
-
-      sut.update
-    end
-    it "should update their password" do
-      user.should have_received(:update_with_password,@payload[:user])
-    end
-  end
 end
