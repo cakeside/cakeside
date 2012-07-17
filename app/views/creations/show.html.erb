@@ -1,6 +1,11 @@
 <% provide(:title, "#{@creation.name} by #{@creation.user.name}") -%>
 <% provide(:description, "#{@creation.story}") -%>
 <div class="page-header">
+  <% if(@creation.is_restricted) -%>
+    <div style="float:right;">
+      <%= image_tag "ratedr.jpg", :class => "span1" %>
+    </div>
+  <% end -%>
   <h1>
     <%= @creation.name %> 
     <small>
@@ -8,19 +13,19 @@
         <%= link_to '(edit)', edit_creation_path(@creation) %> 
       <% end %>
       submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> on <%= @creation.created_at.to_s :foomat %> with <%= link_to pluralize(@creation.favorites.length, 'fan'), creation_favorites_path(:creation_id => @creation.id)%>
-  </small> 
-</h1>
-<% @creation.categories.each do |category| %>
-  <a href="/categories/<%= category.slug %>"><span class="label"><%= category.name %></span></a>
-<% end %> 
+    </small> 
+  </h1>
+  <% @creation.categories.each do |category| %>
+    <a href="/categories/<%= category.slug %>"><span class="label"><%= category.name %></span></a>
+  <% end %> 
 </div>
 <div class="row">
   <div class="span12">
     <ul class="thumbnails">
       <li class="span9">
-        <a class="thumbnail" href="#">
-          <img src="<%= @creation.image_url(:large).to_s %>" alt="<%= @creation.name %>" width="100%" />
-        </a>
+      <a class="thumbnail" href="#">
+        <img src="<%= @creation.image_url(:large).to_s %>" alt="<%= @creation.name %>" width="100%" />
+      </a>
       </li>
       <% @creation.photos.each do |photo| %>
         <li class="span3">
