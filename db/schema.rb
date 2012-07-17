@@ -73,11 +73,11 @@ ActiveRecord::Schema.define(:version => 20120717123632) do
   create_table "creations", :force => true do |t|
     t.string   "name"
     t.text     "story"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.integer  "user_id"
     t.string   "image"
-    t.boolean  "is_restricted"
+    t.boolean  "is_restricted", :default => false, :null => false
   end
 
   create_table "creations_categories", :id => false, :force => true do |t|
