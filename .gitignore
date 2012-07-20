@@ -10,3 +10,4 @@ log/*
 NERD_tree_*
 tags
 .sass-cache/
+*.fuse*
