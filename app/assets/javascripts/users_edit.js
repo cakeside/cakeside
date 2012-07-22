@@ -2,6 +2,7 @@ var DeviseUsers = DeviseUsers || {};
 DeviseUsers.Edit = {
   initialize: function($){
     $('#edit_user').validate();
+    $('#change-picture').popover({ });
     $('#user_city').autocomplete({
       source: function(request, response){
         $.ajax({
