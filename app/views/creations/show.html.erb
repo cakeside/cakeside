@@ -91,6 +91,11 @@
     <% end -%>
     <h3>Comments <small><%= pluralize @creation.comment_threads.length, "comment" %></small></h3>
     <hr />
+    <% unless(@creation.has_comments) -%>
+      <div class="alert alert-info">
+        Be the first to comment on this spectacular creation!
+      </div>
+    <% end -%>
     <table class="table table-striped">
       <% @creation.comment_threads.each do |comment| %>
         <tr>
