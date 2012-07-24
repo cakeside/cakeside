@@ -23,19 +23,22 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
   process :set_content_type
-  process :resize_to_fit => [660, 460]
+  #process :resize_to_fit => [660, 460]
+  process :resize_to_fit => [960, 720]
   process :convert => 'png'
   # process :manualcrop
 
   # Create different versions of your uploaded files:
   version :large do 
     process :manualcrop
-    process :resize_to_fit => [660, 460]
+    #process :resize_to_fit => [660, 460]
+    process :resize_to_fit => [960, 720]
   end
 
   version :thumb do
     process :manualcrop
-    process :resize_to_fill => [210, 150]
+    #process :resize_to_fill => [210, 150]
+    process :resize_to_fill => [360, 268]
   end
 
   def manualcrop
