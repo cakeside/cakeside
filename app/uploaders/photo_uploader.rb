@@ -35,7 +35,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # process :scale => [200, 300]
   process :set_content_type
   #process :resize_to_fit => [660, 470]
-  process :resize_to_fit => [960, 720]
+  #process :resize_to_fit => [1160, 870]
   process :convert => 'png'
   #
   # def scale(width, height)
