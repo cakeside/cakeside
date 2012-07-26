@@ -49,7 +49,7 @@
   </div>
 </div>
 <div class="row">
-  <div class="span7">
+  <div class="span4">
     <iframe src="http://www.facebook.com/plugins/like.php?href=<%= request.url %>" scrolling="no" frameborder="0" style="border:none; width:350px; height:30px; float:left;"></iframe>
   </div>
   <div class="span2">
@@ -61,11 +61,10 @@
       <%= button_to "Add to favorites", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary' %>
     <% end %>
   </div>
-  <div class="span2 offset1">
-    <p>
-    <%= link_to 'fanclub (' + pluralize(@creation.favorites.length, 'fan') + ')', creation_favorites_path(:creation_id => @creation.id)%> 
-    </p>
+  <div class="span2">
+    <p><%= link_to 'fanclub (' + pluralize(@creation.favorites.length, 'fan') + ')', creation_favorites_path(:creation_id => @creation.id)%></p>
   </div>
+  <div class="span4"></div>
 </div>
 <div class="row">
   <div class="span12">
