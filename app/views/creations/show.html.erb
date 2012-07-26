@@ -27,7 +27,7 @@
         <li class="span3"><a class="thumbnail" href="#"><img src="<%= photo.image.thumb.url.to_s %>" alt="<%= @creation.name %>" /></a></li>
       <% end %>
       <% if @creation.user == current_user %>
-        <% if @creation.photos.length < 3 %>
+        <% if @creation.photos.length < 4 %>
           <div class="span3 visible-desktop">
             <h4>Add more photos to this creation</h4>
             <% unless @creation.new_record? %>

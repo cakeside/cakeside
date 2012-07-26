@@ -36,7 +36,7 @@
     </ul>
     <p>Second thoughts? <%= link_to 'Delete', creation_path(@creation),:confirm => "Are you sure", :method => :delete, :class => 'btn btn-danger' %> </p>
     <hr />
-    <% if @creation.photos.length < 3 %>
+    <% if @creation.photos.length < 4 %>
       <h3>Add another photo</h3>
       <% unless @creation.new_record? %>
         <%= form_tag(creation_photos_path(@creation), :method => "post", :multipart => true) do |f| %>
