@@ -27,3 +27,8 @@ Creations.Crop = {
     }
   }
 };
+Creations.Show = {
+  initialize: function(){
+    $('.thumbnail').colorbox({rel:'thumbnail'});
+  }
+};
