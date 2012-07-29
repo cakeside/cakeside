@@ -29,6 +29,6 @@ Creations.Crop = {
 };
 Creations.Show = {
   initialize: function(){
-    $('.gallery').colorbox({rel:'gallery'});
+    $('.gallery').colorbox({rel:'gallery', width: "960px"});
   }
 };
