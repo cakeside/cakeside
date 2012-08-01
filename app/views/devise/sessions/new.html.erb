@@ -9,13 +9,43 @@
         $('#submit-registration').attr('disabled', 'disabled');
       }
     });
+    $('#user_city').autocomplete({
+      source: function(request, response){
+        $.ajax({
+          url: 'http://ws.geonames.org/searchJSON',
+          dataType: "jsonp",
+          data: {
+            featureClass: "P",
+            style: 'full',
+            maxRows: 12,
+            name_startsWith: request.term
+          },
+          success: function(data){
+            response( $.map(data.geonames, function(item){
+              return {
+                label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
+                value: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
+                latitude: item.lat,
+                longitude: item.lng
+              }
+            }));
+          }
+        });
+      },
+      minlength:2,
+      select:function(event, ui){
+        var item = ui.item;
+        $('#user_latitude').val(item.latitude);
+        $('#user_longitude').val(item.longitude);
+      }
+    });
   });
 </script>
 <% end %>
 <div class="row">
   <div class="span12">
     <div class="row">
-      <div class="span6" style="background: url(/assets/sunset.png) no-repeat center 0px;opacity:0.8;" class="hidden-phone">
+      <div class="span6 hidden-phone">
         <img src="/assets/cakeside-logo.png" alt="" />
         <div style="padding-left:10px;padding-right:10px;">
           <h3>Why CakeSide?</h3>
@@ -41,6 +71,12 @@
             <%= f.label :name, 'Full Name', :class => "control-label" %>
             <div class="controls">
               <%= f.text_field :name, :placeholder => 'Full Name' %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :city, 'City', :class => "control-label" %>
+            <div class="controls">
+              <%= f.text_field :city, :placeholder => 'City' %>
             </div>
           </div>
           <div class="control-group">
@@ -70,6 +106,8 @@
           <div class="form-actions">
             <%= f.submit "Sign up", :id => 'submit-registration', :class=> "btn btn-primary" %>
           </div>
+          <%= f.hidden_field :latitude %>
+          <%= f.hidden_field :longitude %>
         <% end %>
       </div>
     </div>

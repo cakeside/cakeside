@@ -5,5 +5,6 @@ FactoryGirl.define do
     email 'mo@cakeside.com'
     password 'password'
     website 'http://cakeside.com'
+    city 'calgary'
   end
 end

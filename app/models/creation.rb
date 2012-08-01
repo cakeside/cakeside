@@ -35,10 +35,16 @@ class Creation < ActiveRecord::Base
       logger.error e.backtrace.inspect
     end
   end
+
   def is_owned_by(user)
     @user == user
   end
+
   def to_param
     "#{id}-#{name.gsub(/[^a-z0-9]+/i, '-')}"
+  end
+
+  def has_comments
+    self.comment_threads.length > 0
   end
 end

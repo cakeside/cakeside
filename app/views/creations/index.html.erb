@@ -1,12 +1,13 @@
+<% provide(:description, "CakeSide is a free site to share your cake creations and ideas with other cake fanatics like yourself") -%>
 <% unless user_signed_in?  -%>
   <div class="row">
     <div class="span6">
-	  <h1>Recently added cake creations</h1>
-      <div id="myCarousel" class="carousel slide">
+      <h1>Recently added cake creations</h1>
+      <div id="slideshow" class="carousel slide">
         <div class="carousel-inner">
           <% @creations.each_with_index do |creation, index| %>
             <div class="item<%= index == 0 ?  ' active' : ''-%>">
-              <img alt="<%= creation.name %>" src="<%= creation.image.large.url %>" style="display:block; margin-left:auto; margin-right:auto;" />
+              <a href="<%= url_for creation %>"><img alt="<%= creation.name %>" src="<%= creation.image.large.url %>" style="display:block; margin-left:auto; margin-right:auto;" /></a>
               <div class="carousel-caption">
                 <h4><%= creation.name %></h4>
                 <p><%= creation.story %></p>
@@ -14,26 +15,24 @@
             </div>
           <% end %>
         </div>
-        <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-        <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+        <a class="carousel-control left" href="#slideshow" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#slideshow" data-slide="next">&rsaquo;</a>
       </div>
     </div>
-	<div class="span6">
-	      <img alt="Welcome to Cakeside" src="/assets/cakeside-logo.png">
-	      <h1>Welcome cake enthusiast!</h1>
-	<p style="font-size:15px;">
-		<strong>Make</strong> cakes, <strong>sell</strong> cakes, or just <strong>love</strong> eating them? You've come to the right place!
-
-		<strong>CakeSide</strong> is a free site to <strong>share</strong> your cake <strong>creations</strong> and <strong>ideas</strong> with other cake fanatics like yourself!</p><br/>
-		
-	   <p style="text-align: center;">
-        Get your cakes featured on this page <a href="<%= url_for new_user_session_path %>" class="btn btn-primary btn-large">Sign Up Now!</a> or <%= link_to "sign in", new_user_session_path %>
+    <div class="span6">
+      <img alt="Welcome to Cakeside" src="/assets/cakeside-logo.png">
+      <h1>Welcome cake enthusiast!</h1>
+      <p style="font-size:15px;">
+      <strong>Make</strong> cakes, <strong>sell</strong> cakes, or just <strong>love</strong> eating them? You've come to the right place!
+      <strong>CakeSide</strong> is a free site to <strong>share</strong> your cake <strong>creations</strong> and <strong>ideas</strong> with other cake fanatics like yourself!</p><br/>
+      <p style="text-align: center;">
+      Get your cakes featured on this page <a href="<%= url_for new_user_session_path %>" class="btn btn-primary btn-large">Sign Up Now!</a> or <%= link_to "sign in", new_user_session_path %>
       </p>
     </div>
   </div>
   <div class="row">
     <div class="span12">
-	<hr>
+      <hr>
       <div class="marketing">
         <div class="row">
           <div class="span4">

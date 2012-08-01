@@ -20,6 +20,7 @@ Cake::Application.routes.draw do
   match 'creations/crop_update/:id' => 'creations#crop_update', :as => 'creations_crop_update', :method => 'POST'
 
   # /profiles
+  resources :profiles, :only => [:index, :show]
   match "profiles" => "profiles#index", :as => 'profiles', :method => "GET"
   match 'profiles/:id' => 'profiles#show', :as => 'profile', :method => 'GET'
   match 'mine' => 'profiles#mine', :as => 'profiles_mine', :method => 'GET'
