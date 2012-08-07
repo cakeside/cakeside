@@ -5,7 +5,11 @@
     <hr />
   </div>
 </div>
+<h3>Creations</h3>
+<hr />
 <%= render "shared/a_12_column_gallery" %>
+<h3>Artists</h3>
+<hr />
 <div class="row">
   <% @members.each do |artist| %>
     <div class="span3">
@@ -17,9 +21,4 @@
       </div>
     </div>
   <% end %>
-</div>
-<div class="row">
-  <div class="span3"> &nbsp; </div>
-  <div class="span6"> <p> <%= paginate @members %> </p> </div>
-  <div class="span3"> &nbsp; </div>
 </div>

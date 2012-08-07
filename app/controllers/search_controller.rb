@@ -5,8 +5,8 @@ class SearchController < ApplicationController
         format.html { redirect_to(home_index_url) }
       else
         sql = "%"+params[:q]+"%"
-        @creations = Creation.where("upper(name) like upper(?) OR upper(story) like upper(?)", sql, sql).page(params[:page]).per(8)
-        @members = User.where("upper(name) like upper(?)", sql).page(params[:page]).per(8)
+        @creations = Creation.where("upper(name) like upper(?) OR upper(story) like upper(?)", sql, sql).page(params[:page]).per(100)
+        @members = User.where("upper(name) like upper(?)", sql)
         @search = params[:q]
         format.html
       end
