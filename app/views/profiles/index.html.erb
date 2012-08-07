@@ -10,8 +10,6 @@
           <th></th>
           <th>name</th>
           <th>location</th>
-          <th>latitude</th>
-          <th>longitude</th>
           <th>twitter</th>
           <th>facebook</th>
           <th>website</th>
@@ -33,8 +31,6 @@
             </td>
             <td><%= link_to profile.name, profile_path(profile) %></td>
             <td><%= profile.city %></td>
-            <td><%= profile.latitude %></td>
-            <td><%= profile.longitude %></td>
             <td><a href="<%= profile.twitter %>"><%= profile.twitter %></a></td>
             <td><a href="<%= profile.facebook %>"><%= profile.facebook %></a></td>
             <td><a href="<%= profile.website %>"><%= profile.website %></a></td>
