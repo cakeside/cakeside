@@ -92,11 +92,11 @@
         <%= f.password_field :password_confirmation %>
         <%= f.submit "Change My Password", :class=>"btn btn-primary" %>
       <% end %>
-        <%= form_tag(avatars_path(current_user), :method => "post", :multipart => true) do |f| %>
-          <%= fields_for Avatar.new do |f| %>
-            <%= f.file_field :avatar, :rel => avatars_path(current_user) %>
-            <input type="submit" class="btn primary" value="Add avatar" />
-          <% end %>
+      <%= form_tag(avatars_path(current_user), :method => "post", :multipart => true) do |f| %>
+        <%= fields_for Avatar.new do |f| %>
+          <%= f.file_field :avatar, :rel => avatars_path(current_user) %>
+          <input type="submit" class="btn primary" value="Add avatar" />
         <% end %>
+      <% end %>
     </div>
   </div>

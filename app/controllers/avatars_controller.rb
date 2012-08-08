@@ -3,7 +3,7 @@ class AvatarsController < ApplicationController
   before_filter :find_or_build_avatar
 
   def create
-    @avatar.avatar = params[:avatar]
+    @avatar.avatar = params[:avatar][:avatar]
     if @avatar.save
       redirect_to(profiles_mine_path, :notice => 'Your new avatar has been uploaded.') 
     else
