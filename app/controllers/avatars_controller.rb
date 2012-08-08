@@ -1,15 +1,23 @@
 class AvatarsController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :find_or_build_avatar
 
   def create
-    @avatar = current_user.avatar.build(params[:avatar])
+    @avatar.avatar = params[:avatar]
+    if @avatar.save
+      redirect_to(profiles_mine_path, :notice => 'Your new avatar has been uploaded.') 
+    else
+      flash[:error] = "could not upload photo"
+    end
+  end
 
-    respond_to do |format|
-      if @avatar.save
-        format.html { redirect_to(current_user, :notice => 'Your new avatar has been uploaded.') }
-      else
-        flash[:error] = "could not upload photo"
-      end
+  protected 
+  def find_or_build_avatar
+    if current_user.avatar == nil
+      @avatar = current_user.avatar = Avatar.new
+      current_user.save
+    else
+      @avatar = current_user.avatar
     end
   end
 end

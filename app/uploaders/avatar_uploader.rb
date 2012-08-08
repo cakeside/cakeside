@@ -4,6 +4,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
+  include CarrierWave::MimeTypes
   # include CarrierWave::MiniMagick
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
@@ -30,6 +31,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
   process :set_content_type
   process :resize_to_fit => [1160, 870]
   process :convert => 'png'
+
+  version :thumb do
+    process :resize_to_fill => [260, 260]
+  end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
