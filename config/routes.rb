@@ -34,7 +34,9 @@ Cake::Application.routes.draw do
   get "search/index"
 
   # /users
-  devise_for :users, :controllers => {:registrations => 'registrations'}
+  devise_for :users, :controllers => {:registrations => 'registrations'} do
+    resources :avatars
+  end
   devise_for :user, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
 
   # sitemap
