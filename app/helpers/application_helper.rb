@@ -1,8 +1,12 @@
 module ApplicationHelper
-  def avatar_url(user)
-    default_url = "#{root_url}assets/chefhat_profile.PNG"
-    gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
-    "http://gravatar.com/avatar/#{gravatar_id}.png?&d=#{CGI.escape(default_url)}"
+  def avatar_url(user, options = {size: 260})
+    if user.avatar == nil 
+      default_url = "#{root_url}assets/chefhat_profile.PNG"
+      gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
+      "http://gravatar.com/avatar/#{gravatar_id}.png?&d=#{CGI.escape(default_url)}&s={options[:size]}"
+    else
+      user.avatar.avatar.thumb.url
+    end
   end
   def gravatar_for(user, options = { size: 50 })
     gravatar_id = Digest::MD5::hexdigest(user.email.downcase)

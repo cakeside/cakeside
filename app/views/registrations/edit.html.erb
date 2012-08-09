@@ -7,7 +7,7 @@
   <div class="row">
     <div class="span3">
       <div class="thumbnail">
-        <img src="<%= avatar_url current_user %>&amp;s=260" alt="<%= current_user.name %>" />
+        <img src="<%= avatar_url current_user %>" alt="<%= current_user.name %>" />
         <div class="caption">
           <h5><%= current_user.name %></h5>
           <p>member since: <%= current_user.created_at.to_s :foomat %></p>
@@ -95,7 +95,7 @@
       <%= form_tag(avatars_path(current_user), :method => "post", :multipart => true) do |f| %>
         <%= fields_for Avatar.new do |f| %>
           <%= f.file_field :avatar, :rel => avatars_path(current_user) %>
-          <input type="submit" class="btn primary" value="Add avatar" />
+          <input type="submit" class="btn primary" value="Change My Picture" />
         <% end %>
       <% end %>
     </div>
