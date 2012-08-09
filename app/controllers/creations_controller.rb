@@ -27,11 +27,7 @@ class CreationsController < ApplicationController
     @creation.category_ids = params[:creation][:category_ids] ||= []
     respond_to do |format|
       if @creation.save
-        if params[:creation][:image].blank? 
-          format.html { redirect_to(@creation, :notice => 'Creation was successfully created.') }
-        else
-          format.html { render :action => "crop" }
-        end
+        format.html { render :action => "crop" }
       else
         flash[:error] = @creation.errors.full_messages
         format.html { render :action => "new" }

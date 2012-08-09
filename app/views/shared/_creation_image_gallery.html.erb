@@ -4,7 +4,7 @@
     <div class="thumbnail">
       <div class="caption">
         <h5><a href="<%= url_for creation %>"><%= short_name(creation, 20) %></a></h5>
-        <h6><a href="<%= url_for profile_path(creation.user) %>"><%= creation.user.name %></a></h6>
+        <h6><a href="<%= url_for profile_path(creation.user) %>"><%= shrink(creation.user.name, 20) %></a></h6>
       </div>
       <a href="<%= url_for creation %>"><img src="<%= creation.image.thumb.url %>" alt="<%= creation.name %>" style="width:260px;" /></a>
       <div class="caption">

@@ -12,7 +12,7 @@
         <li class="span3">
         <div class="thumbnail">
           <a href="<%= url_for profile_path(favorite.user) %>" class="thumbnail">
-            <img src="<%= avatar_url favorite.user %>&amp;s=260" alt="<%= favorite.user.name %>" />
+            <%= avatar_for(favorite.user) %>
           </a>
           <div class="caption">
             <h5><%= favorite.user.name %></h5>

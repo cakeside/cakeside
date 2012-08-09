@@ -1,24 +1,14 @@
-class UrlValidation < ActiveModel::Validator
-  def validate(record)
-    if(record.website.starts_with? 'http://')
-
-    else
-      record.errors[:website] << 'is invalid'
-    end
-  end
-end
-
 class User < ActiveRecord::Base
   validates :name,  :presence => true
   validates :website, :format => URI::regexp(%w(http https)), :allow_blank => true
   validates :city, :presence => true
-  #validates_with UrlValidation
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
   attr_accessible :name, :email, :website, :twitter, :facebook, :city, :latitude, :longitude, :password, :password_confirmation, :current_password, :remember_me, :interest_ids
   has_many :creations, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
   has_many :authentications
   has_and_belongs_to_many :interests, :join_table => 'users_interests', :uniq => true, :autosave => true
+  has_one :avatar
 
   def add_favorite( creation )
     if self.already_likes(creation)
@@ -38,5 +28,9 @@ class User < ActiveRecord::Base
 
   def comment_on(creation, comment)
     Comment.create_for(self, creation, comment)
+  end
+
+  def to_param
+    "#{id}-#{name.gsub(/[^a-z0-9]+/i, '-')}"
   end
 end

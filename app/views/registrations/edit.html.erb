@@ -1,18 +1,20 @@
 <% provide(:title, "Update My Account") -%>
 <% content_for :head do %>
-  <script type="text/javascript" charset="utf-8">
-    $(function(){ DeviseUsers.Edit.initialize(jQuery); });
-    </script>
-  <% end %>
+<script type="text/javascript" charset="utf-8">
+$(function(){ DeviseUsers.Edit.initialize(jQuery); });
+</script>
+<% end %>
   <div class="row">
     <div class="span3">
       <div class="thumbnail">
-        <img src="<%= avatar_url current_user %>&amp;s=260" alt="<%= current_user.name %>" />
+        <%= avatar_for current_user %>
         <div class="caption">
           <h5><%= current_user.name %></h5>
           <p>member since: <%= current_user.created_at.to_s :foomat %></p>
           <p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
-          <p><a id="change-picture" data-content="We use gravatar to display your profile picture. This is a friendly third party service that allows you to manage your profile picture associated with your email address." rel="popover" class="btn btn-primary" href="http://gravatar.com/emails" data-original-title="Gravatar">Change My Picture</a></p>
+          <%#<p><a id="change-picture" data-content="We use gravatar to display your profile picture. This is a friendly third party service that allows you to manage your profile picture associated with your email address." rel="popover" class="btn btn-primary" href="http://gravatar.com/emails" data-original-title="Gravatar">Change My Picture</a></p>%>
+          <p><a id="change-avatar" class="btn btn-primary" data-toggle="modal" href="#change-avatar-dialog">Change My Picture</a></p>
+          <p><a id="change-password-button" class="btn btn-primary" data-toggle="modal" href="#change-password-dialog">Change My Password</a></p>
         </div>
       </div>
       <div style="padding: 8px 0;" class="well">
@@ -31,7 +33,7 @@
       <h4>Cancel My Account</h4>
       <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger" %></p>
     </div>
-    <div class="span6">
+    <div class="span9">
       <h1>Settings</h1>
       <p> If you prefer not to change your password, then just leave it blank.  </p>
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class=> "form-horizontal" }) do |f| %>
@@ -84,13 +86,40 @@
         </fieldset>
       <% end %>
     </div>
-    <div class="span3">
-      <%= form_for(@user, :url => settings_change_password_path(@user), :html => { :method => :post }) do |f| %>
+  </div>
+  <div id="change-avatar-dialog" class="modal hide fade">
+    <%= form_tag(avatars_path(current_user), :method => "post", :multipart => true) do |f| %>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h3>Change My Picture</h3>
+      </div>
+      <div class="modal-body">
+        <%= avatar_for(current_user) %>
+        <%= fields_for Avatar.new do |f| %>
+          <%= f.file_field :avatar, :rel => avatars_path(current_user) %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+        <input type="submit" class="btn btn-primary" value="Save changes" />
+      </div>
+    <% end %>
+  </div>
+  <div id="change-password-dialog" class="modal hide fade">
+    <%= form_for(@user, :url => settings_change_password_path(@user), :html => { :method => :post }) do |f| %>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h3>Change My Password</h3>
+      </div>
+      <div class="modal-body">
         <%= f.label :password, "New Password" %>
         <%= f.password_field :password %>
         <%= f.label :password_confirmation, "Confirm New Password" %>
         <%= f.password_field :password_confirmation %>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
         <%= f.submit "Change My Password", :class=>"btn btn-primary" %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>

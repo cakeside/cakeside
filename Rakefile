@@ -21,8 +21,8 @@ end
 namespace :deploy do
   desc "deploy to staging server"
   task :staging => :spec do
-    sh "cap staging deploy"
-    #sh "cap staging deploy:migrations"
+    #sh "cap staging deploy"
+    sh "cap staging deploy:migrations"
     sh "curl http://staging.cakeside.com/ > /dev/null"
   end
   desc "deploy to production server"
@@ -34,7 +34,7 @@ namespace :deploy do
     else
       puts "deploying to production from tag #{tag_to_deploy}"
       sh "cap production deploy -s tag=#{tag_to_deploy}"
-      #sh "cap production deploy:migrations"
+      sh "cap production deploy:migrations"
       sh "curl http://cakeside.com/ > /dev/null"
     end
   end

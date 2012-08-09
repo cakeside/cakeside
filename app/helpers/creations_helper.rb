@@ -7,4 +7,11 @@ module CreationsHelper
       creation.name
     end
   end
+  def shrink(name, length)
+    if( name.length > length)
+      name[0...length] + '...'
+    else
+      name
+    end
+  end
 end
