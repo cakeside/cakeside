@@ -22,11 +22,7 @@
           <tr>
             <td>
               <ul class="thumbnails">
-                <li>
-                <a href="<%= url_for profile_path(profile) %>">
-                  <%= image_tag avatar_url(profile), :class => "thumbnail", :alt => profile.name %>
-                </a>
-                </li>
+                <li><a href="<%= url_for profile_path(profile) %>"><%= avatar_for(profile, {class: 'thumbnail'}) %></a></li>
               </ul>
             </td>
             <td><%= link_to profile.name, profile_path(profile) %></td>
