@@ -12,7 +12,7 @@
           <div class="caption">
             <h5><a href="<%= url_for profile_path(profile) %>"><%= shrink(profile.name, 20) %></a></h5>
             <% if(profile.city.blank?) -%>
-            <h6>unknown</h6>
+            <h6>somewhere in sugarland</h6>
             <% else -%>
             <h6><%= shrink(profile.city, 35) %></h6>
             <% end -%>
