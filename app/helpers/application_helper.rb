@@ -6,7 +6,7 @@ module ApplicationHelper
       image_tag(user.avatar.avatar.thumb.url, alt: user.name, class: options[:class])
     end
   end
-  def gravatar_for(user, options = { size: 50 })
+  def gravatar_for(user, options = { size: 260 })
     gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
     image_tag("https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{options[:size]}", alt: user.name, class: 'gravatar')
   end
