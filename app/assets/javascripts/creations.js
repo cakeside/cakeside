@@ -4,12 +4,12 @@ Creations.Crop = {
     $('#cropbox').Jcrop({
       onChange: update_crop,
       onSelect: update_crop,
-      setSelect: [100, 100, 210, 150],
+      setSelect: [100, 100, 260, 180],
       aspectRatio: 1.4
     });
     function update_crop(coords) {
-      var rx = 210/coords.w;
-      var ry = 150/coords.h;
+      var rx = 260/coords.w;
+      var ry = 180/coords.h;
       var lw = $('#cropbox').width();
       var lh = $('#cropbox').height();
 
