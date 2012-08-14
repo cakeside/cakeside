@@ -40,3 +40,12 @@ namespace :deploy do
   end
 end
 
+task :restore do
+  # 1. backup prod database
+  #sh "cap production backup_db"
+  # 2. copy backup to staging
+  sh "ls -1tr db/backups/ | tail -n 1"
+  # 3. restore backup on staging
+  #sh "cap staging restore_db"
+end
+
