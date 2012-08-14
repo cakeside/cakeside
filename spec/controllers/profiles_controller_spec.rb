@@ -11,7 +11,7 @@ describe ProfilesController do
 
   describe "GET 'index'" do
     it "should be successful" do
-      User.stub(:all){ user }
+      User.stub(:all){ [user] }
       get 'index'
       response.should be_success
     end
