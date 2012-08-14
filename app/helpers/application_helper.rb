@@ -8,7 +8,7 @@ module ApplicationHelper
   end
   def gravatar_for(user, options = { size: 260 })
     gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
-    image_tag("https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{options[:size]}", alt: user.name, class: 'gravatar')
+    image_tag("https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{options[:size]}&d=mm", alt: user.name, class: 'gravatar')
   end
   def full_title(title)
     if( title.blank? )
