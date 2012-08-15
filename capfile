@@ -26,6 +26,8 @@ task :backup_db do
 end
 
 task :restore_db do
-  upload("db/backups/latest", "db/backups/latest", :via => :scp)
-  run "psql -U postgress -d #{destination_db} -f #{dumpfile}"
+  dumpfile = "~/db/backups/latest"
+  destination_db = "cakeside_production"
+  upload("latest", "db/backups/latest", :via => :scp)
+  run "psql -U cakeside -d #{destination_db} -f #{dumpfile}"
 end
