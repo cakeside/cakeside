@@ -19,7 +19,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   end
 
   process :set_content_type
-  process :resize_to_fit => [1160, 870]
+  process :resize_to_fit => [910, 630]
   process :convert => 'png'
 
   # Create different versions of your uploaded files:
