@@ -21,7 +21,7 @@ end
 
 task :backup_db do
   filename = "#{deploy_env}-#{Time.now.strftime('%Y-%m-%d')}.sql"
-  run "pg_dump cakeside_production > ~/db/backups/#{filename}"
+  run "pg_dump --clean cakeside_production > ~/db/backups/#{filename}"
   download("db/backups/#{filename}", "db/backups/", :via => :scp, :recursive => true)
 end
 
@@ -29,5 +29,6 @@ task :restore_db do
   dumpfile = "~/db/backups/latest"
   destination_db = "cakeside_production"
   upload("latest", "db/backups/latest", :via => :scp)
-  run "psql -U cakeside -d #{destination_db} -f #{dumpfile}"
+  #run "psql -U cakeside -d #{destination_db} -f #{dumpfile}"
+  run "psql #{destination_db} < #{dumpfile}"
 end
