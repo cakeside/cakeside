@@ -1,6 +1,6 @@
 <% content_for :head do %>
   <style type="text/css">
-    .preview { width:210px; height:150px; overflow:hidden; }
+    .preview { width:260px; height:180px; overflow:hidden; }
     .jcrop img { max-width:none; }
   </style>
   <script type="text/javascript" charset="utf-8">
@@ -18,7 +18,7 @@
 <div class="row">
   <div class="span9 jcrop">
     <h3>Do you want to crop the image as well?</h3>
-    <%= image_tag @creation.image_url, :id => "cropbox" %>
+    <%= image_tag @creation.image_url(:large), :id => "cropbox" %>
   </div>
   <div class="span3 jcrop">
     <h3>Crop Preview</h3>
