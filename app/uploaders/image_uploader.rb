@@ -35,16 +35,16 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def watermark
     manipulate! do |image|
-      mark = Magick::Image.new(image.columns, image.rows)
       gc = Magick::Draw.new
-      gc.gravity = Magick::CenterGravity
+      gc.gravity = Magick::SouthEastGravity
       gc.pointsize = 32
       gc.font_family = "Helvetica"
       gc.font_weight = Magick::BoldWeight
       gc.stroke = 'none'
-      gc.annotate(mark, 0, 0, 0, 0, "Watermark\nby\nMo")
+      mark = Magick::Image.new(image.columns, image.rows)
+      gc.annotate(mark, 0, 0, 25, 25, "CakeSide.com")
       mark = mark.shade(true, 310, 30)
-      image.composite!(mark, Magick::CenterGravity, Magick::HardLightCompositeOp)
+      image.composite!(mark, Magick::SouthEastGravity, Magick::HardLightCompositeOp)
     end
   end
 
