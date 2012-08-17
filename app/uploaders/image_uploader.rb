@@ -1,5 +1,4 @@
 # encoding: utf-8
-
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
   include CarrierWave::MimeTypes
@@ -28,8 +27,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :watermark
   end
 
-  version :thumb, :from_version => :thumb do
-    process :manualcrop
+  version :thumb, :from_version => :large do
     process :resize_to_fill => [260, 180]
   end
 
