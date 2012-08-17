@@ -25,11 +25,27 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :large do 
     process :manualcrop
     process :resize_to_fill => [1170, 810]
+    process :watermark
   end
 
   version :thumb do
     process :manualcrop
     process :resize_to_fill => [260, 180]
+  end
+
+  def watermark
+    manipulate! do |image|
+      mark = Magick::Image.new(image.columns, image.rows)
+      gc = Magick::Draw.new
+      gc.gravity = Magick::CenterGravity
+      gc.pointsize = 32
+      gc.font_family = "Helvetica"
+      gc.font_weight = Magick::BoldWeight
+      gc.stroke = 'none'
+      gc.annotate(mark, 0, 0, 0, 0, "Watermark\nby\nMo")
+      mark = mark.shade(true, 310, 30)
+      image.composite!(mark, Magick::CenterGravity, Magick::HardLightCompositeOp)
+    end
   end
 
   def manualcrop
