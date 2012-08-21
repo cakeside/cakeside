@@ -22,11 +22,6 @@ class Creation < ActiveRecord::Base
     !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
   end
 
-  def profile_geometry
-    img = Magick::Image::read('http://cakeside.dev'+self.image_url).first
-    @geometry = {:width => img.columns, :height => img.rows }
-  end
-
   def reprocess_image
     begin
       self.image.recreate_versions!
