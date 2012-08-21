@@ -27,7 +27,7 @@ class CreationsController < ApplicationController
     @creation.category_ids = params[:creation][:category_ids] ||= []
     respond_to do |format|
       if @creation.save
-        format.html { render :action => "crop" }
+        format.html { redirect_to( '/creations/crop/' + @creation.id.to_s ) }
       else
         flash[:error] = @creation.errors.full_messages
         format.html { render :action => "new" }

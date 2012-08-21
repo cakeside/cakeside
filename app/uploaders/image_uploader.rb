@@ -40,7 +40,7 @@ class ImageUploader < CarrierWave::Uploader::Base
       gc.font_weight = Magick::BoldWeight
       gc.stroke = 'none'
       mark = Magick::Image.new(image.columns, image.rows)
-      gc.annotate(mark, 0, 0, 25, 25, "CakeSide.com")
+      gc.annotate(mark, 0, 0, 25, 25, model.name)
       mark = mark.shade(true, 310, 30)
       image.composite!(mark, Magick::SouthEastGravity, Magick::HardLightCompositeOp)
     end

@@ -13,6 +13,12 @@
       </div>
     </div>
     <div class="control-group">
+      <%= f.label :caption, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :caption, :class => "input-xlarge" %>
+      </div>
+    </div>
+    <div class="control-group">
       <%= f.label :story, "Description", :class=> "control-label" %>
       <div class="controls">
         <%= f.text_area :story, :class =>"input-xlarge", :rows => "3" %>

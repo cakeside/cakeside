@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120808033601) do
+ActiveRecord::Schema.define(:version => 20120821131902) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20120808033601) do
     t.integer  "user_id"
     t.string   "image"
     t.boolean  "is_restricted", :default => false, :null => false
+    t.string   "caption"
   end
 
   create_table "creations_categories", :id => false, :force => true do |t|
