@@ -32,6 +32,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def watermark
+    Rails.logger.info "watermarking..."
+    Rails.logger.info "name is #{model.name} caption is #{model.caption}"
     manipulate! do |image|
       gc = Magick::Draw.new
       gc.gravity = Magick::SouthEastGravity
