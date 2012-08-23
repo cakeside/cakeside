@@ -58,8 +58,8 @@ describe CreationsController do
       it "redirects to the created creation" do
         user.stub(:creations){ mock_creation(:save => true) }
         post :create, :creation => {}
-        #response.should redirect_to(creation_url(mock_creation))
-        expect(response).to render_template("crop")
+        response.should redirect_to('/creations/crop/1006')
+        #expect(response).to render_template("crop")
       end
     end
 
