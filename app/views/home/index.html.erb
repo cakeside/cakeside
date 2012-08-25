@@ -1,15 +1,32 @@
 <% provide(:description, "CakeSide is a free site to share your cake creations and ideas with other cake fanatics like yourself") -%>
+<% content_for :head do %>
+<script type="text/javascript">
+  $(function() { 
+    $('.gallery').colorbox({
+      rel:'gallery',
+      width:function(){
+        var width = '100%', viewport = $(window).width();
+        if (viewport > 960) {
+          width = '50%';
+        } else if (viewport >= 768) {
+          width = '80%';
+        }
+        return width;
+      }
+    });
+  });
+</script>
+<% end -%>
 <% unless user_signed_in?  -%>
   <div class="row">
     <div class="span6">
-      <h1>Recently added cake creations</h1>
       <div id="slideshow" class="carousel slide">
         <div class="carousel-inner">
           <% @creations.each_with_index do |creation, index| %>
             <div class="item<%= index == 0 ?  ' active' : ''-%>">
-              <a href="<%= url_for creation %>"><img alt="<%= creation.name %>" src="<%= creation.image.large.url %>" style="display:block; margin-left:auto; margin-right:auto;" /></a>
+              <img alt="<%= creation.name %>" src="<%= creation.image.large.url %>" style="display:block; margin-left:auto; margin-right:auto;" />
               <div class="carousel-caption">
-                <h4><%= creation.name %></h4>
+                <h4><a href="<%= url_for creation %>"><%= creation.name %></a></h4>
                 <p><%= creation.story %></p>
               </div>
             </div>
@@ -62,7 +79,7 @@
       <% @creations.each do |creation| %>
         <li class="span3">
         <div class="thumbnail">
-          <a href="<%= url_for creation %>"><img src="<%= creation.image.thumb.url %>" alt="<%= creation.name %>" style="width:260px;height:180px;" /></a>
+          <a href="<%= creation.image.large.url %>" class="gallery" title="<%= creation.name %> - <%= creation.story %> "><img src="<%= creation.image.thumb.url %>" alt="<%= creation.name %>" style="width:260px;height:180px;" /></a>
           <div class="caption">
             <h5><a href="<%= url_for creation %>"><%= short_name(creation, 20) %></a></h5>
             <h6><a href="<%= url_for profile_path(creation.user) %>"><%= shrink(creation.user.name, 20) %></a></h6>
