@@ -35,7 +35,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     manipulate! do |image|
       gc = Magick::Draw.new
       gc.gravity = Magick::SouthEastGravity
-      gc.pointsize = 32
+      gc.pointsize = 28
       gc.font_family = "Helvetica"
       gc.font_weight = Magick::BoldWeight
       gc.stroke = 'none'
