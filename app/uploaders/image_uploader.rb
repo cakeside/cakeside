@@ -32,6 +32,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def watermark
+    return if model.watermark.blank?
     manipulate! do |image|
       gc = Magick::Draw.new
       gc.gravity = Magick::SouthEastGravity
@@ -40,7 +41,7 @@ class ImageUploader < CarrierWave::Uploader::Base
       gc.font_weight = Magick::BoldWeight
       gc.stroke = 'none'
       mark = Magick::Image.new(image.columns, image.rows)
-      gc.annotate(mark, 0, 0, 25, 25, "#{model.watermark} @CakeSide.com")
+      gc.annotate(mark, 0, 0, 25, 25, "#{model.watermark} on CakeSide.com")
       mark = mark.shade(true, 310, 30)
       image.composite!(mark, Magick::SouthEastGravity, Magick::HardLightCompositeOp)
     end
