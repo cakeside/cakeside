@@ -1,31 +1,17 @@
 <% provide(:description, "The latest tutorials") -%>
-
-<div class="row">
-  <div class="span12">
-    <h1>Latest Tutorials</h1>
-
-    <table>
-      <tr>
-        <th>Heading</th>
-        <th>Description</th>
-        <th>Url</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-
-      <% @tutorials.each do |tutorial| %>
-        <tr>
-          <td><%= tutorial.heading %></td>
-          <td><%= tutorial.description %></td>
-          <td><a href="<%= tutorial.url %>">read</a></td>
-          <td><%= link_to 'Show', tutorial %></td>
-          <td><%= link_to 'Edit', edit_tutorial_path(tutorial) %></td>
-          <td><%= link_to 'Destroy', tutorial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </table>
-
-    <%= link_to 'New Tutorial', new_tutorial_path %>
-  </div>
+<div class="row-fluid">
+  <%= link_to 'New Tutorial', new_tutorial_path %>
+  <ul class="thumbnails">
+    <% @tutorials.each do |tutorial| %>
+      <div class="span4">
+        <div class="thumbnail">
+          <div class="caption">
+            <h3><%= tutorial.heading %></h3>
+            <p><%= tutorial.description %></p>
+            <p><a class="btn btn-primary" href="<%= tutorial.url %>">Read</a> <a class="btn" href="<%= url_for tutorial %>">View</a></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </ul>
 </div>
