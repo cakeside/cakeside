@@ -1,29 +1,26 @@
-<%= form_for(@tutorial) do |f| %>
-  <% if @tutorial.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@tutorial.errors.count, "error") %> prohibited this tutorial from being saved:</h2>
-
-      <ul>
-      <% @tutorial.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for(@tutorial, :html => {:class => "form-horizontal"}) do |f| %>
+  <fieldset>
+    <div class="control-group">
+      <%= f.label :heading, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :heading, :class => "input-xlarge" %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :heading %><br />
-    <%= f.text_field :heading %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :url %><br />
-    <%= f.text_field :url %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="control-group">
+      <%= f.label :url, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :url, :class => "input-xlarge" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :description, :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_area :description, :class => "input-xlarge" %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Save changes</button>
+      <a href="<%= url_for tutorials_url %>" class="btn">Cancel</a>
+    </div>
+  </fieldset>
 <% end %>
