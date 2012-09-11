@@ -21,7 +21,7 @@ class TutorialsController < ApplicationController
     @tutorial = current_user.tutorials.create(params[:tutorial])
     respond_to do |format|
       if @tutorial.save
-        format.html { redirect_to( '/tutorials/' ) }
+        format.html { redirect_to( '/tutorials' ) }
       else
         flash[:error] = @tutorial.errors.full_messages
         format.html { render :action => "new" }
