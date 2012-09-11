@@ -1,10 +1,18 @@
 <% provide(:description, "The latest tutorials") -%>
+<% content_for :javascript do %>
+<script type="text/javascript" charset="utf-8">
+$(function(){
+    $('a.oembed').embedly({maxwidth:300});
+});
+</script>
+<% end %>
 <div class="row-fluid">
   <%= link_to 'New Tutorial', new_tutorial_path %>
   <ul class="thumbnails">
     <% @tutorials.each do |tutorial| %>
       <div class="span4">
         <div class="thumbnail">
+          <a href="<%= tutorial.url %>" class="oembed"></a>
           <div class="caption">
             <h3><%= tutorial.heading %></h3>
             <p><%= tutorial.description %></p>

@@ -29,7 +29,10 @@
     <%= render "shared/uservoice_feedback"%>
     <%= render "shared/chrome_frame"%>
     <%= yield :javascript %>
-    <%= render "shared/google_analytics" %>
     <script type="text/javascript" src="http://scripts.embed.ly/jquery.embedly.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      $.embedly.defaults['key'] = '4b97d740439245d8905d046dfa4d3e9a';
+    </script>
+    <%= render "shared/google_analytics" %>
   </body>
 </html>
