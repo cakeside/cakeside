@@ -1,26 +1,42 @@
-<%= form_for(@tutorial, :html => {:class => "form-horizontal"}) do |f| %>
-  <fieldset>
-    <div class="control-group">
-      <%= f.label :heading, :class => "control-label" %>
-      <div class="controls">
-        <%= f.text_field :heading, :class => "input-xlarge" %>
-      </div>
-    </div>
-    <div class="control-group">
-      <%= f.label :url, :class => "control-label" %>
-      <div class="controls">
-        <%= f.text_field :url, :class => "input-xlarge" %>
-      </div>
-    </div>
-    <div class="control-group">
-      <%= f.label :description, :class => "control-label" %>
-      <div class="controls">
-        <%= f.text_area :description, :class => "input-xlarge" %>
-      </div>
-    </div>
-    <div class="form-actions">
-      <button type="submit" class="btn btn-primary">Save changes</button>
-      <a href="<%= url_for tutorials_url %>" class="btn">Cancel</a>
-    </div>
-  </fieldset>
+<% content_for :javascript do %>
+<script type="text/javascript" charset="utf-8">
+$(function(){
+  $('#tutorial_url').change(function(){
+    var url = $('#tutorial_url').val();
+    $('a.oembed').attr('href', url);
+    $('a.oembed').embedly();
+  });
+});
+</script>
 <% end %>
+<div class="span8">
+  <%= form_for(@tutorial, :html => {:class => "form-horizontal"}) do |f| %>
+    <fieldset>
+      <div class="control-group">
+        <%= f.label :heading, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :heading, :class => "input-xlarge" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :url, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :url, :class => "input-xlarge" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :description, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_area :description, :class => "input-xlarge" %>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        <a href="<%= url_for tutorials_url %>" class="btn">Cancel</a>
+      </div>
+    </fieldset>
+  <% end %>
+</div>
+<div class="span4">
+  <a href="http://cakeside.com/" class="oembed"></a>
+</div>
