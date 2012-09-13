@@ -19,6 +19,7 @@ class TutorialsController < ApplicationController
 
   def create
     @tutorial = current_user.tutorials.create(params[:tutorial])
+    current_user.tag(@tutorial, :with => params[:tutorial][:tags], :on => :tags)
     respond_to do |format|
       if @tutorial.save
         format.html { redirect_to( '/tutorials' ) }

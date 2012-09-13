@@ -38,6 +38,12 @@ $(function(){
               <%= f.text_area :description, :class => "input-xlarge" %>
             </div>
           </div>
+          <div class="control-group">
+            <label for="tags" class="control-label">Tags:</label>
+            <div class="controls">
+              <input type="text" name="tutorial_tags" id="tags" value="" class="input-xlarge" />
+            </div>
+          </div>
           <div class="form-actions">
             <%= f.hidden_field :image_url %>
             <button type="submit" class="btn btn-primary">Save changes</button>
