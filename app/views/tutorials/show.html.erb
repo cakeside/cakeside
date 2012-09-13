@@ -1,6 +1,9 @@
 <div class="row">
   <div class="span12">
     <h1><%= @tutorial.heading %> <small><a href="<%= @tutorial.url %>">read it</a></small></h1>
+    <% if current_user == @tutorial.user -%>
+    <%= link_to "destroy", @tutorial, :method => :delete, :confirm => "Are you sure?" %>
+    <% end -%>
     <p><%= @tutorial.description %> </p>
   </div>
 </div>
