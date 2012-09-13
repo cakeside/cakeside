@@ -1,6 +1,13 @@
 <% provide(:description, "The latest tutorials") -%>
-<div class="row-fluid">
-  <%= link_to 'New Tutorial', new_tutorial_path %>
+<% content_for :javascript do -%>
+<script type="text/javascript">  
+  $(function(){ $('.row').masonry({ itemSelector : '.span4' }); });
+</script>
+<% end -%>
+<div class="row">
+  <div class="span12">
+    <%= link_to 'New Tutorial', new_tutorial_path %>
+  </div>
   <ul class="thumbnails">
     <% @tutorials.each do |tutorial| %>
       <div class="span4">

@@ -11,5 +11,6 @@
 //= require jquery.color
 //= require jquery.colorbox
 //= require jquery.validate
+//= require jquery.masonry
 //= require bootstrap
 //= require_tree .
