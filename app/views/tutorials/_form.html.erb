@@ -11,7 +11,7 @@ $(function(){
       $('a.embed-url').text(data.title);
       $('a.embed-provider').attr('href', data.provider_url);
       $('a.embed-provider').text(data.provider_name);
-      console.log(data);
+      $('#tutorial_image_url').val(data.thumbnail_url);
     });
   });
 });
@@ -39,6 +39,7 @@ $(function(){
             </div>
           </div>
           <div class="form-actions">
+            <%= f.hidden_field :image_url %>
             <button type="submit" class="btn btn-primary">Save changes</button>
             <a href="<%= url_for tutorials_url %>" class="btn">Cancel</a>
           </div>
