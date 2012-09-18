@@ -1,9 +1,11 @@
 class window.NewTutorialPresenter
-  constructor:(@view) ->
+  constructor:(@view, @service) ->
 
   present:() ->
     @view.add_tag_button.bind 'click', (event) =>
       this.add_tag(@view.tag_input.val())
+    @view.url_input.bind 'change', (event) =>
+      @service.retrieve_info_on(@view.url_input.val(), this.display_url_info)
 
   create_list_item_for:(tag) ->
     '<a href="tags/"><span class="label">'+tag+'</span></a>'
@@ -15,3 +17,4 @@ class window.NewTutorialPresenter
     else
       @view.hidden_tag_list.val( @view.hidden_tag_list.val() + ', ' + new_tag)
 
+  display_url_info:(data) ->
