@@ -23,4 +23,16 @@ describe ("NewTutorialPresenter", function() {
       view.add_tag_button.trigger('click');
     });
   });
+  describe ("when multiple tags are added", function() {
+    it ("should add each one to the hidden list", function() {
+      expect(view.hidden_tag_list.val()).toEqual('ruby, javascript');
+    });
+    beforeEach (function() {
+      sut.present();
+      view.tag_input.val('ruby');
+      view.add_tag_button.trigger('click');
+      view.tag_input.val('javascript');
+      view.add_tag_button.trigger('click');
+    });
+  });
 });
