@@ -14,8 +14,7 @@ $(function(){
       hidden_image_url: $('#tutorial_image_url'),
     }
   };
-  var service = new EmbedlyService($);
-  new NewTutorialPresenter(view, service).present();
+  new NewTutorialPresenter(view, new EmbedlyService($)).present();
 });
 </script>
 <% end %>
