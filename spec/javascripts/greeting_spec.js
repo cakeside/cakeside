@@ -8,13 +8,3 @@ describe ("Greeting", function() {
     });
   });
 });
-var Greeting = (function(){
-  var Greeting = function(){
-    this.greet = function(name){
-      return "hi " + name;
-    };
-  };
-  return function(){
-    return new Greeting();
-  };
-})();
