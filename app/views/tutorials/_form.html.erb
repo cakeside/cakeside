@@ -1,23 +1,21 @@
 <% content_for :javascript do %>
 <script type="text/javascript" charset="utf-8">
 $(function(){
-  $('#tutorial_url').change(function(){
-    var url = $('#tutorial_url').val();
-    $.embedly(url, {}, function(data){
-      $('.tutorial-heading').val(data.title);
-      $('.tutorial-heading').text(data.title);
-      $('.tutorial-description').text(data.description);
-      $('img.embed-thumb').attr('src', data.thumbnail_url);
-      $('#tutorial_image_url').val(data.thumbnail_url);
-    });
-  });
   var view = {
     add_tag_button: $('#add-tag-button'),
     tag_list: $('#tag-list'),
     tag_input: $('#tags'),
-    hidden_tag_list: $('#hidden_tags')
+    hidden_tag_list: $('#hidden_tags'),
+    url_input: $('#tutorial_url'),
+    preview: {
+      heading: $('.tutorial-heading'),
+      description: $('.tutorial-description'),
+      image: $('img.embed-thumb'),
+      hidden_image_url: $('#tutorial_image_url'),
+    }
   };
-  new NewTutorialPresenter(view).present();
+  var service = new EmbedlyService($);
+  new NewTutorialPresenter(view, service).present();
 });
 </script>
 <% end %>
