@@ -6,7 +6,7 @@ class window.NewTutorialPresenter
       this.add_tag(@view.tag_input.val())
 
   create_list_item_for:(tag) ->
-    '<li><a href="#" class="label">'+tag+'</a></li>'
+    '<a href="tags/"><span class="label">'+tag+'</span></a>'
 
   add_tag:(new_tag) ->
     @view.tag_list.append(this.create_list_item_for(new_tag))

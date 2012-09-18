@@ -14,24 +14,16 @@ $(function(){
       $('#tutorial_image_url').val(data.thumbnail_url);
     });
   });
-  $('#add-tag-button').click(function(){
-    var current = $('#hidden_tags').val();
-    var new_value = current + ', ' + $('#tags').val();
-    $('#tag_list').append('<li><a href="#" class="label">'+$('#tags').val()+'</a></li>');
-    $('#hidden_tags').val(new_value);
-  });
+  var view = {
+    add_tag_button: $('#add-tag-button'),
+    tag_list: $('#tag-list'),
+    tag_input: $('#tags'),
+    hidden_tag_list: $('#hidden_tags')
+  };
+  new NewTutorialPresenter(view).present();
 });
 </script>
 <% end %>
-<div class="span4">
-  <div class="embed">
-    <img class="embed-thumb" src="#">
-    <a class="embed-url" href="#"></a>
-    <a class="embed-provider" href="#"></a>
-  </div>
-  <h2>tags</h2>
-  <ul id="tag_list" class="control-label"></ul>
-</div>
 <div class="span8">
   <%= form_for(@tutorial, :html => {:class => "form-horizontal"}) do |f| %>
     <fieldset>
@@ -70,4 +62,14 @@ $(function(){
       </div>
     </fieldset>
   <% end %>
+</div>
+<div class="span4">
+  <div class="thumbnail">
+    <img class="embed-thumb" src="" />
+    <div class="caption">
+      <h3></h3>
+      <p id="tag-list"></p>
+      <p></p>
+    </div>
+  </div>
 </div>

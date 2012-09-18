@@ -12,7 +12,7 @@ describe ("NewTutorialPresenter", function() {
   var view;
   describe ("when the add tag button is clicked", function() {
     it ("should add the new tag to the list of tags", function() {
-      expect(view.tag_list.html()).toEqual('<li><a href="#" class="label">ruby</a></li>');
+      expect(view.tag_list.html()).toEqual('<a href="tags/"><span class="label">ruby</span></a>');
     });
     it ("should add the new tag to the hidden list of tags", function() {
       expect(view.hidden_tag_list.val()).toEqual('ruby');
