@@ -5,7 +5,7 @@ class window.NewTutorialPresenter
     @view.add_tag_button.bind 'click', (event) =>
       this.add_tag(@view.tag_input.val())
     @view.url_input.bind 'change', (event) =>
-      @service.retrieve_info_on(@view.url_input.val(), (data) => this.display_url_info(data))
+      @service.retrieve_info_on(@view.url_input.val(), this.display_url_info)
 
   create_list_item_for:(tag) ->
     '<a href="tags/"><span class="label">'+tag+'</span></a>'
@@ -17,7 +17,7 @@ class window.NewTutorialPresenter
     else
       @view.hidden_tag_list.val( @view.hidden_tag_list.val() + ', ' + new_tag)
 
-  display_url_info:(data) ->
+  display_url_info:(data) =>
     @view.preview.heading.val(data.title)
     @view.preview.heading.text(data.title)
     @view.preview.description.text(data.description)
