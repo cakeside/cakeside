@@ -14,48 +14,60 @@ $(function(){
       $('#tutorial_image_url').val(data.thumbnail_url);
     });
   });
+  $('#add-tag-button').click(function(){
+    var current = $('#hidden_tags').val();
+    var new_value = current + ', ' + $('#tags').val();
+    $('#tag_list').append('<li><a href="#" class="label">'+$('#tags').val()+'</a></li>');
+    $('#hidden_tags').val(new_value);
+  });
 });
 </script>
 <% end %>
-    <div class="span8">
-      <%= form_for(@tutorial, :html => {:class => "form-horizontal"}) do |f| %>
-        <fieldset>
-          <div class="control-group">
-            <%= f.label :url, :class => "control-label" %>
-            <div class="controls">
-              <%= f.text_field :url, :class => "input-xlarge" %>
-            </div>
-          </div>
-          <div class="control-group">
-            <%= f.label :heading, :class => "control-label" %>
-            <div class="controls">
-              <%= f.text_field :heading, :class => "input-xlarge" %>
-            </div>
-          </div>
-          <div class="control-group">
-            <%= f.label :description, :class => "control-label" %>
-            <div class="controls">
-              <%= f.text_area :description, :class => "input-xlarge" %>
-            </div>
-          </div>
-          <div class="control-group">
-            <label for="tags" class="control-label">Tags:</label>
-            <div class="controls">
-              <input type="text" name="tutorial_tags" id="tags" data-source='<%= ActsAsTaggableOn::Tag.all.map(&:name) %>' data-items="4" data-provide="typeahead" style="margin: 0 auto;" class="input-xlarge" />
-            </div>
-          </div>
-          <div class="form-actions">
-            <%= f.hidden_field :image_url %>
-            <button type="submit" class="btn btn-primary">Save changes</button>
-            <a href="<%= url_for tutorials_url %>" class="btn">Cancel</a>
-          </div>
-        </fieldset>
-      <% end %>
-    </div>
-    <div class="span4">
-      <div class="embed">
-        <img class="embed-thumb" src="#">
-        <a class="embed-url" href="#"></a>
-        <a class="embed-provider" href="#"></a>
+<div class="span4">
+  <div class="embed">
+    <img class="embed-thumb" src="#">
+    <a class="embed-url" href="#"></a>
+    <a class="embed-provider" href="#"></a>
+  </div>
+  <h2>tags</h2>
+  <ul id="tag_list" class="control-label"></ul>
+</div>
+<div class="span8">
+  <%= form_for(@tutorial, :html => {:class => "form-horizontal"}) do |f| %>
+    <fieldset>
+      <div class="control-group">
+        <%= f.label :url, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :url, :class => "input-xlarge" %>
+        </div>
       </div>
-    </div>
+      <div class="control-group">
+        <%= f.label :heading, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :heading, :class => "input-xlarge" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :description, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_area :description, :class => "input-xlarge" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <label for="tags" class="control-label">Tags:</label>
+        <div class="controls">
+          <input type="text" id="tags" data-source='<%= ActsAsTaggableOn::Tag.all.map(&:name) %>' data-items="4" data-provide="typeahead" style="margin: 0 auto;" class="input-xlarge" />
+          <button id="add-tag-button" type="button">add</button>
+        </div>
+      </div>
+      <div class="control-group">
+      </div>
+      <div class="form-actions">
+        <%= f.hidden_field :image_url %>
+        <input type="hidden" name="tutorial_tags" id="hidden_tags" />
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        <a href="<%= url_for tutorials_url %>" class="btn">Cancel</a>
+      </div>
+    </fieldset>
+  <% end %>
+</div>
