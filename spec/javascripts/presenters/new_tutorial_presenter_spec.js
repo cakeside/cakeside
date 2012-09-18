@@ -5,7 +5,13 @@ describe ("NewTutorialPresenter", function() {
       tag_list: $('<ul id="tag-list">'),
       tag_input: $('<input type="text" />'),
       hidden_tag_list: $('<input type="hidden" />'),
-      url_input: $('<input type="text" />')
+      url_input: $('<input type="text" />'),
+      preview: {
+        heading: $('<h3>'),
+        description: $('<p>'),
+        image: $('<img>'),
+        hidden_image_url: $('<input type="hidden">'),
+      }
     };
     service = {
       retrieve_info_on:null
@@ -53,5 +59,27 @@ describe ("NewTutorialPresenter", function() {
       view.url_input.trigger('change');
     });
     var url;
+  });
+  describe ("when information is received about a url", function() {
+    it ("should update the preview heading", function() {
+      expect(view.preview.heading.text()).toEqual('the title');
+    });
+    it ("should update the preview description", function() {
+      expect(view.preview.description.text()).toEqual('the description');
+    });
+    it ("should update the preview image", function() {
+      expect(view.preview.image.attr('src')).toEqual('http://');
+    });
+    it ("should update the hidden input image url", function() {
+      expect(view.preview.hidden_image_url.val()).toEqual('http://');
+    });
+    beforeEach (function() {
+      var payload = {
+        title: 'the title',
+        description: 'the description',
+        thumbnail_url: 'http://'
+      };
+      sut.display_url_info(payload);
+    });
   });
 });

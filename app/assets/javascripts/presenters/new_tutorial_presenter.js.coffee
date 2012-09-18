@@ -18,3 +18,8 @@ class window.NewTutorialPresenter
       @view.hidden_tag_list.val( @view.hidden_tag_list.val() + ', ' + new_tag)
 
   display_url_info:(data) ->
+    @view.preview.heading.val(data.title)
+    @view.preview.heading.text(data.title)
+    @view.preview.description.text(data.description)
+    @view.preview.image.attr('src', data.thumbnail_url)
+    @view.preview.hidden_image_url.val(data.thumbnail_url)
