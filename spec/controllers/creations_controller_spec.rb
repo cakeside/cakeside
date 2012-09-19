@@ -56,10 +56,14 @@ describe CreationsController do
       end
 
       it "redirects to the created creation" do
-        user.stub(:creations){ mock_creation(:save => true) }
+        creations = fake
+        creation = fake
+        user.stub(:creations){ creations }
+        creations.stub(:create).and_return(creation)
+        creation.stub(:id).and_return(1006)
+        creation.stub(:save).and_return(true)
         post :create, :creation => {}
         response.should redirect_to('/creations/crop/1006')
-        #expect(response).to render_template("crop")
       end
     end
 
