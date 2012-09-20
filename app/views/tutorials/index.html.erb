@@ -2,20 +2,20 @@
 <% content_for :javascript do -%>
 <script type="text/javascript">  
   $(function(){
-    var container = $('.row');
+    var container = $('#tutorials-div');
     container.imagesLoaded(function(){
-      container.masonry({ itemSelector : '.span4' }); 
+      container.masonry({
+        itemSelector : '.span4',
+        isResizable: true
+      }); 
     });
   });
 </script>
 <% end -%>
-<div class="row">
-  <div class="span12">
-    <%= link_to 'Add Tutorial', new_tutorial_path, :class => "btn btn-primary" %>
-  </div>
-</div>
-<br />
-<div class="row">
+<% content_for :page_header do -%>
+  <%= link_to 'Add Tutorial', new_tutorial_path, :class => "btn btn-primary" %>
+<% end -%>
+<div id="tutorials-div" class="row">
   <div class="span12">
   <ul class="thumbnails">
     <% @tutorials.each do |tutorial| %>
