@@ -4,13 +4,30 @@
     <div class="span12">
       <% flash.each do |key, value| -%>
         <% Array(value).uniq.each do |message| -%>
-        <div class="alert alert-<%= key %>">
-          <a class="close" data-dismiss="alert" href="#">×</a>
-          <!-- <h4 class="alert-heading"><%= key.to_s.titleize -%>!</h4> -->
-          <%= message %>
-        </div>
+          <div class="alert alert-<%= key %>">
+            <a class="close" data-dismiss="alert" href="#">×</a>
+            <%= message %>
+          </div>
         <% end -%>
       <% end -%>
     </div>
   </div>
 <% end -%>
+<div class="row">
+  <div class="span12">
+    <div class="row">
+    <div class="span9">
+      <div class="alert alert-notice">
+        <a class="close" data-dismiss="alert" href="#">×</a>
+        whoa there...
+      </div>
+      &nbsp;
+    </div>
+    <div class="span3" style="text-align: right; padding-bottom: 8px">
+      <a href="https://www.facebook.com/pages/CakeSide/214607468615074" target="_blank" align="left"><img src="http://www.niftybuttons.com/rkc-social-set-1/facebook.png" border="0"></a>
+      <a href="http://twitter.com/cakeside" target="_blank" align="left"><img src="http://www.niftybuttons.com/rkc-social-set-1/twitter.png" border="0"></a>
+      <a href="http://pinterest.com/cakeside/" target="_blank" align="left" ><img src="http://www.niftybuttons.com/rkc-social-set-1/pinterest.png" border="0"></a>
+    </div>
+    </div>
+  </div>
+</div>
