@@ -1,7 +1,12 @@
 <% provide(:description, "The latest tutorials") -%>
 <% content_for :javascript do -%>
 <script type="text/javascript">  
-  $(function(){ $('.row').masonry({ itemSelector : '.span4' }); });
+  $(function(){
+    var container = $('.row');
+    container.imagesLoaded(function(){
+      container.masonry({ itemSelector : '.span4' }); 
+    });
+  });
 </script>
 <% end -%>
 <div class="row">
@@ -24,7 +29,7 @@
             <% end -%>
             </p>
             <p><%= tutorial.description %></p>
-            <p><a class="btn btn-primary" href="<%= tutorial.url %>">Read</a> <a class="btn" href="<%= url_for tutorial %>">View</a></p>
+            <p><a class="btn" href="<%= url_for tutorial %>">View</a></p>
           </div>
         </div>
       </div>
