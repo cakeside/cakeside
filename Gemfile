@@ -12,8 +12,8 @@ gem "formtastic"
 gem 'activeadmin'
 gem 'sass-rails'
 gem 'bootstrap-sass'
-#gem 'unicorn'
 gem 'acts_as_commentable_with_threading'
+gem 'acts-as-taggable-on'
 gem 'newrelic_rpm'
 
 group :development, :test do

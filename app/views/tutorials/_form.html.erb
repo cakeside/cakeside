@@ -1,55 +1,69 @@
 <% content_for :javascript do %>
 <script type="text/javascript" charset="utf-8">
 $(function(){
-  $('#tutorial_url').change(function(){
-    var url = $('#tutorial_url').val();
-    $.embedly(url, {}, function(data){
-      $('#tutorial_heading').val(data.title);
-      $('#tutorial_description').val(data.description);
-      $('img.embed-thumb').attr('src', data.thumbnail_url);
-      $('a.embed-url').attr('href', data.url);
-      $('a.embed-url').text(data.title);
-      $('a.embed-provider').attr('href', data.provider_url);
-      $('a.embed-provider').text(data.provider_name);
-      $('#tutorial_image_url').val(data.thumbnail_url);
-    });
-  });
+  var view = {
+    add_tag_button: $('#add-tag-button'),
+    tag_list: $('#tag-list'),
+    tag_input: $('#tags'),
+    hidden_tag_list: $('#hidden_tags'),
+    url_input: $('#tutorial_url'),
+    preview: {
+      heading: $('.tutorial-heading'),
+      description: $('.tutorial-description'),
+      image: $('img.embed-thumb'),
+      hidden_image_url: $('#tutorial_image_url'),
+    }
+  };
+  new NewTutorialPresenter(view, new EmbedlyService($)).present();
 });
 </script>
 <% end %>
-    <div class="span8">
-      <%= form_for(@tutorial, :html => {:class => "form-horizontal"}) do |f| %>
-        <fieldset>
-          <div class="control-group">
-            <%= f.label :url, :class => "control-label" %>
-            <div class="controls">
-              <%= f.text_field :url, :class => "input-xlarge" %>
-            </div>
-          </div>
-          <div class="control-group">
-            <%= f.label :heading, :class => "control-label" %>
-            <div class="controls">
-              <%= f.text_field :heading, :class => "input-xlarge" %>
-            </div>
-          </div>
-          <div class="control-group">
-            <%= f.label :description, :class => "control-label" %>
-            <div class="controls">
-              <%= f.text_area :description, :class => "input-xlarge" %>
-            </div>
-          </div>
-          <div class="form-actions">
-            <%= f.hidden_field :image_url %>
-            <button type="submit" class="btn btn-primary">Save changes</button>
-            <a href="<%= url_for tutorials_url %>" class="btn">Cancel</a>
-          </div>
-        </fieldset>
-      <% end %>
-    </div>
-    <div class="span4">
-      <div class="embed">
-        <img class="embed-thumb" src="#">
-        <a class="embed-url" href="#"></a>
-        <a class="embed-provider" href="#"></a>
+<div class="span8">
+  <%= form_for(@tutorial, :html => {:class => "form-horizontal"}) do |f| %>
+    <fieldset>
+      <div class="control-group">
+        <%= f.label :url, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :url, :class => "input-xlarge" %>
+        </div>
       </div>
+      <div class="control-group">
+        <%= f.label :heading, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :heading, :class => "input-xlarge, tutorial-heading" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :description, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_area :description, :class => "input-xlarge, tutorial-description" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <label for="tags" class="control-label">Tags:</label>
+        <div class="controls">
+          <input type="text" id="tags" data-source='<%= ActsAsTaggableOn::Tag.all.map(&:name) %>' data-items="4" data-provide="typeahead" style="margin: 0 auto;" class="input-xlarge" />
+          <button id="add-tag-button" type="button">add</button>
+        </div>
+      </div>
+      <div class="control-group">
+      </div>
+      <div class="form-actions">
+        <%= f.hidden_field :image_url %>
+        <input type="hidden" name="tutorial_tags" id="hidden_tags" />
+        <button type="submit" class="btn btn-primary">Save changes</button>
+        <a href="<%= url_for tutorials_url %>" class="btn">Cancel</a>
+      </div>
+    </fieldset>
+  <% end %>
+</div>
+<div class="span4">
+  <div class="thumbnail">
+    <img class="embed-thumb" src="" />
+    <div class="caption">
+      <h3 class="tutorial-heading"></h3>
+      <p id="tag-list"></p>
+      <p class="tutorial-description"></p>
     </div>
+  </div>
+</div>

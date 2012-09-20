@@ -19,9 +19,10 @@ class TutorialsController < ApplicationController
 
   def create
     @tutorial = current_user.tutorials.create(params[:tutorial])
+    current_user.tag(@tutorial, :with => params[:tutorial_tags], :on => :tags)
     respond_to do |format|
       if @tutorial.save
-        format.html { redirect_to( '/tutorials' ) }
+        format.html { redirect_to( '/tutorials', :notice => 'the tutorial was successfully added.' ) }
       else
         flash[:error] = @tutorial.errors.full_messages
         format.html { render :action => "new" }
@@ -31,10 +32,10 @@ class TutorialsController < ApplicationController
 
   def update
     @tutorial = current_user.tutorials.find(params[:id])
-
+    current_user.tag(@tutorial, :with => params[:tutorial_tags], :on => :tags)
     respond_to do |format|
       if @tutorial.update_attributes(params[:tutorial])
-        format.html { redirect_to(@tutorial, :notice => 'tutorial was successfully updated.') }
+        format.html { redirect_to(@tutorial, :notice => 'the tutorial was successfully updated.') }
       else
         format.html { render :action => "edit" }
       end

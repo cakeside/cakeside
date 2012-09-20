@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :authentications
   has_and_belongs_to_many :interests, :join_table => 'users_interests', :uniq => true, :autosave => true
   has_one :avatar
+  acts_as_tagger
 
   def add_favorite( creation )
     if self.already_likes(creation)
