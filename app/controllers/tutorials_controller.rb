@@ -2,7 +2,11 @@ class TutorialsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
 
   def index
-    @tutorials = Tutorial.all.reverse
+    if params[:tags] 
+      @tutorials = Tutorial.tagged_with([params[:tags]])
+    else
+      @tutorials = Tutorial.all.reverse
+    end
   end
 
   def show
