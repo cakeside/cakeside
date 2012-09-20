@@ -11,6 +11,7 @@ cupcake_inspire.png: cupcake_inspire-13076920f1307c70640f4ac11619a259.png
 cupcake_promote.png: cupcake_promote-b2fc6aa8716b5b4794cfef24299f8264.png
 cupcake_share.png: cupcake_share-5a0f175d06ce3bd85774feb4697bb450.png
 f_logo_16x16x32.png: f_logo_16x16x32-97848b8f46b946e956b584876378a0df.png
+facebook.png: facebook-84d3bbf0b8c3e023823f20e77395f597.png
 favicon.ico: favicon-83d0a0befcc312f540b641a62e6cfb57.ico
 favorite_16x16.png: favorite_16x16-f1ae30ad595afe30f02dce67d51a25ce.png
 glyphicons-halflings-white.png: glyphicons-halflings-white-ef3d5b8d6a297804352b4a46fdb5466d.png
@@ -28,8 +29,10 @@ ie6/borderTopRight.png: ie6/borderTopRight-9a411844070f4c0fb547cd5692c7154f.png
 loading.gif: loading-ec4bc3b8504086f9713f325e4151b290.gif
 loading_background.png: loading_background-addf4f8fe4298c800109407c14a6cdcf.png
 overlay.png: overlay-63830e0eb1d4a1958a159150b55928cd.png
+pinterest.png: pinterest-652eb08b8b635cf172da93ac12755f6f.png
 ratedr.jpg: ratedr-39f4baa0e9bbd6c3c5c7e594e3c6d44a.jpg
 sunset.png: sunset-aa23c7660cd81d7a50a6c8f4888b3607.png
+twitter.png: twitter-c6df98dde79bbd47b391f37be7b87161.png
 application.js: application-a1de27c43de2ff6570f8f031a256bd43.js
 application.css: application-b9cde3eb3f0d8605cff04ab09f6528bd.css
 active_admin.js: active_admin-cb38b3c8cc1289ebb3809831197f1189.js
