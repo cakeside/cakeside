@@ -7,7 +7,7 @@
     });
   </script>
 <% end -%>
-<div class="page-header">
+<% content_for :page_header do -%>
   <% if(@creation.is_restricted) -%>
     <div style="float:right;">
       <%= image_tag "ratedr.jpg", :class => "span1" %>
@@ -25,7 +25,9 @@
   <% @creation.categories.each do |category| %>
     <a href="/categories/<%= category.slug %>"><span class="label"><%= category.name %></span></a>
   <% end %> 
-</div>
+
+<% end -%>
+<hr />
 <div class="row">
   <div class="span12">
     <ul class="thumbnails">
