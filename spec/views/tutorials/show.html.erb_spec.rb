@@ -6,7 +6,8 @@ describe "tutorials/show" do
       :heading => "Heading",
       :description => "MyText",
       :url => "Url",
-      :image_url => "http://placehold.it/300x200"
+      :image_url => "http://placehold.it/300x200",
+      :created_at => DateTime.new(2012, 9, 20)
     ))
   end
 
