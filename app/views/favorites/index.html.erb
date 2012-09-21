@@ -1,7 +1,7 @@
 <% provide(:title, "#{@creation.name} by #{@creation.user.name} - fanclub") -%>
-<div class="page-header">
+<% content_for :page_header do -%>
   <h1> fans of  <%= link_to @creation.name, creation_path(@creation) %> <small> submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> </small> </h1>
-</div>
+<% end -%>
 <div class="row">
   <div class="span3">
     <a class="thumbnail" href="<%= url_for creation_path(@creation) %>"><img src="<%= @creation.image_url(:thumb).to_s %>" alt="<%= @creation.name %>" /></a>
@@ -11,9 +11,7 @@
       <% @creation.favorites.each do |favorite| %>
         <li class="span3">
         <div class="thumbnail">
-          <a href="<%= url_for profile_path(favorite.user) %>" class="thumbnail">
-            <%= avatar_for(favorite.user) %>
-          </a>
+          <a href="<%= url_for profile_path(favorite.user) %>" class="thumbnail"><%= avatar_for(favorite.user) %></a>
           <div class="caption">
             <h5><%= favorite.user.name %></h5>
             <p><%= favorite.user.city %></p>
