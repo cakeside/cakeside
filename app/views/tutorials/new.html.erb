@@ -1,7 +1,7 @@
 <% provide(:title, "Share a tutorial") -%>
-<div class="page-header">
+<% content_for :page_header do -%>
   <h1>Share a new tutorial</h1>
-</div>
+<% end -%>
 <div class="row">
     <%= render 'form' %>
 </div>
