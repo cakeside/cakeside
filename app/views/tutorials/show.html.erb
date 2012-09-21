@@ -6,7 +6,7 @@
         <h3><a href="<%= @tutorial.url %>" target="_blank"><%= @tutorial.heading %></a> <small><%= @tutorial.created_at.to_s :foomat %></small></h3>
         <p>
         <% @tutorial.tags.each do |tag| -%>
-          <a href="?tags=<%= tag.name %>"><span class="label"><%= tag.name %></span></a>
+          <a href="/tutorials?tags=<%= tag.name %>"><span class="label"><%= tag.name %></span></a>
         <% end -%>
         </p>
         <p><%= @tutorial.description %></p>
