@@ -4,6 +4,6 @@ class Tutorial < ActiveRecord::Base
   acts_as_taggable
 
   def to_param
-    "#{id}-#{description.gsub(/[^a-z0-9]+/i, '-')}"
+    "#{id}-#{heading.gsub(/[^a-z0-9]+/i, '-')}"
   end
 end

@@ -2,16 +2,10 @@ require 'spec_helper'
 
 describe TutorialsController do
 
-  # This should return the minimal set of attributes required to create a valid
-  # Tutorial. As you add validations to Tutorial, be sure to
-  # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {:heading => "hello world"}
   end
 
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # TutorialsController. Be sure to keep this updated too.
   def valid_session
     {}
   end
