@@ -1,4 +1,7 @@
 <% provide(:title, "My Favorites") -%>
+<% content_for :page_header do -%>
+  <h1>My Favorites</h1>
+<% end -%>
 <div class="row">
   <div class="span3">
     <div class="thumbnail">
@@ -22,7 +25,6 @@
     </div>
   </div>
   <div class="span9">
-    <h2>My Favorites</h2>
     <ul class="thumbnails">
       <% @creations.each do |creation| %>
         <li><a href="<%= url_for creation %>"><img class="thumbnail" src="<%= creation.image.thumb.url %>" alt="<%= creation.name %>"></a></li>

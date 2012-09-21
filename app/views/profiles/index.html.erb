@@ -1,7 +1,7 @@
 <% provide(:title, pluralize(@profiles.length, "artist")) -%>
-<div class="page-header">
+<% content_for :page_header do -%>
   <h1><%= pluralize @profiles.count, "artist" %></h1>
-</div>
+<% end -%>
 <div class="row">
   <div class="span12">
     <ul class="thumbnails">

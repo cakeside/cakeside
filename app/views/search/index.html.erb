@@ -1,10 +1,7 @@
 <% provide(:title, "#{@search}") -%>
-<div class="row">
-  <div class="span12">
-    <h1>Search Results for <em><%= @search %></em></h1>
-    <hr />
-  </div>
-</div>
+<% content_for :page_header do -%>
+  <h1>Search Results for <em><%= @search %></em></h1>
+<% end -%>
 <h3>Creations</h3>
 <hr />
 <%= render "shared/a_12_column_gallery" %>

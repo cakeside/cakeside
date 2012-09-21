@@ -1,12 +1,7 @@
 <% provide(:title, "#{@profile.name}") -%>
-<div class="row">
-  <div class="span12">
-    <h1>
-      <%= @profile.name %>
-      <small>A member since <%= @profile.created_at.to_s :foomat %>, with <%= @profile.creations.length %> creations.</small>
-    </h1>
-  </div>
-</div>
+<% content_for :page_header do -%>
+    <h1><%= @profile.name %> <small>A member since <%= @profile.created_at.to_s :foomat %>, with <%= @profile.creations.length %> creations.</small> </h1>
+<% end -%>
 <div class="row">
   <div class="span3">
     <div class="thumbnail">
