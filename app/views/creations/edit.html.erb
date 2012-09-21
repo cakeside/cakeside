@@ -1,7 +1,7 @@
 <% provide(:title, "Editing creation #{@creation.name}") %>
-<div class="page-header">
+<% content_for :page_header do -%>
   <h1><small>Edit</small> <%= @creation.name %></h1>
-</div>
+<% end -%>
 <div class="row">
   <div class="span3">
     <div class="thumbnail">
