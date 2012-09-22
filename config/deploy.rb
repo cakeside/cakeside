@@ -22,8 +22,11 @@ set :branch, "master"
 set :deploy_env, 'production'
 set :scm_verbose, true
 
-# ugly workaround for bug https://github.com/capistrano/capistrano/issues/81
-#before "deploy:assets:precompile", "update_bundler"
+after "deploy", "deploy:cleanup" # remove old releases
+after 'deploy:update_code', 'deploy:symlink_db'
 
-# remove old releases
-after "deploy", "deploy:cleanup"
+namespace :deploy do
+  task :symlink_db, :roles => :app do
+    run "ln -nfs #{deploy_to}/shared/config/database.yml #{release_path}/config/database.yml"
+  end
+end

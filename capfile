@@ -14,11 +14,6 @@ task :show_free_space, :roles => :web do
   run "df -h /"
 end
 
-task :update_bundler do
-  #run "bundle install --gemfile #{release_path}/Gemfile"
-  #run "cd #{release_path} && bundle exec rake db:migrate RAILS_ENV=production && bundle exec rake db:seed RAILS_ENV=production"
-end
-
 task :backup_db do
   filename = "#{deploy_env}-#{Time.now.strftime('%Y-%m-%d')}.sql"
   run "pg_dump --clean cakeside_production > ~/db/backups/#{filename}"
@@ -29,6 +24,5 @@ task :restore_db do
   dumpfile = "~/db/backups/latest"
   destination_db = "cakeside_production"
   upload("latest", "db/backups/latest", :via => :scp)
-  #run "psql -U cakeside -d #{destination_db} -f #{dumpfile}"
   run "psql #{destination_db} < #{dumpfile}"
 end
