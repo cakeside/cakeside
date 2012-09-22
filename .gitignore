@@ -12,3 +12,4 @@ tags
 .sass-cache/
 *.fuse*
 latest
+config/database.yml
