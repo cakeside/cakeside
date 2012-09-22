@@ -1,0 +1,8 @@
+staging:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  database: cakeside_production
+  pool: 5
+  username: cakeside
+  password: password
