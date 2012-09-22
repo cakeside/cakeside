@@ -14,21 +14,3 @@ test:
   database: db/test.sqlite3
   pool: 5
   timeout: 5000
-
-staging:
-  adapter: postgresql
-  encoding: unicode
-  host: localhost
-  database: cakeside_production
-  pool: 5
-  username: cakeside
-  password: password
-
-production:
-  adapter: postgresql
-  encoding: unicode
-  host: localhost
-  database: cakeside_production
-  pool: 5
-  username: cakeside
-  password: password
