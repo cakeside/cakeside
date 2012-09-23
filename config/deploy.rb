@@ -28,6 +28,5 @@ after 'deploy:update_code', 'deploy:symlink_db'
 namespace :deploy do
   task :symlink_db, :roles => :app do
     run "ln -nfs #{release_path}/config/database.production.yml.example #{release_path}/config/database.yml"
-    #run "ln -nfs #{deploy_to}/shared/config/database.yml #{release_path}/config/database.yml"
   end
 end
