@@ -78,23 +78,15 @@ describe CreationsController do
 
   describe "PUT update" do
     describe "with valid params" do
-      it "updates the requested creation" do
-        user.stub(:creations){ mock_creation }
-        mock_creation.should_receive(:update_attributes).with({'these' => 'params', 'category_ids' => []})
-        put :update, :id => "37", :creation => {'these' => 'params'}
+      before :each do
+        put :update, :id => creation.id, :creation => {:name => 'params'}
       end
-
       it "assigns the requested creation as @creation" do
-        creation = mock_creation(:update_attributes => true, :category_ids => [])
-        user.stub(:creations){ creation }
-        put :update, :id => "1", :creation => { :category_ids => [] }
-        assigns(:creation).should be(creation)
+        assigns(:creation).should eq(creation)
       end
 
       it "redirects to the creation" do
-        user.stub(:creations){ mock_creation(:update_attributes => true) }
-        put :update, :id => "1", :creation => { :category_ids => [] }
-        response.should redirect_to(creation_url(mock_creation))
+        response.should redirect_to("/creations/#{creation.id}-params")
       end
     end
 
