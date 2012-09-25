@@ -11,39 +11,36 @@ describe CategoriesController do
   end
 
   describe "GET show" do
-
-    before(:each) do
-      get :show, :id => @category.slug
+    context "when there is NO category that matches the slug" do
+      it "should return nothing" do
+        assigns(:category).should be_nil
+        assigns(:creations).should be_nil
+      end
     end
-
-    it "assigns the requested category as @category" do
-      assigns(:category).should eq(@category)
-    end
-
-    it "should return all creations that are in the category" do
-      assigns(:creations).should eq(@creations)
-    end
-  end
-
-  context "when there is NO category that matches the slug" do
-    before(:each) do
-      @other_category = FactoryGirl.create(:category, :slug => 'booooo')
-      get :show, :id => @other_category.slug
-    end
-    it "should return zero creations" do
-      assigns(:creations).should be_empty
-    end
-    it "should return the category" do
-      assigns(:category).should eq(@other_category)
-    end
-  end
-
-  context "when there is a category that matches the slug" do
-    context "when there are creations in the category" do
-
-    end
-    context "when there are no creations in the category" do
-
+    context "when there is a category that matches the slug" do
+      context "when there are creations in the category" do
+        before(:each) do
+          get :show, :id => @category.slug
+        end
+        it "should return the creations in the category" do
+          assigns(:creations).should eq(@creations)
+        end
+        it "should return the category" do
+          assigns(:category).should eq(@category)
+        end
+      end
+      context "when there are no creations in the category" do
+        let(:other_category) { FactoryGirl.create(:category, :slug => 'booooo') }
+        before(:each) do
+          get :show, :id => other_category.slug
+        end
+        it "should return zero creations" do
+          assigns(:creations).should be_empty
+        end
+        it "should return the category" do
+          assigns(:category).should eq(other_category)
+        end
+      end
     end
   end
 end
