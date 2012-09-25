@@ -58,19 +58,14 @@ describe CreationsController do
     end
 
     describe "with invalid params" do
-      def mock_creation(stubs={})
-        @mock_creation ||= mock_model(Creation, stubs).as_null_object
+      before :each do
+        post :create, :creation => {:name => ''}
       end
-      it "assigns a newly created but unsaved creation as @creation" do
-        user.stub(:creations){ mock_creation(:save => false) }
-        post :create, :creation => {'these' => 'params'}
-        assigns(:creation).should be(mock_creation)
-      end
-
       it "re-renders the 'new' template" do
-        user.stub(:creations){ mock_creation(:save => false) }
-        post :create, :creation => {}
         response.should render_template("new")
+      end
+      it "should include the errors" do
+        assigns(:creation).errors.any?.should be_true
       end
     end
   end
