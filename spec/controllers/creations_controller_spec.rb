@@ -91,15 +91,14 @@ describe CreationsController do
     end
 
     describe "with invalid params" do
+      before :each do
+        put :update, :id => creation.id, :creation => {:name=> nil, :category_ids => [] }
+      end
       it "assigns the creation as @creation" do
-        user.stub(:creations){ mock_creation(:update_attributes => false) }
-        put :update, :id => "1", :creation => { :category_ids => [] }
-        assigns(:creation).should be(mock_creation)
+        assigns(:creation).should eq(creation)
       end
 
       it "re-renders the 'edit' template" do
-        user.stub(:creations){ mock_creation(:update_attributes => false) }
-        put :update, :id => "1", :creation => { :category_ids => [] }
         response.should render_template("edit")
       end
     end
