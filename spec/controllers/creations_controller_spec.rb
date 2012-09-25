@@ -4,10 +4,6 @@ describe CreationsController do
   let(:user){ FactoryGirl.create(:user) }
   let(:creation){ FactoryGirl.create(:creation, :user => user) }
 
-  def mock_creation(stubs={})
-    @mock_creation ||= mock_model(Creation, stubs).as_null_object
-  end
-
   before (:each) do
     request.env['warden'] = mock(Warden, :authenticate => user, :authenticate! => user)
   end
@@ -62,6 +58,9 @@ describe CreationsController do
     end
 
     describe "with invalid params" do
+      def mock_creation(stubs={})
+        @mock_creation ||= mock_model(Creation, stubs).as_null_object
+      end
       it "assigns a newly created but unsaved creation as @creation" do
         user.stub(:creations){ mock_creation(:save => false) }
         post :create, :creation => {'these' => 'params'}
@@ -115,5 +114,4 @@ describe CreationsController do
       response.should redirect_to(creations_url)
     end
   end
-
 end
