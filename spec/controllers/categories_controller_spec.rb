@@ -3,8 +3,11 @@ require 'spec_helper'
 describe CategoriesController do
 
   before(:each) do
-    @creations = []
+    @creation = FactoryGirl.create(:creation)
+    @creations = [@creation]
     @category = FactoryGirl.create(:category, :creations => @creations)
+    @creation.category_ids = [@category.id]
+    @creation.save
   end
 
   describe "GET show" do
