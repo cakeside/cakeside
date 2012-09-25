@@ -105,15 +105,13 @@ describe CreationsController do
   end
 
   describe "DELETE destroy" do
-    it "destroys the requested creation" do
-      user.stub(:creations){ mock_creation }
-      mock_creation.should_receive(:destroy)
-      delete :destroy, :id => "37"
+    before :each do
+      delete :destroy, :id => creation.id
     end
-
+    it "destroys the requested creation" do
+      user.creations.count.should == 0
+    end
     it "redirects to the creations list" do
-      user.stub(:creations){ mock_creation }
-      delete :destroy, :id => "1"
       response.should redirect_to(creations_url)
     end
   end
