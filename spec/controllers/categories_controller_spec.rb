@@ -26,7 +26,16 @@ describe CategoriesController do
   end
 
   context "when there is NO category that matches the slug" do
-
+    before(:each) do
+      @other_category = FactoryGirl.create(:category, :slug => 'booooo')
+      get :show, :id => @other_category.slug
+    end
+    it "should return zero creations" do
+      assigns(:creations).should be_empty
+    end
+    it "should return the category" do
+      assigns(:category).should eq(@other_category)
+    end
   end
 
   context "when there is a category that matches the slug" do
