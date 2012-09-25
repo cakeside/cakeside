@@ -25,13 +25,11 @@ class CreationsController < ApplicationController
   def create
     @creation = current_user.creations.create(params[:creation])
     @creation.category_ids = params[:creation][:category_ids] ||= []
-    respond_to do |format|
-      if @creation.save
-        format.html { redirect_to( '/creations/crop/' + @creation.id.to_s ) }
-      else
-        flash[:error] = @creation.errors.full_messages
-        format.html { render :action => "new" }
-      end
+    if @creation.save
+      redirect_to( '/creations/crop/' + @creation.id.to_s ) 
+    else
+      flash[:error] = @creation.errors.full_messages
+      render :action => "new" 
     end
   end
 
@@ -40,23 +38,17 @@ class CreationsController < ApplicationController
     @creation = current_user.creations.find(params[:id])
     @creation.category_ids = params[:creation][:category_ids] ||= []
 
-    respond_to do |format|
-      if @creation.update_attributes(params[:creation])
-        format.html { redirect_to(@creation, :notice => 'Creation was successfully updated.') }
-      else
-        format.html { render :action => "edit" }
-      end
+    if @creation.update_attributes(params[:creation])
+      redirect_to(@creation, :notice => 'Creation was successfully updated.') 
+    else
+      render :action => "edit" 
     end
   end
 
   # DELETE /creations/1
   def destroy
-    @creation = current_user.creations.find(params[:id])
-    @creation.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(creations_url) }
-    end
+    current_user.creations.find(params[:id]).destroy
+    redirect_to(creations_url) 
   end
 
   # GET /creations/crop/1
@@ -71,13 +63,10 @@ class CreationsController < ApplicationController
     @creation.crop_h = params[:creation]["crop_h"]
     @creation.crop_w = params[:creation]["crop_w"]
     @creation.reprocess_image
-    respond_to do |format|
-      if @creation.save
-        format.html { redirect_to(@creation, :notice => 'Creation was successfully cropped.') }
-      else
-        format.html { render :action => "new" }
-      end
+    if @creation.save
+      redirect_to(@creation, :notice => 'Creation was successfully cropped.') 
+    else
+      render :action => "new" 
     end
   end
-
 end
