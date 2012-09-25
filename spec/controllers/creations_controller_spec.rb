@@ -1,10 +1,8 @@
 require 'spec_helper'
 
 describe CreationsController do
-  include Devise::TestHelpers
-
-  let(:user){ FactoryGirl.build(:user) }
-  let(:creation){ FactoryGirl.build(:creation) }
+  let(:user){ FactoryGirl.create(:user) }
+  let(:creation){ FactoryGirl.create(:creation, :user => user) }
 
   def mock_creation(stubs={})
     @mock_creation ||= mock_model(Creation, stubs).as_null_object
@@ -16,43 +14,39 @@ describe CreationsController do
 
   describe "GET index" do
     it "assigns all creations as @creations" do
-      relation = mock(ActiveRecord::Relation, :per => [mock_creation])
-      Creation.stub(:page) { relation }
       get :index
-      assigns(:creations).should eq([mock_creation])
+      assigns(:creations).should eq([creation])
     end
   end
 
   describe "GET show" do
     it "assigns the requested creation as @creation" do
-      Creation.stub(:find).with("37") { mock_creation }
-      get :show, :id => "37"
-      assigns(:creation).should be(mock_creation)
+      get :show, :id => creation.id
+      assigns(:creation).should eq(creation)
     end
   end
 
   describe "GET new" do
     it "assigns a new creation as @creation" do
-      Creation.stub(:new) { mock_creation }
+      new_creation = fake
+      Creation.stub(:new) { new_creation }
       get :new
-      assigns(:creation).should be(mock_creation)
+      assigns(:creation).should be(new_creation)
     end
   end
 
   describe "GET edit" do
     it "assigns the requested creation as @creation" do
-      user.stub(:creations){ mock_creation }
-      get :edit, :id => "37"
-      assigns(:creation).should be(mock_creation)
+      get :edit, :id => creation.id
+      assigns(:creation).should eq(creation)
     end
   end
 
   describe "POST create" do
     describe "with valid params" do
       it "assigns a newly created creation as @creation" do
-        user.stub(:creations){ mock_creation(:save => true) }
-        post :create, :creation => {'these' => 'params'}
-        assigns(:creation).should be(mock_creation)
+        post :create, :creation => {:id => creation.id, :name => 'new name'}
+        assigns(:creation).name.should == 'new name'
       end
 
       it "redirects to the created creation" do
