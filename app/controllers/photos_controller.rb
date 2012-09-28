@@ -4,22 +4,18 @@ class PhotosController < ApplicationController
   before_filter :find_or_build_photo
 
   def create
-    respond_to do |format|
-      if @photo.save
-        format.html { redirect_to(@creation, :notice => 'A new photo was added to the album.') }
-      else
-        flash[:error] = "could not upload photo"
-      end
+    if @photo.save
+      redirect_to(@creation, :notice => 'A new photo was added to the album.') 
+    else
+      flash[:error] = "could not upload photo"
     end
   end
 
   def destroy
-    respond_to do |format|
-      if @photo.destroy
-        format.html { redirect_to(@creation, :notice => 'A new photo was added to the album.') }
-      else
-        flash[:error] = "photo could not be deleted"
-      end
+    if @photo.destroy
+      redirect_to(@creation, :notice => 'A new photo was added to the album.') 
+    else
+      flash[:error] = "photo could not be deleted"
     end
   end
 
@@ -32,5 +28,4 @@ class PhotosController < ApplicationController
   def find_or_build_photo
     @photo = params[:id] ? @creation.photos.find(params[:id]) : @creation.photos.build(params[:photo])
   end
-
 end
