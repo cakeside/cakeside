@@ -5,7 +5,7 @@ describe CreationsController do
   let(:creation){ FactoryGirl.create(:creation, :user => user) }
 
   before (:each) do
-    request.env['warden'] = mock(Warden, :authenticate => user, :authenticate! => user)
+    http_login(user)
   end
 
   describe "GET index" do
