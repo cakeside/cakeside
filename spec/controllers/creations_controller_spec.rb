@@ -40,20 +40,17 @@ describe CreationsController do
 
   describe "POST create" do
     describe "with valid params" do
-      it "assigns a newly created creation as @creation" do
-        post :create, :creation => {:id => creation.id, :name => 'new name'}
-        assigns(:creation).name.should == 'new name'
-      end
-
-      pending "redirects to the created creation" do
+      before :each do
         creations = fake
-        creation = fake
-        user.stub(:creations){ creations }
+        user.stub(:creations).and_return(creations)
         creations.stub(:create).and_return(creation)
-        creation.stub(:id).and_return(1006)
-        creation.stub(:save).and_return(true)
-        post :create, :creation => {}
-        response.should redirect_to('/creations/crop/1006')
+        post :create, :creation => {:id => creation.id, :name => 'new name'}
+      end
+      it "assigns a newly created creation as @creation" do
+        assigns(:creation).should eq(creation)
+      end
+      it "redirects to the created creation" do
+        response.should redirect_to(creation)
       end
     end
 
