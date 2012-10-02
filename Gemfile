@@ -20,7 +20,7 @@ group :development, :test do
   gem 'webrat'
   gem 'rspec-rails'
   gem 'jasmine'
-  gem 'sqlite3-ruby', :require => 'sqlite3'
+  gem 'sqlite3'
   gem 'capistrano'
   gem 'capistrano-ext'
   gem 'rvm-capistrano'
