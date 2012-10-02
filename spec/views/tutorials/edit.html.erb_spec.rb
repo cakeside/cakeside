@@ -13,6 +13,8 @@ describe "tutorials/edit" do
       assert_select "input#tutorial_heading", :name => "tutorial[heading]"
       assert_select "textarea#tutorial_description", :name => "tutorial[description]"
       assert_select "input#tutorial_url", :name => "tutorial[url]"
+      assert_select "input#tutorial_author", :name => "tutorial[author]"
+      assert_select "input#tutorial_author_url", :name => "tutorial[author_url]"
     end
   end
 end
