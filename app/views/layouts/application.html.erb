@@ -13,10 +13,6 @@
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/assets/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="/assets/apple-touch-icon-114x114.png">
-    <%= javascript_include_tag :application %>
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
     <%= yield :head %>
     <%= csrf_meta_tags %>
   </head>
@@ -29,6 +25,10 @@
     <%= render "shared/footer" %>
     <%= render "shared/uservoice_feedback"%>
     <%= render "shared/chrome_frame"%>
+    <%= javascript_include_tag :application %>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
     <%= yield :javascript %>
     <script type="text/javascript" src="http://scripts.embed.ly/jquery.embedly.min.js"></script>
     <script type="text/javascript" charset="utf-8">
