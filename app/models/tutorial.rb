@@ -1,5 +1,5 @@
 class Tutorial < ActiveRecord::Base
-  attr_accessible :description, :heading, :url, :image_url, :user_id
+  attr_accessible :description, :heading, :url, :image_url, :user_id, :author, :author_url
   belongs_to :user
   acts_as_taggable
 
