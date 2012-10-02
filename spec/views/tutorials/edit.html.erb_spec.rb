@@ -2,11 +2,7 @@ require 'spec_helper'
 
 describe "tutorials/edit" do
   before(:each) do
-    @tutorial = assign(:tutorial, stub_model(Tutorial,
-      :heading => "MyString",
-      :description => "MyText",
-      :url => "MyString"
-    ))
+    @tutorial = assign(:tutorial, FactoryGirl.build(:tutorial))
   end
 
   it "renders the edit tutorial form" do
