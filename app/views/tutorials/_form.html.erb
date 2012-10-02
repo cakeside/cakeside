@@ -34,6 +34,18 @@ $(function(){
         </div>
       </div>
       <div class="control-group">
+        <%= f.label :author, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :author, :class => "input-xlarge, tutorial-author" %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :author_url, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :author_url, :class => "input-xlarge, tutorial-author-url" %>
+        </div>
+      </div>
+      <div class="control-group">
         <%= f.label :description, :class => "control-label" %>
         <div class="controls">
           <%= f.text_area :description, :class => "input-xlarge, tutorial-description" %>

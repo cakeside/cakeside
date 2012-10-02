@@ -23,3 +23,5 @@ class window.NewTutorialPresenter
     @view.preview.description.text(data.description)
     @view.preview.image.attr('src', data.thumbnail_url)
     @view.preview.hidden_image_url.val(data.thumbnail_url)
+    @view.preview.author.val(data.provider_name)
+    @view.preview.author_url.val(data.provider_url)

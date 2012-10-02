@@ -11,6 +11,8 @@ describe ("NewTutorialPresenter", function() {
         description: $('<p>'),
         image: $('<img>'),
         hidden_image_url: $('<input type="hidden">'),
+        author: $('<input type="text">'),
+        author_url: $('<input type="text">'),
       }
     };
     service = {
@@ -73,11 +75,19 @@ describe ("NewTutorialPresenter", function() {
     it ("should update the hidden input image url", function() {
       expect(view.preview.hidden_image_url.val()).toEqual('http://');
     });
+    it ("should display the author name", function() {
+      expect(view.preview.author.val()).toEqual('superman');
+    });
+    it ("should display the author url", function() {
+      expect(view.preview.author_url.val()).toEqual('http://www.superman.com');
+    });
     beforeEach (function() {
       var payload = {
         title: 'the title',
         description: 'the description',
-        thumbnail_url: 'http://'
+        thumbnail_url: 'http://',
+        provider_url: 'http://www.superman.com',
+        provider_name: 'superman'
       };
       sut.display_url_info(payload);
     });
