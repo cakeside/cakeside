@@ -12,6 +12,8 @@ $(function(){
       description: $('.tutorial-description'),
       image: $('img.embed-thumb'),
       hidden_image_url: $('#tutorial_image_url'),
+      author: $('.tutorial-author'),
+      author_url: $('.tutorial-author-url'),
     }
   };
   new NewTutorialPresenter(view, new EmbedlyService($)).present();
