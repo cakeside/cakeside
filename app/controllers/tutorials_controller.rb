@@ -5,7 +5,7 @@ class TutorialsController < ApplicationController
     if params[:tags] 
       @tutorials = Tutorial.tagged_with([params[:tags]])
     else
-      @tutorials = Tutorial.all.reverse
+      @tutorials = Tutorial.page(params[:page]).per(15)
     end
   end
 
