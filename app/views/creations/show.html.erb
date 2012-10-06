@@ -1,6 +1,6 @@
 <% provide(:title, "#{@creation.name} by #{@creation.user.name}") -%>
 <% provide(:description, "#{@creation.story}") -%>
-<% content_for :head do %>
+<% content_for :javascript do %>
   <script type="text/javascript">
     $(function() { 
       Creations.Show.initialize();
