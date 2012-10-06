@@ -23,15 +23,20 @@ class CreationsController < ApplicationController
 
   # POST /creations
   def create
-    @creation = current_user.creations.create(params[:creation])
-    @creation.category_ids = params[:creation][:category_ids] ||= []
-    if @creation.save
-      #redirect_to( '/creations/crop/' + @creation.id.to_s ) 
-      redirect_to(@creation, :notice => 'Creation was successfully cropped.') 
-    else
-      flash[:error] = @creation.errors.full_messages
-      render :action => "new" 
-    end
+    #@creation = current_user.creations.create(params[:creation])
+    #@creation.category_ids = params[:creation][:category_ids] ||= []
+
+    #if @creation.save
+      ##redirect_to( '/creations/crop/' + @creation.id.to_s ) 
+      #Rails.logger.info "end create"
+      #redirect_to(@creation, :notice => 'Creation was successfully cropped.') 
+    #else
+      #flash[:error] = @creation.errors.full_messages
+      #render :action => "new" 
+    #end
+
+    @creation = current_user.add_creation(params[:creation])
+    redirect_to(@creation, :notice => 'Creation was successfully cropped.') 
   end
 
   # PUT /creations/1
