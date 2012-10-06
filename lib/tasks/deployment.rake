@@ -12,8 +12,9 @@ namespace :deploy do
       puts "E.g. rake deploy:production['staging-2012-06-02-1-mo-user-settings']"
     else
       puts "deploying to production from tag #{tag_to_deploy}"
-      sh "cap production deploy -s tag=#{tag_to_deploy}"
-      sh "cap production deploy:migrations"
+      sh "cap production deploy:migrations -s tag=#{tag_to_deploy}"
+      #sh "cap production deploy -s tag=#{tag_to_deploy}"
+      #sh "cap production deploy:migrations"
       sh "curl http://cakeside.com/ > /dev/null"
     end
   end
