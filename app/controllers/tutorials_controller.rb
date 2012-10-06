@@ -3,7 +3,7 @@ class TutorialsController < ApplicationController
 
   def index
     if params[:tags] 
-      @tutorials = Tutorial.tagged_with([params[:tags]])
+      @tutorials = Tutorial.tagged_with([params[:tags]]).page(params[:page]).per(15)
     else
       @tutorials = Tutorial.page(params[:page]).per(15)
     end
