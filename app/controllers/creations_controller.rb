@@ -28,8 +28,7 @@ class CreationsController < ApplicationController
     @creation.photos.build({:image => params[:photo]})
 
     if @creation.save
-      #redirect_to(@creation, :notice => 'Creation was successfully cropped.') 
-      redirect_to(creations_url) 
+      redirect_to(creations_url, :notice => 'Your creation will show up in the main timeline shortly.') 
     else
       flash[:error] = @creation.errors.full_messages
       render :action => "new" 
