@@ -26,9 +26,16 @@ after "deploy:setup", "rvm:install_rvm"
 before "deploy", "rvm:install_ruby"
 after "deploy", "deploy:cleanup" # remove old releases
 after 'deploy:update_code', 'deploy:symlink_db'
+after "deploy:update_code", "delayed_job:restart"
 
 namespace :deploy do
   task :symlink_db, :roles => :app do
     run "ln -nfs #{release_path}/config/database.production.yml.example #{release_path}/config/database.yml"
+  end
+end
+namespace :delayed_job do 
+  desc "Restart the delayed_job process"
+  task :restart, :roles => :app do
+    run "cd #{current_path}; RAILS_ENV=#{rails_env} script/delayed_job restart"
   end
 end
