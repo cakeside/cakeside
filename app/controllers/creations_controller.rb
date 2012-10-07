@@ -25,9 +25,11 @@ class CreationsController < ApplicationController
   def create
     @creation = current_user.creations.create(params[:creation])
     @creation.category_ids = params[:creation][:category_ids] ||= []
+    @creation.photos.build({:image => params[:photo]})
 
     if @creation.save
-      redirect_to(@creation, :notice => 'Creation was successfully cropped.') 
+      #redirect_to(@creation, :notice => 'Creation was successfully cropped.') 
+      redirect_to(creations_url) 
     else
       flash[:error] = @creation.errors.full_messages
       render :action => "new" 

@@ -21,9 +21,11 @@
       </div>
     </div>
     <div class="control-group">
-      <%= f.label :image, "Upload Main Image", :class => "control-label" %>
+      <%# f.label :image, "Upload Main Image", :class => "control-label" %>
+      <label for="photo" class="control-label">Upload Main Image</label>
       <div class="controls">
-        <%= f.file_field :image, :class => "input-file" %>
+        <%# f.file_field :image, :class => "input-file" %>
+        <input type="file" name="photo" id="photo" value="" accept="image/*" />
       </div>
     </div>
     <div class="control-group">

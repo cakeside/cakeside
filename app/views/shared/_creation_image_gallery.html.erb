@@ -2,7 +2,7 @@
   <% @creations.each do |creation| %>
     <li class="span3">
     <div class="thumbnail">
-      <a href="<%= url_for creation %>"><img src="<%= creation.image.thumb.url %>" alt="<%= creation.name %>" style="width:260px;height:180px;" /></a>
+      <a href="<%= url_for creation %>"><img src="<%= creation.main_image_thumb_url %>" alt="<%= creation.name %>" style="width:260px;height:180px;" /></a>
       <h3><a href="<%= url_for creation %>"><%= short_name(creation, 15) %></a></h3>
       <h4><small><a href="<%= url_for profile_path(creation.user) %>"><%= shrink(creation.user.name, 20) %></a></small></h4>
       <p>
