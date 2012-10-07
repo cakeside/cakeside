@@ -27,15 +27,11 @@ class CreationsController < ApplicationController
     @creation.category_ids = params[:creation][:category_ids] ||= []
 
     if @creation.save
-      #redirect_to( '/creations/crop/' + @creation.id.to_s ) 
       redirect_to(@creation, :notice => 'Creation was successfully cropped.') 
     else
       flash[:error] = @creation.errors.full_messages
       render :action => "new" 
     end
-
-    #current_user.add_creation(params[:creation])
-    #redirect_to(creations_url) 
   end
 
   # PUT /creations/1
