@@ -1,11 +1,10 @@
 # encoding: utf-8
+require File.join(Rails.root, "lib", "carrier_wave", "delayed_job")
 
 class AvatarUploader < CarrierWave::Uploader::Base
-
-  # Include RMagick or MiniMagick support:
+  include CarrierWave::Delayed::Job
   include CarrierWave::RMagick
   include CarrierWave::MimeTypes
-  # include CarrierWave::MiniMagick
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
   # include Sprockets::Helpers::RailsHelper
