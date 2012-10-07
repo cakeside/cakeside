@@ -13,7 +13,7 @@ class MigrateImagesToPhotos < ActiveRecord::Migration
   end
 
   def down
-    Photo.all.where(:is_primary => true).each do |photo|
+    Photo.where(:is_primary => true).each do |photo|
       photo.destroy!
     end
     remove_column :photos, :is_primary
