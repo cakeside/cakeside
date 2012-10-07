@@ -32,12 +32,12 @@ class User < ActiveRecord::Base
     Comment.create_for(self, creation, comment)
   end
 
-  def add_creation(params)
-    @creation = creations.create(params)
-    @creation.category_ids = params[:category_ids] ||= []
-    @creation.save!
-    @creation
-  end
+  #def add_creation(params)
+    #@creation = creations.create(params)
+    #@creation.category_ids = params[:category_ids] ||= []
+    #@creation.save!
+    #@creation
+  #end
 
   def to_param
     "#{id}-#{name.gsub(/[^a-z0-9]+/i, '-')}"
