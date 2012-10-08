@@ -11,7 +11,7 @@ gem 'exception_notification'
 gem "formtastic"
 gem 'activeadmin'
 gem 'sass-rails'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '2.1.0.0'
 gem 'acts_as_commentable_with_threading'
 gem 'acts-as-taggable-on'
 gem 'newrelic_rpm'
