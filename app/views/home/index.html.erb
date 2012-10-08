@@ -24,7 +24,7 @@
         <div class="carousel-inner">
           <% @creations.each_with_index do |creation, index| %>
             <div class="item<%= index == 0 ?  ' active' : ''-%>">
-              <img alt="<%= creation.name %>" src="<%= creation.image.large.url %>" style="display:block; margin-left:auto; margin-right:auto;" />
+              <img alt="<%= creation.name %>" src="<%= creation.primary_image.image.large.url %>" style="display:block; margin-left:auto; margin-right:auto;" />
               <div class="carousel-caption">
                 <h4><a href="<%= url_for creation %>"><%= creation.name %></a></h4>
                 <p><%= creation.story %></p>
@@ -79,7 +79,7 @@
       <% @creations.each do |creation| %>
         <li class="span3">
         <div class="thumbnail">
-          <a href="<%= creation.image.large.url %>" class="gallery" title="<%= creation.name %> - <%= creation.story %> "><img src="<%= creation.image.thumb.url %>" alt="<%= creation.name %>" style="width:260px;height:180px;" /></a>
+          <a href="<%= creation.primary_image.image.large.url %>" class="gallery" title="<%= creation.name %> - <%= creation.story %> "><img src="<%= creation.primary_image.image.thumb.url %>" alt="<%= creation.name %>" style="width:260px;height:180px;" /></a>
           <div class="caption">
             <h5><a href="<%= url_for creation %>"><%= short_name(creation, 20) %></a></h5>
             <h6><a href="<%= url_for profile_path(creation.user) %>"><%= shrink(creation.user.name, 20) %></a></h6>

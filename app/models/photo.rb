@@ -19,4 +19,7 @@ class Photo < ActiveRecord::Base
   #def cropping?
     #!crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
   #end
+  def to_s
+    "#{id} #{image}"
+  end
 end

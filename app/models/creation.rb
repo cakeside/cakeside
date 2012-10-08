@@ -6,6 +6,7 @@ class Creation < ActiveRecord::Base
   has_and_belongs_to_many :categories, :join_table => 'creations_categories', :uniq => true, :autosave => true
   has_many :photos, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
+  mount_uploader :image, ImageUploader
 
   default_scope order("created_at DESC")
 
@@ -26,7 +27,7 @@ class Creation < ActiveRecord::Base
   end
 
   def primary_image
-    photos.first
+    photos.where(:is_primary => true).first
   end
 
   def main_image_thumb_url
