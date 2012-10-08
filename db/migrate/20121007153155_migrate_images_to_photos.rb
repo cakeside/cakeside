@@ -15,6 +15,7 @@ class MigrateImagesToPhotos < ActiveRecord::Migration
       photo.save!
       puts "#{index}. migrated #{creation.image.url} to #{photo.attributes}"
     end
+    #remove_column :creations, :image
   end
 
   def down
