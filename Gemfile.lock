@@ -286,7 +286,7 @@ DEPENDENCIES
   activeadmin
   acts-as-taggable-on
   acts_as_commentable_with_threading
-  bootstrap-sass
+  bootstrap-sass (= 2.1.0.0)
   capistrano
   capistrano-ext
   capistrano-gitflow
