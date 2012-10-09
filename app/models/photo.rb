@@ -6,7 +6,7 @@ class Photo < ActiveRecord::Base
   #attr_accessor :crop_x, :crop_y, :crop_h, :crop_w
   #after_update :reprocess_image, :if => :cropping?
 
-  #after_save :enqueue
+  after_save :enqueue
 
   #def reprocess_image
     #begin
@@ -21,7 +21,6 @@ class Photo < ActiveRecord::Base
   #end
 
   def watermark
-    puts "#{creation} #{creation.watermark}"
     creation.watermark
   end
   
