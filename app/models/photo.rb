@@ -3,10 +3,11 @@ class Photo < ActiveRecord::Base
   belongs_to :creation
   validates :image,  :presence => true
   mount_uploader :image, PhotoUploader
+  process_in_background :image
   #attr_accessor :crop_x, :crop_y, :crop_h, :crop_w
   #after_update :reprocess_image, :if => :cropping?
 
-  after_save :enqueue
+  #after_save :enqueue
 
   #def reprocess_image
     #begin
