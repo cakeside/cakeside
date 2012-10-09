@@ -1,6 +1,7 @@
 class MigrateImagesToPhotos < ActiveRecord::Migration
   def up
     add_column :photos, :is_primary, :boolean
+    add_index  :photos, :is_primary
 
     Photo.all.each do |photo|
       photo.image.recreate_versions!
@@ -22,6 +23,7 @@ class MigrateImagesToPhotos < ActiveRecord::Migration
     Photo.where(:is_primary => true).each do |photo|
       photo.destroy
     end
+    remove_index  :photos, :is_primary
     remove_column :photos, :is_primary
   end
 end

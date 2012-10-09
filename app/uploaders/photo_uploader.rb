@@ -1,8 +1,8 @@
 # encoding: utf-8
-require File.join(Rails.root, "lib", "carrier_wave", "delayed_job")
+#require File.join(Rails.root, "lib", "carrier_wave", "delayed_job")
 
 class PhotoUploader < CarrierWave::Uploader::Base
-  include CarrierWave::Delayed::Job
+  #include CarrierWave::Delayed::Job
   include CarrierWave::RMagick
   include CarrierWave::MimeTypes
 
@@ -35,6 +35,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   def watermark
     return if model.watermark.blank?
+    puts "processing watermark"
     manipulate! do |image|
       gc = Magick::Draw.new
       gc.gravity = Magick::SouthEastGravity

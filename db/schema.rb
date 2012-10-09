@@ -130,6 +130,8 @@ ActiveRecord::Schema.define(:version => 20121007153155) do
     t.boolean  "is_primary"
   end
 
+  add_index "photos", ["is_primary"], :name => "index_photos_on_is_primary"
+
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
