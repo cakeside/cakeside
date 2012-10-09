@@ -1,8 +1,6 @@
 # encoding: utf-8
-#require File.join(Rails.root, "lib", "carrier_wave", "delayed_job")
 
 class PhotoUploader < CarrierWave::Uploader::Base
-  #include CarrierWave::Delayed::Job
   include CarrierWave::RMagick
   include CarrierWave::MimeTypes
   include ::CarrierWave::Backgrounder::Delay
@@ -27,7 +25,6 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   version :large do 
     process :resize_to_fit => [910, 630]
-    #process :manualcrop
     process :watermark
   end
   version :thumb, :from_version => :large do
@@ -48,12 +45,6 @@ class PhotoUploader < CarrierWave::Uploader::Base
       gc.annotate(mark, 0, 0, 25, 25, "#{model.watermark} on CakeSide.com")
       mark = mark.shade(true, 310, 30)
       image.composite!(mark, Magick::SouthEastGravity, Magick::HardLightCompositeOp)
-    end
-  end
-
-  def manualcrop
-    manipulate! do |img|
-      img = img.crop(model.crop_x.to_i, model.crop_y.to_i, model.crop_w.to_i, model.crop_h.to_i)
     end
   end
 
