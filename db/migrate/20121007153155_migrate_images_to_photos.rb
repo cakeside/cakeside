@@ -1,6 +1,8 @@
 class MigrateImagesToPhotos < ActiveRecord::Migration
   def up
-    add_column :photos, :is_primary, :boolean
+    add_column :photos, :is_primary, :boolean, :default => false
+
+    Photo.reset_column_information
     Creation.all.each_with_index do |creation, index|
       puts "#{index}. processing #{creation.name}"
       photo = creation.photos.build({:is_primary => true})

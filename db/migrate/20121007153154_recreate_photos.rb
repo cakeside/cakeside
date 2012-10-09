@@ -1,7 +1,7 @@
-class MigrateImagesToPhotos < ActiveRecord::Migration
+class RecreatePhotos < ActiveRecord::Migration
   def up
     Photo.all.each do |photo|
-      puts "recreating versions for #{photo.id}"
+      puts "recreating #{photo.id}"
       photo.image.recreate_versions!
     end
   end
