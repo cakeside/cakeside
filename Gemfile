@@ -20,6 +20,7 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 
 group :development, :test do
+  gem 'pg'
   gem 'webrat'
   gem 'rspec-rails'
   gem 'jasmine'
