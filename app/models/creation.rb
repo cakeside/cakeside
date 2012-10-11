@@ -35,12 +35,12 @@ class Creation < ActiveRecord::Base
   end
 
   def migrate_primary_image
-      puts "#{index}. processing #{name}"
+      puts "processing #{name}"
       photo = photos.build({:is_primary => true})
       photo.created_at = created_at
       photo.updated_at = updated_at
       photo.image = image.file
       photo.save!
-      puts "#{index}. migrated #{image.url} to #{photo.attributes}"
+      puts "migrated #{image.url} to #{photo.attributes}"
   end
 end
