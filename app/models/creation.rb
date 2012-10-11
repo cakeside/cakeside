@@ -1,7 +1,7 @@
 class Creation < ActiveRecord::Base
   acts_as_commentable
   validates :name,  :presence => true
-  attr_accessible :user_id, :story, :name, :category_ids, :is_restricted, :watermark
+  attr_accessible :user_id, :story, :name, :category_ids, :is_restricted, :watermark, :image
   belongs_to :user
   has_and_belongs_to_many :categories, :join_table => 'creations_categories', :uniq => true, :autosave => true
   has_many :photos, :dependent => :destroy
@@ -35,12 +35,10 @@ class Creation < ActiveRecord::Base
   end
 
   def migrate_primary_image
-      puts "processing #{name}"
       photo = photos.build({:is_primary => true})
       photo.created_at = created_at
       photo.updated_at = updated_at
       photo.image = image.file
       photo.save!
-      puts "migrated #{image.url} to #{photo.attributes}"
   end
 end
