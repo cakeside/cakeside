@@ -21,6 +21,7 @@ set :keep_releases, 3
 set :branch, "master"
 set :deploy_env, 'production'
 set :scm_verbose, true
+set :normalize_asset_timestamps, false
 
 after "deploy:setup", "rvm:install_rvm"
 before "deploy", "rvm:install_ruby"
@@ -29,6 +30,11 @@ after 'deploy:update_code', 'deploy:symlink_db'
 after "deploy:start", "delayed_job:start"
 after "deploy:stop", "delayed_job:stop"
 after "deploy:restart", "delayed_job:restart"
+after "deploy:restart", "restart_server"
+
+task :restart_server do
+    run "cd #{current_path}; touch tmp/restart.txt"
+end
 
 namespace :deploy do
   task :symlink_db, :roles => :app do
