@@ -30,15 +30,13 @@ after 'deploy:update_code', 'deploy:symlink_db'
 after "deploy:start", "delayed_job:start"
 after "deploy:stop", "delayed_job:stop"
 after "deploy:restart", "delayed_job:restart"
-after "deploy:restart", "restart_server"
-
-task :restart_server do
-    run "cd #{current_path}; touch tmp/restart.txt"
-end
 
 namespace :deploy do
   task :symlink_db, :roles => :app do
     run "ln -nfs #{release_path}/config/database.production.yml.example #{release_path}/config/database.yml"
+  end
+  task :restart, :roles => :web do
+    run "touch #{current_path}/tmp/restart.txt"
   end
 end
 namespace :delayed_job do 

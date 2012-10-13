@@ -41,4 +41,8 @@ class Creation < ActiveRecord::Base
       photo.image = image.file
       photo.save!
   end
+
+  def is_published?
+    photos.where(:is_primary => true).any?
+  end
 end
