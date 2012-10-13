@@ -3,7 +3,6 @@ class CreationsController < ApplicationController
   # GET /creations
   def index
     @creations = Creation.where(:is_restricted => false, :is_published => true).page(params[:page]).per(16)
-    #@creations = Creation.where(:is_restricted => false, :is_published => true).page(params[:page]).per(16)
   end
 
   # GET /creations/1
