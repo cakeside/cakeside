@@ -10,14 +10,6 @@ class Creation < ActiveRecord::Base
 
   default_scope order("created_at DESC")
 
-  def short_story
-    story.split[0...50].join(' ') + '...'
-  end
-
-  def is_owned_by(user)
-    @user == user
-  end
-
   def to_param
     "#{id}-#{name.gsub(/[^a-z0-9]+/i, '-')}"
   end
