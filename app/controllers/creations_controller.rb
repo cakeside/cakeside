@@ -23,10 +23,14 @@ class CreationsController < ApplicationController
 
   # POST /creations
   def create
+    logger.debug "#{Time.now} starting creation"
     @creation = current_user.creations.create(params[:creation])
     @creation.category_ids = params[:creation][:category_ids] ||= []
+    logger.debug "#{Time.now}finished updating params"
     if @creation.save
+      logger.debug "#{Time.now}finished saving"
       @creation.delay.migrate_primary_image
+      logger.debug "#{Time.now}background primary image migration"
       redirect_to(creations_url, :notice => 'Thank you for sharing your creation. It will appear in the main timeline shortly.') 
     else
       flash[:error] = @creation.errors.full_messages
