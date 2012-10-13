@@ -10,7 +10,6 @@ require 'capistrano/gitflow'
 set :application, "www.cakeside.com"
 set :deploy_via, :remote_cache
 set :user, "cakeside"
-set :password, "password"
 set :group, "rvm"
 set :use_sudo, false
 set :deploy_to, "/home/cakeside/apps/#{application}"
