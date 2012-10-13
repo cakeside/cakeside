@@ -22,10 +22,6 @@ class Creation < ActiveRecord::Base
     photos.where(:is_primary => true).first
   end
 
-  def main_image_thumb_url
-    primary_image.image.thumb.url
-  end
-
   def migrate_primary_image
       photo = photos.build({:is_primary => true})
       photo.created_at = created_at
@@ -34,7 +30,9 @@ class Creation < ActiveRecord::Base
       photo.save!
   end
 
-  def is_published?
-    photos.where(:is_primary => true).any?
+  def publish
+    if (photos.where(:is_primary => true).any?)
+      self.update_attribute(:is_published, true)
+    end
   end
 end

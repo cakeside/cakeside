@@ -9,6 +9,10 @@ class Photo < ActiveRecord::Base
     creation.watermark
   end
 
+  def processing_complete
+    creation.publish if is_primary
+  end
+
   def to_s
     "#{id} #{image}"
   end

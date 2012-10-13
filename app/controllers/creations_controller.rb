@@ -2,7 +2,8 @@ class CreationsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
   # GET /creations
   def index
-    @creations = Creation.where(:is_restricted => false).page(params[:page]).per(16)
+    @creations = Creation.where(:is_restricted => false, :is_published => true).page(params[:page]).per(16)
+    #@creations = Creation.where(:is_restricted => false, :is_published => true).page(params[:page]).per(16)
   end
 
   # GET /creations/1
@@ -27,7 +28,7 @@ class CreationsController < ApplicationController
     @creation.category_ids = params[:creation][:category_ids] ||= []
     if @creation.save
       @creation.delay.migrate_primary_image
-      redirect_to(creations_url, :notice => 'Thank you for sharing your creation.') 
+      redirect_to(creations_url, :notice => 'Thank you for sharing your creation. It will appear in the main timeline shortly.') 
     else
       flash[:error] = @creation.errors.full_messages
       render :action => "new" 
