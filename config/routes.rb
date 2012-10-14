@@ -18,6 +18,7 @@ Cake::Application.routes.draw do
     resources :favorites, :only => [:index, :create]
     resources :comments, :only => [:index, :new, :create]
   end
+  match "creations/fast_upload" => "creations#create", :as => 'fast_upload', :method => "POST"
 
   # /profiles
   resources :profiles, :only => [:index, :show]
