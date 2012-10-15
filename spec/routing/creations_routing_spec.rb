@@ -34,11 +34,5 @@ describe CreationsController do
       { :delete => "/creations/1" }.should route_to(:controller => "creations", :action => "destroy", :id => "1")
     end
 
-    it "routes to crop" do
-      get('/creations/crop/1').should route_to("creations#crop", :id => "1", :method => "GET")
-    end
-    it "routes to crop update" do
-      post('/creations/crop_update/1').should route_to("creations#crop_update", :id => "1", :method => "POST")
-    end
   end
 end

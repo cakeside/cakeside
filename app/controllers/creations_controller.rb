@@ -55,23 +55,4 @@ class CreationsController < ApplicationController
     current_user.creations.find(params[:id]).destroy
     redirect_to(creations_url) 
   end
-
-  # GET /creations/crop/1
-  def crop
-    @creation = current_user.creations.find(params[:id])
-  end
-
-  def crop_update
-    @creation = current_user.creations.find(params[:id])
-    @creation.crop_x = params[:creation]["crop_x"]
-    @creation.crop_y = params[:creation]["crop_y"]
-    @creation.crop_h = params[:creation]["crop_h"]
-    @creation.crop_w = params[:creation]["crop_w"]
-    @creation.reprocess_image
-    if @creation.save
-      redirect_to(@creation, :notice => 'Creation was successfully cropped.') 
-    else
-      render :action => "new" 
-    end
-  end
 end
