@@ -1,0 +1,19 @@
+<% content_for :javascript do %>
+  <script type="text/javascript" charset="utf-8">
+    $(function(){ });
+  </script>
+<% end %>
+<%= form_for(@photo, :html => {:multipart => true, :class => "form-horizontal"}) do |f| %>
+  <fieldset>
+    <div class="control-group">
+      <%= f.label :image, "Upload Main Image", :class => "control-label" %>
+      <div class="controls">
+        <%= f.file_field :image, :class => "input-file" %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Save changes</button>
+      <a href="<%= url_for @creation %>" class="btn">Cancel</a>
+    </div>
+  </fieldset>
+<% end %>

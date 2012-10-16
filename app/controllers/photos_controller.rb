@@ -3,6 +3,11 @@ class PhotosController < ApplicationController
   before_filter :find_creation
   before_filter :find_or_build_photo
 
+  def new
+    @photo = Photo.new
+    @creation = Creation.find(params[:creation_id])
+  end
+
   def create
     if @photo.save
       redirect_to(@creation, :notice => 'A new photo was added to the album.') 

@@ -14,7 +14,7 @@ Cake::Application.routes.draw do
 
   # /creations
   resources :creations do
-    resources :photos, :only => [:create, :destroy]
+    resources :photos, :only => [:new, :create, :destroy]
     resources :favorites, :only => [:index, :create]
     resources :comments, :only => [:index, :new, :create]
   end
