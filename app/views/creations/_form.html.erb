@@ -5,7 +5,7 @@
     });
   </script>
 <% end %>
-<%= form_for(@creation, :url => fast_upload_path, :html => {:multipart => true, :class => "form-horizontal"}) do |f| %>
+<%= form_for(@creation, :html => {:multipart => true, :class => "form-horizontal"}) do |f| %>
   <fieldset>
     <div class="control-group">
       <%= f.label :name, :class => "control-label" %>
