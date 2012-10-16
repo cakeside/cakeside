@@ -26,7 +26,7 @@ class CreationsController < ApplicationController
   def create
     @creation = current_user.creations.create(params[:creation])
     @creation.category_ids = params[:creation][:category_ids] ||= []
-    @creation.photos.build({:is_primary => true, :image => params[:creation][:image]})
+    #@creation.photos.build({:is_primary => true, :image => params[:creation][:image]})
 
     if @creation.save
       redirect_to(creations_url, :notice => 'Thank you for sharing your creation. It will appear in the main timeline shortly.') 
