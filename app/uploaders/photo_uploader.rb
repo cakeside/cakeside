@@ -4,7 +4,6 @@ class PhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
   include CarrierWave::MimeTypes
   include ::CarrierWave::Backgrounder::Delay
-  after :store, :publish_photo
 
   if Rails.env.production?
     storage :fog
@@ -61,9 +60,5 @@ class PhotoUploader < CarrierWave::Uploader::Base
     if original_filename 
       super.chomp(File.extname(super)) + '.png'
     end
-  end
-
-  def publish_photo(file)
-    model.processing_complete
   end
 end

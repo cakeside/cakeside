@@ -31,8 +31,6 @@ class Creation < ActiveRecord::Base
   end
 
   def publish
-    if (photos.where(:is_primary => true).any?)
-      self.update_attribute(:is_published, true)
-    end
+    self.update_attribute(:is_published, true)
   end
 end

@@ -13,7 +13,7 @@ describe Creation do
       Creation.find(sut.id).is_published.should == true
     end
     before(:each) do
-      sut.migrate_primary_image
+      sut.publish
     end
   end
 
