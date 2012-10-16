@@ -18,6 +18,7 @@ gem 'acts-as-taggable-on'
 gem 'newrelic_rpm'
 gem 'delayed_job_active_record'
 gem 'daemons'
+gem 'simplecov', :require => false, :group => :test
 
 group :development, :test do
   gem 'pg'

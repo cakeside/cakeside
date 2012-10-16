@@ -13,3 +13,4 @@ tags
 *.fuse*
 latest
 config/database.yml
+coverage
