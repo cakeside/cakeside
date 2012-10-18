@@ -19,41 +19,21 @@
       <% if @creation.user == current_user %>
         <%= link_to '(edit)', edit_creation_path(@creation) %> 
       <% end %>
-      submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> on <%= @creation.created_at.to_s :foomat %> with <%= link_to pluralize(@creation.favorites.length, 'fan'), creation_favorites_path(:creation_id => @creation.id)%>
+      submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> on <%= @creation.created_at.to_s :foomat %>
     </small> 
   </h1>
   <% @creation.categories.each do |category| %>
     <a href="/categories/<%= category.slug %>"><span class="label"><%= category.name %></span></a>
   <% end %> 
-
 <% end -%>
 <hr />
 <div class="row">
   <div class="span12">
     <ul class="thumbnails">
-      <li class="span6"><a class="thumbnail gallery" href="<%= @creation.primary_image.image_url(:large).to_s %>"><img src="<%= @creation.primary_image.image_url(:large).to_s %>" alt="<%= @creation.name %>" /></a></li>
-      <% @creation.photos.where(:is_primary => false).each do |photo| %>
-      <li class="span3"><a class="thumbnail gallery" href="<%= photo.image.url.to_s %>"><img src="<%= photo.image.thumb.url.to_s %>" alt="<%= @creation.name %>" /></a></li>
+      <li class="span6"><a class="thumbnail gallery" href="<%= @primary_photo.image.large.url %>"><img src="<%= @primary_photo.image.large.url %>" alt="<%= @creation.name %>" /></a></li>
+      <% @creation.photos.each do |photo| %>
+      <li class="span3"><img src="<%= photo.image.thumb.url.to_s %>" alt="<%= @creation.name %>" class="thumbnail" /></li>
       <% end %>
-      <% if @creation.user == current_user %>
-        <% if @creation.photos.length < 4 %>
-          <div class="span3 visible-desktop">
-            <h4>Add more photos to this creation</h4>
-            <% unless @creation.new_record? %>
-              <%= form_tag(creation_photos_path(@creation), :method => "post", :multipart => true, :html => {:class => ''}) do |f| %>
-                <%= fields_for Photo.new do |f| %>
-                  <div class="control-group">
-                    <div class="controls">
-                      <%= f.file_field :image, :rel => creation_photos_path(@creation) %>
-                    </div>
-                  </div>
-                  <input type="submit" class="btn primary" value="Add photo" />
-                <% end %>
-              <% end %>
-            <% end %>
-          </div>
-        <% end %>
-      <% end -%>
     </ul>
   </div>
 </div>

@@ -9,6 +9,7 @@ class CreationsController < ApplicationController
   # GET /creations/1
   def show
     @creation = Creation.find(params[:id])
+    @primary_photo = @creation.photos.first
     @profile = @creation.user
   end
 
@@ -26,10 +27,9 @@ class CreationsController < ApplicationController
   def create
     @creation = current_user.creations.create(params[:creation])
     @creation.category_ids = params[:creation][:category_ids] ||= []
-    #@creation.photos.build({:is_primary => true, :image => params[:creation][:image]})
 
     if @creation.save
-      redirect_to(creations_url, :notice => 'Thank you for sharing your creation. It will appear in the main timeline shortly.') 
+      redirect_to(new_creation_photo_url) 
     else
       flash[:error] = @creation.errors.full_messages
       render :action => "new" 
