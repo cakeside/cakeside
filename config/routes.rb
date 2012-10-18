@@ -8,7 +8,6 @@ Cake::Application.routes.draw do
   root :to => "creations#index"
 
   # /home
-  match "dashboard" => "home#index"
   match "about_us" => "home#about_us"
   match "why_cakeside" => "home#why_cakeside"
 
