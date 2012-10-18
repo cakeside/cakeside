@@ -3,7 +3,7 @@
     $(function(){ });
   </script>
 <% end %>
-<%= form_for(@photo, :html => {:multipart => true, :class => "form-horizontal"}) do |f| %>
+<%= form_for([@creation, @photo], :html => {:multipart => true, :class => "form-horizontal"}) do |f| %>
   <fieldset>
     <div class="control-group">
       <%= f.label :image, "Upload Main Image", :class => "control-label" %>

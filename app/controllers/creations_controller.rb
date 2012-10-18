@@ -28,7 +28,7 @@ class CreationsController < ApplicationController
     @creation.category_ids = params[:creation][:category_ids] ||= []
 
     if @creation.save
-      redirect_to(new_creation_photo_url) 
+      redirect_to new_creation_photo_url(@creation)
     else
       flash[:error] = @creation.errors.full_messages
       render :action => "new" 
