@@ -3,6 +3,18 @@
     $(function(){ });
   </script>
 <% end %>
+
+<div class="row">
+  <div class="span12">
+    <ul class="thumbnails">
+      <li class="span6"><a class="thumbnail gallery" href="<%= @primary_photo.image.large.url %>"><img src="<%= @primary_photo.image.large.url %>" alt="<%= @creation.name %>" /></a></li>
+      <% @creation.photos.each do |photo| %>
+      <li class="span3"><img src="<%= photo.image.thumb.url.to_s %>" alt="<%= @creation.name %>" class="thumbnail" /></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
 <%= form_for([@creation, @photo], :html => {:multipart => true, :class => "form-horizontal"}) do |f| %>
   <fieldset>
     <div class="control-group">

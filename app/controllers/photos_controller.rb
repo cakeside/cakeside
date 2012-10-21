@@ -10,7 +10,7 @@ class PhotosController < ApplicationController
 
   def create
     if @photo.save
-      redirect_to(@creation, :notice => 'A new photo was added to the album.') 
+      redirect_to new_creation_photo_url(@photo.creation, :notice => 'A new photo was added to the album.')
     else
       flash[:error] = "could not upload photo"
     end
