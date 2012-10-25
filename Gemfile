@@ -22,7 +22,7 @@ gem 'simplecov', :require => false, :group => :test
 
 group :development, :test do
   gem 'pg'
-  gem 'webrat'
+  #gem 'webrat'
   gem 'rspec-rails'
   gem 'jasmine'
   gem 'sqlite3'
