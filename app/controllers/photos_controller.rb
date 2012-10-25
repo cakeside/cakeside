@@ -16,21 +16,17 @@ class PhotosController < ApplicationController
   end
 
   def create
-    p_attr = params[:photo]
-    p_attr[:image] = params[:photo][:image].first if params[:photo][:image].class == Array
+    attributes = params[:photo]
+    attributes[:image] = params[:photo][:image].first if params[:photo][:image].class == Array
 
-    @photo = @creation.photos.build(p_attr)
+    @photo = @creation.photos.build(attributes)
     if @photo.save
       respond_to do |format|
-        format.html {
-          render :json => [@photo.to_jq_upload].to_json, :content_type => 'text/html', :layout => false
-        }
-        format.json {
-          render :json => [@photo.to_jq_upload].to_json
-        }
+        format.html { render :json => [@photo.to_jq_upload].to_json, :content_type => 'text/html', :layout => false }
+        format.json { render :json => [@photo.to_jq_upload].to_json }
       end
     else
-      render :json => [{:error => "custom_failure"}], :status => 304
+      render :json => [{:error => "oops... we're sorry but we weren't able to upload your photo."}], :status => 304
     end
   end
 
