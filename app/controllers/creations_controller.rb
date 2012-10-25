@@ -41,8 +41,9 @@ class CreationsController < ApplicationController
     @creation.category_ids = params[:creation][:category_ids] ||= []
 
     if @creation.update_attributes(params[:creation])
-      redirect_to(@creation, :notice => 'Creation was successfully updated.') 
+      redirect_to new_creation_photo_url(@creation)
     else
+      flash[:error] = @creation.errors.full_messages
       render :action => "edit" 
     end
   end

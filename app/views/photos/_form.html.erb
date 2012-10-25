@@ -16,11 +16,13 @@
 <% end %>
 
 <div>
-  <h2>Upload file</h2>
   <%= form_for [@creation, @photo], :html => { :multipart => true, :id => "fileupload"  } do |f| %>
     <div class="row fileupload-buttonbar">
-      <div class="span7">
+      <div class="span3">
         <span class="btn btn-success fileinput-button"><i class="icon-plus icon-white"></i><span>Add files...</span><%= f.file_field :image %></span>
+        <%= link_to "View", creation_path(@creation), :class => "btn" %>
+      </div>
+      <div class="span4">
         <button type="submit" class="btn btn-primary start"><i class="icon-upload icon-white"></i><span>Start upload</span></button>
         <button type="reset" class="btn btn-warning cancel"><i class="icon-ban-circle icon-white"></i><span>Cancel upload</span></button>
         <button type="button" class="btn btn-danger delete"><i class="icon-trash icon-white"></i><span>Delete</span></button>
