@@ -5,11 +5,30 @@ class Photo < ActiveRecord::Base
   mount_uploader :image, PhotoUploader
   process_in_background :image
 
-  def watermark
-    creation.watermark
+  include Rails.application.routes.url_helpers
+  def to_jq_upload
+    if image.thumb.url
+      {
+        "name" => read_attribute(:image),
+        "size" => image.size,
+        "url" => image.url,
+        "thumbnail_url" => image.thumb.url,
+        "delete_url" => id,
+        "delete_type" => "DELETE"
+      }
+    else
+      {
+        "name" => read_attribute(:image),
+        "size" => image.size,
+        "url" => image.url,
+        "thumbnail_url" => image.url,
+        "delete_url" => id,
+        "delete_type" => "DELETE"
+      }
+    end
   end
 
-  def to_s
-    "#{id} #{image}"
+  def watermark
+    creation.watermark
   end
 end
