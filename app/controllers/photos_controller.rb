@@ -1,26 +1,45 @@
 class PhotosController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_creation
-  before_filter :find_or_build_photo
+  #before_filter :find_or_build_photo
+
+  def index
+    @photos = @creation.photos
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @photos.map { |p| p.to_jq_upload } }
+    end
+  end
 
   def new
     @photo = Photo.new
-    @creation = Creation.find(params[:creation_id])
   end
 
   def create
+    p_attr = params[:photo]
+    p_attr[:image] = params[:photo][:image].first if params[:photo][:image].class == Array
+
+    @photo = @creation.photos.build(p_attr)
     if @photo.save
-      redirect_to new_creation_photo_url(@photo.creation, :notice => 'A new photo was added to the album.')
+      respond_to do |format|
+        format.html {
+          render :json => [@photo.to_jq_upload].to_json, :content_type => 'text/html', :layout => false
+        }
+        format.json {
+          render :json => [@photo.to_jq_upload].to_json
+        }
+      end
     else
-      flash[:error] = "could not upload photo"
+      render :json => [{:error => "custom_failure"}], :status => 304
     end
   end
 
   def destroy
+    @photo = @creation.photos.find(params[:id])
     if @photo.destroy
-      redirect_to(@creation, :notice => 'A new photo was added to the album.') 
+      render :json => [@photo.to_jq_upload].to_json
     else
-      flash[:error] = "photo could not be deleted"
+      render :json => [{:error => "could not remove the photo"}], :status => 304
     end
   end
 
@@ -30,7 +49,7 @@ class PhotosController < ApplicationController
     raise ActiveRecord::RecordNotFound unless @creation
   end
 
-  def find_or_build_photo
-    @photo = params[:id] ? @creation.photos.find(params[:id]) : @creation.photos.build(params[:photo])
-  end
+  #def find_or_build_photo
+    #@photo = params[:id] ? @creation.photos.find(params[:id]) : @creation.photos.build(params[:photo])
+  #end
 end
