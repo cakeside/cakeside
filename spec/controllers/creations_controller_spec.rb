@@ -77,7 +77,7 @@ describe CreationsController do
       end
 
       it "redirects to the creation" do
-        response.should redirect_to("/creations/#{creation.id}-params")
+        response.should redirect_to("/creations/#{creation.id}-params/photos/new")
       end
     end
 
