@@ -18,6 +18,7 @@
     <small>
       <% if @creation.user == current_user %>
         <%= link_to '(edit)', edit_creation_path(@creation) %> 
+        <%= link_to 'DELETE', creation_path(@creation),:confirm => "Are you sure you want to permanently remove this creation?", :method => :delete, :class => 'btn btn-danger' %>
       <% end %>
       submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> on <%= @creation.created_at.to_s :foomat %>
     </small> 
@@ -28,11 +29,16 @@
 <% end -%>
 <hr />
 <div class="row">
+  <% if @creation.user == current_user %>
+  <div class="span3 offset9">
+    <a href="<%= url_for new_creation_photo_path(@creation) %>" class="btn btn-info">Add another photo of this creation</a>
+  </div>
+  <% end %>
   <div class="span12">
     <ul class="thumbnails">
       <li class="span6"><a class="thumbnail gallery" href="<%= @primary_photo.image.large.url %>"><img src="<%= @primary_photo.image.large.url %>" alt="<%= @creation.name %>" /></a></li>
       <% @creation.photos.each do |photo| %>
-      <li class="span3"><img src="<%= photo.image.thumb.url.to_s %>" alt="<%= @creation.name %>" class="thumbnail" /></li>
+        <li class="span3"><a class="thumbnail gallery" href="<%= photo.image.large.url %>"><img src="<%= photo.image.thumb.url.to_s %>" alt="<%= @creation.name %>" class="thumbnail" /></a></li>
       <% end %>
     </ul>
   </div>

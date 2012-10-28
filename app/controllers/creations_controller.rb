@@ -8,8 +8,7 @@ class CreationsController < ApplicationController
   # GET /creations/1
   def show
     @creation = Creation.find(params[:id])
-    @primary_photo = @creation.photos.first
-    @profile = @creation.user
+    @primary_photo = @creation.primary_image
   end
 
   # GET /creations/new

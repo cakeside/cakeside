@@ -20,12 +20,11 @@
     <div class="row fileupload-buttonbar">
       <div class="span7">
         <span class="btn btn-success fileinput-button"><i class="icon-plus icon-white"></i><span>Add files...</span><%= f.file_field :image %></span>
-        <%= link_to "View", creation_path(@creation), :class => "btn" %>
       </div>
       <div class="span5">
-        <button type="submit" class="btn btn-primary start"><i class="icon-upload icon-white"></i><span>Start upload</span></button>
-        <button type="reset" class="btn btn-warning cancel"><i class="icon-ban-circle icon-white"></i><span>Cancel upload</span></button>
-        <button type="button" class="btn btn-danger delete"><i class="icon-trash icon-white"></i><span>Delete</span></button>
+        <button type="submit" class="btn btn-primary start"><i class="icon-upload icon-white"></i><span> Start upload</span></button>
+        <button type="reset" class="btn btn-warning cancel"><i class="icon-ban-circle icon-white"></i><span> Cancel upload</span></button>
+        <button type="button" class="btn btn-danger delete"><i class="icon-trash icon-white"></i><span> Delete</span></button>
         <input type="checkbox" class="toggle">
       </div>
     </div>
@@ -38,6 +37,13 @@
     <br>
     <table class="table table-striped"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody></table>
   <% end %>
+</div>
+<div class="row">
+  <div class="form-actions">
+    <div class="span3 offset9">
+      <%= link_to "DONE", creation_path(@creation), :class => "btn" %>
+    </div>
+  </div>
 </div>
 
 <!-- The template to display files available for upload -->

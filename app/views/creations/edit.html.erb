@@ -11,41 +11,7 @@
       </div>
     </div>
   </div>
-  <div class="span6">
+  <div class="span9">
     <%= render 'form' %>
-    <ul class="thumbnails">
-      <% @creation.photos.each do |photo| %>
-        <li>
-          <div class="thumbnail">
-            <%= image_tag photo.image_url(:thumb) %>
-            <div class="caption">
-              <p><%= link_to "Delete", creation_photo_path(@creation, photo), :class => 'btn btn-danger', :method => :delete, :confirm => "Are you sure?" %></p>
-            </div>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-  <div class="span3">
-    <ul class="thumbnails">
-      <li>
-      <a href="<%= url_for creation_path(@creation) %>">
-        <%= image_tag @creation.image_url.to_s, :class => "thumbnail", :style => "width:235px;" %>
-      </a>
-      </li>
-    </ul>
-    <p>Second thoughts? <%= link_to 'Delete', creation_path(@creation),:confirm => "Are you sure", :method => :delete, :class => 'btn btn-danger' %> </p>
-    <hr />
-    <% if @creation.photos.length < 4 %>
-      <h3>Add another photo</h3>
-      <% unless @creation.new_record? %>
-        <%= form_tag(creation_photos_path(@creation), :method => "post", :multipart => true) do |f| %>
-          <%= fields_for Photo.new do |f| %>
-            <%= f.file_field :image, :rel => creation_photos_path(@creation) %>
-            <input type="submit" class="btn primary" value="Add photo" />
-          <% end %>
-        <% end %>
-      <% end %>
-    <% end %>
   </div>
 </div>
