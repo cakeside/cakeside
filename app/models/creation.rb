@@ -21,7 +21,11 @@ class Creation < ActiveRecord::Base
   end
 
   def primary_image
-    photos.where(:is_primary => true).first
+    if photos.any?
+      photos.where(:is_primary => true).first
+    else
+      Photo.new
+    end
   end
 
   def migrate_primary_image

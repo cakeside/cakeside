@@ -18,6 +18,7 @@ class PhotosController < ApplicationController
   def create
     attributes = params[:photo]
     attributes[:image] = params[:photo][:image].first if params[:photo][:image].class == Array
+    attributes[:is_primary] = !@creation.photos.any?
 
     @photo = @creation.photos.build(attributes)
     if @photo.save
