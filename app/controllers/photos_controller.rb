@@ -22,6 +22,7 @@ class PhotosController < ApplicationController
 
     @photo = @creation.photos.build(attributes)
     if @photo.save
+      @creation.delay.publish
       respond_to do |format|
         format.html { render :json => [@photo.to_jq_upload].to_json, :content_type => 'text/html', :layout => false }
         format.json { render :json => [@photo.to_jq_upload].to_json }

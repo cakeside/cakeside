@@ -38,5 +38,6 @@ class Creation < ActiveRecord::Base
 
   def publish
     self.update_attribute(:is_published, true)
+    self.save!
   end
 end
