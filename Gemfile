@@ -41,6 +41,7 @@ group :test do
   gem 'fakes-rspec'
   gem 'guard-spork'
   gem 'spork'
+  gem 'rb-readline'
 end
 group :production do
   gem 'pg'
