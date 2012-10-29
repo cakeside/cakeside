@@ -4,7 +4,7 @@
 <% end -%>
 <div class="row">
   <div class="span3">
-    <a class="thumbnail" href="<%= url_for creation_path(@creation) %>"><img src="<%= @creation.image_url(:thumb).to_s %>" alt="<%= @creation.name %>" /></a>
+    <a class="thumbnail" href="<%= url_for creation_path(@creation) %>"><img src="<%= @creation.primary_image.image.thumb.url %>" alt="<%= @creation.name %>" /></a>
   </div>
   <div class="span9">
     <ul class="thumbnails">
