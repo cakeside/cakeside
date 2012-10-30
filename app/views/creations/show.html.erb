@@ -31,14 +31,14 @@
 <div class="row">
   <% if @creation.user == current_user %>
   <div class="span3 offset9">
-    <a href="<%= url_for new_creation_photo_path(@creation) %>" class="btn btn-info">Add another photo of this creation</a>
+    <a href="<%= url_for new_creation_photo_path(@creation) %>" class="btn btn-info">Add images to this creation</a>
   </div>
   <% end %>
   <div class="span12">
     <ul class="thumbnails">
       <li class="span6"><a class="thumbnail gallery" href="<%= @primary_photo.image.large.url %>"><img src="<%= @primary_photo.image.large.url %>" alt="<%= @creation.name %>" /></a></li>
       <% @creation.photos.each do |photo| %>
-        <li class="span3"><a class="thumbnail gallery" href="<%= photo.image.large.url %>"><img src="<%= photo.image.thumb.url.to_s %>" alt="<%= @creation.name %>" class="thumbnail" /></a></li>
+        <li class="span3"><a class="thumbnail gallery" href="<%= photo.image.large.url %>"><img src="<%= photo.image.thumb.url.to_s %>" alt="<%= @creation.name %>" /></a></li>
       <% end %>
     </ul>
   </div>
