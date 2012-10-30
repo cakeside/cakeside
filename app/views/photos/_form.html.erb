@@ -1,7 +1,19 @@
 <% content_for :javascript do %>
 <script type="text/javascript" charset="utf-8">
   $(function () {
-    $('#fileupload').fileupload({autoUpload:true});
+    $('#fileupload').fileupload({autoUpload:true, acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i });
+    $('#fileupload').bind('fileuploaddestroyed', function(e,data){
+      var hasAtLeastOneImage = $('.template-download').length > 0;
+      if(hasAtLeastOneImage){
+        $('#done-button').removeAttr('disabled');
+      }
+      else{
+        $('#done-button').attr('disabled', 'disabled');
+      }
+    });
+    $('#fileupload').bind('fileuploadcompleted', function(e,data){
+      $('#done-button').removeAttr('disabled');
+    });
     $('#fileupload').fileupload( 'option', 'redirect', window.location.href.replace( /\/[^\/]*$/, '/cors/result.html?%s'));
     $('#fileupload').each(function () {
       var that = this;
@@ -32,7 +44,7 @@
 <div class="row">
   <div class="form-actions">
     <div class="span3 offset9">
-      <%= link_to "DONE", creation_path(@creation), :class => "btn" %>
+      <%= link_to "DONE", creation_path(@creation), :class => "btn", id: "done-button", disabled: "disabled" %>
     </div>
   </div>
 </div>
