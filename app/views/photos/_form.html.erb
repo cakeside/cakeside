@@ -44,7 +44,7 @@
 <div class="row">
   <div class="form-actions">
     <div class="span3 offset9">
-      <%= link_to "DONE", creation_path(@creation), :class => "btn", id: "done-button", disabled: "disabled" %>
+      <%= link_to "DONE", creation_path(@creation), :class => "btn btn-primary", id: "done-button", disabled: "disabled" %>
     </div>
   </div>
 </div>
@@ -91,7 +91,7 @@
             <td class="error" colspan="2"><span class="label label-important">Error</span> {%=file.error%}</td>
         {% } else { %}
             <td class="preview">{% if (file.thumbnail_url) { %}
-                <a href="{%=file.url%}" title="{%=file.name%}" rel="gallery" download="{%=file.name%}"><img src="{%=file.thumbnail_url%}" style="width:260px;height:180px;"></a>
+                <img src="{%=file.thumbnail_url%}" style="width:260px;height:180px;">
             {% } %}</td>
             <td class="name">
                 <a href="{%=file.url%}" title="{%=file.name%}" rel="{%=file.thumbnail_url&&'gallery'%}" download="{%=file.name%}">{%=file.name%}</a>
