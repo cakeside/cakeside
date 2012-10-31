@@ -1,7 +1,19 @@
 <% content_for :javascript do %>
 <script type="text/javascript" charset="utf-8">
   $(function () {
-    $('#fileupload').fileupload();
+    $('#fileupload').fileupload({autoUpload:true, acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i });
+    $('#fileupload').bind('fileuploaddestroyed', function(e,data){
+      var hasAtLeastOneImage = $('.template-download').length > 0;
+      if(hasAtLeastOneImage){
+        $('#done-button').removeAttr('disabled');
+      }
+      else{
+        $('#done-button').attr('disabled', 'disabled');
+      }
+    });
+    $('#fileupload').bind('fileuploadcompleted', function(e,data){
+      $('#done-button').removeAttr('disabled');
+    });
     $('#fileupload').fileupload( 'option', 'redirect', window.location.href.replace( /\/[^\/]*$/, '/cors/result.html?%s'));
     $('#fileupload').each(function () {
       var that = this;
@@ -14,23 +26,14 @@
   });
 </script>
 <% end %>
-
 <div>
   <%= form_for [@creation, @photo], :html => { :multipart => true, :id => "fileupload"  } do |f| %>
     <div class="row fileupload-buttonbar">
-      <div class="span7">
-        <span class="btn btn-success fileinput-button"><i class="icon-plus icon-white"></i><span>Add files...</span><%= f.file_field :image %></span>
-      </div>
-      <div class="span5">
-        <button type="submit" class="btn btn-primary start"><i class="icon-upload icon-white"></i><span> Start upload</span></button>
-        <button type="reset" class="btn btn-warning cancel"><i class="icon-ban-circle icon-white"></i><span> Cancel upload</span></button>
-        <button type="button" class="btn btn-danger delete"><i class="icon-trash icon-white"></i><span> Delete</span></button>
-        <input type="checkbox" class="toggle">
-      </div>
-    </div>
-    <div class="row">
-      <div class="span12">
+      <div class="span10">
         <div class="progress progress-success progress-striped active fade"><div class="bar" style="width:0%;"></div></div>
+      </div>
+      <div class="span2">
+        <span class="btn btn-success fileinput-button"><i class="icon-plus icon-white"></i><span> Add image...</span><%= f.file_field :image %></span>
       </div>
     </div>
     <div class="fileupload-loading"></div>
@@ -41,7 +44,7 @@
 <div class="row">
   <div class="form-actions">
     <div class="span3 offset9">
-      <%= link_to "DONE", creation_path(@creation), :class => "btn" %>
+      <%= link_to "DONE", creation_path(@creation), :class => "btn btn-primary", id: "done-button", disabled: "disabled" %>
     </div>
   </div>
 </div>
@@ -88,7 +91,7 @@
             <td class="error" colspan="2"><span class="label label-important">Error</span> {%=file.error%}</td>
         {% } else { %}
             <td class="preview">{% if (file.thumbnail_url) { %}
-                <a href="{%=file.url%}" title="{%=file.name%}" rel="gallery" download="{%=file.name%}"><img src="{%=file.thumbnail_url%}" style="width:260px;height:180px;"></a>
+                <img src="{%=file.thumbnail_url%}" style="width:260px;height:180px;">
             {% } %}</td>
             <td class="name">
                 <a href="{%=file.url%}" title="{%=file.name%}" rel="{%=file.thumbnail_url&&'gallery'%}" download="{%=file.name%}">{%=file.name%}</a>
@@ -99,11 +102,9 @@
         <td class="delete">
             <button class="btn btn-danger" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}">
                 <i class="icon-trash icon-white"></i>
-                <span>Delete</span>
+                <span>REMOVE</span>
             </button>
-            <input type="checkbox" name="delete" value="1">
         </td>
     </tr>
 {% } %}
 </script>
-

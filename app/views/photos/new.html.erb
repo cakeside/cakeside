@@ -1,7 +1,21 @@
-<% provide(:title, "upload photo") -%>
+<% provide(:title, "Upload Images") -%>
 <% content_for :page_header do -%>
-  <h1>Upload Photos</h1>
+  <% if(@creation.is_restricted) -%>
+    <div style="float:right;">
+      <%= image_tag "ratedr.jpg", :class => "span1" %>
+    </div>
+  <% end -%>
+  <h1> <%= @creation.name %> <small> submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> on <%= @creation.created_at.to_s :foomat %> </small> </h1>
+  <% @creation.categories.each do |category| %>
+    <a href="/categories/<%= category.slug %>"><span class="label"><%= category.name %></span></a>
+  <% end %> 
 <% end -%>
+<div class="row">
+  <div class="span12">
+    <hr />
+    <p><%= @creation.story %></p>
+  </div>
+</div>
 <div class="row">
   <div class="span12">
     <%= render 'form' %>
