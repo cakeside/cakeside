@@ -29,11 +29,11 @@
 <div>
   <%= form_for [@creation, @photo], :html => { :multipart => true, :id => "fileupload"  } do |f| %>
     <div class="row fileupload-buttonbar">
+      <div class="span2">
+        <span class="btn btn-success fileinput-button"><i class="icon-plus icon-white"></i><span> Add image... </span><%= f.file_field :image %></span>
+      </div>
       <div class="span10">
         <div class="progress progress-success progress-striped active fade"><div class="bar" style="width:0%;"></div></div>
-      </div>
-      <div class="span2">
-        <span class="btn btn-success fileinput-button"><i class="icon-plus icon-white"></i><span> Add image...</span><%= f.file_field :image %></span>
       </div>
     </div>
     <div class="fileupload-loading"></div>
@@ -102,7 +102,7 @@
         <td class="delete">
             <button class="btn btn-danger" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}">
                 <i class="icon-trash icon-white"></i>
-                <span>REMOVE</span>
+                <span>Remove</span>
             </button>
         </td>
     </tr>

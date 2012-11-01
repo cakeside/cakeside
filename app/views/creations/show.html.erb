@@ -16,10 +16,6 @@
   <h1>
     <%= @creation.name %> 
     <small>
-      <% if @creation.user == current_user %>
-        <%= link_to '(edit)', edit_creation_path(@creation) %> 
-        <%= link_to 'DELETE', creation_path(@creation),:confirm => "Are you sure you want to permanently remove this creation?", :method => :delete, :class => 'btn btn-danger' %>
-      <% end %>
       submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> on <%= @creation.created_at.to_s :foomat %>
     </small> 
   </h1>
@@ -30,9 +26,14 @@
 <hr />
 <% if @creation.user == current_user %>
  <div class="row" style="padding-bottom: 10px;">
-  <div class="span3 offset9">
-    <a href="<%= url_for new_creation_photo_path(@creation) %>" class="btn btn-info">Add images to this creation</a>
-  </div>
+  <div class="span12">
+
+      <% if @creation.user == current_user %>
+        <%= link_to '<i class="icon-edit"></i> <strong>Edit creation</strong>'.html_safe, edit_creation_path(@creation), :class => 'btn' %> 
+        <a class="btn" href="<%= url_for new_creation_photo_path(@creation) %>"><i class="icon-plus"></i> <strong>Add images to this creation</strong></a>
+        <%= link_to '<i class="icon-white icon-remove"></i> <strong>Delete</strong>'.html_safe, creation_path(@creation),:confirm => "Are you sure you want to permanently remove this creation?", :method => :delete, :class => 'btn btn-danger' %>
+      <% end %>
+</div>  
  </div>
   <% end %>
 <div class="row">

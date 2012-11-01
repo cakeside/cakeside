@@ -1,21 +1,14 @@
-<% provide(:title, "Upload Images") -%>
+<% provide(:title, "Upload images for this creation") -%>
 <% content_for :page_header do -%>
   <% if(@creation.is_restricted) -%>
     <div style="float:right;">
       <%= image_tag "ratedr.jpg", :class => "span1" %>
     </div>
   <% end -%>
-  <h1> <%= @creation.name %> <small> submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> on <%= @creation.created_at.to_s :foomat %> </small> </h1>
-  <% @creation.categories.each do |category| %>
-    <a href="/categories/<%= category.slug %>"><span class="label"><%= category.name %></span></a>
-  <% end %> 
+  <h1>Upload images for this creation<small> (Step 2 of 2)</small></h1>
+ <h3>Creation name: <small><%= @creation.name %></small></h3>
+ <hr>
 <% end -%>
-<div class="row">
-  <div class="span12">
-    <hr />
-    <p><%= @creation.story %></p>
-  </div>
-</div>
 <div class="row">
   <div class="span12">
     <%= render 'form' %>
