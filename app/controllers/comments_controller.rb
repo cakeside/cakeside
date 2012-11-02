@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    comment = command_for(CommentOnCreationCommand).run(params)
+    comment = resolve(CommentOnCreationCommand).run(params)
     redirect_to comment.commentable, :notice => 'Nice Comment!'
   end
 end

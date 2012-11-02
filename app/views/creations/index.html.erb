@@ -1,8 +1,10 @@
 <% provide(:description, "CakeSide is a free site to share your cake creations and ideas with other cake fanatics like yourself") -%>
+<% content_for(:page_header) do %>
+  <h1>Recently added cake creations</h1>
+<% end %>
 <% unless user_signed_in?  -%>
   <div class="row">
     <div class="span6">
-      <h1>Recently added cake creations</h1>
       <div id="slideshow" class="carousel slide">
         <div class="carousel-inner">
           <% @creations.each_with_index do |creation, index| %>
