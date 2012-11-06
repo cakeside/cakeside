@@ -2,18 +2,6 @@
 <script type="text/javascript" charset="utf-8">
   $(function () {
     $('#fileupload').fileupload({autoUpload:true, acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i });
-    $('#fileupload').bind('fileuploaddestroyed', function(e,data){
-      var hasAtLeastOneImage = $('.template-download').length > 0;
-      if(hasAtLeastOneImage){
-        $('#done-button').removeAttr('disabled');
-      }
-      else{
-        $('#done-button').attr('disabled', 'disabled');
-      }
-    });
-    $('#fileupload').bind('fileuploadcompleted', function(e,data){
-      $('#done-button').removeAttr('disabled');
-    });
     $('#fileupload').fileupload( 'option', 'redirect', window.location.href.replace( /\/[^\/]*$/, '/cors/result.html?%s'));
     $('#fileupload').each(function () {
       var that = this;
@@ -32,21 +20,17 @@
       <div class="span2">
         <span class="btn btn-success fileinput-button"><i class="icon-plus icon-white"></i><span> Add image... </span><%= f.file_field :image %></span>
       </div>
-      <div class="span10">
+      <div class="span8">
         <div class="progress progress-success progress-striped active fade"><div class="bar" style="width:0%;"></div></div>
+      </div>
+      <div class="span2">
+        <%= link_to "DONE", creation_path(@creation), :class => "btn btn-primary" %>
       </div>
     </div>
     <div class="fileupload-loading"></div>
     <br>
     <table class="table table-striped"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody></table>
   <% end %>
-</div>
-<div class="row">
-  <div class="form-actions">
-    <div class="span3 offset9">
-      <%= link_to "DONE", creation_path(@creation), :class => "btn btn-primary", id: "done-button", disabled: "disabled" %>
-    </div>
-  </div>
 </div>
 
 <!-- The template to display files available for upload -->
