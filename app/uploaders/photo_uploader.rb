@@ -61,4 +61,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
       super.chomp(File.extname(super)) + '.png'
     end
   end
+  def default_url
+   "/assets/fallback/" + [version_name, "default.png"].compact.join('_') 
+  end
 end

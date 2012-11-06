@@ -12,6 +12,9 @@ cupcake_promote.png: cupcake_promote-b2fc6aa8716b5b4794cfef24299f8264.png
 cupcake_share.png: cupcake_share-5a0f175d06ce3bd85774feb4697bb450.png
 f_logo_16x16x32.png: f_logo_16x16x32-97848b8f46b946e956b584876378a0df.png
 facebook.png: facebook-84d3bbf0b8c3e023823f20e77395f597.png
+fallback/default.png: fallback/default-d33764ac1162d608bea5c4beea0a7c58.png
+fallback/large_default.png: fallback/large_default-d33764ac1162d608bea5c4beea0a7c58.png
+fallback/thumb_default.png: fallback/thumb_default-d33764ac1162d608bea5c4beea0a7c58.png
 favicon.ico: favicon-83d0a0befcc312f540b641a62e6cfb57.ico
 favorite_16x16.png: favorite_16x16-f1ae30ad595afe30f02dce67d51a25ce.png
 glyphicons-halflings-white.png: glyphicons-halflings-white-ef3d5b8d6a297804352b4a46fdb5466d.png
