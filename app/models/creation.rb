@@ -40,4 +40,12 @@ class Creation < ActiveRecord::Base
     self.update_attribute(:is_published, true)
     self.save!
   end
+
+  def published?
+    photos.count > 0
+  end
+
+  def is_safe_for_children?
+    :is_published == false
+  end
 end
