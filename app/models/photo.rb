@@ -7,7 +7,7 @@ class Photo < ActiveRecord::Base
 
   include Rails.application.routes.url_helpers
   def to_jq_upload
-    if image.thumb.url
+    if image.thumb.url && image.thumb.url != image.thumb.default_url
       {
         "name" => read_attribute(:image),
         "size" => image.size,
