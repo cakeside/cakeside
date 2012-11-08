@@ -28,14 +28,6 @@ class Creation < ActiveRecord::Base
     end
   end
 
-  def migrate_primary_image
-      photo = photos.build({})
-      photo.created_at = created_at
-      photo.updated_at = updated_at
-      photo.image = image.file
-      photo.save!
-  end
-
   def published?
     photos.count > 0
   end

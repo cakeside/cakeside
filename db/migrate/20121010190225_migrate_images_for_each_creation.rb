@@ -1,9 +1,19 @@
+class MigratePrimaryImage < Struct.new(:creation_id)
+  def perform
+    creation = Creation.find(creation_id)
+    photo = creation.photos.build({})
+    photo.created_at = creation.created_at
+    photo.updated_at = creation.updated_at
+    photo.image = creation.image.file
+    photo.save!
+  end
+end
+
 class MigrateImagesForEachCreation < ActiveRecord::Migration
   def up
     Creation.all.each_with_index do |creation, index|
-      creation.delay.migrate_primary_image
+      Delayed::Job.enqueue MigratePrimaryImage.new(creation.id)
     end
-    #remove_column :creations, :image
   end
 
   def down
