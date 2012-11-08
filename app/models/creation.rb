@@ -22,14 +22,14 @@ class Creation < ActiveRecord::Base
 
   def primary_image
     if photos.any?
-      photos.where(:is_primary => true).first
+      photos.first
     else
       Photo.new
     end
   end
 
   def migrate_primary_image
-      photo = photos.build({:is_primary => true})
+      photo = photos.build({})
       photo.created_at = created_at
       photo.updated_at = updated_at
       photo.image = image.file

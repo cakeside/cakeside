@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013031725) do
+ActiveRecord::Schema.define(:version => 20121108031631) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -128,10 +128,7 @@ ActiveRecord::Schema.define(:version => 20121013031725) do
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_primary",  :default => false
   end
-
-  add_index "photos", ["is_primary"], :name => "index_photos_on_is_primary"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

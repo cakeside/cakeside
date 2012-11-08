@@ -4,7 +4,7 @@ describe "Creations" do
   describe "GET /creations" do
     before(:each) do
       creation = FactoryGirl.create(:creation) do |c|
-        c.photos.create(:image => File.new(File.join( Rails.root, 'spec/fixtures/images/example.png')), :is_primary => true)
+        c.add_photo(File.new(File.join( Rails.root, 'spec/fixtures/images/example.png')))
         c.user = FactoryGirl.create(:user)
       end
       creation.save!
