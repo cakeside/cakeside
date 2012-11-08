@@ -4,5 +4,6 @@ class RemoveIsPrimaryFromPhotos < ActiveRecord::Migration
   end
 
   def down
+    add_column :photos, :is_primary, :boolean, :default => false
   end
 end
