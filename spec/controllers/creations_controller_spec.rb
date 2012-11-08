@@ -13,7 +13,11 @@ describe CreationsController do
   describe "GET index" do
     it "assigns all creations as @creations" do
       get :index
-      assigns(:creations).should eq([creation])
+      creation = assigns(:creations).first
+      creation.id.should == creation.id
+      creation.name.should == creation.name
+      creation.story.should == creation.story
+      creation.user.should == creation.user
     end
   end
 

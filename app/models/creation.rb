@@ -12,6 +12,7 @@ class Creation < ActiveRecord::Base
 
   default_scope order("created_at DESC")
 
+  # to be removed and moved to the DisplayCreationDTO
   def to_param
     "#{id}-#{name.gsub(/[^a-z0-9]+/i, '-')}"
   end
