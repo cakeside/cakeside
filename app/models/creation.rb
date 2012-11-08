@@ -46,6 +46,10 @@ class Creation < ActiveRecord::Base
   end
 
   def is_safe_for_children?
-    :is_published == false
+    is_restricted == false
+  end
+
+  def add_photo(photo)
+    photos.create({:image => photo})
   end
 end

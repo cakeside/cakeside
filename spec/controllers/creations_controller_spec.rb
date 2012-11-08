@@ -4,8 +4,10 @@ describe CreationsController do
   let(:user){ FactoryGirl.create(:user) }
   let(:creation){ FactoryGirl.create(:creation, :user => user, :is_published => true) }
 
-  before (:each) do
+  before(:each) do
     http_login(user)
+    photo = File.new(File.join( Rails.root, 'spec/fixtures/images/example.png')) 
+    creation.add_photo(photo)
   end
 
   describe "GET index" do
