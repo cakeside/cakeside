@@ -36,11 +36,6 @@ class Creation < ActiveRecord::Base
       photo.save!
   end
 
-  def publish
-    self.update_attribute(:is_published, true)
-    self.save!
-  end
-
   def published?
     photos.count > 0
   end

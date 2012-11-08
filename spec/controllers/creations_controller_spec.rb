@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe CreationsController do
   let(:user){ FactoryGirl.create(:user) }
-  let(:creation){ FactoryGirl.create(:creation, :user => user, :is_published => true) }
+  let(:creation){ FactoryGirl.create(:creation, :user => user) }
 
   before(:each) do
     http_login(user)
