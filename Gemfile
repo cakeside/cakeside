@@ -33,6 +33,7 @@ group :development, :test do
   gem 'capistrano-gitflow'
   gem 'guard-rspec'
   gem 'guard-livereload'
+  #gem 'rubber'
 end
 group :test do
   gem 'rspec-rails'
