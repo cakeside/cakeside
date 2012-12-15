@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+source /usr/local/rvm/environments/ruby-1.9.3-p194@cakeside
+
+cd /home/cakeside/apps/www.cakeside.com/current/
+script/delayed_job restart
