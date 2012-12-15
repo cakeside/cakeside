@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
 # example crontab entry
+# RAILS_ENV=production
+# SHELL=/usr/local/rvm/bin/rvm-shell
 # 0 * * * * /home/cakeside/apps/www.cakeside.com/current/script/restart_delayed_job >> /home/cakeside/apps/www.cakeside.com/current/log/cron.log 2>&1
-
 source /usr/local/rvm/environments/ruby-1.9.3-p194@cakeside
 
 cd /home/cakeside/apps/www.cakeside.com/current/
