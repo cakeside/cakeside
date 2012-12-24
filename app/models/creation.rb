@@ -7,9 +7,6 @@ class Creation < ActiveRecord::Base
   has_many :photos, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
 
-  # to be removed after migration
-  mount_uploader :image, ImageUploader
-
   default_scope order("created_at DESC")
 
   # to be removed and moved to the DisplayCreationDTO
