@@ -32,6 +32,7 @@ after "deploy:restart", "delayed_job:restart"
 
 namespace :deploy do
   task :symlink_db, :roles => :app do
+    run "chmod +x #{release_path}/script/restart_delayed_job"
     run "ln -nfs #{release_path}/config/database.production.yml.example #{release_path}/config/database.yml"
   end
   task :restart, :roles => :web do

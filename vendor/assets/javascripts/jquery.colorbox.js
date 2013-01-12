@@ -34,7 +34,7 @@
 		next: "next",
 		close: "close",
 		xhrError: "This content failed to load.",
-		imgError: "This image failed to load.",
+		imgError: "Please wait a minute for image to be processed.",
 
 		open: false,
 		returnFocus: true,
