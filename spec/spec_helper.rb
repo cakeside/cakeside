@@ -20,6 +20,11 @@ Spork.prefork do
     config.infer_base_class_for_anonymous_controllers = false
     config.include DeviseHelper, :type => :controller
   end
+  module ::RSpec::Core
+    class ExampleGroup
+      include Capybara::DSL
+    end
+  end
 end
 
 Spork.each_run do
