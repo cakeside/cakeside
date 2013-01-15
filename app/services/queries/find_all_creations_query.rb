@@ -4,7 +4,8 @@ class FindAllCreationsQuery
     @mapper = mapper
   end
   def fetch(params)
-    make_pageable(find_creations.map {|c| @mapper.map_from(c) }, params[:page])
+    Creation.page(params[:page]).per(16)
+    #make_pageable(find_creations.map {|c| @mapper.map_from(c) }, params[:page])
   end
 
   private
