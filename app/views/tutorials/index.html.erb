@@ -13,7 +13,10 @@
 </script>
 <% end -%>
 <% content_for :page_header do -%>
-  <%= link_to 'Add Tutorial', new_tutorial_path, :class => "btn btn-primary" %>
+  <%= link_to 'Add Tutorial', new_tutorial_path, :class => "btn btn-primary pull-right" %>
+  <% Tutorial.tag_counts.each do |tag| %>
+    <a href="?tags=<%= tag.name %>"><span class="label"><%= tag.name %></span></a>
+  <% end %>
 <% end -%>
 <div id="tutorials-div" class="row">
   <div class="span12">
