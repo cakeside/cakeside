@@ -15,9 +15,7 @@
   <% end -%>
   <h1>
     <%= @creation.name %> 
-    <small>
-      submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> on <%= @creation.created_at.to_s :foomat %>
-    </small> 
+    <small> submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> on <%= @creation.created_at.to_s :foomat %> </small> 
   </h1>
   <% @creation.categories.each do |category| %>
     <a href="/categories/<%= category.slug %>"><span class="label"><%= category.name %></span></a>
@@ -25,27 +23,32 @@
 <% end -%>
 <hr />
 <% if @creation.user == current_user %>
- <div class="row" style="padding-bottom: 10px;">
-  <div class="span12">
-
+  <div class="row" style="padding-bottom: 10px;">
+    <div class="span12">
       <% if @creation.user == current_user %>
         <%= link_to '<i class="icon-edit"></i> <strong>Edit creation</strong>'.html_safe, edit_creation_path(@creation), :class => 'btn' %> 
         <a class="btn" href="<%= url_for new_creation_photo_path(@creation) %>"><i class="icon-plus"></i> <strong>Add images to this creation</strong></a>
         <%= link_to '<i class="icon-white icon-remove"></i> <strong>Delete</strong>'.html_safe, creation_path(@creation),:confirm => "Are you sure you want to permanently remove this creation?", :method => :delete, :class => 'btn btn-danger' %>
       <% end %>
-</div>  
- </div>
-  <% end %>
+    </div>
+  </div>
+<% end %>
+
 <div class="row">
-  <div class="span12">
+  <div class="span6">
     <ul class="thumbnails">
       <li class="span6"><a class="thumbnail gallery" href="<%= @primary_photo.image.large.url %>"><img src="<%= @primary_photo.image.large.url %>" alt="<%= @creation.name %>" /></a></li>
       <% @creation.photos.each do |photo| %>
-        <li class="span3"><a class="thumbnail gallery" href="<%= photo.image.large.url %>"><img src="<%= photo.image.thumb.url.to_s %>" alt="<%= @creation.name %>" /></a></li>
+        <li class="span2"><a class="thumbnail gallery" href="<%= photo.image.large.url %>"><img src="<%= photo.image.thumb.url.to_s %>" alt="<%= @creation.name %>" /></a></li>
       <% end %>
     </ul>
   </div>
+  <div class="span6">
+    <h3>Description <% if @creation.user == current_user %><small><%= link_to '(edit)', edit_creation_path(@creation) %></small><% end %></h3>
+    <p><%= @creation.story %></p>
+  </div>
 </div>
+
 <div class="row">
   <div class="span4">
     <iframe src="http://www.facebook.com/plugins/like.php?href=<%= request.url %>" style="border:none; width:350px; height:30px; float:left;"></iframe>
@@ -65,14 +68,6 @@
   <div class="span4"></div>
 </div>
 <div class="row">
-  <div class="span12">
-    <h3>Description <% if @creation.user == current_user %><small><%= link_to '(edit)', edit_creation_path(@creation) %></small><% end %></h3>
-    <hr />
-    <p><%= @creation.story %></p>
-  </div>
-</div>
-<br />
-<div class="row">
   <a href="#" id="comments"></a>
   <div class="span12">
     <% unless user_signed_in? %>
@@ -80,11 +75,6 @@
     <% end -%>
     <h3>Comments <small><%= pluralize @creation.comment_threads.length, "comment" %></small></h3>
     <hr />
-    <% unless(@creation.has_comments) -%>
-      <div class="alert alert-info">
-        Be the first to comment on this spectacular creation!
-      </div>
-    <% end -%>
     <table class="table table-striped">
       <% @creation.comment_threads.each do |comment| %>
         <tr>
