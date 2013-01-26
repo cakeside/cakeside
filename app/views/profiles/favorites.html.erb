@@ -3,7 +3,7 @@
   <h1>My Favorites</h1>
 <% end -%>
 <div class="row">
-  <div class="span3">
+  <div class="span4">
     <div class="thumbnail">
       <%= avatar_for(current_user) %>
       <div class="caption">
@@ -24,7 +24,7 @@
       </ul>
     </div>
   </div>
-  <div class="span9">
+  <div class="span8">
     <ul class="thumbnails">
       <% @creations.each do |creation| %>
         <li><a href="<%= url_for creation %>"><img class="thumbnail" src="<%= creation.primary_image.image.thumb.url %>" alt="<%= creation.name %>"></a></li>

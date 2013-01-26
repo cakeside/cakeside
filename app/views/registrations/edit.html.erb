@@ -8,7 +8,7 @@ $(function(){ DeviseUsers.Edit.initialize(jQuery); });
   <h1>Settings</h1>
 <% end -%>
   <div class="row">
-    <div class="span3">
+    <div class="span4">
       <div class="thumbnail">
         <%= avatar_for current_user %>
         <div class="caption">
@@ -36,7 +36,7 @@ $(function(){ DeviseUsers.Edit.initialize(jQuery); });
       <h4>Cancel My Account</h4>
       <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger" %></p>
     </div>
-    <div class="span9">
+    <div class="span8">
       <p> If you prefer not to change your password, then just leave it blank.  </p>
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class=> "form-horizontal" }) do |f| %>
         <fieldset>
