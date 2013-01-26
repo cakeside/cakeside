@@ -1,3 +1,17 @@
+<% content_for :javascript do -%>
+<script type="text/javascript">  
+  $(function(){
+    var container = $('#creations-div');
+    container.imagesLoaded(function(){
+      container.masonry({
+        itemSelector : '.span4',
+        isResizable: true
+      }); 
+    });
+  });
+</script>
+<% end -%>
+<!--
 <ul class="thumbnails">
   <% @creations.each do |creation| %>
     <li class="span3">
@@ -13,5 +27,25 @@
     </li>
   <% end %>
 </ul>
+-->
+
+<div id="creations-div" class="row">
+  <div class="span12">
+  <ul class="thumbnails">
+    <% @creations.each do |creation| %>
+      <div class="span4">
+        <div class="thumbnail">
+          <a href="<%= url_for creation %>"><img src="<%= creation.primary_image.image_url %>" /></a>
+          <div class="caption">
+            <h3><a href="<%= url_for creation %>"><%= creation.name %></a> <em><small>by <a href="<%= url_for profile_path(creation.user) %>"> <%= shrink(creation.user.name, 20) %></a></small></em> <small><%= creation.created_at.to_s :foomat %></small></h3>
+            <p><%= creation.story %></p>
+            <p><a class="btn" href="<%= url_for creation %>">View</a></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </ul>
+  </div>
+</div>
 
 <%= render "shared/paging" %>
