@@ -16,6 +16,6 @@ class FindAllCreationsQuery
     end
   end
   def make_pageable(items, page)
-    Kaminari.paginate_array(items).page(page).per(16)
+    Kaminari.paginate_array(items).page(page).per(9)
   end
 end
