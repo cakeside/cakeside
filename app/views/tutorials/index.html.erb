@@ -12,17 +12,8 @@
   });
 </script>
 <% end -%>
-<style>
-.css1 { font-size: 1.0em; }
-.css2 { font-size: 1.2em; }
-.css3 { font-size: 1.4em; }
-.css4 { font-size: 1.6em; }
-</style>
 <% content_for :page_header do -%>
   <%= link_to 'Add Tutorial', new_tutorial_path, :class => "btn btn-primary pull-right" %>
-  <% tag_cloud(Tutorial.tag_counts_on(:tags), %w(css1 css2 css3 css4)) do |tag, css_class| %>
-    <a href="?tags=<%= tag.name %>"><span class="label <%= css_class %>"><%= tag.name %></span></a>
-  <% end %>
 <% end -%>
 <div id="tutorials-div" class="row">
   <div class="span12">
