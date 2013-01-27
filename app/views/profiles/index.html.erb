@@ -1,6 +1,6 @@
-<% provide(:title, pluralize(@profiles.length, "artist")) -%>
+<% provide(:title, "Cake Artists") -%>
 <% content_for :page_header do -%>
-  <h1><%= pluralize @profiles.count, "artist" %></h1>
+  <h1>Cake Artists</h1>
 <% end -%>
 <div class="row">
   <div class="span12">
@@ -22,4 +22,7 @@
       <% end %>
     </ul>
   </div>
+</div>
+<div class="row">
+  <div class="span12"> <%= paginate @profiles %> </div>
 </div>
