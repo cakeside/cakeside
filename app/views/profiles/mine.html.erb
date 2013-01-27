@@ -6,8 +6,6 @@
       <div class="caption">
         <h5><%= current_user.name %></h5>
         <p> <%= link_to "My Public Profile", profile_path(current_user) %></p>
-        <p>member since: <%= current_user.created_at.to_s :foomat %></p>
-        <p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
         <hr>
         <p><%= current_user.city %></p>
         <p>Website or blog: <a  href="<%= current_user.website %>" target="_blank"><%= current_user.website %></a></p>
@@ -24,6 +22,11 @@
     </div>
   </div>
   <div class="span9">
-  <%= render "shared/creation_image_gallery" %>
+    <% if @creations.any? %>
+      <%= render "shared/creation_image_gallery" %>
+    <% else %>
+      <p><%= t(:share_something) %></p>
+      <a href="<%= url_for new_creation_path %>" class="btn btn-primary btn-large">Add Creation</a>
+    <% end %>
   </div>
 </div>

@@ -8,8 +8,6 @@
       <%= avatar_for(@profile) %>
       <div class="caption">
         <h5><%= @profile.name %></h5>
-        <p>member since: <%= @profile.created_at.to_s :foomat %></p>
-        <p>last signed in: <%= @profile.last_sign_in_at.to_s :foomat %></p>
         <p><%= @profile.city %></p>
         <% unless @profile.website.blank? %>
           <p><a  href="<%= @profile.website %>" target="_blank"><%= @profile.website %></a></p>
