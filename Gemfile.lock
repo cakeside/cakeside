@@ -52,7 +52,8 @@ GEM
     awesome_nested_set (2.1.5)
       activerecord (>= 3.0.0)
     bcrypt-ruby (3.0.1)
-    bootstrap-sass (2.1.0.0)
+    bootstrap-sass (2.2.2.0)
+      sass (~> 3.2)
     bourbon (3.0.1)
       sass (>= 3.2.0)
       thor
@@ -327,7 +328,7 @@ DEPENDENCIES
   activeadmin
   acts-as-taggable-on
   acts_as_commentable_with_threading
-  bootstrap-sass (= 2.1.0.0)
+  bootstrap-sass
   capistrano
   capistrano-ext
   capistrano-gitflow
