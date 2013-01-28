@@ -13,17 +13,15 @@
 </script>
 <% end -%>
 <% content_for :page_header do -%>
-  <h1>Tag <em><%= @tag %></em></h1>
+  <h1>Tagged <em><%= @tag %></em></h1>
 <% end -%>
-<div class="row">
-  <div class="span3">
-    <ul class="well nav nav-pills nav-stacked">
-      <% Tutorial.tag_counts.each do |tag| %>
-        <li><a href="/tags/<%= tag.name %>"><%= tag.name %> (<%= tag.count %>)</a></li>
-      <% end %>
-    </ul>
+<div id="tutorials-div" class="row">
+  <div class="span4">
+    <% Tutorial.tag_counts.each do |tag| %>
+      <a href="/tags/<%= tag.name %>"><span class="label"><%= tag.name %> (<%= tag.count %>)</span></a>
+    <% end %>
   </div>
-  <div id="tutorials-div" class="span9">
+  <div class="span8">
     <ul class="thumbnails">
       <% @tutorials.each do |tutorial| %>
         <div class="span4">
@@ -44,7 +42,4 @@
     <% end %>
     </ul>
   </div>
-</div>
-<div class="row">
-  <div class="span12"> <%= paginate @tutorials %> </div>
 </div>
