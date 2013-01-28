@@ -30,6 +30,9 @@ Cake::Application.routes.draw do
   match 'categories/:id' => 'categories#show', :method => 'GET'
   get 'categories/show'
 
+  # /tags
+  match 'tags/:id' => 'tags#show', :method => 'GET'
+
   # /search
   get "search/index"
 
