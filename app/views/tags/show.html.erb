@@ -17,7 +17,7 @@
 <% end -%>
 <div id="tutorials-div" class="row">
   <div class="span4">
-    <% Tutorial.tag_counts.each do |tag| %>
+    <% Tutorial.tag_counts.sort {|x,y| y.count <=> x.count }.each do |tag| %>
       <% if tag.name == @tag %>
         <a href="/tags/<%= tag.name %>"><span class="label label-info"><%= tag.name %> (<%= tag.count %>)</span></a>
       <% else %>
