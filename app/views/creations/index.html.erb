@@ -1,7 +1,4 @@
 <% provide(:description, "CakeSide is a free site to share your cake creations and ideas with other cake fanatics like yourself") -%>
-<% content_for(:page_header) do %>
-  <h1>Recently added cake creations</h1>
-<% end %>
 <% content_for :javascript do -%>
 <script type="text/javascript">  
   $(function(){
@@ -18,30 +15,15 @@
 <% unless user_signed_in?  -%>
   <div class="row">
     <div class="span6">
-      <div id="slideshow" class="carousel slide">
-        <div class="carousel-inner">
-          <% @creations.each_with_index do |creation, index| %>
-            <div class="item<%= index == 0 ?  ' active' : ''-%>">
-              <a href="<%= url_for creation %>"><img alt="<%= creation.name %>" src="<%= creation.primary_image.image_url(:large) %>" style="display:block; margin-left:auto; margin-right:auto;" /></a>
-              <div class="carousel-caption">
-                <h4><%= creation.name %></h4>
-                <p><%= creation.story %></p>
-              </div>
-            </div>
-          <% end %>
-        </div>
-        <a class="carousel-control left" href="#slideshow" data-slide="prev">&lsaquo;</a>
-        <a class="carousel-control right" href="#slideshow" data-slide="next">&rsaquo;</a>
-      </div>
+      <img alt="Welcome to Cakeside" src="/assets/cakeside-logo.png">
     </div>
     <div class="span6">
-      <img alt="Welcome to Cakeside" src="/assets/cakeside-logo.png">
       <h1>Welcome cake enthusiast!</h1>
       <p style="font-size:15px;">
       <strong>Make</strong> cakes, <strong>sell</strong> cakes, or just <strong>love</strong> eating them? You've come to the right place!
       <strong>CakeSide</strong> is a free site to <strong>share</strong> your cake <strong>creations</strong> and <strong>ideas</strong> with other cake fanatics like yourself!</p><br/>
       <p style="text-align: center;">
-      Get your cakes featured on this page <a href="<%= url_for new_user_session_path %>" class="btn btn-primary btn-large">Sign Up Now!</a> or <%= link_to "sign in", new_user_session_path %>
+      Get your cakes featured on this page <a href="<%= url_for new_user_session_path %>" class="btn btn-primary btn-large">Sign Up For Free!</a> or <%= link_to "sign in", new_user_session_path %>
       </p>
     </div>
   </div>
@@ -52,17 +34,17 @@
         <div class="row">
           <div class="span4">
             <img class="bs-icon" src="/assets/cupcake_share.png" alt="share your creativity" style="margin-left:auto;margin-right:auto;display:block;" />
-            <h2 style="text-align:center;">Share your creativity</h2>
+            <h2 style="text-align:center;font-weight:bold;">Share your creativity</h2>
             <p style="text-align:center;">Show off your originality and find interesting ideas with fellow passionate CakeSide artists.</p>
           </div>
           <div class="span4">
             <img class="bs-icon" src="/assets/cupcake_promote.png" alt="promote yourself" style="margin-left:auto;margin-right:auto;display:block;" />
-            <h2 style="text-align:center;">Promote yourself</h2>
+            <h2 style="text-align:center;font-weight:bold;">Promote yourself</h2>
             <p style="text-align:center;">Get recognized for your work and connect with other artists with unique styles. </p>
           </div>
           <div class="span4">
             <img class="bs-icon" src="/assets/cupcake_inspire.png" alt="inspire a community" style="margin-left:auto;margin-right:auto;display:block;" />
-            <h2 style="text-align:center;">Inspire a community</h2>
+            <h2 style="text-align:center;font-weight:bold;">Inspire a community</h2>
             <p style="text-align:center;">Upload creations, teach with tutorials, and create a vibrant community for everything cake.</p>
           </div>
         </div>
