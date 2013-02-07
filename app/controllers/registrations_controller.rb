@@ -14,4 +14,7 @@ class RegistrationsController < Devise::RegistrationsController
       render "edit"
     end
   end
+  def after_sign_in_path_for(resource)
+    edit_user_registration_path
+  end
 end
