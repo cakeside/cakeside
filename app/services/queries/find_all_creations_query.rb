@@ -11,7 +11,7 @@ class FindAllCreationsQuery
   private
 
   def find_creations
-    Creation.joins(:photos).where(:is_restricted => false)
+    Creation.joins(:photos).where(:is_restricted => false).uniq
     #Creation.all.select do |creation|
       #creation.published? && creation.is_safe_for_children?
     #end
