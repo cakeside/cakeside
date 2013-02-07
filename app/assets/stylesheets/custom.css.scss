@@ -38,7 +38,12 @@ footer #footer-floor {
 /** marketing value statements **/
 .marketing .row {
   margin-bottom: 20px;
+  background: url("/assets/linen-light-blue.jpg") repeat scroll left top transparent;
+    border-bottom: 1px solid #BFD0E1;
+    border-top: 1px solid #BFD0E1;
+    box-shadow: -1px -1px 0 #FFFFFF inset, 1px 1px 0 #FFFFFF inset;
 }
+
 .marketing h1 {
   font-size: 40px;
   font-weight: 300;
