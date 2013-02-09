@@ -17,14 +17,14 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= render "shared/header" %>
+    <%= render "layouts/header" %>
     <div class="container">
       <%= render "layouts/messages" %>
       <%= yield %>
     </div> <!-- /container -->
-    <%= render "shared/footer" %>
-    <%= render "shared/uservoice_feedback"%>
-    <%= render "shared/chrome_frame"%>
+    <%= render "layouts/footer" %>
+    <%= render "layouts/uservoice_feedback"%>
+    <%= render "layouts/chrome_frame"%>
     <%= javascript_include_tag :application %>
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -34,6 +34,6 @@
     <script type="text/javascript" charset="utf-8">
       $.embedly.defaults['key'] = '4b97d740439245d8905d046dfa4d3e9a';
     </script>
-    <%= render "shared/google_analytics" %>
+    <%= render "layouts/google_analytics" %>
   </body>
 </html>
