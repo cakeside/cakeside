@@ -5,7 +5,7 @@ class AvatarsController < ApplicationController
   def create
     @avatar.avatar = params[:avatar][:avatar]
     if @avatar.save
-      redirect_to(profiles_mine_path, :notice => 'Your new avatar has been uploaded.') 
+      redirect_to(profile_path(current_user), :notice => 'Your new avatar has been uploaded.') 
     else
       flash[:error] = "could not upload photo"
     end

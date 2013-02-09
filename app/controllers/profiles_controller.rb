@@ -10,10 +10,6 @@ class ProfilesController < ApplicationController
     @creations = @profile.creations.page(params[:page]).per(18)
   end
 
-  def mine
-    @creations = current_user.creations.page(params[:page]).per(100)
-  end
-
   def favorites
     @favorites = current_user.favorites
     @creations = @favorites.map {|f| f.creation }

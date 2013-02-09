@@ -14,24 +14,19 @@ $(function(){ DeviseUsers.Edit.initialize(jQuery); });
         <div class="caption">
           <h5><%= current_user.name %></h5>
           <p>last signed in: <%= current_user.last_sign_in_at.to_s :foomat %></p>
-          <p><a id="change-avatar" class="btn btn-primary" data-toggle="modal" href="#change-avatar-dialog">Change My Picture</a></p>
-          <p><a id="change-password-button" class="btn btn-primary" data-toggle="modal" href="#change-password-dialog">Change My Password</a></p>
         </div>
       </div>
       <div style="padding: 8px 0;" class="well">
         <ul class="nav nav-list">
-          <li><a href="<%= url_for profiles_mine_path %>"><i class="icon-user"></i> Profile</a></li>
+          <li><a href="<%= url_for profile_path(current_user) %>"><i class="icon-user"></i> Profile</a></li>
           <li><a href="<%= url_for profiles_favorites_path -%>"><i class="icon-book"></i> Favorites</a></li>
           <li><a href="<%= url_for edit_user_registration_path %>"><i class="icon-cog"></i> Settings</a></li>
         </ul>
       </div>
-      <h4>Cancel My Account</h4>
-      <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger" %></p>
     </div>
-    <div class="span9">
+    <div class="span7">
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class=> "form-horizontal" }) do |f| %>
         <fieldset>
-          <legend>Update your settings</legend>
           <div class="control-group">
             <%= f.label :name, :class => "control-label"  %>
             <div class="controls"> <%= f.text_field :name, :class => "input-xlarge" %> </div>
@@ -79,6 +74,12 @@ $(function(){ DeviseUsers.Edit.initialize(jQuery); });
         </fieldset>
       <% end %>
     </div>
+    <div class="span2">
+      <p><a id="change-avatar" class="btn btn-primary" data-toggle="modal" href="#change-avatar-dialog">Change My Picture</a></p>
+      <p><a id="change-password-button" class="btn btn-primary" data-toggle="modal" href="#change-password-dialog">Change My Password</a></p>
+      <h4>Cancel My Account</h4>
+      <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-danger" %></p>
+    </div>
   </div>
   <div id="change-avatar-dialog" class="modal hide fade">
     <%= form_tag(avatars_path(current_user), :method => "post", :multipart => true) do |f| %>
@@ -87,10 +88,14 @@ $(function(){ DeviseUsers.Edit.initialize(jQuery); });
         <h3>Change My Picture</h3>
       </div>
       <div class="modal-body">
-        <%= avatar_for(current_user) %>
+        <p style="margin-left:auto; margin-right:auto;text-align:center;"> 
+          <%= avatar_for(current_user) %>
+        </p>
+        <p style="margin-left:auto; margin-right:auto;text-align:center;">
         <%= fields_for Avatar.new do |f| %>
           <%= f.file_field :avatar, :rel => avatars_path(current_user) %>
         <% end %>
+        </p>
       </div>
       <div class="modal-footer">
         <input type="submit" class="btn btn-primary" value="Save changes" />

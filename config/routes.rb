@@ -17,18 +17,16 @@ Cake::Application.routes.draw do
     resources :favorites, :only => [:index, :create]
     resources :comments, :only => [:index, :new, :create]
   end
-  match "creations/fast_upload" => "creations#create", :as => 'fast_upload', :method => "POST"
 
   # /profiles
   resources :profiles, :only => [:index, :show]
-  match "profiles" => "profiles#index", :as => 'profiles', :method => "GET"
-  match 'profiles/:id' => 'profiles#show', :as => 'profile', :method => 'GET'
-  match 'mine' => 'profiles#mine', :as => 'profiles_mine', :method => 'GET'
+  #match "profiles" => "profiles#index", :as => 'profiles', :method => "GET"
+  #match 'profiles/:id' => 'profiles#show', :as => 'profile', :method => 'GET'
   match 'favorites' => 'profiles#favorites', :as => 'profiles_favorites', :method => 'GET'
 
   # /categories
-  match 'categories/:id' => 'categories#show', :method => 'GET'
-  get 'categories/show'
+  resources :categories, :only => [:show]
+  #match 'categories/:id' => 'categories#show', :method => 'GET'
 
   # /tags
   match 'tags/:id' => 'tags#show', :method => 'GET'

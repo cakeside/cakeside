@@ -11,7 +11,7 @@ class SettingsController < ApplicationController
     @user.password=params[:user][:password]
     if @user.save
       sign_in @user, :bypass => true
-      redirect_to profiles_mine_path, notice: 'Your password has been changed!'
+      redirect_to profile_path(current_user), notice: 'Your password has been changed!'
     else
       flash[:alert] = "Invalid password, must be at least 6 charactors."
       redirect_to :back
