@@ -1,6 +1,4 @@
 Cake::Application.routes.draw do
-  resources :tutorials
-
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -11,6 +9,8 @@ Cake::Application.routes.draw do
   match "about_us" => "home#about_us"
   match "why_cakeside" => "home#why_cakeside"
 
+  resources :tutorials
+
   # /creations
   resources :creations do
     resources :photos, :only => [:index, :new, :create, :destroy]
@@ -20,13 +20,10 @@ Cake::Application.routes.draw do
 
   # /profiles
   resources :profiles, :only => [:index, :show]
-  #match "profiles" => "profiles#index", :as => 'profiles', :method => "GET"
-  #match 'profiles/:id' => 'profiles#show', :as => 'profile', :method => 'GET'
   match 'favorites' => 'profiles#favorites', :as => 'profiles_favorites', :method => 'GET'
 
   # /categories
   resources :categories, :only => [:show]
-  #match 'categories/:id' => 'categories#show', :method => 'GET'
 
   # /tags
   match 'tags/:id' => 'tags#show', :method => 'GET'
@@ -44,4 +41,3 @@ Cake::Application.routes.draw do
 
   match 'settings/change_password' => 'settings#change_password', :as => 'settings_change_password', :method => 'POST'
 end
-
