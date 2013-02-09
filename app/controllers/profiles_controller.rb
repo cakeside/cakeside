@@ -6,11 +6,12 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @profile = User.find(params[:id])
-    @creations = @profile.creations.page(params[:page]).per(18)
+    @user = User.find(params[:id])
+    @creations = @user.creations.page(params[:page]).per(18)
   end
 
   def favorites
+    @user = current_user
     @favorites = current_user.favorites
     @creations = @favorites.map {|f| f.creation }
   end
