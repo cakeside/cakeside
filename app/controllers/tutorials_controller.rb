@@ -11,6 +11,7 @@ class TutorialsController < ApplicationController
 
   def new
     @tutorial = Tutorial.new
+    @user = current_user
   end
 
   def edit

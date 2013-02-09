@@ -14,6 +14,7 @@ class CreationsController < ApplicationController
   # GET /creations/new
   def new
     @creation = Creation.new
+    @user = current_user
   end
 
   # GET /creations/1/edit
