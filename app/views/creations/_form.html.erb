@@ -1,7 +1,13 @@
 <% content_for :javascript do %>
   <script type="text/javascript" charset="utf-8">
     $(function(){
+      var all_tags = [ <% ActsAsTaggableOn::Tag.all.map(&:name).each { |item| %> '<%= item %>', <% } %> ];
       $('.tooltip-item').tooltip();
+      $('#tags').tagit({
+        availableTags: all_tags,
+        singleField: true,
+        singleFieldNode: $('#tag-fields')
+      });
     });
   </script>
 <% end %>
@@ -50,6 +56,16 @@
           <%= f.check_box :is_restricted, :class =>"input-xlarge" %>
           This creation probably should not be shown to kids.
         </label>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+        <% if @creation.present? %>
+           <input name="creation_tags" id="tag-fields" value="<% @creation.tags.map(&:name).each { |item| %><%= item %>,<% } %>" type="hidden" />
+        <% else %>
+          <input name="creation_tags" id="tag-fields" value="" type="hidden" />
+        <% end %>
+        <ul id="tags"></ul>
       </div>
     </div>
     <div class="form-actions">

@@ -1,4 +1,5 @@
 var DeviseUsers = DeviseUsers || {};
+
 DeviseUsers.Edit = {
   initialize: function($){
     $('#edit_user').validate();

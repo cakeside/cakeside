@@ -20,6 +20,9 @@
   <% @creation.categories.each do |category| %>
     <a href="/categories/<%= category.slug %>"><span class="label"><%= category.name %></span></a>
   <% end %> 
+  <% @creation.tags.each do |tag| -%>
+    <a href="/tags/<%= tag.name %>"><span class="label"><%= tag.name %></span></a>
+  <% end -%>
 <% end -%>
 <hr />
 <% if @creation.user == current_user %>

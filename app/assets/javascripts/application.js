@@ -12,5 +12,6 @@
 //= require jquery.validate
 //= require jquery.masonry
 //= require jquery-fileupload
+//= require tag-it
 //= require bootstrap
 //= require_tree .

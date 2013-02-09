@@ -25,6 +25,7 @@ class CreationsController < ApplicationController
   def create
     @creation = current_user.creations.create(params[:creation])
     @creation.category_ids = params[:creation][:category_ids] ||= []
+    current_user.tag(@creation, :with => params[:creation_tags], :on => :tags)
 
     if @creation.save
       redirect_to new_creation_photo_url(@creation)
@@ -38,6 +39,7 @@ class CreationsController < ApplicationController
   def update
     @creation = current_user.creations.find(params[:id])
     @creation.category_ids = params[:creation][:category_ids] ||= []
+    current_user.tag(@creation, :with => params[:creation_tags], :on => :tags)
 
     if @creation.update_attributes(params[:creation])
       redirect_to new_creation_photo_url(@creation)
