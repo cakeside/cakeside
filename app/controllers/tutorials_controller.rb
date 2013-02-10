@@ -25,6 +25,7 @@ class TutorialsController < ApplicationController
       if @tutorial.save
         format.html { redirect_to( '/tutorials', :notice => 'the tutorial was successfully added.' ) }
       else
+        @user = current_user
         flash[:error] = @tutorial.errors.full_messages
         format.html { render :action => "new" }
       end
