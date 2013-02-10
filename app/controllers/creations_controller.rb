@@ -31,6 +31,7 @@ class CreationsController < ApplicationController
     if @creation.save
       redirect_to new_creation_photo_url(@creation)
     else
+      @user = current_user
       flash[:error] = @creation.errors.full_messages
       render :action => "new" 
     end
