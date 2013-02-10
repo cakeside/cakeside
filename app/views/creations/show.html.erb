@@ -2,9 +2,7 @@
 <% provide(:description, "#{@creation.story}") -%>
 <% content_for :javascript do %>
   <script type="text/javascript">
-    $(function() { 
-      Creations.Show.initialize();
-    });
+    $(function() { Creations.Show.initialize(); });
   </script>
 <% end -%>
 <% content_for :page_header do -%>
@@ -30,45 +28,48 @@
     <div class="span12">
       <% if @creation.user == current_user %>
         <%= link_to '<i class="icon-edit"></i> <strong>Edit creation</strong>'.html_safe, edit_creation_path(@creation), :class => 'btn' %> 
-        <a class="btn" href="<%= url_for new_creation_photo_path(@creation) %>"><i class="icon-plus"></i> <strong>Add images to this creation</strong></a>
-        <%= link_to '<i class="icon-white icon-remove"></i> <strong>Delete</strong>'.html_safe, creation_path(@creation),:confirm => "Are you sure you want to permanently remove this creation?", :method => :delete, :class => 'btn btn-danger' %>
+        <a class="btn" href="<%= url_for new_creation_photo_path(@creation) %>"><i class="icon-plus"></i><strong>Add images to this creation</strong></a>
+        <a class="btn" href="<%= url_for creation_favorites_path(:creation_id => @creation.id) %>"><i class="icon-heart"></i> <strong>fanclub (<%=  pluralize(@creation.favorites.length, 'fan') %>)</strong></a>
+        <%= link_to '<i class="icon-white icon-remove"></i> <strong>Delete</strong>'.html_safe, creation_path(@creation),:confirm => "Are you sure you want to permanently remove this creation?", :method => :delete, :class => 'btn btn-danger pull-right' %>
       <% end %>
     </div>
   </div>
+<% else %>
+  <% if user_signed_in? %>
+    <% unless current_user == @creation.user || current_user.already_likes(@creation) %>
+      <div class="row">
+        <div class="span2 pull-right">
+          <%= button_to "ADD TO FAVORITES", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary' %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+      <div class="row">
+        <div class="span2 pull-right">
+          <%= button_to "ADD TO FAVORITES", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary' %>
+        </div>
+      </div>
+  <% end %>
 <% end %>
 
 <div class="row">
   <div class="span6">
     <ul class="thumbnails">
-      <li class="span6"><a class="thumbnail gallery" href="<%= @primary_photo.image.large.url %>"><img src="<%= @primary_photo.image.large.url %>" alt="<%= @creation.name %>" /></a></li>
+      <li class="span6">
+        <a class="thumbnail gallery" href="<%= @primary_photo.image.large.url %>"><img src="<%= @primary_photo.image.large.url %>" alt="<%= @creation.name %>" /></a>
+      </li>
       <% @creation.photos.each do |photo| %>
-        <li class="span2"><a class="thumbnail gallery" href="<%= photo.image.large.url %>"><img src="<%= photo.image.thumb.url.to_s %>" alt="<%= @creation.name %>" /></a></li>
+        <li class="span2">
+          <a class="thumbnail gallery" href="<%= photo.image.large.url %>"><img src="<%= photo.image.thumb.url.to_s %>" alt="<%= @creation.name %>" /></a>
+        </li>
       <% end %>
     </ul>
   </div>
   <div class="span6">
     <h3>Description <% if @creation.user == current_user %><small><%= link_to '(edit)', edit_creation_path(@creation) %></small><% end %></h3>
     <p><%= @creation.story %></p>
-  </div>
-</div>
-
-<div class="row">
-  <div class="span4">
     <iframe src="http://www.facebook.com/plugins/like.php?href=<%= request.url %>" style="border:none; width:350px; height:30px; float:left;"></iframe>
   </div>
-  <div class="span2">
-    <% if user_signed_in? %>
-      <% unless current_user == @creation.user || current_user.already_likes(@creation) %>
-        <%= button_to "Add to favorites", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary' %>
-      <% end %>
-    <% else %>
-      <%= button_to "Add to favorites", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary' %>
-    <% end %>
-  </div>
-  <div class="span2">
-    <p><%= link_to 'fanclub (' + pluralize(@creation.favorites.length, 'fan') + ')', creation_favorites_path(:creation_id => @creation.id)%></p>
-  </div>
-  <div class="span4"></div>
 </div>
 <div class="row">
   <a href="#" id="comments"></a>
@@ -77,18 +78,35 @@
       <p style="float:right;"><%= link_to "sign in", new_user_session_path %>  to comment </p>
     <% end -%>
     <h3>Comments <small><%= pluralize @creation.comment_threads.length, "comment" %></small></h3>
-    <hr />
-    <table class="table table-striped">
-      <% @creation.comment_threads.each do |comment| %>
-        <tr>
-          <td> <%= gravatar_for(comment.user) %> </td>
-          <td>
-            <h5>On <%= comment.created_at.to_s :foomat %> <%= comment.user.name %> said...</h5>
-            <p><%= comment.body %></p>
-          </td>
-        </tr>
-      <% end -%>
-    </table>
+    <% @creation.comment_threads.each do |comment| %>
+      <div class="row">
+        <div class="span8">
+          <div class="row">
+            <div class="span8">
+              <h4><strong><a href="#"><%= comment.user.name %> said...</a></strong></h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span2">
+              <a href="<%= url_for profile_path(comment.user) %>" class="thumbnail"><%= avatar_for(comment.user, {:size => 260 }) %></a>
+            </div>
+            <div class="span6">
+              <p> <%= comment.body %> </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="span8">
+              <p></p>
+              <p>
+              <i class="icon-user"></i> by <%= link_to comment.user.name, profile_path(comment.user) %>
+              | <i class="icon-calendar"></i> <%= comment.created_at.to_s :foomat %> 
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+    <% end -%>
   </div>
 </div>
 <% if user_signed_in? %>
@@ -97,7 +115,7 @@
       <div class="row">
         <div class="span3 hidden-phone">
           <div class="thumbnail">
-            <%= gravatar_for(current_user, {:size => 260 }) %>
+            <%= avatar_for(current_user, {:size => 260 }) %>
             <div class="caption">
               <h5><%= current_user.name %></h5>
             </div>

@@ -3,7 +3,7 @@ module ApplicationHelper
     if user.avatar == nil 
       return gravatar_for(user, options)
     else
-      image_tag(user.avatar.avatar.thumb.url, alt: user.name, class: options[:class])
+      image_tag(user.avatar.avatar.thumb.url, alt: user.name, class: options[:class], :style => "width:#{options[:size]}px;")
     end
   end
   def gravatar_for(user, options = { size: 260 })
