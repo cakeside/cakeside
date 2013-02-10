@@ -43,12 +43,6 @@
         </div>
       </div>
     <% end %>
-  <% else %>
-      <div class="row">
-        <div class="span2 pull-right">
-          <%= button_to "ADD TO FAVORITES", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary' %>
-        </div>
-      </div>
   <% end %>
 <% end %>
 
@@ -75,7 +69,9 @@
   <a href="#" id="comments"></a>
   <div class="span12">
     <% unless user_signed_in? %>
-      <p style="float:right;"><%= link_to "sign in", new_user_session_path %>  to comment </p>
+      <p class="pull-right"><%= link_to "sign in", new_user_session_path %> to comment </p>
+    <% else %>
+      <p class="pull-right"><a id="add-comment-button" class="btn btn-primary" data-toggle="modal" href="#add-comment-dialog">Add Comment</a></p>
     <% end -%>
     <h3>Comments <small><%= pluralize @creation.comment_threads.length, "comment" %></small></h3>
     <% @creation.comment_threads.each do |comment| %>
@@ -83,7 +79,7 @@
         <div class="span8">
           <div class="row">
             <div class="span8">
-              <h4><strong><a href="#"><%= comment.user.name %> said...</a></strong></h4>
+              <h4><strong><a href="<%= url_for profile_path(comment.user) %>"><%= comment.user.name %> </a>said...</strong></h4>
             </div>
           </div>
           <div class="row">
@@ -109,27 +105,20 @@
     <% end -%>
   </div>
 </div>
-<% if user_signed_in? %>
-  <div class="row">
-    <div class="span12">
-      <div class="row">
-        <div class="span3 hidden-phone">
-          <div class="thumbnail">
-            <%= avatar_for(current_user, {:size => 260 }) %>
-            <div class="caption">
-              <h5><%= current_user.name %></h5>
-            </div>
-          </div>
-        </div>
-        <div class="span9">
-          <%= form_tag(creation_comments_path(@creation), :method => "post", :html => { :class => "form-horizontal"}) do |f| %>
-            <%= fields_for Comment.new do |f| %>
-              <%= f.text_area :body, :class => "span9" %>
-              <input type="submit" class="btn" value="Add Comment" />
-            <% end %>
-          <% end %>
-        </div>
+  <div id="add-comment-dialog" class="modal hide fade">
+    <%= form_tag(creation_comments_path(@creation), :method => "post", :html => { :class => "form-horizontal"}) do |f| %>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h3>Add Comment</h3>
       </div>
-    </div>
+      <div class="modal-body">
+        <%= fields_for Comment.new do |f| %>
+          <%= f.text_area :body, :class => "span5" %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <input type="submit" class="btn btn-primary" value="Add Comment" />
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+      </div>
+    <% end %>
   </div>
-<% end %>
