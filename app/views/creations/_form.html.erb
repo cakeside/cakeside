@@ -3,11 +3,7 @@
     $(function(){
       var all_tags = [ <% ActsAsTaggableOn::Tag.all.map(&:name).each { |item| %> '<%= item %>', <% } %> ];
       $('.tooltip-item').tooltip();
-      $('#tags').tagit({
-        availableTags: all_tags,
-        singleField: true,
-        singleFieldNode: $('#tag-fields')
-      });
+      $('#tags').tagit({ availableTags: all_tags });
     });
   </script>
 <% end %>
@@ -61,11 +57,10 @@
     <div class="control-group">
       <div class="controls">
         <% if @creation.present? %>
-           <input name="creation_tags" id="tag-fields" value="<% @creation.tags.map(&:name).each { |item| %><%= item %>,<% } %>" type="hidden" />
+           <input name="creation_tags" id="tags" value="<% @creation.tags.map(&:name).each { |item| %><%= item %>,<% } %>" />
         <% else %>
-          <input name="creation_tags" id="tag-fields" value="" type="hidden" />
+          <input name="creation_tags" id="tags" value="" />
         <% end %>
-        <ul id="tags"></ul>
       </div>
     </div>
     <div class="form-actions">
