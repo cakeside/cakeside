@@ -75,10 +75,10 @@ sunset.png: sunset-5457f8caca2780cd1d9e39fcd611c4cd.png
 sunset/index.png: sunset-5457f8caca2780cd1d9e39fcd611c4cd.png
 twitter.png: twitter-31942b8a216493e3ad7932ced51003ed.png
 twitter/index.png: twitter-31942b8a216493e3ad7932ced51003ed.png
-application.js: application-fe824241ccfbdcd9001f2dcbf15e6849.js
-application/index.js: application-fe824241ccfbdcd9001f2dcbf15e6849.js
-application.css: application-c6cfcac88f06a0541544afa206982435.css
-application/index.css: application-c6cfcac88f06a0541544afa206982435.css
+application.js: application-0918e661100b91637947cfc845c95cd0.js
+application/index.js: application-0918e661100b91637947cfc845c95cd0.js
+application.css: application-2d358a6fe4f4748b53fff283212b2ce2.css
+application/index.css: application-2d358a6fe4f4748b53fff283212b2ce2.css
 active_admin.js: active_admin-76495de5f9a0a6af340457a8d11e1130.js
 active_admin/index.js: active_admin-76495de5f9a0a6af340457a8d11e1130.js
 active_admin.css: active_admin-f58fc98e42733be6473403cf53156e11.css
