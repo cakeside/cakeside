@@ -7,26 +7,26 @@
     });
   </script>
 <% end %>
-    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
 <%= form_for(@creation, :html => {:multipart => true, :class => "form-horizontal"}) do |f| %>
   <fieldset>
     <div class="control-group">
       <%= f.label :name, "Creation name", :class => "control-label" %>
       <div class="controls">
-        <%= f.text_field :name, :class => "input-xlarge" %>
+        <%= f.text_field :name, :class => "input-xxlarge" %>
       </div>
     </div>
     <div class="control-group">
       <%= f.label :watermark, "Brand each image", :class => "control-label" %>
       <div class="controls">
-        <%= f.text_field :watermark, :class => "input-medium", :maxlength=> 30 %> on CakeSide.com
+        <%= f.text_field :watermark, :class => "input-xlarge", :maxlength=> 30 %> on CakeSide.com
         <a class="tooltip-item" data-placement="right" rel="tooltip" href="#" data-original-title="Watermark your name or company on each uploaded image" data-animation="true"><i class="icon-question-sign"></i></a>
       </div>
     </div>
     <div class="control-group">
       <%= f.label :story, "Description", :class=> "control-label" %>
       <div class="controls">
-        <%= f.text_area :story, :class =>"input-xlarge", :rows => "3" %>
+        <%= f.text_area :story, :class =>"input-xxlarge", :rows => "3" %>
         <p class="help-block">
         Tell us the story or description about this creation.
         </p>
@@ -50,7 +50,7 @@
     <div class="control-group">
       <div class="controls">
         <label class="checkbox">
-          <%= f.check_box :is_restricted, :class =>"input-xlarge" %>
+          <%= f.check_box :is_restricted, :class =>"input-xxlarge" %>
           This creation probably should not be shown to kids.
         </label>
       </div>
@@ -58,9 +58,9 @@
     <div class="control-group">
       <label for="tags" class="control-label">Tags</label>
         <% if @creation.present? %>
-           <input name="creation_tags" type="text" id="tags" value="<% @creation.tags.map(&:name).each { |item| %><%= item %>,<% } %>" class="input-xlarge" />
+           <input name="creation_tags" type="text" id="tags" value="<% @creation.tags.map(&:name).each { |item| %><%= item %>,<% } %>" class="input-xxlarge" />
         <% else %>
-          <input name="creation_tags" type="text" id="tags" value="" class="input-xlarge" />
+          <input name="creation_tags" type="text" id="tags" value="" class="input-xxlarge" />
         <% end %>
     </div>
     <div class="form-actions">
