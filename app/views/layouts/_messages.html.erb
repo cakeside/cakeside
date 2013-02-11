@@ -2,7 +2,7 @@
 <div class="row">
   <div class="span12">
     <div class="row">
-      <div class="span9">
+      <div class="span10">
         <% if(flash.any?) -%>
           <% flash.each do |key, value| -%>
             <% Array(value).uniq.each do |message| -%>
@@ -16,7 +16,7 @@
         <%= yield(:page_header) -%>
         &nbsp;
       </div>
-      <div class="span3 hidden-phone" style="text-align: right; padding-bottom: 8px">
+      <div class="span2 hidden-phone pull-right" style="text-align: right; padding-bottom: 8px">
         <a href="https://www.facebook.com/pages/CakeSide/214607468615074" target="_blank" align="left"><img src="/assets/facebook.png" border="0"></a>
         <a href="http://twitter.com/cakeside" target="_blank" align="left"><img src="/assets/twitter.png" border="0"></a>
         <a href="http://pinterest.com/cakeside/" target="_blank" align="left" ><img src="/assets/pinterest.png" border="0"></a>

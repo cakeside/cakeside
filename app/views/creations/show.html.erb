@@ -7,30 +7,24 @@
 <% end -%>
 <% content_for :page_header do -%>
   <% if(@creation.is_restricted) -%>
-    <div style="float:right;">
-      <%= image_tag "ratedr.jpg", :class => "span1" %>
-    </div>
+      <%= image_tag "ratedr.jpg", :class => "span1 pull-right" %>
   <% end -%>
-  <h1>
-    <%= @creation.name %> 
-    <small> submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> on <%= @creation.created_at.to_s :foomat %> </small> 
-  </h1>
+  <h1><%= link_to @creation.name, creation_path(@creation) %><small> by <%= link_to @creation.user.name, profile_path(@creation.user) %> </small></h1>
   <% @creation.categories.each do |category| %>
     <a href="/categories/<%= category.slug %>"><span class="label"><%= category.name %></span></a>
   <% end %> 
-  <% @creation.tags.each do |tag| -%>
-    <a href="/tags/<%= tag.name %>"><span class="label"><%= tag.name %></span></a>
-  <% end -%>
 <% end -%>
 <hr />
 <% if @creation.user == current_user %>
-  <div class="row" style="padding-bottom: 10px;">
+  <div class="row">
     <div class="span12">
       <% if @creation.user == current_user %>
-        <%= link_to '<i class="icon-edit"></i> <strong>Edit creation</strong>'.html_safe, edit_creation_path(@creation), :class => 'btn' %> 
-        <a class="btn" href="<%= url_for new_creation_photo_path(@creation) %>"><i class="icon-plus"></i><strong>Add images to this creation</strong></a>
-        <a class="btn" href="<%= url_for creation_favorites_path(:creation_id => @creation.id) %>"><i class="icon-heart"></i> <strong>fanclub (<%=  pluralize(@creation.favorites.length, 'fan') %>)</strong></a>
-        <%= link_to '<i class="icon-white icon-remove"></i> <strong>Delete</strong>'.html_safe, creation_path(@creation),:confirm => "Are you sure you want to permanently remove this creation?", :method => :delete, :class => 'btn btn-danger pull-right' %>
+        <p>
+        <%= link_to '<i class="icon-edit"></i> <strong>EDIT</strong>'.html_safe, edit_creation_path(@creation), :class => 'btn' %> 
+        <a class="btn" href="<%= url_for new_creation_photo_path(@creation) %>"><i class="icon-plus"></i><strong>ADD IMAGES</strong></a>
+        <a class="btn" href="<%= url_for creation_favorites_path(:creation_id => @creation.id) %>"><i class="icon-heart"></i> <strong>FANCLUB (<%=  pluralize(@creation.favorites.length, 'fan') %>)</strong></a>
+        <%= link_to '<i class="icon-white icon-remove"></i> <strong>DELETE</strong>'.html_safe, creation_path(@creation),:confirm => "Are you sure you want to permanently remove this creation?", :method => :delete, :class => 'btn btn-danger pull-right' %>
+        </p>
       <% end %>
     </div>
   </div>
@@ -50,7 +44,11 @@
   <div class="span6">
     <ul class="thumbnails">
       <li class="span6">
-        <a class="thumbnail gallery" href="<%= @primary_photo.image.large.url %>"><img src="<%= @primary_photo.image.large.url %>" alt="<%= @creation.name %>" /></a>
+        <a class="thumbnail" href="<%= url_for creation_path(@creation) %>"><img src="<%= @primary_photo.image.large.url %>" alt="<%= @creation.name %>" /></a>
+        <span> <i class="icon-tags"></i> </span>
+        <% @creation.tags.each do |tag| -%>
+          <a href="/tags/<%= tag.name %>"><span class="label"><%= tag.name %></span></a>
+        <% end -%>
       </li>
       <% @creation.photos.each do |photo| %>
         <li class="span2">
@@ -71,7 +69,7 @@
     <% unless user_signed_in? %>
       <p class="pull-right"><%= link_to "sign in", new_user_session_path %> to comment </p>
     <% else %>
-      <p class="pull-right"><a id="add-comment-button" class="btn btn-primary" data-toggle="modal" href="#add-comment-dialog">Add Comment</a></p>
+      <p class="pull-right"><a id="add-comment-button" class="btn btn-primary" data-toggle="modal" href="#add-comment-dialog">ADD COMMENT</a></p>
     <% end -%>
     <h3>Comments <small><%= pluralize @creation.comment_threads.length, "comment" %></small></h3>
     <% @creation.comment_threads.each do |comment| %>
