@@ -66,12 +66,12 @@
 <div class="row">
   <a href="#" id="comments"></a>
   <div class="span12">
-    <% unless user_signed_in? %>
-      <p class="pull-right"><%= link_to "sign in", new_user_session_path %> to comment </p>
-    <% else %>
-      <p class="pull-right"><a id="add-comment-button" class="btn btn-primary" data-toggle="modal" href="#add-comment-dialog">ADD COMMENT</a></p>
-    <% end -%>
     <h3>Comments <small><%= pluralize @creation.comment_threads.length, "comment" %></small></h3>
+    <% unless user_signed_in? %>
+      <p><%= link_to "sign in", new_user_session_path %> to comment </p>
+    <% else %>
+      <p><a id="add-comment-button" class="btn btn-primary" data-toggle="modal" href="#add-comment-dialog">ADD COMMENT</a></p>
+    <% end -%>
     <% @creation.comment_threads.each do |comment| %>
       <div class="row">
         <div class="span8">
