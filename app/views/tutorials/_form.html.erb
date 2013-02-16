@@ -15,30 +15,6 @@ $(function(){
         </div>
       </div>
       <div class="control-group">
-        <%= f.label :heading, :class => "control-label" %>
-        <div class="controls">
-          <%= f.text_field :heading, :class => "input-xlarge, tutorial-heading" %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= f.label :author, :class => "control-label" %>
-        <div class="controls">
-          <%= f.text_field :author, :class => "input-xlarge, tutorial-author" %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= f.label :author_url, :class => "control-label" %>
-        <div class="controls">
-          <%= f.text_field :author_url, :class => "input-xlarge, tutorial-author-url" %>
-        </div>
-      </div>
-      <div class="control-group">
-        <%= f.label :description, :class => "control-label" %>
-        <div class="controls">
-          <%= f.text_area :description, :class => "input-xlarge, tutorial-description" %>
-        </div>
-      </div>
-      <div class="control-group">
         <label for="tags" class="control-label">Tags:</label>
         <div class="controls">
           <input type="text" id="tags" data-source='<%= ActsAsTaggableOn::Tag.all.map(&:name) %>' data-items="4" data-provide="typeahead" style="margin: 0 auto;" class="input-xlarge" />
@@ -48,6 +24,10 @@ $(function(){
       <div class="control-group">
       </div>
       <div class="form-actions">
+        <%= f.hidden_field :heading, :class => "input-xlarge, tutorial-heading" %>
+        <%= f.hidden_field :author, :class => "input-xlarge, tutorial-author" %>
+        <%= f.hidden_field :author_url, :class => "input-xlarge, tutorial-author-url" %>
+        <%= f.hidden_field :description, :class => "input-xlarge, tutorial-description" %>
         <%= f.hidden_field :image_url %>
         <input type="hidden" name="tutorial_tags" id="hidden_tags" />
         <button type="submit" class="btn btn-primary">Save changes</button>
