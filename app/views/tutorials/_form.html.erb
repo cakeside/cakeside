@@ -17,7 +17,7 @@ $(function(){
       <div class="control-group">
         <label for="tags" class="control-label">Tags:</label>
         <div class="controls">
-          <input type="text" id="tags" data-source='<%= ActsAsTaggableOn::Tag.all.map(&:name) %>' data-items="4" data-provide="typeahead" style="margin: 0 auto;" class="input-xlarge" />
+          <input type="text" id="tags" data-source='<%= ActsAsTaggableOn::Tag.all.map(&:name) %>' data-items="4" data-provide="typeahead" style="margin: 0 auto;" class="input-xlarge" autocomplete="off" />
           <button id="add-tag-button" type="button">add</button>
         </div>
       </div>
