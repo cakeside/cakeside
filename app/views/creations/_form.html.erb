@@ -57,11 +57,11 @@
     </div>
     <div class="control-group">
       <label for="tags" class="control-label">Tags</label>
-        <% if @creation.present? %>
-           <input name="creation_tags" type="text" id="tags" value="<% @creation.tags.map(&:name).each { |item| %><%= item %>,<% } %>" class="input-xxlarge" autocomplete="off" />
-        <% else %>
-          <input name="creation_tags" type="text" id="tags" value="" class="input-xxlarge" autocomplete="off" />
-        <% end %>
+      <% if @creation.present? %>
+         <input name="creation_tags" type="text" id="tags" value="<% @creation.tags.map(&:name).each { |item| %><%= item %>,<% } %>" class="input-xxlarge" autocomplete="off" />
+      <% else %>
+        <input name="creation_tags" type="text" id="tags" value="" class="input-xxlarge" autocomplete="off" />
+      <% end %>
     </div>
     <div class="form-actions">
       <button type="submit" class="btn btn-primary">NEXT STEP</button>

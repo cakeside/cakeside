@@ -2,10 +2,14 @@
 <script type="text/javascript" charset="utf-8">
 $(function(){
   new TutorialForm().initialize($);
+
+  var all_tags = [ <% ActsAsTaggableOn::Tag.all.map(&:name).each { |item| %> '<%= item %>', <% } %> ];
+  $('#tags').tagit({ availableTags: all_tags });
 });
 </script>
 <% end %>
-<div class="span5">
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css">
+<div class="span9">
   <%= form_for(@tutorial, :html => {:class => "form-horizontal"}) do |f| %>
     <fieldset>
       <div class="control-group">
@@ -15,13 +19,8 @@ $(function(){
         </div>
       </div>
       <div class="control-group">
-        <label for="tags" class="control-label">Tags:</label>
-        <div class="controls">
-          <input type="text" id="tags" data-source='<%= ActsAsTaggableOn::Tag.all.map(&:name) %>' data-items="4" data-provide="typeahead" style="margin: 0 auto;" class="input-xlarge" autocomplete="off" />
-          <button id="add-tag-button" type="button">add</button>
-        </div>
-      </div>
-      <div class="control-group">
+        <label for="tags" class="control-label">Tags</label>
+        <input type="text" id="tags" value="" class="input-xxlarge" autocomplete="off" />
       </div>
       <div class="form-actions">
         <%= f.hidden_field :heading, :class => "input-xlarge, tutorial-heading" %>
@@ -35,8 +34,6 @@ $(function(){
       </div>
     </fieldset>
   <% end %>
-</div>
-<div class="span4">
   <div class="thumbnail">
     <img class="embed-thumb" src="" />
     <div class="caption">
