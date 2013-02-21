@@ -8,44 +8,37 @@ gem 'carrierwave'
 gem 'carrierwave_backgrounder'
 gem 'rmagick'
 gem 'kaminari'
-gem 'exception_notification'
 gem "formtastic"
 gem 'activeadmin'
 gem 'sass-rails'
 gem 'bootstrap-sass'
 gem 'acts_as_commentable_with_threading'
 gem 'acts-as-taggable-on'
-gem 'newrelic_rpm'
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'jquery-fileupload-rails'
-gem 'simplecov', :require => false, :group => :test
 
 group :development, :test do
   gem 'pg'
-  gem 'rspec-rails'
   gem 'jasmine'
-  gem 'sqlite3'
   gem 'capistrano'
   gem 'capistrano-ext'
   gem 'rvm-capistrano'
   gem 'capistrano-gitflow'
-  gem 'guard-rspec'
-  gem 'guard-livereload'
-  #gem 'rubber'
 end
 group :test do
+  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'fakes-rspec'
-  gem 'guard-spork'
-  gem 'spork'
   gem 'rb-readline'
+  gem 'simplecov'
 end
 group :production do
   gem 'pg'
   gem 'fog'
+  gem 'newrelic_rpm'
 end
 group :assets do
   gem 'sass-rails'
