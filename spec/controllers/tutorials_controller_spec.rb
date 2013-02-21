@@ -3,7 +3,7 @@ require 'spec_helper'
 describe TutorialsController do
 
   def valid_attributes
-    {:heading => "hello world"}
+    {:url => 'http://blah.com', :heading => "hello world"}
   end
 
   def valid_session
