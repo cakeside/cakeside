@@ -3,8 +3,8 @@ require 'spec_helper'
 describe "Logins" do
   describe "GET /logins" do
     it "works! (now write some real specs)" do
-      get "/login"
-      response.body.should include("Got an account? Login!")
+      visit '/login'
+      page.should have_content("Got an account? Login!")
     end
   end
 

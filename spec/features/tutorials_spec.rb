@@ -3,8 +3,8 @@ require 'spec_helper'
 describe "Tutorials" do
   describe "GET /tutorials" do
     it "works! (now write some real specs)" do
-      get tutorials_path
-      response.status.should be(200)
+      visit tutorials_path
+      page.should have_content("CakeSide")
     end
   end
 end

@@ -8,10 +8,10 @@ describe "Creations" do
         c.user = FactoryGirl.create(:user)
       end
       creation.save!
-      get creations_path
+      visit creations_path
     end
     it "works! (now write some real specs)" do
-      response.status.should be(200)
+      page.should have_content("CakeSide")
     end
   end
 end
