@@ -20,6 +20,7 @@ gem 'jquery-fileupload-rails'
 
 group :development, :test do
   gem 'pg'
+  gem 'rspec-rails'
   gem 'jasmine'
   gem 'capistrano'
   gem 'capistrano-ext'
