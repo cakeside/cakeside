@@ -6,17 +6,12 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 unless Category.any? 
-  Category.create(:name => 'Fondant', :slug => 'fondant')
-  Category.create(:name => 'Butter Cream', :slug => 'butter-cream')
+    #Add 5 categories 1)Cake 2)Cupcake 3)Cake Pop 4) Cookie 5)Other
+  Category.create(:name => 'Cake', :slug => 'cake')
   Category.create(:name => 'Cup Cake', :slug => 'cup-cake')
-  Category.create(:name => 'Tiered', :slug => 'tiered')
-  Category.create(:name => '3D', :slug => '3d')
-  Category.create(:name => 'Birthday', :slug => 'birthday')
-  Category.create(:name => 'Wedding', :slug => 'wedding')
-  Category.create(:name => 'Holiday', :slug => 'holiday')
-  Category.create(:name => 'Theme', :slug => 'theme')
-  Category.create(:name => 'Anniversary', :slug => 'anniversary')
-  Category.create(:name => 'Baby Shower', :slug => 'baby-shower')
+  Category.create(:name => 'Cake Pop', :slug => 'cake-pop')
+  Category.create(:name => 'Cookie', :slug => 'cookie')
+  Category.create(:name => 'Other', :slug => 'other')
 end
 unless Interest.any? 
   Interest.create(:name => 'I own a bakery')
