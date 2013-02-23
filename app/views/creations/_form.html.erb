@@ -48,20 +48,25 @@
       </div>
     </div>
     <div class="control-group">
+      <label for="tags" class="control-label">Tags</label>
+      <div class="controls">
+      <% if @creation.present? %>
+         <input name="creation_tags" type="text" id="tags" value="<% @creation.tags.map(&:name).each { |item| %><%= item %>,<% } %>" class="input-xxlarge" autocomplete="off" />
+                 <p class="help-block">
+              <strong>Note:</strong> Help people find this creation by adding some keyword tags.
+            </p>
+      <% else %>
+        <input name="creation_tags" type="text" id="tags" value="" class="input-xxlarge" autocomplete="off" />
+      <% end %>
+    </div>
+    </div>
+        <div class="control-group">
       <div class="controls">
         <label class="checkbox">
           <%= f.check_box :is_restricted, :class =>"input-xxlarge" %>
           This creation probably should not be shown to kids.
         </label>
       </div>
-    </div>
-    <div class="control-group">
-      <label for="tags" class="control-label">Tags</label>
-      <% if @creation.present? %>
-         <input name="creation_tags" type="text" id="tags" value="<% @creation.tags.map(&:name).each { |item| %><%= item %>,<% } %>" class="input-xxlarge" autocomplete="off" />
-      <% else %>
-        <input name="creation_tags" type="text" id="tags" value="" class="input-xxlarge" autocomplete="off" />
-      <% end %>
     </div>
     <div class="form-actions">
       <button type="submit" class="btn btn-primary">NEXT STEP</button>
