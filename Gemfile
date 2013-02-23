@@ -17,7 +17,6 @@ gem 'acts-as-taggable-on'
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'jquery-fileupload-rails'
-gem 'exception_notification', :require => 'exception_notifier'
 
 group :development, :test do
   gem 'pg'
