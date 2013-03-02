@@ -1,6 +1,5 @@
 class FindAllCreationsQuery
-  def initialize(user, mapper = CreationToDisplayCreationDTOMapper.new)
-    @user = user
+  def initialize(mapper = CreationToDisplayCreationDTOMapper.new)
     @mapper = mapper
   end
   def fetch(params)

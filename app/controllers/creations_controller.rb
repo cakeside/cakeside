@@ -2,7 +2,7 @@ class CreationsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
   # GET /creations
   def index
-    @creations = resolve(FindAllCreationsQuery).fetch(params)
+    @creations = FindAllCreationsQuery.new.fetch(params)
   end
 
   # GET /creations/1
