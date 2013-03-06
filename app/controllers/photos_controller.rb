@@ -1,4 +1,5 @@
 class PhotosController < ApplicationController
+
   before_filter :authenticate_user!
   before_filter :find_creation
   #before_filter :find_or_build_photo
@@ -7,7 +8,7 @@ class PhotosController < ApplicationController
     @photos = @creation.photos
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @photos.map { |p| p.to_jq_upload } }
+      format.json { render json: {files: @photos.map { |p| p.to_jq_upload } }.to_json }
     end
   end
 
@@ -33,7 +34,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo = @creation.photos.find(params[:id])
     if @photo.destroy
-      render :json => [@photo.to_jq_upload].to_json
+      render :json => {files: [@photo.to_jq_upload]}.to_json
     else
       render :json => [{:error => "could not remove the photo"}], :status => 304
     end
