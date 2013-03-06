@@ -21,6 +21,7 @@ set :branch, "master"
 set :deploy_env, 'production'
 set :scm_verbose, true
 set :normalize_asset_timestamps, false
+set :ssh_options, {:forward_agent => true}
 
 after "deploy:setup", "rvm:install_rvm"
 before "deploy", "rvm:install_ruby"
