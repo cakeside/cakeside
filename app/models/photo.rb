@@ -3,8 +3,8 @@ class Photo < ActiveRecord::Base
   belongs_to :creation
   validates :image,  :presence => true
   mount_uploader :image, PhotoUploader
-  #process_in_background :image
-  store_in_background :image
+  process_in_background :image
+  #store_in_background :image
 
   include Rails.application.routes.url_helpers
   def to_jq_upload
