@@ -12,11 +12,8 @@ describe CategoriesController do
       before(:each) do
         get :show, :id => "!#{@category.slug}"
       end
-      it "should not return a category" do
-        assigns(:category).should be_nil
-      end
-      it "should not return any creations" do
-        assigns(:creations).should be_empty
+      it "should redirect to tags" do
+        response.should redirect_to("/tags/!#{@category.slug}")
       end
     end
     context "when there is a category that matches the slug" do
