@@ -18,6 +18,7 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'jquery-fileupload-rails'
 gem 'capistrano-gitflow'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'pg'
@@ -26,7 +27,6 @@ group :development, :test do
   gem 'capistrano'
   gem 'capistrano-ext'
   gem 'rvm-capistrano'
-  gem 'dotenv-rails'
 end
 group :test do
   gem 'sqlite3'
