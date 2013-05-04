@@ -49,6 +49,9 @@ GEM
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (3.0.2)
+    asset_sync (0.5.4)
+      activemodel
+      fog
     awesome_nested_set (2.1.6)
       activerecord (>= 3.0.0)
     bcrypt-ruby (3.0.1)
@@ -103,6 +106,9 @@ GEM
       railties (~> 3.1)
       warden (~> 1.2.1)
     diff-lcs (1.2.1)
+    dotenv (0.7.0)
+    dotenv-rails (0.7.0)
+      dotenv (= 0.7.0)
     erubis (2.7.0)
     excon (0.19.5)
     execjs (1.4.0)
@@ -272,6 +278,7 @@ DEPENDENCIES
   activeadmin
   acts-as-taggable-on
   acts_as_commentable_with_threading
+  asset_sync
   bootstrap-sass
   capistrano
   capistrano-ext
@@ -283,6 +290,7 @@ DEPENDENCIES
   daemons
   delayed_job_active_record
   devise
+  dotenv-rails
   factory_girl_rails
   fakes-rspec
   fog

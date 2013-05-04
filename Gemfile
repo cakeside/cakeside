@@ -17,6 +17,8 @@ gem 'acts-as-taggable-on'
 gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'jquery-fileupload-rails'
+gem 'capistrano-gitflow'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'pg'
@@ -25,7 +27,6 @@ group :development, :test do
   gem 'capistrano'
   gem 'capistrano-ext'
   gem 'rvm-capistrano'
-  gem 'capistrano-gitflow'
 end
 group :test do
   gem 'sqlite3'
@@ -45,4 +46,5 @@ group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
+  gem 'asset_sync'
 end
