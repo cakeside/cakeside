@@ -26,6 +26,7 @@ group :development, :test do
   gem 'capistrano-ext'
   gem 'rvm-capistrano'
   gem 'capistrano-gitflow'
+  gem 'dotenv-rails'
 end
 group :test do
   gem 'sqlite3'
