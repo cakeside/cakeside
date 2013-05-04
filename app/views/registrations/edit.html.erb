@@ -1,7 +1,10 @@
 <% provide(:title, "My Settings") -%>
 <% content_for :javascript do %>
 <script type="text/javascript" charset="utf-8">
-$(function(){ DeviseUsers.Edit.initialize(jQuery); });
+$(function(){ 
+  DeviseUsers.Edit.initialize(jQuery); 
+  mixpanel.track("View My Settings");
+});
 </script>
 <% end %>
 <% content_for :page_header do -%>
