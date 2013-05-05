@@ -26,7 +26,7 @@ Cake::Application.routes.draw do
   resources :categories, :only => [:show]
 
   # /tags
-  match 'tags/:id' => 'tags#show', :method => 'GET'
+  resources :tags, :only => [:show]
 
   # /search
   get "search/index"
