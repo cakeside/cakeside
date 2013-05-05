@@ -7,7 +7,7 @@ ActiveAdmin.register_page "Dashboard" do
           para "recently added creations:"
            ul do
              Creation.all.first(16).map do |creation|
-               li link_to(creation.name, admin_creation_path(creation))
+               li link_to(creation.name, cakeeater_creation_path(creation))
              end
            end
         end
