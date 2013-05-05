@@ -54,3 +54,6 @@ namespace :delayed_job do
     run "cd #{current_path}; RAILS_ENV=#{rails_env} script/delayed_job restart"
   end
 end
+
+        require './config/boot'
+        require 'airbrake/capistrano'

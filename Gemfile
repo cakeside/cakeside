@@ -19,6 +19,7 @@ gem 'daemons'
 gem 'jquery-fileupload-rails'
 gem 'capistrano-gitflow'
 gem 'dotenv-rails'
+gem 'airbrake'
 
 group :development, :test do
   gem 'pg'
@@ -28,6 +29,7 @@ group :development, :test do
   gem 'capistrano-ext'
   gem 'rvm-capistrano'
   gem 'better_errors'
+  gem 'bullet'
 end
 group :test do
   gem 'sqlite3'
