@@ -2,7 +2,7 @@ class TutorialsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
 
   def index
-    @tutorials = Tutorial.page(params[:page]).per(15)
+    @tutorials = Tutorial.includes(:tags).page(params[:page]).per(15)
   end
 
   def show
