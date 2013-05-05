@@ -1,10 +1,9 @@
 FactoryGirl.define do
   factory :user, class: User do
-    id 1002
-    name 'mo'
-    email 'mo@cakeside.com'
+    name { Faker::Name.name }
+    email { Faker::Internet.email }
     password 'password'
-    website 'http://cakeside.com'
+    website { Faker::Internet.http_url }
     city 'calgary'
   end
 end

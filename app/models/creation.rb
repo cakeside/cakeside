@@ -38,4 +38,9 @@ class Creation < ActiveRecord::Base
   def add_photo(photo)
     photos.create({:image => photo})
   end
+
+  def self.search(query)
+    sql_search = "%#{query}%"
+    Creation.where("upper(name) like upper(?) OR upper(story) like upper(?)", sql_search, sql_search)
+  end
 end

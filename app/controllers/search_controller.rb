@@ -1,15 +1,11 @@
 class SearchController < ApplicationController
   def index
-    respond_to do |format|
-      if params[:q].blank? 
-        format.html { redirect_to(home_index_url) }
-      else
-        sql = "%"+params[:q]+"%"
-        @creations = Creation.where("upper(name) like upper(?) OR upper(story) like upper(?)", sql, sql).page(params[:page]).per(100)
-        @members = User.where("upper(name) like upper(?)", sql)
-        @search = params[:q]
-        format.html
-      end
+    @search = params[:q]
+    if @search.blank? 
+      redirect_to(home_index_url)
+    else
+      @creations = Creation.search(@search).page(params[:page]).per(100)
+      @members = User.where("upper(name) like upper(?)", "%#{@search}%")
     end
   end
 end

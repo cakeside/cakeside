@@ -37,6 +37,7 @@ group :test do
   gem 'fakes-rspec'
   gem 'rb-readline'
   gem 'simplecov'
+  gem 'ffaker'
 end
 group :production do
   gem 'pg'

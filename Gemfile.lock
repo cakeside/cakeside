@@ -128,6 +128,7 @@ GEM
       fakes
       rspec
     fastercsv (1.5.5)
+    ffaker (1.16.1)
     ffi (1.4.0)
     fog (1.10.0)
       builder
@@ -298,6 +299,7 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   fakes-rspec
+  ffaker
   fog
   formtastic
   jasmine
