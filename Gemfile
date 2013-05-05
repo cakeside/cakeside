@@ -27,6 +27,7 @@ group :development, :test do
   gem 'capistrano'
   gem 'capistrano-ext'
   gem 'rvm-capistrano'
+  gem 'better_errors'
 end
 group :test do
   gem 'sqlite3'
