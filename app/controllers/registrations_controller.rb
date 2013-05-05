@@ -1,4 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
+  before_filter :initialize_env
   #force_ssl
   def edit
     @user = current_user
@@ -14,7 +15,20 @@ class RegistrationsController < Devise::RegistrationsController
       render "edit"
     end
   end
+
   def after_sign_in_path_for(resource)
+    MixPanel.track "Signed In", {}, @request_env
     edit_user_registration_path
+  end
+
+  private
+
+  def initialize_env
+    @request_env = {
+      'REMOTE_ADDR' => request.env['REMOTE_ADDR'],
+      'HTTP_X_FORWARDED_FOR' => request.env['HTTP_X_FORWARDED_FOR'],
+      'rack.session' => request.env['rack.session'].to_hash,
+      'mixpanel_events' => request.env['mixpanel_events']
+    }
   end
 end

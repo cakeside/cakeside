@@ -31,12 +31,8 @@
     <![endif]-->
     <%= yield :javascript %>
     <script type="text/javascript" src="http://scripts.embed.ly/jquery.embedly.min.js"></script>
-    <%= render "layouts/mix_panel"%>
     <script type="text/javascript" charset="utf-8">
       $.embedly.defaults['key'] = '4b97d740439245d8905d046dfa4d3e9a';
-      <% if current_user %>
-        mixpanel.identify("<%= current_user.id %>");
-      <% end %>
     </script>
     <%= render "layouts/google_analytics" %>
   </body>

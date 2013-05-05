@@ -1,5 +1,5 @@
 class MixpanelWorker < Struct.new(:name, :properties, :request_env)
-  MIXPANEL_TOKEN = "7b1aa3b32ab81758228d1c95115cfc7e"
+  MIXPANEL_TOKEN = "866e150970370a95c77cf6293dbc02c5"
 
   def perform
     return unless Rails.env.production?
