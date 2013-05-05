@@ -10,6 +10,6 @@ class FindAllCreationsQuery
   private
 
   def find_creations
-    Creation.joins(:photos).where(:is_restricted => false).uniq
+    Creation.includes(:user).joins(:photos).where(:is_restricted => false).uniq.includes(:user)
   end
 end
