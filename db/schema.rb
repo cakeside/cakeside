@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130306034251) do
+ActiveRecord::Schema.define(:version => 20130505034059) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(:version => 20130306034251) do
     t.string   "avatar"
   end
 
+  add_index "avatars", ["user_id"], :name => "index_avatars_on_user_id"
+
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -74,7 +76,9 @@ ActiveRecord::Schema.define(:version => 20130306034251) do
     t.datetime "updated_at",                       :null => false
   end
 
+  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
+  add_index "comments", ["parent_id"], :name => "index_comments_on_parent_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "creations", :force => true do |t|
@@ -89,11 +93,15 @@ ActiveRecord::Schema.define(:version => 20130306034251) do
   end
 
   add_index "creations", ["created_at"], :name => "index_creations_on_created_at"
+  add_index "creations", ["user_id"], :name => "index_creations_on_user_id"
 
   create_table "creations_categories", :id => false, :force => true do |t|
     t.integer "creation_id"
     t.integer "category_id"
   end
+
+  add_index "creations_categories", ["category_id", "creation_id"], :name => "index_creations_categories_on_category_id_and_creation_id"
+  add_index "creations_categories", ["creation_id", "category_id"], :name => "index_creations_categories_on_creation_id_and_category_id"
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -117,6 +125,9 @@ ActiveRecord::Schema.define(:version => 20130306034251) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "favorites", ["creation_id"], :name => "index_favorites_on_creation_id"
+  add_index "favorites", ["user_id"], :name => "index_favorites_on_user_id"
 
   create_table "interests", :force => true do |t|
     t.string   "name"
@@ -146,6 +157,7 @@ ActiveRecord::Schema.define(:version => 20130306034251) do
 
   add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
   add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tagger_id"], :name => "index_taggings_on_tagger_id"
 
   create_table "tags", :force => true do |t|
     t.string "name"
@@ -162,6 +174,8 @@ ActiveRecord::Schema.define(:version => 20130306034251) do
     t.string   "author"
     t.string   "author_url"
   end
+
+  add_index "tutorials", ["user_id"], :name => "index_tutorials_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -192,5 +206,7 @@ ActiveRecord::Schema.define(:version => 20130306034251) do
     t.integer "user_id"
     t.integer "interest_id"
   end
+
+  add_index "users_interests", ["interest_id", "user_id"], :name => "index_users_interests_on_interest_id_and_user_id"
 
 end
