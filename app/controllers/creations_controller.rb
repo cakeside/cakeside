@@ -1,28 +1,24 @@
 class CreationsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
-  # GET /creations
+
   def index
     @creations = FindAllCreationsQuery.new.fetch(params)
   end
 
-  # GET /creations/1
   def show
     @creation = Creation.find(params[:id])
     @primary_photo = @creation.primary_image
   end
 
-  # GET /creations/new
   def new
     @creation = Creation.new
     @user = current_user
   end
 
-  # GET /creations/1/edit
   def edit
     @creation = current_user.creations.find(params[:id])
   end
 
-  # POST /creations
   def create
     @creation = current_user.creations.create(params[:creation])
     @creation.category_ids = params[:creation][:category_ids] ||= []
@@ -37,7 +33,6 @@ class CreationsController < ApplicationController
     end
   end
 
-  # PUT /creations/1
   def update
     @creation = current_user.creations.find(params[:id])
     @creation.category_ids = params[:creation][:category_ids] ||= []
@@ -51,7 +46,6 @@ class CreationsController < ApplicationController
     end
   end
 
-  # DELETE /creations/1
   def destroy
     current_user.creations.find(params[:id]).destroy
     redirect_to(creations_url) 

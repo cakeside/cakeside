@@ -24,9 +24,7 @@ describe CreationsController do
   end
 
   context "when logged in" do
-    before(:each) do
-      http_login(user)
-    end
+    before { http_login(user) }
 
     describe "GET show" do
       it "assigns the requested creation as @creation" do
@@ -59,11 +57,13 @@ describe CreationsController do
           creations.stub(:create).and_return(creation)
           post :create, :creation => {:id => creation.id, :name => 'new name'}
         end
+
         it "assigns a newly created creation as @creation" do
           assigns(:creation).should eq(creation)
         end
-        pending "redirects to the created creation" do
-          response.should redirect_to(creations_url)
+
+        it "redirects to the created creation" do
+          response.should redirect_to(new_creation_photo_path(creation))
         end
       end
 
