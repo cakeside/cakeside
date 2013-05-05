@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.where(:slug => params[:id]).first
     if @category
-      @creations = Creation.joins(:categories).where(:categories => {:slug => params[:id]}).page(params[:page]).per(12)
+      @creations = Creation.includes(:user).joins(:categories).where(:categories => {:slug => params[:id]}).page(params[:page]).per(12)
     else
       redirect_to "/tags/#{params[:id]}"
     end

@@ -4,8 +4,8 @@ class SearchController < ApplicationController
     if @search.blank? 
       redirect_to(home_index_url)
     else
-      @creations = Creation.search(@search).page(params[:page]).per(100)
-      @members = User.where("upper(name) like upper(?)", "%#{@search}%")
+      @creations = Creation.includes(:user).search(@search).page(params[:page]).per(100)
+      @members = User.includes(:avatar).where("upper(name) like upper(?)", "%#{@search}%")
     end
   end
 end
