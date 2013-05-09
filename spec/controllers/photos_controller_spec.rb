@@ -27,19 +27,35 @@ describe PhotosController do
   end
 
   describe "DELETE 'destroy'" do
-    let(:photo) { fake }
+    let!(:photo) { FactoryGirl.create(:photo) }
+
     before :each do
-      creation.stub(:photos).and_return(photo)
-      delete :destroy, :creation_id => creation.id, :id => 88
+      creation.photos << photo
+      creation.save!
+      delete :destroy, :creation_id => creation.id, :id => photo.id
     end
-    xit "returns http success" do
+
+    it "returns http success" do
       response.should be_success
     end
-    xit "should destroy the photo" do
-      photo.should have_received(:destroy)
+
+    it "should destroy the photo" do
+      Photo.exists?(photo.id).should be_false
     end
-    xit "should redirect to the creation" do
-      
+
+    it "should respond with the proper json" do
+      response.body.should ==
+      {
+        :files => [
+        {
+           :name=>"example.png",
+           :size=>359791,
+           :url=>"/uploads/photo/image/1/example.png",
+           :thumbnail_url=>"/uploads/photo/image/1/thumb_example.png",
+           :delete_url=>1,
+           :delete_type=>"DELETE"
+        }]
+      }.to_json
     end
   end
 end

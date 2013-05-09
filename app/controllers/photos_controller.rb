@@ -41,6 +41,7 @@ class PhotosController < ApplicationController
   end
 
   private
+
   def find_creation
     @creation = current_user.creations.find(params[:creation_id])
     raise ActiveRecord::RecordNotFound unless @creation
