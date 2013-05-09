@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe CategoriesController do
-
   before(:each) do
     @creation = FactoryGirl.create(:creation)
     @category = FactoryGirl.create(:category, :creations => [@creation])
