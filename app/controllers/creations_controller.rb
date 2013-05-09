@@ -3,7 +3,7 @@ class CreationsController < ApplicationController
 
   def index
     @creations = FindAllCreationsQuery.new.fetch(params)
-    MixPanel.track "Viewed Home Page", {}, @request_env, current_user
+    MixPanel.track "Viewed Home Page", {}, @request_env, current_user unless Rails.env.test?
   end
 
   def show
