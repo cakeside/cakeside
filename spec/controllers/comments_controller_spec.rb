@@ -43,7 +43,7 @@ describe CommentsController do
     end
 
     #need to figure out how to get the devise helpers working
-    xit "should not let you comment" do
+    it "should not let you comment" do
       response.should_not redirect_to(creation)
     end
   end
