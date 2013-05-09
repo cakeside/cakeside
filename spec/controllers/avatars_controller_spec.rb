@@ -13,10 +13,15 @@ describe AvatarsController do
 
       it "should save the new avatar" do
         Avatar.last.should_not be_nil
+        Avatar.last.avatar.should_not be_blank
       end
 
       it "should redirect to the profile page" do
         response.should redirect_to(profile_path(user))
+      end
+
+      it "should display a flash notice" do
+        flash[:notice].should_not be_nil
       end
     end
   end
