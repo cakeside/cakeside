@@ -7,7 +7,7 @@ describe AvatarsController do
 
   describe :create do
     context "when uploading a new avatar" do
-      let(:image) { Rack::Test::UploadedFile.new('spec/support/gorilla.jpg', 'image/jpeg') }
+      let(:image) { Rack::Test::UploadedFile.new('spec/fixtures/images/gorilla.jpg', 'image/jpeg') }
 
       before { post :create, :avatar => { :avatar => image } }
 

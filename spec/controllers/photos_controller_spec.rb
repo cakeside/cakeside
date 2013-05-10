@@ -10,7 +10,7 @@ describe PhotosController do
   end
 
   describe "POST create" do
-    let(:image) { Rack::Test::UploadedFile.new("spec/support/gorilla.jpg", "image/jpeg") }
+    let(:image) { Rack::Test::UploadedFile.new("spec/fixtures/images/gorilla.jpg", "image/jpeg") }
 
     before :each do
       post :create, :creation_id => creation.id, :photo => { :image => image }
