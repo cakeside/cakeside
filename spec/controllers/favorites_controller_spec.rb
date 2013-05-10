@@ -38,6 +38,22 @@ describe FavoritesController do
         flash[:notice].should_not be_nil
       end
     end
+
+    context "when trying to add your own cake to your favorites" do
+      before :each do
+        creation.user = user
+        creation.save!
+        post :create, :creation_id => creation.id
+      end
+
+      it "should not let you" do
+        flash[:notice].should == "You can't favorite your own stuff"
+      end
+
+      it "should redirect you to the creation" do
+        response.should redirect_to(creation)
+      end
+    end
   end
 
 end
