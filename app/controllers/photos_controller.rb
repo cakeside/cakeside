@@ -1,8 +1,6 @@
 class PhotosController < ApplicationController
-
   before_filter :authenticate_user!
   before_filter :find_creation
-  #before_filter :find_or_build_photo
 
   def index
     @photos = @creation.photos
@@ -46,8 +44,4 @@ class PhotosController < ApplicationController
     @creation = current_user.creations.find(params[:creation_id])
     raise ActiveRecord::RecordNotFound unless @creation
   end
-
-  #def find_or_build_photo
-    #@photo = params[:id] ? @creation.photos.find(params[:id]) : @creation.photos.build(params[:photo])
-  #end
 end
