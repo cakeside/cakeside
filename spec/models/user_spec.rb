@@ -83,4 +83,33 @@ describe User do
       end
     end
   end
+
+  describe "when a user adds a cake to their favorites" do
+    let(:sut) { FactoryGirl.create(:user) }
+    let!(:cake) { FactoryGirl.create(:creation) }
+
+    context "when the cake is already in their favorites" do
+      let!(:favorite) { FactoryGirl.create(:favorite, :creation => cake, :user => sut) }
+      let(:result) { sut.add_favorite(cake) }
+
+      it "should return their existing favorite" do
+        result.should == favorite
+      end
+    end
+    context "when they have not liked it before" do
+      let(:result) { sut.add_favorite(cake) }
+
+      it "should return a new favorite" do
+        result.should be_a(Favorite)
+      end
+
+      it "should specify the user" do
+        result.user.should == sut
+      end
+
+      it "should specify the creation" do
+        result.creation.should == cake
+      end
+    end
+  end
 end
