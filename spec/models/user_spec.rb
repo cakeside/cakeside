@@ -58,4 +58,28 @@ describe User do
       @result = sut.comment_on(creation, "cool cake")
     end
   end
+
+  describe "when checking if a user already likes a creation" do
+    let(:sut) { FactoryGirl.create(:user) }
+    let(:cake) { FactoryGirl.create(:creation) }
+
+    describe "when they do" do
+      before :each do
+        sut.add_favorite(cake)
+      end
+
+      let(:result) { sut.already_likes(cake) }
+
+      it "should return true" do
+        result.should be_true
+      end
+    end
+    describe "when they do not" do
+      let(:result) { sut.already_likes(cake) }
+
+      it "should return false" do
+        result.should be_false
+      end
+    end
+  end
 end
