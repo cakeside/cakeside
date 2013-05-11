@@ -43,4 +43,8 @@ class Creation < ActiveRecord::Base
     sql_search = "%#{query}%"
     Creation.where("upper(name) like upper(?) OR upper(story) like upper(?)", sql_search, sql_search)
   end
+
+  def is_liked_by(user)
+    favorites.any? { |favorite| favorite.user == user }
+  end
 end

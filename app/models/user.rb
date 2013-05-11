@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   end
 
   def already_likes(creation)
-    Favorite.where("user_id = ? AND creation_id = ?", self.id, creation.id).exists?
+    creation.is_liked_by(self)
   end
 
   def owns(creation)

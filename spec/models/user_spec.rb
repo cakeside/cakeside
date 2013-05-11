@@ -74,6 +74,7 @@ describe User do
         result.should be_true
       end
     end
+
     describe "when they do not" do
       let(:result) { sut.already_likes(cake) }
 
