@@ -11,12 +11,8 @@ class User < ActiveRecord::Base
   acts_as_tagger
   default_scope order("created_at DESC")
 
-  def add_favorite( creation )
-    if self.already_likes(creation)
-      favorites.find { |favorite| favorite.user == self }
-    else
-      creation.favorites.create({:user_id => self.id})
-    end
+  def add_favorite(creation)
+    creation.liked_by(self)
   end
 
   def already_likes(creation)

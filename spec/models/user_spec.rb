@@ -96,6 +96,7 @@ describe User do
         result.should == favorite
       end
     end
+
     context "when they have not liked it before" do
       let(:result) { sut.add_favorite(cake) }
 
