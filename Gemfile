@@ -31,6 +31,7 @@ group :development, :test do
   gem 'rvm-capistrano'
   gem 'better_errors'
   gem 'bullet'
+  gem 'vagrant'
 end
 group :test do
   gem 'sqlite3'
