@@ -16,3 +16,6 @@ rvm use 2.0.0 --default
 source /home/vagrant/.bashrc
 source /home/vagrant/.bash_profile
 source /home/vagrant/.profile
+
+cd /vagrant
+bundle install
