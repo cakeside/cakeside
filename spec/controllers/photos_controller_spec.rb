@@ -50,9 +50,9 @@ describe PhotosController do
         {
            :name=>"example.png",
            :size=>359791,
-           :url=>"/uploads/photo/image/1/example.png",
-           :thumbnail_url=>"/uploads/photo/image/1/thumb_example.png",
-           :delete_url=>1,
+           :url=>"/uploads/photo/image/#{photo.id}/example.png",
+           :thumbnail_url=>"/uploads/photo/image/#{photo.id}/thumb_example.png",
+           :delete_url=>photo.id,
            :delete_type=>"DELETE"
         }]
       }.to_json
