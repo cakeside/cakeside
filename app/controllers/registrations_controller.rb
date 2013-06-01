@@ -1,5 +1,4 @@
 class RegistrationsController < Devise::RegistrationsController
-  before_filter :initialize_env
   #force_ssl
   def edit
     @user = current_user
