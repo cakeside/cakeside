@@ -7,13 +7,12 @@ namespace :deploy do
   desc "deploy to production server"
   task :production, :tag do |t, args|
     tag_to_deploy = args.tag
+    sh "rake assets:precompile"
     if tag_to_deploy.blank?
-      sh "rake assets:precompile"
       sh "cap production deploy:migrations"
     else
-      puts "deploying to production from tag #{tag_to_deploy}"
       sh "cap production deploy:migrations -s tag=#{tag_to_deploy}"
-      sh "curl http://cakeside.com/ > /dev/null"
     end
+    sh "curl http://cakeside.com/ > /dev/null"
   end
 end
