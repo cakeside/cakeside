@@ -7,7 +7,6 @@ namespace :deploy do
   desc "deploy to production server"
   task :production, :tag do |t, args|
     tag_to_deploy = args.tag
-    sh "rake assets:precompile"
     if tag_to_deploy.blank?
       sh "cap production deploy:migrations"
     else
