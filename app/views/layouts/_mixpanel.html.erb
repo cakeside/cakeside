@@ -4,7 +4,12 @@ b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
 mixpanel.init("866e150970370a95c77cf6293dbc02c5");</script><!-- end Mixpanel -->
 <% if current_user %>
 <script type="text/javascript" charset="utf-8">
+<% if Rails.env.development? || Rails.env.test? %>
+mixpanel.disable();
+<% end %>
 mixpanel.identify(<%= current_user.id %>);
+mixpanel.alias("<%= current_user.email %>");
+mixpanel.name_tag("<%= current_user.name %>");
 mixpanel.people.set({"$email":"<%= current_user.email %>","$created":"<%= current_user.created_at %>","$last_login":"<%= current_user.last_sign_in_at %>","city":"<%= current_user.city %>","latitude":"<%= current_user.latitude %>","longitude":"<%= current_user.longitude %>","website":"<%= current_user.website %>","twitter":"<%= current_user.twitter %>","facebook":"<%= current_user.facebook %>"});
 </script>
 <% end %>
