@@ -20,7 +20,6 @@ gem 'jquery-fileupload-rails'
 gem 'capistrano-gitflow'
 gem 'dotenv-rails'
 gem 'airbrake'
-gem 'mixpanel'
 
 group :development, :test do
   gem 'pg'
