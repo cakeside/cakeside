@@ -39,6 +39,8 @@
         $('#user_longitude').val(item.longitude);
       }
     });
+    mixpanel.track_forms(".form-inline", "signed in");
+    mixpanel.track_forms(".form-horizontal", "registered");
   });
 </script>
     <% end %>
