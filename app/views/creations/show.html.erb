@@ -6,13 +6,11 @@
   </script>
 <% end -%>
 <% content_for :page_header do -%>
-  <% if(@creation.is_restricted) -%>
-      <%= image_tag "ratedr.jpg", :class => "span1 pull-right" %>
-  <% end -%>
+  <%= image_tag "ratedr.jpg", :class => "span1 pull-right" if @creation.is_restricted %>
   <h1><%= link_to @creation.name, creation_path(@creation) %><small> by <%= link_to @creation.user.name, profile_path(@creation.user) %> </small></h1>
   <% @creation.categories.each do |category| %>
     <a href="/categories/<%= category.slug %>"><span class="label"><%= category.name %></span></a>
-  <% end %> 
+  <% end %>
 <% end -%>
 <hr />
 <% if @creation.user == current_user %>
@@ -37,6 +35,12 @@
         </div>
       </div>
     <% end %>
+  <% else %>
+    <div class="row">
+      <div class="span2 pull-right">
+        <%= link_to "SIGN IN", new_user_session_path, :class => 'btn btn-primary' %>
+      </div>
+    </div>
   <% end %>
 <% end %>
 
