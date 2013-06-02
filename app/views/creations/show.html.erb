@@ -58,7 +58,7 @@
         <li class="span2">
           <a class="thumbnail gallery" href="<%= photo.image.large.url %>"><img src="<%= photo.image.thumb.url.to_s %>" alt="<%= @creation.name %>" /></a>
         </li>
-      <% end %>
+      <% end if @creation.photos.count > 1 %>
     </ul>
   </div>
   <div class="span6">
