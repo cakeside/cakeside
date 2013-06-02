@@ -7,12 +7,7 @@
 <% end -%>
 <% content_for :page_header do -%>
   <%= image_tag "ratedr.jpg", :class => "span1 pull-right" if @creation.is_restricted %>
-  <h1><%= link_to @creation.name, creation_path(@creation) %><small> by <%= link_to @creation.user.name, profile_path(@creation.user) %> </small></h1>
-  <% @creation.categories.each do |category| %>
-    <a href="/categories/<%= category.slug %>"><span class="label"><%= category.name %></span></a>
-  <% end %>
 <% end -%>
-<hr />
 <% if @creation.user == current_user %>
   <div class="row">
     <div class="span12">
@@ -27,52 +22,59 @@
     </div>
   </div>
 <% else %>
-  <% if user_signed_in? %>
-    <% unless current_user == @creation.user || current_user.already_likes(@creation) %>
-      <div class="row">
-        <div class="span2 pull-right">
-          <%= button_to "ADD TO FAVORITES", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary' %>
-        </div>
-      </div>
-    <% end %>
-  <% else %>
-    <div class="row">
-      <div class="span2 pull-right">
-        <%= link_to "SIGN IN", new_user_session_path, :class => 'btn btn-primary' %>
-      </div>
-    </div>
-  <% end %>
 <% end %>
 
 <div class="row">
   <div class="span6">
-    <ul class="thumbnails">
-      <li class="span6">
-        <a class="thumbnail" href="<%= url_for creation_path(@creation) %>"><img src="<%= @primary_photo.image.large.url %>" alt="<%= @creation.name %>" /></a>
-        <span> <i class="icon-tags"></i> </span>
-        <% @creation.tags.each do |tag| -%>
-          <a href="/tags/<%= tag.name %>"><span class="label"><%= tag.name %></span></a>
-        <% end -%>
-      </li>
-      <% @creation.photos.each do |photo| %>
-        <li class="span2">
-          <a class="thumbnail gallery" href="<%= photo.image.large.url %>"><img src="<%= photo.image.thumb.url.to_s %>" alt="<%= @creation.name %>" /></a>
-        </li>
-      <% end if @creation.photos.count > 1 %>
-    </ul>
-  </div>
-  <div class="span6">
-    <h3>Description <% if @creation.user == current_user %><small><%= link_to '(edit)', edit_creation_path(@creation) %></small><% end %></h3>
-    <p><%= @creation.story %></p>
+    <img class="thumbnail" src="<%= @primary_photo.image.large.url %>" alt="<%= @creation.name %>" />
     <iframe src="http://www.facebook.com/plugins/like.php?href=<%= request.url %>" style="border:none; width:350px; height:30px; float:left;"></iframe>
   </div>
+  <div class="span6">
+    <h1><%= link_to @creation.name, creation_path(@creation) %></h1>
+    <p>by <%= link_to @creation.user.name, profile_path(@creation.user) %></p>
+    <hr />
+    <span> <i class="icon-tags"></i> </span>
+    <% @creation.categories.each do |category| %>
+      <a href="/categories/<%= category.slug %>"><span class="label"><%= category.name %></span></a>
+    <% end %>
+    <% @creation.tags.each do |tag| -%>
+      <a href="/tags/<%= tag.name %>"><span class="label"><%= tag.name %></span></a>
+    <% end -%>
+
+    <br /><br />
+    <div class="row">
+      <div class="span6">
+        <% if user_signed_in? %>
+          <% unless current_user == @creation.user || current_user.already_likes(@creation) %>
+            <%= button_to "ADD TO FAVORITES", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary' %>
+          <% end %>
+        <% else %>
+            <p><%= link_to "SIGN IN", new_user_session_path, :class => "btn btn-primary" %></p>
+        <% end %>
+      </div>
+    </div>
+    <p><%= @creation.story %></p>
+  </div>
 </div>
+<% if @creation.photos.count > 1 %>
+<div class="row">
+  <div class="span12">
+    <ul class="thumbnails">
+    <% @creation.photos.each do |photo| %>
+      <li class="span2">
+        <a class="thumbnail gallery" href="<%= photo.image.large.url %>"><img src="<%= photo.image.thumb.url.to_s %>" alt="<%= @creation.name %>" /></a>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>
 <div class="row">
   <a href="#" id="comments"></a>
   <div class="span12">
     <h3>Comments <small><%= pluralize @creation.comment_threads.length, "comment" %></small></h3>
     <% unless user_signed_in? %>
-      <p><%= link_to "sign in", new_user_session_path %> to comment </p>
+      <p><%= link_to "SIGN IN", new_user_session_path, :class => "btn btn-primary" %> to comment </p>
     <% else %>
       <p><a id="add-comment-button" class="btn btn-primary" data-toggle="modal" href="#add-comment-dialog">ADD COMMENT</a></p>
     <% end -%>
