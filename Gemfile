@@ -30,6 +30,7 @@ group :development, :test do
   gem 'rvm-capistrano'
   gem 'better_errors'
   gem 'bullet'
+  gem 'rack-mini-profiler'
 end
 group :test do
   gem 'sqlite3'
