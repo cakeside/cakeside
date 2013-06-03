@@ -4,7 +4,7 @@ source ~/.bashrc
 
 echo 'switch gemset'
 #cd .
-rvm use ruby-1.9.3-p392@cakeside
+rvm use ruby-1.9.3-p429@cakeside
 
 echo 'bundle install'
 bundle install --without production
