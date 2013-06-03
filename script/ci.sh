@@ -3,7 +3,7 @@ echo "load bashrc"
 source ~/.bashrc
 
 echo 'switch gemset'
-rvm use ruby-1.9.3-p429@cakeside
+rvm use ruby-2.0.0-p195@cakeside --create
 
 echo 'bundle install'
 bundle install --without production

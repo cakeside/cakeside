@@ -1,6 +1,6 @@
 #$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require "rvm/capistrano"
-set :rvm_ruby_string, 'ruby-1.9.3-p392@cakeside'
+set :rvm_ruby_string, 'ruby-2.0.0-p195@cakeside'
 set :rvm_type, :system
 require 'bundler/capistrano'                 # loads RVM's capistrano plugin
 set :stages, %w(production staging)
