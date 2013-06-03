@@ -1,1 +1,1 @@
-task :ci => ['db:test:prepare', 'spec', 'js:default']
+task :ci => ['db:test:prepare', 'spec', 'jasmine:ci']
