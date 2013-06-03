@@ -8,4 +8,4 @@ rvm use ruby-1.9.3-p429@cakeside
 echo 'bundle install'
 bundle install --without production
 cp config/database.yml.example config/database.yml
-bundle exec rake ci --trace
+xvfb-run bundle exec rake ci --trace
