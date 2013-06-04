@@ -24,7 +24,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   version :large do 
     process :convert => 'png'
-    process :resize_to_fit => [910, 630]
+    process :resize_to_fit => [570, 630]
     process :watermark
   end
   version :thumb, :from_version => :large do
