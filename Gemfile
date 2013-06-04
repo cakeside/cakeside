@@ -42,7 +42,7 @@ group :test do
   gem 'simplecov'
   gem 'ffaker'
 end
-group :production do
+group :production, :staging do
   gem 'pg'
   gem 'fog'
   gem 'newrelic_rpm'
