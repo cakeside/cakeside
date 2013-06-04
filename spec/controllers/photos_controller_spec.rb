@@ -22,7 +22,7 @@ describe PhotosController do
 
     it "should upload a new photo" do
       assigns(:photo).should_not be_nil
-      assigns(:photo).image.to_s.should include("gorilla.png")
+      assigns(:photo).image.to_s.should include("gorilla.jpg")
     end
   end
 
