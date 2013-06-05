@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
   end
 
   def load_categories
-    @categories = Category.all
+    @categories = Rails.cache.fetch("categories") do
+      Category.all
+    end
   end
 end
