@@ -42,6 +42,9 @@ group :test do
   gem 'simplecov'
   gem 'ffaker'
 end
+group :staging do
+  gem 'rack-mini-profiler'
+end
 group :production, :staging do
   gem 'pg'
   gem 'fog'
