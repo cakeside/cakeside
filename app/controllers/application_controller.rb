@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :profile_application
+  before_filter :load_categories
 
   private
 
@@ -10,5 +11,9 @@ class ApplicationController < ActionController::Base
 
   def profile_application
     Rack::MiniProfiler.authorize_request unless ENV['PROFILE_APPLICATION'].blank?
+  end
+
+  def load_categories
+    @categories = Category.all
   end
 end

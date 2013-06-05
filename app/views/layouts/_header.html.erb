@@ -19,7 +19,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories<b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <% Category.all.each do |category| %>
+              <% @categories.each do |category| %>
                 <li><a href="/categories/<%= category.slug %>"><%= category.name %></a></li>
               <% end %>
             </ul>
