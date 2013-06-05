@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def profile_application
-    Rack::MiniProfiler.authorize_request unless ENV['PROFILE_APPLICATION'].blank?
+    Rack::MiniProfiler.authorize_request if ENV['PROFILE_APPLICATION'] == true
   end
 
   def load_categories
