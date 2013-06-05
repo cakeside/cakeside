@@ -46,6 +46,7 @@ group :production, :staging do
   gem 'pg'
   gem 'fog'
   gem 'newrelic_rpm'
+  gem 'dalli'
 end
 group :assets do
   gem 'sass-rails'
