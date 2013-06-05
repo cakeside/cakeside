@@ -16,3 +16,4 @@ config/database.yml
 coverage
 .vagrant
 public/assets
+.env
