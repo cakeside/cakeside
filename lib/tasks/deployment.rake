@@ -1,7 +1,8 @@
 namespace :deploy do
   desc "deploy to staging server"
-  task :staging => :spec do
+  task :staging do
     sh "cap staging deploy:migrations"
+    sh "cap staging deploy:clean"
     sh "curl http://staging.cakeside.com/ > /dev/null"
   end
 
@@ -16,3 +17,4 @@ namespace :deploy do
     sh "curl http://cakeside.com/ > /dev/null"
   end
 end
+
