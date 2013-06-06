@@ -4,6 +4,7 @@ namespace :deploy do
     sh "cap staging deploy:migrations"
     sh "curl http://staging.cakeside.com/ > /dev/null"
   end
+
   desc "deploy to production server"
   task :production, :tag do |t, args|
     tag_to_deploy = args.tag
