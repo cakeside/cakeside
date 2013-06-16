@@ -9,11 +9,10 @@
     <meta name="description" content="<%= yield(:description) %>" />
     <title><%= full_title(yield(:title)) %></title>
     <%= stylesheet_link_tag :application %>
-    <link rel="shortcut icon" href="/assets/favicon.ico">
     <%= favicon_link_tag 'favicon.ico' %>
-    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/assets/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/assets/apple-touch-icon-114x114.png">
+    <%= favicon_link_tag 'apple-touch-icon.png', :rel => 'apple-touch-icon', :type => 'image/png' %>
+    <%= favicon_link_tag 'apple-touch-icon-72x72.png', :rel => 'apple-touch-icon', :type => 'image/png', :sizes => "72x72" %>
+    <%= favicon_link_tag 'apple-touch-icon-114x114.png', :rel => 'apple-touch-icon', :type => 'image/png', :sizes => "114x114" %>
     <%= yield :head %>
     <%= csrf_meta_tags %>
   </head>
