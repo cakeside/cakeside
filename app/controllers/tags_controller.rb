@@ -1,7 +1,8 @@
 class TagsController < ApplicationController
   def show
     @tag = params[:id]
-    @tutorials = Tutorial.tagged_with([@tag])
-    @creations = Creation.includes(:user).tagged_with([@tag])
+    @total_tutorials = Tutorial.tagged_with(@tag).count
+    @total_creations = Creation.tagged_with(@tag).count
+    @creations = Creation.includes(:user).tagged_with([@tag]).page(params[:page]).per(15)
   end
 end

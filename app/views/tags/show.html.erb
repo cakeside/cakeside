@@ -10,24 +10,14 @@
 </script>
 <% end -%>
 <% content_for :page_header do -%>
-  <h1>Tagged <em><%= @tag %></em></h1>
-  <h2><%= @creations.count %> creations and <%= @tutorials.count %> tutorials</h2>
+  <h1><%= @total_creations %> creations tagged <em><%= @tag %></em></h1>
 <% end -%>
+<div class="row">
+  <p class="pull-right"><a href="/tutorials?tag=<%= @tag %>"><%= @total_tutorials %> tutorials</a> &raquo;</p>
+</div>
 <div id="tutorials-div" class="row">
   <div class="span12">
     <ul class="thumbnails">
-      <% @tutorials.each do |tutorial| %>
-      <div class="span4">
-        <div class="thumbnail">
-          <a href="<%= url_for tutorial %>"><img src="<%= tutorial.image_url %>" /></a>
-          <div class="caption">
-            <h3><a href="<%= tutorial.url %>" target="_blank"><%= tutorial.heading %></a></h3>
-            <p><%= tutorial.description %></p>
-            <p><a class="btn" href="<%= url_for tutorial %>">View</a></p>
-          </div>
-        </div>
-      </div>
-    <% end %>
     <% @creations.each do |creation| %>
       <div class="span4">
         <div class="thumbnail">
@@ -42,4 +32,7 @@
     <% end %>
     </ul>
   </div>
+</div>
+<div class="row">
+  <div class="span12"> <%= paginate @creations %> </div>
 </div>
