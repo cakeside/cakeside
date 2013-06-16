@@ -3,6 +3,9 @@
   <h1>Cake Artists</h1>
 <% end -%>
 <div class="row">
+  <div class="span12 text-center"> <%= paginate @profiles %> </div>
+</div>
+<div class="row">
   <div class="span12">
     <ul class="thumbnails">
       <% @profiles.each do |profile| %>
@@ -24,5 +27,5 @@
   </div>
 </div>
 <div class="row">
-  <div class="span12"> <%= paginate @profiles %> </div>
+  <div class="span12 text-center"> <%= paginate @profiles %> </div>
 </div>
