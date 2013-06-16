@@ -5,7 +5,7 @@
       <a class="brand" style="color:hotpink;" href="/">Cake<em>Side</em></a>
       <div class="nav-collapse">
         <%= form_tag(search_index_path, :method => "get", :name => "search", :class => "navbar-search pull-left") do %>
-          <input name="q" type="text" class="search-query" placeholder="Search all content" />
+          <input name="q" type="text" class="search-query" placeholder="Search" />
         <% end %>
         <ul class="nav">
           <li><%= link_to 'Artists', profiles_path %></li>
