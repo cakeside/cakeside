@@ -70,10 +70,10 @@ Devise.setup do |config|
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
-  # config.remember_for = 2.weeks
+  config.remember_for = 4.weeks
 
   # If true, extends the user's remember period when remembered via cookie.
-  # config.extend_remember_period = false
+  config.extend_remember_period = true
 
   # Options to be passed to the created cookie. For instance, you can set
   # :secure => true in order to force SSL only cookies.
@@ -134,7 +134,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :token_authenticatable
   # Defines name of the authentication token params key
-  # config.token_authentication_key = :auth_token
+  config.token_authentication_key = :auth_token
 
   # ==> Scopes configuration
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
