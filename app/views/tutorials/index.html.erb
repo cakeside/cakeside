@@ -13,8 +13,11 @@
 </script>
 <% end -%>
 <% content_for :page_header do -%>
-  <%= link_to 'Add Tutorial', new_tutorial_path, :class => "btn btn-primary pull-right" %>
+  <%= link_to 'Add Tutorial', new_tutorial_path, :class => "btn btn-primary" %>
 <% end -%>
+<div class="row">
+  <div class="span12 text-center"> <%= paginate @tutorials %> </div>
+</div>
 <div id="tutorials-div" class="row">
   <div class="span12">
   <ul class="thumbnails">
@@ -39,5 +42,5 @@
   </div>
 </div>
 <div class="row">
-  <div class="span12"> <%= paginate @tutorials %> </div>
+  <div class="span12 text-center"> <%= paginate @tutorials %> </div>
 </div>

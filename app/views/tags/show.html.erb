@@ -15,6 +15,9 @@
 <div class="row">
   <p class="pull-right"><a href="/tutorials?tag=<%= @tag %>"><%= @total_tutorials %> tutorials</a> &raquo;</p>
 </div>
+<div class="row">
+  <div class="span12 text-center"> <%= paginate @creations %> </div>
+</div>
 <div id="tutorials-div" class="row">
   <div class="span12">
     <ul class="thumbnails">
@@ -34,5 +37,5 @@
   </div>
 </div>
 <div class="row">
-  <div class="span12"> <%= paginate @creations %> </div>
+  <div class="span12 text-center"> <%= paginate @creations %> </div>
 </div>
