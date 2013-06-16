@@ -17,7 +17,7 @@
   </div>
 </div>
 <br />
-<% if user_signed_in? %>
+<% if user_signed_in? && @user == current_user %>
 <div style="padding: 8px 0;" class="well">
   <ul class="nav nav-list">
     <li class="nav-header"><%= current_user.name %></li>
