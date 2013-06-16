@@ -5,6 +5,7 @@ namespace :db do
     destination_db = config[Rails.env]["database"]
     puts "restoring to #{destination_db}"
     sh "psql #{destination_db} < #{dumpfile}"
+    #sh "pg_restore --verbose --clean --no-acl --no-owner -h localhost -U #{config[Rails.env]["username"]} -d #{destination_db} #{dumpfile}"
   end
   task :backup do
     sh "cap production backup_db"
