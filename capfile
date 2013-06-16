@@ -16,9 +16,8 @@ end
 
 task :backup_db do
   filename = "#{deploy_env}-#{Time.now.strftime('%Y-%m-%d')}.sql"
-  #run "pg_dump --clean cakeside_production > ~/db/backups/#{filename}"
-  run "PGPASSWORD=password pg_dump -Fc --no-acl --no-owner -h localhost -U cakeside cakeside_production > ~/db/backups/#{filename}"
-  #PGPASSWORD=mypassword pg_dump -Fc --no-acl --no-owner -h localhost -U myuser mydb > mydb.dump
+  run "pg_dump --clean cakeside_production > ~/db/backups/#{filename}"
+  #run "PGPASSWORD=password pg_dump -Fc --no-acl --no-owner -h localhost -U cakeside cakeside_production > ~/db/backups/#{filename}"
   download("db/backups/#{filename}", "db/backups/", :via => :scp, :recursive => true)
 end
 
