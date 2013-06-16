@@ -1,4 +1,3 @@
-#$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 require "rvm/capistrano"
 set :rvm_ruby_string, 'ruby-2.0.0-p195@cakeside'
 set :rvm_type, :system
