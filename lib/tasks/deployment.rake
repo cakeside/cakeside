@@ -1,4 +1,5 @@
 namespace :deploy do
+
   desc "deploy to staging server"
   task :staging do
     sh "cap staging deploy:migrations"
