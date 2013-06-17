@@ -16,12 +16,12 @@ describe TagsController do
       get :show, :id => tag
     end
 
-    it "should return each tutorial that is tagged" do
-      assigns(:tutorials).should include(tagged_tutorial)
+    it "should include the total tutorials tagged" do
+      assigns(:total_tutorials).should == 1
     end
 
-    it "should not return tutorials that are not tagged" do
-      assigns(:tutorials).should_not include(untagged_tutorial)
+    it "should include the total creations tagged" do
+      assigns(:total_creations).should == 1
     end
 
     it "should return each cake that is tagged" do
