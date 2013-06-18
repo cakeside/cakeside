@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_one :avatar
   acts_as_tagger
   default_scope order("created_at DESC")
+  before_save :ensure_authentication_token
 
   def add_favorite(creation)
     creation.liked_by(self)
