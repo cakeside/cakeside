@@ -1,12 +1,11 @@
 <% provide(:title, "Share my creation") -%>
-<% content_for :page_header do -%>
-  <h1>Share a new creation <small>(Step 1 of 2)</small></h1>
-<% end -%>
 <div class="row">
   <div class="span3">
     <%= render "profiles/me_box" %>
   </div>
   <div class="span9">
+    <h1>Share a new creation <small>(Step 1 of 2)</small></h1>
+    <hr />
     <%= render 'form' %>
   </div>
 </div>

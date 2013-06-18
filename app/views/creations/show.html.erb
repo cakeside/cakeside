@@ -5,9 +5,6 @@
     $(function() { Creations.Show.initialize(); });
   </script>
 <% end -%>
-<% content_for :page_header do -%>
-  <%= image_tag "ratedr.jpg", :class => "span1 pull-right" if @creation.is_restricted %>
-<% end -%>
 <% if @creation.user == current_user %>
   <div class="row">
     <div class="span12">

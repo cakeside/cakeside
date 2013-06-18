@@ -1,15 +1,8 @@
 <% provide(:title, "Upload images for this creation") -%>
-<% content_for :page_header do -%>
-  <% if(@creation.is_restricted) -%>
-    <div style="float:right;">
-      <%= image_tag "ratedr.jpg", :class => "span1" %>
-    </div>
-  <% end -%>
-  <h1><small>Upload images for </small> <%= @creation.name %> <small> (Step 2 of 2)</small></h1>
- <hr>
-<% end -%>
 <div class="row">
   <div class="span12">
+    <h1><small>Upload images for </small> <%= @creation.name %> <small> (Step 2 of 2)</small></h1>
+    <hr>
     <%= render 'form' %>
   </div>
 </div>

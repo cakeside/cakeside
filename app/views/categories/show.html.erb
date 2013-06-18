@@ -1,9 +1,7 @@
 <% provide(:title, "#{@category.name} Cakes") -%>
-<% content_for :page_header do -%>
-  <h1>Category <em><%= @category.name %></em></h1>
-<% end -%>
 <div class="row">
   <div class="span3">
+    <h1>Categories</h1>
     <ul class="well nav nav-pills nav-stacked">
       <% Category.all.each do |category| %>
         <% if(category == @category) -%>

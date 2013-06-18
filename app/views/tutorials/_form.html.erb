@@ -2,7 +2,6 @@
 <script type="text/javascript" charset="utf-8">
 $(function(){
   new TutorialForm().initialize($);
-
   var all_tags = [ <% ActsAsTaggableOn::Tag.all.map(&:name).each { |item| %> '<%= item %>', <% } %> ];
   $('#tags').tagit({ availableTags: all_tags });
 });

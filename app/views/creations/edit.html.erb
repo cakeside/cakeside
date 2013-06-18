@@ -1,7 +1,4 @@
 <% provide(:title, "Editing creation #{@creation.name}") %>
-<% content_for :page_header do -%>
-  <h1><small>Edit</small> <%= @creation.name %> <small>(Step 1 of 2)</small></h1>
-<% end -%>
 <div class="row">
   <div class="span3">
     <div class="thumbnail">
@@ -12,6 +9,8 @@
     </div>
   </div>
   <div class="span9">
+    <h1><small>Edit</small> <%= @creation.name %> <small>(Step 1 of 2)</small></h1>
+    <hr />
     <%= render 'form' %>
   </div>
 </div>
