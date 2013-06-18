@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   validates :name,  :presence => true
   validates :website, :format => URI::regexp(%w(http https)), :allow_blank => true
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
   attr_accessible :name, :email, :website, :twitter, :facebook, :city, :latitude, :longitude, :password, :password_confirmation, :current_password, :remember_me, :interest_ids
   has_many :creations, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
