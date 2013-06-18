@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
 
   def favorites
     @user = current_user
-    @favorites = current_user.favorites
+    @favorites = current_user.favorites.includes(:creation)
     @creations = @favorites.map {|f| f.creation }
   end
 end
