@@ -12,7 +12,7 @@ module ApplicationHelper
   end
   def full_title(title)
     if( title.blank? )
-      "Welcome to CakeSide, a place for cake enthusiasts to share their proud creations!"
+      "CakeSide - for cake lovers!"
     else
       "#{title} - CakeSide"
     end
