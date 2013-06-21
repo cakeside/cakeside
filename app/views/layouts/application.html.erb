@@ -3,10 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title><%= full_title(yield(:title)) %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="google-site-verification" content="X9sZ3dovM2s1pJg68Bb0q1oRqqiJYdzAwGeaGlOy6PM" />
     <meta name="description" content="<%= yield(:description) %>" />
-    <title><%= full_title(yield(:title)) %></title>
     <%= stylesheet_link_tag :application %>
     <%= favicon_link_tag 'favicon.ico' %>
     <%= favicon_link_tag 'apple-touch-icon-57x57.png', :rel => 'apple-touch-icon', :type => 'image/png', :sizes => "57x57" %>

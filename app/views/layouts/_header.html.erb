@@ -24,22 +24,14 @@
       </div>
       <ul class="nav pull-right">
         <li class="hidden-phone"><%= link_to "Add Creation", new_creation_path, :style => "color:#48ce62;font-size:15px;" %></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Help<b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="/privacy.html">Privacy Policy</a></li>
-            <li class="divider"></li>
-            <li><a href="/terms.html">Terms and Conditions</a></li>
-          </ul>
-        </li>
         <li class="divider-vertical hidden-phone"></li>
         <% if user_signed_in? %>
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.name %><b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><%= link_to "My Creations", profile_path(current_user) %></li>
-              <li><%= link_to "My Favorites", profiles_favorites_path %></li>
-              <li><%= link_to "My Settings", edit_user_registration_path %></li>
+              <li><%= link_to "Creations", profile_path(current_user) %></li>
+              <li><%= link_to "Favorites", profiles_favorites_path %></li>
+              <li><%= link_to "Settings", edit_user_registration_path %></li>
               <li class="divider"></li>
               <li> <%= link_to "Sign Out", destroy_user_session_path %> </li>
             </ul>
