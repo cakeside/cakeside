@@ -31,9 +31,6 @@
     <p>by <%= link_to @creation.user.name, profile_path(@creation.user) %></p>
     <hr />
     <span> <i class="icon-tags"></i> </span>
-    <% @creation.categories.each do |category| %>
-      <a href="/categories/<%= category.slug %>"><span class="label"><%= category.name %></span></a>
-    <% end %>
     <% @creation.tags.each do |tag| -%>
       <a href="/tags/<%= tag.name %>"><span class="label"><%= tag.name %></span></a>
     <% end -%>

@@ -9,24 +9,33 @@ Cake::Application.routes.draw do
   match "about_us" => "home#about_us"
   match "why_cakeside" => "home#why_cakeside"
 
-  resources :tutorials
+  resources :tutorials do
+    get 'page/:page', :action => :index, :on => :collection
+  end
 
   # /creations
   resources :creations do
     resources :photos, :only => [:index, :new, :create, :destroy]
     resources :favorites, :only => [:index, :create]
     resources :comments, :only => [:index, :new, :create]
+    get 'page/:page', :action => :index, :on => :collection
   end
 
   # /profiles
-  resources :profiles, :only => [:index, :show]
+  resources :profiles, :only => [:index, :show] do
+    get 'page/:page', :action => :index, :on => :collection
+  end
   match 'favorites' => 'profiles#favorites', :as => 'profiles_favorites', :method => 'GET'
 
   # /categories
-  resources :categories, :only => [:show]
+  resources :categories, :only => [:show] do
+    get 'page/:page', :action => :show, :on => :collection
+  end
 
   # /tags
-  resources :tags, :only => [:show]
+  resources :tags, :only => [:show] do
+    get 'page/:page', :action => :show
+  end
 
   # /search
   get "search/index"

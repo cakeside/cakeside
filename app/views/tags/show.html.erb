@@ -2,7 +2,7 @@
 <% content_for :javascript do -%>
 <script type="text/javascript">  
   $(function(){
-    var container = $('#tutorials-div');
+    var container = $('#creations-div');
     container.imagesLoaded(function(){
       container.masonry({ itemSelector : '.span4', isResizable: true });
     });
@@ -17,7 +17,7 @@
     <p class="pull-right"><a href="/tutorials?tag=<%= @tag %>"><%= @total_tutorials %> tutorials</a> &raquo;</p>
   </div>
 </div>
-<div id="tutorials-div" class="row">
+<div id="creations-div" class="row">
   <div class="span12">
     <ul class="thumbnails">
     <% @creations.each do |creation| %>
