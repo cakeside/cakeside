@@ -1,10 +1,4 @@
 Cake::Application.routes.draw do
-  ActiveAdmin.routes(self)
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
-
-  root :to => "creations#index"
-
   # /home
   match "about_us" => "home#about_us"
   match "why_cakeside" => "home#why_cakeside"
@@ -28,9 +22,8 @@ Cake::Application.routes.draw do
   match 'favorites' => 'profiles#favorites', :as => 'profiles_favorites', :method => 'GET'
 
   # /categories
-  resources :categories, :only => [:show] do
-    get 'page/:page', :action => :show, :on => :collection
-  end
+  get 'categories/:slug' => "categories#show", :as => :category
+  get 'categories/:slug/page/:page' => "categories#show"
 
   # /tags
   resources :tags, :only => [:show] do
@@ -49,4 +42,11 @@ Cake::Application.routes.draw do
   match "/sitemap.xml", :to => "sitemap#index", :defaults => {:format => :xml}
 
   match 'settings/change_password' => 'settings#change_password', :as => 'settings_change_password', :method => 'POST'
+
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
+  root :to => "creations#index"
+
 end

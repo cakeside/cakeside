@@ -1,13 +1,12 @@
 <% provide(:title, "#{@category.name} Cakes") -%>
 <div class="row">
   <div class="span3">
-    <h1>Categories</h1>
     <ul class="well nav nav-pills nav-stacked">
-      <% Category.all.each do |category| %>
+      <% @categories.each do |category| %>
         <% if(category == @category) -%>
-          <li class="active"><a href="/categories/<%= category.slug %>"><%= category.name %></a></li>
+          <li class="active"><%= link_to category.name, category_path(category) %></li>
         <% else -%>
-          <li><a href="/categories/<%= category.slug %>"><%= category.name %></a></li>
+          <li><%= link_to category.name, category_path(category) %></li>
         <% end -%>
       <% end %>
     </ul>
