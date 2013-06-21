@@ -27,7 +27,7 @@ ActiveAdmin.setup do |config|
   #   config.default_namespace = false
   #
   # Default:
-   config.default_namespace = :cakeeater
+  #config.default_namespace = :cakeeater
 
   # == User Authentication
   #
