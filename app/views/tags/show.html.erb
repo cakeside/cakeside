@@ -26,6 +26,11 @@
           <a href="<%= url_for creation %>"><img src="<%= creation.primary_image.image.large.url %>" /></a>
           <div class="caption">
             <h3><a href="<%= url_for creation %>"><%= creation.name %></a> <em><small>by <a href="<%= url_for profile_path(creation.user) %>"> <%= shrink(creation.user.name, 20) %></a></small></em></h3>
+            <p>
+            <% creation.tags.each do |tag| -%>
+              <a href="/t/<%= tag.name %>"><span class="label"><%= tag.name %></span></a>
+            <% end -%>
+            </p>
             <p><%= creation.story %></p>
             <p><a class="btn" href="<%= url_for creation %>">View</a></p>
           </div>
