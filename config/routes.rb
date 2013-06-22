@@ -6,7 +6,7 @@ Cake::Application.routes.draw do
   resources :tutorials do
     get 'page/:page', :action => :index, :on => :collection
   end
-  resources :tutorial_tags, :only => [:show], :path => :tt
+  resources :tutorial_tags, :only => [:index, :show], :path => :tt
 
   # /creations
   resources :creations do
