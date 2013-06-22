@@ -1,0 +1,45 @@
+<% provide(:title, "#{@tag}") -%>
+<% content_for :javascript do -%>
+<script type="text/javascript">  
+  $(function(){
+    var container = $('#tutorials-div');
+    container.imagesLoaded(function(){
+      container.masonry({ itemSelector : '.span4', isResizable: true });
+    });
+  });
+</script>
+<% end -%>
+<div class="row">
+  <div class="span9">
+    <h1><%= @total_tutorials %> tutorials tagged <em><%= @tag %></em></h1>
+  </div>
+  <div class="span3">
+    <p class="pull-right"><%= link_to "#{@total_creations} creations", tag_path(@tag) %> &raquo;</p>
+  </div>
+</div>
+<div id="tutorials-div" class="row">
+  <div class="span12">
+    <ul class="thumbnails">
+    <% @tutorials.each do |tutorial| %>
+      <div class="span4">
+        <div class="thumbnail">
+          <img src="<%= tutorial.image_url %>" />
+          <div class="caption">
+            <h3><a href="<%= tutorial.url %>" target="_blank"><%= tutorial.heading %></a> <small><%= tutorial.created_at.to_s :foomat %></small></h3>
+            <p>
+            <% tutorial.tags.each do |tag| -%>
+              <a href="/tt/<%= tag.name %>"><span class="label"><%= tag.name %></span></a>
+            <% end -%>
+            </p>
+            <p><%= tutorial.description %></p>
+            <p><a class="btn" href="<%= url_for tutorial %>">View</a></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="span12 text-center"> <%= paginate @tutorials %> </div>
+</div>
