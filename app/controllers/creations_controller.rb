@@ -21,7 +21,7 @@ class CreationsController < ApplicationController
 
   def create
     @creation = current_user.creations.create(params[:creation])
-    @creation.categories << Category.find(params[:category_id])
+    @creation.categories << Category.find(params[:category_id]) if params[:category_id]
     current_user.tag(@creation, :with => params[:creation_tags], :on => :tags)
 
     if @creation.save
@@ -36,7 +36,7 @@ class CreationsController < ApplicationController
   def update
     @creation = current_user.creations.find(params[:id])
     @creation.categories.clear
-    @creation.categories << Category.find(params[:category_id])
+    @creation.categories << Category.find(params[:category_id]) if params[:category_id]
     current_user.tag(@creation, :with => params[:creation_tags], :on => :tags)
 
     if @creation.update_attributes(params[:creation])

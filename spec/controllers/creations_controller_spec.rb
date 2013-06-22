@@ -96,7 +96,7 @@ describe CreationsController do
 
       describe "with invalid params" do
         before :each do
-          put :update, :id => creation.id, :creation => {:name=> nil, :category_ids => [] }
+          put :update, :id => creation.id, :creation => {:name=> nil }
         end
         it "assigns the creation as @creation" do
           assigns(:creation).should eq(creation)
