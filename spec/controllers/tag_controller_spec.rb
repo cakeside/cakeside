@@ -1,6 +1,20 @@
 require "spec_helper"
 
 describe TagsController do
+  describe :index do
+    let(:cake) { FactoryGirl.create(:creation) }
+    let(:user) { FactoryGirl.create(:user) }
+
+    before :each do
+      user.tag(cake, :with => "cake", :on => :tags)
+      get :index
+    end
+
+    it "should load all the tags" do
+      assigns(:tags).count.should == 1
+      assigns(:tags).first.name.should == "cake"
+    end
+  end
   describe :show do
     let(:tag) { "cake" }
     let(:tagged_tutorial) { FactoryGirl.create(:tutorial) }
