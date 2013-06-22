@@ -4,10 +4,10 @@
     <div class="thumbnail">
       <a href="<%= url_for creation %>"><img src="<%= creation.primary_image.image.thumb.url %>" alt="<%= creation.name %>" style="width:260px;height:180px;" /></a>
       <h3><a href="<%= url_for creation %>"><%= short_name(creation, 15) %></a></h3>
-      <h4><small><a href="<%= url_for profile_path(creation.user) %>"><%= shrink(creation.user.name, 20) %></a></small></h4>
+      <h4><small>By <a href="<%= url_for profile_path(creation.user) %>"><%= shrink(creation.user.name, 20) %></a></small></h4>
       <p>
-      <a href="<%= url_for creation_favorites_path(:creation_id => creation.id) %>"><span><%= creation.favorites.size %></span><i class="icon-heart"></i></a>
-      <a href="<%= url_for creation %>#comments"><span class="badge badge-success" title="<%= pluralize( creation.comment_threads.size, "comments") %>"><%= creation.comment_threads.size %></span></a>
+      <a href="<%= url_for creation_favorites_path(:creation_id => creation.id) %>"><span class="badge"><%= creation.favorites.size %> <i class="icon-heart-empty"></i></span></a>
+      <a href="<%= url_for creation %>#comments"><span class="badge badge-success" title="<%= pluralize( creation.comment_threads.size, "comments") %>"><%= creation.comment_threads.size %> <i class="icon-comments"></i></span></a>
       </p>
     </div>
     </li>
