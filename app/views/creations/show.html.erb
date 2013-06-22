@@ -47,15 +47,14 @@
         <% end %>
       </div>
       <div class="span3">
-
-        <div class="social">
-          <div class="custom-tweet"><a href="https://twitter.com/share?original_referer=<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>&amp;url=&amp;text=<%= yield :product_social %>:%20<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" onclick="popup(this.href); return false;" class="popup">&nbsp;&nbsp;&nbsp;&nbsp;</a></div>
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-
-          <div class="fb-like" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-send="false" data-layout="button_count" data-width="250" data-show-faces="false"></div>
-          <span class="pin"><a href="//pinterest.com/pin/create/button/?url=<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>&media=<%= yield :product_image %>&description=<%= yield :product_social %>." data-pin-do="buttonPin" data-pin-config="none"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png"/></a></span>
+        <div class="row">
+          <div class="span1">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          </div>
+          <div class="span1"><div class="fb-like" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-send="false" data-layout="button_count" data-width="250" data-show-faces="false"></div></div>
+          <div class="span1"><a href="//pinterest.com/pin/create/button/?url=<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>&media=<%= yield :product_image %>&description=<%= yield :product_social %>." data-pin-do="buttonPin" data-pin-config="none"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png"/></a></div>
         </div>
-
       </div>
     </div>
     <p><%= @creation.story %></p>
