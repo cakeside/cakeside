@@ -36,17 +36,23 @@
         <a href="/tags/<%= tag.name %>"><span class="label"><%= tag.name %></span></a>
       <% end -%>
     <% end -%>
-    <% if user_signed_in? %>
-      <% unless current_user == @creation.user || current_user.already_likes(@creation) %>
-        <%= button_to "ADD TO FAVORITES", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary' %>
-      <% end %>
-    <% else %>
-        <p><%= link_to "SIGN UP FOR FREE", new_user_session_path, :class => "btn btn-primary" %></p>
-    <% end %>
+    <div class="row">
+      <div class="span3">
+        <% if user_signed_in? %>
+          <% unless current_user == @creation.user || current_user.already_likes(@creation) %>
+            <%= button_to "ADD TO FAVORITES", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary' %>
+          <% end %>
+        <% else %>
+          <p><%= link_to "SIGN UP FOR FREE", new_user_session_path, :class => "btn btn-primary" %></p>
+        <% end %>
+      </div>
+      <div class="span3">
+      </div>
+    </div>
     <p><%= @creation.story %></p>
   </div>
 </div>
-<% if @creation.photos.count > 1 %>
+<% if @creation.photos.size > 1 %>
 <div class="row">
   <div class="span12">
     <ul class="thumbnails">

@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :interests, :join_table => 'users_interests', :uniq => true, :autosave => true
   has_one :avatar
   acts_as_tagger
-  default_scope order("created_at DESC")
   before_save :ensure_authentication_token
 
   def add_favorite(creation)

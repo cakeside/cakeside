@@ -1,19 +1,8 @@
 # encoding: utf-8
-
 class PhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
   include CarrierWave::MimeTypes
   include ::CarrierWave::Backgrounder::Delay
-
-  if Rails.env.production?
-    storage :fog
-  elsif Rails.env.staging?
-    storage :fog
-  elsif Rails.env.development?
-    storage :file
-  else
-    storage :file
-  end
 
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
@@ -21,14 +10,11 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   process :set_content_type
 
-  # Create different versions of your uploaded files:
   version :large do 
-    #process :convert => 'png'
     process :resize_to_fit => [570, 630]
     process :watermark
   end
   version :thumb, :from_version => :large do
-    #process :convert => 'png'
     process :resize_to_fill => [260, 180]
   end
 
