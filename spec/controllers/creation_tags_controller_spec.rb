@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe TagsController do
+describe CreationTagsController do
   describe :index do
     let(:cake) { FactoryGirl.create(:creation) }
     let(:user) { FactoryGirl.create(:user) }
