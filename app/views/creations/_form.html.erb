@@ -47,9 +47,9 @@
       <div class="controls">
       <% if @creation.present? %>
          <input name="creation_tags" type="text" id="tags" value="<% @creation.tags.map(&:name).each { |item| %><%= item %>,<% } %>" class="input-xxlarge" autocomplete="off" />
-                 <p class="help-block">
-              <strong>Note:</strong> Help people find this creation by adding some keyword tags.
-            </p>
+         <p class="help-block">
+           <strong>Note:</strong> Help people find this creation by adding some keyword tags.
+         </p>
       <% else %>
         <input name="creation_tags" type="text" id="tags" value="" class="input-xxlarge" autocomplete="off" />
       <% end %>

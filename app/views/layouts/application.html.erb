@@ -1,38 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <title><%= full_title(yield(:title)) %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="google-site-verification" content="X9sZ3dovM2s1pJg68Bb0q1oRqqiJYdzAwGeaGlOy6PM" />
-    <meta name="description" content="<%= yield(:description) %>" />
-    <%= stylesheet_link_tag :application %>
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-    <%= favicon_link_tag 'favicon.ico' %>
-    <%= favicon_link_tag 'apple-touch-icon-57x57.png', :rel => 'apple-touch-icon', :type => 'image/png', :sizes => "57x57" %>
-    <%= favicon_link_tag 'apple-touch-icon-72x72.png', :rel => 'apple-touch-icon', :type => 'image/png', :sizes => "72x72" %>
-    <%= favicon_link_tag 'apple-touch-icon-114x114.png', :rel => 'apple-touch-icon', :type => 'image/png', :sizes => "114x114" %>
-    <%= yield :head %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
-    <div class="container">
-      <%= render "layouts/header" %>
-      <%= render "layouts/messages" %>
-      <%= yield %>
-    </div> <!-- /container -->
-    <%= render "layouts/footer" %>
-    <%= render "layouts/uservoice_feedback"%>
-    <%= render "layouts/chrome_frame"%>
-    <%= javascript_include_tag :application %>
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <%= render "layouts/mixpanel"%>
-    <%= render "layouts/embedly"%>
-    <%= yield :javascript %>
-    <%= render "layouts/google_analytics" %>
-  </body>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<title><%= full_title(yield(:title)) %></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="google-site-verification" content="X9sZ3dovM2s1pJg68Bb0q1oRqqiJYdzAwGeaGlOy6PM" />
+<meta name="description" content="<%= yield(:description) %>" />
+<%= stylesheet_link_tag :application %>
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+<%= favicon_link_tag 'favicon.ico' %>
+<%= favicon_link_tag 'apple-touch-icon-57x57.png', :rel => 'apple-touch-icon', :type => 'image/png', :sizes => "57x57" %>
+<%= favicon_link_tag 'apple-touch-icon-72x72.png', :rel => 'apple-touch-icon', :type => 'image/png', :sizes => "72x72" %>
+<%= favicon_link_tag 'apple-touch-icon-114x114.png', :rel => 'apple-touch-icon', :type => 'image/png', :sizes => "114x114" %>
+<%= yield :head %>
+<%= csrf_meta_tags %>
+</head>
+<body>
+<%= render "layouts/facebook" %>
+<div class="container">
+  <%= render "layouts/header" %>
+  <%= render "layouts/messages" %>
+  <%= yield %>
+</div> <!-- /container -->
+<%= render "layouts/footer" %>
+<%= render "layouts/uservoice_feedback"%>
+<%= render "layouts/chrome_frame"%>
+<%= javascript_include_tag :application %>
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<%= render "layouts/mixpanel"%>
+<%= render "layouts/embedly"%>
+<%= yield :javascript %>
+<%= render "layouts/google_analytics" %>
+</body>
 </html>
