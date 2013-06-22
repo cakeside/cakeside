@@ -33,7 +33,7 @@
     <% if @creation.tags.any? %>
       <span> <i class="icon-tags"></i> </span>
       <% @creation.tags.each do |tag| -%>
-        <a href="/tags/<%= tag.name %>"><span class="label"><%= tag.name %></span></a>
+        <a href="<%= url_for tag_path(tag.name) %>"><span class="label"><%= tag.name %></span></a>
       <% end -%>
     <% end -%>
     <div class="row">
