@@ -27,10 +27,10 @@ Cake::Application.routes.draw do
   get 'categories/:slug/page/:page' => "categories#show"
 
   # /tags
-  resources :tags, :only => [:index, :show], :path => :t do
+  resources :creation_tags, :only => [:index, :show], :path => :t do
     get 'page/:page', :action => :show
   end
-  get 'tags/:id' => 'tags#show'
+  get 'tags/:id' => 'creation_tags#show'
 
   # /search
   get "search/index"

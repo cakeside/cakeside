@@ -14,7 +14,7 @@
     <h1><%= @total_tutorials %> tutorials tagged <em><%= @tag %></em></h1>
   </div>
   <div class="span3">
-    <p class="pull-right"><%= link_to "#{@total_creations} creations", tag_path(@tag) %> &raquo;</p>
+    <p class="pull-right"><%= link_to "#{@total_creations} creations", creation_tag_path(@tag) %> &raquo;</p>
   </div>
 </div>
 <div id="tutorials-div" class="row">

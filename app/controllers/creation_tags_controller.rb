@@ -1,4 +1,4 @@
-class TagsController < ApplicationController
+class CreationTagsController < ApplicationController
   def index
     @tags = Creation.tag_counts_on(:tags)
   end

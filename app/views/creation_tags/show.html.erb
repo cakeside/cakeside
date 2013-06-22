@@ -28,7 +28,7 @@
             <h3><a href="<%= url_for creation %>"><%= creation.name %></a> <em><small>by <a href="<%= url_for profile_path(creation.user) %>"> <%= shrink(creation.user.name, 20) %></a></small></em></h3>
             <p>
             <% creation.tags.each do |tag| -%>
-              <a href="<%= url_for tag_path(tag.name) %>"><span class="label"><%= tag.name %></span></a>
+              <a href="<%= url_for creation_tag_path(tag.name) %>"><span class="label"><%= tag.name %></span></a>
             <% end -%>
             </p>
             <p><%= creation.story %></p>
