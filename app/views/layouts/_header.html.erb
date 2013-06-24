@@ -20,11 +20,13 @@
           </li>
         </ul>
         <ul class="nav pull-right">
-          <li class="hidden-phone"><%= link_to "Add Creation", new_creation_path, :style => "color:#48ce62;font-size:15px;" %></li>
+          <li class="hidden-phone">
+            <a href="<%= url_for new_creation_path %>" title="Add Creation">Add Creation <i class="icon-edit icon-large"></i></a>
+          </li>
           <li class="divider-vertical hidden-phone"></li>
           <% if user_signed_in? %>
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.name %><b class="caret"></b></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="<%= url_for edit_user_registration_path %>"><%= current_user.name %> <i class="icon-gear"></i><b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><%= link_to "Creations", profile_path(current_user) %></li>
                 <li><%= link_to "Favorites", profiles_favorites_path %></li>
