@@ -45,6 +45,8 @@ Cake::Application.routes.draw do
 
   match 'settings/change_password' => 'settings#change_password', :as => 'settings_change_password', :method => 'POST'
 
+  resources :passwords, :only => [:update]
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
