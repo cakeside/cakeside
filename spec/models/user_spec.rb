@@ -32,6 +32,7 @@ describe User do
         user.errors[:website].should === []
       end
     end
+
     describe "when the url is not valid" do
       let(:user) {User.new}
       before(:each) do
@@ -45,6 +46,7 @@ describe User do
       end
     end
   end
+
   describe "when commenting on a creation" do
     let(:comment) { fake }
     let(:creation) { fake }
@@ -113,4 +115,27 @@ describe User do
       end
     end
   end
+
+  describe "when loading all the users" do
+    let(:first_person) { FactoryGirl.create(:user) }
+    let(:second_person) { FactoryGirl.create(:user) }
+
+    before :each do
+      first_person
+      second_person
+      first_person.touch
+    end
+
+    let(:results) { User.all }
+
+    it "should load the person who signed up first first" do
+      results[0].should == first_person
+    end
+
+    it "should load the person who signed up next second" do
+      results[1].should == second_person
+    end
+  end
+
+
 end
