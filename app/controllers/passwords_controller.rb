@@ -1,16 +1,17 @@
 class PasswordsController < ApplicationController
   before_filter :authenticate_user!
 
-  def show
+  def index
+    @user = current_user
   end
 
   def update
     user = User.find(params[:id])
     if user.change_password(params[:user][:password], params[:user][:password_confirmation])
-      render :show
+      render :index
     else
       flash[:alert] = t(:passwords_do_not_match)
-      render :show
+      render :index
     end
   end
 end

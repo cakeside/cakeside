@@ -24,7 +24,7 @@ describe PasswordsController do
         end
 
         it "should render the show template" do
-          response.should render_template(:show)
+          response.should render_template(:index)
         end
       end
 
@@ -39,6 +39,25 @@ describe PasswordsController do
           user.reload.valid_password?(new_password).should be_true
         end
       end
+    end
+
+  end
+
+  describe :index do
+    context 'when logged in' do
+      let(:user) { FactoryGirl.create(:user) }
+
+      before :each do
+        http_login(user)
+        get :index
+      end
+
+      context "when displaying a form to change the current password" do
+        it "should load the user" do
+          assigns(:user).should == user
+        end
+      end
+
     end
   end
 end
