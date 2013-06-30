@@ -28,6 +28,12 @@ class User < ActiveRecord::Base
     Comment.create_for(self, creation, comment)
   end
 
+  def change_password(password, confirmation)
+    return false unless password == confirmation
+    self.password = password
+    self.save!
+  end
+
   def to_param
     "#{id}-#{name.gsub(/[^a-z0-9]+/i, '-')}"
   end

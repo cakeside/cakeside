@@ -3,4 +3,6 @@
 
 en:
   hello: "Hello world"
-  :share_something: "You have not uploaded anything!"
+  share_something: "You have not uploaded anything!"
+  passwords_do_not_match: 'Oops... the passwords should match.'
+
