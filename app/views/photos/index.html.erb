@@ -1,0 +1,28 @@
+
+<div class="row">
+  <div class="span12">
+    <%= link_to "&laquo; Back to creation".html_safe, creation_path(@creation) %>
+    <div class="row">
+      <div class="span3">&nbsp;</div>
+      <div class="span6">
+        <div id="myCarousel" class="carousel slide">
+          <ol class="carousel-indicators">
+            <% @photos.each_with_index do |photo, index| %>
+              <li data-target="#myCarousel" data-slide-to="<%= index %>" class="<%= index == 0 ? "active" : "" %>"></li>
+            <% end %>
+          </ol>
+          <!-- Carousel items -->
+          <div class="carousel-inner">
+            <% @photos.each_with_index do |photo,index| %>
+              <div class="item <%= index == 0 ? "active" : "" %>"><%= image_tag photo.image.url, :class => "thumbnail" %></div>
+            <% end %>
+          </div>
+          <!-- Carousel nav -->
+          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+        </div>
+      </div>
+      <div class="span3">&nbsp;</div>
+    </div>
+  </div>
+</div>

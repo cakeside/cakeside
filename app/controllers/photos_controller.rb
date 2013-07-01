@@ -1,8 +1,9 @@
 class PhotosController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :find_creation
+  before_filter :find_creation, :except => [:index]
 
   def index
+    @creation = Creation.find(params[:creation_id])
     @photos = @creation.photos
     respond_to do |format|
       format.html # index.html.erb
