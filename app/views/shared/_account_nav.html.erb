@@ -4,7 +4,7 @@
       <li class="<%= selected == :basic_info ? "active" : "" %>"><%= link_to "Settings", settings_path %></li>
       <li class="<%= selected == :password ? "active" : "" %>"><%= link_to "Password", passwords_path %></li>
       <li class="<%= selected == :picture ? "active" : "" %>"><%= link_to "Picture", edit_avatar_path(@user) %></li>
-      <li class="<%= selected == :profile ? "active" : "" %>"><%= link_to "Creations", profile_path(@user) %></li>
+      <li class="<%= selected == :creations ? "active" : "" %>"><%= link_to "Creations", mine_creations_path %></li>
       <li class="<%= selected == :favorites ? "active" : "" %>"><%= link_to "Favorites", profiles_favorites_path %></li>
     </ul>
   </div>

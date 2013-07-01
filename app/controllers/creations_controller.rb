@@ -53,6 +53,6 @@ class CreationsController < ApplicationController
   end
 
   def mine
-    @creations = current_user.creations
+    @creations = current_user.creations.page(params[:page]).per(12)
   end
 end
