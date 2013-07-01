@@ -1,0 +1,86 @@
+<% provide(:title, "My Settings") -%>
+<% content_for :javascript do %>
+<script type="text/javascript" charset="utf-8">
+$(function(){ 
+  DeviseUsers.Edit.initialize(jQuery); 
+});
+</script>
+<% end %>
+
+<%= render :partial => "shared/account_nav" %>
+
+<div class="row">
+  <div class="span12">
+    <h1>My Settings</h1>
+    <%= form_for(@user, :url => setting_path(@user), :html => { :method => :put, :class => "form-horizontal" }) do |f| %>
+      <fieldset>
+        <div class="control-group">
+          <%= f.label :name, :class => "control-label"  %>
+          <div class="controls"> <%= f.text_field :name, :class => "input-xlarge" %> </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :email, :class => "control-label"  %>
+          <div class="controls"> <%= f.email_field :email, :class => "input-xlarge"  %> </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :city, :class => 'control-label' %>
+          <div class="controls"> <%= f.text_field :city, :class => "input-xlarge" %> </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :website, :class => "control-label" %> 
+          <div class="controls"> <%= f.url_field :website, :class => "input-xlarge, url", :placeholder => "http://cakeside.com" %> </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :twitter, "Twitter username @", :class => "control-label" %> 
+          <div class="controls"> <%= f.text_field :twitter, :class => "input-xlarge", :placeholder => "without the @ sign", :maxlength => "255" %> </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :facebook, :class => "control-label" %> 
+          <div class="controls"> <%= f.text_field :facebook, :class => "input-xlarge", :placeholder => "http://www.facebook.com/your_profile", :maxlength => "255" %> </div>
+        </div>
+        <p class="help-block">
+        <strong>Note:</strong> Help us better serve you by checking off what best describes you?
+        </p>
+        <div class="control-group">
+          <label class="control-label">About me:</label>
+          <div class="controls">
+            <% for interest in Interest.all %>
+              <label class="checkbox">
+                <%= check_box_tag "user[interest_ids][]", interest.id, current_user.interests.include?(interest) %>
+                <%= interest.name %>
+              </label>
+            <% end %>
+          </div>
+        </div><!-- /control-group -->
+        <div class="form-actions">
+          <input type="submit" class="btn btn-primary" value="Save changes" />
+          <button type="reset" class="btn">Cancel</button>
+        </div>
+        <%= f.hidden_field :latitude %>
+        <%= f.hidden_field :longitude %>
+      </fieldset>
+    <% end %>
+  </div>
+</div>
+<div id="change-avatar-dialog" class="modal hide fade">
+  <%= form_tag(avatars_path(current_user), :method => "post", :multipart => true) do |f| %>
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">x</button>
+      <h3>Change My Picture</h3>
+    </div>
+    <div class="modal-body">
+      <p style="margin-left:auto; margin-right:auto;text-align:center;"> 
+        <%= avatar_for(current_user) %>
+      </p>
+      <p style="margin-left:auto; margin-right:auto;text-align:center;">
+      <%= fields_for Avatar.new do |f| %>
+        <%= f.file_field :avatar, :rel => avatars_path(current_user) %>
+      <% end %>
+      </p>
+    </div>
+    <div class="modal-footer">
+      <input type="submit" class="btn btn-primary" value="Save changes" />
+      <a href="#" class="btn" data-dismiss="modal">Close</a>
+    </div>
+  <% end %>
+</div>

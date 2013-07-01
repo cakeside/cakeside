@@ -38,13 +38,13 @@ Cake::Application.routes.draw do
   # /users
   devise_for :users, :controllers => {:registrations => 'registrations'}
   devise_for :user, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
-  resources :avatars, :only => [:create]
 
   # sitemap
   match "/sitemap.xml", :to => "sitemap#index", :defaults => {:format => :xml}
 
   resources :settings, :only => [:index, :update]
   resources :passwords, :only => [:index, :update]
+  resources :avatars, :only => [:show, :create]
 
   ActiveAdmin.routes(self)
 

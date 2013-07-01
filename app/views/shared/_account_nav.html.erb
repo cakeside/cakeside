@@ -2,9 +2,8 @@
   <div class="span12">
     <ul class="nav nav-tabs">
       <li><%= link_to "Basic info", settings_path %></li>
-      <li><a href="#">Additional info</a></li>
-      <li><%= link_to "Password", passwords_path %></li>
-      <li><%= link_to "Picture", passwords_path %></li>
+      <li><%= link_to "Password", passwords_path(@user) %></li>
+      <li><%= link_to "Picture", avatar_path(@user, @user) %></li>
     </ul>
   </div>
 </div>
