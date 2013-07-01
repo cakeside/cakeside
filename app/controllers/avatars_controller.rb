@@ -7,7 +7,7 @@ class AvatarsController < ApplicationController
 
   def update
     @avatar.attach(params[:avatar][:avatar])
-    redirect_to avatar_path(current_user), :notice => 'Your avatar has been updated.'
+    redirect_to edit_avatar_path(current_user), :notice => 'Your avatar has been updated.'
   end
 
   protected 
