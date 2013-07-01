@@ -11,13 +11,13 @@
 <%= form_for(@creation, :html => {:multipart => true, :class => "form-horizontal"}) do |f| %>
   <fieldset>
     <div class="control-group">
-      <%= f.label :name, "Creation name", :class => "control-label" %>
+      <%= f.label :name, :class => "control-label" %>
       <div class="controls">
         <%= f.text_field :name, :class => "input-xxlarge" %>
       </div>
     </div>
     <div class="control-group">
-      <%= f.label :watermark, "Brand each image", :class => "control-label" %>
+      <%= f.label :watermark, :class => "control-label" %>
       <div class="controls">
         <%= f.text_field :watermark, :class => "input-xlarge", :maxlength=> 30 %> on CakeSide.com
         <a class="tooltip-item" data-placement="right" rel="tooltip" href="#" data-original-title="Watermark your name or company on each uploaded image" data-animation="true"><i class="icon-question-sign"></i></a>
@@ -27,19 +27,12 @@
       <%= f.label :story, "Description", :class=> "control-label" %>
       <div class="controls">
         <%= f.text_area :story, :class =>"input-xxlarge", :rows => "3" %>
-        <p class="help-block">
-        Tell us the story or description about this creation.
-        </p>
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label">Categories</label>
+      <label class="control-label">Category</label>
       <div class="controls">
         <%= select_tag :category_id, options_from_collection_for_select(@categories, "id", "name") %>
-        <p class="help-block">
-        <strong>Note:</strong> 
-        Help us categorize your creation by checking off one or more from the above list.
-        </p>
       </div>
     </div>
     <div class="control-group">
@@ -48,7 +41,7 @@
       <% if @creation.present? %>
          <input name="creation_tags" type="text" id="tags" value="<% @creation.tags.map(&:name).each { |item| %><%= item %>,<% } %>" class="input-xxlarge" autocomplete="off" />
          <p class="help-block">
-           <strong>Note:</strong> Help people find this creation by adding some keyword tags.
+           <strong>Note:</strong> Adding tags will help people discover your creation.
          </p>
       <% else %>
         <input name="creation_tags" type="text" id="tags" value="" class="input-xxlarge" autocomplete="off" />
@@ -59,7 +52,7 @@
       <div class="controls">
         <label class="checkbox">
           <%= f.check_box :is_restricted, :class =>"input-xxlarge" %>
-          This creation probably should not be shown to kids.
+          This cake is for adults only.
         </label>
       </div>
     </div>
