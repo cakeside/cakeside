@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def avatar_for(user, options = {size:260, class:''})
+  def avatar_for(user, options = {size: 260, class:''})
     return gravatar_for(user, options) unless user.avatar
     image_tag(user.avatar.avatar.thumb.url, alt: user.name, class: options[:class], :style => "width:#{options[:size]}px;")
   end

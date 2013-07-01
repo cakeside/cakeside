@@ -34,7 +34,7 @@ Cake::Application.routes.draw do
   get 'tags/:id' => 'creation_tags#show'
 
   # /search
-  get "search/index"
+  get "search" => 'search#index'
 
   # /users
   devise_for :users, :controllers => {:registrations => 'registrations'}

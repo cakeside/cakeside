@@ -1,23 +1,50 @@
 <% provide(:title, "#{@search}") -%>
-<h1>Search Results for <em><%= @search %></em></h1>
-<h3>Creations</h3>
-<hr />
 <div class="row">
   <div class="span12">
-    <%= render "shared/creation_image_gallery" %>
+    <% if @creations.any? %>
+    <table class="table table-striped">
+      <thead>
+        <th>Creations</th>
+        <th>Artist</th>
+        <th>Name</th>
+        <th>Description</th>
+      </thead>
+      <tbody>
+      <% @creations.each do |creation| %>
+        <tr>
+          <td><a href="<%= url_for creation_path(creation) %>"><%= image_tag creation.primary_image.image.thumb.url, :class=> 'thumbnail', :style => "width:65px" %></a></td>
+          <td><%= link_to creation.user.name, profile_path(creation.user) %></td>
+          <td><%= creation.name %></td>
+          <td><%= creation.story %></td>
+          <td><%= creation.created_at %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <% else %>
+      <p>No creations found.</p>
+    <% end %>
+    <% if @members.any? %>
+    <table class="table table-striped">
+      <thead>
+        <th>Artists</th>
+        <th>Name</th>
+      </thead>
+      <tbody>
+      <% @members.each do |artist| %>
+        <tr>
+          <td><a href="<%= url_for profile_path(artist) %>"><%= avatar_for(artist, :size => 65) %></a></td>
+          <td><%= artist.name %></td>
+          <td><%= link_to artist.website if artist.website %></td>
+          <td><%= link_to artist.twitter, "https://twitter.com/#{artist.twitter}" if artist.twitter.present? %></td>
+          <td><%= link_to artist.facebook if artist.facebook %></td>
+          <td><%= artist.city %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <% else %>
+      <p>No artists found.</p>
+    <% end %>
   </div>
-</div>
-<h3>Artists</h3>
-<hr />
-<div class="row">
-  <% @members.each do |artist| %>
-    <div class="span3">
-      <div class="thumbnail">
-        <a href="<%= url_for profile_path(artist) %>"><%= avatar_for(artist) %></a>
-        <div class="caption">
-          <h5><%= artist.name %></h5>
-        </div>
-      </div>
-    </div>
-  <% end %>
 </div>
