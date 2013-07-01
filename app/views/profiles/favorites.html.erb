@@ -1,11 +1,7 @@
 <% provide(:title, "My Favorites") -%>
 <%= render :partial => "shared/account_nav", :locals => { :selected => :favorites } %>
 <div class="row">
-  <div class="span3">
-    <%= render :partial => "me_box"  %>
-  </div>
-  <div class="span9">
-    <h1>My Favorites</h1>
+  <div class="span12">
     <ul class="thumbnails">
       <% @creations.each do |creation| %>
         <li><a href="<%= url_for creation %>"><img class="thumbnail" src="<%= creation.primary_image.image.thumb.url %>" alt="<%= creation.name %>"></a></li>
