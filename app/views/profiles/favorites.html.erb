@@ -1,4 +1,5 @@
 <% provide(:title, "My Favorites") -%>
+<%= render :partial => "shared/account_nav", :locals => { :selected => :favorites } %>
 <div class="row">
   <div class="span3">
     <%= render :partial => "me_box"  %>

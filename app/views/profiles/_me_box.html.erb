@@ -23,7 +23,7 @@
     <li class="nav-header"><%= current_user.name %></li>
     <li><a href="<%= url_for profile_path(current_user) %>"><i class="icon-user"></i> My Creations</a></li>
     <li><a href="<%= url_for profiles_favorites_path -%>"><i class="icon-book"></i> My Favorites</a></li>
-    <li><a href="<%= url_for edit_user_registration_path %>"><i class="icon-cog"></i> My Settings</a></li>
+    <li><a href="<%= url_for settings_path %>"><i class="icon-cog"></i> My Settings</a></li>
     <li class="nav-header">share</li>
     <li><a href="<%= url_for new_creation_path %>"><i class="icon-plus"></i> Add Creation</a></li>
     <li><a href="<%= url_for new_tutorial_path %>"><i class="icon-plus-sign"></i> Add Tutorial</a></li>
