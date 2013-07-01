@@ -2,9 +2,12 @@ class AvatarsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_or_build_avatar
 
-  def create
+  def edit
+  end
+
+  def update
     @avatar.attach(params[:avatar][:avatar])
-    redirect_to(profile_path(current_user), :notice => 'Your new avatar has been uploaded.') 
+    redirect_to avatar_path(current_user), :notice => 'Your avatar has been updated.'
   end
 
   protected 

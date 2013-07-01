@@ -63,7 +63,7 @@ $(function(){
   </div>
 </div>
 <div id="change-avatar-dialog" class="modal hide fade">
-  <%= form_tag(avatars_path(current_user), :method => "post", :multipart => true) do |f| %>
+  <%= form_tag(edit_avatar_path(current_user), :method => :put, :multipart => true) do |f| %>
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">x</button>
       <h3>Change My Picture</h3>
@@ -74,7 +74,7 @@ $(function(){
       </p>
       <p style="margin-left:auto; margin-right:auto;text-align:center;">
       <%= fields_for Avatar.new do |f| %>
-        <%= f.file_field :avatar, :rel => avatars_path(current_user) %>
+        <%= f.file_field :avatar, :rel => edit_avatar_path(current_user) %>
       <% end %>
       </p>
     </div>
