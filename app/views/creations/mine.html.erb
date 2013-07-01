@@ -1,7 +1,12 @@
 <%= render :partial => "shared/account_nav", :locals => { :selected => :creations } %>
 <div class="row">
   <div class="span12">
-    <h1><%= @user.name %> <small>A member since <%= @user.created_at.to_s :foomat %>, with <%= @user.creations.length %> creations.</small> </h1>
+    <%= link_to "Upload Cake", new_creation_path, :class => "btn pull-right" %>
+    <% unless @creations.any? %>
+      <p>You haven't uploaded any cakes yet. <%= link_to "Get Started", new_creation_path %>.</p>
+    <% end %>
+  </div>
+  <div class="span12">
     <%= render "shared/creation_image_gallery" %>
   </div>
 </div>

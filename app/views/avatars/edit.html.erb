@@ -3,7 +3,7 @@
 <div class="row">
   <div class="span12">
     <%= avatar_for(current_user) %>
-    <%= form_for(avatar_path(@avatar), :method => :put, :multipart => true) do |f| %>
+    <%= form_for(@avatar, :url =>avatar_path(@avatar), :method => :put, :multipart => true) do |f| %>
       <div class="control-group">
         <div class="controls">
           <%= f.file_field :avatar %>

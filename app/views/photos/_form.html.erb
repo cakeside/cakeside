@@ -14,18 +14,12 @@
   });
 </script>
 <% end %>
-<div>
   <%= form_for [@creation, @photo], :html => { :multipart => true, :id => "fileupload"  } do |f| %>
     <div class="row fileupload-buttonbar">
+      <div class="span10">&nbsp;</div>
       <div class="span2">
-        <span class="btn btn-success fileinput-button"><i class="icon-plus icon-white"></i><span> Add image... </span><%= f.file_field :image %></span>
-      </div>
-      <div class="span8">
-            <h5>When images are finished uploading below, click on DONE -&gt;
-            </h5>
-      </div>
-      <div class="span2">
-        <%= link_to "DONE", creation_path(@creation), :class => "btn btn-primary" %>
+        <span class="btn btn-success fileinput-button"><i class="icon-plus icon-white"></i><span> Browse... </span><%= f.file_field :image %></span>
+        <%= link_to "NEXT", creation_path(@creation), :class => "btn btn-primary" %>
       </div>
     </div>
     <div class="fileupload-loading"></div>

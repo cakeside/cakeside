@@ -1,10 +1,8 @@
 <% provide(:title, "#{@creation.name} by #{@creation.user.name} - fanclub") -%>
 <div class="row">
-  <div class="span3">
-    <a class="thumbnail" href="<%= url_for creation_path(@creation) %>"><img src="<%= @creation.primary_image.image.thumb.url %>" alt="<%= @creation.name %>" /></a>
-  </div>
-  <div class="span9">
-    <h1> fans of  <%= link_to @creation.name, creation_path(@creation) %> <small> submitted by <%= link_to @creation.user.name, profile_path(@creation.user) %> </small> </h1>
+  <div class="span12">
+    <h1> fans of  <%= link_to @creation.name, creation_path(@creation) %> </h1>
+    <p><%= link_to "Back to creations", mine_creations_path %></p>
     <ul class="thumbnails">
       <% @creation.favorites.each do |favorite| %>
         <li class="span3">
