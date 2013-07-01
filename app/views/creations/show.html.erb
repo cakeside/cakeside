@@ -5,25 +5,6 @@
 $(function() { 
   Creations.Show.initialize(); 
 });
-$(document).ready(function($) {
-
-  $('#myCarousel').carousel({
-    interval: 5000
-  });
-  $('#carousel-text').html($('#slide-content-0').html());
-  //Handles the carousel thumbnails
-  $('[id^=carousel-selector-]').click( function(){
-    var id_selector = $(this).attr("id");
-    var id = id_selector.substr(id_selector.length -1);
-    var id = parseInt(id);
-    $('#myCarousel').carousel(id);
-  });
-  // When the carousel slides, auto update the text
-  $('#myCarousel').on('slid', function (e) {
-    var id = $('.item.active').data('slide-number');
-    $('#carousel-text').html($('#slide-content-'+id).html());
-  });
-});
 </script>
 <% end -%>
 <% if @creation.user == current_user %>
@@ -39,10 +20,8 @@ $(document).ready(function($) {
   <% end %>
   </div>
 </div>
-<% else %>
 <% end %>
 
-<% if @creation.photos.size == 1 %>
 <div class="row">
   <div class="span6">
     <img class="thumbnail" src="<%= @primary_photo.image.large.url %>" alt="<%= @creation.name %>" />
@@ -82,94 +61,18 @@ $(document).ready(function($) {
   </div>
 </div>
 
-<% else %>
-<!-- Main Area -->
-  <!-- Slider -->
+<% if @creation.photos_count > 1 %>
   <div class="row">
-    <div class="span12" id="slider">
-      <!-- Top part of the slider -->
-      <div class="row">
-        <div class="span6" id="carousel-bounding-box">
-          <div id="myCarousel" class="carousel slide">
-            <!-- Carousel items -->
-            <div class="carousel-inner">
-              <% @creation.photos.each_with_index do |photo, index| %>
-                <div class="<%= index == 0 ? "active" : "" %> item" data-slide-number="<%= index %>"><img src="<%= photo.image.large.url.to_s %>" alt="<%= @creation.name %>" /></div>
-              <% end %>
-            </div>
-            <!-- Carousel nav -->
-            <a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
-            <a class="carousel-control right" href="#myCarousel" data-slide="next">›</a>
-          </div>
-        </div>
-        <div class="span6" id="carousel-text"></div>
-
-        <div style="display: none;" id="slide-content">
-          <% @creation.photos.each_with_index do |photo, index| %>
-            <div id="slide-content-<%= index %>">
-
-
-    <h1><%= link_to @creation.name, creation_path(@creation) %></h1>
-    <p>By <%= link_to @creation.user.name, profile_path(@creation.user) %></p>
-    <hr />
-    <% if @creation.tags.any? %>
-      <span> <i class="icon-tags"></i> </span>
-    <% @creation.tags.each do |tag| -%>
-      <a href="<%= url_for creation_tag_path(tag.name) %>"><span class="label"><%= tag.name %></span></a>
-  <% end -%>
-  <% end -%>
-    <div class="row">
-      <div class="span3">
-        <% if user_signed_in? %>
-          <% unless current_user == @creation.user || current_user.already_likes(@creation) %>
-          <%= button_to "ADD TO FAVORITES", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary' %>
-      <% end %>
-      <% else %>
-          <p><%= link_to "SIGN UP FOR FREE", new_user_session_path, :class => "btn btn-primary" %></p>
-      <% end %>
-      </div>
-      <div class="span3">
-        <div class="row">
-          <div class="span1">
-            <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-          </div>
-          <div class="span1"><div class="fb-like" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-send="false" data-layout="button_count" data-width="250" data-show-faces="false"></div></div>
-          <div class="span1"><a href="//pinterest.com/pin/create/button/?url=<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>&media=<%= yield :product_image %>&description=<%= yield :product_social %>." data-pin-do="buttonPin" data-pin-config="none"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png"/></a></div>
-        </div>
-      </div>
-    </div>
-    <p><%= @creation.story %></p>
-
-
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div> <!--/Slider-->
-  <div class="row hidden-phone" id="slider-thumbs">
     <div class="span12">
+      <%= link_to "view all photos &raquo;".html_safe, creation_photos_path(@creation), :class => "pull-right" %>
       <ul class="thumbnails">
-        <% @creation.photos.each_with_index do |photo, index| %>
-          <li class="span2">
-          <a class="thumbnail" id="carousel-selector-<%= index %>">
-            <img src="<%= photo.image.thumb.url.to_s %>" alt="<%= @creation.name %>" />
-          </a>
-          </li>
-        <% end %>
+      <% @creation.photos.each do |photo| %>
+        <li class="span2"><%= image_tag photo.image.thumb.url, :class => "thumbnail" %></li>
+      <% end %>
       </ul>
     </div>
   </div>
-</div>
-
-
 <% end %>
-
-
-
-
-
 
 <div class="row">
   <a href="#" id="comments"></a>
@@ -228,10 +131,3 @@ $(document).ready(function($) {
   </div>
 <% end %>
 </div>
-
-
-
-
-
-
-
