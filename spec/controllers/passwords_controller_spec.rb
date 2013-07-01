@@ -20,7 +20,7 @@ describe PasswordsController do
         before { put :update, :id => user.id, :user => { :password => 'foobar', :password_confirmation => 'barfoo' } }
 
         it "should display an error on the page" do
-          flash[:alert].should == I18n.t(:passwords_do_not_match)
+          flash[:error].should == I18n.t(:passwords_do_not_match)
         end
 
         it "should render the show template" do

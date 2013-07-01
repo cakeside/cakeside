@@ -17,8 +17,8 @@ describe AvatarsController do
           Avatar.last.avatar.should_not be_blank
         end
 
-        it "should redirect to the profile page" do
-          response.should redirect_to avatar_path(user)
+        it "should redirect to the avatar page" do
+          response.should redirect_to edit_avatar_path(user)
         end
 
         it "should display a flash notice" do

@@ -8,7 +8,7 @@ class PasswordsController < ApplicationController
   def update
     user = current_user
     if user.change_password(params[:user][:password], params[:user][:password_confirmation])
-      sign_in @user, :bypass => true
+      #sign_in user, :bypass => true
       flash[:notice] = "Your password has been updated successfully!"
       render :index
     else

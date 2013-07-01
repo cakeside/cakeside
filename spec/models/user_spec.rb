@@ -128,12 +128,12 @@ describe User do
 
     let(:results) { User.all }
 
-    it "should load the person who signed up first first" do
-      results[0].should == first_person
+    it "should load the person who signed up first last" do
+      results[1].should == first_person
     end
 
-    it "should load the person who signed up next second" do
-      results[1].should == second_person
+    it "should load the person who signed up next first" do
+      results[0].should == second_person
     end
   end
 
