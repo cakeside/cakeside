@@ -14,6 +14,7 @@ Cake::Application.routes.draw do
     resources :favorites, :only => [:index, :create]
     resources :comments, :only => [:index, :new, :create]
     get 'page/:page', :action => :index, :on => :collection
+    get 'mine', :action => :mine, :on => :collection
   end
 
   # /profiles

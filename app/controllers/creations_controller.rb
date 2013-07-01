@@ -51,4 +51,8 @@ class CreationsController < ApplicationController
     current_user.creations.find(params[:id]).destroy
     redirect_to(creations_url) 
   end
+
+  def mine
+    @creations = current_user.creations
+  end
 end
