@@ -7,11 +7,10 @@ $(function(){
 </script>
 <% end %>
 
-<%= render :partial => "shared/account_nav" %>
+<%= render :partial => "shared/account_nav", :locals => { :selected => :basic_info } %>
 
 <div class="row">
   <div class="span12">
-    <h1>My Settings</h1>
     <%= form_for(@user, :url => setting_path(@user), :html => { :method => :put, :class => "form-horizontal" }) do |f| %>
       <fieldset>
         <div class="control-group">
@@ -28,7 +27,7 @@ $(function(){
         </div>
         <div class="control-group">
           <%= f.label :website, :class => "control-label" %> 
-          <div class="controls"> <%= f.url_field :website, :class => "input-xlarge, url", :placeholder => "http://cakeside.com" %> </div>
+          <div class="controls"> <%= f.url_field :website, :class => "input-xlarge url", :placeholder => "http://cakeside.com" %> </div>
         </div>
         <div class="control-group">
           <%= f.label :twitter, "Twitter username @", :class => "control-label" %> 

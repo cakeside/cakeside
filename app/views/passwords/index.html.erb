@@ -1,8 +1,7 @@
-<%= render :partial => "shared/account_nav" %>
+<%= render :partial => "shared/account_nav", :locals => { :selected => :password } %>
 
 <div class="row">
   <div class="span12">
-    <h3>Change Password</h3>
     <%= form_for(@user, :url => password_path(@user), :html => { :method => :put, :class => "form-horizontal" }) do |f| %>
       <div class="control-group">
         <%= f.label :password, "New password", :class => "control-label" %>
