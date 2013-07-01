@@ -6,11 +6,11 @@ class PasswordsController < ApplicationController
   end
 
   def update
-    user = User.find(params[:id])
+    user = current_user
     if user.change_password(params[:user][:password], params[:user][:password_confirmation])
       render :index
     else
-      flash[:alert] = t(:passwords_do_not_match)
+      flash[:error] = t(:passwords_do_not_match)
       render :index
     end
   end

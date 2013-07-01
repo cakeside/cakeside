@@ -1,22 +1,24 @@
+<%= render :partial => "shared/account_nav" %>
+
 <div class="row">
   <div class="span12">
-      <h3>Change My Password</h3>
-    <%= form_for(@user, :url => settings_change_password_path(@user), :html => { :method => :post }) do |f| %>
+    <h3>Change Password</h3>
+    <%= form_for(@user, :url => passwords_path(@user), :html => { :method => :post, :class => "form-horizontal" }) do |f| %>
       <div class="control-group">
-        <%= f.label :password, "New Password", :class => "control-label" %>
+        <%= f.label :password, "New password", :class => "control-label" %>
         <div class="controls">
           <%= f.password_field :password %>
         </div>
       </div>
       <div class="control-group">
-        <%= f.label :password_confirmation, "Confirm New Password", :class => "control-label" %>
+        <%= f.label :password_confirmation, "Confirm new password", :class => "control-label" %>
         <div class="controls">
           <%= f.password_field :password_confirmation %>
         </div>
       </div>
       <div class="control-group">
         <div class="controls">
-          <%= f.submit "Change My Password", :class=>"btn btn-primary" %>
+          <%= f.submit "Change password", :class=>"btn btn-primary" %>
         </div>
       </div>
     <% end %>
