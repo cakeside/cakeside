@@ -1,7 +1,7 @@
 <div class="row">
   <div class="span12">
     <ul class="nav nav-tabs">
-      <li class="<%= selected == :basic_info ? "active" : "" %>"><%= link_to "Basic info", settings_path %></li>
+      <li class="<%= selected == :basic_info ? "active" : "" %>"><%= link_to "Settings", settings_path %></li>
       <li class="<%= selected == :password ? "active" : "" %>"><%= link_to "Password", passwords_path %></li>
       <li class="<%= selected == :picture ? "active" : "" %>"><%= link_to "Picture", edit_avatar_path(@user) %></li>
       <li class="<%= selected == :profile ? "active" : "" %>"><%= link_to "Creations", profile_path(@user) %></li>
