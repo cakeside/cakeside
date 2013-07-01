@@ -43,8 +43,7 @@ Cake::Application.routes.draw do
   # sitemap
   match "/sitemap.xml", :to => "sitemap#index", :defaults => {:format => :xml}
 
-  match 'settings/change_password' => 'settings#change_password', :as => 'settings_change_password', :method => 'POST'
-
+  resources :settings, :only => [:index, :update]
   resources :passwords, :only => [:index, :update]
 
   ActiveAdmin.routes(self)
