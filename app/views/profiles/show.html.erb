@@ -29,6 +29,7 @@
       <% @nearby_users.each do |item| %>
         <li><%= link_to item.name, profile_path(item) %> <small>(<%= item.city %>)</small></li>
       <% end %>
+      <%= image_tag @map_url %>
       </ul>
     </div>
     <% end %>
