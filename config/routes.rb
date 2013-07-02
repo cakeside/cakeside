@@ -47,6 +47,8 @@ Cake::Application.routes.draw do
   resources :passwords, :only => [:index, :update]
   resources :avatars, :only => [:edit, :update]
 
+  resources :notifications, :only => [:index]
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config

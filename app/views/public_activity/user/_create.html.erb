@@ -1,0 +1,5 @@
+<div class="row">
+  <div class="span12">
+    <%= activity.owner.name if activity.owner %> added a new creation named <%= activity.trackable.name if activity.trackable %> at <%= activity.created_at %>
+  </div>
+</div>

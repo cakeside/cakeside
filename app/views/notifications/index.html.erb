@@ -1,0 +1,8 @@
+
+<div class="row">
+  <div class="span12">
+    <% @activities.each do |activity| %>
+      <%= activity.render(self) %>
+    <% end %>
+  </div>
+</div>
