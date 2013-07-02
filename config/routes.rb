@@ -29,7 +29,7 @@ Cake::Application.routes.draw do
 
   # /tags
   resources :creation_tags, :only => [:index, :show], :path => :t do
-    get 'page/:page', :action => :show
+    get ':id/page/:page', :action => :show, :on => :collection
   end
   get 'tags/:id' => 'creation_tags#show'
 
