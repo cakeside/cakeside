@@ -1,73 +1,90 @@
 <% provide(:title, "#{@search}") -%>
 <div class="row">
   <div class="span12">
-    <% if @creations.any? %>
-    <table class="table table-striped">
-      <thead>
-        <th></th>
-        <th>Creations</th>
-        <th>Artist</th>
-        <th>Name</th>
-        <th>Description</th>
-      </thead>
-      <tbody>
-      <% @creations.each_with_index do |creation, index| %>
-        <tr>
-          <td><%= index %></td>
-          <td><a href="<%= url_for creation_path(creation) %>"><%= image_tag creation.primary_image.image.thumb.url, :class=> 'thumbnail', :style => "width:65px" %></a></td>
-          <td><%= link_to creation.user.name, profile_path(creation.user) %></td>
-          <td><%= creation.name %></td>
-          <td><%= creation.story %></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-    <% else %>
-      <p>No creations found.</p>
-    <% end %>
-    <% if @members.any? %>
-    <table class="table table-striped">
-      <thead>
-        <th></th>
-        <th>Artists</th>
-        <th>Name</th>
-      </thead>
-      <tbody>
-      <% @members.each_with_index do |artist, index| %>
-        <tr>
-          <td><%= index %></td>
-          <td><a href="<%= url_for profile_path(artist) %>"><%= avatar_for(artist, :size => 65) %></a></td>
-          <td><%= link_to artist.name, profile_path(artist) %></td>
-          <td><%= link_to artist.website if artist.website %></td>
-          <td><%= link_to artist.twitter, "https://twitter.com/#{artist.twitter}" if artist.twitter.present? %></td>
-          <td><%= link_to artist.facebook if artist.facebook %></td>
-          <td><%= artist.city %></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-    <% else %>
-      <p>No artists found.</p>
-    <% end %>
-    <% if @tutorials.any? %>
-    <table class="table table-striped">
-      <thead>
-        <th></th>
-        <th>Tutorials</th>
-        <th>Name</th>
-      </thead>
-      <tbody>
-      <% @tutorials.each_with_index do |tutorial, index| %>
-        <tr>
-          <td><%= index %></td>
-          <td><%= link_to tutorial.heading, tutorial_path(tutorial) %></td>
-          <td><%= tutorial.description %></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-    <% else %>
-      <p>No tutorials found.</p>
-    <% end %>
+    <div class="tabbable"> <!-- Only required for left/right tabs -->
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">Creations</a></li>
+        <li><a href="#tab2" data-toggle="tab">Tutorials</a></li>
+        <li><a href="#tab3" data-toggle="tab">Artists</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+          <% if @creations.any? %>
+          <table class="table table-striped">
+            <thead>
+              <th></th>
+              <th>Creations</th>
+              <th>Artist</th>
+              <th>Name</th>
+              <th>Description</th>
+            </thead>
+            <tbody>
+            <% @creations.each_with_index do |creation, index| %>
+              <tr>
+                <td><%= index %></td>
+                <td><a href="<%= url_for creation_path(creation) %>"><%= image_tag creation.primary_image.image.thumb.url, :class=> 'thumbnail', :style => "width:65px" %></a></td>
+                <td><%= link_to creation.user.name, profile_path(creation.user) %></td>
+                <td><%= creation.name %></td>
+                <td><%= creation.story %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+          <% else %>
+            <p>No creations found.</p>
+          <% end %>
+        </div>
+        <div class="tab-pane" id="tab2">
+          <% if @tutorials.any? %>
+          <table class="table table-striped">
+            <thead>
+              <th></th>
+              <th>Tutorials</th>
+              <th>Name</th>
+            </thead>
+            <tbody>
+            <% @tutorials.each_with_index do |tutorial, index| %>
+              <tr>
+                <td><%= index %></td>
+                <td><%= link_to tutorial.heading, tutorial_path(tutorial) %></td>
+                <td><%= tutorial.description %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+          <% else %>
+            <p>No tutorials found.</p>
+          <% end %>
+        </div>
+        <div class="tab-pane" id="tab3">
+          <% if @members.any? %>
+          <table class="table table-striped">
+            <thead>
+              <th></th>
+              <th>Artists</th>
+              <th>Name</th>
+            </thead>
+            <tbody>
+            <% @members.each_with_index do |artist, index| %>
+              <tr>
+                <td><%= index %></td>
+                <td><a href="<%= url_for profile_path(artist) %>"><%= avatar_for(artist, :size => 65) %></a></td>
+                <td><%= link_to artist.name, profile_path(artist) %></td>
+                <td><%= link_to artist.website if artist.website %></td>
+                <td><%= link_to artist.twitter, "https://twitter.com/#{artist.twitter}" if artist.twitter.present? %></td>
+                <td><%= link_to artist.facebook if artist.facebook %></td>
+                <td><%= artist.city %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+          <% else %>
+            <p>No artists found.</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </div>
