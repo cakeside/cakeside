@@ -1,6 +1,6 @@
 class Photo < ActiveRecord::Base
   include PublicActivity::Model
-  tracked owner: Proc.new{ |controller, model| model.creation.user }
+  tracked owner: Proc.new{ |controller, model| controller.current_user if controller }
   attr_accessible :is_primary, :creation, :image
   belongs_to :creation, :counter_cache => true
   validates :image,  :presence => true
