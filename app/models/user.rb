@@ -2,7 +2,12 @@ class User < ActiveRecord::Base
   include PublicActivity::Model
   tracked
   geocoded_by :current_sign_in_ip, :latitude => :latitude, :longitude => :longitude
-  reverse_geocoded_by :latitude, :longitude, :address => :city
+  reverse_geocoded_by :latitude, :longitude do |obj,results|
+    if geo = results.first
+      obj.full_address = geo.formatted_address
+    end
+  end
+
   after_validation :geocode, :reverse_geocode
   validates :name,  :presence => true
   validates :website, :format => URI::regexp(%w(http https)), :allow_blank => true
