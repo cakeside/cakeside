@@ -23,7 +23,7 @@
     <% @creations.each do |creation| %>
       <div class="span4">
         <div class="thumbnail">
-          <a href="<%= url_for creation %>"><img src="<%= creation.primary_image.image.large.url %>" /></a>
+          <a href="<%= url_for creation %>"><%= image_tag creation.primary_image.image.large.url %></a>
           <div class="caption">
             <h3><a href="<%= url_for creation %>"><%= creation.name %></a> <em><small>by <a href="<%= url_for profile_path(creation.user) %>"> <%= shrink(creation.user.name, 20) %></a></small></em></h3>
             <p>
@@ -32,7 +32,6 @@
             <% end -%>
             </p>
             <p><%= creation.story %></p>
-            <p><a class="btn" href="<%= url_for creation %>">View</a></p>
           </div>
         </div>
       </div>
