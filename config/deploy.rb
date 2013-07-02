@@ -1,5 +1,5 @@
 require "rvm/capistrano"
-set :rvm_ruby_string, 'ruby-2.0.0-p195@cakeside'
+set :rvm_ruby_string, 'ruby-2.0.0-p247@cakeside'
 set :rvm_type, :system
 require 'bundler/capistrano'                 # loads RVM's capistrano plugin
 set :stages, %w(production staging)
