@@ -65,6 +65,8 @@ $(function() {
   <div class="row">
     <div class="span12">
       <%= link_to "view #{pluralize(@creation.photos_count-1, "other photo")} &raquo;".html_safe, creation_photos_path(@creation), :class => "pull-right" %>
+    </div>
+    <div class="span12">
       <ul class="thumbnails">
       <% @creation.photos.each do |photo| %>
         <li class="span2"><%= image_tag photo.image.thumb.url, :class => "thumbnail" %></li>
