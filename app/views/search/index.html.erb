@@ -1,7 +1,7 @@
 <% provide(:title, "#{@search}") -%>
 <div class="row">
   <div class="span12">
-    <div class="tabbable"> <!-- Only required for left/right tabs -->
+    <div class="tabbable tabs-left">
       <ul class="nav nav-tabs">
         <li class="active"><a href="#tab1" data-toggle="tab">Creations</a></li>
         <li><a href="#tab2" data-toggle="tab">Tutorials</a></li>
@@ -13,7 +13,6 @@
           <table class="table table-striped">
             <thead>
               <th></th>
-              <th>Creations</th>
               <th>Artist</th>
               <th>Name</th>
               <th>Description</th>
@@ -21,7 +20,6 @@
             <tbody>
             <% @creations.each_with_index do |creation, index| %>
               <tr>
-                <td><%= index %></td>
                 <td><a href="<%= url_for creation_path(creation) %>"><%= image_tag creation.primary_image.image.thumb.url, :class=> 'thumbnail', :style => "width:65px" %></a></td>
                 <td><%= link_to creation.user.name, profile_path(creation.user) %></td>
                 <td><%= creation.name %></td>
@@ -38,14 +36,12 @@
           <% if @tutorials.any? %>
           <table class="table table-striped">
             <thead>
-              <th></th>
-              <th>Tutorials</th>
               <th>Name</th>
+              <th>Description</th>
             </thead>
             <tbody>
             <% @tutorials.each_with_index do |tutorial, index| %>
               <tr>
-                <td><%= index %></td>
                 <td><%= link_to tutorial.heading, tutorial_path(tutorial) %></td>
                 <td><%= tutorial.description %></td>
               </tr>
@@ -60,14 +56,12 @@
           <% if @members.any? %>
           <table class="table table-striped">
             <thead>
-              <th></th>
               <th>Artists</th>
               <th>Name</th>
             </thead>
             <tbody>
             <% @members.each_with_index do |artist, index| %>
               <tr>
-                <td><%= index %></td>
                 <td><a href="<%= url_for profile_path(artist) %>"><%= avatar_for(artist, :size => 65) %></a></td>
                 <td><%= link_to artist.name, profile_path(artist) %></td>
                 <td><%= link_to artist.website if artist.website %></td>
