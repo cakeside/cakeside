@@ -19,7 +19,7 @@ describe CreationTagsController do
     let(:tag) { "cake" }
     let(:tagged_tutorial) { FactoryGirl.create(:tutorial) }
     let(:untagged_tutorial) { FactoryGirl.create(:tutorial) }
-    let(:tagged_cake) { FactoryGirl.create(:creation) }
+    let(:tagged_cake) { FactoryGirl.create(:creation, :photos_count => 1) }
     let(:untagged_cake) { FactoryGirl.create(:creation) }
 
     before :each do

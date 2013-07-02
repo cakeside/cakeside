@@ -1,6 +1,6 @@
 class Tutorial < ActiveRecord::Base
   include PublicActivity::Model
-  tracked owner: Proc.new{ |controller, model| controller.current_user }
+  tracked owner: Proc.new{ |controller, model| controller.current_user if controller }
   attr_accessible :description, :heading, :url, :image_url, :user_id, :author, :author_url
   validates :url,  :presence => true
   belongs_to :user
