@@ -4,14 +4,16 @@
     <% if @creations.any? %>
     <table class="table table-striped">
       <thead>
+        <th></th>
         <th>Creations</th>
         <th>Artist</th>
         <th>Name</th>
         <th>Description</th>
       </thead>
       <tbody>
-      <% @creations.each do |creation| %>
+      <% @creations.each_with_index do |creation, index| %>
         <tr>
+          <td><%= index %></td>
           <td><a href="<%= url_for creation_path(creation) %>"><%= image_tag creation.primary_image.image.thumb.url, :class=> 'thumbnail', :style => "width:65px" %></a></td>
           <td><%= link_to creation.user.name, profile_path(creation.user) %></td>
           <td><%= creation.name %></td>
@@ -26,14 +28,16 @@
     <% if @members.any? %>
     <table class="table table-striped">
       <thead>
+        <th></th>
         <th>Artists</th>
         <th>Name</th>
       </thead>
       <tbody>
-      <% @members.each do |artist| %>
+      <% @members.each_with_index do |artist, index| %>
         <tr>
+          <td><%= index %></td>
           <td><a href="<%= url_for profile_path(artist) %>"><%= avatar_for(artist, :size => 65) %></a></td>
-          <td><%= artist.name %></td>
+          <td><%= link_to artist.name, profile_path(artist) %></td>
           <td><%= link_to artist.website if artist.website %></td>
           <td><%= link_to artist.twitter, "https://twitter.com/#{artist.twitter}" if artist.twitter.present? %></td>
           <td><%= link_to artist.facebook if artist.facebook %></td>
@@ -44,6 +48,26 @@
     </table>
     <% else %>
       <p>No artists found.</p>
+    <% end %>
+    <% if @tutorials.any? %>
+    <table class="table table-striped">
+      <thead>
+        <th></th>
+        <th>Tutorials</th>
+        <th>Name</th>
+      </thead>
+      <tbody>
+      <% @tutorials.each_with_index do |tutorial, index| %>
+        <tr>
+          <td><%= index %></td>
+          <td><%= link_to tutorial.heading, tutorial_path(tutorial) %></td>
+          <td><%= tutorial.description %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <% else %>
+      <p>No tutorials found.</p>
     <% end %>
   </div>
 </div>

@@ -14,6 +14,8 @@ describe SearchController do
       let!(:bob) { FactoryGirl.create(:user, :name => 'bob') }
       let!(:cake) { FactoryGirl.create(:creation, :name => 'cake') }
       let!(:donut) { FactoryGirl.create(:creation, :name => 'donut') }
+      let!(:tutorial) { FactoryGirl.create(:tutorial, :description => 'cake') }
+      let!(:other_tutorial) { FactoryGirl.create(:tutorial, :description => 'donut') }
 
       before { get :index, { :q => 'cake' } }
 
@@ -35,6 +37,14 @@ describe SearchController do
 
       it "should not include makers with names that do not match" do
         assigns(:members).should_not include(bob)
+      end
+
+      it "should return all tutorials that match" do
+        assigns(:tutorials).should include(tutorial)
+      end
+
+      it "should not return tutorials that do not match" do
+        assigns(:tutorials).should_not include(other_tutorial)
       end
     end
   end

@@ -6,6 +6,7 @@ class SearchController < ApplicationController
     else
       @creations = Creation.includes(:user).search(@search).page(params[:page]).per(100)
       @members = User.includes(:avatar).where("upper(name) like upper(?)", "%#{@search}%")
+      @tutorials = Tutorial.where("upper(heading) like upper(?) OR upper(description) like upper(?)", "%#{@search}%", "%#{@search}%")
     end
   end
 end
