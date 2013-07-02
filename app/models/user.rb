@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   include PublicActivity::Model
   tracked
+  geocoded_by :last_sign_in_ip, :latitude => :latitude, :longitude => :longitude
+  after_validation :geocode, :if => lambda { |x| x.last_sign_in_ip_changed? }
   validates :name,  :presence => true
   validates :website, :format => URI::regexp(%w(http https)), :allow_blank => true
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable

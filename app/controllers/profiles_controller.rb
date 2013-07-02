@@ -8,6 +8,7 @@ class ProfilesController < ApplicationController
   def show
     @user = User.find(params[:id])
     @creations = @user.creations.includes([:user, :photos]).page(params[:page]).per(18)
+    @nearby_users = @user.nearbys(50) || []
   end
 
   def favorites

@@ -21,6 +21,7 @@ gem 'capistrano-gitflow'
 gem 'dotenv-rails'
 gem 'airbrake'
 gem 'public_activity'
+gem 'geocoder'
 
 group :development, :test do
   gem 'pg'
