@@ -29,13 +29,13 @@ $(function() {
   <div class="span6">
     <h1><%= link_to @creation.name, creation_path(@creation) %></h1>
     <p>By <%= link_to @creation.user.name, profile_path(@creation.user) %></p>
-    <hr />
     <% if @creation.tags.any? %>
       <span> <i class="icon-tags"></i> </span>
-    <% @creation.tags.each do |tag| -%>
-      <a href="<%= url_for creation_tag_path(tag.name) %>"><span class="label"><%= tag.name %></span></a>
-  <% end -%>
-  <% end -%>
+      <% @creation.tags.each do |tag| -%>
+        <a href="<%= url_for creation_tag_path(tag.name) %>"><span class="label"><%= tag.name %></span></a>
+      <% end -%>
+    <% end -%>
+    <hr />
     <div class="row">
       <div class="span3">
         <% if user_signed_in? %>
