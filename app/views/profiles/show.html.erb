@@ -17,6 +17,9 @@
         <% unless @user.facebook.blank? %>
           <p><a  href="<%= @user.facebook %>" target="_blank"><%= image_tag "f_logo_16x16x32.png", :alt => "Like us on Facebook" %> Like on Facebook</a></p>
         <% end %>
+        <% if @user.latitude && @user.longitude %>
+          <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@user.latitude}%2C#{@user.longitude}" %>
+        <% end %>
       </div>
     </div>
     <% if @nearby_users.any? %>
