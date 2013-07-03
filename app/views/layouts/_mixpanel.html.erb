@@ -8,7 +8,7 @@ mixpanel.init("<%= ENV['MIXPANEL_API_KEY'] %>");</script><!-- end Mixpanel -->
 mixpanel.disable();
 <% end %>
 mixpanel.identify(<%= current_user.id %>);
-mixpanel.alias("<%= current_user.email %>");
+mixpanel.name_tag("<%= current_user.email %>");
 mixpanel.people.set({"$email":"<%= current_user.email %>","$created":"<%= current_user.created_at %>","$last_login":"<%= current_user.last_sign_in_at %>","city":"<%= current_user.city %>","latitude":"<%= current_user.latitude %>","longitude":"<%= current_user.longitude %>","website":"<%= current_user.website %>","twitter":"<%= current_user.twitter %>","facebook":"<%= current_user.facebook %>"});
 </script>
 <% end %>
