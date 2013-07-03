@@ -1,9 +1,14 @@
-<%= render :partial => "shared/account_nav", :locals => { :selected => :picture } %>
+<% content_for :javascript do %>
+<script type="text/javascript">
+mixpanel.track_forms(".edit_avatar", "uploaded avatar");
+</script>
+<% end %>
 
+<%= render :partial => "shared/account_nav", :locals => { :selected => :picture } %>
 <div class="row">
   <div class="span12">
     <%= avatar_for(current_user) %>
-    <%= form_for(@avatar, :url =>avatar_path(@avatar), :method => :put, :multipart => true) do |f| %>
+    <%= form_for(@avatar, :url => avatar_path(@avatar), :method => :put, :multipart => true) do |f| %>
       <div class="control-group">
         <div class="controls">
           <%= f.file_field :avatar %>
