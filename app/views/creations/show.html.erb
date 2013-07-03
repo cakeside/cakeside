@@ -5,11 +5,6 @@
 $(function() { 
   Creations.Show.initialize(); 
   mixpanel.track_forms(".form-horizontal", "commented");
-  mixpanel.track_links(".add-to-favorites", "click-add-to-favorites", {'referrer': document.referrer });
-  mixpanel.track_links(".sign-up", "click-sign-up", {'referrer': document.referrer });
-  mixpanel.track_links(".tag-link", "click-on-tag", {'referrer': document.referrer });
-  mixpanel.track_links("#add-comment-button", "click-on-add-comment", {'referrer': document.referrer });
-  mixpanel.track_links("#sign-in-to-comment", "click-on-sign-in-to-comment", {'referrer': document.referrer });
 });
 </script>
 <% end -%>
@@ -38,7 +33,7 @@ $(function() {
     <% if @creation.tags.any? %>
       <span> <i class="icon-tags"></i> </span>
       <% @creation.tags.each do |tag| -%>
-        <a href="<%= url_for creation_tag_path(tag.name) %>" class="tag-link"><span class="label"><%= tag.name %></span></a>
+        <a href="<%= url_for creation_tag_path(tag.name) %>" class="mix-link" data-event="click-on-tag"><span class="label"><%= tag.name %></span></a>
       <% end -%>
     <% end -%>
     <hr />
@@ -46,10 +41,10 @@ $(function() {
       <div class="span3">
         <% if user_signed_in? %>
           <% unless current_user == @creation.user || current_user.already_likes(@creation) %>
-          <%= button_to "ADD TO FAVORITES", creation_favorites_path(:creation_id => @creation.id), :method => :post, :id => 'add-to-favorites', :class => 'btn btn-primary' %>
+            <%= button_to "ADD TO FAVORITES", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary mix-link', "data-event" => 'click-add-to-favorites' %>
       <% end %>
       <% else %>
-        <p><%= link_to "SIGN UP FOR FREE", new_user_session_path, :id => 'sign-up', :class => "btn btn-primary" %></p>
+        <p><%= link_to "SIGN UP FOR FREE", new_user_session_path, :class => "btn btn-primary mix-link", "data-event" => 'click-sign-up' %></p>
       <% end %>
       </div>
       <div class="span3">
@@ -87,9 +82,9 @@ $(function() {
   <div class="span12">
     <h3>Comments <small><%= pluralize @comments.length, "comment" %></small></h3>
     <% unless user_signed_in? %>
-      <p><%= link_to "SIGN IN", new_user_session_path, :id => "sign-in-to-comment", :class => "btn btn-primary" %> to comment </p>
+      <p><%= link_to "SIGN IN", new_user_session_path, :class => "btn btn-primary mix-link", "data-event" => "click-on-sign-in-to-comment" %> to comment </p>
   <% else %>
-      <p><a id="add-comment-button" class="btn btn-large btn-primary" data-toggle="modal" href="#add-comment-dialog"><i class="icon-comment"> </i>COMMENT</a></p>
+      <p><a id="add-comment-button" class="btn btn-large btn-primary mix-link" data-event="click-on-add-comment" data-toggle="modal" href="#add-comment-dialog"><i class="icon-comment"> </i>COMMENT</a></p>
   <% end -%>
     <% @comments.each do |comment| %>
       <div class="row">
