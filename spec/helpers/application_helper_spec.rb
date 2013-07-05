@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe ApplicationHelper do
   describe :disqus_auth do
-    let(:user) { OpenStruct.new(id: 1, username: 'blah', email: 'test@fairgoods.com') }
+    let(:user) { OpenStruct.new(id: 1, username: 'blah', email: 'test@cakeside.com') }
 
     before :each do
       data = { id: user.id, username: user.username, email: user.email }.to_json

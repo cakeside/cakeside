@@ -18,7 +18,7 @@ module ApplicationHelper
   end
 
   def disqus_auth(user = current_user)
-    data = { id: user.id, username: user.username, email: user.email }.to_json
+    data = { id: user.id, username: user.email, email: user.email }.to_json
     message = Base64.encode64(data).gsub("\n", "")
     timestamp = Time.now.to_i
     signature = OpenSSL::HMAC.hexdigest('sha1', ENV['DISQUS_SECRET_KEY'], "#{message} #{timestamp}")

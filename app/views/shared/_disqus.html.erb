@@ -1,6 +1,5 @@
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-var disqus_shortname = 'cakeside';
 var disqus_shortname = '<%= ENV['DISQUS_SHORTNAME'] %>';
 var disqus_identifier = '<%= id %>';
 (function() {
@@ -9,6 +8,7 @@ var disqus_identifier = '<%= id %>';
   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
 })();
 </script>
+<% if current_user %>
 <script type="text/javascript" charset="utf-8">
 (function(){
   var disqus_config = function(){
@@ -17,5 +17,6 @@ var disqus_identifier = '<%= id %>';
   };
 })();
 </script>
+<% end %>
 <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
