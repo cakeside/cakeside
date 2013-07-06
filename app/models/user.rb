@@ -44,6 +44,10 @@ class User < ActiveRecord::Base
     self.save!
   end
 
+  def has_avatar?
+    self.avatar && self.avatar.avatar.present?
+  end
+
   def to_param
     "#{id}-#{name.gsub(/[^a-z0-9]+/i, '-')}"
   end
