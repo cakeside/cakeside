@@ -6,7 +6,7 @@
       <!-- title of article -->
       <title><%= comment.commentable.name %></title>
       <!-- absolute URI to article -->
-      <link>http://cakeside.com/creations/<%= comment.commentable.to_param %></link>
+      <link>https://www.cakeside.com/creations/<%= comment.commentable.to_param %></link>
       <!-- body of the page or post; use cdata; html allowed (though will be formatted to DISQUS specs) -->
       <content:encoded><![CDATA[<%= comment.commentable.story %>]]></content:encoded>
       <!-- value used within disqus_identifier; usually internal identifier of article -->
@@ -30,7 +30,7 @@
         <!-- author email address -->
         <wp:comment_author_email><%= comment.user.email %></wp:comment_author_email>
         <!-- author url, optional -->
-        <wp:comment_author_url>http://www.cakeside.com/profiles/<%= comment.user.to_param %></wp:comment_author_url>
+        <wp:comment_author_url>https://www.cakeside.com/profiles/<%= comment.user.to_param %></wp:comment_author_url>
         <!-- author ip address -->
         <wp:comment_author_IP><%= comment.user.last_sign_in_ip %></wp:comment_author_IP>
         <!-- comment datetime, in GMT. Must be YYYY-MM-DD HH:MM:SS 24-hour format. -->
