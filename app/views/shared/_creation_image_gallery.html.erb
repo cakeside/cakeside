@@ -7,7 +7,7 @@
       <h4><small>By <a href="<%= url_for profile_path(creation.user) %>"><%= shrink(creation.user.name, 20) %></a></small></h4>
       <p>
       <a href="<%= url_for creation_favorites_path(:creation_id => creation.id) %>"><span class="badge"><%= creation.favorites.size %> <i class="icon-heart-empty"></i></span></a>
-      <a href="<%= url_for creation %>#comments"><span class="badge badge-success" title="<%= pluralize( creation.comment_threads.size, "comments") %>"><%= creation.comment_threads.size %> <i class="icon-comments"></i></span></a>
+      <span class="badge badge-warning"><i class="icon-comments"> <a href="<%= url_for creation %>#disqus_thread" data-disqus-identifier="c-<%= creation.id %>"></a></i></span>
       </p>
     </div>
     </li>
