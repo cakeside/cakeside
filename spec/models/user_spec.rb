@@ -117,23 +117,17 @@ describe User do
   end
 
   describe "when loading all the users" do
-    let(:first_person) { FactoryGirl.create(:user) }
-    let(:second_person) { FactoryGirl.create(:user) }
-
-    before :each do
-      first_person
-      second_person
-      first_person.touch
-    end
+    let!(:first_person) { FactoryGirl.create(:user, :creations_count => 0) }
+    let!(:second_person) { FactoryGirl.create(:user, :creations_count => 1) }
 
     let(:results) { User.all }
 
-    it "should load the person who signed up first last" do
-      results[1].should == first_person
+    it "should load the person with the most cakes first" do
+      results[0].should == second_person
     end
 
-    it "should load the person who signed up next first" do
-      results[0].should == second_person
+    it "should load the person with the least cakes last" do
+      results[1].should == first_person
     end
   end
 
