@@ -44,6 +44,7 @@ Cake::Application.routes.draw do
 
   # sitemap
   match "/sitemap.xml", :to => "sitemap#index", :defaults => {:format => :xml}
+  match "/comments.xml", :to => "sitemap#comments", :defaults => {:format => :xml}
 
   resources :settings, :only => [:index, :update]
   resources :passwords, :only => [:index, :update]
