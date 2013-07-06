@@ -2,10 +2,10 @@ require "spec_helper"
 
 describe ApplicationHelper do
   describe :disqus_auth do
-    let(:user) { OpenStruct.new(id: 1, email: 'test@cakeside.com') }
+    let(:user) { OpenStruct.new(id: 1, name: 'mo', email: 'test@cakeside.com') }
 
     before :each do
-      data = { id: user.id, username: user.email, email: user.email }.to_json
+      data = { id: user.id, username: user.name, email: user.email }.to_json
       message = Base64.encode64(data).gsub("\n", "")
       timestamp = Time.now.to_i
       secret = ENV['DISQUS_SECRET_KEY'] = 'secret'
