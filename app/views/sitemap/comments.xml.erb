@@ -12,7 +12,7 @@
       <!-- value used within disqus_identifier; usually internal identifier of article -->
       <dsq:thread_identifier>c-<%= comment.commentable.id %></dsq:thread_identifier>
       <!-- creation date of thread (article), in GMT. Must be YYYY-MM-DD HH:MM:SS 24-hour format. -->
-      <wp:post_date_gmt><%= comment.commentable.created_at %></wp:post_date_gmt>
+      <wp:post_date_gmt><%= comment.commentable.created_at.strftime("%Y-%m-%d %H:%M:%S") %></wp:post_date_gmt>
       <!-- open/closed values are acceptable -->
       <wp:comment_status>open</wp:comment_status>
       <wp:comment>
@@ -34,7 +34,7 @@
         <!-- author ip address -->
         <wp:comment_author_IP><%= comment.user.last_sign_in_ip %></wp:comment_author_IP>
         <!-- comment datetime, in GMT. Must be YYYY-MM-DD HH:MM:SS 24-hour format. -->
-        <wp:comment_date_gmt><%= comment.created_at %></wp:comment_date_gmt>
+        <wp:comment_date_gmt><%= comment.created_at.strftime("%Y-%m-%d %H:%M:%S") %></wp:comment_date_gmt>
         <!-- comment body; use cdata; html allowed (though will be formatted to DISQUS specs) -->
         <wp:comment_content><![CDATA[<%= comment.body %>]]></wp:comment_content>
         <!-- is this comment approved? 0/1 -->
