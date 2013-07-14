@@ -22,6 +22,7 @@ gem 'dotenv-rails'
 gem 'airbrake'
 gem 'public_activity'
 gem 'geocoder'
+gem 'jbuilder'
 
 group :development, :test do
   gem 'pg'

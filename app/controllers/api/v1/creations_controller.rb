@@ -5,7 +5,7 @@ module Api
       respond_to :json
 
       def index
-        respond_with Creation.all
+        @creations = Creation.all.take(50)
       end
 
       private

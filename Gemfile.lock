@@ -164,6 +164,9 @@ GEM
       rspec (>= 1.3.1)
       selenium-webdriver (>= 0.1.3)
     jasmine-core (1.3.1)
+    jbuilder (1.4.2)
+      activesupport (>= 3.0.0)
+      multi_json (>= 1.2.0)
     journey (1.0.4)
     jquery-fileupload-rails (0.4.1)
       actionpack (>= 3.1)
@@ -327,6 +330,7 @@ DEPENDENCIES
   formtastic
   geocoder
   jasmine
+  jbuilder
   jquery-fileupload-rails
   jquery-rails
   kaminari
