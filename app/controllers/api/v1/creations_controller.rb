@@ -5,7 +5,7 @@ module Api
       respond_to :json
 
       def index
-        @creations = Creation.all.take(50)
+        @creations = Creation.includes(:user, :photos).where(:is_restricted => false).where('photos_count > 0').uniq
       end
 
       private
