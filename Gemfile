@@ -35,6 +35,7 @@ group :development, :test do
   gem 'bullet'
   gem 'rack-mini-profiler'
   gem 'lol_dba'
+  gem 'database_cleaner'
 end
 group :test do
   gem 'sqlite3'
