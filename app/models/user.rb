@@ -34,10 +34,6 @@ class User < ActiveRecord::Base
     creation.user == self
   end
 
-  def comment_on(creation, comment)
-    Comment.create_for(self, creation, comment)
-  end
-
   def change_password(password, confirmation)
     return false unless password == confirmation
     self.password = password

@@ -12,7 +12,6 @@ gem "formtastic"
 gem 'activeadmin'
 gem 'sass-rails'
 gem 'bootstrap-sass'
-gem 'acts_as_commentable_with_threading'
 gem 'acts-as-taggable-on'
 gem 'delayed_job_active_record'
 gem 'daemons'

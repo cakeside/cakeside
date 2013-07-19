@@ -1,7 +1,6 @@
 class Creation < ActiveRecord::Base
   include PublicActivity::Model
   tracked owner: Proc.new{ |controller, model| controller.current_user if controller }
-  acts_as_commentable
   validates :name,  :presence => true
   attr_accessible :user_id, :story, :name, :category_ids, :is_restricted, :watermark
   belongs_to :user, :counter_cache => true
@@ -15,10 +14,6 @@ class Creation < ActiveRecord::Base
   # to be removed and moved to the DisplayCreationDTO
   def to_param
     "#{id}-#{name.gsub(/[^a-z0-9]+/i, '-')}"
-  end
-
-  def has_comments
-    self.comment_threads.length > 0
   end
 
   def primary_image

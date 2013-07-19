@@ -42,10 +42,6 @@ GEM
       multi_json (~> 1.0)
     acts-as-taggable-on (2.3.3)
       rails (~> 3.0)
-    acts_as_commentable_with_threading (1.1.2)
-      activerecord (>= 3.0)
-      activesupport (~> 3.0)
-      awesome_nested_set (>= 2.0)
     airbrake (3.1.12)
       activesupport
       builder
@@ -56,8 +52,6 @@ GEM
     asset_sync (0.5.4)
       activemodel
       fog
-    awesome_nested_set (2.1.6)
-      activerecord (>= 3.0.0)
     bcrypt-ruby (3.0.1)
     better_errors (0.8.0)
       coderay (>= 1.0.0)
@@ -306,7 +300,6 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   acts-as-taggable-on
-  acts_as_commentable_with_threading
   airbrake
   asset_sync
   better_errors

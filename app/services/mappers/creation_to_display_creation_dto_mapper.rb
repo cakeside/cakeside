@@ -8,7 +8,6 @@ class CreationToDisplayCreationDTOMapper
     dto.thumb_url = creation.primary_image.image.thumb.url
     dto.user = creation.user
     dto.favorites = creation.favorites
-    dto.comment_threads = creation.comment_threads
     dto
   end
 end

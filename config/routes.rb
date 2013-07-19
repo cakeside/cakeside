@@ -14,7 +14,6 @@ Cake::Application.routes.draw do
   resources :creations do
     resources :photos, :only => [:index, :new, :create, :destroy]
     resources :favorites, :only => [:index, :create]
-    resources :comments, :only => [:index, :new, :create]
     get 'page/:page', :action => :index, :on => :collection
     get 'mine', :action => :mine, :on => :collection
   end
@@ -44,7 +43,6 @@ Cake::Application.routes.draw do
 
   # sitemap
   match "/sitemap.xml", :to => "sitemap#index", :defaults => {:format => :xml}
-  match "/comments.xml", :to => "sitemap#comments", :defaults => {:format => :xml}
 
   resources :settings, :only => [:index, :update]
   resources :passwords, :only => [:index, :update]
