@@ -57,4 +57,8 @@ class Creation < ActiveRecord::Base
       favorites.create({:user_id => user.id})
     end
   end
+
+  def self.visible_creations
+    Creation.includes(:user, :photos).where(:is_restricted => false).where('photos_count > 0').uniq
+  end
 end
