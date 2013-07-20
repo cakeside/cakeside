@@ -6,7 +6,7 @@ describe ProfilesController do
   let(:user) { FactoryGirl.build(:user, :id => 1002) }
 
   before (:each) do
-    request.env['warden'] = mock(Warden, :authenticate => user, :authenticate! => user)
+    request.env['warden'] = double(Warden, :authenticate => user, :authenticate! => user)
   end
 
   describe "GET 'index'" do
