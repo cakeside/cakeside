@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
     creation.user == self
   end
 
-  def change_password(password, confirmation)
+  def change_password(password, confirmation=password)
     return false unless password == confirmation
     self.password = password
     self.save
