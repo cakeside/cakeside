@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   def change_password(password, confirmation)
     return false unless password == confirmation
     self.password = password
-    self.save!
+    self.save
   end
 
   def has_avatar?
