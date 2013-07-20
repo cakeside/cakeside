@@ -8,7 +8,6 @@ class CreationsController < ApplicationController
   def show
     @creation = Creation.find(params[:id])
     @primary_photo = @creation.primary_image
-    @comments = @creation.comment_threads.includes(:user)
   end
 
   def new

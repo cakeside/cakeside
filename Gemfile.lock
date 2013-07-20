@@ -42,10 +42,6 @@ GEM
       multi_json (~> 1.0)
     acts-as-taggable-on (2.3.3)
       rails (~> 3.0)
-    acts_as_commentable_with_threading (1.1.2)
-      activerecord (>= 3.0)
-      activesupport (~> 3.0)
-      awesome_nested_set (>= 2.0)
     airbrake (3.1.12)
       activesupport
       builder
@@ -56,8 +52,6 @@ GEM
     asset_sync (0.5.4)
       activemodel
       fog
-    awesome_nested_set (2.1.6)
-      activerecord (>= 3.0.0)
     bcrypt-ruby (3.0.1)
     better_errors (0.8.0)
       coderay (>= 1.0.0)
@@ -105,6 +99,7 @@ GEM
     coffee-script-source (1.6.1)
     daemons (1.1.9)
     dalli (2.6.4)
+    database_cleaner (1.0.1)
     delayed_job (3.0.5)
       activesupport (~> 3.0)
     delayed_job_active_record (0.4.3)
@@ -305,7 +300,6 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   acts-as-taggable-on
-  acts_as_commentable_with_threading
   airbrake
   asset_sync
   better_errors
@@ -320,6 +314,7 @@ DEPENDENCIES
   coffee-rails
   daemons
   dalli
+  database_cleaner
   delayed_job_active_record
   devise
   dotenv-rails

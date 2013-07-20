@@ -47,20 +47,6 @@ describe User do
     end
   end
 
-  describe "when commenting on a creation" do
-    let(:comment) { fake }
-    let(:creation) { fake }
-    let(:sut) { User.new }
-
-    it "should create a new comment" do
-      @result.should == comment
-    end
-    before(:each) do
-      Comment.stub(:create_for).with(sut, creation, "cool cake").and_return(comment)
-      @result = sut.comment_on(creation, "cool cake")
-    end
-  end
-
   describe "when checking if a user already likes a creation" do
     let(:sut) { FactoryGirl.create(:user) }
     let(:cake) { FactoryGirl.create(:creation) }

@@ -10,12 +10,4 @@ class SitemapController < ApplicationController
       format.xml
     end
   end
-
-  def comments
-    headers['Content-Type'] = 'application/xml'
-    @comments = Comment.all
-    respond_to do |format|
-      format.xml
-    end
-  end
 end
