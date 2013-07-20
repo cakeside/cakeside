@@ -48,8 +48,8 @@ describe User do
   end
 
   describe "when checking if a user already likes a creation" do
-    let(:sut) { FactoryGirl.create(:user) }
-    let(:cake) { FactoryGirl.create(:creation) }
+    let(:sut) { create(:user) }
+    let(:cake) { create(:creation) }
 
     describe "when they do" do
       before :each do
@@ -73,11 +73,11 @@ describe User do
   end
 
   describe "when a user adds a cake to their favorites" do
-    let(:sut) { FactoryGirl.create(:user) }
-    let!(:cake) { FactoryGirl.create(:creation) }
+    let(:sut) { create(:user) }
+    let!(:cake) { create(:creation) }
 
     context "when the cake is already in their favorites" do
-      let!(:favorite) { FactoryGirl.create(:favorite, :creation => cake, :user => sut) }
+      let!(:favorite) { create(:favorite, :creation => cake, :user => sut) }
       let(:result) { sut.add_favorite(cake) }
 
       it "should return their existing favorite" do
@@ -103,19 +103,17 @@ describe User do
   end
 
   describe "when loading all the users" do
-    let!(:first_person) { FactoryGirl.create(:user, :creations_count => 0) }
-    let!(:second_person) { FactoryGirl.create(:user, :creations_count => 1) }
+    let!(:first_person) { create(:user, :creations_count => 0) }
+    let!(:second_person) { create(:user, :creations_count => 1) }
 
     let(:results) { User.all }
 
     it "should load the person with the most cakes first" do
-      results[0].should == second_person
+      results.first.should == second_person
     end
 
     it "should load the person with the least cakes last" do
-      results[1].should == first_person
+      results.last.should == first_person
     end
   end
-
-
 end
