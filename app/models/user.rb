@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  include PublicActivity::Model
-  tracked
   geocoded_by :current_sign_in_ip, :latitude => :latitude, :longitude => :longitude
   reverse_geocoded_by :latitude, :longitude do |obj,results|
     if geo = results.first

@@ -48,12 +48,6 @@ Cake::Application.routes.draw do
   resources :passwords, :only => [:index, :update], :path => :pwd
   resources :avatars, :only => [:edit, :update]
 
-  resources :notifications, :only => [:index]
-
-  ActiveAdmin.routes(self)
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
-
   root :to => "creations#index"
 
   namespace :api, :defaults => { :format => 'json' }  do

@@ -1,6 +1,4 @@
 class Creation < ActiveRecord::Base
-  include PublicActivity::Model
-  tracked owner: Proc.new{ |controller, model| controller.current_user if controller }
   validates :name,  :presence => true
   attr_accessible :user_id, :story, :name, :category_ids, :is_restricted, :watermark
   belongs_to :user, :counter_cache => true

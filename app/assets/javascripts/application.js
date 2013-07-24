@@ -7,7 +7,7 @@
 //= require jquery
 //= require jquery-migrate
 //= require jquery_ujs
-//= require jquery-ui
+//= require jquery.ui.all
 //= require jquery.color
 //= require jquery.colorbox
 //= require jquery.validate

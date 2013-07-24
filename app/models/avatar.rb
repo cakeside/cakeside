@@ -1,6 +1,4 @@
 class Avatar < ActiveRecord::Base
-  include PublicActivity::Model
-  tracked owner: Proc.new{ |controller, model| controller.current_user if controller }
   belongs_to :user
   mount_uploader :avatar, AvatarUploader
 
