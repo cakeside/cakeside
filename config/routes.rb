@@ -1,7 +1,7 @@
 Cake::Application.routes.draw do
   # /home
-  match "about_us" => "home#about_us"
-  match "why_cakeside" => "home#why_cakeside"
+  get "about_us" => "home#about_us"
+  get "why_cakeside" => "home#why_cakeside"
 
   resources :tutorials do
     get 'page/:page', :action => :index, :on => :collection
@@ -22,7 +22,7 @@ Cake::Application.routes.draw do
   resources :profiles, :only => [:index, :show] do
     get 'page/:page', :action => :index, :on => :collection
   end
-  match 'favorites' => 'profiles#favorites', :as => 'profiles_favorites', :method => 'GET'
+  get 'favorites' => 'profiles#favorites', :as => 'profiles_favorites'
 
   # /categories
   get 'categories/:slug' => "categories#show", :as => :category
@@ -38,11 +38,12 @@ Cake::Application.routes.draw do
   get "search" => 'search#index'
 
   # /users
-  devise_for :users, :controllers => {:registrations => 'registrations'}
-  devise_for :user, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
+  #devise_for :users, :controllers => {:registrations => 'registrations'}
+  #devise_for :user, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
+  devise_for :users, :controllers => {:registrations => 'registrations'}, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
 
   # sitemap
-  match "/sitemap.xml", :to => "sitemap#index", :defaults => {:format => :xml}
+  get "/sitemap.xml", :to => "sitemap#index", :defaults => {:format => :xml}
 
   resources :settings, :only => [:index, :update]
   resources :passwords, :only => [:index, :update], :path => :pwd

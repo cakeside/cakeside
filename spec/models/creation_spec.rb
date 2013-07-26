@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Creation do
-  let(:sut) { FactoryGirl.create(:creation) }
+  let(:sut) { Creation.new }
 
   describe "should be able to set attributes" do
     it "should save name" do

@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
+  protect_from_forgery with: :exception
   before_filter :profile_application
   before_filter :load_categories
   before_filter :load_user
@@ -15,9 +17,10 @@ class ApplicationController < ActionController::Base
   end
 
   def load_categories
-    @categories = Rails.cache.fetch("categories-#{Category.count}") do
-      Category.all
-    end
+    #@categories = Rails.cache.fetch("categories-#{Category.count}") do
+      #Category.all
+    #end
+    @categories = Category.all
   end
 
   def load_user
