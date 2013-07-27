@@ -1,4 +1,5 @@
-task :ci => ['db:migrate', 'db:test:prepare', 'spec', 'jasmine:ci']
+#task :ci => ['db:migrate', 'db:test:prepare', 'spec', 'jasmine:ci']
+task :ci => ['db:migrate', 'db:test:prepare', 'spec']
 
 namespace :ci do
   namespace :deploy do
