@@ -33,8 +33,8 @@ server {
   # server_name  *.cakeside.com;
   root         <%= current_path %>/public;
   ssl on;
-  ssl_certificate             <%= current_path %>/config/staging.crt;
-  ssl_certificate_key         <%= current_path %>/config/staging.key;
+  ssl_certificate             <%= ssl_certificate %>;
+  ssl_certificate_key         <%= ssl_certificate_key %>;
   error_log /var/log/nginx/cakeside.error.log;
   access_log off;
 
