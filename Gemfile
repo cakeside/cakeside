@@ -53,6 +53,7 @@ group :development, :test do
   gem 'fakes-rspec'
   gem 'simplecov'
   gem 'ffaker'
+  gem 'selenium-webdriver'
 end
 
 group :staging do
