@@ -9,6 +9,10 @@ namespace :nginx do
 
   desc "setup nginx configuration"
   task :setup, roles: :web do
+    run "#{sudo} rm -f /tmp/nginx_conf"
+    run "#{sudo} rm -f /etc/nginx/sites-available/#{application}"
+    run "#{sudo} rm -f /etc/nginx/sites-enabled/#{application}"
+
     template "nginx_unicorn.erb", "/tmp/nginx_conf"
     run "#{sudo} mv /tmp/nginx_conf /etc/nginx/sites-available/#{application}"
     run "#{sudo} ln -s /etc/nginx/sites-available/#{application} /etc/nginx/sites-enabled/#{application}"

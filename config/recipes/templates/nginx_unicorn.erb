@@ -4,8 +4,10 @@ upstream unicorn {
 
 server {
   listen 80 default deferred;
-  # server_name cakeside.com
+  # server_name *.cakeside.com
   root <%= current_path %>/public;
+  error_log /var/log/nginx/cakeside.error.log;
+  access_log off;
 
   location ^~ /assets/ {
     gzip_static on;
@@ -25,3 +27,25 @@ server {
   client_max_body_size 4G;
   keepalive_timeout 10;
 }
+
+server {
+  listen       443;
+  # server_name  *.cakeside.com;
+  root         <%= current_path %>/public;
+  ssl on;
+  ssl_certificate             <%= current_path %>/config/staging.crt;
+  ssl_certificate_key         <%= current_path %>/config/staging.key;
+  error_log /var/log/nginx/cakeside.error.log;
+  access_log off;
+
+  try_files $uri/index.html $uri @unicorn;
+  location @unicorn {
+    proxy_set_header X_FORWARDED_PROTO https;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header HOST $http_host;
+    proxy_set_header  X-Url-Scheme $scheme;
+    proxy_redirect off;
+    proxy_pass http://unicorn;
+  }
+}
+
