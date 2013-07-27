@@ -11,8 +11,8 @@ describe "changing my password" do
         fill_in('user_password', :with => "password")
       end
       click_button("Sign In")
-      #click_link(user.name)
       visit settings_path
+      #click_link(user.name)
       #click_link("Settings")
       click_link("Password")
       within(".form-horizontal") do

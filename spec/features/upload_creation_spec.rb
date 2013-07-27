@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "uploading a new creation", :js => true do
+describe "uploading a new creation" do
   let!(:user) { create(:user, :password => "password") }
   let!(:category_1) { create(:category) }
   let!(:category_2) { create(:category) }
@@ -13,6 +13,7 @@ describe "uploading a new creation", :js => true do
     end
     click_button("Sign In")
     click_link("Add Creation")
+    #visit new_creation_path
 
     within(".form-horizontal") do
       fill_in("creation_name", :with => "yummy cake")
