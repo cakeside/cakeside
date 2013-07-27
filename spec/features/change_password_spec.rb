@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "changing my password", :js => true do
+describe "changing my password" do
   context "when changing my password" do
     let(:user) { create(:user, :password => "password") }
 
@@ -11,8 +11,9 @@ describe "changing my password", :js => true do
         fill_in('user_password', :with => "password")
       end
       click_button("Sign In")
-      click_link(user.name)
-      click_link("Settings")
+      #click_link(user.name)
+      visit settings_path
+      #click_link("Settings")
       click_link("Password")
       within(".form-horizontal") do
         fill_in('user_password', :with => "mopass")
