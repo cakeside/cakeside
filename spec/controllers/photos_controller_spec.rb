@@ -1,15 +1,15 @@
 require 'spec_helper'
 
 describe PhotosController do
-  let(:user){ FactoryGirl.create(:user) }
-  let(:creation){ FactoryGirl.create(:creation) }
+  let(:user){ create(:user) }
+  let(:creation){ create(:creation) }
 
   before(:each) do
     user.creations << creation
     http_login(user)
   end
 
-  describe "POST create" do
+  describe :post do
     let(:image) { Rack::Test::UploadedFile.new("spec/fixtures/images/gorilla.jpg", "image/jpeg") }
 
     before :each do
@@ -26,8 +26,8 @@ describe PhotosController do
     end
   end
 
-  describe "DELETE 'destroy'" do
-    let!(:photo) { FactoryGirl.create(:photo) }
+  describe :delete do
+    let!(:photo) { create(:photo) }
 
     before :each do
       creation.photos << photo

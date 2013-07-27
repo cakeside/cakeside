@@ -16,7 +16,7 @@ class PhotosController < ApplicationController
   end
 
   def create
-    attributes = params[:photo]
+    attributes = photo_params
     attributes[:image] = params[:photo][:image].first if params[:photo][:image].class == Array
 
     @photo = @creation.photos.build(attributes)
@@ -44,5 +44,9 @@ class PhotosController < ApplicationController
   def find_creation
     @creation = current_user.creations.find(params[:creation_id])
     raise ActiveRecord::RecordNotFound unless @creation
+  end
+
+  def photo_params
+    params.require(:photo).permit(:image)
   end
 end
