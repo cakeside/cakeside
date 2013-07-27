@@ -8,10 +8,10 @@ namespace :db do
     #sh "pg_restore --verbose --clean --no-acl --no-owner -h localhost -U #{config[Rails.env]["username"]} -d #{destination_db} #{dumpfile}"
   end
   task :backup do
-    sh "cap production backup_db"
+    sh "cap production postgresql:backup"
     sh "rm -f latest && ln -s db/backups/`ls -rt db/backups/ | tail -n1` latest"
   end
   task :restore_to_staging => :backup do
-    sh "cap staging restore_db"
+    sh "cap staging postgresql:restore"
   end
 end
