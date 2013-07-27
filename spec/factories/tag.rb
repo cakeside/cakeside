@@ -1,5 +1,5 @@
 FactoryGirl.define do 
   factory :tag, :class => "ActsAsTaggableOn::Tag" do
-    name "cake"
+    name { Faker::Name.name }
   end
 end

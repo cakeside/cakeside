@@ -60,5 +60,6 @@ class CreationsController < ApplicationController
 
   def creation_params
     params.require(:creation).permit(:name, :story, :is_restricted, :watermark)
+    #name, story, is_restricted, watermark
   end
 end

@@ -1,10 +1,10 @@
 FactoryGirl.define do
   factory :tutorial do
-    heading "blah"
+    heading { Faker::Name.name }
     description "well hello there"
-    url "http://mokhan.ca/"
-    image_url "http://example.com"
-    author "mo"
-    author_url "mokhan.ca"
+    url { Faker::Internet.http_url }
+    image_url { Faker::Internet.http_url }
+    author { Faker::Name.name }
+    author_url { Faker::Internet.http_url }
   end
 end

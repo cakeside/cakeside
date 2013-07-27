@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :category, class: Category do
-    name 'blah'
-    slug 'blah'
+    name { Faker::Name.name }
+    slug { Faker::Name.name }
   end
 end
