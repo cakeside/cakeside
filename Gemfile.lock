@@ -32,7 +32,7 @@ GEM
       builder
       json
     arel (4.0.0)
-    asset_sync (0.6.0)
+    asset_sync (1.0.0)
       activemodel
       fog (>= 1.8.0)
     atomic (1.1.10)
@@ -107,6 +107,7 @@ GEM
     fakes (1.1.4)
     fakes-rspec (1.0.5)
       fakes
+      rspec
     ffaker (1.16.2)
     ffi (1.9.0)
     fog (1.14.0)
@@ -211,7 +212,7 @@ GEM
     rubyzip (0.9.9)
     rvm-capistrano (1.4.1)
       capistrano (>= 2.0.0)
-    sass (3.2.9)
+    sass (3.2.10)
     sass-rails (4.0.0)
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
