@@ -20,7 +20,7 @@ class CreationsController < ApplicationController
   end
 
   def create
-    @creation = current_user.creations.create(params[:creation])
+    @creation = current_user.creations.create(creation_params)
     @creation.categories << Category.find(params[:category_id]) if params[:category_id]
     current_user.tag(@creation, :with => params[:creation_tags], :on => :tags)
 
@@ -39,11 +39,11 @@ class CreationsController < ApplicationController
     @creation.categories << Category.find(params[:category_id]) if params[:category_id]
     current_user.tag(@creation, :with => params[:creation_tags], :on => :tags)
 
-    if @creation.update_attributes(params[:creation])
+    if @creation.update_attributes(creation_params)
       redirect_to new_creation_photo_url(@creation)
     else
       flash[:error] = @creation.errors.full_messages
-      render :action => "edit" 
+      render :edit
     end
   end
 
@@ -54,5 +54,11 @@ class CreationsController < ApplicationController
 
   def mine
     @creations = current_user.creations.includes([:user]).page(params[:page]).per(12)
+  end
+
+  private
+
+  def creation_params
+    params.require(:creation).permit(:name, :story, :is_restricted, :watermark)
   end
 end
