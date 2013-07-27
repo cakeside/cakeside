@@ -19,7 +19,6 @@ class User < ActiveRecord::Base
   has_one :avatar
   acts_as_tagger
   before_save :ensure_authentication_token
-  #default_scope -> { order("creations_count DESC") }
 
   def add_favorite(creation)
     creation.liked_by(self)
@@ -45,5 +44,9 @@ class User < ActiveRecord::Base
 
   def to_param
     "#{id}-#{name.gsub(/[^a-z0-9]+/i, '-')}"
+  end
+
+  def self.ordered
+    User.order(:creations_count => :desc)
   end
 end

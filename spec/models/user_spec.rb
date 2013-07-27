@@ -106,7 +106,7 @@ describe User do
     let!(:first_person) { create(:user, :creations_count => 0) }
     let!(:second_person) { create(:user, :creations_count => 1) }
 
-    let(:results) { User.all }
+    let(:results) { User.ordered }
 
     it "should load the person with the most cakes first" do
       results.first.should == second_person
