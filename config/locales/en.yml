@@ -24,3 +24,5 @@ en:
   share_something: "You have not uploaded anything!"
   passwords_do_not_match: 'The passwords should match and should be a minimum of 6 characters.'
   tutorial_saved: 'Your tutorial was added.'
+  passwords:
+    updated: 'Your password was updated.'

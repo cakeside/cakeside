@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :favorites, :dependent => :destroy
   has_many :tutorials, :dependent => :destroy
   #has_and_belongs_to_many :interests, :join_table => 'users_interests', uniq: true, :autosave => true
-  has_and_belongs_to_many :interests, -> { where unique: true }, :join_table => 'users_interests', :autosave => true
+  has_and_belongs_to_many :interests, :join_table => 'users_interests', :autosave => true
   has_one :avatar
   acts_as_tagger
   before_save :ensure_authentication_token
