@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :profile_application
   before_filter :load_categories
   before_filter :load_user
+  before_filter :configure_permitted_parameters, if: :devise_controller?
 
   private
 
@@ -18,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   def load_categories
     #@categories = Rails.cache.fetch("categories-#{Category.count}") do
-      #Category.all
+    #Category.all
     #end
     @categories = Category.all
   end
@@ -26,4 +27,11 @@ class ApplicationController < ActionController::Base
   def load_user
     @user = current_user if current_user
   end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:user) { |u| u.permit(:name, :city, :email) }
+  end
 end
+

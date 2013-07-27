@@ -1,9 +1,9 @@
 class RegistrationsController < Devise::RegistrationsController
-  #force_ssl
   def edit
     @user = current_user
   end
 
+  # is this action used any more?
   def update
     @user = current_user
     @user.interest_ids = params[:user][:interest_ids] ||= []
@@ -17,5 +17,9 @@ class RegistrationsController < Devise::RegistrationsController
 
   def after_sign_in_path_for(resource)
     settings_path
+  end
+
+  def sign_up_params
+    params.require(:user).permit(:name, :city, :email, :password, :password_confirmation)
   end
 end
