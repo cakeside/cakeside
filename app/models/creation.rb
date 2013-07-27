@@ -1,6 +1,6 @@
 class Creation < ActiveRecord::Base
   validates :name,  :presence => true
-  attr_accessible :user_id, :story, :name, :category_ids, :is_restricted, :watermark
+  #attr_accessible :user_id, :story, :name, :category_ids, :is_restricted, :watermark
   belongs_to :user, :counter_cache => true
   has_and_belongs_to_many :categories, -> { where unique: true }, :join_table => 'creations_categories', :autosave => true
   has_many :photos, -> { order :created_at }, :dependent => :destroy

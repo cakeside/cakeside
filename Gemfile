@@ -30,7 +30,7 @@ gem 'airbrake'
 gem 'geocoder'
 gem 'pg'
 gem 'asset_sync'
-gem 'protected_attributes'
+#gem 'protected_attributes'
 
 group :development do
   gem 'capistrano'

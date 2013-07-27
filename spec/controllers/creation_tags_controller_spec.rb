@@ -2,8 +2,8 @@ require "spec_helper"
 
 describe CreationTagsController do
   describe :index do
-    let(:cake) { FactoryGirl.create(:creation) }
-    let(:user) { FactoryGirl.create(:user) }
+    let(:cake) { create(:creation) }
+    let(:user) { create(:user) }
 
     before :each do
       user.tag(cake, :with => "cake", :on => :tags)
@@ -16,17 +16,16 @@ describe CreationTagsController do
     end
   end
   describe :show do
+    let(:user) { create(:user) }
     let(:tag) { "cake" }
-    let(:tagged_tutorial) { FactoryGirl.create(:tutorial) }
-    let(:untagged_tutorial) { FactoryGirl.create(:tutorial) }
-    let(:tagged_cake) { FactoryGirl.create(:creation, :photos_count => 1) }
-    let(:untagged_cake) { FactoryGirl.create(:creation) }
+    let(:tagged_tutorial) { create(:tutorial) }
+    let(:untagged_tutorial) { create(:tutorial) }
+    let(:tagged_cake) { create(:creation, :photos_count => 1) }
+    let(:untagged_cake) { create(:creation) }
 
     before :each do
-      tagged_tutorial.tag_list.add(tag)
-      tagged_tutorial.save
-      tagged_cake.tag_list.add(tag)
-      tagged_cake.save
+      user.tag(tagged_tutorial, :with => tag, :on => :tags)
+      user.tag(tagged_cake, :with => tag, :on => :tags)
       get :show, :id => tag
     end
 
