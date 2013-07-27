@@ -1,5 +1,4 @@
 require "rvm/capistrano"
-require 'bundler/capistrano'
 set :rvm_ruby_string, :local
 set :rvm_autolibs_flag, :enable
 set :rvm_type, :user

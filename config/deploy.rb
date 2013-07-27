@@ -1,6 +1,9 @@
-load "config/recipes/rvm"
+require 'bundler/capistrano'
+
 load "config/recipes/environments"
 load "config/recipes/base"
+#load "config/recipes/rvm"
+load "config/recipes/rbenv"
 load "config/recipes/nginx"
 load "config/recipes/unicorn"
 load "config/recipes/postgresql"
@@ -9,7 +12,6 @@ load "config/recipes/monit"
 
 set :application, "cakeside"
 set :user, "deployer"
-#set :group, "rvm"
 set :use_sudo, false
 default_run_options[:pty] = true # password prompt
 
