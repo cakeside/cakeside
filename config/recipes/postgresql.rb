@@ -32,6 +32,19 @@ namespace :postgresql do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
   end
   after "deploy:finalize_update", "postgresql:symlink"
+
+  task :backup do
+    filename = "#{rails_env}-#{Time.now.strftime('%Y-%m-%d')}.sql"
+    run "pg_dump --clean #{postgresql_database} > ~/db/backups/#{filename}"
+    #run "PGPASSWORD=password pg_dump -Fc --no-acl --no-owner -h localhost -U cakeside cakeside_production > ~/db/backups/#{filename}"
+    download("db/backups/#{filename}", "db/backups/", :via => :scp, :recursive => true)
+  end
+
+  task :restore do
+    dumpfile = "~/db/backups/latest"
+    upload("latest", "db/backups/latest", :via => :scp)
+    run "psql #{postgresql_database} < #{dumpfile}"
+  end
 end
 
 #namespace :deploy do
