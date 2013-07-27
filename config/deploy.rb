@@ -1,58 +1,36 @@
-require "rvm/capistrano"
-set :rvm_ruby_string, 'ruby-2.0.0-p247@cakeside'
-set :rvm_type, :system
-require 'bundler/capistrano'                 # loads RVM's capistrano plugin
-set :stages, %w(production staging)
-set :default_stage, "staging"
-require 'capistrano/ext/multistage'
-require 'capistrano/gitflow'
-set :application, "www.cakeside.com"
-set :deploy_via, :remote_cache
-set :user, "cakeside"
-set :group, "rvm"
-set :use_sudo, false
-set :deploy_to, "/home/cakeside/apps/#{application}"
+load "config/recipes/rvm"
+load "config/recipes/environments"
+load "config/recipes/base"
+load "config/recipes/nginx"
+load "config/recipes/unicorn"
+load "config/recipes/postgresql"
+load "config/recipes/nodejs"
+load "config/recipes/monit"
 
+set :application, "cakeside"
+set :user, "deployer"
+#set :group, "rvm"
+set :use_sudo, false
+default_run_options[:pty] = true # password prompt
+
+# git
 set :scm, :git
-set :repository,  "git@bitbucket.org:mocheen/cakeside.git"
-set :keep_releases, 3
-set :branch, "master"
-set :deploy_env, 'production'
 set :scm_verbose, true
+set :repository,  "git@bitbucket.org:mocheen/cakeside.git"
+set :branch, "master"
+set :deploy_via, :remote_cache
+
+#copy
+#set :scm, :none
+#set :repository, "."
+#set :deploy_via, :copy
+
+set :deploy_to, "/home/#{user}/apps/#{application}"
+set :keep_releases, 3
 set :normalize_asset_timestamps, false
 set :ssh_options, {:forward_agent => true}
 
-after "deploy:setup", "rvm:install_rvm"
-before "deploy", "rvm:install_ruby"
 after "deploy", "deploy:cleanup" # remove old releases
-after 'deploy:update_code', 'deploy:symlink_db'
-after "deploy:start", "delayed_job:start"
-after "deploy:stop", "delayed_job:stop"
-after "deploy:restart", "delayed_job:restart"
 
-namespace :deploy do
-  task :symlink_db, :roles => :app do
-    run "chmod +x #{release_path}/script/restart_delayed_job"
-    run "ln -nfs #{release_path}/config/database.production.yml.example #{release_path}/config/database.yml"
-  end
-  task :restart, :roles => :web do
-    run "touch #{current_path}/tmp/restart.txt"
-  end
-end
-namespace :delayed_job do 
-  desc "start the delayed_job process"
-  task :start, :roles => :app do
-    run "cd #{current_path}; RAILS_ENV=#{rails_env} script/delayed_job start"
-  end
-  desc "stop the delayed_job process"
-  task :stop, :roles => :app do
-    run "cd #{current_path}; RAILS_ENV=#{rails_env} script/delayed_job stop"
-  end
-  desc "Restart the delayed_job process"
-  task :restart, :roles => :app do
-    run "cd #{current_path}; RAILS_ENV=#{rails_env} script/delayed_job restart"
-  end
-end
-
-        require './config/boot'
-        require 'airbrake/capistrano'
+require './config/boot'
+require 'airbrake/capistrano'
