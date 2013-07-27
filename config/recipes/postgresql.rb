@@ -2,14 +2,14 @@ set_default(:postgresql_host, "localhost")
 set_default(:postgresql_user) { application }
 set_default(:postgresql_password) { Capistrano::CLI.password_prompt "PostgreSQL Password: " }
 set_default(:postgresql_database) { "#{application}_#{rails_env}" }
-set_default(:postgresql_pid) { "/var/run/postgresql/9.1-main.pid" }
+set_default(:postgresql_pid) { "/var/run/postgresql/9.2-main.pid" }
 
 namespace :postgresql do
   desc "install the latest release or postgresql"
   task :install, roles: :db, only: { primary: true } do
     run "#{sudo} add-apt-repository -y ppa:pitti/postgresql"
     run "#{sudo} apt-get -y update"
-    run "#{sudo} apt-get -y install postgresql libpq-dev"
+    run "#{sudo} apt-get -y install postgresql-9.2 libpq-dev"
   end
   after "deploy:install", "postgresql:install"
 
