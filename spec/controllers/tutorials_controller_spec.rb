@@ -1,144 +1,152 @@
 require 'spec_helper'
 
 describe TutorialsController do
-
   def valid_attributes
     {:url => 'http://blah.com', :heading => "hello world"}
   end
 
-  def valid_session
-    {}
-  end
-
-  let(:user){ FactoryGirl.create(:user) }
+  let(:user){ create(:user) }
 
   before (:each) do
-    request.env['warden'] = mock(Warden, :authenticate => user, :authenticate! => user)
+    request.env['warden'] = double(Warden, :authenticate => user, :authenticate! => user)
   end
 
-  describe "GET index" do
+  describe :index do
+    let(:tutorial) { create(:tutorial) }
+
+    before :each do
+      user.tutorials << tutorial
+      get :index
+    end
+
     it "assigns all tutorials as @tutorials" do
-      tutorial = user.tutorials.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:tutorials).should eq([tutorial])
+      assigns(:tutorials).should include(tutorial)
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested tutorial as @tutorial" do
-      tutorial = user.tutorials.create! valid_attributes
-      get :show, {:id => tutorial.to_param}, valid_session
-      assigns(:tutorial).should eq(tutorial)
+  describe :show do
+    let(:tutorial) { create(:tutorial) }
+
+    before :each do
+      user.tutorials << tutorial
+      get :show, :id => tutorial.to_param
+    end
+
+    it "assigns the requested tutorial" do
+      assigns(:tutorial).should == tutorial
     end
   end
 
-  describe "GET new" do
+  describe :new do
     it "assigns a new tutorial as @tutorial" do
-      get :new, {}, valid_session
+      get :new
       assigns(:tutorial).should be_a_new(Tutorial)
     end
   end
 
-  describe "GET edit" do
+  describe :edit do
+    let(:tutorial) { create(:tutorial) }
+
     it "assigns the requested tutorial as @tutorial" do
-      tutorial = user.tutorials.create! valid_attributes
-      get :edit, {:id => tutorial.to_param}, valid_session
+      user.tutorials << tutorial
+      get :edit, {:id => tutorial.to_param}
       assigns(:tutorial).should eq(tutorial)
     end
   end
 
-  describe "POST create" do
+  describe :create do
     describe "with valid params" do
+      before :each do
+        post :create, {:tutorial => {:url => 'http://blah.com', :heading => "hello world"} }
+      end
+
       it "creates a new Tutorial" do
-        expect {
-          post :create, {:tutorial => valid_attributes}, valid_session
-        }.to change(Tutorial, :count).by(1)
+        Tutorial.count.should == 1
       end
 
       it "assigns a newly created tutorial as @tutorial" do
-        post :create, {:tutorial => valid_attributes}, valid_session
         assigns(:tutorial).should be_a(Tutorial)
         assigns(:tutorial).should be_persisted
+        assigns(:tutorial).url.should == 'http://blah.com'
+        assigns(:tutorial).heading.should == 'hello world'
       end
 
       it "redirects to the created tutorial" do
-        post :create, {:tutorial => valid_attributes}, valid_session
         response.should redirect_to(tutorials_path)
       end
     end
 
     describe "with invalid params" do
-      it "assigns a newly created but unsaved tutorial as @tutorial" do
-        # Trigger the behavior that occurs when invalid params are submitted
+      before :each do
         Tutorial.any_instance.stub(:save).and_return(false)
-        post :create, {:tutorial => {}}, valid_session
+        post :create, {:tutorial => {:url => '', :heading => ''}}
+      end
+
+      it "assigns a newly created but unsaved tutorial as @tutorial" do
         assigns(:tutorial).should be_a_new(Tutorial)
       end
 
       it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Tutorial.any_instance.stub(:save).and_return(false)
-        post :create, {:tutorial => {}}, valid_session
         response.should render_template("new")
+      end
+
+      it "should display an error" do
+        flash[:error].should_not be_nil
       end
     end
   end
 
-  describe "PUT update" do
+  describe :patch do
     describe "with valid params" do
-      it "updates the requested tutorial" do
-        tutorial = user.tutorials.create! valid_attributes
-        # Assuming there are no other tutorials in the database, this
-        # specifies that the Tutorial created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Tutorial.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => tutorial.to_param, :tutorial => {'these' => 'params'}}, valid_session
+      let(:tutorial) { create(:tutorial) }
+
+      before :each do
+        user.tutorials << tutorial
+        patch :update, :id => tutorial.to_param, :tutorial => { :url => 'http://blah', :heading => 'headless'}
       end
 
-      it "assigns the requested tutorial as @tutorial" do
-        tutorial = user.tutorials.create! valid_attributes
-        put :update, {:id => tutorial.to_param, :tutorial => valid_attributes}, valid_session
-        assigns(:tutorial).should eq(tutorial)
+      it "assigns the requested tutorial" do
+        assigns(:tutorial).should == tutorial
+        assigns(:tutorial).url.should == 'http://blah'
+        assigns(:tutorial).heading.should == 'headless'
       end
 
       it "redirects to the tutorial" do
-        tutorial = user.tutorials.create! valid_attributes
-        put :update, {:id => tutorial.to_param, :tutorial => valid_attributes}, valid_session
-        response.should redirect_to(tutorial)
+        response.should redirect_to(tutorial.reload)
       end
     end
 
     describe "with invalid params" do
-      it "assigns the tutorial as @tutorial" do
-        tutorial = user.tutorials.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
+      let(:tutorial) { create(:tutorial) }
+      before :each do
+        user.tutorials << tutorial
         Tutorial.any_instance.stub(:save).and_return(false)
-        put :update, {:id => tutorial.to_param, :tutorial => {}}, valid_session
+        patch :update, {:id => tutorial.to_param, :tutorial => {:url => "", :heading => ""}}
+      end
+
+      it "assigns the tutorial as @tutorial" do
         assigns(:tutorial).should eq(tutorial)
       end
 
       it "re-renders the 'edit' template" do
-        tutorial = user.tutorials.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Tutorial.any_instance.stub(:save).and_return(false)
-        put :update, {:id => tutorial.to_param, :tutorial => {}}, valid_session
         response.should render_template("edit")
       end
     end
   end
 
-  describe "DELETE destroy" do
+  describe :destroy do
+    let(:tutorial) { create(:tutorial) }
+
+    before :each do
+      user.tutorials << tutorial
+      delete :destroy, {:id => tutorial.to_param}
+    end
+
     it "destroys the requested tutorial" do
-      tutorial = user.tutorials.create! valid_attributes
-      expect {
-        delete :destroy, {:id => tutorial.to_param}, valid_session
-      }.to change(Tutorial, :count).by(-1)
+      Tutorial.count.should == 0
     end
 
     it "redirects to the tutorials list" do
-      tutorial = user.tutorials.create! valid_attributes
-      delete :destroy, {:id => tutorial.to_param}, valid_session
       response.should redirect_to(tutorials_url)
     end
   end
