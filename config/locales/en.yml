@@ -26,3 +26,4 @@ en:
   tutorial_saved: 'Your tutorial was added.'
   passwords:
     updated: 'Your password was updated.'
+  profile_saved: 'Your settings have been updated successfully!'
