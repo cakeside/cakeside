@@ -9,7 +9,7 @@ class SettingsController < ApplicationController
     @user = current_user
     @user.interest_ids = params[:user][:interest_ids] ||= []
     if @user.update_without_password(user_params)
-      redirect_to settings_path, :notice => 'Your settings have been updated successfully!'
+      redirect_to settings_path, :notice => t(:profile_saved)
     else
       render :index
     end
