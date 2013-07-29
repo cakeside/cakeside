@@ -6,7 +6,7 @@ server {
   listen 80 default deferred;
   # server_name *.cakeside.com
   root <%= current_path %>/public;
-  error_log /var/log/nginx/cakeside.error.log;
+  error_log /var/log/nginx/<%= application %>.error.log;
   access_log off;
 
   location ^~ /assets/ {
@@ -35,7 +35,7 @@ server {
   ssl on;
   ssl_certificate             <%= ssl_certificate %>;
   ssl_certificate_key         <%= ssl_certificate_key %>;
-  error_log /var/log/nginx/cakeside.error.log;
+  error_log /var/log/nginx/<%= application %>.error.log;
   access_log off;
 
   try_files $uri/index.html $uri @unicorn;
