@@ -18,7 +18,6 @@ gem 'carrierwave'
 gem 'carrierwave_backgrounder'
 gem 'rmagick'
 gem 'kaminari'
-#gem "formtastic"
 gem 'bootstrap-sass'
 gem 'acts-as-taggable-on'
 gem 'delayed_job', "~> 4.0.0.beta2"
@@ -30,7 +29,6 @@ gem 'airbrake'
 gem 'geocoder'
 gem 'pg'
 gem 'asset_sync'
-#gem 'protected_attributes'
 
 group :development do
   gem 'capistrano'
