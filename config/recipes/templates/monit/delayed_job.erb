@@ -1,0 +1,6 @@
+check process delayed_job with pidfile <%= delayed_job_pid %>
+  start program = "/etc/init.d/delayed_job_<%= application %> start"
+  stop program = "/etc/init.d/delayed_job_<%= application %> stop"
+  if mem > 200.0 MB for 1 cycle then restart
+  if cpu > 50% for 3 cycles then restart
+  if 5 restarts within 5 cycles then timeout

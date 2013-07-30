@@ -1,3 +1,5 @@
+set_default(:delayed_job_pid) { "#{shared_path}/pids/delayed_job.pid" }
+
 namespace :delayed_job do 
   desc "setup delayed job"
   task :setup, roles: :app do
