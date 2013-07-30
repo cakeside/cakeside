@@ -18,13 +18,6 @@ usage() {
   exit 1
 }
 
-set -e
-
-#[ -n "$2" ] || usage
-
-#rails_env="$2"
-rails_env=PRODUCTION
-
 interact() {
     op="$1"
     echo "$1ing $service"
