@@ -10,7 +10,7 @@ namespace :delayed_job do
   end
   after "deploy:setup", "delayed_job:setup"
 
-  %w[start stop restart].each do |command|
+  %w[start stop restart status].each do |command|
     desc "#{command} delayed_job"
     task command, roles: :app do
       run "#{sudo} service delayed_job_#{application} #{command}"
