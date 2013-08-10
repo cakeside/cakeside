@@ -40,20 +40,20 @@ namespace :postgresql do
     download("db/backups/#{filename}", "db/backups/", :via => :scp, :recursive => true)
   end
 
+  #desc "Backup the database and copy it locally"
+  #task :backup, roles: :db, only: {primary: true} do
+    #filename = "#{rails_env}-#{Time.now.strftime('%Y-%m-%d-%H-%M')}.dump"
+    #backup_path = "#{shared_path}/backups"
+    #run "mkdir -p #{shared_path}/backups"
+
+    #run "PGPASSWORD='#{postgresql_password}' pg_dump -Fc --no-acl --no-owner -h #{postgresql_host} -U #{postgresql_user} #{postgresql_database} > #{backup_path}/#{filename}"
+    #download("#{backup_path}/#{filename}", "tmp/#{filename}", :via => :scp)
+    #run_locally "cd tmp; rm database.dump; ln -s #{filename} database.dump"
+  #end
+
   task :restore do
     dumpfile = "~/db/backups/latest"
     upload("latest", "db/backups/latest", :via => :scp)
     run "psql #{postgresql_database} < #{dumpfile}"
   end
 end
-
-#namespace :deploy do
-  #task :symlink_db, :roles => :app do
-    #run "chmod +x #{release_path}/script/restart_delayed_job"
-    #run "ln -nfs #{release_path}/config/database.production.yml.example #{release_path}/config/database.yml"
-  #end
-  #task :restart, :roles => :web do
-    #run "touch #{current_path}/tmp/restart.txt"
-  #end
-#end
-#after 'deploy:update_code', 'deploy:symlink_db'

@@ -10,6 +10,8 @@ load "config/recipes/delayed_job"
 #load "config/recipes/rvm"
 load "config/recipes/rbenv"
 load "config/recipes/monit"
+load "config/tasks/utility"
+load "config/tasks/rails"
 
 set :application, "cakeside"
 set :user, "deployer"
