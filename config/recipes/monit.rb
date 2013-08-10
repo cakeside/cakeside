@@ -28,6 +28,10 @@ namespace :monit do
       run "#{sudo} service monit #{command}"
     end
   end
+
+  task :version do
+    run "#{sudo} service monit -V"
+  end
 end
 
 def monit_config(name, destination = nil)
