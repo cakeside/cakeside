@@ -17,4 +17,9 @@ namespace :delayed_job do
     end
     after "deploy:#{command}", "delayed_job:#{command}"
   end
+
+  desc "tail the delayed jobs logs on an app server (cap staging delayed_job:logs)"
+  task :logs, roles: :app do
+    stream "tail -f #{shared_path}/log/delayed_job.log"
+  end
 end
