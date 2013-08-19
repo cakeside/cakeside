@@ -22,7 +22,7 @@ namespace :monit do
   task(:unicorn, roles: :app) { monit_config "unicorn" }
   task(:delayed_job, roles: :app) { monit_config "delayed_job" }
 
-  %w[start stop restart syntax reload].each do |command|
+  %w[start stop restart syntax reload status].each do |command|
     desc "run monit #{command} script"
     task command do
       run "#{sudo} service monit #{command}"
