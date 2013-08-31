@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="google-site-verification" content="X9sZ3dovM2s1pJg68Bb0q1oRqqiJYdzAwGeaGlOy6PM" />
 <meta name="description" content="<%= yield(:description) %>" />
-<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<%= stylesheet_link_tag "application", media: "all" %>
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <%= favicon_link_tag 'favicon.ico' %>
@@ -27,7 +27,7 @@
 <%= render "layouts/footer" %>
 <%= render "layouts/uservoice_feedback"%>
 <%= render "layouts/chrome_frame"%>
-<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application" %>
 <!--[if lt IE 9]>
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
