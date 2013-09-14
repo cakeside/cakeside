@@ -6,9 +6,9 @@ client_max_body_size 4G;
 
 server {
   listen 80 default deferred;
-  # server_name *.cakeside.com
+  server_name <%= domain %>;
   root <%= current_path %>/public;
-  error_log /var/log/nginx/<%= application %>.error.log;
+  error_log off;
   access_log off;
 
   location ^~ /assets/ {
@@ -31,13 +31,13 @@ server {
 
 server {
   listen       443;
-  # server_name  *.cakeside.com;
+  server_name  <%= domain %>;
   root         <%= current_path %>/public;
   ssl on;
   ssl_certificate             <%= ssl_certificate %>;
   ssl_certificate_key         <%= ssl_certificate_key %>;
   error_log /var/log/nginx/<%= application %>.error.log;
-  access_log off;
+  access_log /var/log/nginx/<%= application %>.access.log;
 
   try_files $uri/index.html $uri @unicorn;
   location @unicorn {
