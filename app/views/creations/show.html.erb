@@ -40,7 +40,7 @@ $(function() {
       <div class="span3">
         <% if user_signed_in? %>
           <% unless current_user == @creation.user || current_user.already_likes(@creation) %>
-            <%= button_to "ADD TO FAVORITES", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary mix-link', "data-event" => 'click-add-to-favorites' %>
+            <%= button_to "ADD TO FAVORITES", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary', "data-event" => 'click-add-to-favorites' %>
       <% end %>
       <% else %>
         <p><%= link_to "SIGN UP FOR FREE", new_user_session_path, :class => "btn btn-primary mix-link", "data-event" => 'click-sign-up' %></p>

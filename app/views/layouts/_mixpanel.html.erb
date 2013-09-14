@@ -10,6 +10,7 @@ mixpanel.disable();
 mixpanel.identify(<%= current_user.id %>);
 mixpanel.name_tag("<%= current_user.email %>");
 mixpanel.people.set({"$email":"<%= current_user.email %>","$created":"<%= current_user.created_at %>","$last_login":"<%= current_user.last_sign_in_at %>","city":"<%= current_user.city %>","latitude":"<%= current_user.latitude %>","longitude":"<%= current_user.longitude %>","website":"<%= current_user.website %>","twitter":"<%= current_user.twitter %>","facebook":"<%= current_user.facebook %>","profile":"<%= "#{request.protocol}#{request.host_with_port}#{url_for(profile_path(current_user))}" %>"});
-//mixpanel.track_links(".mix-link", "clicked-link", function(ele) { return { type: $(ele).attr('data-event')}});
+mixpanel.track_links(".mix-link", "clicked-link", function(ele) { return { type: $(ele).attr('data-event') }; });
+mixpanel.track_forms('.button_to', "form-submitted", function(form) { return { type: $(form).attr('action') }; });
 </script>
 <% end %>
