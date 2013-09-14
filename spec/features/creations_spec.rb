@@ -10,6 +10,7 @@ describe "Creations" do
       creation.save!
       visit creations_path
     end
+    
     it "works! (now write some real specs)" do
       page.should have_content("CakeSide")
     end

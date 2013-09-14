@@ -1,13 +1,12 @@
 class Creation < ActiveRecord::Base
   validates :name,  :presence => true
-  #attr_accessible :user_id, :story, :name, :category_ids, :is_restricted, :watermark
   belongs_to :user, :counter_cache => true
   has_and_belongs_to_many :categories, -> { where unique: true }, :join_table => 'creations_categories', :autosave => true
   has_many :photos, -> { order :created_at }, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
   acts_as_taggable
 
-  #default_scope -> { order("created_at DESC") }
+  default_scope -> { order("created_at DESC") }
 
   # to be removed and moved to the DisplayCreationDTO
   def to_param
