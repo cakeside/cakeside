@@ -6,9 +6,6 @@
       <h3>CakeSide</h3>
       <ul class="unstyled">
         <li> <a href="/">Home</a> </li>
-        <% unless user_signed_in? %>
-          <li> <a href="<%= url_for new_user_session_path %>">Sign-Up</a> </li>
-        <% end %>
         <li> <a href="<%= url_for about_us_path %>">About Us</a> </li>
         <li> <a href="<%= url_for why_cakeside_path %>">Why CakeSide?</a> </li>
       </ul>
@@ -19,7 +16,6 @@
         <li> <a href="http://cakeside.uservoice.com/" target="_blank">Send Feedback</a> </li>
         <li> <a href="http://twitter.com/cakeside">Twitter</a> </li>
         <li> <a href="https://www.facebook.com/pages/CakeSide/214607468615074">Facebook</a> </li>
-        <li> <a href="/"></a> </li>
       </ul>
     </div>
     <div class="span8"></div>
@@ -34,7 +30,6 @@
         <a href="/terms.html">Terms</a> &amp; <a href="/privacy.html">Privacy</a> | 
         Contact Us <a href="http://twitter.com/cakeside">@cakeside</a> | 
         <a href="https://www.facebook.com/pages/CakeSide/214607468615074">facebook</a>
-        <% if Rails.env.staging? || Rails.env.development? %><a href="http://validator.w3.org/check?uri=referer" target="_blank">valid html</a><% end %>
         </p>
       </div>
     </div>
