@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "uploading a new creation" do
+describe "uploading a new creation", :js => true do
   let!(:user) { create(:user, :password => "password") }
   let!(:category_1) { create(:category) }
   let!(:category_2) { create(:category) }

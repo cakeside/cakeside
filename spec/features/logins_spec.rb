@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "Logins" do
-  describe "GET /logins" do
+  describe "GET /login" do
     it "should be able to reach the login page" do
       visit user_session_path
       page.should have_content("Got an account? Login!")
