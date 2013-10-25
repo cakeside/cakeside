@@ -33,7 +33,6 @@ group :development do
   gem 'capistrano'
   gem 'capistrano-ext'
   gem 'rvm-capistrano'
-  gem 'capistrano-gitflow'
   gem 'bullet'
   gem 'better_errors'
   gem 'lol_dba'
