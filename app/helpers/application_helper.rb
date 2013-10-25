@@ -25,7 +25,7 @@ module ApplicationHelper
     end
     message = Base64.encode64(data).gsub("\n", "")
     timestamp = Time.now.to_i
-    signature = OpenSSL::HMAC.hexdigest('sha1', ENV['DISQUS_SECRET_KEY'], "#{message} #{timestamp}")
+    signature = OpenSSL::HMAC.hexdigest('sha1', ENV['DISQUS_SECRET_KEY'] || '', "#{message} #{timestamp}")
     "#{message} #{signature} #{timestamp}"
   end
 end
