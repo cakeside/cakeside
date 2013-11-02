@@ -5,6 +5,7 @@ describe "adding a cake to your favorites", :js => true do
   let!(:me) { create(:user, :password => "password") }
 
   before :each do
+    system "cp #{creation.photos.first.image.file.file} #{creation.photos.first.image.file.file.gsub(/example/, 'large_example')}"
     visit user_session_path
     within('.form-inline') do
       fill_in('user_email', :with => me.email)
