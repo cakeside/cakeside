@@ -20,6 +20,7 @@
 //= require jquery.masonry
 //= require jquery-fileupload
 //= require jquery.embedly
+//= require turbolinks
 //= require tag-it
 //= require bootstrap
 //= require_tree .

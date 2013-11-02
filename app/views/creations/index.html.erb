@@ -1,7 +1,7 @@
 <% provide(:description, "CakeSide is a free site to share your cake creations and ideas with other cake fanatics like yourself") -%>
 <% content_for :javascript do -%>
-<script type="text/javascript">  
-  $(function(){
+<script type="text/javascript">
+  var loadMasonry = function() {
     var container = $('#creations-div');
     container.imagesLoaded(function(){
       container.masonry({
@@ -9,7 +9,13 @@
         isResizable: true
       }); 
     });
+  };
+  $(function(){
+    loadMasonry();
   });
+  document.addEventListener("page:fetch", function() { loadMasonry(); });
+  document.addEventListener("page:fetch", function() { console.log("fetching..."); });
+  document.addEventListener("page:receive", function() { console.log("done."); });
 </script>
 <% end -%>
 <% unless user_signed_in?  -%>
