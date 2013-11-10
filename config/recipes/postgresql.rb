@@ -41,12 +41,5 @@ namespace :postgresql do
 
     run "PGPASSWORD='#{postgresql_password}' pg_dump -Fc --no-acl --no-owner -h #{postgresql_host} -U #{postgresql_user} #{postgresql_database} > #{backup_path}/#{filename}"
     download("#{backup_path}/#{filename}", "db/backups/", :via => :scp)
-    run_locally "cd tmp; rm database.dump; ln -s #{filename} database.dump"
-  end
-
-  task :restore do
-    dumpfile = "~/db/backups/latest"
-    upload("latest", "db/backups/latest", :via => :scp)
-    run "psql #{postgresql_database} < #{dumpfile}"
   end
 end

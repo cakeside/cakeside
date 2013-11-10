@@ -1,16 +1,13 @@
 namespace :db do
   task :restore do
-    dumpfile = "latest"
     config = Rails.configuration.database_configuration
     destination_db = config[Rails.env]["database"]
-    puts "restoring to #{destination_db}"
-    sh "psql #{destination_db} < #{dumpfile}"
-    #sh "pg_restore --verbose --clean --no-acl --no-owner -h localhost -U #{config[Rails.env]["username"]} -d #{destination_db} #{dumpfile}"
+
+    newest_backup = Dir['db/backups/*.dump'].max_by { |file| File.mtime(file) }
+    sh "PGPASSWORD=#{config[Rails.env]["password"]} pg_restore --verbose --clean --no-acl --no-owner -h localhost -U #{config[Rails.env]["username"]} -d #{destination_db} #{newest_backup}"
   end
 
   task :backup do
-    puts "Please specify RAILS_ENV:"; return unless ENV['RAILS_ENV']
-    puts "backup up #{ENV['RAILS_ENV']}"
     sh "cap #{ENV['RAILS_ENV']} postgresql:backup"
   end
 
