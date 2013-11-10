@@ -9,8 +9,9 @@ namespace :db do
   end
 
   task :backup do
-    sh "cap production postgresql:backup"
-    sh "rm -f latest && ln -s db/backups/`ls -rt db/backups/ | tail -n1` latest"
+    puts "Please specify RAILS_ENV:"; return unless ENV['RAILS_ENV']
+    puts "backup up #{ENV['RAILS_ENV']}"
+    sh "cap #{ENV['RAILS_ENV']} postgresql:backup"
   end
 
   task :restore_to_staging => :backup do

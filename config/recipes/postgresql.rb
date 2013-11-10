@@ -33,23 +33,16 @@ namespace :postgresql do
   end
   after "deploy:finalize_update", "postgresql:symlink"
 
-  task :backup do
-    filename = "#{rails_env}-#{Time.now.strftime('%Y-%m-%d')}.sql"
-    run "pg_dump --clean #{postgresql_database} > ~/db/backups/#{filename}"
-    #run "PGPASSWORD=password pg_dump -Fc --no-acl --no-owner -h localhost -U cakeside cakeside_production > ~/db/backups/#{filename}"
-    download("db/backups/#{filename}", "db/backups/", :via => :scp, :recursive => true)
+  desc "Backup the database and copy it locally"
+  task :backup, roles: :db, only: {primary: true} do
+    filename = "#{rails_env}-#{Time.now.strftime('%Y-%m-%d-%H-%M')}.dump"
+    backup_path = "#{shared_path}/backups"
+    run "mkdir -p #{shared_path}/backups"
+
+    run "PGPASSWORD='#{postgresql_password}' pg_dump -Fc --no-acl --no-owner -h #{postgresql_host} -U #{postgresql_user} #{postgresql_database} > #{backup_path}/#{filename}"
+    download("#{backup_path}/#{filename}", "db/backups/", :via => :scp)
+    run_locally "cd tmp; rm database.dump; ln -s #{filename} database.dump"
   end
-
-  #desc "Backup the database and copy it locally"
-  #task :backup, roles: :db, only: {primary: true} do
-    #filename = "#{rails_env}-#{Time.now.strftime('%Y-%m-%d-%H-%M')}.dump"
-    #backup_path = "#{shared_path}/backups"
-    #run "mkdir -p #{shared_path}/backups"
-
-    #run "PGPASSWORD='#{postgresql_password}' pg_dump -Fc --no-acl --no-owner -h #{postgresql_host} -U #{postgresql_user} #{postgresql_database} > #{backup_path}/#{filename}"
-    #download("#{backup_path}/#{filename}", "tmp/#{filename}", :via => :scp)
-    #run_locally "cd tmp; rm database.dump; ln -s #{filename} database.dump"
-  #end
 
   task :restore do
     dumpfile = "~/db/backups/latest"

@@ -11,7 +11,6 @@ NERD_tree_*
 tags
 .sass-cache/
 *.fuse*
-latest
 config/database.yml
 coverage
 .vagrant
