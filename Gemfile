@@ -61,8 +61,5 @@ group :production, :staging do
   gem 'fog'
   gem 'newrelic_rpm'
   gem 'dalli'
-end
-
-group :staging do
   gem 'unicorn'
 end
