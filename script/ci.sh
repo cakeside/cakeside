@@ -1,6 +1,7 @@
 #!/bin/bash -x
 echo "load bashrc"
-source ~/.bashrc
+#source ~/.bashrc
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 echo 'switch gemset'
 rvm use ruby-2.0.0-p247@cakeside --create
