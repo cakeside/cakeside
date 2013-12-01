@@ -1,6 +1,6 @@
 class FindAllCreationsQuery
-  def initialize(mapper = CreationToDisplayCreationDTOMapper.new)
-    @mapper = mapper
+  def initialize(repository = Creation.where(nil))
+    @repository = repository
   end
 
   def fetch(params)
@@ -10,6 +10,10 @@ class FindAllCreationsQuery
   private
 
   def find_creations
-    Creation.includes(:user, :photos).where(:is_restricted => false).where('photos_count > 0').uniq
+    @repository
+    .includes(:user, :photos)
+    .where(:is_restricted => false)
+    .where('photos_count > 0')
+    .uniq
   end
 end
