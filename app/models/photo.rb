@@ -1,5 +1,4 @@
 class Photo < ActiveRecord::Base
-  #attr_accessible :is_primary, :creation, :image
   belongs_to :creation, :counter_cache => true
   validates :image,  :presence => true
   mount_uploader :image, PhotoUploader

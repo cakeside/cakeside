@@ -10,11 +10,9 @@ class User < ActiveRecord::Base
   validates :name,  :presence => true
   validates :website, :format => URI::regexp(%w(http https)), :allow_blank => true
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
-  #attr_accessible :name, :email, :website, :twitter, :facebook, :city, :latitude, :longitude, :password, :password_confirmation, :current_password, :remember_me, :interest_ids
   has_many :creations, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
   has_many :tutorials, :dependent => :destroy
-  #has_and_belongs_to_many :interests, :join_table => 'users_interests', uniq: true, :autosave => true
   has_and_belongs_to_many :interests, :join_table => 'users_interests', :autosave => true
   has_one :avatar
   acts_as_tagger
