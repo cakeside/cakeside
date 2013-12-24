@@ -22,7 +22,7 @@ default_run_options[:pty] = true # password prompt
 # git
 set :scm, :git
 set :scm_verbose, true
-set :repository,  "git@bitbucket.org:mocheen/cakeside.git"
+set :repository,  "git@bitbucket.org:cakeside/cakeside.git"
 set :branch, "master"
 set :deploy_via, :remote_cache
 
