@@ -2,13 +2,13 @@ require "spec_helper"
 
 describe FavoritesController do
   context "when logged in" do
-    let(:user) { FactoryGirl.create(:user) }
-    let(:creation) { FactoryGirl.create(:creation) }
+    let(:user) { create(:user) }
+    let(:creation) { create(:creation) }
 
     before { http_login(user) }
 
     context "when loading all the favorites for a cake" do
-      let(:favorite) { FactoryGirl.create(:favorite, :creation => creation, :user => user) }
+      let(:favorite) { create(:favorite, :creation => creation, :user => user) }
 
       before :each do
         creation.favorites << favorite

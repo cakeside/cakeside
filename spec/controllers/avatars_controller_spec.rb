@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe AvatarsController do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { create(:user) }
 
   context "when logged in " do
     before { http_login(user) }
