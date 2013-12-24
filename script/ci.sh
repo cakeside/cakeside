@@ -9,4 +9,4 @@ rvm use ruby-2.0.0-p247@cakeside --create
 echo 'bundle install'
 bundle install --without production
 cp config/database.yml.example config/database.yml
-xvfb-run bundle exec rake ci --trace
+bundle exec rake ci --trace

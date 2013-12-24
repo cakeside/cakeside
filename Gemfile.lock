@@ -305,6 +305,7 @@ DEPENDENCIES
   lol_dba
   newrelic_rpm
   pg
+  poltergeist
   rack-mini-profiler
   rails (= 4.0.0)
   rmagick
