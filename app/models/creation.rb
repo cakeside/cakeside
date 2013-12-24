@@ -6,19 +6,14 @@ class Creation < ActiveRecord::Base
   has_many :favorites, :dependent => :destroy
   acts_as_taggable
 
-  default_scope -> { order("created_at DESC") }
+  default_scope -> { order(:created_at => :desc) }
 
-  # to be removed and moved to the DisplayCreationDTO
   def to_param
     "#{id}-#{name.gsub(/[^a-z0-9]+/i, '-')}"
   end
 
   def primary_image
-    if photos.any?
-      photos.first
-    else
-      Photo.new
-    end
+    photos.any? ? photos.first : Photo.new
   end
 
   def published?
@@ -30,12 +25,7 @@ class Creation < ActiveRecord::Base
   end
 
   def add_photo(photo)
-    photos.create({:image => photo})
-  end
-
-  def self.search(query)
-    sql_search = "%#{query}%"
-    Creation.where("upper(name) like upper(?) OR upper(story) like upper(?)", sql_search, sql_search)
+    photos.create(:image => photo)
   end
 
   def is_liked_by(user)
@@ -50,7 +40,14 @@ class Creation < ActiveRecord::Base
     end
   end
 
-  def self.visible_creations
-    Creation.includes(:user, :photos).where(:is_restricted => false).where('photos_count > 0').uniq
+  class << self
+    def search(query)
+      sql_search = "%#{query}%"
+      Creation.where("upper(name) like upper(?) OR upper(story) like upper(?)", sql_search, sql_search)
+    end
+
+    def visible_creations
+      Creation.includes(:user, :photos).where(:is_restricted => false).where('photos_count > 0').uniq
+    end
   end
 end
