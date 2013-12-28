@@ -10,12 +10,12 @@ describe SearchController do
       end
     end
     context "when a valid search query is given" do
-      let!(:user) { FactoryGirl.create(:user, :name => 'cake') }
-      let!(:bob) { FactoryGirl.create(:user, :name => 'bob') }
-      let!(:cake) { FactoryGirl.create(:creation, :name => 'cake') }
-      let!(:donut) { FactoryGirl.create(:creation, :name => 'donut') }
-      let!(:tutorial) { FactoryGirl.create(:tutorial, :description => 'cake') }
-      let!(:other_tutorial) { FactoryGirl.create(:tutorial, :description => 'donut') }
+      let!(:user) { create(:user, :name => 'cake') }
+      let!(:bob) { create(:user, :name => 'bob') }
+      let!(:cake) { create(:creation, :name => 'cake') }
+      let!(:donut) { create(:creation, :name => 'donut') }
+      let!(:tutorial) { create(:tutorial, :description => 'cake') }
+      let!(:other_tutorial) { create(:tutorial, :description => 'donut') }
 
       before { get :index, { :q => 'cake' } }
 

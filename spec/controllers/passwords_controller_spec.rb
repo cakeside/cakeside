@@ -3,7 +3,7 @@ require "spec_helper"
 describe PasswordsController do
   describe :update do
     context "when not logged in" do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { create(:user) }
 
       it "should redirect you to the login page" do
         put :update, :id => user.id
@@ -12,7 +12,7 @@ describe PasswordsController do
     end
 
     context "when logged in" do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { create(:user) }
 
       before { http_login(user) }
 
@@ -45,7 +45,7 @@ describe PasswordsController do
 
   describe :index do
     context 'when logged in' do
-      let(:user) { FactoryGirl.create(:user) }
+      let(:user) { create(:user) }
 
       before :each do
         http_login(user)
