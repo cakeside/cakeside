@@ -1,4 +1,4 @@
-ENDPOINT="http://staging.cakeside.com/"
+ENDPOINT="https://staging.cakeside.com/"
 REQUEST_COUNT="100"
 THREAD_COUNT="10"
 
