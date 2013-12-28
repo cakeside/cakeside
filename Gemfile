@@ -14,21 +14,21 @@ end
 
 gem 'devise', '~> 3.0.0'
 gem 'jquery-ui-rails', '~> 4.0.0'
-gem 'carrierwave'
-gem 'carrierwave_backgrounder'
-gem 'rmagick'
-gem 'kaminari'
+gem 'carrierwave', '~> 0.9.0'
+gem 'carrierwave_backgrounder', '~> 0.3.0'
+gem 'rmagick', '~> 2.13.0'
+gem "kaminari", "~> 0.15.0"
 gem 'bootstrap-sass', '~> 2.3.0'
-gem 'acts-as-taggable-on'
-gem 'delayed_job', "~> 4.0.0.beta2"
-gem 'delayed_job_active_record', "~> 4.0.0.beta3"
-gem 'daemons'
-gem 'jquery-fileupload-rails'
+gem 'acts-as-taggable-on', '~> 2.4.1'
+gem 'delayed_job', "~> 4.0.0"
+gem 'delayed_job_active_record', "~> 4.0.0"
+gem 'daemons', '~> 1.1.9'
+gem 'jquery-fileupload-rails', '~> 0.4.1'
 gem 'dotenv-rails'
 gem 'airbrake'
-gem 'geocoder'
+gem 'geocoder', '~> 1.1.9'
 gem 'pg'
-gem 'asset_sync'
+gem 'asset_sync', '~> 1.0.0'
 
 group :development do
   gem 'capistrano'
