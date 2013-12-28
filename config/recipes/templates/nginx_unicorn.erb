@@ -20,6 +20,10 @@ server {
   error_log /var/log/nginx/<%= application %>.error.log;
   access_log /var/log/nginx/<%= application %>.access.log;
 
+  if ($host = 'cakeside.com' ) {
+    rewrite  ^/(.*)$  https://<%= domain %>/$1  permanent;
+  }
+
   try_files $uri/index.html $uri @unicorn;
   location ^~ /assets/ {
     gzip_static on;
