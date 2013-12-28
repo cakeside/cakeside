@@ -9,7 +9,7 @@ class Creation < ActiveRecord::Base
   default_scope -> { order(:created_at => :desc) }
 
   def to_param
-    "#{id}-#{name.gsub(/[^a-z0-9]+/i, '-')}"
+    "#{id}-#{name.downcase.gsub(/[^a-z0-9]+/i, '-')}"
   end
 
   def primary_image
