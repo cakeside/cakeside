@@ -4,7 +4,7 @@
 # RAILS_ENV=production
 # SHELL=/usr/local/rvm/bin/rvm-shell
 # 0 * * * * /home/cakeside/apps/www.cakeside.com/current/script/restart_delayed_job >> /home/cakeside/apps/www.cakeside.com/current/log/cron.log 2>&1
-source /usr/local/rvm/environments/ruby-2.0.0-p247@cakeside
+source /usr/local/rvm/environments/ruby-2.0.0-p353@cakeside
 
 cd /home/cakeside/apps/www.cakeside.com/current/
 script/delayed_job restart
