@@ -6,7 +6,7 @@ DeviseUsers.Edit = {
     $('#user_city').autocomplete({
       source: function(request, response){
         $.ajax({
-          url: 'http://ws.geonames.org/searchJSON',
+          url: 'https://ws.geonames.org/searchJSON',
           dataType: "jsonp",
           data: {
             featureClass: "P",
