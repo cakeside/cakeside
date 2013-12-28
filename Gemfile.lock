@@ -39,7 +39,8 @@ GEM
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
-    bootstrap-sass (2.0.4.2)
+    bootstrap-sass (2.3.2.2)
+      sass (~> 3.2)
     builder (3.1.4)
     bullet (4.7.1)
       activesupport
@@ -274,7 +275,7 @@ DEPENDENCIES
   airbrake
   asset_sync
   better_errors
-  bootstrap-sass (~> 2.0.0)
+  bootstrap-sass (~> 2.3.0)
   bullet
   capistrano
   capistrano-ext

@@ -18,7 +18,7 @@ gem 'carrierwave'
 gem 'carrierwave_backgrounder'
 gem 'rmagick'
 gem 'kaminari'
-gem 'bootstrap-sass', '~> 2.0.0'
+gem 'bootstrap-sass', '~> 2.3.0'
 gem 'acts-as-taggable-on'
 gem 'delayed_job', "~> 4.0.0.beta2"
 gem 'delayed_job_active_record', "~> 4.0.0.beta3"
