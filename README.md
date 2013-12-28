@@ -26,6 +26,6 @@ Start server
 
 [more info](https://github.com/capistrano/capistrano/wiki/2.x-From-The-Beginning)
 
-  cap staging deploy:migrations
-  cap production deploy:migrations
+    cap staging deploy:migrations
+    cap production deploy:migrations
 
