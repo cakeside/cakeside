@@ -3,7 +3,7 @@ require 'spec_helper'
 describe ProfilesController do
   include Devise::TestHelpers
 
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { create(:user) }
 
   before (:each) do
     user.creations << create(:creation)

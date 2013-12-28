@@ -4,9 +4,9 @@ echo "load bashrc"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 echo 'switch gemset'
-rvm use ruby-2.0.0-p247@cakeside --create
+rvm use ruby-2.0.0-p353@cakeside --create
 
 echo 'bundle install'
 bundle install --without production
 cp config/database.yml.example config/database.yml
-xvfb-run bundle exec rake ci --trace
+bundle exec rake ci --trace

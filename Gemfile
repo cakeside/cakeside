@@ -51,6 +51,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'ffaker'
   gem 'selenium-webdriver'
+  gem 'poltergeist'
 end
 
 group :staging do

@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe Api::V1::LoginsController do
   context "when logging in with proper credentials" do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { create(:user) }
 
     it "should return the auth token" do
       post :create, { :email => user.email, :password => user.password }
@@ -11,7 +11,7 @@ describe Api::V1::LoginsController do
   end
 
   context "when logging in with invalid credentials" do
-    let(:user) { FactoryGirl.create(:user) }
+    let(:user) { create(:user) }
 
     before { post :create, { :email => user.email, :password => user.password.reverse } }
 
