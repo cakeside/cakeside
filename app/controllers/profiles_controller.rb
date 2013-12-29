@@ -3,6 +3,8 @@ class ProfilesController < ApplicationController
 
   def index
     @profiles = User.includes(:avatar).where('creations_count > 0').order(:creations_count => :desc).page(params[:page]).per(12)
+    expires_in(1.hour)
+    fresh_when(User.maximum(:updated_at)) if User.any?
   end
 
   def show
@@ -13,6 +15,8 @@ class ProfilesController < ApplicationController
     @nearby_users.each do |user|
       @map_url += "&markers=#{user.latitude}%2C#{user.longitude}"
     end
+    expires_in(1.hour)
+    fresh_when(@user)
   end
 
   def favorites
