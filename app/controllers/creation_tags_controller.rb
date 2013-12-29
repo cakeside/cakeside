@@ -11,6 +11,6 @@ class CreationTagsController < ApplicationController
     @total_creations = Creation.tagged_with(@tag).count
     @creations = Creation.includes([:user, :tags, :photos]).tagged_with([@tag]).where('photos_count > 0').page(params[:page]).per(15)
     expires_in(6.hours)
-    fresh_when(@tag)
+    fresh_when(@creations)
   end
 end
