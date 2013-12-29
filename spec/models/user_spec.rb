@@ -22,25 +22,27 @@ describe User do
   describe "when a website url is supplied" do
     describe "when the url is valid" do
       let(:user) {User.new}
-      before(:each) do
-        user.update_attributes(:website => 'http://example.com')
-      end
+
+      before(:each) { user.update_attribute(:website, 'http://example.com') }
+
       it "can validate" do
         user.errors[:website].any?.should == false
       end
+
       it "should not have any validation error messages" do
         user.errors[:website].should === []
       end
     end
 
     describe "when the url is not valid" do
-      let(:user) {User.new}
-      before(:each) do
-        user.update_attributes(:website => 'blah')
-      end
+      let(:user) { User.new }
+
+      before(:each) { user.update_attribute(:website, 'blah') }
+
       it "cannot validate" do
         user.errors[:website].any?.should == true
       end
+
       it "should have an error message" do
         user.errors[:website].should === ["is invalid"]
       end
