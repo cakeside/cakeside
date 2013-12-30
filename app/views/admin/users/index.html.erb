@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="span12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>email</th>
+          <th>sign in count</th>
+          <th>current sign in</th>
+          <th>last_sign_in_at</th>
+          <th>created_at</th>
+          <th>website</th>
+          <th>twitter</th>
+          <th>facebook</th>
+          <th>city</th>
+          <th>latitude</th>
+          <th>longitude</th>
+          <th>authentication_token</th>
+          <th>full_address</th>
+          <th>creations_count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%- @users.each do |user| %>
+          <tr>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.sign_in_count %></td>
+            <td><%= user.current_sign_in_at %></td>
+            <td><%= user.last_sign_in_at %></td>
+            <td><%= user.created_at %></td>
+            <td><%= user.website %></td>
+            <td><%= user.twitter %></td>
+            <td><%= user.facebook %></td>
+            <td><%= user.city %></td>
+            <td><%= user.latitude %></td>
+            <td><%= user.longitude %></td>
+            <td><%= user.authentication_token %></td>
+            <td><%= user.full_address %></td>
+            <td><%= user.creations_count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
