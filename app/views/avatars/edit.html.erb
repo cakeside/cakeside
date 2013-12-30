@@ -8,7 +8,7 @@ mixpanel.track_forms(".edit_avatar", "uploaded avatar");
 <div class="row">
   <div class="span12">
     <%= avatar_for(current_user) %>
-    <%= form_for(@avatar, :url => avatar_path(@avatar), :method => :put, :multipart => true) do |f| %>
+    <%= form_for(@avatar, :url => avatar_path(@avatar), :method => :put, :multipart => true, remote: true, authenticity_token: true) do |f| %>
       <div class="control-group">
         <div class="controls">
           <%= f.file_field :avatar %>
@@ -16,7 +16,7 @@ mixpanel.track_forms(".edit_avatar", "uploaded avatar");
       </div>
       <div class="control-group">
         <div class="controls">
-          <%= f.submit "Upload picture", :class => "btn btn-primary" %>
+          <%= f.submit "Upload picture", :class => "btn btn-primary", disable_with: "Uploading..." %>
         </div>
       </div>
     <% end %>
