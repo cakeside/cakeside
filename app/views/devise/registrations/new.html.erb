@@ -9,36 +9,6 @@
         $('#submit-registration').attr('disabled', 'disabled');
       }
     });
-    $('#user_city').autocomplete({
-      source: function(request, response){
-        $.ajax({
-          url: 'http://ws.geonames.org/searchJSON',
-          dataType: "jsonp",
-          data: {
-            featureClass: "P",
-            style: 'full',
-            maxRows: 12,
-            name_startsWith: request.term
-          },
-          success: function(data){
-            response( $.map(data.geonames, function(item){
-              return {
-                label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
-                value: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
-                latitude: item.lat,
-                longitude: item.lng
-              }
-            }));
-          }
-        });
-      },
-      minlength:2,
-      select:function(event, ui){
-        var item = ui.item;
-        $('#user_latitude').val(item.latitude);
-        $('#user_longitude').val(item.longitude);
-      }
-    });
     mixpanel.track_forms(".form-inline", "signed in");
     mixpanel.track_forms(".form-horizontal", "registered");
   });
@@ -73,12 +43,6 @@
                 <%= f.label :name, 'Full name', :class => "control-label" %>
                 <div class="controls">
                   <%= f.text_field :name, :placeholder => 'required' %>
-                </div>
-              </div>
-              <div class="control-group">
-                <%= f.label :city, 'City', :class => "control-label" %>
-                <div class="controls">
-                  <%= f.text_field :city, :placeholder => 'optional' %>
                 </div>
               </div>
               <div class="control-group">

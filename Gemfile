@@ -29,6 +29,9 @@ gem 'airbrake'
 gem 'geocoder', '~> 1.1.9'
 gem 'pg'
 gem 'asset_sync', '~> 1.0.0'
+gem 'geoip'
+gem 'fog'
+gem 'unf'
 
 group :development do
   gem 'capistrano'
@@ -51,10 +54,10 @@ group :development, :test do
   gem 'ffaker'
   gem 'selenium-webdriver'
   gem 'poltergeist'
+  gem 'binding_of_caller'
 end
 
 group :production, :staging do
-  gem 'fog'
   gem 'newrelic_rpm'
   gem 'dalli'
   gem 'unicorn'
