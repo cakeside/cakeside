@@ -2,8 +2,8 @@ class Photo < ActiveRecord::Base
   belongs_to :creation, :counter_cache => true
   validates :image,  :presence => true
   mount_uploader :image, PhotoUploader
-  #process_in_background :image
-  store_in_background :image
+  process_in_background :image if Rails.env.test?
+  store_in_background :image unless Rails.env.test?
 
   def to_jq_upload
     {

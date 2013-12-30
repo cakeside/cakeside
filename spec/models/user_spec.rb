@@ -37,7 +37,7 @@ describe User do
     describe "when the url is not valid" do
       let(:user) { User.new }
 
-      before(:each) { user.update_attribute(:website, 'blah') }
+      before(:each) { user.update_attributes(:website => 'blah') }
 
       it "cannot validate" do
         user.errors[:website].any?.should == true
