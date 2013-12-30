@@ -44,11 +44,12 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   #def filename
-    #if original_filename 
-      #super.chomp(File.extname(super)) + '.png'
-    #end
+  #if original_filename 
+  #super.chomp(File.extname(super)) + '.png'
+  #end
   #end
   def default_url
-   "/assets/#{version_name}_default.png"
+    asset_name = "#{version_name}_default.png"
+    ActionController::Base.helpers.asset_path(asset_name)
   end
 end
