@@ -4,18 +4,19 @@ class PhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MimeTypes
   include ::CarrierWave::Backgrounder::Delay
 
-  def store_dir
-    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-  end
-
   process :set_content_type
 
   version :large do 
     process :resize_to_fit => [570, 630]
     process :watermark
   end
+
   version :thumb, :from_version => :large do
     process :resize_to_fill => [260, 180]
+  end
+
+  def store_dir
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   def watermark
@@ -48,6 +49,6 @@ class PhotoUploader < CarrierWave::Uploader::Base
     #end
   #end
   def default_url
-   "/assets/fallback/" + [version_name, "default.png"].compact.join('_') 
+   "/assets/fallback/#{version_name}_default.png"
   end
 end

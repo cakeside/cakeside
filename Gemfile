@@ -29,6 +29,9 @@ gem 'airbrake'
 gem 'geocoder', '~> 1.1.9'
 gem 'pg'
 gem 'asset_sync', '~> 1.0.0'
+gem 'geoip'
+gem 'fog'
+gem 'unf'
 
 group :development do
   gem 'capistrano'
@@ -43,7 +46,6 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'teaspoon'
-  gem 'rack-mini-profiler'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'capybara'
@@ -52,14 +54,10 @@ group :development, :test do
   gem 'ffaker'
   gem 'selenium-webdriver'
   gem 'poltergeist'
-end
-
-group :staging do
-  gem 'rack-mini-profiler'
+  gem 'binding_of_caller'
 end
 
 group :production, :staging do
-  gem 'fog'
   gem 'newrelic_rpm'
   gem 'dalli'
   gem 'unicorn'

@@ -6,7 +6,6 @@ describe "Registration", :js => true do
       visit "/login"
       within(".form-horizontal") do
         fill_in('user_name', :with => 'John Smith')
-        fill_in('user_city', :with => 'Calgary, Alberta, Canada')
         fill_in('user_email',:with => Faker::Internet.email)
         fill_in('user_password', :with => 'password')
         fill_in('user_password_confirmation', :with => 'password')

@@ -16,3 +16,4 @@ coverage
 .vagrant
 public/assets
 .env
+vendor/bundler
