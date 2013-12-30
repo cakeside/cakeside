@@ -1,4 +1,3 @@
-# encoding: utf-8
 class PhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
   include CarrierWave::MimeTypes
@@ -35,19 +34,10 @@ class PhotoUploader < CarrierWave::Uploader::Base
     end
   end
 
-  # Add a white list of extensions which are allowed to be uploaded.
-  # For images you might use something like this:
   def extension_white_list
-    %w(jpg jpeg gif png)
+    %w(jpg jpeg gif png bmp tif)
   end
 
-  # Override the filename of the uploaded files:
-  # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  #def filename
-  #if original_filename 
-  #super.chomp(File.extname(super)) + '.png'
-  #end
-  #end
   def default_url
     asset_name = "#{version_name}_default.png"
     ActionController::Base.helpers.asset_path(asset_name)
