@@ -10,7 +10,6 @@ class Photo < ActiveRecord::Base
     if image.thumb.url && image.thumb.url != image.thumb.default_url
       {
         :name => read_attribute(:image),
-        :size => image.size,
         :url => image.url,
         :thumbnail_url => image.thumb.url,
         :delete_url => id,
@@ -19,7 +18,6 @@ class Photo < ActiveRecord::Base
     else
       {
         :name => read_attribute(:image),
-        :size => image.size,
         :url => image.url,
         :thumbnail_url => image.url,
         :delete_url => id,
