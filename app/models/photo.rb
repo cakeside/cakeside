@@ -9,7 +9,7 @@ class Photo < ActiveRecord::Base
     {
       :name => read_attribute(:image),
       :url => image.url,
-      :thumbnail_url => is_processed? ? image.thumb.url : image.url,
+      :thumbnail_url => is_processed? ? image.thumb.url : image.thumb.default_url,
       :delete_url => id,
       :delete_type => "DELETE"
     }
@@ -22,6 +22,6 @@ class Photo < ActiveRecord::Base
   private
 
   def is_processed?
-    self.image_processing
+    self.image_processing == nil
   end
 end
