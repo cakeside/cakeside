@@ -46,6 +46,10 @@ class User < ActiveRecord::Base
     "#{id}-#{name.gsub(/[^a-z0-9]+/i, '-')}"
   end
 
+  def is_admin?
+   self.is_admin
+  end
+
   class << self
     def ordered
       User.order(:creations_count => :desc)

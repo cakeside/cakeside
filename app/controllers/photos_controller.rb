@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:index]
   before_filter :find_creation, :except => [:index]
 
   def index
