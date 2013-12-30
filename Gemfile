@@ -30,6 +30,8 @@ gem 'geocoder', '~> 1.1.9'
 gem 'pg'
 gem 'asset_sync', '~> 1.0.0'
 gem 'geoip'
+gem 'fog'
+gem 'unf'
 
 group :development do
   gem 'capistrano'
@@ -61,7 +63,6 @@ group :staging do
 end
 
 group :production, :staging do
-  gem 'fog'
   gem 'newrelic_rpm'
   gem 'dalli'
   gem 'unicorn'
