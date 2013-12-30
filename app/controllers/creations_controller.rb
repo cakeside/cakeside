@@ -11,7 +11,7 @@ class CreationsController < ApplicationController
     @creation = Creation.find(params[:id])
     @primary_photo = @creation.primary_image
     expires_in(1.minute)
-    fresh_when(@creation)
+    #fresh_when(@creation)
   end
 
   def new
