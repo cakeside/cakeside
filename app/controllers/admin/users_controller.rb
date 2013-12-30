@@ -1,7 +1,7 @@
 module Admin
   class UsersController < AdminController
     def index
-      @users = User.all
+      @users = User.includes(:avatar)
     end
   end
 end
