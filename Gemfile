@@ -43,7 +43,6 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'teaspoon'
-  gem 'rack-mini-profiler'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'capybara'
@@ -52,10 +51,6 @@ group :development, :test do
   gem 'ffaker'
   gem 'selenium-webdriver'
   gem 'poltergeist'
-end
-
-group :staging do
-  gem 'rack-mini-profiler'
 end
 
 group :production, :staging do
