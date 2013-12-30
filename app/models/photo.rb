@@ -1,5 +1,5 @@
 class Photo < ActiveRecord::Base
-  belongs_to :creation, :counter_cache => true
+  belongs_to :creation, :counter_cache => true, touch: true
   validates :image,  :presence => true
   mount_uploader :image, PhotoUploader
   process_in_background :image if Rails.env.test?
