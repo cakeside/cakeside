@@ -1,5 +1,9 @@
 require 'simplecov'
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' do
+  add_filter '/spec/'
+  add_filter '/config/'
+  add_filter '/vendor/'
+end
 
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
@@ -14,7 +18,7 @@ require 'database_cleaner'
 Capybara.register_driver :poltergeist do |app|
   Capybara::Poltergeist::Driver.new(app, {:timeout => 60})
 end
-Capybara.javascript_driver = :poltergeist
+Capybara.javascript_driver = :poltergeist if ENV['HEADLESS']
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 RSpec.configure do |config|

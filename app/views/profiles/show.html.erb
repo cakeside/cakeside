@@ -24,7 +24,7 @@
       <h4>Other Members Nearby</h4>
       <ul class="unstyled">
       <% @nearby_users.each do |item| %>
-        <li><%= link_to item.name, profile_path(item), :class => "mix-link", "data-event" => "click-on-nearby-user" %> <small>(<%= item.city %>)</small></li>
+        <li><%= link_to item.name, profile_path(item), :class => "mix-link", "data-event" => "click-on-nearby-user" %> <small><%= item.city %></small></li>
       <% end %>
       <%= image_tag @map_url %>
       </ul>

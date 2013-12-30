@@ -1,22 +1,24 @@
 class User < ActiveRecord::Base
   geocoded_by :current_sign_in_ip, :latitude => :latitude, :longitude => :longitude
-  reverse_geocoded_by :latitude, :longitude do |obj,results|
+  reverse_geocoded_by :latitude, :longitude do |user,results|
     if geo = results.first
-      obj.full_address = geo.formatted_address
+      user.full_address = geo.formatted_address
     end
   end
 
-  after_validation :geocode, :reverse_geocode
+  before_save :geocode, :reverse_geocode
+  before_save :ensure_authentication_token
+
   validates :name,  :presence => true
   validates :website, :format => URI::regexp(%w(http https)), :allow_blank => true
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
+
   has_many :creations, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
   has_many :tutorials, :dependent => :destroy
   has_and_belongs_to_many :interests, :join_table => 'users_interests', :autosave => true
   has_one :avatar
   acts_as_tagger
-  before_save :ensure_authentication_token
 
   def add_favorite(creation)
     creation.liked_by(self)
@@ -44,7 +46,13 @@ class User < ActiveRecord::Base
     "#{id}-#{name.gsub(/[^a-z0-9]+/i, '-')}"
   end
 
-  def self.ordered
-    User.order(:creations_count => :desc)
+  def is_admin?
+   self.is_admin
+  end
+
+  class << self
+    def ordered
+      User.order(:creations_count => :desc)
+    end
   end
 end

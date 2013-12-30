@@ -32,6 +32,7 @@ describe PhotosController do
     before :each do
       creation.photos << photo
       creation.save!
+      photo.update_attribute(:image_processing, nil)
       delete :destroy, :creation_id => creation.id, :id => photo.id
     end
 
@@ -48,12 +49,11 @@ describe PhotosController do
       {
         :files => [
         {
-           :name=>"example.png",
-           :size=>359791,
-           :url=>"/uploads/photo/image/#{photo.id}/example.png",
-           :thumbnail_url=>"/uploads/photo/image/#{photo.id}/thumb_example.png",
-           :delete_url=>photo.id,
-           :delete_type=>"DELETE"
+           :name => "example.png",
+           :url => "/uploads/photo/image/#{photo.id}/example.png",
+           :thumbnail_url => "/uploads/photo/image/#{photo.id}/thumb_example.png",
+           :delete_url => photo.id,
+           :delete_type => "DELETE"
         }]
       }.to_json
     end

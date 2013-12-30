@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:index]
   before_filter :find_creation, :except => [:index]
 
   def index
@@ -7,7 +7,7 @@ class PhotosController < ApplicationController
     @photos = @creation.photos
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: {files: @photos.map { |p| p.to_jq_upload } }.to_json }
+      format.json { render json: { files: @photos.map { |photo| photo.to_jq_upload } } }
     end
   end
 

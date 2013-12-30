@@ -4,8 +4,10 @@ class SitemapController < ApplicationController
   def index
     @creations = Creation.all
     @tutorials = Tutorial.all
-    @base_url = "http://#{request.host_with_port}"
+    @base_url = "https://#{request.host_with_port}"
     headers['Content-Type'] = 'application/xml'
+    expires_in(1.hour)
+    fresh_when(@creations) if @creations.any?
     respond_to do |format|
       format.xml
     end

@@ -1,8 +1,0 @@
-<%= semantic_form_for [:admin, @creation] do |f| %>
-  <%= f.inputs @creation.attributes %>
-  <% for category in Category.all %>
-    <%= check_box_tag "creation[category_ids][]", category.id, @creation.categories.include?(category) %>
-    <%= category.name %>
-  <% end %>
-  <%= f.buttons :commit %>
-<% end %>
