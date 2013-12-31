@@ -4,7 +4,7 @@ class CreationsController < ApplicationController
   def index
     @creations = FindAllCreationsQuery.new.fetch(params)
     expires_in(10.minutes)
-    fresh_when(Creation.maximum(:updated_at)) if Creation.any?
+    fresh_when(Creation.maximum(:updated_at)) if current_user.nil? && Creation.any?
   end
 
   def show

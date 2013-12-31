@@ -33,6 +33,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo = @creation.photos.find(params[:id])
     if @photo.destroy
+      @creation.touch
       render :json => {files: [@photo.to_jq_upload]}.to_json
     else
       render :json => [{:error => "could not remove the photo"}], :status => 304

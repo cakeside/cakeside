@@ -23,7 +23,14 @@
         </ul>
         <ul class="nav pull-right">
           <li class="hidden-phone">
-            <a href="<%= url_for new_creation_path %>" title="Add Creation">Add Creation <i class="icon-edit icon-large"></i></a>
+            <%= link_to new_creation_path do %>
+              Add Creation <i class="icon-edit icon-large"></i>
+            <% end %>
+          </li>
+          <li class="hidden-phone">
+            <%= link_to new_tutorial_path do %>
+              Add Tutorial <i class="icon-edit icon-large"></i>
+            <% end %>
           </li>
           <li class="divider-vertical hidden-phone"></li>
           <% if user_signed_in? %>
@@ -36,7 +43,7 @@
               </ul>
             </li>
           <% else %>
-            <li> <a href="<%= url_for new_user_session_path %>">Sign In</a> </li>
+            <li> <%= link_to "Sign In", new_user_session_path %> </li>
           <% end %>
         </ul>
       </div>
