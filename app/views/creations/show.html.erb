@@ -64,12 +64,16 @@ $(function() {
 <% if @creation.photos_count > 1 %>
   <div class="row">
     <div class="span12">
-      <%= link_to "view #{pluralize(@creation.photos_count, "photo")} &raquo;".html_safe, creation_photos_path(@creation), :class => "pull-right" %>
+      <%= link_to "View #{pluralize(@creation.photos_count, "photo")} &raquo;".html_safe, creation_photos_path(@creation) %>
     </div>
     <div class="span12">
       <ul class="thumbnails">
       <% @creation.photos.each do |photo| %>
-        <li class="span2"><%= image_tag photo.image.thumb.url, :class => "thumbnail" %></li>
+        <li class="span2">
+          <%= link_to creation_photos_path(@creation) do %>
+            <%= image_tag(photo.image.thumb.url, :class => "thumbnail") %>
+          <% end %>
+        </li>
       <% end %>
       </ul>
     </div>
