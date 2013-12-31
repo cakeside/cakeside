@@ -29,3 +29,7 @@ Start server
     cap staging deploy:migrations
     cap production deploy:migrations
 
+# To Document
+
+* Dependencies to install
+* how to run tests

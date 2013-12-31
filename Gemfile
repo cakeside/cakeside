@@ -55,6 +55,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'poltergeist'
   gem 'binding_of_caller'
+  gem 'foreman'
 end
 
 group :production, :staging do
