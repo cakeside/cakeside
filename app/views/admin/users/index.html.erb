@@ -36,9 +36,9 @@
               <p><%= mail_to user.email %></p>
               <p><%= user.full_address %></p>
               <p><%= user.city %></p>
-              <p>website: <%= link_to user.website %></p>
+              <p>website: <%= link_to user.website, user.website %></p>
               <p>twitter: <%= user.twitter %></p>
-              <p>facebook: <%= link_to user.facebook %></p>
+              <p>facebook: <%= link_to user.facebook, user.facebook %></p>
             </td>
             <td>
               <p>latitude: <%= user.latitude %></p>

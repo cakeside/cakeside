@@ -4,14 +4,12 @@ class CreationsController < ApplicationController
   def index
     @creations = FindAllCreationsQuery.new.fetch(params)
     expires_in(10.minutes)
-    fresh_when(Creation.maximum(:updated_at)) if current_user.nil? && Creation.any?
   end
 
   def show
     @creation = Creation.find(params[:id])
     @primary_photo = @creation.primary_image
     expires_in(1.minute)
-    #fresh_when(@creation)
   end
 
   def new
