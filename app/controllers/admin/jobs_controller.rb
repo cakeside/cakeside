@@ -1,11 +1,16 @@
 module Admin
   class JobsController < AdminController
+    def initialize(repository = Delayed::Job)
+      @repository = repository
+      super()
+    end
+
     def index
-      @jobs = Delayed::Job.order(:created_at => :desc)
+      @jobs = @repository.order(:created_at => :desc)
     end
 
     def show
-      @job = Delayed::Job.find(params[:id])
+      @job = @repository.find(params[:id])
     end
   end
 end
