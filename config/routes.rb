@@ -60,5 +60,6 @@ Cake::Application.routes.draw do
   namespace :admin do
     root :to => "users#index"
     resources :users, only: [:index]
+    resources :jobs, only: [:index]
   end
 end

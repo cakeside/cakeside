@@ -1,0 +1,25 @@
+<div class="row-fluid">
+  <div class="span12">
+    <h1>Jobs</h1>
+    <table class="table table-condensed">
+      <% @jobs.each do |job| %>
+        <tr>
+          <td><%= job.id %></td>
+          <td><%= job.attempts %></td>
+          <td>
+            <p><%= job.handler %></p>
+            <p><%= job.last_error[0...100] %>...</p>
+          </td>
+          <td>
+            <p><%= job.locked_by %></p>
+            <p>queue: <span class="pull-right"><%= job.queue %></span></p>
+            <p>run at: <span class="pull-right"><%= job.run_at %></span></p>
+            <p>locked_at: <span class="pull-right"><%= job.locked_at %></span></p>
+            <p>created_at: <span class="pull-right"><%= job.created_at %></span></p>
+            <p>updated_at: <span class="pull-right"><%= job.updated_at %></span></p>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
