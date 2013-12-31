@@ -1,0 +1,17 @@
+<div class="row-fluid">
+  <div class="span12">
+    <h1>job <%= link_to @job.id, admin_job_path(@job) %></h1>
+    <p><%= link_to "back", admin_jobs_path %></p>
+    <table class="table">
+      <tr><td>queue: <span class="pull-right"><%= @job.queue %></span></td></tr>
+      <tr><td>run at: <span class="pull-right"><%= @job.run_at %></span></td></tr>
+      <tr><td>locked_at: <span class="pull-right"><%= @job.locked_at %></span></td></tr>
+      <tr><td>created_at: <span class="pull-right"><%= @job.created_at %></span></td></tr>
+      <tr><td>updated_at: <span class="pull-right"><%= @job.updated_at %></span></td></tr>
+    </table>
+    <p><%= @job.attempts %></p>
+    <p><%= @job.handler %></p>
+    <p><%= @job.last_error%></p>
+    <p><%= @job.locked_by %></p>
+  </div>
+</div>

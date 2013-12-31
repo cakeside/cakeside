@@ -4,7 +4,7 @@
     <table class="table table-condensed">
       <% @jobs.each do |job| %>
         <tr>
-          <td><%= job.id %></td>
+          <td><%= link_to job.id, admin_job_path(job) %></td>
           <td><%= job.attempts %></td>
           <td>
             <p><%= job.handler %></p>
