@@ -34,8 +34,10 @@
               </li>
               <li class="divider"></li>
               <li class="nav-header">Recently Added</li>
-              <% @newest_tutorials.each do |tutorial| %>
-              <li><%= link_to tutorial.heading, tutorial_path(tutorial) %></li>
+              <% cache @newest_tutorials do %>
+                <% @newest_tutorials.each do |tutorial| %>
+                <li><%= link_to tutorial.heading, tutorial_path(tutorial) %></li>
+                <% end %>
               <% end %>
               <li><%= link_to "...", tutorials_path %></li>
               <li class="divider"></li>
@@ -46,13 +48,17 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Artists<b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li class="nav-header">Recently Joined</li>
-              <% @newest_members.each do |user| %>
-              <li><%= link_to user.name, profile_path(user) %></li>
+              <% cache @newest_members do %>
+                <% @newest_members.each do |user| %>
+                <li><%= link_to user.name, profile_path(user) %></li>
+                <% end %>
               <% end %>
               <li class="divider"></li>
               <li class="nav-header">Top Contributers</li>
-              <% @top_members.each do |user| %>
-              <li><%= link_to user.name, profile_path(user) %></li>
+              <% cache @top_members do %>
+                <% @top_members.each do |user| %>
+                <li><%= link_to user.name, profile_path(user) %></li>
+                <% end %>
               <% end %>
               <li class="divider"></li>
               <li><%= link_to "View All", profiles_path %></li>
