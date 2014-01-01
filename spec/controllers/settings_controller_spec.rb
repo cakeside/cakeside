@@ -3,8 +3,8 @@ require "spec_helper"
 describe SettingsController do
   describe :index do
     it "should load the current user" do
-      user = build(:user)
-      controller.stub(:current_user).and_return(user)
+      user = create(:user)
+      http_login(user)
       get :index
       assigns(:user).should == user
     end

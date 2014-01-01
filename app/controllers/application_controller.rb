@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
   before_filter :load_categories
   before_filter :load_tutorials
   before_filter :load_users
-  before_filter :load_user
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   private
@@ -25,10 +24,6 @@ class ApplicationController < ActionController::Base
   def load_users
     @newest_members = User.order(:created_at => :desc).limit(3)
     @top_members = User.order(:creations_count => :desc).limit(3)
-  end
-
-  def load_user
-    @user = current_user if current_user
   end
 
   protected
