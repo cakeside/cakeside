@@ -16,6 +16,13 @@
 <%= favicon_link_tag 'apple-touch-icon-114x114.png', :rel => 'apple-touch-icon', :type => 'image/png', :sizes => "114x114" %>
 <%= yield :head %>
 <%= csrf_meta_tags %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<!--[if lt IE 9]>
+  <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<%= render "layouts/mixpanel"%>
+<%= render "layouts/embedly"%>
+<%= yield :javascript %>
 </head>
 <body>
 <%= render "layouts/facebook" %>
@@ -27,13 +34,6 @@
 <%= render "layouts/footer" %>
 <%= render "layouts/uservoice_feedback"%>
 <%= render "layouts/chrome_frame"%>
-<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-<!--[if lt IE 9]>
-  <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<%= render "layouts/mixpanel"%>
-<%= render "layouts/embedly"%>
-<%= yield :javascript %>
 <%= render "layouts/disqus_comments_count" %>
 <%= render "layouts/google_analytics" %>
 </body>
