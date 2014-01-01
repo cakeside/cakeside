@@ -36,7 +36,7 @@
           <% if user_signed_in? %>
           <li>
             <%= link_to settings_path do %>
-              <%= avatar_for(user: current_user, size: 24) %>
+              <%= avatar_for(current_user, size: 24) %>
             <% end %>
           </li>
           <% else %>
