@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :load_categories
   before_filter :load_tutorials
+  before_filter :load_users
   before_filter :load_user
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
@@ -19,6 +20,11 @@ class ApplicationController < ActionController::Base
 
   def load_tutorials
     @newest_tutorials = Tutorial.order(:created_at => :desc).limit(3)
+  end
+
+  def load_users
+    @newest_members = User.order(:created_at => :desc).limit(3)
+    @top_members = User.order(:creations_count => :desc).limit(3)
   end
 
   def load_user
