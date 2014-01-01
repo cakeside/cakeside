@@ -6,7 +6,9 @@
       <% @creation.favorites.each do |favorite| %>
         <li class="span3">
         <div class="thumbnail">
-          <a href="<%= url_for profile_path(favorite.user) %>" class="thumbnail"><%= avatar_for(favorite.user) %></a>
+          <%= link_to url_for profile_path(favorite.user), class: 'thumbnail' do %>
+            <%= avatar_for(favorite.user) %>
+          <% end %>
           <div class="caption">
             <h5><%= favorite.user.name %></h5>
             <p><%= favorite.user.city %></p>

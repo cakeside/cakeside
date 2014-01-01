@@ -57,7 +57,7 @@
     </div>
     <div class="form-actions">
       <button type="submit" class="btn btn-primary">NEXT STEP</button>
-      <a href="<%= url_for @creation %>" class="btn">Cancel</a>
+      <%= link_to "Cancel", creation_path(@creation), class: 'btn' %>
     </div>
   </fieldset>
 <% end %>

@@ -11,11 +11,19 @@ $(function() {
   <div class="row">
   <div class="span12">
     <% if @creation.user == current_user %>
-      <p>
-    <%= link_to '<i class="icon-edit"></i> <strong>EDIT</strong>'.html_safe, edit_creation_path(@creation), :class => 'btn' %> 
-    <a class="btn" href="<%= url_for new_creation_photo_path(@creation) %>"><i class="icon-plus"></i><strong>ADD IMAGES</strong></a>
-    <a class="btn" href="<%= url_for creation_favorites_path(:creation_id => @creation.id) %>"><i class="icon-heart"></i> <strong>FANCLUB (<%=  pluralize(@creation.favorites.length, 'fan') %>)</strong></a>
-    <%= link_to '<i class="icon-white icon-remove"></i> <strong>DELETE</strong>'.html_safe, creation_path(@creation),:confirm => "Are you sure you want to permanently remove this creation?", :method => :delete, :class => 'btn btn-danger pull-right' %>
+    <p>
+    <%= link_to edit_creation_path(@creation), class: 'btn' do %>
+      <i class="icon-edit"></i> <strong>EDIT</strong>
+    <% end %>
+    <%= link_to new_creation_photo_path(@creation), class: 'btn' do %>
+      <i class="icon-plus"></i><strong>ADD IMAGES</strong>
+    <% end %>
+    <%= link_to creation_favorites_path(:creation_id => @creation.id), class: 'btn' do %>
+      <i class="icon-heart"></i> <strong>FANCLUB (<%=  pluralize(@creation.favorites.length, 'fan') %>)</strong>
+    <% end %>
+    <%= link_to creation_path(@creation), confirm: "Are you sure you want to permanently remove this creation?", method: :delete, class: 'btn btn-danger pull-right' do %>
+      <i class="icon-white icon-remove"></i> <strong>DELETE</strong>
+    <% end %>
     </p>
   <% end %>
   </div>
@@ -32,7 +40,9 @@ $(function() {
     <% if @creation.tags.any? %>
       <span> <i class="icon-tags"></i> </span>
       <% @creation.tags.each do |tag| -%>
-        <a href="<%= url_for creation_tag_path(tag.name) %>" class="mix-link" data-event="click-on-tag"><span class="label"><%= tag.name %></span></a>
+        <%= link_to creation_tag_path(tag.name), class: 'mix-link', data: { event: "click-on-tag" } do %>
+          <span class="label"><%= tag.name %></span>
+        <% end %>
       <% end -%>
     <% end -%>
     <hr />

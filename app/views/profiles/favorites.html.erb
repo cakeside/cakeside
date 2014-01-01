@@ -4,7 +4,11 @@
   <div class="span12">
     <ul class="thumbnails">
       <% @creations.each do |creation| %>
-        <li><a href="<%= url_for creation %>"><img class="thumbnail" src="<%= creation.primary_image.image.thumb.url %>" alt="<%= creation.name %>"></a></li>
+        <li>
+        <%= link_to creation do %>
+          <img class="thumbnail" src="<%= creation.primary_image.image.thumb.url %>" alt="<%= creation.name %>">
+        <% end %>
+        </li>
       <% end %>
     </ul>
   </div>
