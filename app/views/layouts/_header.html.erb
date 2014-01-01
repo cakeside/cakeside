@@ -34,14 +34,11 @@
           </li>
           <li class="divider-vertical hidden-phone"></li>
           <% if user_signed_in? %>
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="<%= settings_path %>"><%= current_user.name %> <i class="icon-gear"></i><b class="caret"></b></a>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                <li><%= link_to "Settings", settings_path %></li>
-                <li class="divider"></li>
-                <li> <%= link_to "Sign Out", destroy_user_session_path %> </li>
-              </ul>
-            </li>
+          <li>
+            <%= link_to settings_path do %>
+              <%= avatar_for(user: current_user, size: 24) %>
+            <% end %>
+          </li>
           <% else %>
             <li> <%= link_to "Sign In", new_user_session_path %> </li>
           <% end %>
