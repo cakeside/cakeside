@@ -9,10 +9,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def resolve(target)
-    target.new(current_user)
-  end
-
   def load_categories
     @categories = Category.all
   end
