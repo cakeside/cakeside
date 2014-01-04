@@ -4,6 +4,7 @@
   var ready = function(){ new Masonry('#tutorials-div').load(); };
   $(document).ready(ready);
   $(document).on('page:load', ready);
+  $(document).on('page:restore', ready);
 </script>
 <% end -%>
 <div id="tutorials-div" class="row">
