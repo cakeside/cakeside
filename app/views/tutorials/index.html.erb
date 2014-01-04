@@ -1,15 +1,8 @@
 <% provide(:description, "The latest tutorials") -%>
 <% content_for :javascript do -%>
 <script type="text/javascript">  
-  $(function(){
-    var container = $('#tutorials-div');
-    container.imagesLoaded(function(){
-      container.masonry({
-        itemSelector : '.span4',
-        isResizable: true
-      }); 
-    });
-  });
+  $(function(){ new Masonry('#tutorials-div').load(); });
+  document.addEventListener("page:load", function() { new Masonry('#tutorials-div').load(); });
 </script>
 <% end -%>
 <div id="tutorials-div" class="row">
