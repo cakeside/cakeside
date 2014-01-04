@@ -57,7 +57,11 @@
     </div>
     <div class="form-actions">
       <button type="submit" class="btn btn-primary">NEXT STEP</button>
-      <%= link_to "Cancel", creation_path(@creation), class: 'btn' %>
+      <% if @creation.new_record? %>
+        <%= link_to "Cancel", mine_creations_path, class: 'btn' %>
+      <% else %>
+        <%= link_to "Cancel", creation_path(@creation), class: 'btn' %>
+      <% end %>
     </div>
   </fieldset>
 <% end %>
