@@ -4,18 +4,11 @@
   var loadMasonry = function() {
     var container = $('#creations-div');
     container.imagesLoaded(function(){
-      container.masonry({
-        itemSelector : '.span4',
-        isResizable: true
-      }); 
+      container.masonry({ itemSelector : '.span4', isResizable: true });
     });
   };
-  $(function(){
-    loadMasonry();
-  });
-  document.addEventListener("page:fetch", function() { loadMasonry(); });
-  document.addEventListener("page:fetch", function() { console.log("fetching..."); });
-  document.addEventListener("page:receive", function() { console.log("done."); });
+  $(function(){ loadMasonry(); });
+  document.addEventListener("page:load", function() { loadMasonry(); });
 </script>
 <% end -%>
 <% unless user_signed_in?  -%>
