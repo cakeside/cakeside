@@ -1,12 +1,14 @@
 <% provide(:title, "#{@tag}") -%>
 <% content_for :javascript do -%>
 <script type="text/javascript">  
-  $(function(){
+  var ready = function(){ 
     var container = $('#creations-div');
     container.imagesLoaded(function(){
       container.masonry({ itemSelector : '.span4', isResizable: true });
     });
-  });
+  };
+  $(document).ready(ready);
+  $(document).on('page:load', ready);
 </script>
 <% end -%>
 <div class="row">

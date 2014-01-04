@@ -1,8 +1,9 @@
 <% provide(:description, "CakeSide is a free site to share your cake creations and ideas with other cake fanatics like yourself") -%>
 <% content_for :javascript do -%>
 <script type="text/javascript">
-  $(function(){ new Masonry('#creations-div').load(); });
-  document.addEventListener("page:load", function() { new Masonry('#creations-div').load(); });
+  var ready = function(){ new Masonry('#creations-div').load(); };
+  $(document).ready(ready);
+  $(document).on('page:load', ready);
 </script>
 <% end -%>
 <% unless user_signed_in?  -%>

@@ -5,9 +5,8 @@
       $('.tooltip-item').tooltip();
       $('#tags').tagit({ availableTags: all_tags });
     };
-
-    $(function(){ loadTags(); });
-    document.addEventListener("page:load", function() { loadTags(); });
+    $(document).ready(loadTags);
+    $(document).on('page:load', loadTags);
   </script>
 <% end %>
 <%= form_for(@creation, :html => {:multipart => true, :class => "form-horizontal"}) do |f| %>
