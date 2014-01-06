@@ -1,6 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
   def after_sign_in_path_for(resource)
-    settings_path
+    mine_creations_path
   end
 
   def sign_up_params
