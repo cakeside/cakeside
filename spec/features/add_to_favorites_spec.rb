@@ -5,6 +5,7 @@ describe "adding a cake to your favorites", :js => true do
   let!(:me) { create(:user, :password => "password") }
 
   before :each do
+    creation.photos.first.update_attribute(:image_processing, nil)
     system "cp #{creation.photos.first.image.file.file} #{creation.photos.first.image.file.file.gsub(/example/, 'large_example')}"
     visit user_session_path
     within('.form-inline') do
