@@ -6,7 +6,7 @@
 <title><%= full_title(yield(:title)) %></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="description" content="<%= yield(:description) %>" />
-<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<%= stylesheet_link_tag "application", media: "all" %>
 <%= yield :head %>
 <%= csrf_meta_tags %>
 </head>
@@ -16,7 +16,7 @@
   <%= render "layouts/messages" %>
   <%= yield %>
 </div>
-<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application" %>
 <%= yield :javascript %>
 </body>
 </html>
