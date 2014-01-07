@@ -1,0 +1,3 @@
+[submodule "doc/wiki"]
+	path = doc/wiki
+	url = git@bitbucket.org:cakeside/cakeside.git/wiki
