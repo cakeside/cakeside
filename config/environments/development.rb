@@ -26,6 +26,17 @@ Cake::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  config.action_mailer.smtp_settings = {
+    :address              => ENV['SMTP_HOST'],
+    :port                 => ENV['SMTP_PORT'],
+    :domain               => ENV['SMTP_DOMAIN'],
+    :user_name            => ENV['SMTP_USERNAME'],
+    :password             => ENV['SMTP_PASSWORD'],
+    :authentication       => :plain,
+    :enable_starttls_auto => true
+  }
+
   config.after_initialize do
     Bullet.enable = true
     Bullet.alert = true
