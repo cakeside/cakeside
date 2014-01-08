@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "noreply@cakeside.com"
 
   def welcome_email(user)
     @url = 'https://www.cakeside.com/login'
