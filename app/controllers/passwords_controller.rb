@@ -6,9 +6,9 @@ class PasswordsController < ApplicationController
   end
 
   def update
-    user = current_user
-    if user.change_password(params[:user][:password], params[:user][:password_confirmation])
-      sign_in(user, :bypass => true) unless Rails.env.test?
+    @user = current_user
+    if @user.change_password(params[:user][:password], params[:user][:password_confirmation])
+      sign_in(@user, :bypass => true) unless Rails.env.test?
       flash[:notice] = t('passwords.updated')
       render :index
     else

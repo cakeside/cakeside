@@ -20,7 +20,11 @@
             <tbody>
             <% @creations.each_with_index do |creation, index| %>
               <tr>
-                <td><a href="<%= url_for creation_path(creation) %>"><%= image_tag creation.primary_image.image.thumb.url, :class=> 'thumbnail', :style => "width:65px" %></a></td>
+                <td>
+                  <%= link_to creation_path(creation) do %>
+                    <%= image_tag creation.primary_image.image.thumb.url, class: 'thumbnail', style: "width:65px;" %>
+                  <% end %>
+                </td>
                 <td><%= link_to creation.user.name, profile_path(creation.user) %></td>
                 <td><%= creation.name %></td>
                 <td><%= creation.story %></td>
@@ -62,7 +66,11 @@
             <tbody>
             <% @members.each_with_index do |artist, index| %>
               <tr>
-                <td><a href="<%= url_for profile_path(artist) %>"><%= avatar_for(artist, :size => 65) %></a></td>
+                <td>
+                  <%= link_to profile_path(artist) do %>
+                    <%= avatar_for(artist, size: 65) %>
+                  <% end %>
+                </td>
                 <td><%= link_to artist.name, profile_path(artist) %></td>
                 <td><%= link_to artist.website if artist.website %></td>
                 <td><%= link_to artist.twitter, "https://twitter.com/#{artist.twitter}" if artist.twitter.present? %></td>

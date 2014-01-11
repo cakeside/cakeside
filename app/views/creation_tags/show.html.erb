@@ -1,12 +1,13 @@
 <% provide(:title, "#{@tag}") -%>
 <% content_for :javascript do -%>
 <script type="text/javascript">  
-  $(function(){
+  var ready = function(){ 
     var container = $('#creations-div');
     container.imagesLoaded(function(){
       container.masonry({ itemSelector : '.span4', isResizable: true });
     });
-  });
+  };
+  $(document).ready(ready);
 </script>
 <% end -%>
 <div class="row">
@@ -23,12 +24,16 @@
     <% @creations.each do |creation| %>
       <div class="span4">
         <div class="thumbnail">
-          <a href="<%= url_for creation %>"><%= image_tag creation.primary_image.image.large.url %></a>
+          <%= link_to creation do %>
+            <%= image_tag creation.primary_image.image.large.url %>
+          <% end %>
           <div class="caption">
-            <h3><a href="<%= url_for creation %>"><%= creation.name %></a> <em><small>by <a href="<%= url_for profile_path(creation.user) %>"> <%= shrink(creation.user.name, 20) %></a></small></em></h3>
+            <h3><%= link_to creation.name, creation %> <em><small>by <%= link_to shrink(creation.user.name, 20), profile_path(creation.user) %></small></em></h3>
             <p>
             <% creation.tags.each do |tag| -%>
-              <a href="<%= url_for creation_tag_path(tag.name) %>"><span class="label"><%= tag.name %></span></a>
+              <%= link_to creation_tag_path(tag.name) do %>
+                <span class="label"><%= tag.name %></span>
+              <% end %>
             <% end -%>
             </p>
             <p><%= creation.story %></p>

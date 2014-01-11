@@ -3,13 +3,13 @@ class CreationsController < ApplicationController
 
   def index
     @creations = FindAllCreationsQuery.new.fetch(params)
-    expires_in(10.minutes)
+    expires_in(10.minutes) unless user_signed_in?
   end
 
   def show
     @creation = Creation.find(params[:id])
     @primary_photo = @creation.primary_image
-    expires_in(1.minute)
+    expires_in(1.minute) unless user_signed_in?
   end
 
   def new

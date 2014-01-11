@@ -5,9 +5,12 @@
       <% @profiles.each do |profile| %>
         <li class="span3">
         <div class="thumbnail">
-          <a href="<%= url_for profile_path(profile) %>"><%= avatar_for(profile) %></a>
+          <%= link_to profile_path(profile) do %>
+            <%= avatar_for(profile) %>
+          <% end %>
           <div class="caption">
-            <h5><a href="<%= url_for profile_path(profile) %>"><%= shrink(profile.name, 20) %></a> <small>(<%= profile.creations_count %>)</small></h5>
+            <h5><%= link_to shrink(profile.name, 20), profile_path(profile) %> <small>(<%= profile.creations_count %>)</small></h5>
+
             <% if(profile.city.blank?) -%>
             <h6>somewhere in sugarland</h6>
             <% else -%>

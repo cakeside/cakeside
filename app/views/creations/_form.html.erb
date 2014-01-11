@@ -1,10 +1,11 @@
 <% content_for :javascript do %>
   <script type="text/javascript" charset="utf-8">
-    $(function(){
+    function loadTags() {
       var all_tags = [ <% ActsAsTaggableOn::Tag.pluck(:name).sort!.each { |item| %> '<%= item %>', <% } %> ];
       $('.tooltip-item').tooltip();
       $('#tags').tagit({ availableTags: all_tags });
-    });
+    };
+    $(document).ready(loadTags);
   </script>
 <% end %>
 <%= form_for(@creation, :html => {:multipart => true, :class => "form-horizontal"}) do |f| %>
@@ -57,7 +58,11 @@
     </div>
     <div class="form-actions">
       <button type="submit" class="btn btn-primary">NEXT STEP</button>
-      <a href="<%= url_for @creation %>" class="btn">Cancel</a>
+      <% if @creation.new_record? %>
+        <%= link_to "Cancel", mine_creations_path, class: 'btn' %>
+      <% else %>
+        <%= link_to "Cancel", creation_path(@creation), class: 'btn' %>
+      <% end %>
     </div>
   </fieldset>
 <% end %>

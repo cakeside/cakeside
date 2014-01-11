@@ -1,21 +1,8 @@
 <% provide(:description, "CakeSide is a free site to share your cake creations and ideas with other cake fanatics like yourself") -%>
 <% content_for :javascript do -%>
 <script type="text/javascript">
-  var loadMasonry = function() {
-    var container = $('#creations-div');
-    container.imagesLoaded(function(){
-      container.masonry({
-        itemSelector : '.span4',
-        isResizable: true
-      }); 
-    });
-  };
-  $(function(){
-    loadMasonry();
-  });
-  document.addEventListener("page:fetch", function() { loadMasonry(); });
-  document.addEventListener("page:fetch", function() { console.log("fetching..."); });
-  document.addEventListener("page:receive", function() { console.log("done."); });
+  var ready = function(){ new Masonry('#creations-div').load(); };
+  $(document).ready(ready);
 </script>
 <% end -%>
 <% unless user_signed_in?  -%>
@@ -29,7 +16,7 @@
       <strong>Make</strong> cakes, <strong>sell</strong> cakes, or just <strong>love</strong> eating them? You've come to the right place!
       <strong>CakeSide</strong> is a free site to <strong>share</strong> your cake <strong>creations</strong> and <strong>ideas</strong> with other cake fanatics like yourself!</p><br/>
       <p style="text-align: center;">
-      Get your cakes featured on this page <a href="<%= url_for new_user_session_path %>" class="btn btn-primary btn-large">Sign Up For Free!</a> or <%= link_to "sign in", new_user_session_path %>
+      Get your cakes featured on this page <%= link_to "Sign Up For Free!", new_user_session_path, class: "btn btn-primary btn-large" %> or <%= link_to "sign in", new_user_session_path %>
       </p>
     </div>
   </div>
@@ -62,9 +49,11 @@
         <% @creations.each do |creation| %>
           <div class="span4">
             <div class="thumbnail">
-              <a href="<%= url_for creation %>"><%= image_tag creation.primary_image.image.large.url %></a>
+              <%= link_to creation do %>
+                <%= image_tag creation.primary_image.image.large.url %>
+              <% end %>
               <div class="caption">
-                <h3><a href="<%= url_for creation %>"><%= creation.name %></a> <em><small>by <a href="<%= url_for profile_path(creation.user) %>"> <%= shrink(creation.user.name, 20) %></a></small></em></h3>
+                <h3><%= link_to creation.name, creation %> <em><small>by <%= link_to shrink(creation.user.name, 20), profile_path(creation.user) %></small></em></h3>
                 <p><%= creation.story %></p>
               </div>
             </div>

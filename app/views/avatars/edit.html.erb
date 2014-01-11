@@ -1,6 +1,6 @@
 <% content_for :javascript do %>
 <script type="text/javascript">
-mixpanel.track_forms(".edit_avatar", "uploaded avatar");
+try { mixpanel.track_forms(".edit_avatar", "uploaded avatar"); } catch {}
 </script>
 <% end %>
 
