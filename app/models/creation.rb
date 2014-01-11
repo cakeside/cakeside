@@ -47,7 +47,7 @@ class Creation < ActiveRecord::Base
     end
 
     def visible_creations
-      Creation.includes(:user, :photos).where(:is_restricted => false).where('photos_count > 0').uniq
+      Creation.distinct.includes(:user).joins(:photos).where(is_restricted: false, 'photos.image_processing' => nil)
     end
   end
 end
