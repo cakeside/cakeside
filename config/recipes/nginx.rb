@@ -17,6 +17,11 @@ namespace :nginx do
     run "#{sudo} mv /tmp/nginx_conf /etc/nginx/sites-available/#{application}"
     run "#{sudo} ln -s /etc/nginx/sites-available/#{application} /etc/nginx/sites-enabled/#{application}"
     run "#{sudo} rm -f /etc/nginx/sites-enabled/default"
+
+    template "500.sh.erb", "/tmp/nginx.drop.lasso"
+    run "#{sudo} mv /tmp/nginx.drop.lasso /etc/cron.daily/#{application}"
+    run "#{sudo} chmod +x /etc/cron.daily/#{application}"
+    run "#{sudo} chown root:root /etc/cron.daily/#{application}"
   end
   after "deploy:setup", "nginx:setup"
 
