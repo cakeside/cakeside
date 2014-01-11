@@ -118,4 +118,18 @@ describe User do
       results.last.should == first_person
     end
   end
+
+  describe "send welcome email" do
+    let(:user) { build(:user) }
+    let(:mailer) { double("mailer", welcome_email: true) }
+
+    before :each do
+      UserMailer.stub(:delay).and_return(mailer)
+      user.send_welcome_email
+    end
+
+    it "should send the email" do
+      mailer.should have_received(:welcome_email).with(user)
+    end
+  end
 end
