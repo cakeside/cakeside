@@ -56,7 +56,7 @@
    $.extend({
      embedly: function(urls, options, callback){
        var elems = [];
-       var path = "http://api.embed.ly/";
+       var path = "https://api.embed.ly/";
 
        var settings;
        options = options ? options : {};
