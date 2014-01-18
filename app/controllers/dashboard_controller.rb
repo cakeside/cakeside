@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
   def index
-    @activities = current_user.activities
+    @activities = current_user.recent_activities
   end
 end

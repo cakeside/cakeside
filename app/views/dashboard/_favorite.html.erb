@@ -1,4 +1,11 @@
-<dt><%= subject.created_at.to_s :foomat %></dt>
+<dt>
+<i class="icon-heart icon-large"></i>
+</dt>
 <dd>
-<%= avatar_for(subject.user, size: 24) %> <%= link_to subject.user.name, profile_path(subject.user) %> added <%= link_to subject.creation.name, creation_path(subject.creation) %> to their favorites.
+<p><%= time_ago_in_words(subject.created_at) %> ago.</p>
+<p>
+<%= avatar_for(subject.user, size: 24) %> 
+<%= link_to subject.user.name, profile_path(subject.user) %> added 
+<%= link_to subject.creation.name, creation_path(subject.creation) %> to their favorites.
+</p>
 </dd>

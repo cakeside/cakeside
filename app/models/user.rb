@@ -56,6 +56,10 @@ class User < ActiveRecord::Base
     UserMailer.delay.welcome_email(self)
   end
 
+  def recent_activities(limit = 20)
+    activities.includes(:subject).order(created_at: :desc).limit(limit)
+  end
+
   class << self
     def ordered
       User.order(:creations_count => :desc)
