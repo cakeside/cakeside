@@ -29,15 +29,11 @@ class Creation < ActiveRecord::Base
   end
 
   def is_liked_by(user)
-    favorites.any? { |favorite| favorite.user == user }
+    favorites.where(user: user).any?
   end
 
   def liked_by(user)
-    if is_liked_by(user)
-      favorites.find { |favorite| favorite.user == user }
-    else
-      favorites.create({:user_id => user.id})
-    end
+    favorites.find_or_create_by(user: user)
   end
 
   class << self
