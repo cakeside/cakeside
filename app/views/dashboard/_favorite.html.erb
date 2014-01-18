@@ -1,4 +1,4 @@
-<div>
-  <%= avatar_for(subject.user, size: 24) %> <%= link_to subject.user.name, profile_path(subject.user) %> added <%= link_to subject.creation.name, creation_path(subject.creation) %> to their favorites
-  on <%= subject.created_at.to_s :foomat %>.
-</div>
+<dt><%= subject.created_at.to_s :foomat %></dt>
+<dd>
+<%= avatar_for(subject.user, size: 24) %> <%= link_to subject.user.name, profile_path(subject.user) %> added <%= link_to subject.creation.name, creation_path(subject.creation) %> to their favorites.
+</dd>
