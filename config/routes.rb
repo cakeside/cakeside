@@ -3,6 +3,8 @@ Cake::Application.routes.draw do
   get "about_us" => "home#about_us"
   get "why_cakeside" => "home#why_cakeside"
 
+  get 'dashboard', to: 'dashboard#index'
+
   resources :tutorials do
     get 'page/:page', :action => :index, :on => :collection
   end
