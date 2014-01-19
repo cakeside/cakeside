@@ -72,7 +72,7 @@ describe TutorialsController do
       end
 
       it "redirects to the created tutorial" do
-        response.should redirect_to(tutorials_path)
+        response.should redirect_to(dashboard_path)
       end
     end
 
@@ -147,8 +147,7 @@ describe TutorialsController do
     end
 
     it "redirects to the tutorials list" do
-      response.should redirect_to(tutorials_url)
+      response.should redirect_to(dashboard_path)
     end
   end
-
 end
