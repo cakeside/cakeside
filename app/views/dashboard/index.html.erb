@@ -23,6 +23,20 @@
           <h4 class="media-heading"><%= creation.name %></h4>
           <%= creation.story %>
           Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+          <p>
+          <%= link_to edit_creation_path(creation) do %>
+            <i class="icon-edit"> edit</i>
+          <% end %>
+          <%= link_to new_creation_photo_path(creation) do %>
+            <i class="icon-plus"> images</i>
+          <% end %>
+          <%= link_to creation_favorites_path(:creation_id => creation.id) do %>
+            <i class="icon-heart"> fanclub (<%=  pluralize(creation.favorites.length, 'fan') %>)</i>
+          <% end %>
+          <%= link_to creation_path(creation), confirm: "Are you sure you want to permanently remove this creation?", method: :delete  do %>
+            <i class="icon-white icon-remove"> remove</i>
+          <% end %>
+          </p>
         </div>
       </div>
     <% end %>
