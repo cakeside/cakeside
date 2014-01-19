@@ -16,21 +16,6 @@ ActiveRecord::Schema.define(version: 20140119052825) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "active_admin_comments", force: true do |t|
-    t.integer  "resource_id",   null: false
-    t.string   "resource_type", null: false
-    t.integer  "author_id"
-    t.string   "author_type"
-    t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "namespace"
-  end
-
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
-
   create_table "activities", force: true do |t|
     t.integer  "subject_id",   null: false
     t.string   "subject_type", null: false
@@ -62,10 +47,12 @@ ActiveRecord::Schema.define(version: 20140119052825) do
   end
 
   create_table "comments", force: true do |t|
-    t.integer "user_id"
-    t.integer "creation_id"
-    t.string  "text"
-    t.integer "disqus_id"
+    t.integer  "user_id"
+    t.integer  "creation_id"
+    t.string   "text"
+    t.integer  "disqus_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "comments", ["creation_id"], name: "index_comments_on_creation_id", using: :btree

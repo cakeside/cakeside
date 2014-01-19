@@ -5,6 +5,7 @@ class CreateComments < ActiveRecord::Migration
       t.integer :creation_id
       t.string :text
       t.integer :disqus_id
+      t.timestamps
     end
 
     add_index :comments, :user_id
