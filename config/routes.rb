@@ -4,6 +4,7 @@ Cake::Application.routes.draw do
   get "why_cakeside" => "home#why_cakeside"
 
   get 'dashboard', to: 'dashboard#index'
+  post 'comments', to: 'comments#create'
 
   resources :tutorials do
     get 'page/:page', :action => :index, :on => :collection
