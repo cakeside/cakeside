@@ -2,13 +2,12 @@
 <i class="icon-comment icon-large"></i>
 </dt>
 <dd>
-<p><%= time_ago_in_words(subject.created_at) %> ago.</p>
 <p>
 <%= avatar_for(subject.user, size: 24) %> 
-<%= link_to subject.user.name, profile_path(subject.user) %> said
+<%= link_to subject.user.name, profile_path(subject.user) %> commented on <%= link_to subject.creation.name, creation_path(subject.creation) %>
+<small><%= time_ago_in_words(subject.created_at) %> ago.</small>
 <blockquote>
   <%= subject.text %>
 </blockquote>
-about <%= link_to subject.creation.name, creation_path(subject.creation) %>.
 </p>
 </dd>
