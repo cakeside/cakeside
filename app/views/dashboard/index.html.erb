@@ -39,6 +39,17 @@
         </div>
       </div>
     <% end %>
+    <% @tutorials.each do |tutorial| %>
+      <div class="media">
+        <%= link_to tutorial, class: 'pull-left' do %>
+          <img class="media-object" data-src="<%= tutorial.image_url %>" alt="64x64" style="width: 64px; height: 64px;" src="<%= tutorial.image_url %>">
+        <% end %>
+        <div class="media-body">
+          <h4 class="media-heading"><%= tutorial.heading %></h4>
+          <%= tutorial.description %>
+        </div>
+      </div>
+    <% end %>
   </div>
   <div class="span5">
     <% @activities.each do |activity| %>
