@@ -4,6 +4,7 @@ class Creation < ActiveRecord::Base
   has_and_belongs_to_many :categories, :join_table => 'creations_categories', :autosave => true
   has_many :photos, -> { order :created_at }, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
+  has_many :comments, dependent: :destroy
   acts_as_taggable
   alias_method :author, :user
 
