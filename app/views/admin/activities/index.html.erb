@@ -3,7 +3,7 @@
     <%= render :partial => 'admin/shared/admin_nav' %>
     <dl class="dl-horizontal">
       <% @recent_activities.each do |activity| %>
-        <%= render "dashboard/#{activity.subject.class.to_s.downcase}", subject: activity.subject %>
+        <%= render "activities/#{activity.subject.class.to_s.downcase}", subject: activity.subject %>
       <% end %>
     </dl>
   </div>

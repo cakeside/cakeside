@@ -14,54 +14,13 @@
 </div>
 <div class="row">
   <div class="span7">
-    <% @creations.each do |creation| %>
-      <div class="media">
-        <%= link_to creation, class: 'pull-left' do %>
-          <img class="media-object" data-src="<%= creation.primary_image.thumb_url %>" alt="64x64" style="width: 64px; height: 64px;" src="<%= creation.primary_image.thumb_url %>">
-        <% end %>
-        <div class="media-body">
-          <h4 class="media-heading"><%= creation.name %></h4>
-          <%= creation.story %>
-          <p>
-          <%= link_to edit_creation_path(creation) do %>
-            <i class="icon-edit"> edit</i>
-          <% end %>
-          <%= link_to new_creation_photo_path(creation) do %>
-            <i class="icon-plus"> images</i>
-          <% end %>
-          <%= link_to creation_favorites_path(:creation_id => creation.id) do %>
-            <i class="icon-heart"> fanclub (<%=  pluralize(creation.favorites.length, 'fan') %>)</i>
-          <% end %>
-          <%= link_to creation_path(creation), confirm: "Are you sure you want to permanently remove this creation?", method: :delete  do %>
-            <i class="icon-white icon-remove"> remove</i>
-          <% end %>
-          </p>
-        </div>
-      </div>
-    <% end %>
-    <% @tutorials.each do |tutorial| %>
-      <div class="media">
-        <%= link_to tutorial, class: 'pull-left' do %>
-          <img class="media-object" data-src="<%= tutorial.image_url %>" alt="64x64" style="width: 64px; height: 64px;" src="<%= tutorial.image_url %>">
-        <% end %>
-        <div class="media-body">
-          <h4 class="media-heading"><%= tutorial.heading %></h4>
-          <%= tutorial.description %>
-          <p>
-          <%= link_to edit_tutorial_path(tutorial) do %>
-            <i class="icon-edit"> edit</i>
-          <% end %>
-          <%= link_to tutorial_path(tutorial), confirm: "Are you sure you want to permanently remove this tutorial?", method: :delete  do %>
-            <i class="icon-white icon-remove"> remove</i>
-          <% end %>
-          </p>
-        </div>
-      </div>
+    <% @items.each do |item| %>
+      <%= render item.class.to_s.downcase, item: item %>
     <% end %>
   </div>
   <div class="span5">
     <% @activities.each do |activity| %>
-      <%= render activity.subject.class.to_s.downcase, subject: activity.subject %>
+      <%= render "activities/#{activity.subject.class.to_s.downcase}", subject: activity.subject %>
     <% end %>
   </div>
 </div>

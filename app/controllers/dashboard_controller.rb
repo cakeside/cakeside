@@ -2,8 +2,7 @@ class DashboardController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @creations = current_user.creations
-    @tutorials = current_user.tutorials
+    @items = (current_user.creations + current_user.tutorials).sort_by! { |x| x.created_at }.reverse
     @activities = current_user.recent_activities
   end
 end
