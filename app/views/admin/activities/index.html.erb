@@ -1,0 +1,9 @@
+<div class="row-fluid">
+  <div class="span12">
+    <dl class="dl-horizontal">
+      <% @recent_activities.each do |activity| %>
+        <%= render "dashboard/#{activity.subject.class.to_s.downcase}", subject: activity.subject %>
+      <% end %>
+    </dl>
+  </div>
+</div>

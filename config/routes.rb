@@ -64,5 +64,6 @@ Cake::Application.routes.draw do
     root :to => "users#index"
     resources :users, only: [:index]
     resources :jobs, only: [:index, :show]
+    resources :activities, only: [:index]
   end
 end
