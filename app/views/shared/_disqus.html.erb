@@ -7,7 +7,7 @@ var disqus_identifier = '<%= id %>';
     this.page.remote_auth_s3 = '<%= disqus_auth %>';
     this.page.api_key = '<%= ENV['DISQUS_API_KEY'] %>';
     this.callbacks.onNewComment = [function(comment) { 
-      $.post("/comments", { id: comment.id }, function(result){
+      $.post("/comments", { id: comment.id, url: document.url, comment: comment }, function(result){
         console.log(result);
       });
     }];
