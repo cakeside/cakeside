@@ -17,12 +17,11 @@
     <% @creations.each do |creation| %>
       <div class="media">
         <%= link_to creation, class: 'pull-left' do %>
-          <img class="media-object" data-src="<%= creation.primary_image.image.thumb.url %>" alt="64x64" style="width: 64px; height: 64px;" src="<%= creation.primary_image.image.thumb.url %>">
+          <img class="media-object" data-src="<%= creation.primary_image.thumb_url %>" alt="64x64" style="width: 64px; height: 64px;" src="<%= creation.primary_image.thumb_url %>">
         <% end %>
         <div class="media-body">
           <h4 class="media-heading"><%= creation.name %></h4>
           <%= creation.story %>
-          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
           <p>
           <%= link_to edit_creation_path(creation) do %>
             <i class="icon-edit"> edit</i>
