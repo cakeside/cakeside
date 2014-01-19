@@ -1,11 +1,26 @@
 <% provide(:title, "Dashboard") -%>
 <div class="row">
-  <div class="span12">
-    <h1>Activity Feed</h1>
-    <dl class="dl-horizontal">
-      <% @activities.each do |activity| %>
-        <%= render activity.subject.class.to_s.downcase, subject: activity.subject %>
-      <% end %>
-    </dl>
+  <div class="span10">
+    <h1>Dashboard</h1>
+    <hr />
+  </div>
+  <div class="btn-group span2">
+    <button class="btn btn-large dropdown-toggle" data-toggle="dropdown">Share... <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><%= link_to "Creation", new_creation_path %></li>
+      <li><%= link_to "Tutorial", new_tutorial_path %></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="span7">
+    <% @items.each do |item| %>
+      <%= render item.class.to_s.downcase, item: item %>
+    <% end %>
+  </div>
+  <div class="span5">
+    <% @activities.each do |activity| %>
+      <%= render "activities/#{activity.subject.class.to_s.downcase}", subject: activity.subject %>
+    <% end %>
   </div>
 </div>

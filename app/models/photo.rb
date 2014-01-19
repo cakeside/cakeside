@@ -15,6 +15,10 @@ class Photo < ActiveRecord::Base
     }
   end
 
+  def thumb_url
+    image.thumb.url
+  end
+
   def watermark
     creation.watermark
   end
