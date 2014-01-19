@@ -72,9 +72,9 @@
                   <% end %>
                 </td>
                 <td><%= link_to artist.name, profile_path(artist) %></td>
-                <td><%= link_to artist.website if artist.website %></td>
+                <td><%= link_to artist.website, artist.website if artist.website %></td>
                 <td><%= link_to artist.twitter, "https://twitter.com/#{artist.twitter}" if artist.twitter.present? %></td>
-                <td><%= link_to artist.facebook if artist.facebook %></td>
+                <td><%= link_to artist.facebook, artist.facebook if artist.facebook %></td>
                 <td><%= artist.city %></td>
               </tr>
             <% end %>
