@@ -47,6 +47,14 @@
         <div class="media-body">
           <h4 class="media-heading"><%= tutorial.heading %></h4>
           <%= tutorial.description %>
+          <p>
+          <%= link_to edit_tutorial_path(tutorial) do %>
+            <i class="icon-edit"> edit</i>
+          <% end %>
+          <%= link_to tutorial_path(tutorial), confirm: "Are you sure you want to permanently remove this tutorial?", method: :delete  do %>
+            <i class="icon-white icon-remove"> remove</i>
+          <% end %>
+          </p>
         </div>
       </div>
     <% end %>
