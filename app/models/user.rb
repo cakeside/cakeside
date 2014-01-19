@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
   has_many :creations, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
   has_many :tutorials, :dependent => :destroy
+  has_many :activities
+  has_many :comments
   has_and_belongs_to_many :interests, :join_table => 'users_interests', :autosave => true
   has_one :avatar
   acts_as_tagger
@@ -53,6 +55,14 @@ class User < ActiveRecord::Base
 
   def send_welcome_email
     UserMailer.delay.welcome_email(self)
+  end
+
+  def recent_activities(limit = 20)
+    activities.includes(:subject).order(created_at: :desc).limit(limit)
+  end
+
+  def comment_on(creation, text, disqus_id)
+    creation.comments.create(text: text, user: self, disqus_id: disqus_id)
   end
 
   class << self

@@ -3,6 +3,9 @@ Cake::Application.routes.draw do
   get "about_us" => "home#about_us"
   get "why_cakeside" => "home#why_cakeside"
 
+  get 'dashboard', to: 'dashboard#index'
+  post 'comments', to: 'comments#create'
+
   resources :tutorials do
     get 'page/:page', :action => :index, :on => :collection
   end
@@ -61,5 +64,6 @@ Cake::Application.routes.draw do
     root :to => "users#index"
     resources :users, only: [:index]
     resources :jobs, only: [:index, :show]
+    resources :activities, only: [:index]
   end
 end

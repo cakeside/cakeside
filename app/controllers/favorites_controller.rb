@@ -25,6 +25,5 @@ class FavoritesController < ApplicationController
 
   def find_creation
     @creation = Creation.find(params[:creation_id])
-    raise ActiveRecord::RecordNotFound unless @creation
   end
 end

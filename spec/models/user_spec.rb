@@ -21,7 +21,7 @@ describe User do
 
   describe "when a website url is supplied" do
     describe "when the url is valid" do
-      let(:user) {User.new}
+      let(:user) { build(:user) }
 
       before(:each) { user.update_attribute(:website, 'http://example.com') }
 

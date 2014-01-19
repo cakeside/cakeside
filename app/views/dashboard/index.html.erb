@@ -1,0 +1,11 @@
+<% provide(:title, "Dashboard") -%>
+<div class="row">
+  <div class="span12">
+    <h1>Activity Feed</h1>
+    <dl class="dl-horizontal">
+      <% @activities.each do |activity| %>
+        <%= render activity.subject.class.to_s.downcase, subject: activity.subject %>
+      <% end %>
+    </dl>
+  </div>
+</div>

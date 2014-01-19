@@ -24,4 +24,29 @@ describe Creation do
       results.last.should == oldest
     end
   end
+
+  describe "#liked_by" do
+    let(:user) { create(:user) }
+    let(:creation) { create(:creation) }
+
+    context "when the user already likes the creation" do
+      let!(:favorite) { creation.favorites.create(:user => user) }
+      let(:result) { creation.liked_by(user) }
+
+      it "returns the existing favorite" do
+        result.should == favorite
+      end
+    end
+
+    context "when the user does not like the creation yet" do
+      let(:result) { creation.liked_by(user) }
+
+      it "creates a new favorite" do
+        result.should_not be_nil
+        result.user.should == user
+        result.creation.should == creation
+        creation.reload.favorites.count.should == 1
+      end
+    end
+  end
 end

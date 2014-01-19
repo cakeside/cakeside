@@ -4,7 +4,9 @@ class Creation < ActiveRecord::Base
   has_and_belongs_to_many :categories, :join_table => 'creations_categories', :autosave => true
   has_many :photos, -> { order :created_at }, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
+  has_many :comments, dependent: :destroy
   acts_as_taggable
+  alias_method :author, :user
 
   default_scope -> { order(:created_at => :desc) }
 
@@ -29,15 +31,11 @@ class Creation < ActiveRecord::Base
   end
 
   def is_liked_by(user)
-    favorites.any? { |favorite| favorite.user == user }
+    favorites.where(user: user).any?
   end
 
   def liked_by(user)
-    if is_liked_by(user)
-      favorites.find { |favorite| favorite.user == user }
-    else
-      favorites.create({:user_id => user.id})
-    end
+    favorites.find_or_create_by(user: user)
   end
 
   class << self

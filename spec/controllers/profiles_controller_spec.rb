@@ -4,9 +4,9 @@ describe ProfilesController do
   include Devise::TestHelpers
 
   let(:user) { create(:user) }
+  let!(:creation) { create(:creation, user: user) }
 
   before (:each) do
-    user.creations << create(:creation)
     request.env['warden'] = double(Warden, :authenticate => user, :authenticate! => user)
   end
 
