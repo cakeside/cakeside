@@ -42,9 +42,6 @@ class DeviseCreateAdminUsers < ActiveRecord::Migration
       t.timestamps
     end
 
-    # Create a default user
-    AdminUser.create!(:email => 'admin@cakeside.com', :password => 'cakeside11', :password_confirmation => 'cakeside11')
-
     add_index :admin_users, :email,                :unique => true
     add_index :admin_users, :reset_password_token, :unique => true
     # add_index :admin_users, :confirmation_token,   :unique => true
