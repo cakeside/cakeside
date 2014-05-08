@@ -30,6 +30,7 @@ gem 'asset_sync', '~> 1.0.0'
 gem 'geoip'
 gem 'fog'
 gem 'unf'
+gem 'exception_notification'
 
 group :development do
   gem 'capistrano'
