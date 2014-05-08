@@ -24,13 +24,13 @@ gem 'delayed_job_active_record', "~> 4.0.0"
 gem 'daemons', '~> 1.1.9'
 gem 'jquery-fileupload-rails', '~> 0.4.1'
 gem 'dotenv-rails'
-gem 'airbrake'
 gem 'geocoder', '~> 1.1.9'
 gem 'pg'
 gem 'asset_sync', '~> 1.0.0'
 gem 'geoip'
 gem 'fog'
 gem 'unf'
+gem 'exception_notification'
 
 group :development do
   gem 'capistrano'

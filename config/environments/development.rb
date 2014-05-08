@@ -45,6 +45,5 @@ Cake::Application.configure do
     Bullet.console = true
     #Bullet.growl = true
     Bullet.rails_logger = true
-    Bullet.airbrake = true
   end
 end

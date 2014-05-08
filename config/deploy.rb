@@ -39,4 +39,3 @@ set :ssh_options, {:forward_agent => true}
 after "deploy", "deploy:cleanup" # remove old releases
 
 require './config/boot'
-require 'airbrake/capistrano'
