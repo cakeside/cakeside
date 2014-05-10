@@ -1,4 +1,5 @@
 require 'bundler/capistrano'
+require 'dotenv/deployment/capistrano'
 
 load "config/recipes/environments"
 load "config/recipes/base"
