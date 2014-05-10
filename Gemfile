@@ -35,7 +35,6 @@ gem 'exception_notification'
 group :development do
   gem 'capistrano'
   gem 'capistrano-ext'
-  gem 'rvm-capistrano'
   gem 'bullet'
   gem 'better_errors'
   gem 'lol_dba'
@@ -61,4 +60,5 @@ group :production, :staging do
   gem 'newrelic_rpm'
   gem 'dalli'
   gem 'unicorn'
+  gem 'dotenv-deployment'
 end
