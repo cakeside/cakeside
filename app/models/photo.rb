@@ -3,7 +3,7 @@ class Photo < ActiveRecord::Base
   validates :image,  :presence => true
   mount_uploader :image, PhotoUploader
   process_in_background :image if Rails.env.test?
-  store_in_background :image unless Rails.env.test?
+  store_in_background :image, UploadImageWorker unless Rails.env.test?
 
   def to_jq_upload
     {
