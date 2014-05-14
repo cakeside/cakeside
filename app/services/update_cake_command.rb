@@ -3,18 +3,18 @@ class UpdateCakeCommand
     @context = context
   end
 
-  def run(id, category_id, creation_tags, creation_params)
+  def run(id, category_id, tags, creation_params)
     current_user = @context.current_user
 
-    creation = current_user.creations.find(id)
-    creation.categories.clear
-    creation.categories << Category.find(category_id) if category_id
-    current_user.tag(creation, with: creation_tags, on: :tags)
+    cake = current_user.creations.find(id)
+    cake.categories.clear
+    cake.categories << Category.find(category_id) if category_id
+    current_user.tag(cake, with: tags, on: :tags)
 
-    if creation.update_attributes(creation_params)
-      @context.update_cake_succeeded(creation)
+    if cake.update_attributes(creation_params)
+      @context.update_cake_succeeded(cake)
     else
-      @context.update_cake_failed(creation)
+      @context.update_cake_failed(cake)
     end
   end
 end
