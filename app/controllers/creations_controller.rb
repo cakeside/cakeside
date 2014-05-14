@@ -7,7 +7,7 @@ class CreationsController < ApplicationController
   end
 
   def show
-    @creation = FindCreationQuery.new.find(params[:id])
+    @creation = FindCreationQuery.new.fetch(params[:id])
     @primary_photo = @creation.primary_image
     expires_in(1.minute) unless user_signed_in?
   end
@@ -22,16 +22,18 @@ class CreationsController < ApplicationController
   end
 
   def create
-    @creation = current_user.creations.create(creation_params)
-    @creation.categories << Category.find(params[:category_id]) if params[:category_id]
-    current_user.tag(@creation, :with => params[:creation_tags], :on => :tags)
+    CreateCakeCommand.new(self).run(creation_params, params[:category_id], params[:creation_tags])
+  end
 
-    if @creation.save
-      redirect_to new_creation_photo_url(@creation)
-    else
-      flash[:error] = @creation.errors.full_messages
-      render :new
-    end
+  def create_cake_succeeded(cake)
+    @creation = cake
+    redirect_to new_creation_photo_url(@creation)
+  end
+
+  def create_cake_failed(cake)
+    @creation = cake
+    flash[:error] = @creation.errors.full_messages
+    render :new
   end
 
   def update
