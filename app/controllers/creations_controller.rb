@@ -7,7 +7,7 @@ class CreationsController < ApplicationController
   end
 
   def show
-    @creation = Creation.find(params[:id])
+    @creation = FindCreationQuery.new.find(params[:id])
     @primary_photo = @creation.primary_image
     expires_in(1.minute) unless user_signed_in?
   end
