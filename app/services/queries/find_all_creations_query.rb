@@ -4,6 +4,6 @@ class FindAllCreationsQuery
   end
 
   def fetch(params)
-    @repository.visible_creations.page(params[:page]).per(9)
+    @repository.visible_creations.page(params[:page]).per(12)
   end
 end

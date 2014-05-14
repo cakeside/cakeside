@@ -1,29 +1,20 @@
 class FavoritesController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :find_creation
 
-  # GET /favorites
   def index
+    @creation = FindCreationQuery.new.fetch(params[:creation_id])
     @favorites = @creation.favorites
   end
 
-  # POST /favorites
   def create
-    if current_user.owns @creation
-      redirect_to @creation, :notice => "You can't favorite your own stuff"
-      return
-    end
-    @favorite = current_user.add_favorite(@creation)
-    if @favorite.save
-       redirect_to @creation, :notice => 'Welcome to the fanclub!'
-    else
-       redirect_to @creation
-    end
+    AddToFavorites.new(self).run(params[:creation_id])
   end
 
-  private
+  def favorite_created(cake, message)
+    redirect_to cake, notice: message
+  end
 
-  def find_creation
-    @creation = Creation.find(params[:creation_id])
+  def create_favorite_failed(cake)
+    redirect_to cake
   end
 end
