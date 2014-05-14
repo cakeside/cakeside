@@ -51,7 +51,7 @@ class CreationsController < ApplicationController
   end
 
   def destroy
-    current_user.creations.find(params[:id]).destroy
+    RemoveCakeCommand.new(self).run(params[:id])
     redirect_to(creations_url)
   end
 
