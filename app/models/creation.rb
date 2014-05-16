@@ -38,6 +38,11 @@ class Creation < ActiveRecord::Base
     favorites.find_or_create_by(user: user)
   end
 
+  def publish_message_with(publisher)
+    message = "#{name} By #{user.name} on https://www.cakeside.com/creations/#{to_param}!"
+    publisher.update(message)
+  end
+
   class << self
     def search(query)
       sql_search = "%#{query}%"
