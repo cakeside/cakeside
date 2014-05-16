@@ -1,4 +1,4 @@
-set_default :ruby_version, "2.1.1"
+set_default :ruby_version, "2.1.2"
 
 namespace :rbenv do
   desc "install rbenv"
