@@ -32,6 +32,7 @@ gem 'fog'
 gem 'unf'
 gem 'exception_notification'
 gem 'gibbon'
+gem 'twitter'
 
 group :development do
   gem 'capistrano'
