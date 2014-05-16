@@ -31,6 +31,7 @@ gem 'geoip'
 gem 'fog'
 gem 'unf'
 gem 'exception_notification'
+gem 'gibbon'
 
 group :development do
   gem 'capistrano'
