@@ -65,5 +65,6 @@ Cake::Application.routes.draw do
     resources :users, only: [:index]
     resources :jobs, only: [:index, :show]
     resources :activities, only: [:index]
+    resources :subscriptions, only: [:index]
   end
 end
