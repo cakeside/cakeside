@@ -1,17 +1,35 @@
 <div class="row-fluid">
   <div class="span12">
-    <h1>job <%= link_to @job.id, admin_job_path(@job) %></h1>
-    <p><%= link_to "back", admin_jobs_path %></p>
-    <table class="table">
-      <tr><td>queue: <span class="pull-right"><%= @job.queue %></span></td></tr>
-      <tr><td>run at: <span class="pull-right"><%= @job.run_at %></span></td></tr>
-      <tr><td>locked_at: <span class="pull-right"><%= @job.locked_at %></span></td></tr>
-      <tr><td>created_at: <span class="pull-right"><%= @job.created_at %></span></td></tr>
-      <tr><td>updated_at: <span class="pull-right"><%= @job.updated_at %></span></td></tr>
+    <h1><%= @job.handler %></h1>
+    <p><%= link_to "<< Back", admin_jobs_path %></p>
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>attempts</th>
+          <th>status</th>
+          <th>locked by</th>
+          <th>queue</th>
+          <th>run at</th>
+          <th>locked at</th>
+          <th>created at</th>
+          <th>updated at</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= link_to @job.id, admin_job_path(@job) %></td>
+          <td><%= @job.attempts %></td>
+          <td><%= @job.last_error.present? ? link_to('FAILED', admin_job_path(@job)) : 'Succeeded' %></td>
+          <td><%= @job.locked_by %> </td>
+          <td><%= @job.queue %></td>
+          <td><%= @job.run_at %></td>
+          <td><%= @job.locked_at %></td>
+          <td><%= @job.created_at %></td>
+          <td><%= @job.updated_at %></td>
+        </tr>
+      </tbody>
     </table>
-    <p><%= @job.attempts %></p>
-    <p><%= @job.handler %></p>
-    <p><%= @job.last_error%></p>
-    <p><%= @job.locked_by %></p>
+    <%= debug @job.last_error %>
   </div>
 </div>
