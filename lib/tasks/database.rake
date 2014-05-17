@@ -8,10 +8,10 @@ namespace :db do
   end
 
   task :backup do
-    sh "cap #{ENV['RAILS_ENV']} postgresql:backup"
+    sh "bundle exec cap #{ENV['RAILS_ENV']} postgresql:backup"
   end
 
   task :restore_to_staging => :backup do
-    sh "cap staging postgresql:restore"
+    sh "bundle exec cap staging postgresql:restore"
   end
 end
