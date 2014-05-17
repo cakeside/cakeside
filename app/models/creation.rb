@@ -39,8 +39,7 @@ class Creation < ActiveRecord::Base
   end
 
   def publish_message_with(publisher)
-    message = "#{name} By #{user.name} on https://www.cakeside.com/creations/#{to_param}!"
-    publisher.update(message)
+    publisher.update("#{name} By #{user.name} on https://www.cakeside.com/creations/#{to_param}!") if is_safe_for_children?
   end
 
   class << self
