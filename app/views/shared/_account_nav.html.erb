@@ -7,7 +7,7 @@
       <li class="<%= selected == :password ? "active" : "" %>"><%= link_to "Password", pwd_path %></li>
       <li class="<%= selected == :picture ? "active" : "" %>"><%= link_to "Picture", edit_avatar_path(current_user) %></li>
       <li class="pull-right">
-        <%= link_to "Logout", destroy_user_session_path, class: "btn btn-inverse" %>
+        <%= link_to t('.logout'), destroy_user_session_path, class: "btn btn-inverse" %>
       </li>
     </ul>
 
