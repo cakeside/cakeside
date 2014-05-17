@@ -2,6 +2,7 @@ class CreateCakeCommand
   def initialize(context, current_user = context.current_user, publisher = TwitterPublisher.new)
     @context = context
     @current_user = current_user
+    @publisher = publisher
   end
 
   def run(creation_attributes, category_id, tags)
@@ -10,7 +11,7 @@ class CreateCakeCommand
     @current_user.tag(cake, with: tags, on: :tags)
 
     if cake.save
-      publisher.publish(cake)
+      @publisher.publish(cake)
       @context.create_cake_succeeded(cake)
     else
       @context.create_cake_failed(cake)
