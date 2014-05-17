@@ -7,7 +7,7 @@ class TwitterPublisher
     target.publish_message_with(create_client) unless Rails.env.test?
   end
 
-  handle_asynchronously :publish
+  handle_asynchronously :publish, :run_at => Proc.new { 1.hour.from_now }
 
   private
 
