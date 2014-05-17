@@ -1,13 +1,11 @@
 class TwitterPublisher
-  def initialize(configuration = ENV)
+  def initialize(configuration)
     @configuration = configuration
   end
 
-  def publish(target)
-    target.publish_message_with(create_client) unless Rails.env.test?
+  def tweet(message)
+    create_client.update(message) unless Rails.env.test?
   end
-
-  handle_asynchronously :publish, :run_at => Proc.new { 1.hour.from_now }
 
   private
 

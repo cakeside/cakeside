@@ -33,6 +33,7 @@ gem 'unf'
 gem 'exception_notification'
 gem 'gibbon'
 gem 'twitter'
+gem 'spank'
 
 group :development do
   gem 'capistrano'
