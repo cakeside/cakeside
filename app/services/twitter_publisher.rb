@@ -7,6 +7,8 @@ class TwitterPublisher
     target.publish_message_with(create_client) unless Rails.env.test?
   end
 
+  handle_asynchronously :publish
+
   private
 
   def create_client
