@@ -38,6 +38,12 @@ class Creation < ActiveRecord::Base
     favorites.find_or_create_by(user: user)
   end
 
+  def publish_message_with(publisher)
+    if is_safe_for_children? && published?
+      publisher.update("#{name} By #{user.name} on https://www.cakeside.com/creations/#{to_param}!") 
+    end
+  end
+
   class << self
     def search(query)
       sql_search = "%#{query}%"
