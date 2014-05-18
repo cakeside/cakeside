@@ -1,26 +1,36 @@
 <div class="row-fluid">
   <div class="span12">
     <%= render :partial => 'admin/shared/admin_nav' %>
-    <h1>Jobs</h1>
+    <h1>Jobs <small><%= Time.now.utc %></small></h1>
     <table class="table table-condensed">
-      <% @jobs.each do |job| %>
+      <thead>
         <tr>
-          <td><%= link_to job.id, admin_job_path(job) %></td>
-          <td><%= job.attempts %></td>
-          <td>
-            <p><%= job.handler %></p>
-            <p><%= job.last_error[0...100] %>...</p>
-          </td>
-          <td>
-            <p><%= job.locked_by %></p>
-            <p>queue: <span class="pull-right"><%= job.queue %></span></p>
-            <p>run at: <span class="pull-right"><%= job.run_at %></span></p>
-            <p>locked_at: <span class="pull-right"><%= job.locked_at %></span></p>
-            <p>created_at: <span class="pull-right"><%= job.created_at %></span></p>
-            <p>updated_at: <span class="pull-right"><%= job.updated_at %></span></p>
-          </td>
+          <th>id</th>
+          <th>attempts</th>
+          <th>status</th>
+          <th>locked by</th>
+          <th>queue</th>
+          <th>run at</th>
+          <th>locked at</th>
+          <th>created at</th>
+          <th>updated at</th>
         </tr>
-      <% end %>
+      </thead>
+      <tbody>
+        <% @jobs.each do |job| %>
+          <tr>
+            <td><%= link_to job.id, admin_job_path(job) %></td>
+            <td><%= job.attempts %></td>
+            <td><%= job.last_error.present? ? link_to('FAILED', admin_job_path(job)) : 'Succeeded' %></td>
+            <td><%= job.locked_by %> </td>
+            <td><%= job.queue %></td>
+            <td><%= job.run_at %></td>
+            <td><%= job.locked_at %></td>
+            <td><%= job.created_at %></td>
+            <td><%= job.updated_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 </div>

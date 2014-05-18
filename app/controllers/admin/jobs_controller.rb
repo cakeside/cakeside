@@ -6,7 +6,7 @@ module Admin
     end
 
     def index
-      @jobs = @repository.order(:created_at => :desc)
+      @jobs = @repository.order(created_at: :desc)
     end
 
     def show

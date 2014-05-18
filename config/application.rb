@@ -18,11 +18,10 @@ module Cake
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += %W(#{config.root}/app/services)
-    config.autoload_paths += %W(#{config.root}/app/services/commands)
-    config.autoload_paths += %W(#{config.root}/app/services/dto)
-    config.autoload_paths += %W(#{config.root}/app/services/mappers)
-    config.autoload_paths += %W(#{config.root}/app/services/queries)
+    config.autoload_paths += %W(#{config.root}/app/services/application)
+    config.autoload_paths += %W(#{config.root}/app/services/application/handlers)
+    config.autoload_paths += %W(#{config.root}/app/services/domain)
+    config.autoload_paths += %W(#{config.root}/app/services/infrastructure)
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.

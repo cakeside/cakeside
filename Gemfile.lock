@@ -262,6 +262,7 @@ GEM
       multi_json
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
+    spank (0.0.1393558686)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -359,6 +360,7 @@ DEPENDENCIES
   sdoc
   selenium-webdriver
   simplecov
+  spank
   sqlite3
   teaspoon
   twitter
