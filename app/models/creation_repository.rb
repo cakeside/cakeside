@@ -1,4 +1,6 @@
 class CreationRepository
+  delegate :find, to: :connection
+
   def initialize(connection = Creation)
     @connection = connection
   end
@@ -11,4 +13,8 @@ class CreationRepository
   def visible_creations
     @connection.distinct.includes(:user).joins(:photos).where(is_restricted: false, 'photos.image_processing' => nil)
   end
+
+  private
+
+  attr_reader :connection
 end
