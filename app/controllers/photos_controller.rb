@@ -11,6 +11,11 @@ class PhotosController < ApplicationController
     end
   end
 
+  def show
+    @creation = Creation.find(params[:creation_id])
+    @photo = @creation.photos.find(params[:id])
+  end
+
   def new
     @photo = Photo.new
   end

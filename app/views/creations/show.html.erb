@@ -31,7 +31,9 @@
 
 <div class="row">
   <div class="span6">
-    <img class="thumbnail" src="<%= @creation.primary_image.image.large.url %>" alt="<%= @creation.name %>" />
+    <%= link_to creation_photo_path(@creation, @creation.primary_image) do %>
+      <img class="thumbnail" src="<%= @creation.primary_image.image.large.url %>" alt="<%= @creation.name %>" />
+    <% end %>
   </div>
   <div class="span6">
     <h1><%= link_to @creation.name, creation_path(@creation) %></h1>
@@ -79,7 +81,7 @@
       <ul class="thumbnails">
       <% @creation.photos.each do |photo| %>
         <li class="span2">
-          <%= link_to creation_photos_path(@creation) do %>
+          <%= link_to creation_photo_path(@creation, photo) do %>
             <%= image_tag(photo.image.thumb.url, :class => "thumbnail") %>
           <% end %>
         </li>
