@@ -1,7 +1,7 @@
 module Admin
   class PhotosController < AdminController
     def index
-      @photos = Photo.all
+      @photos = Photo.order(id: :desc)
     end
 
     def show
