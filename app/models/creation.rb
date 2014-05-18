@@ -37,15 +37,4 @@ class Creation < ActiveRecord::Base
   def liked_by(user)
     favorites.find_or_create_by(user: user)
   end
-
-  class << self
-    def search(query)
-      sql_search = "%#{query}%"
-      Creation.where("upper(name) like upper(?) OR upper(story) like upper(?)", sql_search, sql_search)
-    end
-
-    def visible_creations
-      Creation.distinct.includes(:user).joins(:photos).where(is_restricted: false, 'photos.image_processing' => nil)
-    end
-  end
 end

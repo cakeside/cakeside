@@ -4,8 +4,13 @@ module Api
       before_filter :restrict_access
       respond_to :json
 
+      def initialize(repository = CreationRepository.new)
+        @repository = repository
+        super()
+      end
+
       def index
-        @creations = Creation.visible_creations
+        @creations = @repository.visible_creations
       end
 
       private
@@ -15,7 +20,6 @@ module Api
           User.exists?(:authentication_token => token)
         end
       end
-
     end
   end
 end

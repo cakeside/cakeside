@@ -20,4 +20,3 @@ class ApplicationController < ActionController::Base
     @top_members = User.order(:creations_count => :desc).limit(3)
   end
 end
-

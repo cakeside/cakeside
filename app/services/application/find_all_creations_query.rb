@@ -1,5 +1,5 @@
 class FindAllCreationsQuery
-  def initialize(repository = Creation)
+  def initialize(repository = CreationRepository.new)
     @repository = repository
   end
 
