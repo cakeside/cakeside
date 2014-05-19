@@ -20,16 +20,7 @@
           <tr>
             <td><%= user.sign_in_count %></td>
             <td><%= user.creations_count %></td>
-            <td>
-              <p><%= user.name %></p>
-              <!--
-              <p><%= user.full_address %></p>
-              <p><%= user.city %></p>
-              <p><%= link_to(user.website, user.website) if user.website.present? %></p>
-              <p><%= user.twitter if user.twitter.present? %></p>
-              <p><%= link_to(user.facebook, user.facebook) if user.facebook.present? %></p>
-              -->
-            </td>
+            <td><%= link_to user.name, admin_user_path(user) %></td>
             <td><%= mail_to user.email %></td>
             <td><%= user.latitude %>, <%= user.longitude %></td>
             <td><%= user.last_sign_in_at %></td>
