@@ -24,10 +24,10 @@
             <td><%= job.last_error.present? ? link_to('FAILED', admin_job_path(job)) : 'Succeeded' %></td>
             <td><%= job.locked_by %> </td>
             <td><%= job.queue %></td>
-            <td><%= job.run_at %></td>
-            <td><%= job.locked_at %></td>
-            <td><%= job.created_at %></td>
-            <td><%= job.updated_at %></td>
+            <td><%= time_ago_in_words(job.run_at) if job.run_at %></td>
+            <td><%= time_ago_in_words(job.locked_at) if job.locked_at %></td>
+            <td><%= time_ago_in_words(job.created_at) %></td>
+            <td><%= time_ago_in_words(job.updated_at) %></td>
           </tr>
         <% end %>
       </tbody>
