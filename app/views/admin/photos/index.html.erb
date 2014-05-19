@@ -20,7 +20,7 @@
             <td><%= link_to photo.creation.name, creation_path(photo.creation) %></td>
             <td><%= photo.created_at %></td>
             <td><%= photo.updated_at %></td>
-            <td><%= photo.image.cache_dir %>/<%= photo.image_tmp %></td>
+            <td><%= photo.image.root %>/<%= photo.image.cache_dir %>/<%= photo.image_tmp %></td>
             <td><%= photo.image_processing %></td>
           </tr>
         <% end %>
