@@ -30,4 +30,5 @@ en:
   avatar_uploaded: 'Your avatar has been updated.'
   shared:
     account_nav:
+      admin: 'Admin'
       logout: 'Log Out'
