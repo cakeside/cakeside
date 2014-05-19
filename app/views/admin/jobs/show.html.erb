@@ -7,6 +7,7 @@
         <tr>
           <th>id</th>
           <th>attempts</th>
+          <th>priority</th>
           <th>status</th>
           <th>locked by</th>
           <th>queue</th>
@@ -20,7 +21,8 @@
         <tr>
           <td><%= link_to @job.id, admin_job_path(@job) %></td>
           <td><%= @job.attempts %></td>
-          <td><%= @job.last_error.present? ? link_to('FAILED', admin_job_path(@job)) : 'Succeeded' %></td>
+          <td><%= @job.priority %></td>
+          <td><%= @job.last_error.present? ? link_to('FAILED', admin_job_path(@job)) : 'Not Run' %></td>
           <td><%= @job.locked_by %> </td>
           <td><%= @job.queue %></td>
           <td><%= @job.run_at %></td>
@@ -30,6 +32,8 @@
         </tr>
       </tbody>
     </table>
+
+    <h2><%= @job.failed_at %></h2>
     <%= debug @job.last_error %>
   </div>
 </div>

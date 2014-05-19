@@ -1,0 +1,31 @@
+<div class="row-fluid">
+  <div class="span12">
+    <h1>Photo <small><%= @photo.id %></small></h1>
+    <p><%= link_to "<< Back", admin_photos_path %></p>
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>cake</th>
+          <th>created at</th>
+          <th>updated at</th>
+          <th>tmp</th>
+          <th>processing</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= link_to @photo.id, admin_photo_path(@photo.id) %></td>
+        <td><%= link_to @photo.creation.name, creation_path(@photo.creation) %></td>
+        <td><%= @photo.created_at %></td>
+        <td><%= @photo.updated_at %></td>
+        <td><%= @photo.image_tmp %></td>
+        <td><%= @photo.image_processing %></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h2><%= @photo.image.root %><%= @photo.image.url %></h2>
+    <%= image_tag @photo.image.url %>
+  </div>
+</div>

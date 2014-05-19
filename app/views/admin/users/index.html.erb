@@ -1,56 +1,31 @@
 <div class="row-fluid">
   <div class="span12">
     <%= render :partial => 'admin/shared/admin_nav' %>
-    <p>Total Users: <%= @users.count %></p>
-    <div class="span3">
-      <h2>New Users</h2>
-      <ul>
-        <% @recent_users.each do |user| %>
-          <li><%= user.name %> signed up on <%= user.created_at.to_s :foomat %></li>
-        <% end %>
-      </ul>
-    </div>
-    <div class="span3"> 
-      <h2>Active Users</h2>
-      <ul>
-        <% @active_users.each do |user| %>
-          <li><%= user.name %> last updated on <%= user.updated_at.to_s :foomat %></li>
-        <% end %>
-      </ul>
-    </div>
+    <h1>Users <small>(<%= @users.count %>)</small></h1>
     <table class="table table-striped table-condensed">
       <thead>
         <tr>
-          <td></td>
+          <td>signins</td>
+          <td>cakes</td>
           <td>name</td>
+          <td>email</td>
           <td>location</td>
-          <td>account info</td>
+          <td>last sign in</td>
+          <td>current sign in</td>
+          <td>created at</td>
         </tr>
       </thead>
       <tbody>
         <%- @users.each do |user| %>
           <tr>
-            <td><%= avatar_for(user) %></td>
-            <td>
-              <p>(<%= user.creations_count %>) <%= user.name %></p>
-              <p><%= mail_to user.email %></p>
-              <p><%= user.full_address %></p>
-              <p><%= user.city %></p>
-              <p>website: <%= link_to user.website, user.website %></p>
-              <p>twitter: <%= user.twitter %></p>
-              <p>facebook: <%= link_to user.facebook, user.facebook %></p>
-            </td>
-            <td>
-              <p>latitude: <%= user.latitude %></p>
-              <p>longitude: <%= user.longitude %></p>
-            </td>
-            <td>
-              <p>created at: <%= user.created_at %></p>
-              <p>auth token: <%= user.authentication_token %></p>
-              <p>sign in count: <%= user.sign_in_count %></p>
-              <p>current sign in: <%= user.current_sign_in_at %></p>
-              <p>last sign in: <%= user.last_sign_in_at %></p>
-            </td>
+            <td><%= user.sign_in_count %></td>
+            <td><%= user.creations_count %></td>
+            <td><%= link_to user.name, admin_user_path(user) %></td>
+            <td><%= mail_to user.email %></td>
+            <td><%= user.latitude %>, <%= user.longitude %></td>
+            <td><%= time_ago_in_words(user.last_sign_in_at) %></td>
+            <td><%= time_ago_in_words(user.current_sign_in_at) %></td>
+            <td><%= time_ago_in_words(user.created_at) %></td>
           </tr>
         <% end %>
       </tbody>

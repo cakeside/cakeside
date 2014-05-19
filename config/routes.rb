@@ -15,7 +15,7 @@ Cake::Application.routes.draw do
 
   # /creations
   resources :creations do
-    resources :photos, :only => [:index, :new, :create, :destroy]
+    resources :photos, :only => [:index, :show, :new, :create, :destroy]
     resources :favorites, :only => [:index, :create]
     get 'page/:page', :action => :index, :on => :collection
     get 'mine', :action => :mine, :on => :collection
@@ -62,9 +62,10 @@ Cake::Application.routes.draw do
 
   namespace :admin do
     root :to => "users#index"
-    resources :users, only: [:index]
+    resources :users, only: [:index, :show]
     resources :jobs, only: [:index, :show]
     resources :activities, only: [:index]
     resources :subscriptions, only: [:index]
+    resources :photos, only: [:index, :show]
   end
 end

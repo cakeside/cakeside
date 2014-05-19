@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="span12">
+    <h1><%= link_to @creation.name, creation_path(@creation) %></h1>
+    <%= link_to creation_photo_path(@creation, @photo) do %>
+      <%= image_tag(@photo.image.url, :class => "thumbnail") %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <ul class="thumbnails">
+      <% @creation.photos.each do |photo| %>
+        <li class="span2">
+          <%= link_to creation_photo_path(@creation, photo) do %>
+            <%= image_tag(photo.image.thumb.url, class: "thumbnail") %>
+          <% end %>
+        </li>
+    <% end %>
+    </ul>
+  </div>
+</div>
