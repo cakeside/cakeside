@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index]
-  before_filter :find_creation, :except => [:index]
+  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :find_creation, :except => [:index, :show]
 
   def index
     @creation = Creation.find(params[:creation_id])
