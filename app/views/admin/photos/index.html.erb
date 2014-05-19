@@ -6,22 +6,20 @@
       <thead>
         <tr>
           <th>id</th>
-          <th>cake</th>
+          <th>processing</th>
+          <th>tmp</th>
           <th>created at</th>
           <th>updated at</th>
-          <th>tmp</th>
-          <th>processing</th>
         </tr>
       </thead>
       <tbody>
         <% @photos.each do |photo| %>
           <tr>
             <td><%= link_to photo.id, admin_photo_path(photo.id) %></td>
-            <td><%= link_to photo.creation.name, creation_path(photo.creation) %></td>
+            <td><%= photo.image_processing %></td>
+            <td><%= photo.image.root %>/<%= photo.image.cache_dir %>/<%= photo.image_tmp %></td>
             <td><%= photo.created_at %></td>
             <td><%= photo.updated_at %></td>
-            <td><%= photo.image.root %>/<%= photo.image.cache_dir %>/<%= photo.image_tmp %></td>
-            <td><%= photo.image_processing %></td>
           </tr>
         <% end %>
       </tbody>
