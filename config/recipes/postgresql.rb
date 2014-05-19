@@ -39,7 +39,8 @@ namespace :postgresql do
     backup_path = "#{shared_path}/backups"
     run "mkdir -p #{shared_path}/backups"
 
-    run "PGPASSWORD='#{postgresql_password}' pg_dump -Fc --no-acl --no-owner -h #{postgresql_host} -U #{postgresql_user} #{postgresql_database} > #{backup_path}/#{filename}"
+    #run "PGPASSWORD='#{postgresql_password}' pg_dump -Fc --no-acl --no-owner -h #{postgresql_host} -U #{postgresql_user} #{postgresql_database} > #{backup_path}/#{filename}"
+    run "PGPASSWORD='#{postgresql_password}' pg_dump -Fc --no-acl --no-owner -h #{postgresql_host} -U deployer cakeside > #{backup_path}/#{filename}"
     download("#{backup_path}/#{filename}", "db/backups/", :via => :scp)
   end
 end
