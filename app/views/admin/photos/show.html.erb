@@ -25,10 +25,7 @@
       </tbody>
     </table>
 
-    <h2><%= @photo.image.url %></h2>
-    <h2><%= @photo.image.root %></h2>
-    <h2><%= @photo.image.cache_dir %></h2>
-    <h2><%= @photo.image.store_dir %></h2>
+    <h2><%= @photo.image.root %><%= @photo.image.url %></h2>
     <%= image_tag @photo.image.url %>
   </div>
 </div>
