@@ -1,7 +1,6 @@
 class PublishCakeToTwitter
-  def initialize(twitter_publisher, configuration = ENV)
+  def initialize(twitter_publisher)
     @twitter = twitter_publisher
-    @configuration = configuration
   end
 
   def handles?(event)
@@ -22,5 +21,5 @@ class PublishCakeToTwitter
     "#{cake.name} By #{cake.user.name} on https://www.cakeside.com/creations/#{cake.to_param}!"
   end
 
-  handle_asynchronously :handle, :run_at => Proc.new { 1.hour.from_now }
+  handle_asynchronously :handle, run_at: Proc.new { 10.minutes.from_now }
 end
