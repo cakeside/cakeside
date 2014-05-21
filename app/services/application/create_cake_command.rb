@@ -5,9 +5,8 @@ class CreateCakeCommand
     @message_bus = message_bus
   end
 
-  def run(creation_attributes, category_id, tags)
+  def run(creation_attributes, tags)
     cake = @current_user.creations.create(creation_attributes)
-    cake.categories << Category.find(category_id) if category_id
     @current_user.tag(cake, with: tags, on: :tags)
 
     if cake.save

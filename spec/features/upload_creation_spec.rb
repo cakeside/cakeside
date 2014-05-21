@@ -13,13 +13,12 @@ describe "uploading a new creation", :js => true do
     end
     click_button("Sign In")
     click_link("Add Creation")
-    #visit new_creation_path
 
     within(".form-horizontal") do
       fill_in("creation_name", :with => "yummy cake")
       fill_in("creation_watermark", :with => "yummy")
       fill_in("creation_story", :with => "this was just so damn yummy so i ate it alone.")
-      select(category_2.name, :from => 'category_id')
+      select(category_2.name, :from => 'creation_category_id')
       #fill_in("creation_tags", :with => "cake, yummy")
     end
     click_button("NEXT STEP")

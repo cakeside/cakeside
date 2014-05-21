@@ -21,7 +21,7 @@ class CreationsController < ApplicationController
   end
 
   def create
-    CreateCakeCommand.new(self).run(creation_params, params[:category_id], params[:creation_tags])
+    CreateCakeCommand.new(self).run(creation_params, params[:creation_tags])
   end
 
   def create_cake_succeeded(cake)
@@ -36,7 +36,7 @@ class CreationsController < ApplicationController
   end
 
   def update
-    UpdateCakeCommand.new(self).run(params[:id], params[:category_id], params[:creation_tags], creation_params)
+    UpdateCakeCommand.new(self).run(params[:id], params[:creation_tags], creation_params)
   end
 
   def update_cake_succeeded(cake)
@@ -62,6 +62,6 @@ class CreationsController < ApplicationController
   private
 
   def creation_params
-    params.require(:creation).permit(:name, :story, :is_restricted, :watermark)
+    params.require(:creation).permit(:name, :story, :is_restricted, :watermark, :category_id)
   end
 end
