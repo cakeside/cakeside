@@ -1,7 +1,7 @@
 class Creation < ActiveRecord::Base
   validates :name,  :presence => true
   belongs_to :user, :counter_cache => true
-  has_and_belongs_to_many :categories, :join_table => 'creations_categories', :autosave => true
+  belongs_to :category
   has_many :photos, -> { order :created_at }, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
   has_many :comments, dependent: :destroy

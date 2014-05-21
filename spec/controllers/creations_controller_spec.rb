@@ -55,7 +55,13 @@ describe CreationsController do
         let(:category) { create(:category) }
 
         before :each do
-          post :create, :creation => { :name => 'stone', :story => 'morning glory', :is_restricted => true, :watermark => "watery"}, :creation_tags => 'cake', :category_id => category.id
+          post :create, creation: {
+            name: 'stone',
+            story: 'morning glory',
+            is_restricted: true,
+            watermark: "watery",
+            category_id: category.id
+          }, creation_tags: 'cake'
         end
 
         it "assigns a newly created creation" do

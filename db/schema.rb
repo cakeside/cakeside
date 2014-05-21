@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140119052825) do
+ActiveRecord::Schema.define(version: 20140520023608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20140119052825) do
 
   create_table "avatars", force: true do |t|
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "avatar"
     t.boolean  "avatar_processing"
     t.string   "avatar_tmp"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20140119052825) do
     t.string   "watermark"
     t.integer  "photos_count",    default: 0
     t.integer  "favorites_count", default: 0
+    t.integer  "category_id"
   end
 
   add_index "creations", ["created_at"], name: "index_creations_on_created_at", using: :btree
@@ -92,8 +93,8 @@ ActiveRecord::Schema.define(version: 20140119052825) do
     t.datetime "failed_at"
     t.string   "locked_by"
     t.string   "queue"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
@@ -110,8 +111,8 @@ ActiveRecord::Schema.define(version: 20140119052825) do
 
   create_table "interests", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "photos", force: true do |t|
@@ -150,8 +151,8 @@ ActiveRecord::Schema.define(version: 20140119052825) do
     t.text     "description"
     t.string   "url"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "image_url"
     t.string   "author"
     t.string   "author_url"
@@ -160,12 +161,12 @@ ActiveRecord::Schema.define(version: 20140119052825) do
   add_index "tutorials", ["user_id"], name: "index_tutorials_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                              default: "", null: false
+    t.string   "encrypted_password",     limit: 128, default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0
+    t.integer  "sign_in_count",                      default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -184,13 +185,13 @@ ActiveRecord::Schema.define(version: 20140119052825) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        default: 0
+    t.integer  "failed_attempts",                    default: 0
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "authentication_token"
     t.string   "invitation_token"
     t.string   "full_address"
-    t.integer  "creations_count",        default: 0
+    t.integer  "creations_count",                    default: 0
     t.boolean  "is_admin"
   end
 
