@@ -13,12 +13,10 @@ Cake::Application.routes.draw do
     get ':id/page/:page', :action => :show, :on => :collection
   end
 
-  # /creations
   resources :creations do
     resources :photos, :only => [:index, :show, :new, :create, :destroy]
     resources :favorites, :only => [:index, :create]
     get 'page/:page', :action => :index, :on => :collection
-    get 'mine', :action => :mine, :on => :collection
   end
 
   # /profiles
@@ -67,5 +65,10 @@ Cake::Application.routes.draw do
     resources :activities, only: [:index]
     resources :subscriptions, only: [:index]
     resources :photos, only: [:index, :show]
+  end
+
+  namespace :my do
+    resources :cakes do
+    end
   end
 end

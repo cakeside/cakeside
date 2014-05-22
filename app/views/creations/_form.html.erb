@@ -59,7 +59,7 @@
     <div class="form-actions">
       <button type="submit" class="btn btn-primary">NEXT STEP</button>
       <% if @creation.new_record? %>
-        <%= link_to "Cancel", mine_creations_path, class: 'btn' %>
+        <%= link_to "Cancel", my_cakes_path, class: 'btn' %>
       <% else %>
         <%= link_to "Cancel", creation_path(@creation), class: 'btn' %>
       <% end %>

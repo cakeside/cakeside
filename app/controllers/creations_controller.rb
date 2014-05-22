@@ -55,10 +55,6 @@ class CreationsController < ApplicationController
     redirect_to(creations_url)
   end
 
-  def mine
-    @creations = current_user.creations.includes([:user]).page(params[:page]).per(12)
-  end
-
   private
 
   def creation_params

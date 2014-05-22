@@ -133,24 +133,5 @@ describe CreationsController do
         response.should redirect_to(creations_url)
       end
     end
-
-    describe :mine do
-      let!(:my_creation) { create(:creation) }
-      let!(:other_creation) { create(:creation) }
-
-      before :each do
-        user.creations << my_creation
-        get :mine
-      end
-
-      it "should return all of my creations" do
-        assigns(:creations).should include(my_creation)
-      end
-
-      it "should not return any other creations" do
-        assigns(:creations).should_not include(other_creation)
-      end
-    end
   end
-
 end
