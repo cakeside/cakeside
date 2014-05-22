@@ -11,7 +11,7 @@ describe "changing my password" do
         fill_in('user_password', :with => "password")
       end
       click_button("Sign In")
-      visit settings_path
+      visit my_settings_path
       click_link("Password")
       within(".form-horizontal") do
         fill_in('user_password', :with => "mopass")

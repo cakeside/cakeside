@@ -10,7 +10,7 @@ describe "uploading an avatar" do
       fill_in('user_password', :with => "password")
     end
     click_button("Sign In")
-    visit edit_avatar_path(user)
+    visit edit_my_avatar_path(user)
     file = File.expand_path(File.join(Rails.root, '/spec/fixtures/images/gorilla.jpg'))
     within(".edit_avatar") do
       attach_file('avatar_avatar', file)

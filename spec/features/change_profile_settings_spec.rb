@@ -10,7 +10,7 @@ describe "Change settings" do
       fill_in('user_password', :with => "password")
     end
     click_button("Sign In")
-    visit settings_path
+    visit my_settings_path
     within(".form-horizontal") do
       fill_in('user_city', :with => "Calgary, Alberta, Canada")
       fill_in('user_website', :with => "http://mokhan.ca/")

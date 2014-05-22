@@ -1,9 +1,7 @@
 Cake::Application.routes.draw do
-  # /home
   get "about_us" => "home#about_us"
   get "why_cakeside" => "home#why_cakeside"
 
-  get 'dashboard', to: 'dashboard#index'
   post 'comments', to: 'comments#create'
 
   resources :tutorials do
@@ -13,21 +11,16 @@ Cake::Application.routes.draw do
     get ':id/page/:page', :action => :show, :on => :collection
   end
 
-  # /creations
   resources :creations do
     resources :photos, :only => [:index, :show, :new, :create, :destroy]
     resources :favorites, :only => [:index, :create]
     get 'page/:page', :action => :index, :on => :collection
-    get 'mine', :action => :mine, :on => :collection
   end
 
-  # /profiles
   resources :profiles, :only => [:index, :show] do
     get 'page/:page', :action => :index, :on => :collection
   end
-  get 'favorites' => 'profiles#favorites', :as => 'profiles_favorites'
 
-  # /categories
   get 'categories/:slug' => "categories#show", :as => :category
   get 'categories/:slug/page/:page' => "categories#show"
 
@@ -46,11 +39,6 @@ Cake::Application.routes.draw do
   # sitemap
   get "/sitemap.xml", :to => "sitemap#index", :defaults => {:format => :xml}
 
-  resources :settings, :only => [:index, :update]
-  resources :avatars, :only => [:edit, :update]
-  get 'pwd' => "passwords#index"
-  patch 'pwd' => "passwords#update"
-
   root :to => "creations#index"
 
   namespace :api, :defaults => { :format => 'json' }  do
@@ -67,5 +55,14 @@ Cake::Application.routes.draw do
     resources :activities, only: [:index]
     resources :subscriptions, only: [:index]
     resources :photos, only: [:index, :show]
+  end
+
+  namespace :my do
+    get 'dashboard', to: 'dashboard#index'
+    resources :cakes, only: [:index]
+    resources :favorites, only: [:index]
+    resources :settings, only: [:index, :update]
+    resources :passwords, only: [:index, :update]
+    resources :avatars, :only => [:edit, :update]
   end
 end

@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe DashboardController do
+describe My::DashboardController do
   context "#index" do
     let(:user) { create(:user) }
     let!(:activity) { create(:activity, user: user) }

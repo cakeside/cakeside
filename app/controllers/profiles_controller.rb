@@ -12,10 +12,4 @@ class ProfilesController < ApplicationController
     @nearby_users = @user.nearbys(50) || []
     expires_in(1.hour)
   end
-
-  def favorites
-    @user = current_user
-    @favorites = current_user.favorites.includes(:creation)
-    @creations = @favorites.map {|f| f.creation }
-  end
 end

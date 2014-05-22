@@ -10,7 +10,7 @@
 
 <div class="row">
   <div class="span12">
-    <%= form_for(@user, :url => setting_path(@user), :html => { :method => :put, :class => "form-horizontal" }) do |f| %>
+    <%= form_for(@user, :url => my_setting_path(@user), :html => { :method => :put, :class => "form-horizontal" }) do |f| %>
       <fieldset>
         <div class="control-group">
           <%= f.label :name, :class => "control-label"  %>

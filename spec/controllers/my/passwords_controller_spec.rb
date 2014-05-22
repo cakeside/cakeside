@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe PasswordsController do
+describe My::PasswordsController do
   describe :update do
     context "when not logged in" do
       let(:user) { create(:user) }

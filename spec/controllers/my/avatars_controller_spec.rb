@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe AvatarsController do
+describe My::AvatarsController do
   let(:user) { create(:user) }
 
   context "when logged in " do
@@ -18,7 +18,7 @@ describe AvatarsController do
         end
 
         it "should redirect to the avatar page" do
-          response.should redirect_to edit_avatar_path(user)
+          response.should redirect_to edit_my_avatar_path(user)
         end
 
         it "should display a flash notice" do
