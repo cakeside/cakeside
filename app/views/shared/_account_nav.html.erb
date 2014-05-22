@@ -3,7 +3,7 @@
     <ul class="nav nav-tabs">
       <li class="<%= selected == :dashboard ? "active" : "" %>"><%= link_to "Dashboard", my_dashboard_path %></li>
       <li class="<%= selected == :creations ? "active" : "" %>"><%= link_to "Creations", my_cakes_path %></li>
-      <li class="<%= selected == :favorites ? "active" : "" %>"><%= link_to "Favorites", profiles_favorites_path %></li>
+      <li class="<%= selected == :favorites ? "active" : "" %>"><%= link_to "Favorites", my_favorites_path %></li>
       <li class="<%= selected == :basic_info ? "active" : "" %>"><%= link_to "Settings", settings_path %></li>
       <li class="<%= selected == :password ? "active" : "" %>"><%= link_to "Password", pwd_path %></li>
       <li class="<%= selected == :picture ? "active" : "" %>"><%= link_to "Picture", edit_avatar_path(current_user) %></li>

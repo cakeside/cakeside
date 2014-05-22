@@ -22,7 +22,7 @@ Cake::Application.routes.draw do
   resources :profiles, :only => [:index, :show] do
     get 'page/:page', :action => :index, :on => :collection
   end
-  get 'favorites' => 'profiles#favorites', :as => 'profiles_favorites'
+  #get 'favorites' => 'profiles#favorites', :as => 'profiles_favorites'
 
   # /categories
   get 'categories/:slug' => "categories#show", :as => :category
@@ -68,7 +68,7 @@ Cake::Application.routes.draw do
 
   namespace :my do
     get 'dashboard', to: 'dashboard#index'
-    resources :cakes do
-    end
+    resources :cakes, only: [:index]
+    resources :favorites, only: [:index]
   end
 end
