@@ -13,7 +13,7 @@
       <i class="icon-plus"> images</i>
     <% end %>
     <%= link_to creation_favorites_path(:creation_id => item.id) do %>
-      <i class="icon-heart"> fanclub (<%=  pluralize(item.favorites.length, 'fan') %>)</i>
+      <i class="icon-heart"> fanclub </i>
     <% end %>
     <%= link_to creation_path(item), confirm: "Are you sure you want to permanently remove this creation?", method: :delete  do %>
       <i class="icon-white icon-remove"> remove</i>

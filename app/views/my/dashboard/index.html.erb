@@ -7,8 +7,12 @@
     <% end %>
   </div>
   <div class="span5">
-    <% @activities.each do |activity| %>
-      <%= render "activities/#{activity.subject.class.to_s.downcase}", subject: activity.subject %>
+    <% if @activities.empty? %>
+      <p>No new activity to report.</p>
+    <% else %>
+      <% @activities.each do |activity| %>
+        <%= render "activities/#{activity.subject.class.to_s.downcase}", subject: activity.subject %>
+      <% end %>
     <% end %>
   </div>
 </div>
