@@ -8,7 +8,7 @@ try { mixpanel.track_forms(".edit_avatar", "uploaded avatar"); } catch {}
 <div class="row">
   <div class="span12">
     <%= avatar_for(current_user) %>
-    <%= form_for(@avatar, :url => avatar_path(@avatar), :method => :put, :multipart => true, remote: true, authenticity_token: true) do |f| %>
+    <%= form_for(@avatar, :url => my_avatar_path(@avatar), :method => :put, :multipart => true, remote: true, authenticity_token: true) do |f| %>
       <div class="control-group">
         <div class="controls">
           <%= f.file_field :avatar %>

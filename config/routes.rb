@@ -1,5 +1,4 @@
 Cake::Application.routes.draw do
-  # /home
   get "about_us" => "home#about_us"
   get "why_cakeside" => "home#why_cakeside"
 
@@ -18,13 +17,10 @@ Cake::Application.routes.draw do
     get 'page/:page', :action => :index, :on => :collection
   end
 
-  # /profiles
   resources :profiles, :only => [:index, :show] do
     get 'page/:page', :action => :index, :on => :collection
   end
-  #get 'favorites' => 'profiles#favorites', :as => 'profiles_favorites'
 
-  # /categories
   get 'categories/:slug' => "categories#show", :as => :category
   get 'categories/:slug/page/:page' => "categories#show"
 
@@ -42,8 +38,6 @@ Cake::Application.routes.draw do
 
   # sitemap
   get "/sitemap.xml", :to => "sitemap#index", :defaults => {:format => :xml}
-
-  resources :avatars, :only => [:edit, :update]
 
   root :to => "creations#index"
 
@@ -69,7 +63,6 @@ Cake::Application.routes.draw do
     resources :favorites, only: [:index]
     resources :settings, only: [:index, :update]
     resources :passwords, only: [:index, :update]
-    #get 'pwd' => "passwords#index"
-    #patch 'pwd' => "passwords#update"
+    resources :avatars, :only => [:edit, :update]
   end
 end
