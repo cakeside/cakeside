@@ -3,7 +3,6 @@ Cake::Application.routes.draw do
   get "about_us" => "home#about_us"
   get "why_cakeside" => "home#why_cakeside"
 
-  get 'dashboard', to: 'dashboard#index'
   post 'comments', to: 'comments#create'
 
   resources :tutorials do
@@ -68,6 +67,7 @@ Cake::Application.routes.draw do
   end
 
   namespace :my do
+    get 'dashboard', to: 'dashboard#index'
     resources :cakes do
     end
   end

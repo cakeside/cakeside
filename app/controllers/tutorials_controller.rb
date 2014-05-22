@@ -24,7 +24,7 @@ class TutorialsController < ApplicationController
     @tutorial = current_user.tutorials.create(tutorial_params)
     current_user.tag(@tutorial, :with => params[:tutorial_tags], :on => :tags)
     if @tutorial.save
-      redirect_to dashboard_path, :notice => t(:tutorial_saved)
+      redirect_to my_dashboard_path, :notice => t(:tutorial_saved)
     else
       flash[:error] = @tutorial.errors.full_messages
       render :new
@@ -44,7 +44,7 @@ class TutorialsController < ApplicationController
   def destroy
     @tutorial = current_user.tutorials.find(params[:id])
     @tutorial.destroy
-    redirect_to dashboard_path
+    redirect_to my_dashboard_path
   end
 
   def tutorial_params
