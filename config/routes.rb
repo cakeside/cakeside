@@ -44,8 +44,6 @@ Cake::Application.routes.draw do
   get "/sitemap.xml", :to => "sitemap#index", :defaults => {:format => :xml}
 
   resources :avatars, :only => [:edit, :update]
-  get 'pwd' => "passwords#index"
-  patch 'pwd' => "passwords#update"
 
   root :to => "creations#index"
 
@@ -69,6 +67,9 @@ Cake::Application.routes.draw do
     get 'dashboard', to: 'dashboard#index'
     resources :cakes, only: [:index]
     resources :favorites, only: [:index]
-    resources :settings, :only => [:index, :update]
+    resources :settings, only: [:index, :update]
+    resources :passwords, only: [:index, :update]
+    #get 'pwd' => "passwords#index"
+    #patch 'pwd' => "passwords#update"
   end
 end
