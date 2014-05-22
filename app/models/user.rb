@@ -66,6 +66,10 @@ class User < ActiveRecord::Base
     creation.comments.create(text: text, user: self, disqus_id: disqus_id)
   end
 
+  def favorite_cakes
+    favorites.includes(:creation).map {|f| f.creation }
+  end
+
   class << self
     def ordered
       User.order(:creations_count => :desc)
