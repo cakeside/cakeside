@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe SettingsController do
+describe My::SettingsController do
   describe :index do
     it "should load the current user" do
       user = create(:user)
@@ -29,7 +29,7 @@ describe SettingsController do
     end
 
     it "should redirect to the settings page" do
-      response.should redirect_to(settings_path)
+      response.should redirect_to(my_settings_path)
     end
 
     it "should include a success message" do
