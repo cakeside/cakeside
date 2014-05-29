@@ -24,9 +24,9 @@ module My
 
       @photo = @cake.photos.build(attributes)
       if @photo.save
-        render :json => {files: [@mapper.map_from(@photo)]}.to_json
+        render json: { files: [@mapper.map_from(@photo)] }
       else
-        render :json => [{:error => "oops... we're sorry but we weren't able to upload your photo."}], :status => 304
+        render json: [ { error: "oops... we're sorry but we weren't able to upload your photo." } ], status: 304
       end
     end
 
@@ -34,9 +34,9 @@ module My
       @photo = @cake.photos.find(params[:id])
       if @photo.destroy
         @cake.touch
-        render :json => {files: [@mapper.map_from(@photo)]}.to_json
+        render json: { files: [@mapper.map_from(@photo)] }
       else
-        render :json => [{:error => "could not remove the photo"}], :status => 304
+        render json: [ { error: "could not remove the photo" } ], status: 304
       end
     end
 
@@ -56,11 +56,11 @@ end
 class PhotoToJQJsonMapper
   def map_from(photo)
     {
-      :name => photo.read_attribute(:image),
-      :url => photo.image.url,
-      :thumbnail_url => photo.is_processed? ? photo.image.thumb.url : photo.image.thumb.default_url,
-      :delete_url => photo.id,
-      :delete_type => "DELETE"
+      name: photo.read_attribute(:image),
+      url: photo.image.url,
+      thumbnail_url: photo.is_processed? ? photo.image.thumb.url : photo.image.thumb.default_url,
+      delete_url: photo.id,
+      delete_type: "DELETE"
     }
   end
 end
