@@ -7,7 +7,7 @@ class PhotosController < ApplicationController
     @photos = @creation.photos
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: { files: @photos.map { |photo| photo.to_jq_upload } } }
+      format.json { render json: { files: @photos.map { |photo| PhotoToJQJsonMapper.new.map_from(photo) } } }
     end
   end
 
@@ -22,13 +22,15 @@ class PhotosController < ApplicationController
 
   def create
     attributes = photo_params
-    attributes[:image] = params[:photo][:image].first if params[:photo][:image].class == Array
+    if params[:photo][:image].class == Array
+      attributes[:image] = params[:photo][:image].first
+    end
 
     @photo = @creation.photos.build(attributes)
     if @photo.save
       respond_to do |format|
-        format.html { render :json => {files: [@photo.to_jq_upload]}.to_json, :content_type => 'text/html', :layout => false }
-        format.json { render :json => {files: [@photo.to_jq_upload]}.to_json }
+        format.html { render :json => {files: [PhotoToJQJsonMapper.new.map_from(@photo)]}.to_json, :content_type => 'text/html', :layout => false }
+        format.json { render :json => {files: [PhotoToJQJsonMapper.new.map_from(@photo)]}.to_json }
       end
     else
       render :json => [{:error => "oops... we're sorry but we weren't able to upload your photo."}], :status => 304
@@ -39,7 +41,7 @@ class PhotosController < ApplicationController
     @photo = @creation.photos.find(params[:id])
     if @photo.destroy
       @creation.touch
-      render :json => {files: [@photo.to_jq_upload]}.to_json
+      render :json => {files: [PhotoToJQJsonMapper.new.map_from(@photo)]}.to_json
     else
       render :json => [{:error => "could not remove the photo"}], :status => 304
     end
@@ -54,5 +56,17 @@ class PhotosController < ApplicationController
 
   def photo_params
     params.require(:photo).permit(:image)
+  end
+
+  class PhotoToJQJsonMapper
+    def map_from(photo)
+      {
+        :name => photo.read_attribute(:image),
+        :url => photo.image.url,
+        :thumbnail_url => photo.is_processed? ? photo.image.thumb.url : photo.image.thumb.default_url,
+        :delete_url => photo.id,
+        :delete_type => "DELETE"
+      }
+    end
   end
 end
