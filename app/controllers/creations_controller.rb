@@ -26,7 +26,7 @@ class CreationsController < ApplicationController
 
   def create_cake_succeeded(cake)
     @creation = cake
-    redirect_to new_creation_photo_url(@creation)
+    redirect_to new_my_cake_photo_path(@creation)
   end
 
   def create_cake_failed(cake)
@@ -41,7 +41,7 @@ class CreationsController < ApplicationController
 
   def update_cake_succeeded(cake)
     @creation = cake
-    redirect_to new_creation_photo_url(@creation)
+    redirect_to new_my_cake_photo_path(@creation)
   end
 
   def update_cake_failed(cake)
@@ -52,7 +52,7 @@ class CreationsController < ApplicationController
 
   def destroy
     RemoveCakeCommand.new(self).run(params[:id])
-    redirect_to(creations_url)
+    redirect_to my_dashboard_path
   end
 
   private

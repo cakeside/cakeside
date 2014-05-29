@@ -73,7 +73,7 @@ describe CreationsController do
         end
 
         it "redirects to the created creation" do
-          response.should redirect_to(new_creation_photo_path(assigns(:creation)))
+          response.should redirect_to(new_my_cake_photo_path(assigns(:creation)))
         end
       end
 
@@ -99,7 +99,7 @@ describe CreationsController do
         end
 
         it "redirects to the creation" do
-          response.should redirect_to new_creation_photo_path(creation.reload)
+          response.should redirect_to new_my_cake_photo_path(creation.reload)
         end
       end
 
@@ -130,7 +130,7 @@ describe CreationsController do
       end
 
       it "redirects to the creations list" do
-        response.should redirect_to(creations_url)
+        response.should redirect_to(my_dashboard_path)
       end
     end
   end
