@@ -2,9 +2,14 @@ module My
   class PhotosController < BaseController
     before_filter :find_creation
 
+    def initialize(mapper = PhotoToJQJsonMapper.new)
+      @mapper = mapper
+      super()
+    end
+
     def index
       @photos = @cake.photos
-      render json: { files: @photos.map { |photo| PhotoToJQJsonMapper.new.map_from(photo) } }
+      render json: { files: @photos.map { |photo| @mapper.map_from(photo) } }
     end
 
     def new
@@ -19,7 +24,7 @@ module My
 
       @photo = @cake.photos.build(attributes)
       if @photo.save
-        render :json => {files: [PhotoToJQJsonMapper.new.map_from(@photo)]}.to_json
+        render :json => {files: [@mapper.map_from(@photo)]}.to_json
       else
         render :json => [{:error => "oops... we're sorry but we weren't able to upload your photo."}], :status => 304
       end
@@ -29,7 +34,7 @@ module My
       @photo = @cake.photos.find(params[:id])
       if @photo.destroy
         @cake.touch
-        render :json => {files: [PhotoToJQJsonMapper.new.map_from(@photo)]}.to_json
+        render :json => {files: [@mapper.map_from(@photo)]}.to_json
       else
         render :json => [{:error => "could not remove the photo"}], :status => 304
       end
