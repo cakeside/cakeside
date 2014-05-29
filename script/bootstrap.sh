@@ -30,5 +30,3 @@ apt-get -y install zlib1g-dev libssl-dev
 apt-get -y install libreadline-gplv2-dev
 # Install some nokogiri dependencies:
 apt-get -y install libxml2 libxml2-dev libxslt1-dev
-
-su -c 'bash /vagrant/script/bootstrap-vagrant.sh' vagrant
