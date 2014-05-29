@@ -12,7 +12,7 @@ Cake::Application.routes.draw do
   end
 
   resources :creations do
-    resources :photos, :only => [:index, :show, :new, :create, :destroy]
+    resources :photos, only: [:index, :show]
     resources :favorites, :only => [:index, :create]
     get 'page/:page', :action => :index, :on => :collection
   end
@@ -59,7 +59,9 @@ Cake::Application.routes.draw do
 
   namespace :my do
     get 'dashboard', to: 'dashboard#index'
-    resources :cakes, only: [:index]
+    resources :cakes, only: [:index] do
+      resources :photos, only: [:index, :new, :create, :destroy]
+    end
     resources :favorites, only: [:index]
     resources :settings, only: [:index, :update]
     resources :passwords, only: [:index, :update]

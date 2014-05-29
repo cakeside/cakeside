@@ -14,7 +14,7 @@
     <%= link_to edit_creation_path(@creation), class: 'btn' do %>
       <i class="icon-edit"></i> <strong>EDIT</strong>
     <% end %>
-    <%= link_to new_creation_photo_path(@creation), class: 'btn' do %>
+    <%= link_to new_my_cake_photo_path(@creation), class: 'btn' do %>
       <i class="icon-plus"></i><strong>ADD IMAGES</strong>
     <% end %>
     <%= link_to creation_favorites_path(:creation_id => @creation.id), class: 'btn' do %>

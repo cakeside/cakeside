@@ -14,7 +14,7 @@
   });
 </script>
 <% end %>
-  <%= form_for [@creation, @photo], :html => { :multipart => true, :id => "fileupload"  } do |f| %>
+  <%= form_for [@cake, @photo], url: my_cake_photos_path, :html => { :multipart => true, :id => "fileupload"  } do |f| %>
     <div class="row fileupload-buttonbar">
       <div class="span10">&nbsp;</div>
       <div class="span2">
