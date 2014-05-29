@@ -19,6 +19,7 @@ module My
     def create
       attributes = photo_params
       if params[:photo][:image].class == Array
+        raise "heck"
         attributes[:image] = params[:photo][:image].first
       end
 
