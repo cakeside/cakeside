@@ -38,5 +38,10 @@ module Cake
       Devise::UnlocksController.layout "application"
       Devise::PasswordsController.layout "application"
     }
+    config.middleware.use ExceptionNotification::Rack, :email => {
+      :email_prefix => "[Boom! #{Rails.env}] ",
+      :sender_address => %{"notifier" <notifier@cakeside.com>},
+      :exception_recipients => ENV['EXCEPTION_EMAIL_ADDRESS'].split(" ")
+    }
   end
 end
