@@ -1,0 +1,8 @@
+<div class="row-fluid">
+  <div class="span12">
+    <%= render :partial => 'admin/shared/admin_nav' %>
+    <h1>Errors <small><%= Time.now.utc %></small></h1>
+
+    <%= button_to "Raise HECK", admin_errors_path, method: :post %>
+  </div>
+</div>
