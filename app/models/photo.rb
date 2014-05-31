@@ -15,6 +15,6 @@ class Photo < ActiveRecord::Base
   end
 
   def is_processed?
-    self.image_processing == nil
+    !self.image_processing
   end
 end
