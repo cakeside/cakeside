@@ -10,11 +10,11 @@ module My
       http_login(user)
     end
 
-    describe :post do
+    describe :create do
       let(:image) { Rack::Test::UploadedFile.new("spec/fixtures/images/gorilla.jpg", "image/jpeg") }
 
       before :each do
-        post :create, :cake_id => cake.id, :photo => { :image => image }
+        xhr :post, :create, cake_id: cake.id, photo: { image: image }
       end
 
       it "returns http success" do
@@ -22,8 +22,12 @@ module My
       end
 
       it "should upload a new photo" do
-        assigns(:photo).should_not be_nil
-        assigns(:photo).image.to_s.should include("gorilla.jpg")
+        json = JSON.parse(response.body)
+        json["files"].first["name"].should_not be_nil
+        json["files"].first["url"].should_not be_nil
+        json["files"].first["thumbnail_url"].should_not be_nil
+        json["files"].first["delete_url"].should_not be_nil
+        json["files"].first["delete_type"].should == "DELETE"
       end
     end
 
