@@ -29,7 +29,7 @@ class UploadPhoto
   end
 
   def create_tmp_dir
-    directory = Rails.root.join("tmp/uploads/#{SecureRandom.uuid}/")
+    directory = Rails.root.join("tmp/uploads/#{SecureRandom.uuid}")
     system "mkdir -p #{directory}"
     directory
   end
