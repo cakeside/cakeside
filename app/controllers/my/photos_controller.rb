@@ -18,12 +18,6 @@ module My
 
     def create
       render json: { files: [UploadPhoto.new.run(params[:cake_id], photo_params)] }
-      #@photo = @cake.photos.build(photo_params)
-      #if @photo.save
-        #render json: { files: [@mapper.map_from(@photo)] }
-      #else
-        #render json: [ { error: "oops... we're sorry but we weren't able to upload your photo." } ], status: 304
-      #end
     end
 
     def destroy
