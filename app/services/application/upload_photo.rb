@@ -5,12 +5,11 @@ class UploadPhoto
   end
 
   def run(cake_id, params)
-    file_path = params[:image].tempfile.path
-    photo = Creation.find(cake_id).photos.create!(image_tmp: file_path, image_processing: true)
+    photo = Creation.find(cake_id).photos.create!(image_processing: true)
     message = {
       cake_id: cake_id,
       photo_id: photo.id,
-      file_path: file_path,
+      file_path: params[:image].tempfile.path,
       original_filename: params[:image].original_filename,
       content_type: params[:image].content_type,
       headers: params[:image].headers

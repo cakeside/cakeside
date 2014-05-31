@@ -12,13 +12,10 @@ describe ProcessPhoto do
 
   describe "#handle" do
     let(:image_path) { File.join(Rails.root, 'spec/fixtures/images/example.png') }
-    let(:photo) { Photo.new(id: rand(100)) }
+    let(:photo) { Photo.new(id: rand(100), image_processing: true) }
 
     before :each do
       photos.stub(:find).with(photo.id).and_return(photo)
-    end
-
-    it "saves the uploaded image" do
       message = {
         photo_id: photo.id,
         file_path: image_path,
@@ -26,7 +23,15 @@ describe ProcessPhoto do
         original_filename: 'blah.jpg'
       }
       subject.handle(message)
+    end
+
+
+    it "saves the uploaded image" do
       photo.image.should_not be_nil
+    end
+
+    it "indicates that the photo has been processed." do
+      photo.image_processing.should be_false
     end
   end
 end
