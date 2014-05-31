@@ -33,6 +33,14 @@ describe ProcessPhoto do
     it "indicates that the photo has been processed." do
       photo.image_processing.should be_false
     end
+
+    it "specifies the content type" do
+      photo.content_type.should == 'image/jpeg'
+    end
+
+    it "specifies the original filename" do
+      photo.original_filename = 'blah.jpg'
+    end
   end
 end
 
