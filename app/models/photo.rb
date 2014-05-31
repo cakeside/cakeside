@@ -10,6 +10,7 @@ class Photo < ActiveRecord::Base
   end
 
   def watermark
+    return '' if creation.nil?
     creation.watermark
   end
 

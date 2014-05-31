@@ -2,10 +2,10 @@ module My
   class PhotosController < BaseController
     before_filter :find_creation
 
-    #def initialize(mapper = PhotoToJQJsonMapper.new)
-      #@mapper = mapper
-      #super()
-    #end
+    def initialize(mapper = PhotoToJQJsonMapper.new)
+      @mapper = mapper
+      super()
+    end
 
     def index
       @photos = @cake.photos
