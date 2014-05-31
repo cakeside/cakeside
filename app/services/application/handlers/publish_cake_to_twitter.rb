@@ -1,14 +1,15 @@
 class PublishCakeToTwitter
-  def initialize(twitter_publisher)
+  def initialize(twitter_publisher, cakes = Creation)
     @twitter = twitter_publisher
+    @cakes = cakes
   end
 
   def handles?(event)
-    :new_creation_added == event
+    :cake_published == event
   end
 
   def handle(message)
-    tweet_about(Creation.find(message[:creation_id]))
+    tweet_about(cakes.find(message[:cake_id]))
   end
 
   private
