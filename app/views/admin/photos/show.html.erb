@@ -31,5 +31,10 @@
 
     <h2><%= @photo.image.root %><%= @photo.image.url %></h2>
     <%= image_tag @photo.image.url %>
+    <ul>
+    <% @results.each do |result| %>
+      <li><%= result.formatted_address %></li>
+    <% end %>
+    </ul>
   </div>
 </div>
