@@ -1,5 +1,5 @@
 class ProcessPhoto
-  def initialize(photos = Photo, exif_parser = ExifParser.new)
+  def initialize(photos, exif_parser)
     @photos = photos
     @exif_parser = exif_parser
   end
