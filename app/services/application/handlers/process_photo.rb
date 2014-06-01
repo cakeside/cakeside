@@ -1,5 +1,5 @@
 class ProcessPhoto
-  def initialize(photos = Photo, exif_parser)
+  def initialize(photos = Photo, exif_parser = ExifParser.new)
     @photos = photos
     @exif_parser = exif_parser
   end
@@ -17,12 +17,5 @@ class ProcessPhoto
     photo.original_filename = message[:original_filename]
     photo.latitude, photo.longitude = @exif_parser.parse_geolocation_from(file)
     photo.save!
-  end
-
-  private
-
-  def parse_exif_from(file)
-    exif = EXIFR::JPEG.new(file)
-    [exif.gps.latitude, exif.gps.longitude]
   end
 end
