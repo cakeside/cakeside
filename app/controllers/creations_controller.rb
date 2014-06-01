@@ -26,7 +26,7 @@ class CreationsController < ApplicationController
 
   def create_cake_succeeded(cake)
     @creation = cake
-    redirect_to new_my_cake_photo_path(@creation)
+    redirect_to new_my_cake_photo_path(cake)
   end
 
   def create_cake_failed(cake)

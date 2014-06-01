@@ -17,18 +17,7 @@ module My
     end
 
     def create
-      attributes = photo_params
-      if params[:photo][:image].class == Array
-        raise "heck"
-        attributes[:image] = params[:photo][:image].first
-      end
-
-      @photo = @cake.photos.build(attributes)
-      if @photo.save
-        render json: { files: [@mapper.map_from(@photo)] }
-      else
-        render json: [ { error: "oops... we're sorry but we weren't able to upload your photo." } ], status: 304
-      end
+      render json: { files: [UploadPhoto.new.run(params[:cake_id], photo_params)] }
     end
 
     def destroy
@@ -51,17 +40,5 @@ module My
     def photo_params
       params.require(:photo).permit(:image)
     end
-  end
-end
-
-class PhotoToJQJsonMapper
-  def map_from(photo)
-    {
-      name: photo.read_attribute(:image),
-      url: photo.image.url,
-      thumbnail_url: photo.is_processed? ? photo.image.thumb.url : photo.image.thumb.default_url,
-      delete_url: photo.id,
-      delete_type: "DELETE"
-    }
   end
 end

@@ -1,7 +1,6 @@
 class PhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
   include CarrierWave::MimeTypes
-  include ::CarrierWave::Backgrounder::Delay
 
   process :set_content_type
 

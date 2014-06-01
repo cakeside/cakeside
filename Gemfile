@@ -14,7 +14,6 @@ end
 gem 'devise', '~> 3.0.0'
 gem 'jquery-ui-rails', '~> 4.0.0'
 gem 'carrierwave', '~> 0.9.0'
-gem 'carrierwave_backgrounder', '~> 0.3.0'
 gem 'rmagick', '~> 2.13.0'
 gem "kaminari", "~> 0.15.0"
 gem 'bootstrap-sass', '~> 2.3.0'

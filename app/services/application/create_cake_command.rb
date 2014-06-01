@@ -10,7 +10,7 @@ class CreateCakeCommand
     @current_user.tag(cake, with: tags, on: :tags)
 
     if cake.save
-      @message_bus.publish(:new_creation_added, creation_id: cake.id)
+      @message_bus.publish(:cake_published, cake_id: cake.id)
       @context.create_cake_succeeded(cake)
     else
       @context.create_cake_failed(cake)

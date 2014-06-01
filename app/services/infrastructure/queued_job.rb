@@ -4,7 +4,7 @@ class QueuedJob < Struct.new(:event, :payload)
   end
 
   def error(job, exception)
-    ExceptionNotifier.notify_exception(exception)
+    ExceptionNotifier.notify_exception(exception) unless Rails.env.test?
   end
 
   private

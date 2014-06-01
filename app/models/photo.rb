@@ -1,19 +1,17 @@
 class Photo < ActiveRecord::Base
-  belongs_to :creation, :counter_cache => true, touch: true
-  validates :image,  :presence => true
+  belongs_to :creation, counter_cache: true, touch: true
   mount_uploader :image, PhotoUploader
-  process_in_background :image if Rails.env.test?
-  store_in_background :image, UploadImageWorker unless Rails.env.test?
 
   def thumb_url
     image.thumb.url
   end
 
   def watermark
+    return '' if creation.nil?
     creation.watermark
   end
 
   def is_processed?
-    self.image_processing == nil
+    !self.image_processing
   end
 end

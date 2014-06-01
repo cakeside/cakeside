@@ -1,14 +1,15 @@
 class PublishCakeToTwitter
-  def initialize(twitter_publisher)
+  def initialize(twitter_publisher, cakes = Creation)
     @twitter = twitter_publisher
+    @cakes = cakes
   end
 
   def handles?(event)
-    :new_creation_added == event
+    :cake_published == event
   end
 
   def handle(message)
-    tweet_about(Creation.find(message[:creation_id]))
+    tweet_about(@cakes.find(message[:cake_id]))
   end
 
   private
@@ -18,7 +19,11 @@ class PublishCakeToTwitter
   end
 
   def tweet_for(cake)
-    "#{cake.name} By #{cake.user.name} on https://www.cakeside.com/creations/#{cake.to_param}!"
+    "#{cake.name} By #{cake.user.name} on #{routes.creation_url(cake)}!"
+  end
+
+  def routes
+    Cake::Application.routes.url_helpers
   end
 
   handle_asynchronously :handle, run_at: Proc.new { 10.minutes.from_now }
