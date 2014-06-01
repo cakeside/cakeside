@@ -34,7 +34,7 @@ describe ProcessPhoto do
     end
 
     it "indicates that the photo has been processed." do
-      photo.image_processing.should be_false
+      photo.image_processing.should be_nil
     end
 
     it "specifies the content type" do
