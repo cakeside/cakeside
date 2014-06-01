@@ -11,7 +11,7 @@ describe ProcessPhoto do
   end
 
   describe "#handle" do
-    let(:image_path) { File.join(Rails.root, 'spec/fixtures/images/example.png') }
+    let(:image_path) { File.join(Rails.root, 'spec/fixtures/images/gps.jpg') }
     let(:photo) { Photo.new(id: rand(100), image_processing: true) }
 
     before :each do
@@ -24,7 +24,6 @@ describe ProcessPhoto do
       }
       subject.handle(message)
     end
-
 
     it "saves the uploaded image" do
       photo.image.should_not be_nil
@@ -39,7 +38,16 @@ describe ProcessPhoto do
     end
 
     it "specifies the original filename" do
-      photo.original_filename = 'blah.jpg'
+      photo.original_filename.should == 'blah.jpg'
+    end
+
+    it "applies the geolocation information" do
+      photo.latitude.should == 51.07296369444445
+      photo.longitude.should == -114.101799
+    end
+
+    xit "ignore geolocation for files that dont have geolocation info" do
+      
     end
   end
 end
