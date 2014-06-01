@@ -8,8 +8,10 @@
           <th>id</th>
           <th>processing</th>
           <th>tmp</th>
-          <th>created at</th>
-          <th>updated at</th>
+          <th>latitude</th>
+          <th>longitude</th>
+          <th>created</th>
+          <th>updated</th>
         </tr>
       </thead>
       <tbody>
@@ -18,8 +20,10 @@
             <td><%= link_to photo.id, admin_photo_path(photo.id) %></td>
             <td><%= photo.image_processing %></td>
             <td><%= photo.image.root %>/<%= photo.image.cache_dir %>/<%= photo.image_tmp %></td>
-            <td><%= time_ago_in_words(photo.created_at) %></td>
-            <td><%= time_ago_in_words(photo.updated_at) %></td>
+            <td><%= photo.latitude %></td>
+            <td><%= photo.longitude %></td>
+            <td><%= time_ago_in_words(photo.created_at) %> ago</td>
+            <td><%= time_ago_in_words(photo.updated_at) %> ago</td>
           </tr>
         <% end %>
       </tbody>
