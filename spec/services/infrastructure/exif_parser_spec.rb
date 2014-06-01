@@ -13,13 +13,13 @@ describe ExifParser do
 
   it "ignores png files" do
     latitude, longitude = subject.parse_geolocation_from(png_file)
-    latitude.should == 0
-    longitude.should == 0
+    latitude.should be_nil
+    longitude.should be_nil
   end
 
   it "ignores jpg files with no gps info" do
     latitude, longitude = subject.parse_geolocation_from(jpg_no_gps)
-    latitude.should == 0
-    longitude.should == 0
+    latitude.should be_nil
+    longitude.should be_nil
   end
 end
