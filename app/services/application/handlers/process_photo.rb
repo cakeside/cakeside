@@ -1,6 +1,7 @@
 class ProcessPhoto
-  def initialize(photos = Photo)
+  def initialize(photos = Photo, exif_parser)
     @photos = photos
+    @exif_parser = exif_parser
   end
 
   def handles?(event)
@@ -14,7 +15,7 @@ class ProcessPhoto
     photo.image_processing = false
     photo.content_type = message[:content_type]
     photo.original_filename = message[:original_filename]
-    photo.latitude, photo.longitude = parse_exif_from(file)
+    photo.latitude, photo.longitude = @exif_parser.parse_geolocation_from(file)
     photo.save!
   end
 

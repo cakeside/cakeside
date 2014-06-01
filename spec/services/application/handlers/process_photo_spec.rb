@@ -2,7 +2,8 @@ require "spec_helper"
 
 describe ProcessPhoto do
   let(:photos) { double }
-  subject { ProcessPhoto.new(photos) }
+  let(:exif_parser) { double }
+  subject { ProcessPhoto.new(photos, exif_parser) }
 
   describe "#handles?" do
     it "handles photo uploads" do
@@ -13,9 +14,12 @@ describe ProcessPhoto do
   describe "#handle" do
     let(:image_path) { File.join(Rails.root, 'spec/fixtures/images/gps.jpg') }
     let(:photo) { Photo.new(id: rand(100), image_processing: true) }
+    let(:latitude)  { rand(100) }
+    let(:longitude)  { rand(100) }
 
     before :each do
       photos.stub(:find).with(photo.id).and_return(photo)
+      exif_parser.stub(:parse_geolocation_from).and_return([latitude, longitude])
       message = {
         photo_id: photo.id,
         file_path: image_path,
@@ -42,12 +46,8 @@ describe ProcessPhoto do
     end
 
     it "applies the geolocation information" do
-      photo.latitude.should == 51.07296369444445
-      photo.longitude.should == -114.101799
-    end
-
-    xit "ignore geolocation for files that dont have geolocation info" do
-      
+      photo.latitude.should == latitude
+      photo.longitude.should == longitude
     end
   end
 end
