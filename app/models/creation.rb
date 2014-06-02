@@ -15,7 +15,7 @@ class Creation < ActiveRecord::Base
   end
 
   def primary_image
-    photos.any? ? photos.first : Photo.new
+    photos.any? ? photos.sample : Photo.new
   end
 
   def published?
