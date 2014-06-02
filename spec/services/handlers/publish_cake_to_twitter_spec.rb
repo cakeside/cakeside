@@ -18,7 +18,6 @@ describe PublishCakeToTwitter do
     let(:id) { 88 }
 
     before :each do
-      Rails.application.routes.default_url_options[:host]= 'localhost:3000' 
       cake.stub(:user).and_return(artist)
       cakes.stub(:find).with(id).and_return(cake)
     end
@@ -31,7 +30,7 @@ describe PublishCakeToTwitter do
 
       it "tweets new cakes" do
         subject.handle(cake_id: id)
-        twitter.should have_received(:tweet).with("yummy By joe on http://localhost:3000/creations/88-yummy!")
+        twitter.should have_received(:tweet).with("yummy By joe on http://www.blah.com/creations/88-yummy!")
       end
     end
 

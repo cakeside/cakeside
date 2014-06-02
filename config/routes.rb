@@ -1,4 +1,6 @@
 Cake::Application.routes.draw do
+  default_url_options(Rails.application.config.action_mailer.default_url_options)
+
   get "about_us" => "home#about_us"
   get "why_cakeside" => "home#why_cakeside"
 
