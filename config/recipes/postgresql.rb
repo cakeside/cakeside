@@ -2,7 +2,6 @@ set_default(:postgresql_host, "localhost")
 set_default(:postgresql_user) { application }
 set_default(:postgresql_password) { Capistrano::CLI.password_prompt "PostgreSQL Password: " }
 set_default(:postgresql_database) { "#{application}_#{rails_env}" }
-set_default(:postgresql_pid) { "/var/run/postgresql/9.2-main.pid" }
 
 namespace :postgresql do
   desc "create a database"
