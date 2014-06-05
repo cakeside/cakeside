@@ -17,28 +17,50 @@ class Photo < ActiveRecord::Base
 
   def upload(file, blob_storage)
     image = Image.new(file)
-    upload_original(image)
+    versions.each do |version|
+      version.upload(image, blob_storage)
+    end
+  end
+
+  def create_key(prefix = '')
+    "uploads/photo/image/#{id}/#{prefix}#{original_filename}"
   end
 
   private
 
-  def upload_original(image, blob_storage)
-    blob_storage.upload(create_key, image.path)
-    upload_large_version(image, blob_storage)
+  def versions
+    @versions ||= [OriginalVersion.new(self), LargeVersion.new(self), ThumbnailVersion.new(self)]
   end
 
-  def upload_large_version(image, blob_storage)
-    image.resize_to_fit(570, 630)
-    blob_storage.upload(create_key('large'), image.path)
-    upload_thumbnail_version(image, blob_storage)
+  class OriginalVersion
+    def initialize(photo)
+      @photo = photo
+    end
+
+    def upload(image, blob_storage)
+      blob_storage.upload(@photo.create_key, image.path)
+    end
   end
 
-  def upload_thumbnail_version(image, blob_storage)
-    image.resize_to_fill(260, 180)
-    blob_storage.upload(create_key('thumb'), image.path)
+  class LargeVersion
+    def initialize(photo)
+      @photo = photo
+    end
+
+    def upload(image, blob_storage)
+      image.resize_to_fit(570, 630)
+      blob_storage.upload(@photo.create_key('large_'), image.path)
+    end
   end
 
-  def create_key(prefix = '')
-    "uploads/photo/image/#{id}/#{prefix}_#{original_filename}"
+  class ThumbnailVersion
+    def initialize(photo)
+      @photo = photo
+    end
+
+    def upload(image, blob_storage)
+      image.resize_to_fill(260, 180)
+      blob_storage.upload(@photo.create_key('thumb_'), image.path)
+    end
   end
 end
