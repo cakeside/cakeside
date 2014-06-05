@@ -23,11 +23,11 @@ class Photo < ActiveRecord::Base
     end
   end
 
+  private
+
   def create_key(prefix = '')
     "uploads/photo/image/#{id}/#{prefix}#{original_filename}"
   end
-
-  private
 
   def versions
     @versions ||= [OriginalVersion.new, LargeVersion.new, ThumbnailVersion.new]
