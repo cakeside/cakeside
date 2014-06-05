@@ -33,6 +33,13 @@ class ProcessPhoto
     key = "uploads/photo/image/#{photo.id}/large_#{File.basename(file)}"
     Image.new(file).resize_to_fit(570, 630)
     @blob_storage.upload(key, file)
+    upload_thumbnail_version(file, photo)
+  end
+
+  def upload_thumbnail_version(file, photo)
+    key = "uploads/photo/image/#{photo.id}/thumb_#{File.basename(file)}"
+    Image.new(file).resize_to_fill(260, 180)
+    @blob_storage.upload(key, file)
   end
 
 end
@@ -47,6 +54,32 @@ class Image
   def resize_to_fit(width, height)
     manipulate! do |img|
       img.resize "#{width}x#{height}"
+      img = yield(img) if block_given?
+      img
+    end
+  end
+
+  def resize_to_fill(width, height, gravity = 'Center')
+    manipulate! do |img|
+      cols, rows = img[:dimensions]
+      img.combine_options do |cmd|
+        if width != cols || height != rows
+          scale_x = width/cols.to_f
+          scale_y = height/rows.to_f
+          if scale_x >= scale_y
+            cols = (scale_x * (cols + 0.5)).round
+            rows = (scale_x * (rows + 0.5)).round
+            cmd.resize "#{cols}"
+          else
+            cols = (scale_y * (cols + 0.5)).round
+            rows = (scale_y * (rows + 0.5)).round
+            cmd.resize "x#{rows}"
+          end
+        end
+        cmd.gravity gravity
+        cmd.background "rgba(255,255,255,0.0)"
+        cmd.extent "#{width}x#{height}" if cols != width || rows != height
+      end
       img = yield(img) if block_given?
       img
     end
