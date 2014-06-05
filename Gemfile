@@ -34,6 +34,8 @@ gem 'gibbon'
 gem 'twitter'
 gem 'spank'
 gem 'exifr'
+gem 'aws-sdk'
+gem 'mime-types'
 
 group :development do
   gem 'capistrano'
