@@ -18,7 +18,8 @@ class Photo < ActiveRecord::Base
   def upload(file, blob_storage)
     image = Image.new(file)
     versions.each do |version|
-      version.upload(image, blob_storage)
+      version.adjust(image)
+      blob_storage.upload(create_key(version.prefix), image.path)
     end
   end
 
@@ -29,38 +30,40 @@ class Photo < ActiveRecord::Base
   private
 
   def versions
-    @versions ||= [OriginalVersion.new(self), LargeVersion.new(self), ThumbnailVersion.new(self)]
+    @versions ||= [OriginalVersion.new, LargeVersion.new, ThumbnailVersion.new]
   end
 
   class OriginalVersion
-    def initialize(photo)
-      @photo = photo
+    attr_reader :prefix
+
+    def initialize
+      @prefix = ''
     end
 
-    def upload(image, blob_storage)
-      blob_storage.upload(@photo.create_key, image.path)
-    end
+    def adjust(image); end
   end
 
   class LargeVersion
-    def initialize(photo)
-      @photo = photo
+    attr_reader :prefix
+
+    def initialize
+      @prefix = 'large_'
     end
 
-    def upload(image, blob_storage)
+    def adjust(image)
       image.resize_to_fit(570, 630)
-      blob_storage.upload(@photo.create_key('large_'), image.path)
     end
   end
 
   class ThumbnailVersion
-    def initialize(photo)
-      @photo = photo
+    attr_reader :prefix
+
+    def initialize
+      @prefix = 'thumb_'
     end
 
-    def upload(image, blob_storage)
+    def adjust(image)
       image.resize_to_fill(260, 180)
-      blob_storage.upload(@photo.create_key('thumb_'), image.path)
     end
   end
 end
