@@ -6,34 +6,36 @@
       <thead>
         <tr>
           <th>id</th>
-          <th>cake</th>
-          <th>tmp</th>
           <th>processing</th>
-          <th>latitude</th>
-          <th>longitude</th>
-          <th>created at</th>
-          <th>updated at</th>
+          <th>filename</th>
+          <th>original</th>
+          <th>content type</th>
+          <th>geolocation</th>
+          <th>created</th>
+          <th>updated</th>
         </tr>
       </thead>
       <tbody>
       <tr>
         <td><%= link_to @photo.id, admin_photo_path(@photo.id) %></td>
-        <td><%= link_to @photo.creation.name, creation_path(@photo.creation) %></td>
-        <td><%= @photo.image_tmp %></td>
         <td><%= @photo.image_processing %></td>
-        <td><%= @photo.latitude %></td>
-        <td><%= @photo.longitude %></td>
+        <td><%= @photo.image %></td>
+        <td><%= @photo.original_filename %></td>
+        <td><%= @photo.content_type %></td>
+        <td><%= @photo.latitude %> <%= @photo.longitude %></td>
         <td><%= @photo.created_at %></td>
         <td><%= @photo.updated_at %></td>
       </tr>
       </tbody>
     </table>
 
-    <h2><%= @photo.image.root %><%= @photo.image.url %></h2>
-    <%= image_tag @photo.image.url %>
+    <h2><%= @photo.image %></h2>
+    <%= image_tag @photo.url_for(:original) %>
+    <%= image_tag @photo.url_for(:large) %>
+    <%= image_tag @photo.url_for(:thumb) %>
     <ul>
-    <% @results.each do |result| %>
-      <li><%= result.formatted_address %></li>
+      <% @results.each do |result| %>
+        <li><%= result.formatted_address %></li>
     <% end %>
     </ul>
   </div>
