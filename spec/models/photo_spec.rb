@@ -4,8 +4,11 @@ describe Photo do
   subject { Photo.new }
 
   describe "#upload" do
-    let(:file) { File.join(Rails.root, 'spec/fixtures/images/gps.jpg') }
+    let(:file) { "#{Tempfile.new('gps').path}.jpg" }
     let(:blob_storage) { double(upload: true) }
+
+    before { FileUtils.cp(File.join(Rails.root, 'spec/fixtures/images/gps.jpg'), file) }
+    after { FileUtils.rm(file) }
 
     it "uploads each version to the blob storage" do
       subject.id = rand(100)
@@ -17,8 +20,8 @@ describe Photo do
 
     it "sets the original filename" do
       subject.upload(file, blob_storage)
-      subject.original_filename.should == "gps.jpg"
-      subject.image.should == "gps.jpg"
+      subject.original_filename.should == File.basename(file)
+      subject.image.should == File.basename(file)
     end
 
     it "specifies the content type" do
@@ -32,8 +35,13 @@ describe Photo do
       expect(subject.longitude).to eql(-114.101799)
     end
 
+    it "applies the sha256 of the file" do
+      subject.upload(file, blob_storage)
+      expect(subject.sha256).to eql("a1b1b9b8b22d3a4a3523ebb0dc2c57c685938427e12e8a6439fbab104da6b1d8")
+    end
+
     def upload_key(prefix = '')
-      "uploads/photo/image/#{subject.id}/#{prefix}gps.jpg"
+      "uploads/photo/image/#{subject.id}/#{prefix}#{File.basename(file)}"
     end
   end
 

@@ -1,5 +1,6 @@
 class Photo < ActiveRecord::Base
   belongs_to :creation, counter_cache: true, touch: true
+  attr_accessor :sha256
 
   def watermark
     return '' if creation.nil?
@@ -21,6 +22,7 @@ class Photo < ActiveRecord::Base
     self.content_type = image.content_type
     self.latitude, self.longitude = image.geolocation
     self.image_processing = nil
+    self.sha256 = image.sha256
     versions.each do |version|
       version.adjust(image)
       blob_storage.upload(version.create_key, image.path)
