@@ -50,12 +50,12 @@ module My
       it "should respond with the proper json" do
         response.body.should ==
         {
-          :files => [{
-              :name => "example.png",
-              :url => "#{asset_host}/uploads/photo/image/#{photo.id}/large_example.png",
-              :thumbnail_url => "#{asset_host}/uploads/photo/image/#{photo.id}/thumb_example.png",
-              :delete_url => photo.id,
-              :delete_type => "DELETE"
+          files: [{
+              name: "example.png",
+              url: "#{asset_host}/uploads/photo/image/#{photo.id}/large_example.png",
+              thumbnail_url: "#{asset_host}/uploads/photo/image/#{photo.id}/thumb_example.png",
+              delete_url: photo.id,
+              delete_type: "DELETE"
             }]
         }.to_json
       end
