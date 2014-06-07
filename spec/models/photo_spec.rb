@@ -26,6 +26,12 @@ describe Photo do
       subject.content_type.should == "image/jpeg"
     end
 
+    it "applies the gps coordinates" do
+      subject.upload(file, blob_storage)
+      expect(subject.latitude).to eql(51.07296369444445)
+      expect(subject.longitude).to eql(-114.101799)
+    end
+
     def upload_key(prefix = '')
       "uploads/photo/image/#{subject.id}/#{prefix}gps.jpg"
     end

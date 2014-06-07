@@ -2,8 +2,8 @@ require "spec_helper"
 
 describe ProcessPhoto do
   let(:photos) { double }
-  let(:exif_parser) { double }
-  subject { ProcessPhoto.new(photos, exif_parser) }
+  let(:blob_storage) { double(upload: true) }
+  subject { ProcessPhoto.new(photos, blob_storage) }
 
   describe "#handles?" do
     it "handles photo uploads" do
@@ -19,7 +19,6 @@ describe ProcessPhoto do
 
     before :each do
       photos.stub(:find).with(photo.id).and_return(photo)
-      exif_parser.stub(:parse_geolocation_from).and_return([latitude, longitude])
       message = {
         photo_id: photo.id,
         file_path: image_path,
@@ -50,4 +49,3 @@ describe ProcessPhoto do
     end
   end
 end
-

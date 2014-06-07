@@ -1,8 +1,9 @@
 class Image
   attr_reader :path
 
-  def initialize(path)
+  def initialize(path, exif = ExifParser.new)
     @path = path
+    @exif = exif
   end
 
   def filename
@@ -11,6 +12,10 @@ class Image
 
   def content_type
     @content_type ||= ::MIME::Types.type_for(filename).first.to_s
+  end
+
+  def geolocation
+    @exif.parse_geolocation_from(@path)
   end
 
   def resize_to_fit(width, height)

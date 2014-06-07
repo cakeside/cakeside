@@ -15,6 +15,8 @@ class Photo < ActiveRecord::Base
     image = Image.new(file)
     self.image = self.original_filename = image.filename
     self.content_type = image.content_type
+    self.latitude, self.longitude = image.geolocation
+    self.image_processing = nil
     versions.each do |version|
       version.adjust(image)
       blob_storage.upload(create_key(version.prefix), image.path)
