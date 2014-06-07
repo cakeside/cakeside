@@ -16,6 +16,7 @@ class Photo < ActiveRecord::Base
   end
 
   def upload(file, blob_storage)
+    self.original_filename = File.basename(file)
     image = Image.new(file)
     versions.each do |version|
       version.adjust(image)
