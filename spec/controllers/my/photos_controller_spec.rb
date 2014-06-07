@@ -32,13 +32,10 @@ module My
     end
 
     describe :delete do
-      let!(:photo) { create(:photo) }
+      let!(:photo) { create(:photo, creation_id: cake.id, image_processing: nil) }
 
       before :each do
-        cake.photos << photo
-        cake.save!
-        photo.update_attribute(:image_processing, nil)
-        delete :destroy, :cake_id => cake.id, :id => photo.id
+        delete :destroy, cake_id: cake.id, id: photo.id
       end
 
       it "returns http success" do

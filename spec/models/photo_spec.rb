@@ -36,4 +36,25 @@ describe Photo do
       "uploads/photo/image/#{subject.id}/#{prefix}gps.jpg"
     end
   end
+
+  describe "#url_for" do
+    let(:asset_host) { ENV['ASSET_HOST'] }
+
+    before :each do
+      subject.id = rand(100)
+      subject.image = "blah.png"
+    end
+
+    it "returns the url to the large version" do
+      expect(subject.url_for(:large)).to eql("#{asset_host}/uploads/photo/image/#{subject.id}/large_blah.png")
+    end
+
+    it "returns the url for the thumbnail version" do
+      expect(subject.url_for(:thumb)).to eql("#{asset_host}/uploads/photo/image/#{subject.id}/thumb_blah.png")
+    end
+
+    it "returns the url for the original version" do
+      expect(subject.url_for(:original)).to eql("#{asset_host}/uploads/photo/image/#{subject.id}/blah.png")
+    end
+  end
 end

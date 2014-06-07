@@ -1,5 +1,5 @@
 class ProcessPhoto
-  def initialize(photos, blob_storage = BlobStorage.new)
+  def initialize(photos, blob_storage)
     @photos = photos
     @blob_storage = blob_storage
   end

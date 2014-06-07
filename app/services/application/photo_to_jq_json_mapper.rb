@@ -2,7 +2,8 @@ class PhotoToJQJsonMapper
   def map_from(photo)
     {
       name: photo.read_attribute(:image),
-      url: photo.image.url,
+      #url: photo.image.url,
+      url: photo.url_for(:large),
       thumbnail_url: photo.is_processed? ? photo.image.thumb.url : photo.image.thumb.default_url,
       delete_url: photo.id,
       delete_type: "DELETE"

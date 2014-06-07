@@ -1,10 +1,13 @@
 class Photo < ActiveRecord::Base
   belongs_to :creation, counter_cache: true, touch: true
-  #mount_uploader :image, PhotoUploader
 
   def watermark
     return '' if creation.nil?
     creation.watermark
+  end
+
+  def url_for(version_key, asset_host = ENV['ASSET_HOST'])
+    versions.find { |version| version.for?(version_key) }.url_for(asset_host)
   end
 
   def is_processed?
@@ -13,41 +16,60 @@ class Photo < ActiveRecord::Base
 
   def upload(file, blob_storage)
     image = Image.new(file)
-    self.image = self.original_filename = image.filename
+    self.original_filename = File.basename(file)
+    self.image = image.filename
     self.content_type = image.content_type
     self.latitude, self.longitude = image.geolocation
     self.image_processing = nil
     versions.each do |version|
       version.adjust(image)
-      blob_storage.upload(create_key(version.prefix), image.path)
+      blob_storage.upload(version.create_key, image.path)
     end
   end
 
   private
 
-  def create_key(prefix = '')
-    "uploads/photo/image/#{id}/#{prefix}#{original_filename}"
-  end
-
   def versions
-    @versions ||= [OriginalVersion.new, LargeVersion.new, ThumbnailVersion.new]
+    @versions ||= [OriginalVersion.new(self), LargeVersion.new(self), ThumbnailVersion.new(self)]
   end
 
-  class OriginalVersion
-    attr_reader :prefix
+  class Version
+    attr_reader :key, :prefix, :photo
 
-    def initialize
-      @prefix = ''
+    def initialize(photo, key, prefix)
+      @key = key
+      @prefix = prefix
+      @photo = photo
+    end
+
+    def adjust(image) 
+      fail "Please override with version specific behaviours"
+    end
+
+    def for?(other_key)
+      key == other_key
+    end
+
+    def url_for(asset_host)
+      "#{asset_host}/#{create_key}"
+    end
+
+    def create_key
+      "uploads/photo/image/#{photo.id}/#{prefix}#{photo.image}"
+    end
+  end
+
+  class OriginalVersion < Version
+    def initialize(photo)
+      super(photo, :original, "")
     end
 
     def adjust(image); end
   end
 
-  class LargeVersion
-    attr_reader :prefix
-
-    def initialize
-      @prefix = 'large_'
+  class LargeVersion < Version
+    def initialize(photo)
+      super(photo, :large, "large_")
     end
 
     def adjust(image)
@@ -55,11 +77,9 @@ class Photo < ActiveRecord::Base
     end
   end
 
-  class ThumbnailVersion
-    attr_reader :prefix
-
-    def initialize
-      @prefix = 'thumb_'
+  class ThumbnailVersion < Version
+    def initialize(photo)
+      super(photo, :thumb, "thumb_")
     end
 
     def adjust(image)

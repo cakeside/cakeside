@@ -26,10 +26,6 @@ class Creation < ActiveRecord::Base
     is_restricted == false
   end
 
-  def add_photo(photo)
-    photos.create(:image => photo)
-  end
-
   def is_liked_by(user)
     favorites.where(user: user).any?
   end
