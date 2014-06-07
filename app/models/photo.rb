@@ -1,6 +1,5 @@
 class Photo < ActiveRecord::Base
   belongs_to :creation, counter_cache: true, touch: true
-  attr_accessor :sha256
 
   def watermark
     return '' if creation.nil?
