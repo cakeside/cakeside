@@ -33,6 +33,7 @@ module My
 
     describe :delete do
       let!(:photo) { create(:photo, creation_id: cake.id, image_processing: nil) }
+      let(:asset_host) { ENV['ASSET_HOST'] }
 
       before :each do
         delete :destroy, cake_id: cake.id, id: photo.id
@@ -51,8 +52,8 @@ module My
         {
           :files => [{
               :name => "example.png",
-              :url => "/uploads/photo/image/#{photo.id}/example.png",
-              :thumbnail_url => "/uploads/photo/image/#{photo.id}/thumb_example.png",
+              :url => "#{asset_host}/uploads/photo/image/#{photo.id}/large_example.png",
+              :thumbnail_url => "#{asset_host}/uploads/photo/image/#{photo.id}/thumb_example.png",
               :delete_url => photo.id,
               :delete_type => "DELETE"
             }]
