@@ -2,10 +2,6 @@ class Photo < ActiveRecord::Base
   belongs_to :creation, counter_cache: true, touch: true
   #mount_uploader :image, PhotoUploader
 
-  #def thumb_url
-    #image.thumb.url
-  #end
-
   def watermark
     return '' if creation.nil?
     creation.watermark
@@ -16,8 +12,8 @@ class Photo < ActiveRecord::Base
   end
 
   def upload(file, blob_storage)
-    self.original_filename = File.basename(file)
     image = Image.new(file)
+    self.original_filename = image.filename
     versions.each do |version|
       version.adjust(image)
       blob_storage.upload(create_key(version.prefix), image.path)

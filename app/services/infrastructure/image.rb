@@ -5,6 +5,10 @@ class Image
     @path = path
   end
 
+  def filename
+    @filename ||= sanitize(@path)
+  end
+
   def resize_to_fit(width, height)
     manipulate! do |img|
       img.resize "#{width}x#{height}"
@@ -54,5 +58,18 @@ class Image
     default = I18n.translate(:"errors.messages.mini_magick_processing_error", :e => e, :locale => :en)
     message = I18n.translate(:"errors.messages.mini_magick_processing_error", :e => e, :default => default)
     raise CarrierWave::ProcessingError, message
+  end
+
+  def sanitize(name)
+    name = name.gsub("\\", "/")
+    name = File.basename(name)
+    name = name.gsub(sanitize_regexp,"_")
+    name = "_#{name}" if name =~ /\A\.+\z/
+    name = "unnamed" if name.size == 0
+    return name.mb_chars.to_s
+  end
+
+  def sanitize_regexp
+    /[^a-zA-Z0-9\.\-\+_]/
   end
 end
