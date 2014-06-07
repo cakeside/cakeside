@@ -18,6 +18,10 @@ class Image
     @exif.parse_geolocation_from(@path)
   end
 
+  def sha256
+    @sha256 ||= Digest::SHA256.file(@path).to_s
+  end
+
   def resize_to_fit(width, height)
     manipulate! do |img|
       img.resize "#{width}x#{height}"
