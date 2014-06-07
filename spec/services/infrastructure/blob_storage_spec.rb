@@ -1,11 +1,18 @@
 require "spec_helper"
 
 describe BlobStorage do
+  let(:bucket) { ENV['FOG_DIRECTORY'] }
+  subject { BlobStorage.new }
+
   context "when uploading" do
     let(:file) { File.join(Rails.root, 'spec/fixtures/images/gps.jpg') }
 
     it "uploads to s3" do
-      BlobStorage.new.upload("test#{SecureRandom.uuid}", file)
+      key = "test#{SecureRandom.uuid}"
+      subject.upload(key, file)
+
+      object = AWS::S3.new.buckets[bucket].objects[key]
+      expect(object.size).to > 0
     end
   end
 end

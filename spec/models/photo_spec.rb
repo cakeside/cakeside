@@ -56,5 +56,29 @@ describe Photo do
     it "returns the url for the original version" do
       expect(subject.url_for(:original)).to eql("#{asset_host}/uploads/photo/image/#{subject.id}/blah.png")
     end
+
+    context "when the image is still being processed" do
+      let(:large_processing_image_url) { path_to("large_default.png") }
+      let(:thumb_processing_image_url) { path_to("thumb_default.png") }
+      let(:original_processing_image_url) { path_to("original_default.png") }
+
+      before { subject.image_processing=true }
+
+      it "returns the path to the original processing image" do
+        expect(subject.url_for(:original)).to eql(original_processing_image_url)
+      end
+
+      it "returns the path to a large processing image" do
+        expect(subject.url_for(:large)).to eql(large_processing_image_url)
+      end
+
+      it "returns the path to a thumb processing image" do
+        expect(subject.url_for(:thumb)).to eql(thumb_processing_image_url)
+      end
+
+      def path_to(image_filename)
+        ActionController::Base.helpers.asset_path(image_filename)
+      end
+    end
   end
 end

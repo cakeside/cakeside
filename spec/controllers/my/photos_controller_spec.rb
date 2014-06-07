@@ -48,9 +48,8 @@ module My
 
       it "should respond with the proper json" do
         response.body.should ==
-          {
-          :files => [
-            {
+        {
+          :files => [{
               :name => "example.png",
               :url => "/uploads/photo/image/#{photo.id}/example.png",
               :thumbnail_url => "/uploads/photo/image/#{photo.id}/thumb_example.png",

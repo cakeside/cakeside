@@ -42,7 +42,7 @@ class Photo < ActiveRecord::Base
       @photo = photo
     end
 
-    def adjust(image) 
+    def adjust(image)
       fail "Please override with version specific behaviours"
     end
 
@@ -51,7 +51,11 @@ class Photo < ActiveRecord::Base
     end
 
     def url_for(asset_host)
-      "#{asset_host}/#{create_key}"
+      if photo.is_processed?
+        "#{asset_host}/#{create_key}"
+      else
+        ActionController::Base.helpers.asset_path("#{key}_default.png")
+      end
     end
 
     def create_key
