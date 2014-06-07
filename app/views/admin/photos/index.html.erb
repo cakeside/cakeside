@@ -11,6 +11,7 @@
           <th>original</th>
           <th>content type</th>
           <th>geolocation</th>
+          <th>sha256</th>
           <th>created</th>
           <th>updated</th>
         </tr>
@@ -24,6 +25,7 @@
             <td><%= photo.original_filename %></td>
             <td><%= photo.content_type %></td>
             <td><%= photo.latitude %> <%= photo.longitude %></td>
+            <td><%= photo.sha256 %></td>
             <td><%= time_ago_in_words(photo.created_at) %> ago</td>
             <td><%= time_ago_in_words(photo.updated_at) %> ago</td>
           </tr>
