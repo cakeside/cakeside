@@ -12,7 +12,7 @@ describe BlobStorage do
       subject.upload(key, file)
 
       object = AWS::S3.new.buckets[bucket].objects[key]
-      expect(object.size).to > 0
+      expect(object.exists?).to be_true
     end
   end
 end

@@ -8,7 +8,8 @@ class BlobStorage
   def upload(key, file)
     puts "uploading to #{bucket_name}/#{key}"
     object = connection.buckets[bucket_name].objects[key]
-    object.write(Pathname.new(file), content_type: content_type_for(file), cache_control: 'public, max-age=315576000')
+    object.write(Pathname.new(file), options_for(file))
+    object.acl = :public_read
   end
 
   private
@@ -19,6 +20,13 @@ class BlobStorage
 
   def content_type_for(file)
     ::MIME::Types.type_for(file).first.to_s
+  end
+
+  def options_for(file)
+    {
+      content_type: content_type_for(file),
+      cache_control: 'public, max-age=315576000',
+    }
   end
 
   class Fake
