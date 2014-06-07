@@ -11,12 +11,23 @@ describe Photo do
       subject.id = rand(100)
       subject.upload(file, blob_storage)
       blob_storage.should have_received(:upload).with(upload_key, file)
-      blob_storage.should have_received(:upload).with(upload_key("large"), file)
-      blob_storage.should have_received(:upload).with(upload_key("thumb"), file)
+      blob_storage.should have_received(:upload).with(upload_key("large_"), file)
+      blob_storage.should have_received(:upload).with(upload_key("thumb_"), file)
+    end
+
+    it "sets the original filename" do
+      subject.upload(file, blob_storage)
+      subject.original_filename.should == "gps.jpg"
+      subject.image.should == "gps.jpg"
+    end
+
+    it "specifies the content type" do
+      subject.upload(file, blob_storage)
+      subject.content_type.should == "image/jpeg"
     end
 
     def upload_key(prefix = '')
-      "uploads/photo/image/#{subject.id}/#{prefix}_gps.jpg"
+      "uploads/photo/image/#{subject.id}/#{prefix}gps.jpg"
     end
   end
 end

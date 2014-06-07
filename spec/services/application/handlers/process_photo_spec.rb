@@ -24,7 +24,6 @@ describe ProcessPhoto do
         photo_id: photo.id,
         file_path: image_path,
         content_type: 'image/jpeg',
-        original_filename: 'blah.jpg'
       }
       subject.handle(message)
     end
@@ -42,7 +41,7 @@ describe ProcessPhoto do
     end
 
     it "specifies the original filename" do
-      photo.original_filename.should == 'blah.jpg'
+      photo.original_filename.should == 'gps.jpg'
     end
 
     it "applies the geolocation information" do

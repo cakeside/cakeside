@@ -9,6 +9,10 @@ class Image
     @filename ||= sanitize(@path)
   end
 
+  def content_type
+    @content_type ||= ::MIME::Types.type_for(filename).first.to_s
+  end
+
   def resize_to_fit(width, height)
     manipulate! do |img|
       img.resize "#{width}x#{height}"

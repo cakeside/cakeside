@@ -13,7 +13,8 @@ class Photo < ActiveRecord::Base
 
   def upload(file, blob_storage)
     image = Image.new(file)
-    self.original_filename = image.filename
+    self.image = self.original_filename = image.filename
+    self.content_type = image.content_type
     versions.each do |version|
       version.adjust(image)
       blob_storage.upload(create_key(version.prefix), image.path)
