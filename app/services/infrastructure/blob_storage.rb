@@ -6,7 +6,6 @@ class BlobStorage
   end
 
   def upload(key, file)
-    raise "heck"
     puts "uploading to #{bucket_name}/#{key}"
     object = connection.buckets[bucket_name].objects[key]
     object.write(Pathname.new(file), content_type: content_type_for(file), cache_control: 'public, max-age=315576000')
@@ -20,5 +19,10 @@ class BlobStorage
 
   def content_type_for(file)
     ::MIME::Types.type_for(file).first.to_s
+  end
+
+  class Fake
+    def upload(*args)
+    end
   end
 end
