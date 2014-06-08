@@ -56,4 +56,21 @@ describe Image do
   it "raises an errorwhen the file is not in the whitelist" do
     expect(-> { Image.new('blah.exe') }).to raise_error
   end
+
+  describe "#resize_to_fit" do
+    let(:path) { "#{Tempfile.new('gps').path}.jpg" }
+    subject { Image.new(path) }
+
+    before :each do
+      FileUtils.cp(File.join(Rails.root, 'spec/fixtures/images/gps.jpg'), path)
+    end
+
+    it "resizes the image to fit" do
+      subject.resize_to_fit(130, 90)
+
+      image = MiniMagick::Image.open(path)
+      expect(image[:width]).to eql(130)
+      expect(image[:height]).to eql(90)
+    end
+  end
 end
