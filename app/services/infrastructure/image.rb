@@ -23,7 +23,7 @@ class Image
     @sha256 ||= Digest::SHA256.file(@path).to_s
   end
 
-  def resize_to_fit(width, height)
+  def resize_to_fit(width:, height:)
     manipulate! do |img|
       img.resize "#{width}x#{height}"
       img = yield(img) if block_given?
@@ -31,7 +31,7 @@ class Image
     end
   end
 
-  def resize_to_fill(width, height, gravity = 'Center')
+  def resize_to_fill(width:, height:, gravity: 'Center')
     manipulate! do |img|
       cols, rows = img[:dimensions]
       img.combine_options do |cmd|

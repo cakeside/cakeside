@@ -66,15 +66,15 @@ describe Image do
     end
 
     it "resizes the image to fit" do
-      subject.resize_to_fit(130, 90)
+      subject.resize_to_fit(width: 570, height: 630)
 
       image = MiniMagick::Image.open(path)
-      expect(image[:width]).to eql(130)
-      expect(image[:height]).to eql(90)
+      expect(image[:width]).to eql(570)
+      expect(image[:height]).to eql(395)
     end
 
     it "resizes the image to fill" do
-      subject.resize_to_fill(130, 90)
+      subject.resize_to_fill(width: 130, height: 90)
 
       image = MiniMagick::Image.open(path)
       expect(image[:width]).to eql(130)
