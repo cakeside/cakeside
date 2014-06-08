@@ -52,4 +52,8 @@ describe Image do
       expect(Image.new('blah.tif').content_type).to eql('image/tiff')
     end
   end
+
+  it "raises an errorwhen the file is not in the whitelist" do
+    expect(-> { Image.new('blah.exe') }).to raise_error
+  end
 end

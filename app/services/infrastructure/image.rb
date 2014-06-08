@@ -4,6 +4,7 @@ class Image
   def initialize(path, exif = ExifParser.new)
     @path = path
     @exif = exif
+    ensure_in_whitelist!(@path)
   end
 
   def filename
@@ -84,5 +85,11 @@ class Image
 
   def sanitize_regexp
     /[^a-zA-Z0-9\.\-\+_]/
+  end
+
+  def ensure_in_whitelist!(path)
+    unless %w(.jpg .jpeg .gif .png .bmp .tif).include?(File.extname(path))
+      raise StandardError.new("This file is not in the whitelist. #{path}")
+    end
   end
 end
