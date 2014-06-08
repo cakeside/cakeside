@@ -15,7 +15,7 @@ describe Image do
     let(:path) { File.join(Rails.root, 'spec/fixtures/images/gps.jpg') }
 
     it "gives the SHA256 of the image" do
-      expect(Image.new(path).sha256).to eql('a1b1b9b8b22d3a4a3523ebb0dc2c57c685938427e12e8a6439fbab104da6b1d8')
+      expect(Image.new(path).sha256).to eql("530990323da10ba4b8ab6a9809e9d694bd354831fd58afc96e18c708bfad5ef1")
     end
   end
 
@@ -69,8 +69,8 @@ describe Image do
       subject.resize_to_fit(width: 570, height: 630)
 
       image = MiniMagick::Image.open(path)
-      expect(image[:width]).to eql(570)
-      expect(image[:height]).to eql(395)
+      expect(image[:width]).to eql(473)
+      expect(image[:height]).to eql(630)
     end
 
     it "resizes the image to fill" do
