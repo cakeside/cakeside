@@ -61,7 +61,7 @@ class Image
     manipulate! do |image|
       image.combine_options do |c|
         c.gravity 'Southeast'
-        c.draw "text 10,10 \"#{message}\""
+        c.draw "text 10,10 \"#{message} on CakeSide.com\""
         c.font 'helvetica'
         c.fill("#FFFFFF")
         c.pointsize 28
