@@ -80,5 +80,10 @@ describe Image do
       expect(image[:width]).to eql(130)
       expect(image[:height]).to eql(90)
     end
+
+    it "adds a watermark" do
+      expect(-> { subject.watermark("testing") }).to_not raise_error
+      #`open #{path}`
+    end
   end
 end

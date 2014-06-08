@@ -57,6 +57,19 @@ class Image
     end
   end
 
+  def watermark(message)
+    manipulate! do |image|
+      image.combine_options do |c|
+        c.gravity 'Southeast'
+        c.draw "text 10,10 \"#{message}\""
+        c.font 'helvetica'
+        c.fill("#FFFFFF")
+        c.pointsize 28
+      end
+      image
+    end
+  end
+
   private
 
   def manipulate!
