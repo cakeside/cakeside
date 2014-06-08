@@ -8,7 +8,7 @@ class Creation < ActiveRecord::Base
   acts_as_taggable
   alias_method :author, :user
 
-  default_scope -> { order(:created_at => :desc) }
+  default_scope -> { order('creations.created_at desc') }
 
   def to_param
     "#{id}-#{name.downcase.gsub(/[^a-z0-9]+/i, '-')}"

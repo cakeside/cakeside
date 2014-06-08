@@ -37,7 +37,7 @@ describe Photo do
 
     it "applies the sha256 of the file" do
       subject.upload(file, blob_storage)
-      expect(subject.sha256).to eql("a1b1b9b8b22d3a4a3523ebb0dc2c57c685938427e12e8a6439fbab104da6b1d8")
+      expect(subject.sha256).to eql("530990323da10ba4b8ab6a9809e9d694bd354831fd58afc96e18c708bfad5ef1")
     end
 
     def upload_key(prefix = '')
