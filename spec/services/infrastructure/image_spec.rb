@@ -9,10 +9,47 @@ describe Image do
     it "sanitizes the filename" do
       expect(Image.new("/Users/mo/blah huh.png").filename).to eql("blah_huh.png")
     end
+  end
+
+  describe "#sha256" do
+    let(:path) { File.join(Rails.root, 'spec/fixtures/images/gps.jpg') }
 
     it "gives the SHA256 of the image" do
-      path = File.join(Rails.root, 'spec/fixtures/images/gps.jpg')
       expect(Image.new(path).sha256).to eql('a1b1b9b8b22d3a4a3523ebb0dc2c57c685938427e12e8a6439fbab104da6b1d8')
+    end
+  end
+
+  describe "#geolocation" do
+    let(:exif) { double }
+    subject { Image.new('blah.jpg', exif) }
+
+    it "parses the geolocation info" do
+      coordinates = [rand(100), rand(50)]
+      exif.stub(:parse_geolocation_from).with('blah.jpg').and_return(coordinates)
+      expect(subject.geolocation).to eql(coordinates)
+    end
+  end
+
+  describe "#content_type" do
+    it "returns the correct content type for jpegs" do
+      expect(Image.new('blah.jpg').content_type).to eql('image/jpeg')
+      expect(Image.new('blah.jpeg').content_type).to eql('image/jpeg')
+    end
+
+    it "returns the correct content type for png" do
+      expect(Image.new('blah.png').content_type).to eql('image/png')
+    end
+
+    it "returns the correct content type for gif" do
+      expect(Image.new('blah.gif').content_type).to eql('image/gif')
+    end
+
+    it "returns the correct content type for bmp" do
+      expect(Image.new('blah.bmp').content_type).to eql('image/x-bmp')
+    end
+
+    it "returns the correct content type for tif" do
+      expect(Image.new('blah.tif').content_type).to eql('image/tiff')
     end
   end
 end
