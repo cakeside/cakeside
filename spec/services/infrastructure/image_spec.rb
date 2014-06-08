@@ -57,7 +57,7 @@ describe Image do
     expect(-> { Image.new('blah.exe') }).to raise_error
   end
 
-  describe "#resize_to_fit" do
+  context "resizing" do
     let(:path) { "#{Tempfile.new('gps').path}.jpg" }
     subject { Image.new(path) }
 
@@ -67,6 +67,14 @@ describe Image do
 
     it "resizes the image to fit" do
       subject.resize_to_fit(130, 90)
+
+      image = MiniMagick::Image.open(path)
+      expect(image[:width]).to eql(130)
+      expect(image[:height]).to eql(90)
+    end
+
+    it "resizes the image to fill" do
+      subject.resize_to_fill(130, 90)
 
       image = MiniMagick::Image.open(path)
       expect(image[:width]).to eql(130)
