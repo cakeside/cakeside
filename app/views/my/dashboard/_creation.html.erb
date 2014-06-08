@@ -1,6 +1,6 @@
 <div class="media">
   <%= link_to item, class: 'pull-left' do %>
-    <img class="media-object" data-src="<%= item.primary_image.thumb_url %>" alt="64x64" style="width: 64px; height: 64px;" src="<%= item.primary_image.thumb_url %>">
+    <img class="media-object" data-src="<%= item.primary_image.url_for(:thumb) %>" alt="64x64" style="width: 64px; height: 64px;" src="<%= item.primary_image.url_for(:thumb) %>">
   <% end %>
   <div class="media-body">
     <h4 class="media-heading"><%= item.name %></h4>

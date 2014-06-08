@@ -2,7 +2,7 @@
   <div class="span12">
     <h1><%= link_to @creation.name, creation_path(@creation) %></h1>
     <%= link_to creation_photo_path(@creation, @photo) do %>
-      <%= image_tag(@photo.image.url, :class => "thumbnail") %>
+      <%= image_tag(@photo.url_for(:original), :class => "thumbnail") %>
     <% end %>
   </div>
 </div>
@@ -13,7 +13,7 @@
       <% @creation.photos.each do |photo| %>
         <li class="span2">
           <%= link_to creation_photo_path(@creation, photo) do %>
-            <%= image_tag(photo.image.thumb.url, class: "thumbnail") %>
+            <%= image_tag(photo.url_for(:thumb), class: "thumbnail") %>
           <% end %>
         </li>
     <% end %>

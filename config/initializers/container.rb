@@ -8,6 +8,11 @@ container.register(:queue) { |c| Delayed::Job }
 container.register(:message_bus) { |c| c.build(MessageBus) }.as_singleton
 container.register(:exif_parser) { |builder| ExifParser.new }
 container.register(:twitter_publisher) { |c| c.build(TwitterPublisher) }.as_singleton
+if Rails.env.test?
+  container.register(:blob_storage) { |builder| BlobStorage::Fake.new }
+else
+  container.register(:blob_storage) { |builder| BlobStorage.new }
+end
 
 # repositories
 container.register(:cakes) { |builder| Creation }

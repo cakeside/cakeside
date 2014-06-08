@@ -5,9 +5,8 @@ describe CreationsController do
   let(:creation){ create(:creation, :user => user) }
 
   before(:each) do
-    photo = File.new(File.join(Rails.root, 'spec/fixtures/images/example.png'))
-    creation.add_photo(photo)
-    creation.photos.first.update_attribute(:image_processing, nil)
+    photo = 'spec/fixtures/images/example.png'
+    creation.photos.create(image: photo, image_processing: nil)
   end
 
   describe :index do

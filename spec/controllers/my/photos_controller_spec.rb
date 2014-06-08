@@ -32,13 +32,11 @@ module My
     end
 
     describe :delete do
-      let!(:photo) { create(:photo) }
+      let!(:photo) { create(:photo, creation_id: cake.id, image_processing: nil) }
+      let(:asset_host) { ENV['ASSET_HOST'] }
 
       before :each do
-        cake.photos << photo
-        cake.save!
-        photo.update_attribute(:image_processing, nil)
-        delete :destroy, :cake_id => cake.id, :id => photo.id
+        delete :destroy, cake_id: cake.id, id: photo.id
       end
 
       it "returns http success" do
@@ -51,14 +49,13 @@ module My
 
       it "should respond with the proper json" do
         response.body.should ==
-          {
-          :files => [
-            {
-              :name => "example.png",
-              :url => "/uploads/photo/image/#{photo.id}/example.png",
-              :thumbnail_url => "/uploads/photo/image/#{photo.id}/thumb_example.png",
-              :delete_url => photo.id,
-              :delete_type => "DELETE"
+        {
+          files: [{
+              name: "example.png",
+              url: "#{asset_host}/uploads/photo/image/#{photo.id}/large_example.png",
+              thumbnail_url: "#{asset_host}/uploads/photo/image/#{photo.id}/thumb_example.png",
+              delete_url: photo.id,
+              delete_type: "DELETE"
             }]
         }.to_json
       end

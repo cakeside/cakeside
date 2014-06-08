@@ -7,9 +7,11 @@
         <tr>
           <th>id</th>
           <th>processing</th>
-          <th>tmp</th>
-          <th>latitude</th>
-          <th>longitude</th>
+          <th>filename</th>
+          <th>original</th>
+          <th>content type</th>
+          <th>geolocation</th>
+          <th>sha256</th>
           <th>created</th>
           <th>updated</th>
         </tr>
@@ -19,9 +21,11 @@
           <tr>
             <td><%= link_to photo.id, admin_photo_path(photo.id) %></td>
             <td><%= photo.image_processing %></td>
-            <td><%= photo.image.root %>/<%= photo.image.cache_dir %>/<%= photo.image_tmp %></td>
-            <td><%= photo.latitude %></td>
-            <td><%= photo.longitude %></td>
+            <td><%= photo.image %></td>
+            <td><%= photo.original_filename %></td>
+            <td><%= photo.content_type %></td>
+            <td><%= photo.latitude %> <%= photo.longitude %></td>
+            <td><%= photo.sha256 %></td>
             <td><%= time_ago_in_words(photo.created_at) %> ago</td>
             <td><%= time_ago_in_words(photo.updated_at) %> ago</td>
           </tr>
