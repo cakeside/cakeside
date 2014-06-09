@@ -57,6 +57,7 @@ Cake::Application.routes.draw do
     resources :activities, only: [:index]
     resources :subscriptions, only: [:index]
     resources :photos, only: [:index, :show]
+    resources :blobs, only: [:index, :show]
     resources :errors, only: [:index, :create]
   end
 
