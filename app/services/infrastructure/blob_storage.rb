@@ -6,7 +6,7 @@ class BlobStorage
   end
 
   def upload(key, file)
-    puts "uploading to #{bucket_name}/#{key}"
+    Rails.logger.info "uploading to #{bucket_name}/#{key}"
     object = connection.buckets[bucket_name].objects[key]
     object.write(Pathname.new(file), options_for(file))
     object.acl = :public_read
