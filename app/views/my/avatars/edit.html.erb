@@ -16,7 +16,7 @@ try { mixpanel.track_forms(".edit_avatar", "uploaded avatar"); } catch {}
       </div>
       <div class="control-group">
         <div class="controls">
-          <%= f.submit "Upload picture", :class => "btn btn-primary", disable_with: "Uploading..." %>
+          <%= f.submit "Upload picture", :class => "btn btn-primary", data: { disable_with: "Uploading..." } %>
         </div>
       </div>
     <% end %>
