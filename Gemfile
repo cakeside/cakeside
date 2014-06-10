@@ -53,7 +53,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'capybara'
-  gem 'fakes-rspec'
   gem 'simplecov'
   gem 'ffaker'
   gem 'selenium-webdriver'

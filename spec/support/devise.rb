@@ -1,7 +1,7 @@
 module DeviseHelper
   module Controllers
     def http_login(user)
-      gateway = fake
+      gateway = double
       gateway.stub(:authenticate).and_return(user)
       gateway.stub(:authenticate!).and_return(user)
       gateway.stub(:authenticate?).and_return(user)
