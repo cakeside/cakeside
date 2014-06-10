@@ -7,7 +7,7 @@ describe ProcessPhoto do
 
   describe "#handles?" do
     it "handles photo uploads" do
-      subject.handles?(:upload_photo).should be_true
+      subject.handles?(:upload_photo).should be_truthy
     end
   end
 

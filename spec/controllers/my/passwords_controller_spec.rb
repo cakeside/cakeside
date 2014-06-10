@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe My::PasswordsController do
-  describe :update do
+  describe "#update" do
     context "when not logged in" do
       let(:user) { create(:user) }
 
@@ -36,14 +36,14 @@ describe My::PasswordsController do
         end
 
         it "should update the users password" do
-          user.reload.valid_password?(new_password).should be_true
+          user.reload.valid_password?(new_password).should be_truthy
         end
       end
     end
 
   end
 
-  describe :index do
+  describe "#index" do
     context 'when logged in' do
       let(:user) { create(:user) }
 

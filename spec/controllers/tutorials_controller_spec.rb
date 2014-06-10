@@ -11,7 +11,7 @@ describe TutorialsController do
     request.env['warden'] = double(Warden, :authenticate => user, :authenticate! => user)
   end
 
-  describe :index do
+  describe "#index" do
     let(:tutorial) { create(:tutorial) }
 
     before :each do
@@ -24,7 +24,7 @@ describe TutorialsController do
     end
   end
 
-  describe :show do
+  describe "#show" do
     let(:tutorial) { create(:tutorial) }
 
     before :each do
@@ -37,14 +37,14 @@ describe TutorialsController do
     end
   end
 
-  describe :new do
+  describe "#new" do
     it "assigns a new tutorial as @tutorial" do
       get :new
       assigns(:tutorial).should be_a_new(Tutorial)
     end
   end
 
-  describe :edit do
+  describe "#edit" do
     let(:tutorial) { create(:tutorial) }
 
     it "assigns the requested tutorial as @tutorial" do
@@ -54,7 +54,7 @@ describe TutorialsController do
     end
   end
 
-  describe :create do
+  describe "#create" do
     describe "with valid params" do
       before :each do
         post :create, {:tutorial => {:url => 'http://blah.com', :heading => "hello world"} }
@@ -96,7 +96,7 @@ describe TutorialsController do
     end
   end
 
-  describe :patch do
+  describe "#patch" do
     describe "with valid params" do
       let(:tutorial) { create(:tutorial) }
 
@@ -134,7 +134,7 @@ describe TutorialsController do
     end
   end
 
-  describe :destroy do
+  describe "#destroy" do
     let(:tutorial) { create(:tutorial) }
 
     before :each do

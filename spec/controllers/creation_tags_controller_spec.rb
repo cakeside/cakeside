@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe CreationTagsController do
-  describe :index do
+  describe "#index" do
     let(:cake) { create(:creation) }
     let(:user) { create(:user) }
 
@@ -15,7 +15,7 @@ describe CreationTagsController do
       assigns(:tags).first.name.should == "cake"
     end
   end
-  describe :show do
+  describe "#show" do
     let(:user) { create(:user) }
     let(:tag) { "cake" }
     let(:tagged_tutorial) { create(:tutorial) }

@@ -6,7 +6,7 @@ describe My::AvatarsController do
   context "when logged in " do
     before { http_login(user) }
 
-    describe :update do
+    describe "#update" do
       context "when uploading a new avatar" do
         let(:image) { Rack::Test::UploadedFile.new('spec/fixtures/images/gorilla.jpg', 'image/jpeg') }
 
@@ -27,7 +27,7 @@ describe My::AvatarsController do
       end
     end
 
-    describe :edit do
+    describe "#edit" do
       before :each do
         get :edit, :id => user.id
       end

@@ -9,7 +9,7 @@ describe CreationsController do
     creation.photos.create(image: photo, image_processing: nil)
   end
 
-  describe :index do
+  describe "#index" do
     let(:restricted_creation){ create(:creation, :user => user, :is_restricted => true) }
 
     before { get :index }
@@ -26,14 +26,14 @@ describe CreationsController do
   context "when logged in" do
     before { http_login(user) }
 
-    describe :show do
+    describe "#show" do
       it "assigns the requested creation" do
         get :show, :id => creation.id
         assigns(:creation).should == creation
       end
     end
 
-    describe :new do
+    describe "#new" do
       it "assigns a new creation" do
         new_creation = double
         Creation.stub(:new).and_return(new_creation)
@@ -42,14 +42,14 @@ describe CreationsController do
       end
     end
 
-    describe :edit do
+    describe "#edit" do
       it "assigns the requested creation as @creation" do
         get :edit, :id => creation.id
         assigns(:creation).should eq(creation)
       end
     end
 
-    describe :post do
+    describe "#post" do
       describe "with valid params" do
         let(:category) { create(:category) }
 
@@ -67,7 +67,7 @@ describe CreationsController do
           assigns(:creation).should_not be_nil
           assigns(:creation).name.should == 'stone'
           assigns(:creation).story.should == 'morning glory'
-          assigns(:creation).is_restricted.should be_true
+          assigns(:creation).is_restricted.should be_truthy
           assigns(:creation).watermark.should == 'watery'
         end
 
@@ -89,7 +89,7 @@ describe CreationsController do
       end
     end
 
-    describe :patch do
+    describe "#patch" do
       describe "with valid params" do
         before { patch :update, :id => creation.id, :creation => {:name => 'params'} }
 
@@ -119,7 +119,7 @@ describe CreationsController do
       end
     end
 
-    describe :destroy do
+    describe "#destroy" do
       before :each do
         delete :destroy, :id => creation.id
       end

@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe ApplicationHelper do
-  describe :disqus_auth do
+  describe "#disqus_auth" do
     let(:user) { OpenStruct.new(id: 1, name: 'mo', email: 'test@cakeside.com', :to_param => '1-mo') }
 
     before :each do

@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe My::FavoritesController do
-  describe :index do
+  describe "#index" do
     let(:user) { create(:user) }
     let(:favorite_cake) { create(:creation) }
 

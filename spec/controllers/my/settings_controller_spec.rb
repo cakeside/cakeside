@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe My::SettingsController do
-  describe :index do
+  describe "#index" do
     it "should load the current user" do
       user = create(:user)
       http_login(user)
@@ -10,7 +10,7 @@ describe My::SettingsController do
     end
   end
 
-  describe :update do
+  describe "#update" do
     let(:user) { create(:user) }
 
     before :each do

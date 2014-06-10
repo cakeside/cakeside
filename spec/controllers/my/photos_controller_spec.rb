@@ -10,7 +10,7 @@ module My
       http_login(user)
     end
 
-    describe :create do
+    describe "#create" do
       let(:image) { Rack::Test::UploadedFile.new("spec/fixtures/images/gorilla.jpg", "image/jpeg") }
 
       before :each do
@@ -31,7 +31,7 @@ module My
       end
     end
 
-    describe :delete do
+    describe "#delete" do
       let!(:photo) { create(:photo, creation_id: cake.id, image_processing: nil) }
       let(:asset_host) { ENV['ASSET_HOST'] }
 
@@ -44,7 +44,7 @@ module My
       end
 
       it "should destroy the photo" do
-        Photo.exists?(photo.id).should be_false
+        Photo.exists?(photo.id).should be_falsey
       end
 
       it "should respond with the proper json" do

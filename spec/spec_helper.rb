@@ -44,4 +44,6 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+  config.infer_spec_type_from_file_location!
+  config.raise_errors_for_deprecations!
 end

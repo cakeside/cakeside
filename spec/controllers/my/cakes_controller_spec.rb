@@ -5,7 +5,7 @@ describe My::CakesController do
     let(:user){ create(:user) }
     before { http_login(user) }
 
-    describe :index do
+    describe "#index" do
       let!(:my_creation) { create(:creation) }
       let!(:other_creation) { create(:creation) }
 

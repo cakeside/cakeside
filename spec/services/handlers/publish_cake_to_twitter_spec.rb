@@ -8,7 +8,7 @@ describe PublishCakeToTwitter do
 
   describe "#handles?" do
     it "handles cake_published" do
-      subject.handles?(:cake_published).should be_true
+      subject.handles?(:cake_published).should be_truthy
     end
   end
 

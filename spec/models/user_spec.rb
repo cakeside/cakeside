@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  describe :properties do
+  describe "#properties" do
     it { should respond_to :name }
     it { should respond_to :email }
     it { should respond_to :twitter }
@@ -61,7 +61,7 @@ describe User do
       let(:result) { sut.already_likes(cake) }
 
       it "should return true" do
-        result.should be_true
+        result.should be_truthy
       end
     end
 
@@ -69,7 +69,7 @@ describe User do
       let(:result) { sut.already_likes(cake) }
 
       it "should return false" do
-        result.should be_false
+        result.should be_falsey
       end
     end
   end
