@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe Api::V1::CreationsController do
   context "when signed in" do

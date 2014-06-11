@@ -48,7 +48,7 @@ end
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'rspec-rails', '2.99.0'
+  gem 'rspec-rails'
   gem 'teaspoon'
   gem 'database_cleaner'
   gem 'factory_girl_rails'

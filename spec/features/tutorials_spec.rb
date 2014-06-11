@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe "Tutorials" do
   describe "GET /tutorials" do

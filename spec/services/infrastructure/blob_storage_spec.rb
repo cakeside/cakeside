@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe BlobStorage do
   let(:bucket) { ENV['FOG_DIRECTORY'] }

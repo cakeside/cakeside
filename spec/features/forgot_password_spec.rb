@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe "password retrieval", :js => true do
   context "when a user attempts to retrieve their password" do

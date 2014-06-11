@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe NotificationMailer do
   context "send welcome email" do

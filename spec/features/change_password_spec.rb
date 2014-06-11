@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe "changing my password" do
   context "when changing my password" do

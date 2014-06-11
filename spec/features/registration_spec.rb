@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe "Registration", :js => true do
   context "when an email is not registered" do

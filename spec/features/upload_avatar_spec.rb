@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe "uploading an avatar" do
   let(:user) { create(:user, :password => "password") }

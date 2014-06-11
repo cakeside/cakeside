@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe "adding a cake to your favorites", :js => true do
   let!(:creation) { create(:creation, user: create(:user), photos: [create(:photo)]) }
