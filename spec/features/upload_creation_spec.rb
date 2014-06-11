@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe "uploading a new creation", :js => true do
   let!(:user) { create(:user, :password => "password") }

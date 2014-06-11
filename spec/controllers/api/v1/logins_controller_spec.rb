@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe Api::V1::LoginsController do
   context "when logging in with proper credentials" do

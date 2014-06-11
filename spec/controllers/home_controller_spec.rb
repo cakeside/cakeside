@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe HomeController do
   it "should render the about us page" do

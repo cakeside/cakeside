@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe ExifParser do
   let(:jpg_with_gps) { File.join(Rails.root, 'spec/fixtures/images/gps.jpg') }
