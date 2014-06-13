@@ -6,7 +6,7 @@
       <% @creations.each do |creation| %>
         <li>
         <%= link_to creation do %>
-          <img class="thumbnail" src="<%= creation.primary_image.image.thumb.url %>" alt="<%= creation.name %>">
+          <img class="thumbnail" src="<%= creation.primary_image.url_for(:thumb) %>" alt="<%= creation.name %>">
         <% end %>
         </li>
       <% end %>

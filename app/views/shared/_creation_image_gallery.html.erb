@@ -3,7 +3,7 @@
     <li class="span3">
     <div class="thumbnail">
       <%= link_to creation, class: 'mix-link', data: { event: 'click-on-thumbnail' } do %>
-        <img src="<%= creation.primary_image.image.thumb.url %>" alt="<%= creation.name %>" style="width:260px;height:180px;" />
+        <img src="<%= creation.primary_image.url_for(:thumb) %>" alt="<%= creation.name %>" style="width:260px;height:180px;" />
       <% end %>
       <h3><%= link_to short_name(creation, 15), creation, class: 'mix-link', data: { event: 'click-on-title' } %></h3>
       <h4><small>By <%= link_to shrink(creation.user.name, 20), profile_path(creation.user) %></small></h4>

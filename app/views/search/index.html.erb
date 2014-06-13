@@ -22,7 +22,7 @@
               <tr>
                 <td>
                   <%= link_to creation_path(creation) do %>
-                    <%= image_tag creation.primary_image.image.thumb.url, class: 'thumbnail', style: "width:65px;" %>
+                    <%= image_tag creation.primary_image.url_for(:thumb), class: 'thumbnail', style: "width:65px;" %>
                   <% end %>
                 </td>
                 <td><%= link_to creation.user.name, profile_path(creation.user) %></td>

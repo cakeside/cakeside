@@ -25,7 +25,7 @@
       <div class="span4">
         <div class="thumbnail">
           <%= link_to creation do %>
-            <%= image_tag creation.primary_image.image.large.url %>
+            <%= image_tag creation.primary_image.url_for(:large) %>
           <% end %>
           <div class="caption">
             <h3><%= link_to creation.name, creation %> <em><small>by <%= link_to shrink(creation.user.name, 20), profile_path(creation.user) %></small></em></h3>
