@@ -19,16 +19,6 @@
         <% end %>
       </div>
     </div>
-    <% if @nearby_users.any? %>
-    <div>
-      <h4>Other Members Nearby</h4>
-      <ul class="unstyled">
-      <% @nearby_users.each do |item| %>
-        <li><%= link_to item.name, profile_path(item), :class => "mix-link", "data-event" => "click-on-nearby-user" %> <small><%= item.city %></small></li>
-      <% end %>
-      </ul>
-    </div>
-    <% end %>
   </div>
   <div class="span9">
     <h1><%= @user.name %> <small>A member since <%= @user.created_at.to_s :foomat %>, with <%= @user.creations.length %> creations.</small> </h1>

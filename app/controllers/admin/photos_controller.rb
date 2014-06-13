@@ -11,7 +11,6 @@ module Admin
 
     def show
       @photo = @photo_repository.find(params[:id])
-      @results = Geocoder.search("#{@photo.latitude},#{@photo.longitude}")
     end
   end
 end
