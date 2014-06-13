@@ -1,12 +1,4 @@
 class User < ActiveRecord::Base
-  geocoded_by :current_sign_in_ip, :latitude => :latitude, :longitude => :longitude
-  reverse_geocoded_by :latitude, :longitude do |user,results|
-    if geo = results.first
-      user.full_address = geo.formatted_address
-    end
-  end
-
-  before_save :geocode, :reverse_geocode
   before_save :ensure_authentication_token
   after_create :send_welcome_email
 

@@ -35,10 +35,5 @@
     <%= image_tag @photo.url_for(:original) %>
     <%= image_tag @photo.url_for(:large) %>
     <%= image_tag @photo.url_for(:thumb) %>
-    <ul>
-      <% @results.each do |result| %>
-        <li><%= result.formatted_address %></li>
-    <% end %>
-    </ul>
   </div>
 </div>
