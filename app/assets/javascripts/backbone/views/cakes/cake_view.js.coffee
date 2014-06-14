@@ -6,7 +6,7 @@ class Cake.Views.Cakes.CakeView extends Backbone.View
   events:
     "click .destroy" : "destroy"
 
-  tagName: "tr"
+  tagName: "div"
 
   destroy: () ->
     @model.destroy()

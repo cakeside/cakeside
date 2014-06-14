@@ -1,6 +1,12 @@
-<td><%= name %></td>
-<td><%= story %></td>
-
-<td><a href="#/<%= id %>">Show</td>
-<td><a href="#/<%= id %>/edit">Edit</td>
-<td><a href="#/<%= id %>/destroy" class="destroy">Destroy</a></td>
+<div class="span4">
+  <div class="thumbnail">
+    <a href="#/<%= id %>">
+      <img src="" />
+    </a>
+    <div class="caption">
+      <h3><a href="#/<%= id %>"><%= name %></a></h3>
+      <p><a href="#/<%= id %>/edit">(edit)</a></p>
+      <p><%= story %></p>
+    </div>
+  </div>
+</div>

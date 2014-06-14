@@ -11,7 +11,7 @@ class Cake.Views.Cakes.IndexView extends Backbone.View
 
   addOne: (cake) =>
     view = new Cake.Views.Cakes.CakeView({model : cake})
-    @$("tbody").append(view.render().el)
+    @$(".thumbnails").append(view.render().el)
 
   render: =>
     $(@el).html(@template(cakes: @options.cakes.toJSON() ))
