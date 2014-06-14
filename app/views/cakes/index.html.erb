@@ -1,0 +1,8 @@
+<%= content_for :javascript do -%>
+  <%= javascript_tag do %>
+    Cake.initialize({ cakes: <%== @cakes.to_json %> });
+  <% end %>
+<% end -%>
+
+<div id="cakes">
+</div>

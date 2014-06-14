@@ -35,6 +35,7 @@ gem 'spank'
 gem 'exifr'
 gem 'aws-sdk'
 gem 'mime-types'
+gem 'rails-backbone'
 
 group :development do
   gem 'capistrano'

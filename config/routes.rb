@@ -18,6 +18,7 @@ Cake::Application.routes.draw do
     resources :favorites, :only => [:index, :create]
     get 'page/:page', :action => :index, :on => :collection
   end
+  resources :cakes
 
   resources :profiles, :only => [:index, :show] do
     get 'page/:page', :action => :index, :on => :collection
