@@ -36,6 +36,7 @@ gem 'exifr'
 gem 'aws-sdk'
 gem 'mime-types'
 gem 'rails-backbone'
+gem 'js-routes'
 
 group :development do
   gem 'capistrano'

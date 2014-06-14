@@ -23,6 +23,7 @@
 //= require tag-it
 //= require bootstrap
 //= require underscore
+//= require js-routes
 //= require backbone
 //= require backbone_rails_sync
 //= require backbone_datalink
