@@ -1,12 +1,13 @@
-<p>
-  <b>Name:</b>
-  <%= name %>
-</p>
-
-<p>
-  <b>Story:</b>
-  <%= story %>
-</p>
-
-
 <a href="#/index">Back</a>
+
+<div class="row">
+  <div class="span6">
+    <img class="thumbnail" src="large_image_url" alt="<%= name %>" />
+  </div>
+  <div class="span6">
+    <h1><a href="#/show/<%= id %>"><%= name %></a></h1>
+    <p>By <a href="#">username</a></p>
+    <hr />
+    <p><%= story %></p>
+  </div>
+</div>
