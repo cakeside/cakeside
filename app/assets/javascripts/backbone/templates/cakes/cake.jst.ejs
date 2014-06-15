@@ -7,6 +7,7 @@
       <h3><a href="#/<%= id %>"><%= name %></a></h3>
       <p><a href="#/<%= id %>/edit">(edit)</a></p>
       <p><%= story %></p>
+      <span class="badge badge-warning"><i class="icon-comments"> <a href="<%= Routes.creation_path(id) %>#disqus_thread" data-disqus-identifier="c-<%= id %>"></a></i></span>
     </div>
   </div>
 </div>

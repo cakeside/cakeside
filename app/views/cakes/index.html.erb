@@ -1,7 +1,0 @@
-<%= content_for :javascript do -%>
-  <%= javascript_tag do %>
-    Cake.initialize({ access_token: '<%= current_user.authentication_token %>' });
-  <% end %>
-<% end -%>
-
-<div id="cakes"></div>

@@ -1,6 +1,11 @@
 <div class="row">
   <div class="span12">
-    <a href="#/new">New Cake</a>
+    <a href="#/new" class="btn pull-right">Upload Cake</a>
+    <% if ( _.any(cakes) === false) { %>
+      <p>You haven't uploaded any cakes yet. <a href="#/new" class="btn pull-right">Get Started</a>.</p>
+    <% } %>
+  </div>
+  <div class="span12">
     <div class="thumbnails"></div>
   </div>
 </div>

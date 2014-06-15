@@ -1,6 +1,4 @@
 class PhotosController < ApplicationController
-  before_filter :authenticate_user!
-
   def index
     @creation = Creation.find(params[:creation_id])
     @photos = @creation.photos
