@@ -1,20 +1,56 @@
-<h1>New cake</h1>
-
-<form id="new-cake" name="cake">
-  <div class="field">
-    <label for="name"> name:</label>
-    <input type="text" name="name" id="name" value="<%= name %>" >
+<div class="row">
+  <div class="span12">
+    <h1>Share creation <small>(Step 1 of 2)</small></h1>
+    <hr />
+    <form id="new-cake" name="cake">
+      <fieldset>
+        <div class="control-group">
+          <label class="control-label" for="name" />
+          <div class="controls">
+            <input type="text" name="name" id="name" value="<%= name %>" class="input-xxlarge" />
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="watermark" />
+          <div class="controls">
+            <input type="text" name="watermark" id="watermark" value="<%= watermark %>" class="input-xxlarge" max='30' />
+            <a class="tooltip-item" data-placement="right" rel="tooltip" href="#" data-original-title="Watermark your name or company on each uploaded image" data-animation="true"><i class="icon-question-sign"></i></a>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="story" />
+          <div class="controls">
+            <textarea id="story" name="story" class="input=xxlarge" rows="3">
+            </textarea>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Category</label>
+          <div class="controls">
+            <select>
+            <option>Cake</option>
+            </select>
+          </div>
+        </div>
+        <div class="control-group">
+          <label for="tags" class="control-label">Tags</label>
+          <div class="controls">
+            <input name="creation_tags" type="text" id="tags" value="" class="input-xxlarge" autocomplete="off" />
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <label class="checkbox">
+              <input type="checkbox" name="is_restricted" id="is_restricted" class="input-xxlarge" />
+              This cake is for adults only.
+            </label>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">NEXT STEP</button>
+          <a href="#/" class="btn">Cancel</a>
+        </div>
+      </fieldset>
+    </form>
   </div>
-
-  <div class="field">
-    <label for="story"> story:</label>
-    <input type="text" name="story" id="story" value="<%= story %>" >
-  </div>
-
-  <div class="actions">
-    <input type="submit" value="Create Cake" />
-  </div>
-
-</form>
-
-<a href="#/index">Back</a>
+</div>
