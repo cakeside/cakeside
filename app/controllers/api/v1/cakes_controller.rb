@@ -1,0 +1,15 @@
+module Api
+  module V1
+    class CakesController < ApiController
+      respond_to :json
+
+      def index
+        respond_with(@cakes = current_user.creations)
+      end
+
+      def show
+        respond_with(@cake = current_user.creations.find(params[:id]))
+      end
+    end
+  end
+end

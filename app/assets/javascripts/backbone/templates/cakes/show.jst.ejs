@@ -1,13 +1,36 @@
-<a href="#/index">Back</a>
+<a href="#/">Back</a>
 
 <div class="row">
   <div class="span6">
-    <img class="thumbnail" src="large_image_url" alt="<%= name %>" />
+    <img class="thumbnail" src="<%= photos[0].large_url %>" alt="<%= name %>" />
   </div>
   <div class="span6">
-    <h1><a href="#/show/<%= id %>"><%= name %></a></h1>
-    <p>By <a href="#">username</a></p>
+    <h1><a href="#/<%= id %>"><%= name %></a></h1>
+    <p>By <a href="<%= Routes.profile_path(user.id) %>"><%= user.name %></a></p>
+    <span> <i class="icon-tags"></i> </span>
+    <% _.each(tags, function(tag){ %>
+      <a href="<%= Routes.creation_tag_path(tag.name) %>">
+        <span class="label"><%= tag.name %></span>
+      </a>
+    <% }); %>
     <hr />
     <p><%= story %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <a href="<%= Routes.creation_photos_path(id) %>">View photos &raquo;</a>
+  </div>
+  <div class="span12">
+    <ul class="thumbnails">
+    <% _.each(photos, function(photo) { %>
+      <li class="span2">
+      <a href="<%= Routes.creation_photo_path(id, photo.id) %>">
+        <img src="<%= photo.thumb_url %>" class="thumbnail" />
+      </a>
+      </li>
+    <% }); %>
+    </ul>
   </div>
 </div>

@@ -6,6 +6,7 @@ class Cake.Models.Cake extends Backbone.Model
     watermark: null
     story: null
 
+
 class Cake.Collections.CakesCollection extends Backbone.Collection
   model: Cake.Models.Cake
-  url: '/cakes'
+  url: '/api/v1/cakes'

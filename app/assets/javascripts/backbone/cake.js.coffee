@@ -10,5 +10,7 @@ window.Cake =
   Routers: {}
   Views: {}
   initialize: (data) ->
-    new Cake.Routers.CakesRouter({ cakes: data.cakes })
-    Backbone.history.start()
+    $(document).ajaxSend  (event, xhr) ->
+      if data.access_token
+        xhr.setRequestHeader "Authorization", "Token token=" + data.access_token
+    new Cake.Routers.CakesRouter()

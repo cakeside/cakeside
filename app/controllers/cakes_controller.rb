@@ -1,7 +1,7 @@
 class CakesController < ApplicationController
-  respond_to :html, :json
+  before_filter :authenticate_user!
 
   def index
-    respond_with(@cakes = Creation.all.limit(10))
+    @cakes = current_user.creations
   end
 end

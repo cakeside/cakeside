@@ -1,7 +1,8 @@
 class Cake.Routers.CakesRouter extends Backbone.Router
   initialize: (options) ->
     @cakes = new Cake.Collections.CakesCollection()
-    @cakes.reset options.cakes
+    @cakes.fetch(reset: true).done ->
+      Backbone.history.start()
 
   routes:
     "new"      : "newCake"
@@ -20,7 +21,6 @@ class Cake.Routers.CakesRouter extends Backbone.Router
 
   show: (id) ->
     cake = @cakes.get(id)
-
     @view = new Cake.Views.Cakes.ShowView(model: cake)
     $("#cakes").html(@view.render().el)
 
