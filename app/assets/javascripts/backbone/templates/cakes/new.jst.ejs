@@ -1,47 +1,48 @@
 <div class="row">
   <div class="span12">
-    <h1>Share creation <small>(Step 1 of 2)</small></h1>
+    <h1>Share cake <small>(Step 1 of 2)</small></h1>
     <hr />
-    <form id="new-cake" name="cake">
+    <form id="new-cake" name="cake" class="form-horizontal">
       <fieldset>
         <div class="control-group">
-          <label class="control-label" for="name" />
+          <label class="control-label" for="cake_name">Name</label>
           <div class="controls">
-            <input type="text" name="name" id="name" value="<%= name %>" class="input-xxlarge" />
+            <input class="input-xxlarge" id="cake_name" name="name" type="text">
           </div>
         </div>
         <div class="control-group">
-          <label class="control-label" for="watermark" />
+          <label class="control-label" for="cake_watermark">Watermark</label>
           <div class="controls">
-            <input type="text" name="watermark" id="watermark" value="<%= watermark %>" class="input-xxlarge" max='30' />
+            <input class="input-xlarge" id="cake_watermark" maxlength="30" name="watermark" size="30" type="text"> on CakeSide.com
             <a class="tooltip-item" data-placement="right" rel="tooltip" href="#" data-original-title="Watermark your name or company on each uploaded image" data-animation="true"><i class="icon-question-sign"></i></a>
           </div>
         </div>
         <div class="control-group">
-          <label class="control-label" for="story" />
+          <label class="control-label" for="cake_story">Description</label>
           <div class="controls">
-            <textarea id="story" name="story" class="input=xxlarge" rows="3">
-            </textarea>
+            <textarea class="input-xxlarge" id="cake_story" name="story" rows="3"></textarea>
           </div>
         </div>
         <div class="control-group">
           <label class="control-label">Category</label>
           <div class="controls">
-            <select>
-            <option>Cake</option>
-            </select>
+            <select id="cake_category_id" name="category_id"><option value="15">Cake</option>
+            <option value="12">Cake Pop</option>
+            <option value="13">Cookie</option>
+            <option value="3">Cup Cake</option>
+            <option value="16">Other</option></select>
           </div>
         </div>
         <div class="control-group">
-          <label for="tags" class="control-label">Tags</label>
+          <label for="cake_tags" class="control-label">Tags</label>
           <div class="controls">
-            <input name="creation_tags" type="text" id="tags" value="" class="input-xxlarge" autocomplete="off" />
+            <input name="cake_tags" type="text" id="cake_tags" value="" class="input-xxlarge" autocomplete="off" />
           </div>
         </div>
         <div class="control-group">
           <div class="controls">
             <label class="checkbox">
-              <input type="checkbox" name="is_restricted" id="is_restricted" class="input-xxlarge" />
+              <input name="is_restricted" type="hidden" value="0"><input class="input-xxlarge" id="cake_is_restricted" type="checkbox" value="1">
               This cake is for adults only.
             </label>
           </div>

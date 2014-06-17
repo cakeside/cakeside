@@ -26,11 +26,15 @@ class Cake.Views.Cakes.NewView extends Backbone.View
         window.location.hash = "/#{@model.id}"
 
       error: (cake, jqXHR) =>
-        @model.set({errors: $.parseJSON(jqXHR.responseText)})
+        #@model.set({errors: $.parseJSON(jqXHR.responseText)})
+        error = new Cake.Views.ErrorView
+          el: @$('form#new-cake'),
+          attributesWithErrors: $.parseJSON(jqXHR.responseText)
+        error.render()
     )
 
   render: ->
-    $(@el).html(@template(@model.toJSON() ))
+    $(@el).html(@template(@model.toJSON()))
 
     this.$("form").backboneLink(@model)
 

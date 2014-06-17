@@ -1,5 +1,6 @@
 class Creation < ActiveRecord::Base
   validates :name,  :presence => true
+  validates :category_id, :presence => true
   belongs_to :user, :counter_cache => true
   belongs_to :category
   has_many :photos, -> { order :created_at }, :dependent => :destroy
