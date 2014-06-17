@@ -14,3 +14,4 @@ window.Cake =
       if data.access_token
         xhr.setRequestHeader "Authorization", "Token token=" + data.access_token
     new Cake.Routers.CakesRouter()
+    new Cake.Routers.PhotosRouter()

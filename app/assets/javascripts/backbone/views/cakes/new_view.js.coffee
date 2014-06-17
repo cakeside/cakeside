@@ -23,7 +23,7 @@ class Cake.Views.Cakes.NewView extends Backbone.View
     @collection.create(@model.toJSON(),
       success: (cake) =>
         @model = cake
-        window.location.hash = "/#{@model.id}"
+        window.location.hash = "/#{@model.id}/photos/new"
 
       error: (cake, jqXHR) =>
         #@model.set({errors: $.parseJSON(jqXHR.responseText)})

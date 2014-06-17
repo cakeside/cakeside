@@ -13,19 +13,19 @@ class Cake.Routers.CakesRouter extends Backbone.Router
 
   newCake: ->
     @view = new Cake.Views.Cakes.NewView(collection: @cakes)
-    $("#cakes").html(@view.render().el)
+    $("#backbone-content").html(@view.render().el)
 
   index: ->
     @view = new Cake.Views.Cakes.IndexView(cakes: @cakes)
-    $("#cakes").html(@view.render().el)
+    $("#backbone-content").html(@view.render().el)
 
   show: (id) ->
     cake = @cakes.get(id)
     @view = new Cake.Views.Cakes.ShowView(model: cake)
-    $("#cakes").html(@view.render().el)
+    $("#backbone-content").html(@view.render().el)
 
   edit: (id) ->
     cake = @cakes.get(id)
 
     @view = new Cake.Views.Cakes.EditView(model: cake)
-    $("#cakes").html(@view.render().el)
+    $("#backbone-content").html(@view.render().el)
