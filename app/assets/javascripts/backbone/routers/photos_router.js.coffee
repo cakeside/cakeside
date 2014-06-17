@@ -1,15 +1,13 @@
 class Cake.Routers.PhotosRouter extends Backbone.Router
-  initialize: (options) ->
-    @photos = new Cake.Collections.PhotosCollection()
-
   routes:
-    ":cake_id/photos/new"      : "newPhoto"
+    "cakes/:cake_id/photos/new"      : "newPhoto"
     "photos/index"    : "index"
     "photos/:id/edit" : "edit"
     "photos/:id"      : "show"
     "photos/.*"        : "index"
 
   newPhoto: (cake_id) ->
+    @photos = new Cake.Collections.PhotosCollection(cake_id: cake_id)
     @view = new Cake.Views.Photos.NewView(collection: @photos)
     $("#backbone-content").html(@view.render().el)
 

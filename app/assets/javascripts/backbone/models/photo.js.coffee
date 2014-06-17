@@ -11,4 +11,4 @@ class Cake.Collections.PhotosCollection extends Backbone.Collection
   url: '/api/v1/cakes/1/photos'
 
   initialize: (options) ->
-    console.log(options)
+    @url="/api/v1/cakes/#{options.cake_id}/photos"
