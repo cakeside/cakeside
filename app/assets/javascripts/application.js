@@ -28,4 +28,5 @@
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backbone/cake
+//= require backbone-model-file-upload
 //= require_tree .

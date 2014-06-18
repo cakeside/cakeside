@@ -5,7 +5,7 @@ module Api
 
       def create
         cake_id = params[:cake_id]
-        UploadPhoto.new.run(cake_id, photo_params)
+        UploadPhoto.new.run(cake_id, params)
         @photo = Creation.find(cake_id).photos.last
         respond_with(@photo)
       end

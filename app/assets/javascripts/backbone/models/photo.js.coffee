@@ -1,5 +1,6 @@
 class Cake.Models.Photo extends Backbone.Model
   paramRoot: 'photo'
+  fileAttribute: 'image'
 
   defaults:
     thumb_url: null
@@ -8,7 +9,6 @@ class Cake.Models.Photo extends Backbone.Model
 
 class Cake.Collections.PhotosCollection extends Backbone.Collection
   model: Cake.Models.Photo
-  url: '/api/v1/cakes/1/photos'
 
   initialize: (options) ->
     @url="/api/v1/cakes/#{options.cake_id}/photos"
