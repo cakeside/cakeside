@@ -21,27 +21,19 @@ class Cake.Views.Photos.NewView extends Backbone.View
     @model.unset("errors")
 
     fileObject = @$(':input[type="file"]')[0].files[0]
-    photo = new Cake.Models.Photo(cake_id: 100)
-    photo.url = => @collection.url
-    photo.set('image', fileObject)
-    photo.on('progress', console.log)
-    photo.save()
+    @model.set('image', fileObject)
+    @model.on('progress', console.log)
+    @collection.create(@model.toJSON(),
+      success: (photo) =>
+        @model = photo
+        debugger
+        window.location.hash = "/#{@model.cake_id}"
 
-    #@model.set('image', fileObject)
-    #@model.save()
-    #@model.on('progress', console.log)
-    #@collection.create(@model.toJSON(),
-      #success: (photo) =>
-        #@model = photo
-        #window.location.hash = "/#{@model.id}"
-
-      #error: (photo, jqXHR) =>
-        #@model.set({errors: $.parseJSON(jqXHR.responseText)})
-    #)
+      error: (photo, jqXHR) =>
+        @model.set({errors: $.parseJSON(jqXHR.responseText)})
+    )
 
   render: ->
-    $(@el).html(@template(@model.toJSON() ))
-
+    $(@el).html(@template(@model.toJSON()))
     this.$("form").backboneLink(@model)
-
     return this

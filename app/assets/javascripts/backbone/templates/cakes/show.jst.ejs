@@ -1,15 +1,12 @@
-<a href="#/">Back</a>
-<a href="#/cakes/<%= id %>/photos" class="btn">Add Photo</a>
 
 <div class="row">
   <div class="span6">
     <% if(_.any(photos)) { %>
-    <img class="thumbnail" src="<%= photos[0].large_url %>" alt="<%= name %>" />
+    <img class="thumbnail" src="<%= photos[Math.floor(Math.random()*photos.length)].large_url %>" alt="<%= name %>" />
     <% } %>
   </div>
   <div class="span6">
     <h1><a href="#/<%= id %>"><%= name %></a></h1>
-    <p>By <a href="<%= Routes.profile_path(user.id) %>"><%= user.name %></a></p>
     <span> <i class="icon-tags"></i> </span>
     <% _.each(tags, function(tag){ %>
       <a href="<%= Routes.creation_tag_path(tag.name) %>">
@@ -18,6 +15,7 @@
     <% }); %>
     <hr />
     <p><%= story %></p>
+    <a href="#/cakes/<%= id %>/photos/new" class="btn">Add Photo</a>
   </div>
 </div>
 

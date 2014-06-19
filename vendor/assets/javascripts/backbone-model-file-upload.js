@@ -4,12 +4,11 @@
 //     https://github.com/homeslicesolutions/backbone-model-file-upload
 
 !function(_, Backbone){
-
   // Clone the original Backbone.Model.prototype
   var backboneModelClone = _.clone( Backbone.Model.prototype );
 
   // Extending out
-  _.extend(Backbone.Model.prototype, {  
+  _.extend(Backbone.Model.prototype, {
 
     // ! Default file attribute - can be overwritten
     fileAttribute: 'file',
@@ -81,7 +80,6 @@
 
       // Continue to call the existing "save" method
       return backboneModelClone.save.call(this, attrs, options);
-      
     },
 
     // _ FlattenObject gist by "penguinboy".  Thank You!
@@ -103,15 +101,15 @@
       return output;
 
     },
-    
+
     // _ Get the Progress of the uploading file
     _progressHandler: function( event ) {
+      console.log(event);
       if (event.lengthComputable) {
         var percentComplete = event.loaded / event.total;
+        console.log("triggering... " + percentComplete);
         this.trigger( 'progress', percentComplete );
       }
     }
-
   });
-
 }(_, Backbone);
