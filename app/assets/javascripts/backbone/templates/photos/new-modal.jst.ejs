@@ -1,17 +1,13 @@
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-  <h2>This is a modal!</h2>
+  <h2>Upload Photo</h2>
 </div>
 <div class="modal-body">
   <form id="new-photo" name="photo" class="form-horizontal">
-    <fieldset>
-      <div class="control-group">
-        <label class="control-label" for="photo_attachment">Photo</label>
-        <div class="controls">
-          <input class="input-xxlarge" id="photo_attachment" name="attachment" type="file">
-        </div>
-      </div>
-    </fieldset>
+    <span class="btn btn-default btn-file">
+      + Browse... <input id="photo-attachment" name="attachment" type="file" accept="image/*">
+    </span>
+    <img id="preview-image" src="#" alt="your image" class="hide" />
   </form>
 </div>
 <div class="modal-footer">

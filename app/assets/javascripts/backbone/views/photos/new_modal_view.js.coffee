@@ -5,6 +5,7 @@ class Cake.Views.Photos.NewModalView extends Backbone.View
 
   events:
     "click #upload-photo-button": "save"
+    "change #photo-attachment": "displayPreview"
 
   constructor: (options) ->
     super(options)
@@ -38,3 +39,14 @@ class Cake.Views.Photos.NewModalView extends Backbone.View
     $(@el).html(@template(@model.toJSON()))
     this.$("form").backboneLink(@model)
     return this
+
+  displayPreview: (event) ->
+    input = event.currentTarget
+    if (input.files && input.files[0])
+      reader = new FileReader()
+      reader.onload = (e) ->
+        $('#preview-image').attr('src', e.target.result)
+        $('#preview-image').removeClass('hide')
+      reader.readAsDataURL(input.files[0])
+    else
+      $('#preview-image').addClass('hide')
