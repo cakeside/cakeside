@@ -1,14 +1,16 @@
 Cake.Views.Photos ||= {}
 
-class Cake.Views.Photos.NewView extends Backbone.View
-  template: JST["backbone/templates/photos/new"]
+class Cake.Views.Photos.NewModalView extends Backbone.View
+  template: JST["backbone/templates/photos/new-modal"]
 
   events:
-    "submit #new-photo": "save"
+    "click #upload-photo-button": "save"
 
   constructor: (options) ->
     super(options)
+    @collection = new Cake.Collections.PhotosCollection(cake_id: options.cake.id)
     @model = new @collection.model()
+    @cake = options.cake
 
     @model.bind("change:errors", () =>
       this.render()
@@ -26,7 +28,7 @@ class Cake.Views.Photos.NewView extends Backbone.View
     @collection.create(@model.toJSON(),
       success: (photo) =>
         @model = photo
-        window.location.hash = "/#{@model.cake_id}"
+        $('#modal').modal('hide')
 
       error: (photo, jqXHR) =>
         @model.set({errors: $.parseJSON(jqXHR.responseText)})

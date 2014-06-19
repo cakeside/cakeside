@@ -15,12 +15,12 @@
     <% }); %>
     <hr />
     <p><%= story %></p>
-    <a href="#/cakes/<%= id %>/photos/new" class="btn">Add Photo</a>
   </div>
 </div>
 
 <div class="row">
   <div class="span12">
+    <a id="add-photo" class="btn">Add Photo</a>
     <a href="<%= Routes.creation_photos_path(id) %>">View photos &raquo;</a>
   </div>
   <div class="span12">
