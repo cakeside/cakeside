@@ -1,5 +1,6 @@
 <%= content_for :javascript do -%>
   <%= javascript_tag do %>
+    var ALL_TAGS = [ <% ActsAsTaggableOn::Tag.pluck(:name).sort!.each { |item| %> '<%= item %>', <% } %> ];
     Cake.initialize({ access_token: '<%= current_user.authentication_token %>' });
   <% end %>
 <% end -%>

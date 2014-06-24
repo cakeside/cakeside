@@ -35,7 +35,11 @@ class Cake.Views.Cakes.NewView extends Backbone.View
 
   render: ->
     $(@el).html(@template(@model.toJSON()))
-
+    @loadTags()
     this.$("form").backboneLink(@model)
-
     return this
+
+  loadTags: () ->
+    @$('#cake_tags').tagit({ availableTags: ALL_TAGS })
+    $('.tooltip-item').tooltip()
+
