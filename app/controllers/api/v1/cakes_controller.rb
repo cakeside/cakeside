@@ -12,7 +12,7 @@ module Api
       end
 
       def create
-        CreateCakeCommand.new(self).run(cake_params, params[:cake_tags])
+        CreateCakeCommand.new(self).run(cake_params, params[:cake][:cake_tags])
       end
 
       def create_cake_succeeded(cake)
