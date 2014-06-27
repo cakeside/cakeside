@@ -36,7 +36,6 @@ gem 'exifr'
 gem 'aws-sdk'
 gem 'mime-types'
 gem 'ejs'
-gem 'marionette-rails'
 gem 'js-routes'
 
 group :development do

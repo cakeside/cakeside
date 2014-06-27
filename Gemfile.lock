@@ -177,8 +177,6 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    marionette-rails (2.0.0)
-      railties (>= 3.1)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
     mime-types (1.25.1)
@@ -355,7 +353,6 @@ DEPENDENCIES
   js-routes
   kaminari (~> 0.15.0)
   lol_dba
-  marionette-rails
   mime-types
   mini_magick
   newrelic_rpm
