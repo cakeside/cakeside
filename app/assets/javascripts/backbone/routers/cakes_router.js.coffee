@@ -1,9 +1,4 @@
 class Cake.Routers.CakesRouter extends Backbone.Router
-  initialize: (options) ->
-    @cakes = new Cake.Collections.CakesCollection()
-    @cakes.fetch(reset: true).done ->
-      Backbone.history.start()
-
   routes:
     "new"      : "newCake"
     "index"    : "index"
@@ -11,21 +6,21 @@ class Cake.Routers.CakesRouter extends Backbone.Router
     ":id"      : "show"
     ".*"       : "index"
 
-  newCake: ->
-    @view = new Cake.Views.Cakes.NewView(collection: @cakes)
-    $("#backbone-content").html(@view.render().el)
-
   index: ->
-    @view = new Cake.Views.Cakes.IndexView(collection: @cakes)
+    @view = new Cake.Views.Cakes.IndexView(collection: Cake.Application.request('CakeRepository'))
     $("#backbone-content").html(@view.render().el)
 
   show: (id) ->
-    cake = @cakes.get(id)
+    cake = Cake.Application.request('CakeRepository').get(id)
     @view = new Cake.Views.Cakes.ShowView(model: cake)
     $("#backbone-content").html(@view.render().el)
 
+  newCake: ->
+    @view = new Cake.Views.Cakes.NewView(collection: Cake.Application.request('CakeRepository'))
+    $("#backbone-content").html(@view.render().el)
+
   edit: (id) ->
-    cake = @cakes.get(id)
+    cake = Cake.Application.request('CakeRepository').get(id)
 
     @view = new Cake.Views.Cakes.EditView(model: cake)
     $("#backbone-content").html(@view.render().el)

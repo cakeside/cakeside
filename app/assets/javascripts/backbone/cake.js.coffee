@@ -13,5 +13,19 @@ window.Cake =
     $(document).ajaxSend  (event, xhr) ->
       if data.access_token
         xhr.setRequestHeader "Authorization", "Token token=#{data.access_token}"
-    new Cake.Routers.CakesRouter()
-    new Cake.Routers.PhotosRouter()
+
+    Cake.Application = new Marionette.Application()
+    Cake.Application.addInitializer (options) ->
+      new Cake.Routers.CakesRouter()
+      new Cake.Routers.PhotosRouter()
+
+    Cake.Application.on 'start', ->
+      if Backbone.history
+        Backbone.history.start()
+
+    @cakes = new Cake.Collections.CakesCollection()
+    @cakes.fetch(reset: true)
+    Cake.Application.reqres.setHandler 'CakeRepository', =>
+      @cakes
+
+    Cake.Application.start()
