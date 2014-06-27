@@ -1,45 +1,59 @@
 Cake.Views.Cakes ||= {}
 
-class Cake.Views.Cakes.NewView extends Backbone.View
+class Cake.Views.Cakes.NewView extends Marionette.ItemView
   template: JST["backbone/templates/cakes/new"]
+  ui:
+    name: "#cake_name"
+    watermark: "#cake_watermark"
+    description: "#cake_story"
+    category: "#cake_category_id"
+    tags: "#cake_tags"
+    is_restricted: "#cake_is_restricted"
+    save_button: '#save-button'
+
+  modelEvents:
+    'invalid': 'displayError'
 
   events:
+    "change input": "refreshStatus"
+    "change select": "refreshStatus"
     "submit #new-cake": "save"
 
   constructor: (options) ->
-    super(options)
-    @model = new @collection.model()
-
-    @model.bind("change:errors", () =>
-      this.render()
-    )
+    super(_.extend(options, { model: new options.collection.model() }))
 
   save: (e) ->
     e.preventDefault()
     e.stopPropagation()
-
-    @model.unset("errors")
-
-    @collection.create(@model.toJSON(),
-      success: (cake) =>
-        @model = cake
-        window.location.hash = "/cakes/#{@model.id}/photos/new"
-
-      error: (cake, jqXHR) =>
-        #@model.set({errors: $.parseJSON(jqXHR.responseText)})
-        error = new Cake.Views.ErrorView
-          el: @$('form#new-cake'),
-          attributesWithErrors: $.parseJSON(jqXHR.responseText)
-        error.render()
+    @collection.create(@model,
+      success: @savedSuccessfully
+      error: @couldNotSave
     )
 
-  render: ->
-    $(@el).html(@template(@model.toJSON()))
-    @loadTags()
-    this.$("form").backboneLink(@model)
-    return this
-
-  loadTags: () ->
+  onRender: ->
+    @$("#cake_category_id").val($("#cake_category_id option:first").val())
     @$('#cake_tags').tagit({ availableTags: ALL_TAGS })
-    $('.tooltip-item').tooltip()
+    @$('.tooltip-item').tooltip()
 
+  savedSuccessfully: (cake) ->
+    window.location.hash = "/cakes/#{cake.id}/photos/new"
+
+  couldNotSave: (cake, xhr) ->
+    error = new Cake.Views.ErrorView
+      el: @$('form#new-cake'),
+      attributesWithErrors: $.parseJSON(xhr.responseText)
+    error.render()
+
+  refreshStatus: ->
+    console.log('refreshing.')
+    @ui.save_button.removeAttr('disabled')
+    @model.set('name', @ui.name.val())
+    @model.set('watermark', @ui.watermark.val())
+    @model.set('story', @ui.description.val())
+    @model.set('category_id', @ui.category.val())
+    @model.set('tags', @ui.tags.val())
+    @model.set('is_restricted', @ui.is_restricted.val())
+    @model.isValid()
+
+  displayError: (model, error) ->
+    @ui.save_button.attr('disabled', 'disabled')

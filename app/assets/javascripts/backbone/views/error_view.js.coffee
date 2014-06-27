@@ -2,7 +2,7 @@ Cake.Views.Cakes ||= {}
 
 class Cake.Views.ErrorView extends Backbone.View
   initialize: (options) ->
-    @attributesWithErrors = @options.attributesWithErrors
+    @attributesWithErrors = options.attributesWithErrors
     _.bindAll(@, "clearOldErrors", "renderErrors", "renderError", "fieldFor")
 
   render: () ->
@@ -24,4 +24,4 @@ class Cake.Views.ErrorView extends Backbone.View
     field.addClass("error")
 
   fieldFor: (attribute) ->
-    @$("input[id*='_#{attribute}']").parent()
+    @$("#cake_#{attribute}").parent()
