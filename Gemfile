@@ -35,7 +35,8 @@ gem 'spank'
 gem 'exifr'
 gem 'aws-sdk'
 gem 'mime-types'
-gem 'rails-backbone'
+gem 'ejs'
+gem 'marionette-rails'
 gem 'js-routes'
 
 group :development do

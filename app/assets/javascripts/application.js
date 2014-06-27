@@ -25,6 +25,7 @@
 //= require underscore
 //= require js-routes
 //= require backbone
+//= require backbone.marionette
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backbone/cake

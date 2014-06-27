@@ -16,7 +16,7 @@ class Cake.Routers.CakesRouter extends Backbone.Router
     $("#backbone-content").html(@view.render().el)
 
   index: ->
-    @view = new Cake.Views.Cakes.IndexView(cakes: @cakes)
+    @view = new Cake.Views.Cakes.IndexView(collection: @cakes)
     $("#backbone-content").html(@view.render().el)
 
   show: (id) ->
