@@ -24,8 +24,8 @@ window.Cake =
         Backbone.history.start()
 
     @cakes = new Cake.Collections.CakesCollection()
-    @cakes.fetch(reset: true)
     Cake.Application.reqres.setHandler 'CakeRepository', =>
       @cakes
 
-    Cake.Application.start()
+    @cakes.fetch(reset: true).done ->
+      Cake.Application.start()
