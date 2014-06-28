@@ -1,4 +1,4 @@
-Cake.Views.Cakes ||= {}
+CakeSide.Views.Cakes ||= {}
 
-class Cake.Views.Cakes.IndexView extends Marionette.CollectionView
-  childView: Cake.Views.Cakes.CakeView
+class CakeSide.Views.Cakes.IndexView extends Marionette.CollectionView
+  childView: CakeSide.Views.Cakes.CakeView

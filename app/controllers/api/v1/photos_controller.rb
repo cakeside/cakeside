@@ -3,6 +3,10 @@ module Api
     class PhotosController < ApiController
       respond_to :json
 
+      def index
+        respond_with(@photos = current_user.creations.find(params[:cake_id]).photos)
+      end
+
       def create
         cake_id = params[:cake_id]
         UploadPhoto.new.run(cake_id, params)

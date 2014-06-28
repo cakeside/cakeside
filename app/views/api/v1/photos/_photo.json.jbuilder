@@ -2,9 +2,6 @@ json.id photo.id
 json.cake_id photo.creation_id
 json.content_type photo.content_type
 json.original_filename photo.original_filename
-json.latitude photo.latitude
-json.longitude photo.longitude
-json.sha256 photo.sha256
 json.thumb_url photo.url_for(:thumb)
 json.large_url photo.url_for(:large)
 json.original_url photo.url_for(:original)

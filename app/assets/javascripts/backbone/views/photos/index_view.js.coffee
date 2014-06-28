@@ -1,6 +1,6 @@
-Cake.Views.Photos ||= {}
+CakeSide.Views.Photos ||= {}
 
-class Cake.Views.Photos.IndexView extends Backbone.View
+class CakeSide.Views.Photos.IndexView extends Backbone.View
   template: JST["backbone/templates/photos/index"]
 
   initialize: () ->
@@ -10,7 +10,7 @@ class Cake.Views.Photos.IndexView extends Backbone.View
     @options.photos.each(@addOne)
 
   addOne: (photo) =>
-    view = new Cake.Views.Photos.PhotoView({model : photo})
+    view = new CakeSide.Views.Photos.PhotoView({model : photo})
     @$("tbody").append(view.render().el)
 
   render: =>

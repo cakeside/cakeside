@@ -24,14 +24,6 @@
     <a href="<%= Routes.creation_photos_path(id) %>">View photos &raquo;</a>
   </div>
   <div class="span12">
-    <ul class="thumbnails">
-    <% _.each(photos, function(photo) { %>
-      <li class="span2">
-      <a href="<%= Routes.creation_photo_path(id, photo.id) %>">
-        <img src="<%= photo.thumb_url %>" class="thumbnail" />
-      </a>
-      </li>
-    <% }); %>
-    </ul>
+    <ul class="thumbnails"></ul>
   </div>
 </div>

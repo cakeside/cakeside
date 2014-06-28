@@ -1,4 +1,4 @@
-class Cake.Routers.PhotosRouter extends Backbone.Router
+class CakeSide.Routers.PhotosRouter extends Backbone.Router
   routes:
     "cakes/:cake_id/photos/new"      : "newPhoto"
     "cakes/:cake_id/photos/index"    : "index"
@@ -7,23 +7,23 @@ class Cake.Routers.PhotosRouter extends Backbone.Router
     "cakes/:cake_id/photos/.*"        : "index"
 
   newPhoto: (cake_id) ->
-    @photos = new Cake.Collections.PhotosCollection(cake_id: cake_id)
-    @view = new Cake.Views.Photos.NewView(collection: @photos)
+    @photos = new CakeSide.Collections.PhotosCollection(cake_id: cake_id)
+    @view = new CakeSide.Views.Photos.NewView(collection: @photos)
     $("#backbone-content").html(@view.render().el)
 
   index: (cake_id) ->
-    @photos = new Cake.Collections.PhotosCollection(cake_id: cake_id)
-    @view = new Cake.Views.Photos.IndexView(photos: @photos)
+    @photos = new CakeSide.Collections.PhotosCollection(cake_id: cake_id)
+    @view = new CakeSide.Views.Photos.IndexView(photos: @photos)
     $("#backbone-content").html(@view.render().el)
 
   show: (cake_id, id) ->
     photo = @photos.get(id)
 
-    @view = new Cake.Views.Photos.ShowView(model: photo)
+    @view = new CakeSide.Views.Photos.ShowView(model: photo)
     $("#backbone-content").html(@view.render().el)
 
   edit: (cake_id, id) ->
     photo = @photos.get(id)
 
-    @view = new Cake.Views.Photos.EditView(model: photo)
+    @view = new CakeSide.Views.Photos.EditView(model: photo)
     $("#backbone-content").html(@view.render().el)

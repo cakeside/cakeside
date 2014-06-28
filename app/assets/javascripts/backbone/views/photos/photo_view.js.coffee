@@ -1,6 +1,6 @@
-Cake.Views.Photos ||= {}
+CakeSide.Views.Photos ||= {}
 
-class Cake.Views.Photos.PhotoView extends Backbone.View
+class CakeSide.Views.Photos.PhotoView extends Backbone.View
   template: JST["backbone/templates/photos/photo"]
 
   events:

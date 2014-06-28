@@ -4,7 +4,7 @@
 #= require_tree ./views
 #= require_tree ./routers
 
-window.Cake =
+window.CakeSide =
   Models: {}
   Collections: {}
   Routers: {}
@@ -14,18 +14,22 @@ window.Cake =
       if data.access_token
         xhr.setRequestHeader "Authorization", "Token token=#{data.access_token}"
 
-    Cake.Application = new Marionette.Application()
-    Cake.Application.addInitializer (options) ->
-      new Cake.Routers.CakesRouter()
-      new Cake.Routers.PhotosRouter()
+    CakeSide.Application = new Marionette.Application()
+    CakeSide.Application.addInitializer (options) ->
+      new CakeSide.Routers.CakesRouter()
+      new CakeSide.Routers.PhotosRouter()
 
-    Cake.Application.on 'start', ->
+    CakeSide.Application.on 'start', ->
       if Backbone.history
         Backbone.history.start()
 
-    @cakes = new Cake.Collections.CakesCollection()
-    Cake.Application.reqres.setHandler 'CakeRepository', =>
+    @cakes = new CakeSide.Collections.CakesCollection()
+    CakeSide.Application.reqres.setHandler 'CakesRepository', =>
       @cakes
+    CakeSide.Application.reqres.setHandler 'PhotosRepository', (cake_id) =>
+      photos = new CakeSide.Collections.PhotosCollection(cake_id: cake_id)
+      photos.fetch(reset: true)
+      photos
 
     @cakes.fetch(reset: true).done ->
-      Cake.Application.start()
+      CakeSide.Application.start()

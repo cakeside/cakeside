@@ -1,4 +1,4 @@
-class Cake.Routers.CakesRouter extends Backbone.Router
+class CakeSide.Routers.CakesRouter extends Backbone.Router
   routes:
     "new"      : "newCake"
     "index"    : "index"
@@ -7,20 +7,20 @@ class Cake.Routers.CakesRouter extends Backbone.Router
     ".*"       : "index"
 
   index: ->
-    @view = new Cake.Views.Cakes.IndexView(collection: Cake.Application.request('CakeRepository'))
+    @view = new CakeSide.Views.Cakes.IndexView(collection: CakeSide.Application.request('CakesRepository'))
     $("#backbone-content").html(@view.render().el)
 
   show: (id) ->
-    cake = Cake.Application.request('CakeRepository').get(id)
-    @view = new Cake.Views.Cakes.ShowView(model: cake)
+    cake = CakeSide.Application.request('CakesRepository').get(id)
+    @view = new CakeSide.Views.Cakes.ShowView(model: cake)
     $("#backbone-content").html(@view.render().el)
 
   newCake: ->
-    @view = new Cake.Views.Cakes.NewView(collection: Cake.Application.request('CakeRepository'))
+    @view = new CakeSide.Views.Cakes.NewView(collection: CakeSide.Application.request('CakesRepository'))
     $("#backbone-content").html(@view.render().el)
 
   edit: (id) ->
-    cake = Cake.Application.request('CakeRepository').get(id)
+    cake = CakeSide.Application.request('CakesRepository').get(id)
 
-    @view = new Cake.Views.Cakes.EditView(model: cake)
+    @view = new CakeSide.Views.Cakes.EditView(model: cake)
     $("#backbone-content").html(@view.render().el)

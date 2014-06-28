@@ -1,6 +1,6 @@
-Cake.Views.Photos ||= {}
+CakeSide.Views.Photos ||= {}
 
-class Cake.Views.Photos.NewModalView extends Backbone.View
+class CakeSide.Views.Photos.NewModalView extends Backbone.View
   template: JST["backbone/templates/photos/new-modal"]
 
   events:
@@ -9,7 +9,7 @@ class Cake.Views.Photos.NewModalView extends Backbone.View
 
   constructor: (options) ->
     super(options)
-    @collection = new Cake.Collections.PhotosCollection(cake_id: options.cake.id)
+    @collection = new CakeSide.Collections.PhotosCollection(cake_id: options.cake.id)
     @model = new @collection.model()
     @cake = options.cake
 

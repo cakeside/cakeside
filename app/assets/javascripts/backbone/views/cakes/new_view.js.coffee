@@ -1,6 +1,6 @@
-Cake.Views.Cakes ||= {}
+CakeSide.Views.Cakes ||= {}
 
-class Cake.Views.Cakes.NewView extends Marionette.ItemView
+class CakeSide.Views.Cakes.NewView extends Marionette.ItemView
   template: JST["backbone/templates/cakes/new"]
   ui:
     name: "#cake_name"
@@ -39,7 +39,7 @@ class Cake.Views.Cakes.NewView extends Marionette.ItemView
     window.location.hash = "/cakes/#{cake.id}/photos/new"
 
   couldNotSave: (cake, xhr) ->
-    error = new Cake.Views.ErrorView
+    error = new CakeSide.Views.ErrorView
       el: @$('form#new-cake'),
       attributesWithErrors: $.parseJSON(xhr.responseText)
     error.render()
