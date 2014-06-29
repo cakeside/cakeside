@@ -15,7 +15,11 @@ class CakeSide.Models.Photo extends Backbone.Model
 
   initialize: (options) ->
     @set('cake_id', options.cake_id)
-    @url="/api/v1/cakes/#{options.cake_id}/photos/#{options.id}"
+    if options.id
+      @url="/api/v1/cakes/#{options.cake_id}/photos/#{options.id}"
+    else
+      @url="/api/v1/cakes/#{options.cake_id}/photos"
+
     super(options)
 
 class CakeSide.Collections.PhotosCollection extends Backbone.Collection

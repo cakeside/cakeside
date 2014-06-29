@@ -10,8 +10,8 @@ class CakeSide.Views.Photos.NewModalView extends Backbone.View
   constructor: (options) ->
     super(options)
     @collection = CakeSide.Application.request('PhotosRepository', options.cake.id)
-    @model = new @collection.model()
     @cake = options.cake
+    @model = new @collection.model(cake_id: @cake.id)
 
     @model.bind("change:errors", () =>
       this.render()
