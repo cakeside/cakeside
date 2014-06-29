@@ -4,6 +4,7 @@ class CakeSide.Routers.CakesRouter extends Backbone.Router
     "index"    : "index"
     ":id/edit" : "edit"
     ":id"      : "show"
+    "cakes/:id": "show"
     ".*"       : "index"
 
   index: ->

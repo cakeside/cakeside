@@ -47,7 +47,7 @@ Cake::Application.routes.draw do
   namespace :api, :defaults => { :format => 'json' }  do
     namespace :v1 do
       resources :cakes, only: [:index, :show, :create, :update] do
-        resources :photos, only: [:index, :create]
+        resources :photos, only: [:index, :show, :create]
       end
       resources :categories, only: [:index]
       resources :logins, :only => [:create]

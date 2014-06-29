@@ -1,12 +1,8 @@
-<p>
-  <b>Thumb url:</b>
-  <%= thumb_url %>
-</p>
-
-<p>
-  <b>Large url:</b>
-  <%= large_url %>
-</p>
-
-
-<a href="#/index">Back</a>
+<div class="row">
+  <div class="span12">
+    <p><a href="#/cakes/<%= cake_id %>">back</a></p>
+    <a href="#/cakes/<%= cake_id %>/photos/<%= id %>">
+      <img src="<%= original_url %>" class="thumbnail" />
+    </a>
+  </div>
+</div>
