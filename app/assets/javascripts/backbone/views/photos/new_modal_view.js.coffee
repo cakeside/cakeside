@@ -25,7 +25,7 @@ class CakeSide.Views.Photos.NewModalView extends Backbone.View
 
     fileObject = @$(':input[type="file"]')[0].files[0]
     @model.set('image', fileObject)
-    @model.on('progress', console.log)
+    @model.on('progress', @displayProgress)
     @collection.create(@model.toJSON(),
       success: (photo) =>
         @model = photo
@@ -50,3 +50,6 @@ class CakeSide.Views.Photos.NewModalView extends Backbone.View
       reader.readAsDataURL(input.files[0])
     else
       $('#preview-image').addClass('hide')
+
+  displayProgress: (event) ->
+    console.log(event)
