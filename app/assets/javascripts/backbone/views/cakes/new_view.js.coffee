@@ -65,3 +65,9 @@ class CakeSide.Views.Cakes.NewView extends Marionette.ItemView
   disableSaveButton: ->
     @ui.save_button.attr('disabled', 'disabled')
 
+  serializeData: ->
+    {
+      cake: @model.toJSON(),
+      categories: CakeSide.Application.request('CategoriesRepository').toJSON(),
+    }
+

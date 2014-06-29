@@ -27,11 +27,9 @@
           <label class="control-label">Category</label>
           <div class="controls">
             <select id="cake_category_id" name="category_id">
-              <option value="15" selected="selected">Cake</option>
-              <option value="12">Cake Pop</option>
-              <option value="13">Cookie</option>
-              <option value="3">Cup Cake</option>
-              <option value="16">Other</option></select>
+              <% _.each(categories, function(category) { %>
+              <option value="<%= category.id %>"><%= category.name %></option>
+              <% }); %>
             </select>
           </div>
         </div>

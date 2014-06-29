@@ -24,9 +24,14 @@ window.CakeSide =
         Backbone.history.start()
 
     @cakes = new CakeSide.Collections.CakesCollection()
+    @categories = new CakeSide.Collections.CategoriesCollection()
+    @categories.fetch(reset: true)
+
     CakeSide.Application.reqres.setHandler 'CakesRepository', =>
       @cakes
-    CakeSide.Application.reqres.setHandler 'PhotosRepository', (cake_id) =>
+    CakeSide.Application.reqres.setHandler 'CategoriesRepository', =>
+      @categories
+    CakeSide.Application.reqres.setHandler 'PhotosRepository', (cake_id) ->
       photos = new CakeSide.Collections.PhotosCollection(cake_id: cake_id)
       photos.fetch(reset: true)
       photos
