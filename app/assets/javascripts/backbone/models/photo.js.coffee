@@ -3,7 +3,7 @@ class CakeSide.Models.Photo extends Backbone.Model
   fileAttribute: 'image'
 
   defaults:
-    id: null
+    id: 0
     content_type: null
     original_filename: null
     thumb_url: null

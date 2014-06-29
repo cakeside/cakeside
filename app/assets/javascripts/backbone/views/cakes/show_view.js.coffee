@@ -1,7 +1,5 @@
+#= require backbone/views/cakes/thumbnail_view
 CakeSide.Views.Cakes ||= {}
-
-class CakeSide.Views.Cakes.ThumbnailView extends Marionette.ItemView
-  template: JST['backbone/templates/cakes/thumbnail']
 
 class CakeSide.Views.Cakes.ShowView extends Marionette.CompositeView
   template: JST["backbone/templates/cakes/show"]
@@ -13,12 +11,7 @@ class CakeSide.Views.Cakes.ShowView extends Marionette.CompositeView
 
   constructor: (options) ->
     super(options)
-    #@model.on('sync', @render)
     @collection = @model.photos()
-
-  #render: ->
-    #$(@el).html(@template(@model.toJSON()))
-    #return this
 
   launchAddPhoto: ->
     view = new CakeSide.Views.Photos.NewModalView(cake: @model)
