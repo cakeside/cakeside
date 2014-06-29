@@ -1,3 +1,4 @@
+#= require backbone/views/cakes/thumbnail_view
 CakeSide.Views.Photos ||= {}
 
 class CakeSide.Views.Photos.ShowView extends Marionette.CompositeView

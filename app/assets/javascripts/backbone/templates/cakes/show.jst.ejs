@@ -2,7 +2,10 @@
 <div class="row">
   <div class="span6">
     <% if(_.any(photos)) { %>
-    <img class="thumbnail" src="<%= photos[Math.floor(Math.random()*photos.length)].large_url %>" alt="<%= name %>" />
+    <% random_photo = photos[Math.floor(Math.random()*photos.length)]%>
+    <a href="#/cakes/<%= id %>/photos/<%= random_photo.id %>">
+    <img class="thumbnail" src="<%= random_photo.large_url %>" alt="<%= name %>" />
+    </a>
     <% } %>
   </div>
   <div class="span6">
