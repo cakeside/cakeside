@@ -31,10 +31,15 @@ window.CakeSide =
       @cakes
     CakeSide.Application.reqres.setHandler 'CategoriesRepository', =>
       @categories
-    CakeSide.Application.reqres.setHandler 'PhotosRepository', (cake_id) ->
-      photos = new CakeSide.Collections.PhotosCollection(cake_id: cake_id)
-      photos.fetch(reset: true)
-      photos
+    @photos_cache = {}
+    CakeSide.Application.reqres.setHandler 'PhotosRepository', (cake_id) =>
+      if @photos_cache[cake_id]
+        @photos_cache[cake_id]
+      else
+        photos = new CakeSide.Collections.PhotosCollection(cake_id: cake_id)
+        @photos_cache[cake_id] = photos
+        photos.fetch(reset: true)
+        photos
 
     @cakes.fetch(reset: true).done ->
       CakeSide.Application.start()

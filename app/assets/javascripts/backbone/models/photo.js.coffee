@@ -4,6 +4,7 @@ class CakeSide.Models.Photo extends Backbone.Model
 
   defaults:
     id: null
+    cake_id: null
     content_type: null
     original_filename: null
     thumb_url: null
@@ -16,4 +17,5 @@ class CakeSide.Collections.PhotosCollection extends Backbone.Collection
   model: CakeSide.Models.Photo
 
   initialize: (options) ->
+    @set('cake_id', options.cake_id)
     @url="/api/v1/cakes/#{options.cake_id}/photos"
