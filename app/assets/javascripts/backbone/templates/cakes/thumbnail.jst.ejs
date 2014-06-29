@@ -1,5 +1,5 @@
 <li class="span2">
-<a href="<%= Routes.creation_photo_path(cake_id, id) %>">
+<a href="<%= Routes.creation_photo_path(cake_id, id || 0) %>">
   <img src="<%= thumb_url %>" class="thumbnail" />
 </a>
 </li>
