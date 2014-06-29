@@ -25,6 +25,7 @@ class CakeSide.Views.Cakes.NewView extends Marionette.ItemView
   save: (e) ->
     e.preventDefault()
     e.stopPropagation()
+    @disableSaveButton()
     @collection.create(@model,
       success: @savedSuccessfully
       error: @couldNotSave
@@ -35,18 +36,18 @@ class CakeSide.Views.Cakes.NewView extends Marionette.ItemView
     @$('#cake_tags').tagit({ availableTags: ALL_TAGS })
     @$('.tooltip-item').tooltip()
 
-  savedSuccessfully: (cake) ->
+  savedSuccessfully: (cake) =>
     window.location.hash = "/cakes/#{cake.id}/photos/new"
 
-  couldNotSave: (cake, xhr) ->
+  couldNotSave: (cake, xhr) =>
+    @enableSaveButton()
     error = new CakeSide.Views.ErrorView
       el: @$('form#new-cake'),
       attributesWithErrors: $.parseJSON(xhr.responseText)
     error.render()
 
   refreshStatus: ->
-    console.log('refreshing.')
-    @ui.save_button.removeAttr('disabled')
+    @enableSaveButton()
     @model.set('name', @ui.name.val())
     @model.set('watermark', @ui.watermark.val())
     @model.set('story', @ui.description.val())
@@ -56,4 +57,11 @@ class CakeSide.Views.Cakes.NewView extends Marionette.ItemView
     @model.isValid()
 
   displayError: (model, error) ->
+    @disableSaveButton()
+
+  enableSaveButton: ->
+    @ui.save_button.removeAttr('disabled')
+
+  disableSaveButton: ->
     @ui.save_button.attr('disabled', 'disabled')
+
