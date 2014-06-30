@@ -22,6 +22,5 @@ class CakeSide.Routers.CakesRouter extends Backbone.Router
 
   edit: (id) ->
     cake = CakeSide.Application.request('CakesRepository').get(id)
-
     @view = new CakeSide.Views.Cakes.EditView(model: cake)
     $("#backbone-content").html(@view.render().el)
