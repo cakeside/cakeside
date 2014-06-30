@@ -12,7 +12,7 @@ module Api
       end
 
       def create
-        CreateCakeCommand.new(self).run(cake_params, params[:cake][:cake_tags])
+        CreateCakeCommand.new(self).run(cake_params, params[:cake][:tags])
       end
 
       def create_cake_succeeded(cake)
@@ -24,13 +24,21 @@ module Api
       end
 
       def update
-        raise params.inspect
+        UpdateCakeCommand.new(self).run(params[:id], params[:cake][:tags], cake_params)
+      end
+
+      def update_cake_succeeded(cake)
+        respond_with(@cake = cake)
+      end
+
+      def update_cake_failed(cake)
+        respond_with(@cake = cake)
       end
 
       private
 
       def cake_params
-        params.require(:cake).permit(:name, :story, :is_restricted, :watermark, :category_id)
+        params.require(:cake).permit(:name, :story, :is_restricted, :watermark, :category_id, :tags)
       end
     end
   end

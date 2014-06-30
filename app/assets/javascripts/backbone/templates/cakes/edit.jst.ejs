@@ -1,54 +1,55 @@
 <div class="row">
   <div class="span12">
-    <h1><small>Edit</small> <%= name %> <small>(Step 1 of 2)</small></h1>
+    <h1><small>Edit</small> <%= cake.name %> <small>(Step 1 of 2)</small></h1>
     <hr />
-    <form id="edit-cake" name="cake">
+    <form id="edit-cake" name="cake" class="form-horizontal">
       <fieldset>
         <div class="control-group">
-          <label class="control-label" for="name" />
+          <label class="control-label" for="cake_name">Name*</label>
           <div class="controls">
-            <input type="text" name="name" id="name" value="<%= name %>" class="input-xxlarge" />
+            <input class="input-xxlarge" id="cake_name" name="name" type="text" value="<%= cake.name %>" />
           </div>
         </div>
         <div class="control-group">
-          <label class="control-label" for="watermark" />
+          <label class="control-label" for="cake_watermark">Watermark</label>
           <div class="controls">
-            <input type="text" name="watermark" id="watermark" value="<%= watermark %>" class="input-xxlarge" max='30' />
+            <input class="input-xlarge" id="cake_watermark" maxlength="30" name="watermark" size="30" type="text" value="<%= cake.watermark %>"> on CakeSide.com
             <a class="tooltip-item" data-placement="right" rel="tooltip" href="#" data-original-title="Watermark your name or company on each uploaded image" data-animation="true"><i class="icon-question-sign"></i></a>
           </div>
         </div>
         <div class="control-group">
-          <label class="control-label" for="story" />
+          <label class="control-label" for="cake_story">Description</label>
           <div class="controls">
-            <textarea id="story" name="story" class="input=xxlarge" rows="3">
-            </textarea>
+            <textarea class="input-xxlarge" id="cake_story" name="story" rows="3"><%= cake.story %></textarea>
           </div>
         </div>
         <div class="control-group">
           <label class="control-label">Category</label>
           <div class="controls">
-            <select>
-            <option>Cake</option>
+            <select id="cake_category_id" name="category_id">
+              <% _.each(categories, function(category) { %>
+              <option value="<%= category.id %>"><%= category.name %></option>
+              <% }); %>
             </select>
           </div>
         </div>
         <div class="control-group">
-          <label for="tags" class="control-label">Tags</label>
+          <label for="cake_tags" class="control-label">Tags</label>
           <div class="controls">
-            <input name="creation_tags" type="text" id="tags" value="" class="input-xxlarge" autocomplete="off" />
+            <input name="cake_tags" type="text" id="cake_tags" value="<%= _.map(cake.tags, function(x){ return x.name; }) %>" class="input-xxlarge" autocomplete="off" />
           </div>
         </div>
         <div class="control-group">
           <div class="controls">
             <label class="checkbox">
-              <input type="checkbox" name="is_restricted" id="is_restricted" class="input-xxlarge" />
+              <input class="input-xxlarge" id="cake_is_restricted" type="checkbox" <%= cake.is_restricted ? "checked=checked" : "" %> />
               This cake is for adults only.
             </label>
           </div>
         </div>
         <div class="form-actions">
-          <button type="submit" class="btn btn-primary">NEXT STEP</button>
-          <a href="#/index" class="btn">Cancel</a>
+          <button id='save-button' type="submit" class="btn btn-primary">NEXT STEP</button>
+          <a href="#/cakes/<%= cake.id %>" class="btn">Cancel</a>
         </div>
       </fieldset>
     </form>
