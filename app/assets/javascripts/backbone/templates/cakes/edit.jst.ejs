@@ -36,7 +36,12 @@
         <div class="control-group">
           <label for="cake_tags" class="control-label">Tags</label>
           <div class="controls">
-            <input name="cake_tags" type="text" id="cake_tags" value="<%= _.map(cake.tags, function(x){ return x.name; }) %>" class="input-xxlarge" autocomplete="off" />
+          <% if (typeof(cake.tags) === "string") { %>
+            <% tags = _.map(cake.tags.split(','), function(x){ return x; }) %>
+          <% } else { %>
+            <% tags = _.map(cake.tags, function(x){ return x.name; }) %>
+          <% } %>
+          <input name="cake_tags" type="text" id="cake_tags" value="<%= tags %>" class="input-xxlarge" autocomplete="off" />
           </div>
         </div>
         <div class="control-group">

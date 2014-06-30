@@ -10,11 +10,19 @@
   <div class="span6">
     <h1><a href="#/<%= id %>"><%= name %></a></h1>
     <span> <i class="icon-tags"></i> </span>
-    <% _.each(tags, function(tag){ %>
-      <a href="<%= Routes.creation_tag_path(tag.name) %>">
-        <span class="label"><%= tag.name %></span>
-      </a>
-    <% }); %>
+    <% if (typeof(tags) === "string") { %>
+      <% _.each(tags.split(','), function(tag){ %>
+        <a href="<%= Routes.creation_tag_path(tag) %>">
+          <span class="label"><%= tag %></span>
+        </a>
+      <% }); %>
+    <% } else { %>
+      <% _.each(tags, function(tag){ %>
+        <a href="<%= Routes.creation_tag_path(tag.name) %>">
+          <span class="label"><%= tag.name %></span>
+        </a>
+      <% }); %>
+    <% } %>
     <hr />
     <p><%= story %></p>
   </div>
@@ -22,6 +30,7 @@
 <div class="row">
   <div class="span12">
     <a id="add-photo" class="btn">Add Photo</a>
+    <a href="#/<%= id %>/edit">(edit)</a>
   </div>
   <div class="span12">
     <ul class="thumbnails"></ul>
