@@ -50,7 +50,7 @@ class CakeSide.Views.Cakes.EditView extends Marionette.ItemView
     @model.set('story', @ui.description.val())
     @model.set('category_id', @ui.category.val())
     @model.set('tags', @ui.tags.val())
-    @model.set('is_restricted', @ui.is_restricted.val() == "" ? "true" : "false")
+    @model.set('is_restricted', @ui.is_restricted.attr('checked') == "checked")
     @model.isValid()
 
   displayError: (model, error) ->
