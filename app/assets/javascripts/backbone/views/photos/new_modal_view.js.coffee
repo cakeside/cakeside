@@ -12,11 +12,6 @@ class CakeSide.Views.Photos.NewModalView extends Marionette.ItemView
     "click #upload-photo-button": "save"
     "change #photo-attachment": "displayPreview"
 
-  templateHelpers:
-    uploading: ->
-      typeof(@percentComplete) != "undefined"
-
-
   constructor: (options) ->
     super(options)
     @collection = CakeSide.Application.request('PhotosRepository', options.cake.id)
@@ -26,8 +21,8 @@ class CakeSide.Views.Photos.NewModalView extends Marionette.ItemView
   save: (e) ->
     e.preventDefault()
     e.stopPropagation()
-    @ui.upload_button.attr('disabled', 'disabled')
-    @collection.create(@model, success: @photoUploaded)
+    @closeDialog()
+    @collection.create(@model)
 
   displayPreview: (event) ->
     input = event.currentTarget
@@ -44,9 +39,7 @@ class CakeSide.Views.Photos.NewModalView extends Marionette.ItemView
 
   displayProgress: (progress) ->
     percentCompleted = progress*100
-    CakeSide.Application.vent.trigger('uploading', percentCompleted)
     @model.set('percentComplete', percentCompleted)
-    @render()
 
-  photoUploaded: (photo) ->
+  closeDialog: (photo) ->
     $('#modal').modal('hide')
