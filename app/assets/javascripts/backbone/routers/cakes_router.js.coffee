@@ -1,11 +1,12 @@
 class CakeSide.Routers.CakesRouter extends Backbone.Router
   routes:
-    "new"      : "newCake"
-    "index"    : "index"
-    ":id/edit" : "edit"
-    ":id"      : "show"
+    "cakes/new": "newCake"
+    "cakes/index": "index"
+    "cakes/:id/edit": "edit"
     "cakes/:id": "show"
-    ".*"       : "index"
+    "cakes/:id": "show"
+    "cakes/.*": "index"
+    ".*": "index"
 
   index: ->
     @view = new CakeSide.Views.Cakes.IndexView(collection: CakeSide.Application.request('CakesRepository'))
