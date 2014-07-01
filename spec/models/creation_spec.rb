@@ -6,7 +6,8 @@ describe Creation do
   describe "should be able to set attributes" do
     it "should save name" do
       sut.name="HELLO WORLD"
-      sut.save
+      sut.category = create(:category)
+      sut.save!
       Creation.find(sut.id).name.should == "HELLO WORLD"
     end
   end
