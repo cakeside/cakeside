@@ -22,7 +22,6 @@ class CakeSide.Views.Photos.NewModalView extends Marionette.ItemView
     @collection = CakeSide.Application.request('PhotosRepository', options.cake.id)
     @cake = options.cake
     @model = new @collection.model(cake_id: @cake.id)
-    @model.set('percentComplete', 20)
 
   save: (e) ->
     e.preventDefault()
