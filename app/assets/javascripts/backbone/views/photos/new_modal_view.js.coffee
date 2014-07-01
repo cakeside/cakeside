@@ -36,9 +36,8 @@ class CakeSide.Views.Photos.NewModalView extends Marionette.ItemView
       $('#preview-image').addClass('hide')
 
   displayProgress: (progress) ->
-    debugger
     percentCompleted = progress*100
-    @model.set('percentComplete', percentCompleted)
+    @set('percentComplete', percentCompleted)
 
   closeDialog: (photo) ->
     $('#modal').modal('hide')
