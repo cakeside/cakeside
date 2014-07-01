@@ -42,9 +42,10 @@ class CakeSide.Views.Photos.NewModalView extends Marionette.ItemView
     else
       $('#preview-image').addClass('hide')
 
-  displayProgress: (percentComplete) ->
-    CakeSide.Application.vent.trigger('uploading', event)
-    @model.set('percentComplete', percentComplete*100)
+  displayProgress: (progress) ->
+    percentCompleted = progress*100
+    CakeSide.Application.vent.trigger('uploading', percentCompleted)
+    @model.set('percentComplete', percentCompleted)
     @render()
 
   photoUploaded: (photo) ->
