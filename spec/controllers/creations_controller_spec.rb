@@ -77,7 +77,7 @@ describe CreationsController do
       end
 
       describe "with invalid params" do
-        before { post :create, :creation => {:name => ''} }
+        before { post :create, :creation => {:name => '', category_id: Category.first.id} }
 
         it "re-renders the 'new' template" do
           response.should render_template("new")

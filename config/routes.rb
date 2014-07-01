@@ -18,6 +18,7 @@ Cake::Application.routes.draw do
     resources :favorites, :only => [:index, :create]
     get 'page/:page', :action => :index, :on => :collection
   end
+  resources :cakes
 
   resources :profiles, :only => [:index, :show] do
     get 'page/:page', :action => :index, :on => :collection
@@ -45,7 +46,10 @@ Cake::Application.routes.draw do
 
   namespace :api, :defaults => { :format => 'json' }  do
     namespace :v1 do
-      resources :creations, :only => [:index]
+      resources :cakes, only: [:index, :show, :create, :update] do
+        resources :photos, only: [:index, :show, :create]
+      end
+      resources :categories, only: [:index]
       resources :logins, :only => [:create]
     end
   end

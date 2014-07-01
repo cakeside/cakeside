@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="span12">
+    <h1>Share cake <small>(Step 1 of 2)</small></h1>
+    <hr />
+    <form id="new-cake" name="cake" class="form-horizontal">
+      <fieldset>
+        <div class="control-group">
+          <label class="control-label" for="cake_name">Name*</label>
+          <div class="controls">
+            <input class="input-xxlarge" id="cake_name" name="name" type="text">
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="cake_watermark">Watermark</label>
+          <div class="controls">
+            <input class="input-xlarge" id="cake_watermark" maxlength="30" name="watermark" size="30" type="text"> on CakeSide.com
+            <a class="tooltip-item" data-placement="right" rel="tooltip" href="#" data-original-title="Watermark your name or company on each uploaded image" data-animation="true"><i class="icon-question-sign"></i></a>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="cake_story">Description</label>
+          <div class="controls">
+            <textarea class="input-xxlarge" id="cake_story" name="story" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Category</label>
+          <div class="controls">
+            <select id="cake_category_id" name="category_id">
+              <% _.each(categories, function(category) { %>
+              <option value="<%= category.id %>"><%= category.name %></option>
+              <% }); %>
+            </select>
+          </div>
+        </div>
+        <div class="control-group">
+          <label for="cake_tags" class="control-label">Tags</label>
+          <div class="controls">
+            <input name="cake_tags" type="text" id="cake_tags" value="" class="input-xxlarge" autocomplete="off" />
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <label class="checkbox">
+              <input class="input-xxlarge" id="cake_is_restricted" type="checkbox" />
+              This cake is for adults only.
+            </label>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button id='save-button' type="submit" class="btn btn-primary">NEXT STEP</button>
+          <a href="#/cakes" class="btn">Cancel</a>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>

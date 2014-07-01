@@ -1,5 +1,6 @@
 class Creation < ActiveRecord::Base
-  validates :name,  :presence => true
+  validates :name, presence: true
+  validates :category_id, presence: true
   belongs_to :user, :counter_cache => true
   belongs_to :category
   has_many :photos, -> { order :created_at }, :dependent => :destroy
@@ -32,5 +33,9 @@ class Creation < ActiveRecord::Base
 
   def liked_by(user)
     favorites.find_or_create_by(user: user)
+  end
+
+  def hide_from_children!
+    update_attribute(:is_restricted, true)
   end
 end

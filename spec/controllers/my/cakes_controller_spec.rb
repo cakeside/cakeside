@@ -6,20 +6,9 @@ describe My::CakesController do
     before { http_login(user) }
 
     describe "#index" do
-      let!(:my_creation) { create(:creation) }
-      let!(:other_creation) { create(:creation) }
-
-      before :each do
-        user.creations << my_creation
+      it "should let me int" do
         get :index
-      end
-
-      it "should return all of my creations" do
-        assigns(:creations).should include(my_creation)
-      end
-
-      it "should not return any other creations" do
-        assigns(:creations).should_not include(other_creation)
+        expect(response).to be_success
       end
     end
   end

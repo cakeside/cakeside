@@ -1,0 +1,15 @@
+<div class="span4">
+  <div class="thumbnail">
+    <a href="#/cakes/<%= id %>">
+    <% if(_.any(photos)) { %>
+      <img src="<%= photos[0].large_url %>" />
+    <% } %>
+    </a>
+    <div class="caption">
+      <h3><a href="#/cakes/<%= id %>"><%= name %></a></h3>
+      <p><a href="#/cakes/<%= id %>/edit">(edit)</a></p>
+      <p><%= story %></p>
+      <span class="badge badge-warning"><i class="icon-comments"> <a href="<%= Routes.creation_path(id) %>#disqus_thread" data-disqus-identifier="c-<%= id %>"></a></i></span>
+    </div>
+  </div>
+</div>

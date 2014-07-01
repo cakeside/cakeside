@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="span6">
+    <% if(_.any(photos)) { %>
+    <% random_photo = photos[Math.floor(Math.random()*photos.length)]%>
+    <a href="#/cakes/<%= id %>/photos/<%= random_photo.id %>">
+    <img class="thumbnail" src="<%= random_photo.large_url %>" alt="<%= name %>" />
+    </a>
+    <% } %>
+  </div>
+  <div class="span6">
+    <h1><a href="#/cakes/<%= id %>"><%= name %></a></h1>
+    <span> <i class="icon-tags"></i> </span>
+    <% if (typeof(tags) === "string") { %>
+      <% _.each(tags.split(','), function(tag){ %>
+        <a href="<%= Routes.creation_tag_path(tag) %>">
+          <span class="label"><%= tag %></span>
+        </a>
+      <% }); %>
+    <% } else { %>
+      <% _.each(tags, function(tag){ %>
+        <a href="<%= Routes.creation_tag_path(tag.name) %>">
+          <span class="label"><%= tag.name %></span>
+        </a>
+      <% }); %>
+    <% } %>
+    <hr />
+    <p><%= story %></p>
+  </div>
+</div>
+<div class="row">
+  <div class="span12">
+    <a id="add-photo" class="btn">Add Photo</a>
+    <a href="#/cakes/<%= id %>/edit">(edit)</a>
+  </div>
+  <div class="span12">
+    <ul class="thumbnails"></ul>
+  </div>
+</div>

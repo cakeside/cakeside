@@ -1,0 +1,19 @@
+#= require backbone/views/cakes/thumbnail_view
+CakeSide.Views.Cakes ||= {}
+
+class CakeSide.Views.Cakes.ShowView extends Marionette.CompositeView
+  template: JST["backbone/templates/cakes/show"]
+  childView: CakeSide.Views.Cakes.ThumbnailView
+  childViewContainer: '.thumbnails'
+
+  events:
+    "click #add-photo": "launchAddPhoto"
+
+  constructor: (options) ->
+    super(options)
+    @collection = @model.photos()
+
+  launchAddPhoto: ->
+    view = new CakeSide.Views.Photos.NewModalView(cake: @model)
+    $("#modal").html(view.render().el)
+    $("#modal").modal()
