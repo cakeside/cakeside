@@ -39,6 +39,7 @@ class CakeSide.Views.Photos.NewModalView extends Marionette.ItemView
 
   displayProgress: (progress) ->
     percentCompleted = progress*100
+    debugger
     @model.set('percentComplete', percentCompleted)
 
   closeDialog: (photo) ->
