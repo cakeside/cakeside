@@ -6,3 +6,5 @@ class CakeSide.Views.Cakes.NoCakesView extends Marionette.ItemView
 class CakeSide.Views.Cakes.IndexView extends Marionette.CollectionView
   childView: CakeSide.Views.Cakes.CakeView
   emptyView: CakeSide.Views.Cakes.NoCakesView
+  className: 'thumbnails'
+  tagName: 'ul'
