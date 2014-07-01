@@ -37,7 +37,7 @@ class CakeSide.Views.Cakes.NewView extends Marionette.ItemView
     @$('.tooltip-item').tooltip()
 
   savedSuccessfully: (cake) =>
-    window.location.hash = "/cakes/#{cake.id}/photos/new"
+    window.location.hash = "/cakes/#{cake.id}"
 
   couldNotSave: (cake, xhr) =>
     @enableSaveButton()

@@ -9,6 +9,13 @@ class CakeSide.Views.Cakes.ShowView extends Marionette.CompositeView
   events:
     "click #add-photo": "launchAddPhoto"
 
+  templateHelpers:
+    hasImage: ->
+      typeof(@photos) != 'undefined' && _.any(@photos)
+
+    randomPhoto: ->
+      @photos[Math.floor(Math.random()*@photos.length)]
+
   constructor: (options) ->
     super(options)
     @collection = @model.photos()
