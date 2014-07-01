@@ -52,4 +52,4 @@ class CakeSide.Views.Photos.NewModalView extends Backbone.View
       $('#preview-image').addClass('hide')
 
   displayProgress: (event) ->
-    console.log(event)
+    CakeSide.Application.vent.trigger('uploading', event)
