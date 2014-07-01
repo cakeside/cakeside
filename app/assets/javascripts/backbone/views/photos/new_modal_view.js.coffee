@@ -5,9 +5,6 @@ class CakeSide.Views.Photos.NewModalView extends Marionette.ItemView
   ui:
     upload_button: "#upload-photo-button"
 
-  modelEvents:
-    'progress': 'displayProgress'
-
   events:
     "click #upload-photo-button": "save"
     "change #photo-attachment": "displayPreview"
@@ -22,6 +19,7 @@ class CakeSide.Views.Photos.NewModalView extends Marionette.ItemView
     e.preventDefault()
     e.stopPropagation()
     @closeDialog()
+    @model.on('progress', @displayProgress)
     @collection.create(@model)
 
   displayPreview: (event) ->
@@ -38,8 +36,8 @@ class CakeSide.Views.Photos.NewModalView extends Marionette.ItemView
       $('#preview-image').addClass('hide')
 
   displayProgress: (progress) ->
-    percentCompleted = progress*100
     debugger
+    percentCompleted = progress*100
     @model.set('percentComplete', percentCompleted)
 
   closeDialog: (photo) ->
