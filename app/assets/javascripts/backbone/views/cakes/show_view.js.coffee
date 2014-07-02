@@ -7,7 +7,7 @@ class CakeSide.Views.Cakes.ShowView extends Marionette.CompositeView
   childViewContainer: '.thumbnails'
 
   events:
-    "click #add-photo": "launchAddPhoto"
+    "click .add-photo": "launchAddPhoto"
 
   templateHelpers:
     hasImage: ->
