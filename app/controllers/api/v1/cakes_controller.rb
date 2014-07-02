@@ -36,8 +36,9 @@ module Api
       end
 
       def destroy
-        current_user.creations.find(params[:id]).destroy!
-        render nothing: true
+        @cake = current_user.creations.find(params[:id])
+        @cake.destroy!
+        respond_with(@cake)
       end
 
       private
