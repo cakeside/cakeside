@@ -1,5 +1,5 @@
 <div class="thumbnail">
-  <% if(_.any(photos)) { %>
+  <% if(hasImage()) { %>
     <a href="#/cakes/<%= id %>"><img src="<%= randomPhoto().thumb_url %>" /></a>
   <% } %>
   <div class="caption">

@@ -7,3 +7,5 @@ class CakeSide.Views.Cakes.CakeView extends Marionette.ItemView
   templateHelpers:
     randomPhoto: ->
       @photos[Math.floor(Math.random()*@photos.length)]
+    hasImage: ->
+      typeof(@photos) != 'undefined' && _.any(@photos)
