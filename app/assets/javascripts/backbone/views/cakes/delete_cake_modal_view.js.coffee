@@ -20,15 +20,15 @@ class CakeSide.Views.Cakes.DeleteCakeModalView extends Marionette.ItemView
   remove: (e) ->
     e.preventDefault()
     e.stopPropagation()
+    @model.unset('errorMessage')
     @model.destroy(success: @successfullyDeleted, error: @errorDeletingCake)
 
-  successfullyDeleted: ->
+  successfullyDeleted: =>
     @closeDialog()
-    window.location.hash = "cakes"
+    window.location.hash = "cakes/"
 
   errorDeletingCake: (model, response, options) ->
     model.set('errorMessage', 'Could not delete cake.')
-    console.log(response.statusText)
 
   refreshStatus: ->
     if @ui.confirmation_textbox.val() == @model.get('name')
