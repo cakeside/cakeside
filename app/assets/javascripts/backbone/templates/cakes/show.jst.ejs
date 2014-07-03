@@ -1,9 +1,27 @@
 <div class="row">
+  <div class="span12">
+    <p>
+    <a href="#/cakes/<%= id %>/edit" class="btn">
+      <i class="icon-edit"></i> <strong>Edit</strong>
+    </a>
+    <a class="btn add-photo">
+      <i class="icon-plus"></i><strong>Add Photo</strong>
+    </a>
+    <a href="<%= Routes.creation_favorites_path(id) %>" class="btn">
+      <i class="icon-heart"></i> <strong>Fan Club</strong>
+    </a>
+    <a id="remove-cake-button" class="btn btn-danger pull-right">
+      <i class="icon-white icon-remove"></i> <strong>Delete this cake</strong>
+    </a>
+    </p>
+  </div>
+</div>
+<div class="row">
   <div class="span6">
-    <% if(_.any(photos)) { %>
-    <% random_photo = photos[Math.floor(Math.random()*photos.length)]%>
+    <% if (hasImage()) { %>
+    <% random_photo = randomPhoto()%>
     <a href="#/cakes/<%= id %>/photos/<%= random_photo.id %>">
-    <img class="thumbnail" src="<%= random_photo.large_url %>" alt="<%= name %>" />
+      <img class="thumbnail" src="<%= random_photo.large_url %>" alt="<%= name %>" />
     </a>
     <% } %>
   </div>
@@ -29,7 +47,7 @@
 </div>
 <div class="row">
   <div class="span12">
-    <a id="add-photo" class="btn">Add Photo</a>
+    <a class="btn add-photo">Add Photo</a>
     <a href="#/cakes/<%= id %>/edit">(edit)</a>
   </div>
   <div class="span12">

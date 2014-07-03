@@ -16,7 +16,7 @@ class CakeSide.Models.Cake extends Backbone.Model
     return "Category can't be blank" unless attributes.category_id
 
   photos: ->
-    photos = CakeSide.Application.request('PhotosRepository', @id)
+    CakeSide.Application.request('PhotosRepository', @id)
 
 class CakeSide.Collections.CakesCollection extends Backbone.Collection
   model: CakeSide.Models.Cake

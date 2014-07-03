@@ -35,6 +35,12 @@ module Api
         respond_with(@cake = cake)
       end
 
+      def destroy
+        @cake = current_user.creations.find(params[:id])
+        @cake.destroy!
+        respond_with(@cake)
+      end
+
       private
 
       def cake_params
