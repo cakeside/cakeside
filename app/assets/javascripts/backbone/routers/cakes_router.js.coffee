@@ -1,12 +1,9 @@
 class CakeSide.Routers.CakesRouter extends Backbone.Router
   routes:
     "cakes/new": "newCake"
-    "cakes/index": "index"
     "cakes/:id/edit": "edit"
     "cakes/:id": "show"
-    "cakes/:id": "show"
-    "cakes/.*": "index"
-    ".*": "index"
+    "cakes": "index"
 
   index: ->
     CakeSide.Application.request('CommentView').hide()
