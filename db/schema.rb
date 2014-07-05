@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140705225150) do
+ActiveRecord::Schema.define(version: 20140705230409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,14 +73,6 @@ ActiveRecord::Schema.define(version: 20140705225150) do
 
   add_index "creations", ["created_at"], name: "index_creations_on_created_at", using: :btree
   add_index "creations", ["user_id"], name: "index_creations_on_user_id", using: :btree
-
-  create_table "creations_categories", id: false, force: true do |t|
-    t.integer "creation_id"
-    t.integer "category_id"
-  end
-
-  add_index "creations_categories", ["category_id", "creation_id"], name: "index_creations_categories_on_category_id_and_creation_id", using: :btree
-  add_index "creations_categories", ["creation_id", "category_id"], name: "index_creations_categories_on_creation_id_and_category_id", using: :btree
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0
