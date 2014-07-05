@@ -38,7 +38,7 @@ class CakeSide.Views.Cakes.NewView extends Marionette.ItemView
     @model.isValid()
 
   savedSuccessfully: (cake) =>
-    window.location.hash = "cakes/#{cake.id}"
+    window.location.hash = "cakes/#{cake.id}/edit"
 
   couldNotSave: (cake, xhr) =>
     @enableSaveButton()

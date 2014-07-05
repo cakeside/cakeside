@@ -1,7 +1,10 @@
+#= require backbone/views/cakes/thumbnail_view
 CakeSide.Views.Cakes ||= {}
 
-class CakeSide.Views.Cakes.EditView extends Marionette.ItemView
+class CakeSide.Views.Cakes.EditView extends Marionette.CompositeView
   template : JST["backbone/templates/cakes/edit"]
+  childView: CakeSide.Views.Cakes.ThumbnailView
+  childViewContainer: '.thumbnails'
   ui:
     name: "#cake_name"
     watermark: "#cake_watermark"
@@ -18,6 +21,11 @@ class CakeSide.Views.Cakes.EditView extends Marionette.ItemView
     "keyup input": "refreshStatus"
     "change select": "refreshStatus"
     "submit #edit-cake" : "update"
+    "click .add-photo": "launchAddPhoto"
+
+  constructor: (options) ->
+    super(options)
+    @collection = @model.photos()
 
   update : (e) ->
     e.preventDefault()
@@ -68,3 +76,9 @@ class CakeSide.Views.Cakes.EditView extends Marionette.ItemView
       categories: CakeSide.Application.request('CategoriesRepository').toJSON(),
     }
 
+  launchAddPhoto: ->
+    @displayModal(new CakeSide.Views.Photos.NewModalView(cake: @model))
+
+  displayModal: (view) ->
+    $("#modal").html(view.render().el)
+    $("#modal").modal()

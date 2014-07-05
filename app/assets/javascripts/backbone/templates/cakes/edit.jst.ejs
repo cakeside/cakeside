@@ -1,5 +1,9 @@
 <div class="row">
-  <div class="span12">
+  <div class="span2">
+    <p> <a class="btn btn-primary add-photo">Add Photo...</a> </p>
+    <ul class="thumbnails"></ul>
+  </div>
+  <div class="span10">
     <h1><small>Edit</small> <%= cake.name %></h1>
     <hr />
     <form id="edit-cake" name="cake" class="form-horizontal">
@@ -53,7 +57,7 @@
           </div>
         </div>
         <div class="form-actions">
-          <button id='save-button' type="submit" class="btn btn-primary">Save</button>
+          <button id='save-button' type="submit" class="btn btn-primary">Publish</button>
           <a href="#cakes/<%= cake.id %>" class="btn">Cancel</a>
         </div>
       </fieldset>
