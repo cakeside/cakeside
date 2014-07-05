@@ -27,6 +27,10 @@ window.CakeSide =
     @categories = new CakeSide.Collections.CategoriesCollection()
     @categories.fetch(reset: true)
 
+    @disqus_view = new CakeSide.Views.DisqusView
+      disqus_shortname: data.disqus_shortname
+    CakeSide.Application.reqres.setHandler 'CommentView', =>
+      @disqus_view
     CakeSide.Application.reqres.setHandler 'CakesRepository', =>
       @cakes
     CakeSide.Application.reqres.setHandler 'CategoriesRepository', =>
