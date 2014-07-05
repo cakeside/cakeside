@@ -74,5 +74,6 @@ Cake::Application.routes.draw do
     resources :settings, only: [:index, :update]
     resources :passwords, only: [:index, :update]
     resources :avatars, :only => [:edit, :update]
+    root to: "cakes#index"
   end
 end
