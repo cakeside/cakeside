@@ -1,22 +1,16 @@
 <div class="media">
-  <%= link_to item, class: 'pull-left' do %>
+  <%= link_to my_root_path(anchor: "cakes/#{item.id}"), class: 'pull-left' do %>
     <img class="media-object" data-src="<%= item.primary_image.url_for(:thumb) %>" alt="64x64" style="width: 64px; height: 64px;" src="<%= item.primary_image.url_for(:thumb) %>">
   <% end %>
   <div class="media-body">
     <h4 class="media-heading"><%= item.name %></h4>
     <%= item.story %>
     <p>
-    <%= link_to edit_creation_path(item) do %>
+    <%= link_to my_root_path(anchor: "cakes/#{item.id}/edit") do %>
       <i class="icon-edit"> edit</i>
-    <% end %>
-    <%= link_to new_my_cake_photo_path(item) do %>
-      <i class="icon-plus"> images</i>
     <% end %>
     <%= link_to creation_favorites_path(:creation_id => item.id) do %>
       <i class="icon-heart"> fanclub </i>
-    <% end %>
-    <%= link_to creation_path(item), confirm: "Are you sure you want to permanently remove this creation?", method: :delete  do %>
-      <i class="icon-white icon-remove"> remove</i>
     <% end %>
     </p>
   </div>
