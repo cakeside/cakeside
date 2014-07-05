@@ -24,7 +24,6 @@ describe PublishCakeToTwitter do
 
     context "when the cake is published and safe for kids" do
       before :each do
-        cake.stub(:is_safe_for_children?).and_return(true)
         cake.stub(:published?).and_return(true)
       end
 
@@ -36,20 +35,7 @@ describe PublishCakeToTwitter do
 
     context "when the cake is not published" do
       before :each do
-        cake.stub(:is_safe_for_children?).and_return(true)
         cake.stub(:published?).and_return(false)
-      end
-
-      it "should not publish any tweets" do
-        subject.handle(cake_id: id)
-        twitter.should_not have_received(:tweet)
-      end
-    end
-
-    context "when the cake is not safe for children" do
-      before :each do
-        cake.stub(:is_safe_for_children?).and_return(false)
-        cake.stub(:published?).and_return(true)
       end
 
       it "should not publish any tweets" do

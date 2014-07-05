@@ -7,7 +7,6 @@ class CreateCakeCommand
 
   def run(attributes, tags)
     cake = @current_user.create_cake(name: attributes[:name], description: attributes[:story], category: Category.find(attributes[:category_id]), watermark: attributes[:watermark])
-    cake.hide_from_children! if attributes[:is_restricted].present? && attributes[:is_restricted] == true
     @current_user.tag(cake, with: tags, on: :tags)
 
     if cake.save

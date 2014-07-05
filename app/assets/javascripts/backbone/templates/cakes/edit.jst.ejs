@@ -48,14 +48,6 @@
           <input name="cake_tags" type="text" id="cake_tags" value="<%= tags %>" class="input-xxlarge" autocomplete="off" />
           </div>
         </div>
-        <div class="control-group">
-          <div class="controls">
-            <label class="checkbox">
-              <input class="input-xxlarge" id="cake_is_restricted" type="checkbox" <%= cake.is_restricted ? "checked=checked" : "" %> />
-              This cake is for adults only.
-            </label>
-          </div>
-        </div>
         <div class="form-actions">
           <button id='save-button' type="submit" class="btn btn-primary">Publish</button>
           <a href="#cakes/<%= cake.id %>" class="btn">Cancel</a>

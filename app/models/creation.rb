@@ -23,19 +23,11 @@ class Creation < ActiveRecord::Base
     photos.count > 0
   end
 
-  def is_safe_for_children?
-    is_restricted == false
-  end
-
   def is_liked_by(user)
     favorites.where(user: user).any?
   end
 
   def liked_by(user)
     favorites.find_or_create_by(user: user)
-  end
-
-  def hide_from_children!
-    update_attribute(:is_restricted, true)
   end
 end

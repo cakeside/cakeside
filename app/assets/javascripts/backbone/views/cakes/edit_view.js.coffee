@@ -11,7 +11,6 @@ class CakeSide.Views.Cakes.EditView extends Marionette.CompositeView
     description: "#cake_story"
     category: "#cake_category_id"
     tags: "#cake_tags"
-    is_restricted: "#cake_is_restricted"
     save_button: '#save-button'
 
   modelEvents:
@@ -58,7 +57,6 @@ class CakeSide.Views.Cakes.EditView extends Marionette.CompositeView
     @model.set('story', @ui.description.val())
     @model.set('category_id', @ui.category.val())
     @model.set('tags', @ui.tags.val())
-    @model.set('is_restricted', @ui.is_restricted.attr('checked') == "checked")
     @model.isValid()
 
   displayError: (model, error) ->

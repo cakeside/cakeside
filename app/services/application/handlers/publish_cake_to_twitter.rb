@@ -15,7 +15,7 @@ class PublishCakeToTwitter
   private
 
   def tweet_about(cake)
-    @twitter.tweet(tweet_for(cake)) if cake.is_safe_for_children? && cake.published?
+    @twitter.tweet(tweet_for(cake)) if cake.published?
   end
 
   def tweet_for(cake)

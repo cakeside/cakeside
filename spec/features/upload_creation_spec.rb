@@ -16,10 +16,7 @@ describe "uploading a new creation", :js => true do
     wait_for_ajax
     within(".form-horizontal") do
       fill_in("cake_name", with: "yummy cake")
-      fill_in("cake_watermark", with: "yummy")
-      fill_in("cake_story", with: "this was just so damn yummy so i ate it alone.")
       select(category_2.name, from: 'cake_category_id')
-      #fill_in("cake_tags", :with => "cake, yummy")
     end
     click_button("Create")
   end
