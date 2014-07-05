@@ -6,9 +6,6 @@
     var disqus_config = function(){
       this.page.remote_auth_s3 = '<%= disqus_auth %>';
       this.page.api_key = '<%= ENV['DISQUS_API_KEY'] %>';
-      this.callbacks.onNewComment = [function(comment) {
-        $.post('<%= comments_path %>', { id: comment.id, url: document.URL, comment: comment }, function(result){ console.log(result); });
-      }];
     };
     CakeSide.initialize({
       access_token: '<%= current_user.authentication_token %>',
