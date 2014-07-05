@@ -10,12 +10,14 @@ class CakeSide.Views.DisqusView extends Backbone.View
   render: (options) ->
     try
       @$el.removeClass('hidden')
+      that = @
       DISQUS.reset
         reload: true,
         config: ->
           @page.identifier = options.identifier
           @page.title = "CakeSide - #{options.title}"
           @page.url = options.url
+          @callbacks.onNewComment = [that.saveComment]
       @
     catch error
       console.log(error)
@@ -24,3 +26,7 @@ class CakeSide.Views.DisqusView extends Backbone.View
 
   hide: ->
     @$el.addClass('hidden')
+
+  saveComment: (comment) ->
+    $.post Routes.comments_path(), { id: comment.id, url: document.URL, comment: comment }, (result) ->
+      console.log(result)
