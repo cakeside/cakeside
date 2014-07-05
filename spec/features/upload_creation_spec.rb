@@ -12,7 +12,6 @@ describe "uploading a new creation", :js => true do
       fill_in('user_password', with: "password")
     end
     click_button("Sign In")
-    click_link("avatar-link")
     click_link("Add Creation")
     wait_for_ajax
     within(".form-horizontal") do
