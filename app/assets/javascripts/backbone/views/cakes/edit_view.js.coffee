@@ -7,7 +7,6 @@ class CakeSide.Views.Cakes.EditView extends Marionette.CompositeView
   childViewContainer: '.thumbnails'
   ui:
     name: "#cake_name"
-    watermark: "#cake_watermark"
     description: "#cake_story"
     category: "#cake_category_id"
     tags: "#cake_tags"
@@ -53,7 +52,6 @@ class CakeSide.Views.Cakes.EditView extends Marionette.CompositeView
   refreshStatus: ->
     @enableSaveButton()
     @model.set('name', @ui.name.val())
-    @model.set('watermark', @ui.watermark.val())
     @model.set('story', @ui.description.val())
     @model.set('category_id', @ui.category.val())
     @model.set('tags', @ui.tags.val())

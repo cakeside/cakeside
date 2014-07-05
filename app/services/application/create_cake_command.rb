@@ -6,7 +6,7 @@ class CreateCakeCommand
   end
 
   def run(attributes, tags)
-    cake = @current_user.create_cake(name: attributes[:name], description: attributes[:story], category: Category.find(attributes[:category_id]), watermark: attributes[:watermark])
+    cake = @current_user.create_cake(name: attributes[:name], description: attributes[:story], category: Category.find(attributes[:category_id]))
     @current_user.tag(cake, with: tags, on: :tags)
 
     if cake.save

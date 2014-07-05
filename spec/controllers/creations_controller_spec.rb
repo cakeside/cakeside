@@ -51,7 +51,6 @@ describe CreationsController do
           post :create, creation: {
             name: 'stone',
             story: 'morning glory',
-            watermark: "watery",
             category_id: category.id
           }, creation_tags: 'cake'
         end
@@ -60,7 +59,6 @@ describe CreationsController do
           assigns(:creation).should_not be_nil
           assigns(:creation).name.should == 'stone'
           assigns(:creation).story.should == 'morning glory'
-          assigns(:creation).watermark.should == 'watery'
         end
 
         it "redirects to the created creation" do

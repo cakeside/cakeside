@@ -62,8 +62,8 @@ class User < ActiveRecord::Base
     favorites.includes(:creation).map {|f| f.creation }
   end
 
-  def create_cake(name:, description: nil, category:, watermark: nil)
-    creations.create(name: name, story: description, category_id: category.id, watermark: watermark)
+  def create_cake(name:, description: nil, category:)
+    creations.create(name: name, story: description, category_id: category.id)
   end
 
   class << self
