@@ -21,6 +21,9 @@ class CakeSide.Models.Cake extends Backbone.Model
   public_url: ->
     "#{window.location.origin}/creations/#{@get('slug')}"
 
+  category_id: ->
+    @get('category_id') || @get('category').id
+
 class CakeSide.Collections.CakesCollection extends Backbone.Collection
   model: CakeSide.Models.Cake
   url: '/api/v1/cakes'

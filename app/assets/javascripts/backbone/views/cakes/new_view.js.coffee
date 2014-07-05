@@ -4,11 +4,7 @@ class CakeSide.Views.Cakes.NewView extends Marionette.ItemView
   template: JST["backbone/templates/cakes/new"]
   ui:
     name: "#cake_name"
-    watermark: "#cake_watermark"
-    description: "#cake_story"
     category: "#cake_category_id"
-    tags: "#cake_tags"
-    is_restricted: "#cake_is_restricted"
     save_button: '#save-button'
 
   modelEvents:
@@ -33,7 +29,6 @@ class CakeSide.Views.Cakes.NewView extends Marionette.ItemView
 
   onRender: ->
     @$("#cake_category_id").val($("#cake_category_id option:first").val())
-    @$('#cake_tags').tagit({ availableTags: ALL_TAGS })
     @$('.tooltip-item').tooltip()
     @model.isValid()
 
@@ -50,11 +45,7 @@ class CakeSide.Views.Cakes.NewView extends Marionette.ItemView
   refreshStatus: ->
     @enableSaveButton()
     @model.set('name', @ui.name.val())
-    @model.set('watermark', @ui.watermark.val())
-    @model.set('story', @ui.description.val())
     @model.set('category_id', @ui.category.val())
-    @model.set('tags', @ui.tags.val())
-    @model.set('is_restricted', @ui.is_restricted.val() == "" ? "true" : "false")
     @model.isValid()
 
   displayError: (model, error) ->

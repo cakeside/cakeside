@@ -37,7 +37,7 @@ class CakeSide.Views.Cakes.EditView extends Marionette.CompositeView
     )
 
   onRender: ->
-    @$("#cake_category_id").val($("#cake_category_id option:first").val())
+    @$("#cake_category_id").val(@model.category_id())
     @$('#cake_tags').tagit({ availableTags: ALL_TAGS })
     @$('.tooltip-item').tooltip()
 
