@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.0.5'
+gem 'rails', '~> 4.0.8'
 gem 'sass-rails', '~> 4.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0'
@@ -39,8 +39,8 @@ gem 'ejs', '~> 1.1.1'
 gem 'js-routes', '~> 0.9.8'
 
 group :development do
-  gem 'capistrano'
-  gem 'capistrano-ext'
+  gem 'capistrano', '~> 2.15.5'
+  gem 'capistrano-ext', '~> 1.2.1'
   gem 'bullet'
   gem 'better_errors'
   gem 'lol_dba'

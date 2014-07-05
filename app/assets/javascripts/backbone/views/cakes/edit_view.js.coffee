@@ -15,7 +15,7 @@ class CakeSide.Views.Cakes.EditView extends Marionette.ItemView
     'invalid': 'displayError'
 
   events :
-    "change input": "refreshStatus"
+    "keyup input": "refreshStatus"
     "change select": "refreshStatus"
     "submit #edit-cake" : "update"
 
