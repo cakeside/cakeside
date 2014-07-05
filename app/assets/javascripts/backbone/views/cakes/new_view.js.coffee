@@ -15,7 +15,7 @@ class CakeSide.Views.Cakes.NewView extends Marionette.ItemView
     'invalid': 'displayError'
 
   events:
-    "change input": "refreshStatus"
+    "keyup input": "refreshStatus"
     "change select": "refreshStatus"
     "submit #new-cake": "save"
 
@@ -35,6 +35,7 @@ class CakeSide.Views.Cakes.NewView extends Marionette.ItemView
     @$("#cake_category_id").val($("#cake_category_id option:first").val())
     @$('#cake_tags').tagit({ availableTags: ALL_TAGS })
     @$('.tooltip-item').tooltip()
+    @model.isValid()
 
   savedSuccessfully: (cake) =>
     window.location.hash = "cakes/#{cake.id}"
@@ -70,4 +71,3 @@ class CakeSide.Views.Cakes.NewView extends Marionette.ItemView
       cake: @model.toJSON(),
       categories: CakeSide.Application.request('CategoriesRepository').toJSON(),
     }
-
