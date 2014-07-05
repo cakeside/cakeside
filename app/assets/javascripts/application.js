@@ -14,8 +14,6 @@
 //= require jquery-migrate
 //= require jquery_ujs
 //= require jquery.ui.all
-//= require jquery.color
-//= require jquery.colorbox
 //= require jquery.validate
 //= require jquery.masonry
 //= require jquery-fileupload
