@@ -42,8 +42,7 @@ window.CakeSide =
       else
         photos = new CakeSide.Collections.PhotosCollection(cake_id: cake_id)
         @photos_cache[cake_id] = photos
-        photos.fetch(reset: true).done ->
-          console.log('done fetching.')
+        photos.fetch(reset: true)
         photos
 
     @cakes.fetch(reset: true).done ->
