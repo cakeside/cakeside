@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140705230409) do
+ActiveRecord::Schema.define(version: 20140705231829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 20140705230409) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "sha256"
+    t.string   "watermark"
   end
 
   add_index "photos", ["creation_id"], name: "index_photos_on_creation_id", using: :btree
