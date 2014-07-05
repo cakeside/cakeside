@@ -1,9 +1,9 @@
 <div class="thumbnail">
   <% if(hasImage()) { %>
-    <a href="#/cakes/<%= id %>"><img src="<%= randomPhoto().thumb_url %>" /></a>
+    <a href="#cakes/<%= id %>"><img src="<%= randomPhoto().thumb_url %>" /></a>
   <% } %>
   <div class="caption">
-    <h3><a href="#/cakes/<%= id %>"><%= name %></a></h3>
+    <h3><a href="#cakes/<%= id %>"><%= name %></a></h3>
     <span class="badge badge-warning"><i class="icon-comments"> <a href="/creations/<%= id %>#disqus_thread" data-disqus-identifier="c-<%= id %>"></a></i></span>
   </div>
 </div>

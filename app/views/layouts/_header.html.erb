@@ -11,9 +11,9 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Creations<b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li>
-                <%= link_to new_creation_path do %>
-                  <i class="icon-edit icon-large"></i> Add Creation
-                <% end %>
+              <%= link_to current_user ? my_root_path(anchor: 'cakes/new') : new_creation_path do %>
+                <i class="icon-edit icon-large"></i> Add Creation
+              <% end %>
               </li>
               <li class="divider"></li>
               <% cache @categories do %>
@@ -69,8 +69,8 @@
         </ul>
         <ul class="nav pull-right">
           <li>
-            <%= link_to new_creation_path do %>
-              Add Creation <i class="icon-edit icon-large"></i>
+            <%= link_to current_user ? my_root_path(anchor: 'cakes/new') : new_creation_path do %>
+              <i class="icon-edit icon-large"></i> Add Creation
             <% end %>
           </li>
           <%= form_tag(search_path, :method => "get", :name => "search", :class => "navbar-search pull-left") do %>

@@ -1,12 +1,9 @@
 class CakeSide.Routers.CakesRouter extends Backbone.Router
   routes:
     "cakes/new": "newCake"
-    "cakes/index": "index"
     "cakes/:id/edit": "edit"
     "cakes/:id": "show"
-    "cakes/:id": "show"
-    "cakes/.*": "index"
-    ".*": "index"
+    "cakes": "index"
 
   index: ->
     CakeSide.Application.request('CommentView').hide()
@@ -16,6 +13,10 @@ class CakeSide.Routers.CakesRouter extends Backbone.Router
   show: (id) ->
     cake = CakeSide.Application.request('CakesRepository').get(id)
     @view = new CakeSide.Views.Cakes.ShowView(model: cake)
+    CakeSide.Application.request('CommentView').render
+      identifier: "c-#{cake.id}"
+      title: cake.get('name')
+      url: cake.public_url()
     $("#backbone-content").html(@view.render().el)
 
   newCake: ->

@@ -25,7 +25,7 @@ class CakeSide.Views.Cakes.DeleteCakeModalView extends Marionette.ItemView
 
   successfullyDeleted: =>
     @closeDialog()
-    window.location.hash = "cakes/"
+    window.location.hash = "cakes"
 
   errorDeletingCake: (model, response, options) ->
     model.set('errorMessage', 'Could not delete cake.')

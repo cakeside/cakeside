@@ -20,7 +20,6 @@ class CakeSide.Views.Cakes.ShowView extends Marionette.CompositeView
   constructor: (options) ->
     super(options)
     @collection = @model.photos()
-    @displayComments()
 
   launchAddPhoto: ->
     @displayModal(new CakeSide.Views.Photos.NewModalView(cake: @model))
@@ -31,9 +30,3 @@ class CakeSide.Views.Cakes.ShowView extends Marionette.CompositeView
   displayModal: (view) ->
     $("#modal").html(view.render().el)
     $("#modal").modal()
-
-  displayComments: ->
-    CakeSide.Application.request('CommentView').render
-      identifier: "c-#{@model.id}"
-      title: @model.get('name')
-      url: @model.public_url()
