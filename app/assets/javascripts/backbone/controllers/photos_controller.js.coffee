@@ -1,4 +1,4 @@
-class CakeSide.Controllers.PhotosController
+class CakeSide.Controllers.PhotosController extends Marionette.Controller
   show: (cake_id, id) ->
     @photos = CakeSide.Application.request('PhotosRepository', cake_id)
     photo = new CakeSide.Models.Photo({cake_id: cake_id, id: id})

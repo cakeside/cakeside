@@ -1,4 +1,4 @@
-class CakeSide.Controllers.CakesController
+class CakeSide.Controllers.CakesController extends Marionette.Controller
   index: ->
     CakeSide.Application.request('CommentView').hide()
     @view = new CakeSide.Views.Cakes.IndexView(collection: CakeSide.Application.request('CakesRepository'))
