@@ -22,8 +22,10 @@ window.CakeSide =
       comment_region: '#disqus_thread'
 
     CakeSide.Application.addInitializer (options) ->
-      new CakeSide.Routers.CakesRouter()
-      new CakeSide.Routers.PhotosRouter()
+      new CakeSide.Routers.CakesRouter
+        controller: new CakeSide.Controllers.CakesController()
+      new CakeSide.Routers.PhotosRouter
+        controller: new CakeSide.Controllers.PhotosController()
 
     CakeSide.Application.on 'start', ->
       if Backbone.history
