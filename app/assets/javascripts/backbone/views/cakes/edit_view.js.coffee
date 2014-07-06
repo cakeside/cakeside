@@ -37,6 +37,7 @@ class CakeSide.Views.Cakes.EditView extends Marionette.CompositeView
   onRender: ->
     @$("#cake_category_id").val(@model.category_id())
     @$('#cake_tags').tagit({ availableTags: ALL_TAGS })
+    @disableSaveButton()
 
   savedSuccessfully: (cake) =>
     window.location.hash = "cakes/#{cake.id}"
