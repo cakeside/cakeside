@@ -6,8 +6,7 @@ class CreationRepository
   end
 
   def search(query)
-    sql_search = "%#{query}%"
-    connection.includes(:user).where("upper(name) like upper(?) OR upper(story) like upper(?)", sql_search, sql_search)
+    connection.includes(:user).where(["upper(name) like :query OR upper(story) like :query", { query: "%#{query.upcase}%" }])
   end
 
   def visible_creations
