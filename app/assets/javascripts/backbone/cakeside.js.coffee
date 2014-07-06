@@ -2,6 +2,7 @@
 #= require_tree ./templates
 #= require_tree ./models
 #= require_tree ./views
+#= require_tree ./controllers
 #= require_tree ./routers
 
 window.CakeSide =
@@ -9,15 +10,22 @@ window.CakeSide =
   Collections: {}
   Routers: {}
   Views: {}
+  Controllers: {}
   initialize: (data) ->
     $(document).ajaxSend  (event, xhr) ->
       if data.access_token
         xhr.setRequestHeader "Authorization", "Token token=#{data.access_token}"
 
     CakeSide.Application = new Marionette.Application()
+    CakeSide.Application.addRegions
+      content_region: '#backbone-content'
+      comment_region: '#disqus_thread'
+
     CakeSide.Application.addInitializer (options) ->
-      new CakeSide.Routers.CakesRouter()
-      new CakeSide.Routers.PhotosRouter()
+      new CakeSide.Routers.CakesRouter
+        controller: new CakeSide.Controllers.CakesController()
+      new CakeSide.Routers.PhotosRouter
+        controller: new CakeSide.Controllers.PhotosController()
 
     CakeSide.Application.on 'start', ->
       if Backbone.history
