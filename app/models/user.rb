@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   before_save :ensure_authentication_token
-  after_create :send_welcome_email
+  after_create :send_welcome_email unless Rails.env.test?
 
   validates :name,  :presence => true
   validates :website, :format => URI::regexp(%w(http https)), :allow_blank => true

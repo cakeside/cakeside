@@ -16,11 +16,11 @@ class Creation < ActiveRecord::Base
   end
 
   def primary_image
-    photos.any? ? photos.sample : Photo.new
+    published? ? photos.sample : Photo.new
   end
 
   def published?
-    photos.count > 0
+    photos.any?
   end
 
   def is_liked_by(user)
