@@ -1,18 +1,16 @@
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-  <h2>Upload Photo</h2>
+  <h4>Upload Photo</h4>
 </div>
 <div class="modal-body">
-  <form id="new-photo" name="photo" class="form-horizontal">
-    <p>
-      <input id="watermark" name="watermark" maxlength="30" size="30" type="text" placeholder="watermark" /> on CakeSide.com
-      <a class="tooltip-item" data-placement="right" rel="tooltip" href="#" data-original-title="Watermark your name or company on each uploaded image" data-animation="true"><i class="icon-question-sign"></i></a>
-    </p>
-    <span class="btn btn-default btn-file">
-      + Browse... <input id="photo-attachment" name="attachment" type="file" accept="image/*">
-    </span>
-    <img id="preview-image" src="#" alt="your image" class="hide" />
-  </form>
+  <img id="preview-image" src="#" alt="your image" class="hide" />
+  <span class="btn btn-default btn-file">
+    + Browse... <input id="photo-attachment" name="attachment" type="file" accept="image/*">
+  </span>
+  <p>
+    <input id="watermark" name="watermark" maxlength="30" size="30" type="text" placeholder="watermark" /> on CakeSide.com
+    <a class="tooltip-item" data-placement="right" rel="tooltip" href="#" data-original-title="Watermark your name or company on each uploaded image" data-animation="true"><i class="icon-question-sign"></i></a>
+  </p>
 </div>
 <div class="modal-footer">
   <a href="#" class="btn" data-dismiss="modal">Cancel</a>
