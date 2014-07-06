@@ -3,17 +3,22 @@ CakeSide.Views.Photos ||= {}
 class CakeSide.Views.Photos.NewModalView extends Marionette.ItemView
   template: JST["backbone/templates/photos/new-modal"]
   ui:
+    watermark: '#watermark'
     upload_button: "#upload-photo-button"
 
   events:
     "click #upload-photo-button": "save"
     "change #photo-attachment": "displayPreview"
+    "keyup #watermark": "updateWatermark"
 
   constructor: (options) ->
     super(options)
     @collection = CakeSide.Application.request('PhotosRepository', options.cake.id)
     @cake = options.cake
     @model = new @collection.model(cake_id: @cake.id)
+
+  onRender: ->
+    @$('.tooltip-item').tooltip()
 
   save: (e) ->
     e.preventDefault()
@@ -41,3 +46,6 @@ class CakeSide.Views.Photos.NewModalView extends Marionette.ItemView
 
   closeDialog: (photo) ->
     $('#modal').modal('hide')
+
+  updateWatermark: ->
+    @model.set('watermark', @ui.watermark.val())

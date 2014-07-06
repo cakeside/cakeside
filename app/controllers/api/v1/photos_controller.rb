@@ -21,7 +21,7 @@ module Api
       private
 
       def photo_params
-        params.require(:photo).permit(:image)
+        params.require(:photo).permit(:image, :watermark)
       end
     end
   end
