@@ -14,8 +14,8 @@ class CakeSide.Routers.PhotosRouter extends Backbone.Router
     photo.fetch()
     cake = CakeSide.Application.request('CakesRepository').get(cake_id)
     @view = new CakeSide.Views.Photos.ShowView(model: photo, collection: @photos)
+    CakeSide.Application.content_region.show(@view)
     CakeSide.Application.request('CommentView').render
       identifier: "c-#{cake_id}"
       title: cake.get('name')
       url: cake.public_url()
-    $("#backbone-content").html(@view.render().el)

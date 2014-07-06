@@ -15,6 +15,10 @@ window.CakeSide =
         xhr.setRequestHeader "Authorization", "Token token=#{data.access_token}"
 
     CakeSide.Application = new Marionette.Application()
+    CakeSide.Application.addRegions
+      content_region: '#backbone-content'
+      comment_region: '#disqus_thread'
+
     CakeSide.Application.addInitializer (options) ->
       new CakeSide.Routers.CakesRouter()
       new CakeSide.Routers.PhotosRouter()
