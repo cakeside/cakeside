@@ -37,6 +37,7 @@ class CakeSide.Views.Photos.NewModalView extends Marionette.ItemView
         $('#preview-image').removeClass('hide')
       reader.readAsDataURL(file)
       @model.set('image', file)
+      @model.set('thumb_url', e.target.result)
     else
       $('#preview-image').addClass('hide')
 

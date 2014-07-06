@@ -1,5 +1,6 @@
 <li class="span2">
   <% if (uploading()) { %>
+    <img src="<%= thumb_url %>" class="thumbnail" />
     <div class="progress progress-striped active">
       <div class="bar" style="width: <%= percentComplete %>%;"></div>
     </div>
