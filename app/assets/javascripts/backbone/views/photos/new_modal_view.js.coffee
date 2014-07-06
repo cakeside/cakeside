@@ -46,6 +46,7 @@ class CakeSide.Views.Photos.NewModalView extends Marionette.ItemView
 
   closeDialog: (photo) ->
     $('#modal').modal('hide')
+    @remove()
 
   updateWatermark: ->
     @model.set('watermark', @ui.watermark.val())
