@@ -25,13 +25,6 @@
           </div>
         </div>
         <div class="control-group">
-          <label class="control-label" for="cake_watermark">Watermark</label>
-          <div class="controls">
-            <input class="input-xlarge" id="cake_watermark" maxlength="30" name="watermark" size="30" type="text" value="<%= cake.watermark %>"> on CakeSide.com
-            <a class="tooltip-item" data-placement="right" rel="tooltip" href="#" data-original-title="Watermark your name or company on each uploaded image" data-animation="true"><i class="icon-question-sign"></i></a>
-          </div>
-        </div>
-        <div class="control-group">
           <label class="control-label" for="cake_story">Description</label>
           <div class="controls">
             <textarea class="input-xxlarge" id="cake_story" name="story" rows="3"><%= cake.story %></textarea>
@@ -46,14 +39,6 @@
             <% tags = _.map(cake.tags, function(x){ return x.name; }) %>
           <% } %>
           <input name="cake_tags" type="text" id="cake_tags" value="<%= tags %>" class="input-xxlarge" autocomplete="off" />
-          </div>
-        </div>
-        <div class="control-group">
-          <div class="controls">
-            <label class="checkbox">
-              <input class="input-xxlarge" id="cake_is_restricted" type="checkbox" <%= cake.is_restricted ? "checked=checked" : "" %> />
-              This cake is for adults only.
-            </label>
           </div>
         </div>
         <div class="form-actions">

@@ -2,8 +2,6 @@ json.id cake.id
 json.name cake.name
 json.slug cake.to_param
 json.story cake.story
-json.watermark cake.watermark
-json.is_restricted cake.is_restricted
 json.category do
   json.id cake.category.id
   json.name cake.category.name

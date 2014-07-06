@@ -7,11 +7,9 @@ class CakeSide.Views.Cakes.EditView extends Marionette.CompositeView
   childViewContainer: '.thumbnails'
   ui:
     name: "#cake_name"
-    watermark: "#cake_watermark"
     description: "#cake_story"
     category: "#cake_category_id"
     tags: "#cake_tags"
-    is_restricted: "#cake_is_restricted"
     save_button: '#save-button'
 
   modelEvents:
@@ -39,7 +37,7 @@ class CakeSide.Views.Cakes.EditView extends Marionette.CompositeView
   onRender: ->
     @$("#cake_category_id").val(@model.category_id())
     @$('#cake_tags').tagit({ availableTags: ALL_TAGS })
-    @$('.tooltip-item').tooltip()
+    @disableSaveButton()
 
   savedSuccessfully: (cake) =>
     window.location.hash = "cakes/#{cake.id}"
@@ -54,11 +52,9 @@ class CakeSide.Views.Cakes.EditView extends Marionette.CompositeView
   refreshStatus: ->
     @enableSaveButton()
     @model.set('name', @ui.name.val())
-    @model.set('watermark', @ui.watermark.val())
     @model.set('story', @ui.description.val())
     @model.set('category_id', @ui.category.val())
     @model.set('tags', @ui.tags.val())
-    @model.set('is_restricted', @ui.is_restricted.attr('checked') == "checked")
     @model.isValid()
 
   displayError: (model, error) ->

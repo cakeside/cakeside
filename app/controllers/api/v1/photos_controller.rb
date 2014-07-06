@@ -12,16 +12,7 @@ module Api
       end
 
       def create
-        cake_id = params[:cake_id]
-        UploadPhoto.new.run(cake_id, params)
-        @photo = Creation.find(cake_id).photos.last
-        respond_with(@photo)
-      end
-
-      private
-
-      def photo_params
-        params.require(:photo).permit(:image)
+        respond_with(@photo = UploadPhoto.new.run(params[:cake_id], params))
       end
     end
   end

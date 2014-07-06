@@ -16,15 +16,11 @@ class Creation < ActiveRecord::Base
   end
 
   def primary_image
-    photos.any? ? photos.sample : Photo.new
+    published? ? photos.sample : Photo.new
   end
 
   def published?
-    photos.count > 0
-  end
-
-  def is_safe_for_children?
-    is_restricted == false
+    photos.any?
   end
 
   def is_liked_by(user)
@@ -33,9 +29,5 @@ class Creation < ActiveRecord::Base
 
   def liked_by(user)
     favorites.find_or_create_by(user: user)
-  end
-
-  def hide_from_children!
-    update_attribute(:is_restricted, true)
   end
 end

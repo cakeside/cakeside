@@ -44,7 +44,7 @@ module Api
       private
 
       def cake_params
-        params.require(:cake).permit(:name, :story, :is_restricted, :watermark, :category_id, :tags)
+        params.require(:cake).permit(:name, :story, :category_id, :tags)
       end
     end
   end

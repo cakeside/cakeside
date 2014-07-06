@@ -8,4 +8,4 @@ class CakeSide.Views.Cakes.ThumbnailView extends Marionette.ItemView
 
   templateHelpers:
     uploading: ->
-      typeof(@percentComplete) != "undefined" && @percentComplete != 100
+      typeof(@percentComplete) != "undefined" && @percentComplete != 100 && @id

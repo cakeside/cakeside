@@ -29,7 +29,6 @@ class CakeSide.Views.Cakes.NewView extends Marionette.ItemView
 
   onRender: ->
     @$("#cake_category_id").val($("#cake_category_id option:first").val())
-    @$('.tooltip-item').tooltip()
     @model.isValid()
 
   savedSuccessfully: (cake) =>

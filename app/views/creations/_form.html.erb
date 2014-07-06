@@ -17,13 +17,6 @@
       </div>
     </div>
     <div class="control-group">
-      <%= f.label :watermark, :class => "control-label" %>
-      <div class="controls">
-        <%= f.text_field :watermark, :class => "input-xlarge", :maxlength=> 30 %> on CakeSide.com
-        <a class="tooltip-item" data-placement="right" rel="tooltip" href="#" data-original-title="Watermark your name or company on each uploaded image" data-animation="true"><i class="icon-question-sign"></i></a>
-      </div>
-    </div>
-    <div class="control-group">
       <%= f.label :story, "Description", :class=> "control-label" %>
       <div class="controls">
         <%= f.text_area :story, :class =>"input-xxlarge", :rows => "3" %>
@@ -47,14 +40,6 @@
         <input name="creation_tags" type="text" id="tags" value="" class="input-xxlarge" autocomplete="off" />
       <% end %>
     </div>
-    </div>
-        <div class="control-group">
-      <div class="controls">
-        <label class="checkbox">
-          <%= f.check_box :is_restricted, :class =>"input-xxlarge" %>
-          This cake is for adults only.
-        </label>
-      </div>
     </div>
     <div class="form-actions">
       <button type="submit" class="btn btn-primary">NEXT STEP</button>

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   before_save :ensure_authentication_token
-  after_create :send_welcome_email
+  after_create :send_welcome_email unless Rails.env.test?
 
   validates :name,  :presence => true
   validates :website, :format => URI::regexp(%w(http https)), :allow_blank => true
@@ -62,8 +62,8 @@ class User < ActiveRecord::Base
     favorites.includes(:creation).map {|f| f.creation }
   end
 
-  def create_cake(name:, description: nil, category:, watermark: nil)
-    creations.create(name: name, story: description, category_id: category.id, watermark: watermark)
+  def create_cake(name:, category:)
+    creations.create(name: name, category_id: category.id)
   end
 
   class << self

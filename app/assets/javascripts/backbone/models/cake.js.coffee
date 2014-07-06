@@ -4,11 +4,9 @@ class CakeSide.Models.Cake extends Backbone.Model
   defaults:
     id: null
     name: null
-    watermark: null
     story: null
     created_at: null
     updated_at: null
-    is_restricted: false
     category_id: null
 
   validate: (attributes, options) ->

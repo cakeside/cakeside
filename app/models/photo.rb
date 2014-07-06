@@ -1,11 +1,6 @@
 class Photo < ActiveRecord::Base
   belongs_to :creation, counter_cache: true, touch: true
 
-  def watermark
-    return '' if creation.nil?
-    creation.watermark
-  end
-
   def url_for(version_key, asset_host = ENV['ASSET_HOST'])
     versions.find { |version| version.for?(version_key) }.url_for(asset_host)
   end

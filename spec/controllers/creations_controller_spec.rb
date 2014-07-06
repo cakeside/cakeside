@@ -10,16 +10,10 @@ describe CreationsController do
   end
 
   describe "#index" do
-    let(:restricted_creation){ create(:creation, :user => user, :is_restricted => true) }
-
     before { get :index }
 
     it "should display all creations" do
       assigns(:creations).should include(creation)
-    end
-
-    it "should not include restricted creations" do
-      assigns(:creations).should_not include(restricted_creation)
     end
   end
 
@@ -57,8 +51,6 @@ describe CreationsController do
           post :create, creation: {
             name: 'stone',
             story: 'morning glory',
-            is_restricted: true,
-            watermark: "watery",
             category_id: category.id
           }, creation_tags: 'cake'
         end
@@ -67,8 +59,6 @@ describe CreationsController do
           assigns(:creation).should_not be_nil
           assigns(:creation).name.should == 'stone'
           assigns(:creation).story.should == 'morning glory'
-          assigns(:creation).is_restricted.should be_truthy
-          assigns(:creation).watermark.should == 'watery'
         end
 
         it "redirects to the created creation" do
