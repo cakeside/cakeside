@@ -1,4 +1,5 @@
 class CakeSide.Controllers.CakesController extends Marionette.Controller
+  views: CakeSide.Views.Cakes
   initialize: (options) ->
     @content_region = CakeSide.Application.content_region
     @cakes = CakeSide.Application.request('CakesRepository')
@@ -6,11 +7,11 @@ class CakeSide.Controllers.CakesController extends Marionette.Controller
 
   index: ->
     @comment_view.hide()
-    @content_region.show(new CakeSide.Views.Cakes.IndexView(collection: @cakes))
+    @content_region.show(new @views.IndexView(collection: @cakes))
 
   show: (id) ->
     cake = @cakes.get(id)
-    @content_region.show(new CakeSide.Views.Cakes.ShowView(model: cake))
+    @content_region.show(new @views.ShowView(model: cake))
     @comment_view.render
       identifier: "c-#{cake.id}"
       title: cake.get('name')
@@ -18,9 +19,8 @@ class CakeSide.Controllers.CakesController extends Marionette.Controller
 
   newCake: ->
     @comment_view.hide()
-    @content_region.show(new CakeSide.Views.Cakes.NewView(collection: @cakes))
+    @content_region.show(new @views.NewView(collection: @cakes))
 
   edit: (id) ->
-    @content_region.show(new CakeSide.Views.Cakes.EditView(model: @cakes.get(id)))
+    @content_region.show(new @views.EditView(model: @cakes.get(id)))
     @comment_view.hide()
-
