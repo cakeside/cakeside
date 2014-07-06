@@ -2,6 +2,7 @@
 #= require_tree ./templates
 #= require_tree ./models
 #= require_tree ./views
+#= require_tree ./controllers
 #= require_tree ./routers
 
 window.CakeSide =
@@ -9,6 +10,7 @@ window.CakeSide =
   Collections: {}
   Routers: {}
   Views: {}
+  Controllers: {}
   initialize: (data) ->
     $(document).ajaxSend  (event, xhr) ->
       if data.access_token
