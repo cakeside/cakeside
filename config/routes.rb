@@ -13,7 +13,7 @@ Cake::Application.routes.draw do
     get ':id/page/:page', :action => :show, :on => :collection
   end
 
-  resources :creations do
+  resources :creations, only: [:index, :show] do
     resources :photos, only: [:index, :show]
     resources :favorites, :only => [:index, :create]
     get 'page/:page', :action => :index, :on => :collection
@@ -67,13 +67,11 @@ Cake::Application.routes.draw do
 
   namespace :my do
     get 'dashboard', to: 'dashboard#index'
-    resources :cakes, only: [:index] do
-      resources :photos, only: [:index, :new, :create, :destroy]
-    end
+    resources :cakes, only: [:index]
     resources :favorites, only: [:index]
     resources :settings, only: [:index, :update]
     resources :passwords, only: [:index, :update]
-    resources :avatars, :only => [:edit, :update]
+    resources :avatars, only: [:edit, :update]
     root to: "cakes#index"
   end
 end
