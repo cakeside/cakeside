@@ -1,8 +1,7 @@
 <% provide(:description, "The latest tutorials") -%>
 <% content_for :javascript do -%>
 <script type="text/javascript">  
-  var ready = function(){ new Masonry('#tutorials-div').load(); };
-  $(document).ready(ready);
+  $(function(){ new Masonry('#tutorials-div').load(); });
 </script>
 <% end -%>
 <div id="tutorials-div" class="row">
