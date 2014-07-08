@@ -13,12 +13,12 @@ Cake::Application.routes.draw do
     get ':id/page/:page', :action => :show, :on => :collection
   end
 
+  get '/creations/new', to: redirect('/login')
   resources :creations, only: [:index, :show] do
     resources :photos, only: [:index, :show]
     resources :favorites, :only => [:index, :create]
     get 'page/:page', :action => :index, :on => :collection
   end
-  resources :cakes
 
   resources :profiles, :only => [:index, :show] do
     get 'page/:page', :action => :index, :on => :collection
