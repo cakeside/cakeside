@@ -38,4 +38,3 @@ describe "CakeSide.Models.Cake", ->
     it "returns the correct url", ->
       result = createSUT(slug: '123-cake').public_url()
       expect(result).toMatch(/^http:\/\/.+\/creations\/123-cake$/)
-
