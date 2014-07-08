@@ -1,8 +1,9 @@
 <% provide(:title, "My Settings") -%>
 <% content_for :javascript do %>
 <script type="text/javascript" charset="utf-8">
-  var ready = function(){ DeviseUsers.Edit.initialize(jQuery); };
-  $(document).ready(ready);
+  $(function(){
+    $('#edit_user').validate();
+  });
 </script>
 <% end %>
 
