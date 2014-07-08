@@ -1,7 +1,7 @@
 class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :creation
-  has_many :activities, as: :subject
+  has_many :activities, as: :subject, dependent: :destroy
   after_create :create_activity
 
   private

@@ -22,7 +22,6 @@ gem 'acts-as-taggable-on', '~> 2.4.1'
 gem 'delayed_job', "~> 4.0.0"
 gem 'delayed_job_active_record', "~> 4.0.0"
 gem 'daemons', '~> 1.1.9'
-gem 'jquery-fileupload-rails', '~> 0.4.1'
 gem 'dotenv-rails'
 gem 'pg'
 gem 'asset_sync', '~> 1.0.0'

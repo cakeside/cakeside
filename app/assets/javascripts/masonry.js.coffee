@@ -4,7 +4,6 @@ class window.Masonry
 
   load: ->
     $(@container).imagesLoaded =>
-      console.log("load masonry.")
       $(@container).masonry
         itemSelector : '.span4'
         isResizable: true

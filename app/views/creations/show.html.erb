@@ -1,11 +1,5 @@
 <% provide(:title, "#{@creation.name} By #{@creation.user.name}") -%>
 <% provide(:description, "#{@creation.story}") -%>
-<% content_for :javascript do %>
-<script type="text/javascript">
-  var ready = function(){ Creations.Show.initialize(); };
-  $(document).ready(ready);
-</script>
-<% end -%>
 <div class="row">
   <div class="span6">
     <img class="thumbnail" src="<%= @creation.primary_image.url_for(:large) %>" alt="<%= @creation.name %>" />
