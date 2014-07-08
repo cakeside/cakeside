@@ -33,3 +33,9 @@ describe "CakeSide.Models.Cake", ->
       cake = createSUT(attributes)
       expect(cake.validate(attributes)).toBeUndefined()
       expect(cake.isValid()).toBeTruthy()
+
+  describe "#public_url", ->
+    it "returns the correct url", ->
+      result = createSUT(slug: '123-cake').public_url()
+      expect(result).toMatch(/^http:\/\/.+\/creations\/123-cake$/)
+
