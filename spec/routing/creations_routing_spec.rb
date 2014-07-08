@@ -3,7 +3,7 @@ require "rails_helper"
 describe CreationsController do
   describe "routing" do
     it "is the root of the website" do
-      get('/').should route_to("creations#index")
+      { get: '/' }.should route_to("creations#index")
     end
 
     it "recognizes and generates #index" do
