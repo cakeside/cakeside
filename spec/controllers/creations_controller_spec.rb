@@ -50,7 +50,6 @@ describe CreationsController do
         before :each do
           post :create, creation: {
             name: 'stone',
-            story: 'morning glory',
             category_id: category.id
           }, creation_tags: 'cake'
         end
@@ -58,7 +57,6 @@ describe CreationsController do
         it "assigns a newly created creation" do
           assigns(:creation).should_not be_nil
           assigns(:creation).name.should == 'stone'
-          assigns(:creation).story.should == 'morning glory'
         end
 
         it "redirects to the created creation" do

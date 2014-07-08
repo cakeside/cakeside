@@ -16,7 +16,6 @@
 //= require jquery.ui.all
 //= require jquery.validate
 //= require jquery.masonry
-//= require jquery-fileupload
 //= require jquery.embedly
 //= require tag-it
 //= require bootstrap
