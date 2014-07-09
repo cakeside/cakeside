@@ -50,6 +50,7 @@ Cake::Application.routes.draw do
         resources :photos, only: [:index, :show, :create]
       end
       resources :categories, only: [:index]
+      resources :tutorials, only: [:index]
       resources :logins, :only => [:create]
     end
   end
