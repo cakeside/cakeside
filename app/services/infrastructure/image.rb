@@ -95,7 +95,7 @@ class Image
   end
 
   def ensure_in_whitelist!(path)
-    unless %w(.jpg .jpeg .gif .png .bmp .tif).include?(File.extname(path))
+    unless %w(.jpg .jpeg .gif .png .bmp .tif).include?(File.extname(path).downcase)
       raise StandardError.new("This file is not in the whitelist. #{path}")
     end
   end
