@@ -5,14 +5,6 @@
 </div>
 <div class="row">
   <div class="span12">
-    <div class="thumbnail">
-      <img class="embed-thumb" src="<%= image_url %>" />
-      <div class="caption">
-        <h3 class="tutorial-heading"><%= heading %></h3>
-        <p id="tag-list"></p>
-        <p class="tutorial-description"><%= description %></p>
-      </div>
-    </div>
     <form id="new-tutorial" name='tutorial' class='form-horizontal'>
       <fieldset>
         <div class="control-group">
@@ -36,5 +28,15 @@
         </div>
       </fieldset>
     </form>
+    <% if(image_url) { %>
+    <div class="thumbnail">
+      <img class="embed-thumb" src="<%= image_url %>" />
+      <div class="caption">
+        <h3 class="tutorial-heading"><%= heading %></h3>
+        <p id="tag-list"></p>
+        <p class="tutorial-description"><%= description %></p>
+      </div>
+    </div>
+    <% } %>
   </div>
 </div>
