@@ -11,6 +11,8 @@ class CakeSide.Views.Tutorials.NewView extends Marionette.ItemView
   templateHelpers:
     canLoadPreview: ->
       @image_url
+    isInvalid: ->
+      !@isValid
 
   initialize: ->
     @model = new @collection.model()
@@ -29,10 +31,6 @@ class CakeSide.Views.Tutorials.NewView extends Marionette.ItemView
     @model.set('author', data.provider_name)
     @model.set('author_url', data.provider_url)
     @render()
-    if @model.isValid()
-      @enableSaveButton()
-    else
-      @disableSaveButton()
 
   resetTutorial: (url) ->
     @model.set('url', url)
@@ -41,11 +39,10 @@ class CakeSide.Views.Tutorials.NewView extends Marionette.ItemView
     @model.set('image_url', '')
     @model.set('author', '')
     @model.set('author_url', '')
-    @disableSaveButton()
     @render()
 
-  enableSaveButton: ->
-    @ui.save_button.removeAttr('disabled')
-
-  disableSaveButton: ->
-    @ui.save_button.attr('disabled', 'disabled')
+  serializeData: ->
+    {
+      tutorial: @model.toJSON(),
+      isValid: @model.isValid()
+    }
