@@ -6,3 +6,6 @@ class CakeSide.Controllers.TutorialsController extends Marionette.Controller
 
   index: ->
     @content_region.show(new @views.IndexView(collection: @tutorials))
+
+  new: ->
+    @content_region.show(new @views.NewView(collection: @tutorials))

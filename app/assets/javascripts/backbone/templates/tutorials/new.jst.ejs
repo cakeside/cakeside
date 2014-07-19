@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="span12">
+    <h1>Share a tutorial link</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="span12">
+    <div class="thumbnail">
+      <img class="embed-thumb" src="<%= image_url %>" />
+      <div class="caption">
+        <h3 class="tutorial-heading"><%= heading %></h3>
+        <p id="tag-list"></p>
+        <p class="tutorial-description"><%= description %></p>
+      </div>
+    </div>
+    <form id="new-tutorial" name='tutorial' class='form-horizontal'>
+      <fieldset>
+        <div class="control-group">
+          <label class="control-label" for="tutorial_url">Tutorial URL</label>
+          <div class="controls">
+            <input class="input-xxlarge" id="tutorial_url" name="url" type="text" value="<%= url %>">
+          </div>
+        </div>
+        <div class="control-group">
+          <label for="tags" class="control-label">Tags</label>
+            <div class="controls">
+              <input type="text" id="tags" name="tutorial_tags" value="" class="input-xxlarge" autocomplete="off" />
+              <p class="help-block">
+                Note: help people find this tutorial by adding some keyword tags
+              </p>
+            </div>
+        </div>
+        <div class="form-actions">
+          <button id='save-button' type="submit" class="btn btn-primary">Save</button>
+          <a href="#tutorials" class="btn">Cancel</a>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
