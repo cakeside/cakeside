@@ -7,12 +7,18 @@ class CakeSide.Views.Tutorials.NewView extends Marionette.ItemView
   events:
     'change #tutorial_url': 'loadUrl'
 
+  templateHelpers:
+    canLoadPreview: ->
+      @image_url
+
   initialize: ->
     @model = new @collection.model()
     @service = new EmbedlyService()
 
   loadUrl: ->
-    @service.retrieve_info_on(@ui.url.val(), @loadUrlInformation)
+    url = @ui.url.val()
+    @resetTutorial(url)
+    @service.retrieve_info_on(url, @loadUrlInformation)
 
   loadUrlInformation: (data) =>
     @model.set('url', data.url)
@@ -21,4 +27,13 @@ class CakeSide.Views.Tutorials.NewView extends Marionette.ItemView
     @model.set('image_url', data.thumbnail_url)
     @model.set('author', data.provider_name)
     @model.set('author_url', data.provider_url)
+    @render()
+
+  resetTutorial: (url) ->
+    @model.set('url', url)
+    @model.set('heading', '')
+    @model.set('description', '')
+    @model.set('image_url', '')
+    @model.set('author', '')
+    @model.set('author_url', '')
     @render()

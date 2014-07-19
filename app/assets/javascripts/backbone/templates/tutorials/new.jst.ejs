@@ -28,7 +28,7 @@
         </div>
       </fieldset>
     </form>
-    <% if(image_url) { %>
+    <% if(canLoadPreview()) { %>
     <div class="thumbnail">
       <img class="embed-thumb" src="<%= image_url %>" />
       <div class="caption">
