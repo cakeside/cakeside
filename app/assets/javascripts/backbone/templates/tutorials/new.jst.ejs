@@ -23,7 +23,11 @@
             </div>
         </div>
         <div class="form-actions">
-          <button id='save-button' type="submit" class="btn btn-primary">Save</button>
+          <% if (canSave()) { %>
+            <button id='save-button' type="submit" class="btn btn-primary">Save</button>
+          <% } else { %>
+            <button id='save-button' type="submit" class="btn btn-primary" disabled=disabled>Save</button>
+          <% } %>
           <a href="#tutorials" class="btn">Cancel</a>
         </div>
       </fieldset>

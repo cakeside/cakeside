@@ -3,6 +3,7 @@ class CakeSide.Views.Tutorials.NewView extends Marionette.ItemView
   template: JST['backbone/templates/tutorials/new']
   ui:
     url: '#tutorial_url'
+    save_button: '#save-button'
 
   events:
     'change #tutorial_url': 'loadUrl'
@@ -10,6 +11,8 @@ class CakeSide.Views.Tutorials.NewView extends Marionette.ItemView
   templateHelpers:
     canLoadPreview: ->
       @image_url
+    canSave: ->
+      false
 
   initialize: ->
     @model = new @collection.model()
