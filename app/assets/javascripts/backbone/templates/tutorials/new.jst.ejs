@@ -10,7 +10,7 @@
         <div class="control-group">
           <label class="control-label" for="tutorial_url">Tutorial URL</label>
           <div class="controls">
-            <input class="input-xxlarge" id="tutorial_url" name="url" type="text" value="<%= url %>">
+            <input class="input-xxlarge" id="tutorial_url" name="url" type="text" value="<%= url %>" placeholder="http://www.cakeside.com/">
           </div>
         </div>
         <div class="control-group">
@@ -23,11 +23,7 @@
             </div>
         </div>
         <div class="form-actions">
-          <% if (canSave()) { %>
-            <button id='save-button' type="submit" class="btn btn-primary">Save</button>
-          <% } else { %>
-            <button id='save-button' type="submit" class="btn btn-primary" disabled=disabled>Save</button>
-          <% } %>
+          <button id='save-button' type="submit" class="btn btn-primary" disabled=disabled>Save</button>
           <a href="#tutorials" class="btn">Cancel</a>
         </div>
       </fieldset>
