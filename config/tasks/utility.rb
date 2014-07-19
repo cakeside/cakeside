@@ -7,4 +7,6 @@ task :sync_logs, roles: :app do
   run "s3cmd sync #{shared_path}/log/#{rails_env}.log-*.gz s3://cakeside-logs/#{rails_env}/"
   run "s3cmd sync #{shared_path}/log/delayed_job.log-*.gz s3://cakeside-logs/#{rails_env}/"
   run "s3cmd sync #{shared_path}/log/unicorn.log-*.gz s3://cakeside-logs/#{rails_env}/"
+  run "chown deployer /var/log/nginx/cakeside.*.log-*.gz"
+  run "s3cmd sync /var/log/nginx/cakeside.*.log-*.gz s3://cakeside-logs/#{rails_env}/"
 end
