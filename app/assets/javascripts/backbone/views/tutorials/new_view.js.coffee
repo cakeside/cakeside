@@ -4,6 +4,11 @@ class CakeSide.Views.Tutorials.NewView extends Marionette.ItemView
   ui:
     url: '#tutorial_url'
     save_button: '#save-button'
+    preview: '#preview-panel'
+
+  modelEvents:
+    'invalid': 'displayError'
+    'change': 'render'
 
   events:
     'change #tutorial_url': 'loadUrl'
@@ -30,7 +35,7 @@ class CakeSide.Views.Tutorials.NewView extends Marionette.ItemView
     @model.set('image_url', data.thumbnail_url)
     @model.set('author', data.provider_name)
     @model.set('author_url', data.provider_url)
-    @render()
+    @model.isValid()
 
   resetTutorial: (url) ->
     @model.set('url', url)
@@ -39,10 +44,14 @@ class CakeSide.Views.Tutorials.NewView extends Marionette.ItemView
     @model.set('image_url', '')
     @model.set('author', '')
     @model.set('author_url', '')
-    @render()
+    @model.isValid()
 
-  serializeData: ->
-    {
-      tutorial: @model.toJSON(),
-      isValid: @model.isValid()
-    }
+  onRender: ->
+    @model.isValid()
+
+  disableSaveButton: ->
+    @ui.save_button.attr('disabled', 'disabled')
+
+  displayError: (model, error) ->
+    @disableSaveButton()
+    @ui.preview.hide()
