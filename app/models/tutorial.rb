@@ -1,5 +1,5 @@
 class Tutorial < ActiveRecord::Base
-  validates :url,  :presence => true
+  validates :url, presence: true
   belongs_to :user
   acts_as_taggable
 
