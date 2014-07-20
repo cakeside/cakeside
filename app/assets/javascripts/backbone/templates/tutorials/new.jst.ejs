@@ -1,13 +1,10 @@
 <div class="row">
-  <div class="span12">
+  <div class="span9">
     <h1>Share a tutorial link</h1>
-  </div>
-</div>
-<div class="row">
-  <div class="span12">
+    <hr />
     <form id="new-tutorial" name='tutorial' class='form-horizontal'>
       <fieldset>
-        <div class="control-group">
+        <div id="url-group" class="control-group">
           <label class="control-label" for="tutorial_url">Tutorial URL</label>
           <div class="controls">
             <input class="input-xxlarge" id="tutorial_url" name="url" type="text" value="<%= url %>" placeholder="http://www.cakeside.com/" autofocus>
@@ -28,6 +25,8 @@
         </div>
       </fieldset>
     </form>
+  </div>
+  <div class="span3">
     <div id="preview-panel" class="thumbnail">
       <img class="embed-thumb" src="<%= image_url %>" />
       <div class="caption">

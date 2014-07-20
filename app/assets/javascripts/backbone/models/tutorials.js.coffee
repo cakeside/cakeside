@@ -9,7 +9,7 @@ class CakeSide.Models.Tutorial extends Backbone.Model
     description: null
 
   validate: (attributes, options) ->
-    return "Url is invalid." unless @isValidUrl(attributes.url || '')
+    return "Invalid Url." unless @isValidUrl(attributes.url || '')
     return "This tutorial has no photos." unless @hasImage(attributes.image_url)
 
   isValidUrl: (url) ->

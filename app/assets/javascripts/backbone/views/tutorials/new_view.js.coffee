@@ -3,55 +3,41 @@ class CakeSide.Views.Tutorials.NewView extends Marionette.ItemView
   template: JST['backbone/templates/tutorials/new']
   ui:
     url: '#tutorial_url'
+    url_group: '#url-group'
     save_button: '#save-button'
     preview: '#preview-panel'
 
   modelEvents:
     'invalid': 'displayError'
-    'change': 'render'
+    'change:url': 'render'
 
   events:
     'change #tutorial_url': 'loadUrl'
-
-  templateHelpers:
-    canLoadPreview: ->
-      @image_url
-    isInvalid: ->
-      !@isValid
 
   initialize: ->
     @model = new @collection.model()
     @service = new EmbedlyService()
 
   loadUrl: ->
-    url = @ui.url.val()
-    @resetTutorial(url)
-    @service.retrieve_info_on(url, @loadUrlInformation)
+    @updateTutorial(url: @ui.url.val())
+    if @model.isValidUrl(@ui.url.val())
+      @service.retrieve_info_on(@ui.url.val(), @updateTutorial)
 
-  loadUrlInformation: (data) =>
-    @model.set('url', data.url)
-    @model.set('heading', data.title)
-    @model.set('description', data.description)
-    @model.set('image_url', data.thumbnail_url)
-    @model.set('author', data.provider_name)
-    @model.set('author_url', data.provider_url)
-    @model.isValid()
-
-  resetTutorial: (url) ->
-    @model.set('url', url)
-    @model.set('heading', '')
-    @model.set('description', '')
-    @model.set('image_url', '')
-    @model.set('author', '')
-    @model.set('author_url', '')
-    @model.isValid()
+  updateTutorial: (attributes) =>
+    @model.set
+      url: attributes.url
+      heading: attributes.title
+      description: attributes.description
+      image_url: attributes.thumbnail_url
+      author: attributes.provider_name
+      author_url: attributes.provider_url
 
   onRender: ->
     @model.isValid()
 
-  disableSaveButton: ->
-    @ui.save_button.attr('disabled', 'disabled')
-
   displayError: (model, error) ->
-    @disableSaveButton()
+    @ui.save_button.attr('disabled', 'disabled')
     @ui.preview.hide()
+    @ui.url_group.addClass("error")
+    errorTag = $('<span>').addClass('help-inline').text(error)
+    @ui.url_group.find('.controls').append(errorTag)
