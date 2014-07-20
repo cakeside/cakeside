@@ -6,7 +6,7 @@
     <h3><a href="#tutorials/<%= id %>"><%= heading %></a> <small><%= displayDate(created_at) %></small></h3>
     <p>
       <% _.each(tags, function(tag) { %> 
-        <a href="">
+        <a href="/tt/<%= tag.name %>">
           <span class="label"><%= tag.name %></span>
         </a>
       <% }); %>
