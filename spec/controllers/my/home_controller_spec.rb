@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe My::CakesController do
+describe My::HomeController do
   context "when logged in" do
     let(:user){ create(:user) }
     before { http_login(user) }
