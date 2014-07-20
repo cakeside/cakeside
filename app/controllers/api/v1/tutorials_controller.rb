@@ -8,7 +8,9 @@ module Api
       end
 
       def create
-        respond_with(@tutorial = current_user.tutorials.create!(tutorial_params))
+        @tutorial = current_user.tutorials.create!(tutorial_params)
+        current_user.tag(@tutorial, with: params[:tutorial][:tags], on: :tags)
+        respond_with(@tutorial)
       end
 
       private

@@ -6,6 +6,7 @@ class CakeSide.Views.Tutorials.NewView extends Marionette.ItemView
     url_group: '#url-group'
     save_button: '#save-button'
     preview: '#preview-panel'
+    tags: '#tutorial_tags'
 
   modelEvents:
     'invalid': 'displayError'
@@ -34,6 +35,7 @@ class CakeSide.Views.Tutorials.NewView extends Marionette.ItemView
       author_url: attributes.provider_url
 
   onRender: ->
+    @ui.tags.tagit({ availableTags: ALL_TAGS })
     @model.isValid()
 
   displayError: (model, error) ->
@@ -46,6 +48,7 @@ class CakeSide.Views.Tutorials.NewView extends Marionette.ItemView
   save: (event) ->
     event.preventDefault()
     event.stopPropagation()
+    @model.set('tags', @ui.tags.val())
     @ui.save_button.attr('disabled', 'disabled')
     @collection.create(@model,
       success: @savedSuccessfully
