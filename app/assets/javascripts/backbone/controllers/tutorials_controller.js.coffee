@@ -6,9 +6,15 @@ class CakeSide.Controllers.TutorialsController extends Marionette.Controller
     @comment_view = CakeSide.Application.request('CommentView')
 
   index: ->
+    @selectTab()
     @comment_view.hide()
     @content_region.show(new @views.IndexView(collection: @tutorials))
 
   new: ->
+    @selectTab()
     @comment_view.hide()
     @content_region.show(new @views.NewView(collection: @tutorials))
+
+  selectTab: ->
+    $('.nav-tabs').children().removeClass('active')
+    $('#tutorial-tab').addClass('active')
