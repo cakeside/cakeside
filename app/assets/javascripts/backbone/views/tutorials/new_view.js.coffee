@@ -13,6 +13,7 @@ class CakeSide.Views.Tutorials.NewView extends Marionette.ItemView
 
   events:
     'change #tutorial_url': 'loadUrl'
+    "submit #new-tutorial": "save"
 
   initialize: ->
     @model = new @collection.model()
@@ -41,3 +42,22 @@ class CakeSide.Views.Tutorials.NewView extends Marionette.ItemView
     @ui.url_group.addClass("error")
     errorTag = $('<span>').addClass('help-inline').text(error)
     @ui.url_group.find('.controls').append(errorTag)
+
+  save: (event) ->
+    event.preventDefault()
+    event.stopPropagation()
+    @ui.save_button.attr('disabled', 'disabled')
+    @collection.create(@model,
+      success: @savedSuccessfully
+      error: @couldNotSave
+    )
+
+  savedSuccessfully: (cake) =>
+    window.location.hash = "tutorials"
+
+  couldNotSave: (cake, xhr) =>
+    @ui.save_button.removeAttr('disabled')
+    error = new CakeSide.Views.ErrorView
+      el: @$('form#new-tutorial'),
+      attributesWithErrors: $.parseJSON(xhr.responseText)
+    error.render()
