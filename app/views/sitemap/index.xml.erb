@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:image="http://www.sitemaps.org/schemas/sitemap-image/1.1"
   xmlns:video="http://www.sitemaps.org/schemas/sitemap-video/1.1">
-<% @creations.each do |creation| %>
+<% @creations.find_each do |creation| %>
     <url>
-      <loc><%="#{@base_url}#{url_for(creation)}"%></loc>
+      <loc><%= creation_url(creation) %></loc>
       <lastmod><%= creation.updated_at.strftime('%Y-%m-%dT%H:%M-06:00') %></lastmod>
       <priority>0.5</priority>
     </url>
 <% end %>
-<% @tutorials.each do |tutorial| %>
+<% @tutorials.find_each do |tutorial| %>
     <url>
-      <loc><%="#{@base_url}#{url_for(tutorial)}"%></loc>
+      <loc><%= tutorial_url(tutorial) %></loc>
       <lastmod><%= tutorial.updated_at.strftime('%Y-%m-%dT%H:%M-06:00') %></lastmod>
       <priority>0.5</priority>
     </url>

@@ -12,8 +12,15 @@ FactoryGirl.define do
     story 'whats the story morning glory?'
     user { FactoryGirl.create(:user) }
     association :category
-    #image { File.new(File.join( Rails.root, 'spec/fixtures/images/example.png')) }
   end
+
+  factory :cake, class: Creation do
+    name { Faker::Name.name }
+    story 'whats the story morning glory?'
+    association :user
+    association :category
+  end
+
   factory :favorite do
     user { FactoryGirl.create(:user) }
     creation { FactoryGirl.create(:creation) }
