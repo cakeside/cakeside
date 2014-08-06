@@ -33,7 +33,7 @@ Cake::Application.routes.draw do
   end
   get 'tags/:id' => 'creation_tags#show'
 
-  resources :sessions, only: [:new]
+  resources :sessions, only: [:new, :create]
 
   # /search
   get "search" => 'search#index'

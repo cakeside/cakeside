@@ -21,6 +21,9 @@ FactoryGirl.define do
     association :category
   end
 
+  factory :session, class: Session do
+  end
+
   factory :favorite do
     user { FactoryGirl.create(:user) }
     creation { FactoryGirl.create(:creation) }
