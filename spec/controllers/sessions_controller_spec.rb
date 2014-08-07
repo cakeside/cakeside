@@ -23,5 +23,17 @@ describe SessionsController do
         expect(cookies.signed[:cookie_monster]).to eql(user_session.id)
       end
     end
+
+    context "when the username is not known" do
+      before :each do
+        Session.stub(:login).and_return(nil)
+      end
+
+      it "returns an error" do
+        post :create, session: { username: 'x', password: 'y' }
+        expect(response).to render_template(:new)
+        expect(flash[:error]).to_not be_empty
+      end
+    end
   end
 end
