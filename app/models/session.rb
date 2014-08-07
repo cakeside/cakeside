@@ -1,8 +1,5 @@
-class Session
-  attr_accessor :id
-
-  def persisted?
-  end
+class Session < ActiveRecord::Base
+  belongs_to :user
 
   class << self
     def login(username, password)
@@ -11,7 +8,7 @@ class Session
       bcrypt = ::BCrypt::Password.new(user.encrypted_password)
       password = ::BCrypt::Engine.hash_secret("#{password}#{User.pepper}", bcrypt.salt)
       if secure_compare(password, user.encrypted_password)
-        #Session.create!(user: user)
+        create!(user: user)
       else
         false
       end
