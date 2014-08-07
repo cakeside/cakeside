@@ -15,12 +15,18 @@ describe SessionsController do
       let(:username) { "joe" }
       let(:password) { "password" }
 
-      it "returns a valid session" do
+      before :each do
         Session.stub(:login).with(username, password).and_return(user_session)
-
         post :create, session: { username: username, password: password }
+      end
+
+      it "returns a valid session" do
         expect(cookies.signed[:cookie_monster]).to_not be_nil
         expect(cookies.signed[:cookie_monster]).to eql(user_session.id)
+      end
+
+      it "redirects to the dashboard" do
+        expect(response).to redirect_to(my_dashboard_path)
       end
     end
 
