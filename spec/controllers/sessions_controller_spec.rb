@@ -42,4 +42,19 @@ describe SessionsController do
       end
     end
   end
+
+  describe "#destroy" do
+    before :each do
+      request.cookies[:cookie_monster] = SecureRandom.uuid
+      delete :destroy, id: "me"
+    end
+
+    it "removes the cookie" do
+      expect(cookies[:cookie_monster]).to be_nil
+    end
+
+    it "redirects to the homepage" do
+      expect(response).to redirect_to(root_path)
+    end
+  end
 end

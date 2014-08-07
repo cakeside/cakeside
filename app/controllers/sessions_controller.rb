@@ -13,6 +13,11 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    cookies.delete(:cookie_monster)
+    redirect_to root_path
+  end
+
   private
 
   def session_params
