@@ -7,8 +7,8 @@ describe "changing my password" do
     before :each do
       visit new_session_path
       within('.form-inline') do
-        fill_in('user_email', :with => user.email)
-        fill_in('user_password', :with => "password")
+        fill_in('session_username', :with => user.email)
+        fill_in('session_password', :with => "password")
       end
       click_button("Sign In")
       visit my_settings_path

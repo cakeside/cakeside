@@ -13,14 +13,14 @@ describe "Logins" do
       before :each do
         visit new_session_path
         within('.form-inline') do
-          fill_in('user_email', :with => user.email)
-          fill_in('user_password', :with => "password")
+          fill_in('session_username', :with => user.email)
+          fill_in('session_password', :with => "password")
         end
         click_button("Sign In")
       end
 
       it "should let the user signin with the proper password" do
-        page.should have_content(I18n.t('devise.sessions.signed_in'))
+        page.should have_content("Log Out")
       end
 
       it "should not have an error" do
@@ -28,18 +28,18 @@ describe "Logins" do
       end
     end
 
-    context "when an email is not known" do
+    context "when an email is not known", js: true do
       before :each do
         visit new_session_path
         within('.form-inline') do
-          fill_in('user_email', :with => 'test@example.com')
-          fill_in('user_password', :with => 'password')
+          fill_in('session_username', :with => 'test@example.com')
+          fill_in('session_password', :with => 'password')
         end
         click_button "Sign In"
       end
 
       it "should display an error message" do
-        page.should have_content(I18n.t('devise.failure.invalid'))
+        page.should have_content("invalid credentials")
       end
     end
   end

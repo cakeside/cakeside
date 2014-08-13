@@ -6,8 +6,8 @@ describe "uploading an avatar" do
   before :each do
     visit new_session_path
     within('.form-inline') do
-      fill_in('user_email', :with => user.email)
-      fill_in('user_password', :with => "password")
+      fill_in('sessions_username', :with => user.email)
+      fill_in('sessions_password', :with => "password")
     end
     click_button("Sign In")
     visit edit_my_avatar_path(user)

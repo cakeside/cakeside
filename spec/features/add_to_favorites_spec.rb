@@ -7,8 +7,8 @@ describe "adding a cake to your favorites", :js => true do
   before :each do
     visit new_session_path
     within('.form-inline') do
-      fill_in('user_email', :with => me.email)
-      fill_in('user_password', :with => "password")
+      fill_in('session_username', :with => me.email)
+      fill_in('session_password', :with => "password")
     end
     click_button("Sign In")
     click_link(creation.name)

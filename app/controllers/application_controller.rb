@@ -24,4 +24,8 @@ class ApplicationController < ActionController::Base
     @session = Session.find_by(id: cookies.signed[:cookie_monster])
     redirect_to new_session_path unless @session
   end
+
+  def current_user
+    @session.try(:user)
+  end
 end
