@@ -1,3 +1,17 @@
+<% content_for :javascript do %>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#accepted').click(function(){
+      if( $('#accepted').is(':checked')){
+        $('#submit-registration').removeAttr('disabled');
+      }
+      else{
+        $('#submit-registration').attr('disabled', 'disabled');
+      }
+    });
+  });
+</script>
+<% end %>
 <div class="row">
   <div class="span12">
     <div class="row">
@@ -11,11 +25,53 @@
         </div>
       </div>
       <div class="span6">
-        <%= form_for(@session, :html => { :class => "well form-inline"}) do |f| %>
+        <%= form_for(@session, html: { class: "well form-inline"}) do |f| %>
           <legend>Got an account? Login!</legend>
           <%= email_field_tag 'session[username]', '', :placeholder => 'Email', :class=> "input-medium" %>
           <%= password_field_tag 'session[password]', '', :placeholder => 'Password', :class=> "input-medium" %>
           <%= f.submit "Sign In", :class => "btn" %>
+          <br />
+          <label for="checkbox" class="checkbox"> <%= check_box_tag 'session[remember_me]' %> Remember me <%= link_to "Forgot your password?", new_password_path(:user) %></label>
+        <% end %>
+        <%= form_for(User.new, as: :user, url: registration_path(:user), html: { :class=> 'form-horizontal' }) do |f| %>
+          <fieldset>
+            <legend>New to CakeSide? Join Us!</legend>
+          </fieldset>
+          <div class="control-group">
+            <%= f.label :name, 'Full name', :class => "control-label" %>
+            <div class="controls">
+              <%= f.text_field :name, :placeholder => 'required' %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :email, 'Email', :class => "control-label" %>
+            <div class="controls">
+              <%= f.email_field :email, :placeholder => 'required' %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :password, 'Password', :class => "control-label" %>
+            <div class="controls">
+              <%= f.password_field :password, :placeholder => 'required' %>
+            </div>
+          </div>
+          <div class="control-group">
+            <%= f.label :password_confirmation, 'Confirm password', :class => "control-label" %>
+            <div class="controls">
+              <%= f.password_field :password_confirmation, :placeholder => 'required' %>
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="accepted" class="control-label"></label>
+            <div class="controls">
+              <input id="accepted" name="accepted" type="checkbox" value="" checked="checked" /> I have read the <a href="/terms.html">terms and conditions</a> and the <a href="/privacy.html">privacy policy</a>
+            </div>
+          </div>
+          <div class="form-actions">
+            <%= f.submit "Sign up", :id => 'submit-registration', :class=> "btn btn-primary" %>
+          </div>
+          <%= f.hidden_field :latitude %>
+          <%= f.hidden_field :longitude %>
         <% end %>
       </div>
     </div>
