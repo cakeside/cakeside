@@ -8,7 +8,7 @@ describe TutorialsController do
   let(:user){ create(:user) }
 
   before (:each) do
-    request.env['warden'] = double(Warden, :authenticate => user, :authenticate! => user)
+    http_login(user)
   end
 
   describe "#index" do

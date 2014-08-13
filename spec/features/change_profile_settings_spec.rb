@@ -4,7 +4,7 @@ describe "Change settings" do
   let(:user) { create(:user, :password => "password") }
 
   before :each do
-    visit user_session_path
+    visit new_session_path
     within('.form-inline') do
       fill_in('user_email', :with => user.email)
       fill_in('user_password', :with => "password")

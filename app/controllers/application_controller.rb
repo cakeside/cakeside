@@ -19,4 +19,9 @@ class ApplicationController < ActionController::Base
     @newest_members = User.order(:created_at => :desc).limit(3)
     @top_members = User.order(:creations_count => :desc).limit(3)
   end
+
+  def authenticate!
+    @session = Session.find_by(id: cookies.signed[:cookie_monster])
+    redirect_to new_session_path unless @session
+  end
 end
