@@ -7,7 +7,7 @@ describe My::PasswordsController do
 
       it "should redirect you to the login page" do
         put :update, :id => user.id
-        response.should redirect_to(new_user_session_path)
+        response.should redirect_to(new_session_path)
       end
     end
 
