@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   before_filter :load_header
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  def current_user
+    @session.try(:user)
+  end
+
   protected
 
   def configure_permitted_parameters
@@ -25,7 +29,4 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_path unless @session
   end
 
-  def current_user
-    @session.try(:user)
-  end
 end
