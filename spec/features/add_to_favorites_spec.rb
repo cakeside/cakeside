@@ -11,6 +11,7 @@ describe "adding a cake to your favorites", :js => true do
       fill_in('session_password', :with => "password")
     end
     click_button("Sign In")
+    visit root_path
     click_link(creation.name)
     click_button("ADD TO FAVORITES")
   end

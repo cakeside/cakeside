@@ -4,9 +4,18 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :load_header
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  helper_method :current_user, :user_signed_in?
+
+  def user_session(session_id = cookies.signed[:cookie_monster])
+    Session.find_by(id: session_id)
+  end
 
   def current_user
-    @session.try(:user)
+    user_session.try(:user)
+  end
+
+  def user_signed_in?
+    current_user
   end
 
   protected
@@ -25,8 +34,6 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate!
-    @session = Session.find_by(id: cookies.signed[:cookie_monster])
-    redirect_to new_session_path unless @session
+    redirect_to new_session_path unless user_session
   end
-
 end
