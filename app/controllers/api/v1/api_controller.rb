@@ -2,6 +2,7 @@ module Api
   module V1
     class ApiController < ApplicationController
       before_filter :restrict_access
+      attr_reader :current_user
 
       private
 
