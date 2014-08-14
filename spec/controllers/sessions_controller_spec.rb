@@ -11,12 +11,12 @@ describe SessionsController do
 
   describe "#create" do
     context "when the username and password is correct" do
-      let(:user_session) { build(:session, id: SecureRandom.uuid) }
+      let(:user_session) { build(:user_session, id: SecureRandom.uuid) }
       let(:username) { "joe" }
       let(:password) { "password" }
 
       before :each do
-        Session.stub(:login).with(username, password).and_return(user_session)
+        UserSession.stub(:login).with(username, password).and_return(user_session)
         post :create, session: { username: username, password: password }
       end
 
@@ -32,7 +32,7 @@ describe SessionsController do
 
     context "when the username is not known" do
       before :each do
-        Session.stub(:login).and_return(nil)
+        UserSession.stub(:login).and_return(nil)
       end
 
       it "returns an error" do

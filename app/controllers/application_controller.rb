@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :user_signed_in?
 
   def user_session(session_id = cookies.signed[:cookie_monster])
-    Session.find_by(id: session_id)
+    UserSession.find_by(id: session_id)
   end
 
   def current_user

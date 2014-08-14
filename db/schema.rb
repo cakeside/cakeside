@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140807003036) do
+ActiveRecord::Schema.define(version: 20140814030250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,12 +124,6 @@ ActiveRecord::Schema.define(version: 20140807003036) do
 
   add_index "photos", ["creation_id"], name: "index_photos_on_creation_id", using: :btree
 
-  create_table "sessions", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -163,6 +157,12 @@ ActiveRecord::Schema.define(version: 20140807003036) do
   end
 
   add_index "tutorials", ["user_id"], name: "index_tutorials_on_user_id", using: :btree
+
+  create_table "user_sessions", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                              default: "", null: false

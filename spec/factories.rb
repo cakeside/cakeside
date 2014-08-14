@@ -21,7 +21,7 @@ FactoryGirl.define do
     association :category
   end
 
-  factory :session, class: Session do
+  factory :user_session, class: UserSession do
   end
 
   factory :favorite do
