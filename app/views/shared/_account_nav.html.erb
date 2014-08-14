@@ -7,7 +7,7 @@
       <li class="<%= selected == :basic_info ? "active" : "" %>"><%= link_to "Settings", my_settings_path %></li>
       <li class="<%= selected == :password ? "active" : "" %>"><%= link_to "Password", my_passwords_path %></li>
       <li class="<%= selected == :picture ? "active" : "" %>"><%= link_to "Picture", edit_my_avatar_path(current_user) %></li>
-      <li class="pull-right"><%= link_to t('.logout'), destroy_user_session_path, class: "btn btn-inverse" %></li>
+      <li class="pull-right"><%= link_to t('.logout'), session_path(id: 'me'), method: :delete, class: "btn btn-inverse" %></li>
       <% if current_user.is_admin? %>
       <li class="pull-right"><%= link_to t('.admin'), admin_root_path %></li>
       <% end %>
