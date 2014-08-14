@@ -22,7 +22,7 @@ describe SessionsController do
 
       it "returns a valid session" do
         expect(cookies.signed[:cookie_monster]).to_not be_nil
-        expect(cookies.signed[:cookie_monster]).to eql(user_session.id)
+        expect(cookies.signed[:cookie_monster]).to eql(user_session.key)
       end
 
       it "redirects to the dashboard" do

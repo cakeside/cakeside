@@ -5,7 +5,8 @@ class SessionsController < ApplicationController
 
   def create
     if @session = UserSession.login(session_params[:username], session_params[:password])
-      cookies.signed[:cookie_monster] = @session.id
+      @session.access(request)
+      cookies.signed[:cookie_monster] = @session.key
       redirect_to my_dashboard_path
     else
       flash[:error] = "invalid credentials"

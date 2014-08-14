@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
   helper_method :current_user, :user_signed_in?
 
-  def user_session(session_id = cookies.signed[:cookie_monster])
-    UserSession.find_by(id: session_id)
+  def user_session(session_key = cookies.signed[:cookie_monster])
+    UserSession.authenticate(session_key)
   end
 
   def current_user
