@@ -10,8 +10,8 @@ class UserSession < ActiveRecord::Base
 
   def access(request)
     self.accessed_at = Time.now
-    self.ip          = request.ip
-    self.user_agent  = request.user_agent
+    self.ip = request.ip
+    self.user_agent = request.user_agent
     save
   end
 
