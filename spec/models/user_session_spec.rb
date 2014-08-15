@@ -50,4 +50,16 @@ describe UserSession do
       expect(UserSession.active).to_not include(revoked_session)
     end
   end
+
+  describe ".authenticate" do
+    let!(:active_session) { create(:user_session, accessed_at: Time.now) }
+
+    it "returns the session if the key is active" do
+      expect(UserSession.authenticate(active_session.key)).to eql(active_session)
+    end
+
+    it "return nil if the key is not active" do
+      expect(UserSession.authenticate('blah')).to be_nil
+    end
+  end
 end

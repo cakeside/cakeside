@@ -24,15 +24,15 @@ class UserSession < ActiveRecord::Base
     end
   end
 
-  private
-
-  def set_unique_key
-    self.key = SecureRandom.urlsafe_base64(32)
-  end
-
   class << self
     def authenticate(key)
       self.active.find_by(key: key)
     end
+  end
+
+  private
+
+  def set_unique_key
+    self.key = SecureRandom.urlsafe_base64(32)
   end
 end
