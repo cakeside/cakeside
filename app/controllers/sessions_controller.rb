@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       redirect_to my_dashboard_path
     else
       flash[:error] = "invalid credentials"
-      redirect_to new_session_path
+      redirect_to login_path
     end
   end
 

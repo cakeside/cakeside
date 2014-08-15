@@ -3,7 +3,7 @@ require 'rails_helper'
 describe "Logins" do
   describe "GET /login" do
     it "should be able to reach the login page" do
-      visit new_session_path
+      visit login_path
       page.should have_content("Got an account? Login!")
     end
 
@@ -11,7 +11,7 @@ describe "Logins" do
       let!(:user) { create(:user, :password => "password") }
 
       before :each do
-        visit new_session_path
+        visit login_path
         within('.form-inline') do
           fill_in('session_username', :with => user.email)
           fill_in('session_password', :with => "password")
@@ -30,7 +30,7 @@ describe "Logins" do
 
     context "when an email is not known", js: true do
       before :each do
-        visit new_session_path
+        visit login_path
         within('.form-inline') do
           fill_in('session_username', :with => 'test@example.com')
           fill_in('session_password', :with => 'password')

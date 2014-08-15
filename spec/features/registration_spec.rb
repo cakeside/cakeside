@@ -3,7 +3,7 @@ require "rails_helper"
 describe "Registration", :js => true do
   context "when an email is not registered" do
     before :each do
-      visit new_session_path
+      visit login_path
       within(".form-horizontal") do
         fill_in('user_name', :with => 'John Smith')
         fill_in('user_email',:with => Faker::Internet.email)

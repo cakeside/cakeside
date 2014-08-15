@@ -37,7 +37,7 @@ describe SessionsController do
 
       it "returns an error" do
         post :create, session: { username: 'x', password: 'y' }
-        expect(response).to redirect_to(new_session_path)
+        expect(response).to redirect_to(login_path)
         expect(flash[:error]).to_not be_empty
       end
     end

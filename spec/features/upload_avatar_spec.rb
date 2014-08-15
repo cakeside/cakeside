@@ -4,7 +4,7 @@ describe "uploading an avatar", js: true do
   let(:user) { create(:user, :password => "password") }
 
   before :each do
-    visit new_session_path
+    visit login_path
     within('.form-inline') do
       fill_in('session_username', :with => user.email)
       fill_in('session_password', :with => "password")

@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate!
-    redirect_to new_session_path unless user_session
+    redirect_to login_path unless user_session
   end
 
   def extend_session_cookie
