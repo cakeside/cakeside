@@ -34,12 +34,14 @@ Cake::Application.routes.draw do
   get 'tags/:id' => 'creation_tags#show'
 
   resources :sessions, only: [:new, :create, :destroy]
+  get "login" => "sessions#new"
+  delete "logout" => "sessions#destroy", id: "me"
 
   # /search
   get "search" => 'search#index'
 
   # /users
-  devise_for :users, :controllers => {:registrations => 'registrations'}, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
+  devise_for :users, :controllers => {:registrations => 'registrations'}, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "register" }
 
   # sitemap
   get "/sitemap.xml", :to => "sitemap#index", :defaults => {:format => :xml}
