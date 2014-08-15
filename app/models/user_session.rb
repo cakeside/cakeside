@@ -12,7 +12,16 @@ class UserSession < ActiveRecord::Base
     self.accessed_at = Time.now
     self.ip = request.ip
     self.user_agent = request.user_agent
-    save
+    if save
+      {
+        value: key,
+        secure: Rails.env.production? || Rails.env.staging?,
+        httponly: true,
+        expires: 2.weeks.from_now,
+      }
+    else
+      {}
+    end
   end
 
   private
