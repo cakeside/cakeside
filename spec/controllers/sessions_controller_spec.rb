@@ -16,7 +16,7 @@ describe SessionsController do
       let(:password) { "password" }
 
       before :each do
-        UserSession.stub(:login).with(username, password).and_return(user_session)
+        User.stub(:login).with(username, password).and_return(user_session)
         post :create, session: { username: username, password: password }
       end
 
@@ -32,7 +32,7 @@ describe SessionsController do
 
     context "when the username is not known" do
       before :each do
-        UserSession.stub(:login).and_return(nil)
+        User.stub(:login).and_return(nil)
       end
 
       it "returns an error" do

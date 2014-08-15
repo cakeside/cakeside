@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if @session = UserSession.login(session_params[:username], session_params[:password])
+    if @session = User.login(session_params[:username], session_params[:password])
       cookies.signed[:cookie_monster] = @session.access(request)
       redirect_to my_dashboard_path
     else
