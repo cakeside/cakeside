@@ -25,15 +25,15 @@
         </div>
       </div>
       <div class="span6">
-        <%= form_for(resource, :as => :user, :url => user_session_path, :html => { :class => "well form-inline"}) do |f| %>
+        <%= form_for(@session, url: sessions_path(@session), html: { class: "well form-inline"}) do |f| %>
           <legend>Got an account? Login!</legend>
-          <%= f.email_field :email, :placeholder => 'Email', :class=> "input-medium" %>
-          <%= f.password_field :password, :placeholder => 'Password', :class=> "input-medium" %>
+          <%= email_field_tag 'session[username]', '', :placeholder => 'Email', :class=> "input-medium" %>
+          <%= password_field_tag 'session[password]', '', :placeholder => 'Password', :class=> "input-medium" %>
           <%= f.submit "Sign In", :class => "btn" %>
           <br />
-          <label for="checkbox" class="checkbox"><%= f.check_box :remember_me %> Remember me <%= link_to "Forgot your password?", new_password_path(:user) %></label>
+          <label for="checkbox" class="checkbox"> <%= check_box_tag 'session[remember_me]' %> Remember me <%= link_to "Forgot your password?", new_password_path(:user) %></label>
         <% end %>
-        <%= form_for(resource, :as => :user, :url => registration_path(:user), :html => { :class=> 'form-horizontal' }) do |f| %>
+        <%= form_for(User.new, as: :user, url: registration_path(:user), html: { :class=> 'form-horizontal' }) do |f| %>
           <fieldset>
             <legend>New to CakeSide? Join Us!</legend>
           </fieldset>

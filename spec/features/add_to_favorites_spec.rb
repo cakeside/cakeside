@@ -5,12 +5,13 @@ describe "adding a cake to your favorites", :js => true do
   let!(:me) { create(:user, :password => "password") }
 
   before :each do
-    visit user_session_path
+    visit login_path
     within('.form-inline') do
-      fill_in('user_email', :with => me.email)
-      fill_in('user_password', :with => "password")
+      fill_in('session_username', :with => me.email)
+      fill_in('session_password', :with => "password")
     end
     click_button("Sign In")
+    visit root_path
     click_link(creation.name)
     click_button("ADD TO FAVORITES")
   end

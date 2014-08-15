@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140705232142) do
+ActiveRecord::Schema.define(version: 20140815034538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
   create_table "activities", force: true do |t|
     t.integer  "subject_id",   null: false
@@ -156,6 +157,22 @@ ActiveRecord::Schema.define(version: 20140705232142) do
   end
 
   add_index "tutorials", ["user_id"], name: "index_tutorials_on_user_id", using: :btree
+
+  create_table "user_sessions", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "key"
+    t.string   "ip"
+    t.string   "user_agent"
+    t.datetime "accessed_at"
+    t.datetime "revoked_at"
+  end
+
+  add_index "user_sessions", ["accessed_at"], name: "index_user_sessions_on_accessed_at", using: :btree
+  add_index "user_sessions", ["key"], name: "index_user_sessions_on_key", using: :btree
+  add_index "user_sessions", ["revoked_at"], name: "index_user_sessions_on_revoked_at", using: :btree
+  add_index "user_sessions", ["user_id"], name: "index_user_sessions_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                              default: "", null: false
