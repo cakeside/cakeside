@@ -2,9 +2,11 @@
   <div class="span12">
     <%= render :partial => 'admin/shared/admin_nav' %>
     <h1>Users <small>(<%= @users.count %>)</small></h1>
-    <%= form_tag admin_users_path, method: :get, :name => "search" do %>
+    <%= form_tag admin_users_path, method: :get, name: "search", remote: true do %>
       <%= text_field_tag :q, params[:q], class: "search-query", placeholder: "Search" %>
     <% end %>
-    <%= render partial: "index" %>
+    <div id="results-container">
+      <%= render partial: "index" %>
+    </div>
   </div>
 </div>
