@@ -41,10 +41,6 @@ class User < ActiveRecord::Base
     "#{id}-#{name.gsub(/[^a-z0-9]+/i, '-')}"
   end
 
-  def is_admin?
-   self.is_admin
-  end
-
   def send_welcome_email
     UserMailer.delay.welcome_email(self)
     Subscription.delay.subscribe(email: email, first_name: name, last_name: '')

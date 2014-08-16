@@ -56,7 +56,7 @@ FactoryGirl.define do
     website { Faker::Internet.http_url }
     city 'calgary'
     factory :admin do
-      is_admin true
+      admin true
     end
   end
 end
