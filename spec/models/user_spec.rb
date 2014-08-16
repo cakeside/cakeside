@@ -164,4 +164,21 @@ describe User do
       end
     end
   end
+
+  describe ".search_by" do
+    let!(:mo) { create(:user) }
+    let!(:bob) { create(:user) }
+
+    it "returns a user that has a matching email address" do
+      results = User.search_by(mo.email)
+      expect(results).to include(mo)
+      expect(results).to_not include(bob)
+    end
+
+    it "returns a user that has a matching name" do
+      results = User.search_by(bob.name)
+      expect(results).to include(bob)
+      expect(results).to_not include(mo)
+    end
+  end
 end

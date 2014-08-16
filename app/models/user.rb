@@ -68,7 +68,8 @@ class User < ActiveRecord::Base
     end
 
     def search_by(query)
-      self.scoped
+      return self.all if query.blank?
+      self.where('name like :query or email like :query', query: "#{query}%")
     end
 
     def login(username, password)
