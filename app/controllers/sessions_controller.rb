@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    redirect_to my_dashboard_path(anchor: 'cakes') if user_signed_in?
     @session = UserSession.new
   end
 
