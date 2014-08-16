@@ -2,33 +2,9 @@
   <div class="span12">
     <%= render :partial => 'admin/shared/admin_nav' %>
     <h1>Users <small>(<%= @users.count %>)</small></h1>
-    <table class="table table-striped table-condensed">
-      <thead>
-        <tr>
-          <td>signins</td>
-          <td>cakes</td>
-          <td>name</td>
-          <td>email</td>
-          <td>location</td>
-          <td>last sign in</td>
-          <td>current sign in</td>
-          <td>created at</td>
-        </tr>
-      </thead>
-      <tbody>
-        <%- @users.each do |user| %>
-          <tr>
-            <td><%= user.sign_in_count %></td>
-            <td><%= user.creations_count %></td>
-            <td><%= link_to user.name, admin_user_path(user) %></td>
-            <td><%= mail_to user.email %></td>
-            <td><%= user.latitude %>, <%= user.longitude %></td>
-            <td><%= time_ago_in_words(user.last_sign_in_at) %></td>
-            <td><%= time_ago_in_words(user.current_sign_in_at) %></td>
-            <td><%= time_ago_in_words(user.created_at) %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <%= form_tag admin_users_path, method: :get, :name => "search" do %>
+      <%= text_field_tag :q, params[:q], class: "search-query", placeholder: "Search" %>
+    <% end %>
+    <%= render partial: "index" %>
   </div>
 </div>
