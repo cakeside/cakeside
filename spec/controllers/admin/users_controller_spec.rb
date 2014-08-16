@@ -15,6 +15,13 @@ module Admin
         get :index
         expect(assigns(:users)).to include(user)
       end
+
+      it "returns users that match the search results" do
+        matching_user = double
+        User.stub(:search_by).with('mo').and_return([matching_user])
+        get :index, q: 'mo'
+        expect(assigns(:users)).to include(matching_user)
+      end
     end
 
     describe "#show" do

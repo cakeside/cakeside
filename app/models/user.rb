@@ -67,6 +67,10 @@ class User < ActiveRecord::Base
       User.order(:creations_count => :desc)
     end
 
+    def search_by(query)
+      self.scoped
+    end
+
     def login(username, password)
       user = User.find_by(email: username)
       return false if user.nil?
