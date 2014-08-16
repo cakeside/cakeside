@@ -9,7 +9,7 @@ module Admin
         http_login(admin)
       end
 
-      describe "index" do
+      describe "#index" do
         let(:active_session) { build(:user_session) }
 
         before :each do
@@ -19,6 +19,24 @@ module Admin
         it "loads all the active sessions" do
           get :index
           expect(assigns(:sessions)).to include(active_session)
+        end
+      end
+
+      describe "#destroy" do
+        let(:user_session) { create(:active_session) }
+
+        before :each do
+          UserSession.stub(:find).with(user_session.id).and_return(user_session)
+          user_session.stub(:revoke!).and_return(true)
+          delete :destroy, id: user_session.id
+        end
+
+        it "revokes the specified session" do
+          expect(user_session).to have_received(:revoke!)
+        end
+
+        it "redirects to the index page" do
+          expect(response).to redirect_to(admin_sessions_path)
         end
       end
     end

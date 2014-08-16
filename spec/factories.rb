@@ -23,9 +23,8 @@ FactoryGirl.define do
 
   factory :user_session, class: UserSession do
     association :user
-    key SecureRandom.hex(32)
+    key SecureRandom.urlsafe_base64(32)
     ip Faker::Internet.ip_v4_address
-    user_agent Faker::Internet
     factory :active_session do
       accessed_at Time.now
     end

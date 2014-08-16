@@ -67,7 +67,7 @@ Cake::Application.routes.draw do
     resources :photos, only: [:index, :show]
     resources :blobs, only: [:index, :show]
     resources :errors, only: [:index, :create]
-    resources :sessions, only: [:index]
+    resources :sessions, only: [:index, :destroy]
   end
 
   namespace :my do
