@@ -18,7 +18,7 @@ module Admin
 
         it "loads all the active sessions" do
           get :index
-          expect(assigns(:sessions)).to include(active_session)
+          expect(assigns(:user_sessions)).to include(active_session)
         end
       end
 

@@ -1,7 +1,7 @@
 module Admin
   class SessionsController < AdminController
     def index
-      @sessions = UserSession.active
+      @user_sessions = UserSession.active
     end
 
     def destroy

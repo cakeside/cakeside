@@ -1,1 +1,30 @@
-<h1>Active Sessions</h1>
+<div class="row-fluid">
+  <div class="span12">
+    <%= render :partial => 'admin/shared/admin_nav' %>
+    <h1>Users Sessions</h1>
+    <table class="table table-striped table-condensed">
+      <thead>
+        <tr>
+          <td>user</td>
+          <td>ip</td>
+          <td>user agent</td>
+          <td>accessed at</td>
+          <td>revoked at</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <%- @user_sessions.each do |user_session| %>
+          <tr>
+            <td><%= link_to user_session.user.name, admin_user_path(user_session.user) %></td>
+            <td><%= user_session.ip %></td>
+            <td><%= user_session.user_agent %></td>
+            <td><%= time_ago_in_words(user_session.accessed_at) %></td>
+            <td><%= time_ago_in_words(user_session.revoked_at) if user_session.revoked_at %></td>
+            <td><%= link_to "Revoke", admin_session_path(user_session), method: :delete, class: 'btn btn-danger' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
