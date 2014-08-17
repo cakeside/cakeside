@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    redirect_to my_dashboard_path(anchor: 'cakes') if user_signed_in?
     @session = UserSession.new
   end
 
@@ -8,7 +9,7 @@ class SessionsController < ApplicationController
       cookies.signed[:cookie_monster] = @session.access(request)
       redirect_to my_dashboard_path
     else
-      flash[:error] = "invalid credentials"
+      flash[:error] = "Ooops... invalid email or password."
       redirect_to login_path
     end
   end

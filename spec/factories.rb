@@ -22,6 +22,12 @@ FactoryGirl.define do
   end
 
   factory :user_session, class: UserSession do
+    association :user
+    key SecureRandom.urlsafe_base64(32)
+    ip Faker::Internet.ip_v4_address
+    factory :active_session do
+      accessed_at Time.now
+    end
   end
 
   factory :favorite do
@@ -48,5 +54,8 @@ FactoryGirl.define do
     password 'password'
     website { Faker::Internet.http_url }
     city 'calgary'
+    factory :admin do
+      admin true
+    end
   end
 end

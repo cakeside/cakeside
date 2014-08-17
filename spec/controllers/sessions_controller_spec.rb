@@ -2,10 +2,23 @@ require "rails_helper"
 
 describe SessionsController do
   describe "#new" do
-    it "loads the login page" do
-      get :new
-      expect(response).to be_success
-      expect(assigns(:session)).to be_new_record
+    context "when not logged in" do
+      it "loads the login page" do
+        get :new
+        expect(response).to be_success
+        expect(assigns(:session)).to be_new_record
+      end
+    end
+
+    context "when already logged in" do
+      let(:user) { build(:user) }
+
+      before { http_login(user) }
+
+      it "redirects to the dashboard" do
+        get :new
+        expect(response).to redirect_to(my_dashboard_path(anchor: 'cakes'))
+      end
     end
   end
 
