@@ -39,7 +39,7 @@ describe "Logins" do
       end
 
       it "should display an error message" do
-        page.should have_content("invalid credentials")
+        page.should have_content("invalid email or password.")
       end
     end
   end
