@@ -21,7 +21,7 @@ describe "uploading a new creation", :js => true do
     click_button("Create")
   end
 
-  it "should get them to the image upload page" do
+  xit "should get them to the image upload page" do
     expect(page).to have_text("yummy cake")
   end
 end
