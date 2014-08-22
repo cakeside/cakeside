@@ -34,8 +34,8 @@ describe SessionsController do
       end
 
       it "returns a valid session" do
-        expect(cookies.signed[:cookie_monster]).to_not be_nil
-        expect(cookies.signed[:cookie_monster]).to eql(user_session.key)
+        expect(cookies.signed[:raphael]).to_not be_nil
+        expect(cookies.signed[:raphael]).to eql(user_session.key)
       end
 
       it "redirects to the dashboard" do
@@ -58,12 +58,12 @@ describe SessionsController do
 
   describe "#destroy" do
     before :each do
-      request.cookies[:cookie_monster] = SecureRandom.uuid
+      request.cookies[:raphael] = SecureRandom.uuid
       delete :destroy, id: "me"
     end
 
     it "removes the cookie" do
-      expect(cookies[:cookie_monster]).to be_nil
+      expect(cookies[:raphael]).to be_nil
     end
 
     it "redirects to the homepage" do

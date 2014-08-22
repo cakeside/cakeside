@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   before_filter :extend_session_cookie
   helper_method :current_user, :user_signed_in?
 
-  def user_session(session_key = cookies.signed[:cookie_monster])
+  def user_session(session_key = cookies.signed[:raphael])
     @user_session ||= UserSession.authenticate(session_key)
   end
 
@@ -39,6 +39,6 @@ class ApplicationController < ActionController::Base
   end
 
   def extend_session_cookie
-    cookies.signed[:cookie_monster] = user_session.access(request) if user_signed_in?
+    cookies.signed[:raphael] = user_session.access(request) if user_signed_in?
   end
 end

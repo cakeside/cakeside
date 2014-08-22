@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
   def create
     if @session = User.login(session_params[:username], session_params[:password])
-      cookies.signed[:cookie_monster] = @session.access(request)
+      cookies.signed[:raphael] = @session.access(request)
       redirect_to my_dashboard_path
     else
       flash[:error] = "Ooops... invalid email or password."
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    cookies.delete(:cookie_monster)
+    cookies.delete(:raphael)
     redirect_to root_path
   end
 
