@@ -2,10 +2,10 @@
   <% @creations.each do |creation| %>
     <li class="span3">
     <div class="thumbnail">
-      <%= link_to creation, class: 'mix-link', data: { event: 'click-on-thumbnail' } do %>
+      <%= link_to creation do %>
         <img src="<%= creation.primary_image.url_for(:thumb) %>" alt="<%= creation.name %>" style="width:260px;height:180px;" />
       <% end %>
-      <h3><%= link_to short_name(creation, 15), creation, class: 'mix-link', data: { event: 'click-on-title' } %></h3>
+      <h3><%= link_to short_name(creation, 15), creation %></h3>
       <h4><small>By <%= link_to shrink(creation.user.name, 20), profile_path(creation.user) %></small></h4>
       <p>
       <%= link_to creation_favorites_path(:creation_id => creation.id) do %>
