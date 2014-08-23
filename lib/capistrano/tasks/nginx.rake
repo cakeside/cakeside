@@ -3,7 +3,7 @@ namespace :nginx do
     desc "#{command} nginx"
     task command do
       on roles(:web) do
-        run "#{sudo} service nginx #{command}"
+        execute :sudo, "service nginx #{command}"
       end
     end
   end
