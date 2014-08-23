@@ -2,6 +2,7 @@ CakeSide.Views.Cakes ||= {}
 
 class CakeSide.Views.Cakes.ThumbnailView extends Marionette.ItemView
   template: JST['backbone/templates/cakes/thumbnail']
+  tagName: 'li'
   modelEvents:
     'sync': 'render'
     'change:percentComplete': 'render'
