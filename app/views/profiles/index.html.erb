@@ -1,28 +1,23 @@
-<% provide(:title, "Cake Artists") -%>
 <div class="row-fluid">
-  <div class="span12">
-    <ul class="thumbnails">
-      <% @profiles.each do |profile| %>
-        <li class="span3">
-        <div class="thumbnail">
-          <%= link_to profile_path(profile) do %>
-            <%= avatar_for(profile) %>
-          <% end %>
-          <div class="caption">
-            <h5><%= link_to shrink(profile.name, 20), profile_path(profile) %> <small>(<%= profile.creations_count %>)</small></h5>
-
-            <% if(profile.city.blank?) -%>
-            <h6>somewhere in sugarland</h6>
-            <% else -%>
-            <h6><%= shrink(profile.city, 30) %></h6>
-            <% end -%>
+  <% @profiles.each_slice(6).each do |batch| %>
+    <ul class='thumbnails'>
+      <% batch.each do |profile| %>
+        <li class="span2">
+          <div class="thumbnail">
+            <%= link_to profile_path(profile) do %>
+              <%= avatar_for(profile) %>
+            <% end %>
+            <div class="caption">
+              <h4><%= link_to shrink(profile.name, 12), profile_path(profile) %></h4>
+              <p><%= link_to shrink(profile.city, 20, 'sugarland'), profile_path(profile) %></p>
+              <p><small><%= time_ago_in_words(profile.created_at) %> ago.</small></p>
+            </div>
           </div>
-        </div>
         </li>
       <% end %>
     </ul>
-  </div>
+  <% end %>
 </div>
 <div class="row-fluid">
-  <div class="span12 text-center"> <%= paginate @profiles %> </div>
+  <%= render "shared/paging", items: @profiles %>
 </div>
