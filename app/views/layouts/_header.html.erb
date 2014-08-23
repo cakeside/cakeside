@@ -21,13 +21,11 @@
         <% end %>
         </p>
         <ul class="nav">
-          <li class="active"> <%= link_to "Home", creations_path %> </li>
-          <li> <%= link_to "Tutorials", tutorials_path %> </li>
-          <li> <%= link_to "Artists", profiles_path %> </li>
           <% @categories.each do |category| %>
-              <li><%= link_to category.name.pluralize, category_path(category) %></li>
+              <li class="<%= "active" if params["slug"] == category.slug %>"><%= link_to category.name.pluralize, category_path(category) %></li>
           <% end %>
-          <li><%= link_to "About", about_us_path %></li>
+          <li class="<%= "active" if params["controller"] == "profiles" %>"> <%= link_to "Artists", profiles_path %> </li>
+          <li class="<%= "active" if params["controller"] == "tutorials" %>"> <%= link_to "Tutorials", tutorials_path %> </li>
           <li>
             <%= form_tag(search_path, :method => "get", :name => "search", :class => "navbar-search pull-left") do %>
               <input name="q" type="text" class="search-query" placeholder="Search" value="<%= @search %>" />
