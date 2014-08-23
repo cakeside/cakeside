@@ -1,6 +1,6 @@
 <% provide(:title, "#{@creation.name} By #{@creation.user.name}") -%>
 <% provide(:description, "#{@creation.story}") -%>
-<div class="row">
+<div class="row-fluid">
   <div class="span6">
     <img class="thumbnail" src="<%= @creation.primary_image.url_for(:large) %>" alt="<%= @creation.name %>" />
   </div>
@@ -10,29 +10,28 @@
     <% if @creation.tags.any? %>
       <span> <i class="icon-tags"></i> </span>
       <% @creation.tags.each do |tag| -%>
-        <%= link_to creation_tag_path(tag.name), class: 'mix-link', data: { event: "click-on-tag" } do %>
+        <%= link_to creation_tag_path(tag.name) do %>
           <span class="label"><%= tag.name %></span>
         <% end %>
       <% end -%>
     <% end -%>
     <hr />
-    <div class="row">
+    <div class="row-fluid">
       <div class="span3">
         <% if user_signed_in? %>
           <% unless current_user == @creation.user || current_user.already_likes(@creation) %>
             <%= button_to "ADD TO FAVORITES", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary', "data-event" => 'click-add-to-favorites' %>
       <% end %>
       <% else %>
-        <p><%= link_to "SIGN UP FOR FREE", login_path, :class => "btn btn-primary mix-link", "data-event" => 'click-sign-up' %></p>
+        <p><%= link_to "SIGN UP FOR FREE", login_path, :class => "btn btn-primary" %></p>
       <% end %>
       </div>
       <div class="span3">
-        <div class="row">
+        <div class="row-fluid">
           <div class="span1">
             <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
           </div>
-          <div class="span1"><div class="fb-like" data-href="<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>" data-send="false" data-layout="button_count" data-width="250" data-show-faces="false"></div></div>
           <div class="span1"><a href="//pinterest.com/pin/create/button/?url=<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>&media=<%= yield :product_image %>&description=<%= yield :product_social %>." data-pin-do="buttonPin" data-pin-config="none"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png"/></a></div>
         </div>
       </div>
@@ -42,7 +41,7 @@
 </div>
 
 <% if @creation.photos_count > 1 %>
-  <div class="row">
+  <div class="row-fluid">
     <div class="span12">
       <%= link_to "View #{pluralize(@creation.photos_count, "photo")} &raquo;".html_safe, creation_photos_path(@creation) %>
     </div>

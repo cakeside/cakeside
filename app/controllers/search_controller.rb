@@ -4,7 +4,6 @@ class SearchController < ApplicationController
     @creations_repository = creations_repository
   end
 
-
   def index
     @search = params[:q]
     if @search.blank?

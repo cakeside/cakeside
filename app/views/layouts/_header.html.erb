@@ -1,93 +1,43 @@
-<div class="navbar navbar-fixed-top">
+<div class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-inner">
-    <div class="container">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
+    <div class="container-fluid">
+      <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
       <%= link_to root_path, class: 'brand', style: 'color:hotpink;' do %>
-        Cake<em>Side</em>
+        Cakeside
       <% end %>
-      <div class="nav-collapse">
+      <div class="nav-collapse collapse">
+        <p class="navbar-text pull-right">
+        <% if user_signed_in? %>
+          <%= link_to current_user.name, my_dashboard_path, class: 'navbar-link' %>
+          <%= link_to my_dashboard_path, class: 'navbar-link' do %>
+            <%= avatar_for(current_user, size: 24) %>
+          <% end %>
+        <% else %>
+          <%= link_to "Sign In", login_path, class: 'navbar-link' %>
+        <% end %>
+        </p>
         <ul class="nav">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Creations<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li>
-              <%= link_to current_user ? my_root_path(anchor: 'cakes/new') : login_path do %>
-                <i class="icon-edit icon-large"></i> Add Creation
-              <% end %>
-              </li>
-              <li class="divider"></li>
-              <% cache @categories do %>
-                <li class="nav-header">Categories</li>
-                <% @categories.each do |category| %>
-                  <li><%= link_to category.name, category_path(category) %></li>
-                <% end %>
-              <% end %>
-              <li class="divider"></li>
-              <li><%= link_to "View All", creations_path %></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li>
-                <%= link_to new_tutorial_path do %>
-                  <i class="icon-edit icon-large"></i> Add Tutorial
-                <% end %>
-              </li>
-              <li class="divider"></li>
-              <li class="nav-header">Recently Added</li>
-              <% cache @newest_tutorials do %>
-                <% @newest_tutorials.each do |tutorial| %>
-                <li><%= link_to tutorial.heading, tutorial_path(tutorial) %></li>
-                <% end %>
-              <% end %>
-              <li><%= link_to "...", tutorials_path %></li>
-              <li class="divider"></li>
-              <li><%= link_to "View All", tutorials_path %></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Artists<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li class="nav-header">Top Contributers</li>
-              <% cache @top_members do %>
-                <% @top_members.each do |user| %>
-                <li><%= link_to user.name, profile_path(user) %></li>
-                <% end %>
-              <% end %>
-              <li class="divider"></li>
-              <li class="nav-header">Recently Joined</li>
-              <% cache @newest_members do %>
-                <% @newest_members.each do |user| %>
-                <li><%= link_to user.name, profile_path(user) %></li>
-                <% end %>
-              <% end %>
-              <li class="divider"></li>
-              <li><%= link_to "View All", profiles_path %></li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="nav pull-right">
+          <% @categories.each do |category| %>
+              <li class="<%= "active" if params["slug"] == category.slug %>"><%= link_to category.name.pluralize, category_path(category) %></li>
+          <% end %>
+          <li class="<%= "active" if params["controller"] == "profiles" %>"> <%= link_to "Artists", profiles_path %> </li>
+          <li class="<%= "active" if params["controller"] == "tutorials" %>"> <%= link_to "Tutorials", tutorials_path %> </li>
           <li>
-            <%= link_to current_user ? my_root_path(anchor: 'cakes/new') : login_path do %>
+            <%= form_tag(search_path, :method => "get", :name => "search", :class => "navbar-search pull-left") do %>
+              <input name="q" type="text" class="search-query" placeholder="Search" value="<%= @search %>" />
+            <% end %>
+          </li>
+          <li>
+            <%= link_to user_signed_in? ? my_root_path(anchor: 'cakes/new') : login_path do %>
               <i class="icon-edit icon-large"></i> Add Creation
             <% end %>
           </li>
-          <%= form_tag(search_path, :method => "get", :name => "search", :class => "navbar-search pull-left") do %>
-            <input name="q" type="text" class="search-query" placeholder="Search" value="<%= @search %>" />
-          <% end %>
-          <li class="divider-vertical hidden-phone"></li>
-          <% if user_signed_in? %>
-          <li>
-            <%= link_to my_dashboard_path do %>
-              <%= avatar_for(current_user, size: 24) %>
-            <% end %>
-          </li>
-          <% else %>
-            <li> <%= link_to "Sign In", login_path %> </li>
-          <% end %>
         </ul>
-      </div>
+      </div><!--/.nav-collapse -->
     </div>
   </div>
 </div>

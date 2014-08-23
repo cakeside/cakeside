@@ -3,25 +3,43 @@
   <div class="span3">
     <div class="thumbnail">
       <%= avatar_for(@user) %>
-      <div class="caption">
-        <h5><%= @user.name %></h5>
-        <hr>
-        <p><%= @user.city %></p>
-        <% unless @user.website.blank? %>
-          <p><a href="<%= @user.website %>" target="_blank">Website</a></p>
-        <% end %>
-        <% unless @user.twitter.blank? %>
-          <p><a href="https://twitter.com/<%= @user.twitter %>" target="_blank" class="twitter-follow-button" data-show-count="false">Follow @<%= @user.twitter %></a></p>
-          <script src="//platform.twitter.com/widgets.js" type="text/javascript"></script>
-        <% end %>
-        <% unless @user.facebook.blank? %>
-          <p><a  href="<%= @user.facebook %>" target="_blank"><%= image_tag "f_logo_16x16x32.png", :alt => "Like us on Facebook" %> Like on Facebook</a></p>
-        <% end %>
-      </div>
     </div>
   </div>
   <div class="span9">
     <h1><%= @user.name %> <small>A member since <%= @user.created_at.to_s :foomat %>, with <%= @user.creations.length %> creations.</small> </h1>
-    <%= render "shared/creation_image_gallery" %>
+    <h5><%= @user.name %></h5>
+    <hr>
+    <p><%= @user.city %></p>
+    <% unless @user.website.blank? %>
+      <p><a href="<%= @user.website %>" target="_blank">Website</a></p>
+    <% end %>
+    <% unless @user.twitter.blank? %>
+      <p><a href="https://twitter.com/<%= @user.twitter %>" target="_blank" class="twitter-follow-button" data-show-count="false">Follow @<%= @user.twitter %></a></p>
+      <script src="//platform.twitter.com/widgets.js" type="text/javascript"></script>
+    <% end %>
+    <% unless @user.facebook.blank? %>
+      <p><a  href="<%= @user.facebook %>" target="_blank"><%= image_tag "f_logo_16x16x32.png", :alt => "Like us on Facebook" %> Like on Facebook</a></p>
+    <% end %>
   </div>
+</div>
+<hr />
+<div class="row-fluid">
+  <% @creations.each_slice(6).each do |batch| %>
+    <ul class='thumbnails'>
+      <% batch.each do |creation| %>
+        <li class="span2">
+          <div class="thumbnail">
+            <%= link_to creation do %>
+              <%= image_tag creation.primary_image.url_for(:thumb) %>
+            <% end %>
+            <div class="caption">
+              <h4><%= link_to shrink(creation.name, 12), creation %></h4>
+              <p><%= link_to shrink(creation.user.name, 20), profile_path(creation.user) %></p>
+              <p><small><%= time_ago_in_words(creation.created_at) %> ago.</small></p>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>

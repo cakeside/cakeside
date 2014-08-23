@@ -6,8 +6,9 @@ module CreationsHelper
       creation.name
     end
   end
-  def shrink(name, length)
-    if( name.length > length)
+  def shrink(name, length, default = nil)
+    return default unless name.present?
+    if name.length > length
       name[0...length] + '...'
     else
       name

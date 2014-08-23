@@ -1,11 +1,11 @@
-<li class="span2">
+<div class="thumbnail">
   <% if (uploading()) { %>
     <div class="progress progress-striped active">
       <div class="bar" style="width: <%= percentComplete %>%;"></div>
     </div>
   <% } else { %>
     <a href="#cakes/<%= cake_id %>/photos/<%= id %>">
-      <img src="<%= thumb_url %>" class="thumbnail" />
+      <img src="<%= thumb_url %>" />
     </a>
   <% } %>
-</li>
+</div>

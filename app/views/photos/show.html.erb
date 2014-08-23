@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row-fluid">
   <div class="span12">
     <h1><%= link_to @creation.name, creation_path(@creation) %></h1>
     <%= link_to creation_photo_path(@creation, @photo) do %>
@@ -7,7 +7,7 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row-fluid">
   <div class="span12">
     <ul class="thumbnails">
       <% @creation.photos.each do |photo| %>
