@@ -1,6 +1,6 @@
 <% provide(:title, "My Favorites") -%>
 <%= render :partial => "shared/account_nav", :locals => { :selected => :favorites } %>
-<div class="row">
+<div class="row-fluid">
   <div class="span12">
     <ul class="thumbnails">
       <% @creations.each do |creation| %>

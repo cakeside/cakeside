@@ -10,7 +10,7 @@
   $(document).ready(ready);
 </script>
 <% end -%>
-<div class="row">
+<div class="row-fluid">
   <div class="span9">
     <h1><%= @total_tutorials %> tutorials tagged <em><%= @tag %></em></h1>
   </div>
@@ -18,7 +18,7 @@
     <p class="pull-right"><%= link_to "#{@total_creations} creations", creation_tag_path(@tag) %> &raquo;</p>
   </div>
 </div>
-<div id="tutorials-div" class="row">
+<div id="tutorials-div" class="row-fluid">
   <div class="span12">
     <ul class="thumbnails">
     <% @tutorials.each do |tutorial| %>
@@ -43,6 +43,6 @@
     </ul>
   </div>
 </div>
-<div class="row">
+<div class="row-fluid">
   <div class="span12 text-center"> <%= paginate @tutorials %> </div>
 </div>

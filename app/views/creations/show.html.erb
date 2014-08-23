@@ -1,6 +1,6 @@
 <% provide(:title, "#{@creation.name} By #{@creation.user.name}") -%>
 <% provide(:description, "#{@creation.story}") -%>
-<div class="row">
+<div class="row-fluid">
   <div class="span6">
     <img class="thumbnail" src="<%= @creation.primary_image.url_for(:large) %>" alt="<%= @creation.name %>" />
   </div>
@@ -16,7 +16,7 @@
       <% end -%>
     <% end -%>
     <hr />
-    <div class="row">
+    <div class="row-fluid">
       <div class="span3">
         <% if user_signed_in? %>
           <% unless current_user == @creation.user || current_user.already_likes(@creation) %>
@@ -27,7 +27,7 @@
       <% end %>
       </div>
       <div class="span3">
-        <div class="row">
+        <div class="row-fluid">
           <div class="span1">
             <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
@@ -41,7 +41,7 @@
 </div>
 
 <% if @creation.photos_count > 1 %>
-  <div class="row">
+  <div class="row-fluid">
     <div class="span12">
       <%= link_to "View #{pluralize(@creation.photos_count, "photo")} &raquo;".html_safe, creation_photos_path(@creation) %>
     </div>

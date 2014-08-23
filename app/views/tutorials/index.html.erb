@@ -4,7 +4,7 @@
   $(function(){ new Masonry('#tutorials-div').load(); });
 </script>
 <% end -%>
-<div id="tutorials-div" class="row">
+<div id="tutorials-div" class="row-fluid">
   <div class="span12">
   <ul class="thumbnails">
     <% @tutorials.each do |tutorial| %>
@@ -29,6 +29,6 @@
   </ul>
   </div>
 </div>
-<div class="row">
+<div class="row-fluid">
   <div class="span12 text-center"> <%= paginate @tutorials %> </div>
 </div>

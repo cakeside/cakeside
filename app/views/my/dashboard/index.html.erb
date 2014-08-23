@@ -1,6 +1,6 @@
 <% provide(:title, "Dashboard") -%>
 <%= render :partial => "shared/account_nav", :locals => { :selected => :dashboard } %>
-<div class="row">
+<div class="row-fluid">
   <div class="span7">
     <% @items.each do |item| %>
       <%= render item.class.to_s.downcase, item: item %>
