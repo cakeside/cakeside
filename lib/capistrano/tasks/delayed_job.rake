@@ -3,7 +3,7 @@ namespace :delayed_job do
     desc "#{command} delayed_job"
     task command do
       on roles(:app) do
-        run "#{sudo} service delayed_job_#{fetch(:application)} #{command}"
+        execute :sudo, "service delayed_job_#{fetch(:application)} #{command}"
       end
     end
     #after "deploy:#{command}", "delayed_job:#{command}"

@@ -1,7 +1,6 @@
 desc "tail the logs on an app server (cap staging logs)"
 task :logs do
   on roles(:app) do
-    #stream "tail -f #{fetch(:shared_path)}/log/#{fetch(:rails_env)}.log"
     execute "tail -F #{shared_path}/log/#{fetch(:rails_env)}.log"
   end
 end
