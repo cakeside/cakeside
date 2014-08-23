@@ -6,7 +6,6 @@ namespace :unicorn do
         execute "service unicorn_#{fetch(:application)} #{command}"
       end
     end
-    #after "deploy:finished", "unicorn:restart"
   end
 
   desc "tail the logs on an app server (cap staging unicorn:logs)"
