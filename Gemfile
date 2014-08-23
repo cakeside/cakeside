@@ -11,21 +11,23 @@ group :doc do
   gem 'sdoc', '~> 0.4.0'
 end
 
+# to remove
 gem 'devise', '~> 3.0.0'
-gem 'jquery-ui-rails', '~> 4.0.0'
 gem 'carrierwave', '~> 0.9.0'
 gem 'rmagick', '~> 2.13.0'
+gem 'acts-as-taggable-on', '~> 3.3.0'
+gem 'fog'
+
+gem 'jquery-ui-rails', '~> 4.0.0'
 gem 'mini_magick'
 gem "kaminari", "~> 0.15.0"
 gem 'bootstrap-sass', '~> 2.3.0'
-gem 'acts-as-taggable-on', '~> 3.3.0'
 gem 'delayed_job', "~> 4.0.0"
 gem 'delayed_job_active_record', "~> 4.0.0"
 gem 'daemons', '~> 1.1.9'
 gem 'dotenv-rails'
 gem 'pg'
 gem 'asset_sync', '~> 1.0.0'
-gem 'fog'
 gem 'unf'
 gem 'exception_notification'
 gem 'gibbon', '~> 1.1.2'
