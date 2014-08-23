@@ -28,6 +28,11 @@
               <li><%= link_to category.name.pluralize, category_path(category) %></li>
           <% end %>
           <li><%= link_to "About", about_us_path %></li>
+          <li>
+            <%= link_to user_signed_in? ? my_root_path(anchor: 'cakes/new') : login_path do %>
+              <i class="icon-edit icon-large"></i> Add Creation
+            <% end %>
+          </li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
