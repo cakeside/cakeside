@@ -1,12 +1,4 @@
-<% provide(:title, "#{@tag}") -%>
-<div class="row-fluid">
-  <div class="span9">
-    <h1><%= @total_creations %> creations tagged <em><%= @tag %></em></h1>
-  </div>
-  <div class="span3">
-    <p class="pull-right"><%= link_to "#{@total_tutorials} tutorials", tutorial_tag_path(@tag) %> &raquo;</p>
-  </div>
-</div>
+<% provide(:title, @tag) -%>
 <div class="row-fluid">
   <% @creations.each_slice(6).each do |batch| %>
     <ul class='thumbnails'>
