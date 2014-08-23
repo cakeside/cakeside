@@ -43,7 +43,7 @@ module Cake
     config.middleware.use ExceptionNotification::Rack, :email => {
       :email_prefix => "[Boom! #{Rails.env}] ",
       :sender_address => %{"notifier" <notifier@cakeside.com>},
-      :exception_recipients => ENV['EXCEPTION_EMAIL_ADDRESS'].split(" ")
+      :exception_recipients => ENV['EXCEPTION_EMAIL_ADDRESS'].present? ? ENV['EXCEPTION_EMAIL_ADDRESS'].split(" ") : "",
     } unless Rails.env.test?
   end
 end
