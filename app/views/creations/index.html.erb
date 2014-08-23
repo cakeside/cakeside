@@ -2,7 +2,7 @@
 <% unless user_signed_in?  -%>
   <div class="row-fluid">
     <div class="span6">
-      <%= image_tag "cakeside-logo.png", :alt => "Welcome to Cakeside" %>
+      <%= image_tag "cakeside-logo.png", :alt => "Welcome to Cakeside", style: 'max-height:186px' %>
     </div>
     <div class="span6">
       <h1>Welcome cake enthusiast!</h1>
@@ -12,26 +12,6 @@
       <p style="text-align: center;">
       Get your cakes featured on this page <%= link_to "Sign Up For Free!", login_path, class: "btn btn-primary btn-large" %> or <%= link_to "sign in", new_session_path %>
       </p>
-    </div>
-  </div>
-  <div class="row-fluid">
-    <div class="span12">
-      <div class="marketing">
-        <div class="row-fluid">
-          <div class="span4">
-            <h2 style="text-align:center;font-weight:bold;">Share your creativity</h2>
-            <p style="text-align:center;">Show off your originality and find interesting ideas with fellow passionate CakeSide artists.</p>
-          </div>
-          <div class="span4">
-            <h2 style="text-align:center;font-weight:bold;">Promote yourself</h2>
-            <p style="text-align:center;">Get recognized for your work and connect with other artists with unique styles. </p>
-          </div>
-          <div class="span4">
-            <h2 style="text-align:center;font-weight:bold;">Inspire a community</h2>
-            <p style="text-align:center;">Upload creations, teach with tutorials, and create a vibrant community for everything cake.</p>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 <% end -%>
