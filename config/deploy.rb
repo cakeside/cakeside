@@ -57,6 +57,18 @@ namespace :deploy do
     end
   end
 
+  desc 'Sync assets'
+  task :sync_assets do
+    on roles(:web) do
+       within release_path do
+         with rails_env: fetch(:rails_env) do
+           execute :rake, 'assets:sync'
+         end
+       end
+    end
+  end
+
+  after :publishing, :sync_assets
   after :publishing, :restart
 
   after :restart, :clear_cache do
