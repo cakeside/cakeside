@@ -2,7 +2,7 @@
 <% provide(:description, "#{@creation.story}") -%>
 <div class="row-fluid">
   <div class="span6">
-    <img class="thumbnail" src="<%= @creation.primary_image.url_for(:large) %>" alt="<%= @creation.name %>" />
+    <img class="thumbnail" src="<%= @primary_image.url_for(:large) %>" alt="<%= @creation.name %>" />
   </div>
   <div class="span6">
     <h1><%= link_to @creation.name, creation_path(@creation) %></h1>
@@ -43,13 +43,10 @@
 <% if @creation.photos_count > 1 %>
   <div class="row-fluid">
     <div class="span12">
-      <%= link_to "View #{pluralize(@creation.photos_count, "photo")} &raquo;".html_safe, creation_photos_path(@creation) %>
-    </div>
-    <div class="span12">
       <ul class="thumbnails">
       <% @creation.photos.each do |photo| %>
         <li class="span2">
-          <%= link_to creation_photo_path(@creation, photo) do %>
+          <%= link_to creation_path(@creation, photo_id: photo.id) do %>
             <%= image_tag(photo.url_for(:thumb), :class => "thumbnail") %>
           <% end %>
         </li>
