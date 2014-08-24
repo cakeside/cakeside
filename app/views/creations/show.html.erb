@@ -1,52 +1,17 @@
 <% provide(:title, "#{@creation.name} By #{@creation.user.name}") -%>
 <% provide(:description, "#{@creation.story}") -%>
-<div class="row-fluid">
-  <div class="span6">
-    <img class="thumbnail" src="<%= @primary_image.url_for(:large) %>" alt="<%= @creation.name %>" />
-  </div>
-  <div class="span6">
-    <h1><%= link_to @creation.name, creation_path(@creation) %></h1>
-    <p>By <%= link_to @creation.user.name, profile_path(@creation.user) %></p>
-    <% if @creation.tags.any? %>
-      <span> <i class="icon-tags"></i> </span>
-      <% @creation.tags.each do |tag| -%>
-        <%= link_to creation_tag_path(tag.name) do %>
-          <span class="label"><%= tag.name %></span>
-        <% end %>
-      <% end -%>
-    <% end -%>
-    <hr />
-    <div class="row-fluid">
-      <div class="span3">
-        <% if user_signed_in? %>
-          <% unless current_user == @creation.user || current_user.already_likes(@creation) %>
-            <%= button_to "ADD TO FAVORITES", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary', "data-event" => 'click-add-to-favorites' %>
-      <% end %>
-      <% else %>
-        <p><%= link_to "SIGN UP FOR FREE", login_path, :class => "btn btn-primary" %></p>
-      <% end %>
-      </div>
-      <div class="span3">
-        <div class="row-fluid">
-          <div class="span1">
-            <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-          </div>
-          <div class="span1"><a href="//pinterest.com/pin/create/button/?url=<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>&media=<%= yield :product_image %>&description=<%= yield :product_social %>." data-pin-do="buttonPin" data-pin-config="none"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png"/></a></div>
-        </div>
-      </div>
-    </div>
-    <p><%= @creation.story %></p>
-  </div>
+
+<div id="primary-photo">
+  <%= render partial: 'show' %>
 </div>
 
-<% if @creation.photos_count > 1 %>
+<% if @creation.photos.any? %>
   <div class="row-fluid">
     <div class="span12">
       <ul class="thumbnails">
       <% @creation.photos.each do |photo| %>
         <li class="span2">
-          <%= link_to creation_path(@creation, photo_id: photo.id) do %>
+          <%= link_to creation_path(@creation, photo_id: photo.id), remote: true do %>
             <%= image_tag(photo.url_for(:thumb), :class => "thumbnail") %>
           <% end %>
         </li>
