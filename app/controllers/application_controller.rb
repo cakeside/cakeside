@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :extend_session_cookie
   helper_method :current_user, :user_signed_in?
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def user_session(session_key = cookies.signed[:raphael])
     @user_session ||= UserSession.authenticate(session_key)
@@ -40,5 +41,9 @@ class ApplicationController < ActionController::Base
 
   def extend_session_cookie
     cookies.signed[:raphael] = user_session.access(request) if user_signed_in?
+  end
+
+  def record_not_found
+    redirect_to root_path, status: :moved_permanently
   end
 end
