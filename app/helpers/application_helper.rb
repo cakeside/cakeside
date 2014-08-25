@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def full_title(title)
-    if( title.blank? )
+    if title.blank?
       "CakeSide - for cake lovers!"
     else
       "#{title} - CakeSide"
@@ -27,5 +27,9 @@ module ApplicationHelper
     timestamp = Time.now.to_i
     signature = OpenSSL::HMAC.hexdigest('sha1', ENV['DISQUS_SECRET_KEY'] || '', "#{message} #{timestamp}")
     "#{message} #{signature} #{timestamp}"
+  end
+
+  def controller?(name)
+    params[:controller].include?(name)
   end
 end

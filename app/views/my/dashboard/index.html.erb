@@ -1,5 +1,5 @@
 <% provide(:title, "Dashboard") -%>
-<%= render :partial => "shared/account_nav", :locals => { :selected => :dashboard } %>
+<%= render partial: "shared/account_nav" %>
 <div class="row-fluid">
   <div class="span7">
     <% @items.each do |item| %>
