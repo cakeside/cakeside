@@ -12,7 +12,7 @@ describe "adding a cake to your favorites", :js => true do
     end
     click_button("Sign In")
     visit root_path
-    click_link(creation.name)
+    click_link(creation.name[0...12])
     click_button("ADD TO FAVORITES")
   end
 
