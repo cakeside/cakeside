@@ -62,4 +62,13 @@ describe UserSession do
       expect(UserSession.authenticate('blah')).to be_nil
     end
   end
+
+  it "creates one key" do
+    session = UserSession.create(user: create(:user))
+    expect(session.key).to_not be_nil
+    key = session.key
+    session.accessed_at = Time.now
+    session.save!
+    expect(session.key).to eql(key)
+  end
 end
