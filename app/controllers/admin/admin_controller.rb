@@ -6,7 +6,7 @@ module Admin
     private
 
     def restrict_access!
-      redirect_to root_path unless current_user.try(:is_admin?)
+      redirect_to root_path unless current_user.try(:admin?)
     end
   end
 end

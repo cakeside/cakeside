@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row-fluid">
   <div class="span12">
     <p>
     <a href="#cakes/<%= id %>/edit" class="btn">
@@ -16,7 +16,7 @@
     </p>
   </div>
 </div>
-<div class="row">
+<div class="row-fluid">
   <div class="span6">
     <% if (hasImage()) { %>
     <% random_photo = randomPhoto()%>
@@ -45,12 +45,12 @@
     <p><%= story %></p>
   </div>
 </div>
-<div class="row">
+<div class="row-fluid">
   <div class="span12">
     <a class="btn add-photo">Add Photo</a>
     <a href="#cakes/<%= id %>/edit">(edit)</a>
   </div>
-  <div class="span12">
-    <ul class="thumbnails"></ul>
-  </div>
+</div>
+<div class="row-fluid">
+  <ul class="thumbnails"></ul>
 </div>

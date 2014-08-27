@@ -1,11 +1,14 @@
 class CreationsController < ApplicationController
   def index
     @creations = FindAllCreationsQuery.new.fetch(params)
-    expires_in(10.minutes) unless user_signed_in?
   end
 
   def show
     @creation = FindCreationQuery.new.fetch(params[:id])
-    expires_in(1.minute) unless user_signed_in?
+    if params[:photo_id].present?
+      @primary_image = @creation.photos.find(params[:photo_id])
+    else
+      @primary_image = @creation.primary_image
+    end
   end
 end

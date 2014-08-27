@@ -41,10 +41,6 @@ class User < ActiveRecord::Base
     "#{id}-#{name.gsub(/[^a-z0-9]+/i, '-')}"
   end
 
-  def is_admin?
-   self.is_admin
-  end
-
   def send_welcome_email
     UserMailer.delay.welcome_email(self)
     Subscription.delay.subscribe(email: email, first_name: name, last_name: '')
@@ -69,6 +65,33 @@ class User < ActiveRecord::Base
   class << self
     def ordered
       User.order(:creations_count => :desc)
+    end
+
+    def search_by(query)
+      return self.all if query.blank?
+      self.where('name like :query or email like :query', query: "#{query}%")
+    end
+
+    def login(username, password)
+      user = User.find_by(email: username)
+      return false if user.nil?
+      bcrypt = ::BCrypt::Password.new(user.encrypted_password)
+      password = ::BCrypt::Engine.hash_secret("#{password}#{User.pepper}", bcrypt.salt)
+      if secure_compare(password, user.encrypted_password)
+        UserSession.create!(user: user)
+      else
+        false
+      end
+    end
+
+    # constant-time comparison algorithm to prevent timing attacks
+    def secure_compare(a, b)
+      return false if a.blank? || b.blank? || a.bytesize != b.bytesize
+      l = a.unpack "C#{a.bytesize}"
+
+      res = 0
+      b.each_byte { |byte| res |= byte ^ l.shift }
+      res == 0
     end
   end
 end

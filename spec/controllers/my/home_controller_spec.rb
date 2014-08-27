@@ -16,7 +16,7 @@ describe My::HomeController do
   context "when not logged in" do
     it "redirects you to the home page" do
       get :index
-      response.should redirect_to(new_user_session_path)
+      response.should redirect_to(login_path)
     end
   end
 end

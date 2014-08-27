@@ -1,13 +1,13 @@
 require "rails_helper"
 
-describe "uploading an avatar" do
+describe "uploading an avatar", js: true do
   let(:user) { create(:user, :password => "password") }
 
   before :each do
-    visit user_session_path
+    visit login_path
     within('.form-inline') do
-      fill_in('user_email', :with => user.email)
-      fill_in('user_password', :with => "password")
+      fill_in('session_username', :with => user.email)
+      fill_in('session_password', :with => "password")
     end
     click_button("Sign In")
     visit edit_my_avatar_path(user)

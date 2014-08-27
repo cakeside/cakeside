@@ -1,38 +1,85 @@
-require 'bundler/capistrano'
-require 'dotenv/deployment/capistrano'
+# config valid only for Capistrano 3.1
+lock '3.2.1'
 
-load "config/recipes/environments"
-load "config/recipes/base"
-load "config/recipes/nginx"
-load "config/recipes/unicorn"
-load "config/recipes/postgresql"
-load "config/recipes/delayed_job"
-load "config/recipes/monit"
-load "config/tasks/utility"
-load "config/tasks/rails"
+set :application, 'cakeside'
+set :repo_url, 'git@bitbucket.org:cakeside/cakeside.git'
+set :branch, 'master'
 
-set :application, "cakeside"
 set :user, "deployer"
-set :use_sudo, false
-default_run_options[:pty] = true # password prompt
 
-# git
+# Default branch is :master
+# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
+
+# Default deploy_to directory is /var/www/my_app
+# set :deploy_to, '/var/www/my_app'
+set :deploy_to, "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
+
+# Default value for :scm is :git
 set :scm, :git
 set :scm_verbose, true
-set :repository,  "git@bitbucket.org:cakeside/cakeside.git"
-set :branch, "master"
-set :deploy_via, :remote_cache
 
-#copy
-#set :scm, :none
-#set :repository, "."
-#set :deploy_via, :copy
+# Default value for :format is :pretty
+# set :format, :pretty
 
-set :deploy_to, "/home/#{user}/apps/#{application}"
+# Default value for :log_level is :debug
+# set :log_level, :debug
+
+# Default value for :pty is false
+# set :pty, true
+
+# Default value for :linked_files is []
+# set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml .env}
+
+# Default value for linked_dirs is []
+# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+
+# Default value for default_env is {}
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+
+# Default value for keep_releases is 5
+# set :keep_releases, 5
 set :keep_releases, 3
-set :normalize_asset_timestamps, false
-set :ssh_options, {:forward_agent => true}
+#set :normalize_asset_timestamps, false
+set :ssh_options, { forward_agent: true }
 
-after "deploy", "deploy:cleanup" # remove old releases
+set :rbenv_type, :user # or :system, depends on your rbenv setup
+set :rbenv_ruby, '2.1.2'
 
-require './config/boot'
+namespace :deploy do
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      # Your restart mechanism here, for example:
+      # execute :touch, release_path.join('tmp/restart.txt')
+       invoke 'delayed_job:restart'
+    end
+    on roles(:web), in: :sequence, wait: 5 do
+       invoke 'unicorn:restart'
+    end
+  end
+
+  desc 'Sync assets'
+  task :sync_assets do
+    on roles(:web) do
+       within release_path do
+         with rails_env: fetch(:rails_env) do
+           execute :rake, 'assets:sync'
+         end
+       end
+    end
+  end
+
+  after :publishing, :sync_assets
+  after :publishing, :restart
+
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      # Here we can do anything such as:
+      # within release_path do
+      #   execute :rake, 'cache:clear'
+      # end
+    end
+  end
+end

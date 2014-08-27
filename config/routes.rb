@@ -13,11 +13,10 @@ Cake::Application.routes.draw do
     get ':id/page/:page', :action => :show, :on => :collection
   end
 
-  get '/creations/new', to: redirect('/login')
   resources :creations, only: [:index, :show] do
     resources :photos, only: [:index, :show]
     resources :favorites, :only => [:index, :create]
-    get 'page/:page', :action => :index, :on => :collection
+    get 'page/:page', :action => :index, :on => :collection, as: :paginate
   end
 
   resources :profiles, :only => [:index, :show] do
@@ -33,11 +32,15 @@ Cake::Application.routes.draw do
   end
   get 'tags/:id' => 'creation_tags#show'
 
+  resources :sessions, only: [:new, :create, :destroy]
+  get "login" => "sessions#new"
+  delete "logout" => "sessions#destroy", id: "me"
+
   # /search
   get "search" => 'search#index'
 
   # /users
-  devise_for :users, :controllers => {:registrations => 'registrations'}, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
+  devise_for :users, :controllers => {:registrations => 'registrations'}, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "register" }
 
   # sitemap
   get "/sitemap.xml", :to => "sitemap#index", :defaults => {:format => :xml}
@@ -64,6 +67,7 @@ Cake::Application.routes.draw do
     resources :photos, only: [:index, :show]
     resources :blobs, only: [:index, :show]
     resources :errors, only: [:index, :create]
+    resources :sessions, only: [:index, :destroy]
   end
 
   namespace :my do

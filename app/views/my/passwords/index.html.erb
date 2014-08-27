@@ -1,6 +1,6 @@
-<%= render :partial => "shared/account_nav", :locals => { :selected => :password } %>
+<%= render partial: "shared/account_nav" %>
 
-<div class="row">
+<div class="row-fluid">
   <div class="span12">
     <%= form_for(@user, :url => my_password_path(@user), :html => { :method => :patch, :class => "form-horizontal" }) do |f| %>
       <div class="control-group">

@@ -4,6 +4,21 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :load_header
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :extend_session_cookie
+  helper_method :current_user, :user_signed_in?
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
+  def user_session(session_key = cookies.signed[:raphael])
+    @user_session ||= UserSession.authenticate(session_key)
+  end
+
+  def current_user
+    user_session.try(:user)
+  end
+
+  def user_signed_in?
+    current_user
+  end
 
   protected
 
@@ -18,5 +33,17 @@ class ApplicationController < ActionController::Base
     @newest_tutorials = Tutorial.order(:created_at => :desc).limit(3)
     @newest_members = User.order(:created_at => :desc).limit(3)
     @top_members = User.order(:creations_count => :desc).limit(3)
+  end
+
+  def authenticate!
+    redirect_to login_path unless user_session
+  end
+
+  def extend_session_cookie
+    cookies.signed[:raphael] = user_session.access(request) if user_signed_in?
+  end
+
+  def record_not_found
+    redirect_to root_path, status: :moved_permanently
   end
 end

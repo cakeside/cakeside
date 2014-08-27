@@ -1,48 +1,24 @@
-<% provide(:title, "#{@tag}") -%>
-<% content_for :javascript do -%>
-<script type="text/javascript">  
-  var ready = function(){ 
-    var container = $('#tutorials-div');
-    container.imagesLoaded(function(){
-      container.masonry({ itemSelector : '.span4', isResizable: true });
-    });
-  };
-  $(document).ready(ready);
-</script>
-<% end -%>
-<div class="row">
-  <div class="span9">
-    <h1><%= @total_tutorials %> tutorials tagged <em><%= @tag %></em></h1>
-  </div>
-  <div class="span3">
-    <p class="pull-right"><%= link_to "#{@total_creations} creations", creation_tag_path(@tag) %> &raquo;</p>
-  </div>
-</div>
-<div id="tutorials-div" class="row">
-  <div class="span12">
-    <ul class="thumbnails">
-    <% @tutorials.each do |tutorial| %>
-      <div class="span4">
-        <div class="thumbnail">
-          <img src="<%= tutorial.image_url %>" />
-          <div class="caption">
-            <h3><%= link_to tutorial.heading, tutorial.url, target: "_blank" %> <small><%= tutorial.created_at.to_s :foomat %></small></h3>
-            <p>
-            <% tutorial.tags.each do |tag| -%>
-              <%= link_to tutorial_tag_path(tag.name) do %>
-                <span class="label"><%= tag.name %></span>
-              <% end %>
-            <% end -%>
-            </p>
-            <p><%= tutorial.description %></p>
-            <p><%= link_to "View", tutorial, class: 'btn' %></p>
+<% provide(:title, @tag) -%>
+<div class="row-fluid">
+  <% @tutorials.each_slice(6).each do |batch| %>
+    <ul class='thumbnails'>
+      <% batch.each do |tutorial| %>
+        <li class="span2">
+          <div class="thumbnail">
+            <%= link_to tutorial do %>
+              <%= image_tag tutorial.image_url %>
+            <% end %>
+            <div class="caption">
+              <h4><%= link_to shrink(tutorial.heading, 12), tutorial %></h4>
+              <p><%= link_to shrink(tutorial.user.name, 20), profile_path(tutorial.user) %></p>
+              <p><small><%= time_ago_in_words(tutorial.created_at) %> ago.</small></p>
+            </div>
           </div>
-        </div>
-      </div>
-    <% end %>
+        </li>
+      <% end %>
     </ul>
-  </div>
+  <% end %>
 </div>
-<div class="row">
-  <div class="span12 text-center"> <%= paginate @tutorials %> </div>
+<div class="row-fluid">
+  <%= render "shared/paging", items: @tutorials %>
 </div>

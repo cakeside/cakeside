@@ -5,7 +5,7 @@ describe "password retrieval", :js => true do
     let(:user) { create(:user) }
 
     before :each do
-      visit user_session_path
+      visit login_path
       click_link "Forgot your password?"
       within "#new_user" do
         fill_in "user_email", :with => user.email

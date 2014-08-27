@@ -1,11 +1,5 @@
-<% content_for :javascript do %>
-<script type="text/javascript">
-try { mixpanel.track_forms(".edit_avatar", "uploaded avatar"); } catch {}
-</script>
-<% end %>
-
-<%= render :partial => "shared/account_nav", :locals => { :selected => :picture } %>
-<div class="row">
+<%= render partial: "shared/account_nav" %>
+<div class="row-fluid">
   <div class="span12">
     <%= avatar_for(current_user) %>
     <%= form_for(@avatar, :url => my_avatar_path(@avatar), :method => :put, :multipart => true, remote: true, authenticity_token: true) do |f| %>
