@@ -2,7 +2,7 @@
   <div class="span12">
     <ul class="nav nav-tabs">
       <li class="<%= "active" if controller?("dashboard") %>"><%= link_to "Dashboard", my_dashboard_path %></li>
-      <li class="<%= "active" if controller?("cakes") %>"><%= link_to "Creations", my_root_path(anchor: 'cakes') %></li>
+      <li id="cakes-tab" class="<%= "active" if controller?("cakes") %>"><%= link_to "Creations", my_root_path(anchor: 'cakes') %></li>
       <li id="tutorial-tab"><%= link_to "Tutorials", my_root_path(anchor: 'tutorials') %></li>
       <li class="<%= "active" if controller?("favorites") %>"><%= link_to "Favorites", my_favorites_path %></li>
       <li class="<%= 'active' if controller?('settings') %>"><%= link_to "Settings", my_settings_path %></li>
