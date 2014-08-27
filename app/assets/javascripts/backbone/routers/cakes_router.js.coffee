@@ -4,4 +4,3 @@ class CakeSide.Routers.CakesRouter extends Marionette.AppRouter
     "cakes/:id/edit": "edit"
     "cakes/:id": "show"
     "cakes": "index"
-

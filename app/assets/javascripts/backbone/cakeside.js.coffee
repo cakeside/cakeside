@@ -26,6 +26,8 @@ window.CakeSide =
         controller: new CakeSide.Controllers.CakesController()
       new CakeSide.Routers.PhotosRouter
         controller: new CakeSide.Controllers.PhotosController()
+      new CakeSide.Routers.TutorialsRouter
+        controller: new CakeSide.Controllers.TutorialsController()
 
     CakeSide.Application.on 'start', ->
       if Backbone.history
@@ -34,6 +36,8 @@ window.CakeSide =
     @cakes = new CakeSide.Collections.CakesCollection()
     @categories = new CakeSide.Collections.CategoriesCollection()
     @categories.fetch(reset: true)
+    @tutorials = new CakeSide.Collections.TutorialsCollection()
+    @tutorials.fetch(reset: true)
 
     @disqus_view = new CakeSide.Views.DisqusView
       disqus_shortname: data.disqus_shortname
@@ -52,6 +56,8 @@ window.CakeSide =
         @photos_cache[cake_id] = photos
         photos.fetch(reset: true)
         photos
+    CakeSide.Application.reqres.setHandler 'TutorialsRepository', =>
+      @tutorials
 
     @cakes.fetch(reset: true).done ->
       CakeSide.Application.start()

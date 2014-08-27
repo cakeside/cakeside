@@ -1,5 +1,5 @@
 module My
-  class CakesController < BaseController
+  class HomeController < BaseController
     def index
     end
   end
