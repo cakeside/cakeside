@@ -30,9 +30,6 @@ class ApplicationController < ActionController::Base
 
   def load_header
     @categories = Category.all
-    @newest_tutorials = Tutorial.order(:created_at => :desc).limit(3)
-    @newest_members = User.order(:created_at => :desc).limit(3)
-    @top_members = User.order(:creations_count => :desc).limit(3)
   end
 
   def authenticate!
