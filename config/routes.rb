@@ -6,7 +6,7 @@ Cake::Application.routes.draw do
 
   post 'comments', to: 'comments#create'
 
-  resources :tutorials do
+  resources :tutorials, only: [:index, :show] do
     get 'page/:page', :action => :index, :on => :collection
   end
   resources :tutorial_tags, :only => [:index, :show], :path => :tt do
