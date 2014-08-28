@@ -26,15 +26,7 @@ describe CreationTagsController do
     before :each do
       user.tag(tagged_tutorial, :with => tag, :on => :tags)
       user.tag(tagged_cake, :with => tag, :on => :tags)
-      get :show, :id => tag
-    end
-
-    it "should include the total tutorials tagged" do
-      assigns(:total_tutorials).should == 1
-    end
-
-    it "should include the total creations tagged" do
-      assigns(:total_creations).should == 1
+      get :show, id: tag
     end
 
     it "should return each cake that is tagged" do

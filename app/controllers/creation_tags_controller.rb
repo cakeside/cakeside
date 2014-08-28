@@ -5,8 +5,6 @@ class CreationTagsController < ApplicationController
 
   def show
     @tag = params[:id].downcase.gsub(/ /, '-')
-    @total_tutorials = Tutorial.tagged_with(@tag).count
-    @total_creations = Creation.tagged_with(@tag).count
     @creations = Creation.includes([:user, :tags, :photos]).tagged_with([@tag]).where('photos_count > 0').page(params[:page]).per(12)
   end
 end
