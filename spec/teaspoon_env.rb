@@ -4,6 +4,7 @@ unless defined?(Rails)
   require File.expand_path("../../config/environment", __FILE__)
 end
 
+Rails.application.config.assets.precompile += %w( teaspoon.css jasmine/1.3.1.js teaspoon-jasmine.js )
 Teaspoon.configure do |config|
 
   # Determines where the Teaspoon routes will be mounted. Changing this to "/jasmine" would allow you to browse to
