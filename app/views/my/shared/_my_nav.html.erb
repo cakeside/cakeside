@@ -8,16 +8,21 @@
     <li class="<%= 'active' if controller?('settings') %>"><%= link_to "Settings", my_settings_path %></li>
     <li class="<%= 'active' if controller?('passwords') %>"><%= link_to "Password", my_passwords_path %></li>
     <li class="<%= 'active' if controller?('avatars') %>"><%= link_to "Picture", edit_my_avatar_path(current_user) %></li>
-    <li class="nav-header">Sidebar</li>
-    <li><a href="#">Link</a></li>
-    <li><a href="#">Link</a></li>
-    <li><a href="#">Link</a></li>
-    <li><a href="#">Link</a></li>
-    <li><a href="#">Link</a></li>
-    <li><a href="#">Link</a></li>
-    <li class="nav-header">Sidebar</li>
-    <li><a href="#">Link</a></li>
-    <li><a href="#">Link</a></li>
-    <li><a href="#">Link</a></li>
+    <li class="nav-header">Actions</li>
+    <li>
+      <%= link_to my_root_path(anchor: 'cakes/new') do %>
+        <i class="icon-camera"></i> New Cake
+      <% end %>
+    </li>
+    <li>
+      <%= link_to my_root_path(anchor: 'tutorials/new') do %>
+        <i class="icon-edit"></i> New Tutorial
+      <% end %>
+    </li>
+    <li class="nav-header">Other</li>
+    <% if current_user.admin? %>
+    <li><%= link_to t('.admin'), admin_root_path %></li>
+    <% end %>
+    <li><%= link_to t('.logout'), logout_path, method: :delete %></li>
   </ul>
 </div>

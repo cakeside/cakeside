@@ -28,7 +28,8 @@ en:
     updated: 'Your password was updated.'
   profile_saved: 'Your settings have been updated successfully!'
   avatar_uploaded: 'Your avatar has been updated.'
-  shared:
-    account_nav:
-      admin: 'Admin'
-      logout: 'Log Out'
+  my:
+    shared:
+      my_nav:
+        admin: 'Admin'
+        logout: 'Log Out'
