@@ -16,5 +16,5 @@ class CakeSide.Controllers.TutorialsController extends Marionette.Controller
     @content_region.show(new @views.NewView(collection: @tutorials))
 
   selectTab: ->
-    $('.nav-tabs').children().removeClass('active')
+    $('.nav-list').children().removeClass('active')
     $('#tutorial-tab').addClass('active')

@@ -15,6 +15,14 @@
 <% end -%>
 
 <%= render partial: "shared/account_nav" %>
-<div id="backbone-content"></div>
-<div id="disqus_thread"></div>
+
+<div class="row-fluid">
+  <div class="span2">
+    <%= render partial: "my/shared/my_nav" %>
+  </div>
+  <div class="span10">
+    <div id="backbone-content"></div>
+    <div id="disqus_thread"></div>
+  </div>
+</div>
 <div id="modal" class="modal hide fade"></div>
