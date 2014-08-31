@@ -13,11 +13,12 @@ class CakeSide.Controllers.CakesController extends Marionette.Controller
   show: (id) ->
     @selectTab()
     cake = @cakes.get(id)
+    @comment_view.hide()
     @content_region.show(new @views.ShowView(model: cake))
-    @comment_view.render
-      identifier: "c-#{cake.id}"
-      title: cake.get('name')
-      url: cake.public_url()
+    #@comment_view.render
+      #identifier: "c-#{cake.id}"
+      #title: cake.get('name')
+      #url: cake.public_url()
 
   newCake: ->
     @selectTab()
@@ -30,5 +31,5 @@ class CakeSide.Controllers.CakesController extends Marionette.Controller
     @comment_view.hide()
 
   selectTab: ->
-    $('.nav-tabs').children().removeClass('active')
+    $('.nav-list').children().removeClass('active')
     $('#cakes-tab').addClass('active')

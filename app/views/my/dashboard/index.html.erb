@@ -1,7 +1,9 @@
 <% provide(:title, "Dashboard") -%>
-<%= render partial: "shared/account_nav" %>
 <div class="row-fluid">
-  <div class="span7">
+  <div class="span2">
+    <%= render partial: "my/shared/my_nav" %>
+  </div>
+  <div class="span5">
     <% @items.each do |item| %>
       <%= render item.class.to_s.downcase, item: item %>
     <% end %>

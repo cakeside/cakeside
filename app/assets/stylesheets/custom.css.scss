@@ -27,41 +27,6 @@ footer #footer-floor {
   padding-top: 30px;
 }
 
-/** marketing value statements **/
-.marketing {
-  margin-bottom: 20px;
-  margin-top: 30px;
-  background: image-url("linen-light-blue.jpg") repeat scroll left top transparent;
-  border-bottom: 1px solid #BFD0E1;
-  border-top: 1px solid #BFD0E1;
-  box-shadow: -1px -1px 0 #FFFFFF inset, 1px 1px 0 #FFFFFF inset;
-}
-
-.marketing h1 {
-  font-size: 40px;
-  font-weight: 300;
-  margin: 36px 0 27px;
-  text-align: center;
-}
-.marketing h2, .marketing h3 {
-  font-weight: 300;
-}
-.marketing h2 {
-  font-size: 22px;
-  line-height: 24px;
-}
-.marketing p {
-  margin-right: 10px;
-  margin-top: 5px;
-}
-.marketing .bs-icon {
-  margin: 7px 10px 0 0;
-  opacity: 0.8;
-}
-.marketing .small-bs-icon {
-  float: left;
-  margin: 4px 5px 0 0;
-}
 .field_with_errors{
   @extend .control-group;
   @extend .error;

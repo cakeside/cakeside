@@ -25,15 +25,29 @@
             <% end %>
           </li>
           <% @categories.each do |category| %>
-              <li class="<%= "active" if params["slug"] == category.slug %>"><%= link_to category.name.pluralize, category_path(category) %></li>
+            <li class="<%= "active" if params["slug"] == category.slug %>"><%= link_to category.name.pluralize, category_path(category) %></li>
           <% end %>
           <li class="<%= "active" if params["controller"] == "profiles" %>"> <%= link_to "Artists", profiles_path %> </li>
           <li class="<%= "active" if params["controller"] == "tutorials" %>"> <%= link_to "Tutorials", tutorials_path %> </li>
-          <li>
-            <%= link_to user_signed_in? ? my_root_path(anchor: 'cakes/new') : login_path do %>
-              <i class="icon-edit icon-large"></i> Add Creation
-            <% end %>
+          <% if user_signed_in? %>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"> 
+              <i class="icon-plus"></i> <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <%= link_to my_root_path(anchor: 'cakes/new') do %>
+                  <i class="icon-camera"></i> New Cake
+                <% end %>
+              </li>
+              <li>
+                <%= link_to my_root_path(anchor: 'tutorials/new') do %>
+                  <i class="icon-edit"></i> New Tutorial
+                <% end %>
+              </li>
+            </ul>
           </li>
+          <% end  %>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
