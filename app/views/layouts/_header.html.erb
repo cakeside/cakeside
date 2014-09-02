@@ -19,7 +19,14 @@
           <% end %>
           <li class="<%= "active" if params["controller"] == "profiles" %>"> <%= link_to "Artists", profiles_path %> </li>
           <li class="<%= "active" if params["controller"] == "tutorials" %>"> <%= link_to "Tutorials", tutorials_path %> </li>
-          <% if user_signed_in? %>
+        </ul>
+        <ul class="nav pull-right">
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to my_root_path do %>
+              <%= avatar_for(current_user, size: 24) %> <%= current_user.name %>
+            <% end %>
+          </li>
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
               <i class="icon-plus"></i> <b class="caret"></b>
@@ -36,16 +43,6 @@
                 <% end %>
               </li>
             </ul>
-          </li>
-          <% end  %>
-        </ul>
-        <ul class="nav pull-right">
-        <% if user_signed_in? %>
-          <li><%= link_to current_user.name, my_root_path %></li>
-          <li>
-            <%= link_to my_root_path do %>
-              <%= avatar_for(current_user, size: 24) %>
-            <% end %>
           </li>
         <% else %>
           <li><%= link_to "Sign In", login_path %></li>
