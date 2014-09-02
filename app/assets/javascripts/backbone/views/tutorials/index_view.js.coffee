@@ -5,5 +5,5 @@ CakeSide.Views.Tutorials ||= {}
 class CakeSide.Views.Tutorials.IndexView extends Marionette.CollectionView
   childView: CakeSide.Views.Tutorials.TutorialView
   emptyView: CakeSide.Views.Tutorials.NoTutorialsView
-  className: 'thumbnails'
-  tagName: 'ul'
+  className: ''
+  tagName: 'div'
