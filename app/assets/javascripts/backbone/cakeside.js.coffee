@@ -28,6 +28,8 @@ window.CakeSide =
         controller: new CakeSide.Controllers.PhotosController()
       new CakeSide.Routers.TutorialsRouter
         controller: new CakeSide.Controllers.TutorialsController()
+      new CakeSide.Routers.DashboardRouter
+        controller: new CakeSide.Controllers.DashboardController()
 
     CakeSide.Application.on 'start', ->
       if Backbone.history
