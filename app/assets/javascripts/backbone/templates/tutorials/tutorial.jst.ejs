@@ -1,17 +1,7 @@
-<div class="thumbnail">
-  <a href="#tutorials/<%= id %>">
-    <img src="<%= image_url %>" />
-  </a>
-  <div class="caption">
-    <h3><a href="#tutorials/<%= id %>"><%= heading %></a> <small><%= displayDate(created_at) %></small></h3>
-    <p>
-      <% _.each(tags, function(tag) { %> 
-        <a href="/tt/<%= tag.name %>">
-          <span class="label"><%= tag.name %></span>
-        </a>
-      <% }); %>
-    </p>
-    <p><%= description %></p>
-    <p><a href="#tutorials/<%= id %>" class="btn">View</a></p>
-  </div>
+<a href="#tutorials/<%= id %>" class="pull-left">
+  <img class="media-object" data-src="<%= image_url %>" alt="64x64" style="width: 64px; height: 64px;" src="<%= image_url %>">
+</a>
+<div class="media-body">
+  <h4 class="media-heading"><%= heading %></h4>
+  <%= description %>
 </div>
