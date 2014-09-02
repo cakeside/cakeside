@@ -4,5 +4,5 @@ CakeSide.Views.Cakes ||= {}
 class CakeSide.Views.Cakes.IndexView extends Marionette.CollectionView
   childView: CakeSide.Views.Cakes.CakeView
   emptyView: CakeSide.Views.Cakes.NoCakesView
-  className: 'thumbnails'
-  tagName: 'ul'
+  className: ''
+  tagName: 'div'

@@ -1,9 +1,19 @@
-<div class="thumbnail">
-  <% if(hasImage()) { %>
-    <a href="#cakes/<%= id %>"><img src="<%= randomPhoto().thumb_url %>" /></a>
-  <% } %>
-  <div class="caption">
-    <h4><a href="#cakes/<%= id %>"><%= shrink(name) %></a></h4>
+<% if(hasImage()) { %>
+  <% photo = randomPhoto() %>
+  <a href="#cakes/<%= id %>" class="pull-left">
+    <img class="media-object" data-src="<%= photo.thumb_url %>" alt="64x64" style="width: 64px; height: 64px;" src="<%= photo.thumb_url %>">
+  </a>
+<% } %>
+  <div class="media-body">
+    <h4 class="media-heading"><%= name %></h4>
+    <%= story %>
+    <p>
+    <a href="#cakes/<%= id %>/edit">
+      <i class="icon-edit"> edit</i>
+    </a>
+    <a href="<%= Routes.creation_favorites_path(id) %>">
+      <i class="icon-heart"> fanclub </i>
+    </a>
     <span class="badge badge-warning"><i class="icon-comments"> <a href="/creations/<%= id %>#disqus_thread" data-disqus-identifier="c-<%= id %>"></a></i></span>
+    </p>
   </div>
-</div>
