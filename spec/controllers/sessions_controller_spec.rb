@@ -17,7 +17,7 @@ describe SessionsController do
 
       it "redirects to the dashboard" do
         get :new
-        expect(response).to redirect_to(my_root_path(anchor: 'cakes'))
+        expect(response).to redirect_to(my_root_path)
       end
     end
   end
