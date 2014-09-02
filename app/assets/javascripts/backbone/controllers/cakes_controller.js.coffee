@@ -13,7 +13,6 @@ class CakeSide.Controllers.CakesController extends Marionette.Controller
   show: (id, photo_id) ->
     @selectTab()
     cake = @cakes.get(id)
-    @comment_view.hide()
     @content_region.show(new @views.ShowView(model: cake, photo_id: photo_id))
     #@comment_view.render
       #identifier: "c-#{cake.id}"

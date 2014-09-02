@@ -19,24 +19,22 @@
   <div class="span2">
     <%= render partial: "my/shared/my_nav" %>
   </div>
-  <div class="span10">
-    <div id="backbone-content">
-      <div class="span5">
-        <% @items.each do |item| %>
-          <%= render item.class.to_s.downcase, item: item %>
-        <% end %>
-      </div>
-      <div class="span5">
-        <% if @activities.empty? %>
-          <p>No new activity to report.</p>
-        <% else %>
-          <% @activities.each do |activity| %>
-            <%= render activity.subject.class.to_s.downcase, subject: activity.subject %>
-          <% end %>
-        <% end %>
-      </div>
+  <div id="backbone-content" class="span10">
+    <div class="span5">
+      <% @items.each do |item| %>
+        <%= render item.class.to_s.downcase, item: item %>
+      <% end %>
     </div>
-    <div id="disqus_thread"></div>
+    <div class="span5">
+      <% if @activities.empty? %>
+        <p>No new activity to report.</p>
+      <% else %>
+        <% @activities.each do |activity| %>
+          <%= render activity.subject.class.to_s.downcase, subject: activity.subject %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
+<div id="disqus_thread" class="row-fluid"></div>
 <div id="modal" class="modal hide fade"></div>
