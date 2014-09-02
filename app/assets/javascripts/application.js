@@ -27,3 +27,5 @@
 //= require backbone/cakeside
 //= require backbone-model-file-upload
 //= require_tree .
+
+$('.tooltip-item').tooltip();

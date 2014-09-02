@@ -44,6 +44,11 @@
               </li>
             </ul>
           </li>
+          <li>
+            <%= link_to logout_path, method: :delete, title: 'sign out', data: { toggle: 'tooltip', placement: 'left', animation: 'true' }, class: 'tooltip-item' do %>
+              <i class="icon-off"></i>
+            <% end %>
+          </li>
         <% else %>
           <li><%= link_to "Sign In", login_path %></li>
         <% end %>
