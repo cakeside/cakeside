@@ -15,11 +15,16 @@ class CakeSide.Views.Cakes.ShowView extends Marionette.CompositeView
       typeof(@photos) != 'undefined' && _.any(@photos)
 
     randomPhoto: ->
-      @photos[Math.floor(Math.random()*@photos.length)]
+      if @primary_photo_id
+        _.find @photos, (photo) =>
+          photo.id.toString() == @primary_photo_id
+      else
+        @photos[Math.floor(Math.random()*@photos.length)]
 
   constructor: (options) ->
     super(options)
     @collection = @model.photos()
+    @model.set('primary_photo_id', options.photo_id) if options.photo_id
 
   launchAddPhoto: ->
     @displayModal(new CakeSide.Views.Photos.NewModalView(cake: @model))
