@@ -24,8 +24,6 @@ window.CakeSide =
     CakeSide.Application.addInitializer (options) ->
       new CakeSide.Routers.CakesRouter
         controller: new CakeSide.Controllers.CakesController()
-      new CakeSide.Routers.PhotosRouter
-        controller: new CakeSide.Controllers.PhotosController()
       new CakeSide.Routers.TutorialsRouter
         controller: new CakeSide.Controllers.TutorialsController()
       new CakeSide.Routers.DashboardRouter
