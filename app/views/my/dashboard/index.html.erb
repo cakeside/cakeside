@@ -31,7 +31,7 @@
           <p>No new activity to report.</p>
         <% else %>
           <% @activities.each do |activity| %>
-            <%= render "activities/#{activity.subject.class.to_s.downcase}", subject: activity.subject %>
+            <%= render activity.subject.class.to_s.downcase, subject: activity.subject %>
           <% end %>
         <% end %>
       </div>
