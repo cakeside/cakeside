@@ -20,8 +20,8 @@
           <li class="<%= "active" if params["controller"] == "profiles" %>"> <%= link_to "Artists", profiles_path %> </li>
           <li class="<%= "active" if params["controller"] == "tutorials" %>"> <%= link_to "Tutorials", tutorials_path %> </li>
         </ul>
-        <ul class="nav pull-right">
         <% if user_signed_in? %>
+        <ul class="nav pull-right">
           <li>
             <%= link_to my_root_path do %>
               <%= avatar_for(current_user, size: 24) %> <%= current_user.name %>
@@ -45,14 +45,18 @@
             </ul>
           </li>
           <li>
-            <%= link_to logout_path, method: :delete, title: 'sign out', data: { toggle: 'tooltip', placement: 'left', animation: 'true' }, class: 'tooltip-item' do %>
+            <%= link_to logout_path, method: :delete, title: 'Sign Out', data: { toggle: 'tooltip', placement: 'left', animation: 'true' }, class: 'tooltip-item' do %>
               <i class="icon-off"></i>
             <% end %>
           </li>
-        <% else %>
-          <li><%= link_to "Sign In", login_path %></li>
-        <% end %>
         </ul>
+        <% else %>
+          <%= form_for(UserSession.new, url: sessions_path(UserSession.new), html: { class: "navbar-form pull-right" }) do |f| %>
+            <%= email_field_tag 'session[username]', '', placeholder: 'Email', class: 'input-medium' %>
+            <%= password_field_tag 'session[password]', '', placeholder: 'Password', class: 'input-medium' %>
+            <%= f.submit "Sign In", class: 'btn' %>
+          <% end %>
+        <% end %>
       </div><!--/.nav-collapse -->
     </div>
   </div>
