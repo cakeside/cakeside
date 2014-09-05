@@ -54,7 +54,7 @@
           <%= form_for(UserSession.new, url: sessions_path(UserSession.new), html: { class: "navbar-form pull-right" }) do |f| %>
             <%= email_field_tag 'session[username]', '', placeholder: 'Email', class: 'input-medium' %>
             <%= password_field_tag 'session[password]', '', placeholder: 'Password', class: 'input-medium' %>
-            <%= f.submit "Sign In", class: 'btn' %>
+            <%= f.submit "Log In", class: 'btn' %>
           <% end %>
         <% end %>
       </div><!--/.nav-collapse -->

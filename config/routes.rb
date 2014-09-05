@@ -20,7 +20,7 @@ Cake::Application.routes.draw do
   end
 
   resources :profiles, :only => [:index, :show] do
-    get 'page/:page', :action => :index, :on => :collection
+    get 'page/:page', :action => :index, :on => :collection, as: :paginate
   end
 
   get 'categories/:slug' => "categories#show", :as => :category

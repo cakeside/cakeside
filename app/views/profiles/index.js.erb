@@ -1,0 +1,4 @@
+$('#more-button-row').remove();
+$('#pagination-row').remove();
+$('#bakery').append('<%= j render partial: 'index' %>');
+history.pushState({ }, "page <%= params[:page] %>", "<%= paginate_profiles_path(page: params[:page]) %>");
