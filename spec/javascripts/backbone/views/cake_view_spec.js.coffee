@@ -1,5 +1,6 @@
 describe "CakeSide.Views.Cakes.CakeView", ->
   cake = new CakeSide.Models.Cake
+    id: '1'
     name: 'chocolate'
   view = new CakeSide.Views.Cakes.CakeView
     model: cake
