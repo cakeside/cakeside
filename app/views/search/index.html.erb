@@ -19,6 +19,7 @@
             </thead>
             <tbody>
             <% @creations.each_with_index do |creation, index| %>
+              <% cache creation do %>
               <tr>
                 <td>
                   <%= link_to creation_path(creation) do %>
@@ -29,6 +30,7 @@
                 <td><%= creation.name %></td>
                 <td><%= creation.story %></td>
               </tr>
+              <% end %>
             <% end %>
             </tbody>
           </table>
@@ -45,10 +47,12 @@
             </thead>
             <tbody>
             <% @tutorials.each_with_index do |tutorial, index| %>
+              <% cache tutorial do %>
               <tr>
                 <td><%= link_to tutorial.heading, tutorial_path(tutorial) %></td>
                 <td><%= tutorial.description %></td>
               </tr>
+              <% end %>
             <% end %>
             </tbody>
           </table>
