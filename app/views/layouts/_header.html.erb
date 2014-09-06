@@ -14,8 +14,10 @@
               <%= text_field_tag 'q', @search, class: 'search-query', placeholder: 'Search' %>
             <% end %>
           </li>
-          <% @categories.each do |category| %>
-            <li class="<%= "active" if params["slug"] == category.slug %>"><%= link_to category.name.pluralize, category_path(category) %></li>
+          <% cache @categories do %>
+            <% @categories.each do |category| %>
+              <li class="<%= "active" if params["slug"] == category.slug %>"><%= link_to category.name.pluralize, category_path(category) %></li>
+            <% end %>
           <% end %>
           <li class="<%= "active" if params["controller"] == "profiles" %>"> <%= link_to "Artists", profiles_path %> </li>
           <li class="<%= "active" if params["controller"] == "tutorials" %>"> <%= link_to "Tutorials", tutorials_path %> </li>
