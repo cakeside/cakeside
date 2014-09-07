@@ -2,7 +2,7 @@
   <%= link_to edit_my_avatar_path(current_user), title: 'Change your avatar', data: { toggle: 'tooltip', placement: 'bottom', animation: 'true' }, class: 'tooltip-item' do %>
     <%= avatar_for(current_user) %>
   <% end %>
-  <ul class="nav nav-list">
+  <ul class="nav nav-list" data-no-turbolink>
     <li class="nav-header"><%= current_user.name %></li>
     <li class="<%= "active" if controller?("dashboard") %>"><%= link_to "<i class='fa fa-tachometer'></i> Dashboard".html_safe, my_root_path %></li>
     <!--
