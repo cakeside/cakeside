@@ -10,10 +10,12 @@ Cake::Application.routes.draw do
     get 'page/:page', :action => :index, :on => :collection
   end
   resources :tutorial_tags, :only => [:index, :show], :path => :tt do
-    get ':id/page/:page', :action => :show, :on => :collection
+    member do
+      get 'page/:page', action: :show
+    end
   end
 
-  resources :creations, only: [:index, :show], path: 'cakes' do
+  resources :creations, only: [:index, :show], path: :cakes do
     resources :photos, only: [:index, :show]
     resources :favorites, :only => [:index, :create]
     get 'page/:page', :action => :index, :on => :collection, as: :paginate
@@ -27,12 +29,17 @@ Cake::Application.routes.draw do
     get 'page/:page', :action => :index, :on => :collection, as: :paginate
   end
 
-  get 'categories/:slug' => "categories#show", :as => :category
-  get 'categories/:slug/page/:page' => "categories#show"
+  resources :categories, only: [:show] do
+    member do
+      get 'page/:page', action: :show, as: :paginate
+    end
+  end
 
   # /tags
   resources :creation_tags, :only => [:index, :show], :path => :t do
-    get ':id/page/:page', :action => :show, :on => :collection
+    member do
+      get 'page/:page', action: :show
+    end
   end
   get 'tags/:id' => 'creation_tags#show'
 
@@ -47,9 +54,9 @@ Cake::Application.routes.draw do
   devise_for :users, :controllers => {:registrations => 'registrations'}, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "register" }
 
   # sitemap
-  get "/sitemap.xml", :to => "sitemap#index", :defaults => {:format => :xml}
+  get "/sitemap.xml", to: "sitemap#index", defaults: { format: :xml }
 
-  root :to => "creations#index"
+  root to: "creations#index"
 
   namespace :api, :defaults => { :format => 'json' }  do
     namespace :v1 do
