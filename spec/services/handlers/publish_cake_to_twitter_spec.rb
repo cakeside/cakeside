@@ -29,7 +29,7 @@ describe PublishCakeToTwitter do
 
       it "tweets new cakes" do
         subject.handle(cake_id: id)
-        twitter.should have_received(:tweet).with("yummy By joe on http://www.blah.com/creations/88-yummy!")
+        twitter.should have_received(:tweet).with("yummy By joe on http://www.blah.com/cakes/88-yummy!")
       end
     end
 
