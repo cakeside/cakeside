@@ -15,7 +15,7 @@
     <% end -%>
     <hr />
     <div class="row-fluid">
-      <div class="span3">
+      <div class="span6">
         <% if user_signed_in? %>
           <% unless current_user == @creation.user || current_user.already_likes(@creation) %>
             <%= button_to "ADD TO FAVORITES", creation_favorites_path(:creation_id => @creation.id), :method => :post, :class => 'btn btn-primary', "data-event" => 'click-add-to-favorites' %>
@@ -23,15 +23,6 @@
       <% else %>
         <p><%= link_to "SIGN UP FOR FREE", login_path, :class => "btn btn-primary" %></p>
       <% end %>
-      </div>
-      <div class="span3">
-        <div class="row-fluid">
-          <div class="span1">
-            <a href="https://twitter.com/share" class="twitter-share-button" data-lang="en">Tweet</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-          </div>
-          <div class="span1"><a href="//pinterest.com/pin/create/button/?url=<%= "#{request.protocol}#{request.host_with_port}#{request.fullpath}" %>&media=<%= yield :product_image %>&description=<%= yield :product_social %>." data-pin-do="buttonPin" data-pin-config="none"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png"/></a></div>
-        </div>
       </div>
     </div>
     <p><%= @creation.story %></p>
