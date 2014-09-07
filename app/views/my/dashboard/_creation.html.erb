@@ -7,10 +7,10 @@
     <%= item.story %>
     <p>
     <%= link_to my_root_path(anchor: "cakes/#{item.id}/edit") do %>
-      <i class="icon-edit"> edit</i>
+      <i class="fa fa-pencil-square-o"></i> edit
     <% end %>
     <%= link_to creation_favorites_path(:creation_id => item.id) do %>
-      <i class="icon-heart"> fanclub </i>
+      <i class="fa fa-heart"></i> fanclub
     <% end %>
     </p>
   </div>

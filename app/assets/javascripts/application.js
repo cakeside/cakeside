@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery-migrate
 //= require jquery_ujs
+//= require turbolinks
 //= require jquery.ui.all
 //= require jquery.validate
 //= require jquery.embedly
@@ -28,4 +29,6 @@
 //= require backbone-model-file-upload
 //= require_tree .
 
-$('.tooltip-item').tooltip();
+$(document).on("page:load", function() {
+  $('.tooltip-item').tooltip();
+});
