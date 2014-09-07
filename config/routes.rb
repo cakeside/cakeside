@@ -21,6 +21,7 @@ Cake::Application.routes.draw do
 
   get '/creations' => redirect('/cakes')
   get 'creations/:id', to: redirect('/cakes/%{id}')
+  get 'creations/page/:page', to: redirect('/cakes/page/%{page}')
 
   resources :profiles, :only => [:index, :show] do
     get 'page/:page', :action => :index, :on => :collection, as: :paginate
