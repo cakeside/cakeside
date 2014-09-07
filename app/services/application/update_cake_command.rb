@@ -9,7 +9,7 @@ class UpdateCakeCommand
     cake = current_user.creations.find(id)
     current_user.tag(cake, with: tags, on: :tags)
 
-    if cake.update_attributes(creation_params.reject { |key, value| key == "tags" })
+    if cake.update(creation_params.reject { |key, value| key == "tags" })
       @context.update_cake_succeeded(cake)
     else
       @context.update_cake_failed(cake)
