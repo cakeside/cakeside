@@ -1,6 +1,6 @@
 module My
   class AvatarsController < BaseController
-    before_filter :find_or_build_avatar
+    before_action :find_or_build_avatar
 
     def edit
     end

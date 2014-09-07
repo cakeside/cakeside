@@ -1,5 +1,5 @@
 module My
   class BaseController < ApplicationController
-    before_filter :authenticate!
+    before_action :authenticate!
   end
 end

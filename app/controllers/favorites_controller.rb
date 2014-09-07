@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-  before_filter :authenticate!
+  before_action :authenticate!
 
   def index
     @creation = FindCreationQuery.new.fetch(params[:creation_id])

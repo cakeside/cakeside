@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_filter :authenticate!, :except => [:index, :show]
+  before_action :authenticate!, :except => [:index, :show]
 
   def index
     @profiles = User.includes(:avatar).where('creations_count > 0').order(:creations_count => :desc).page(params[:page]).per(12)
