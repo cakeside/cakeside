@@ -7,7 +7,7 @@ describe CategoriesController do
   describe "GET show" do
     context "when there is a category that matches the slug" do
       context "when there are creations in the category" do
-        before { get :show, :slug => category.slug }
+        before { get :show, id: category.slug }
 
         it "should return the creations in the category" do
           assigns(:creations).should include(creation)
@@ -19,9 +19,9 @@ describe CategoriesController do
       end
 
       context "when there are no creations in the category" do
-        let(:other_category) { create(:category, :slug => 'booooo') }
+        let(:other_category) { create(:category, slug: 'booooo') }
 
-        before { get :show, :slug => other_category.to_param }
+        before { get :show, id: other_category.to_param }
 
         it "should return zero creations" do
           assigns(:creations).should be_empty
