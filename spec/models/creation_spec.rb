@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 describe Creation do
-  let(:sut) { Creation.new }
+  subject { Creation.new }
 
   describe "should be able to set attributes" do
     it "should save name" do
-      sut.name="HELLO WORLD"
-      sut.category = create(:category)
-      sut.save!
-      Creation.find(sut.id).name.should == "HELLO WORLD"
+      subject.name="HELLO WORLD"
+      subject.category = create(:category)
+      subject.save!
+      Creation.find(subject.id).name.should == "HELLO WORLD"
     end
   end
 
