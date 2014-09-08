@@ -4,7 +4,7 @@ class CreationTagsController < ApplicationController
   end
 
   def show
-    @tag = params[:id].downcase.gsub(/ /, '-')
-    @creations = Creation.includes([:user, :tags, :photos]).tagged_with([@tag]).where('photos_count > 0').page(params[:page]).per(12)
+    @tag = params[:id].downcase.parameterize
+    @creations = Creation.includes([:user, :photos]).tagged_with([@tag]).where('photos_count > 0').page(params[:page]).per(12)
   end
 end
