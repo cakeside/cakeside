@@ -8,9 +8,18 @@
       this.page.remote_auth_s3 = '<%= disqus_auth %>';
       this.page.api_key = '<%= ENV['DISQUS_API_KEY'] %>';
     };
-    CakeSide.initialize({
-      access_token: '<%= current_user.authentication_token %>',
-      disqus_shortname: disqus_shortname,
+    $(document).ready(function(){
+      CakeSide.initialize({
+        access_token: '<%= current_user.authentication_token %>',
+        disqus_shortname: disqus_shortname,
+      });
+    });
+    $(document).on('page:load', function(){
+      Backbone.history.stop();
+      CakeSide.initialize({
+        access_token: '<%= current_user.authentication_token %>',
+        disqus_shortname: disqus_shortname,
+      });
     });
   <% end %>
 <% end -%>
