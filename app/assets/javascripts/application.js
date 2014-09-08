@@ -32,7 +32,7 @@
 var initialize = function(){
   $('.tooltip-item').tooltip();
   $(window).scroll(function(){
-    if ( $(window).scrollTop() > ($(document).height() - $(window).height()) ) {
+    if ($(window).scrollTop() >= ($(document).height() - $(window).height())*0.8){
       $('.more-button').trigger('click');
     }
   });
