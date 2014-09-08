@@ -31,4 +31,9 @@
 
 $(document).on("page:load", function() {
   $('.tooltip-item').tooltip();
+  $(window).scroll(function(){
+    if ( $(window).scrollTop() > ($(document).height() - $(window).height()) ) {
+      $('.more-button').trigger('click');
+    }
+  });
 });

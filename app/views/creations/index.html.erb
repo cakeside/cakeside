@@ -1,13 +1,4 @@
 <% provide(:description, "CakeSide is a free site to share your cake creations and ideas with other cake fanatics like yourself") -%>
-<%= content_for(:javascript) do %>
-<script type="text/javascript" charset="utf-8">
-  $(window).scroll(function(){
-    if ( $(window).scrollTop() > ($(document).height() - $(window).height()) ) {
-      $('.more-button').trigger('click');
-    }
-  });
-</script>
-<% end %>
 <% unless user_signed_in?  -%>
   <div class="row-fluid">
     <div class="span6">

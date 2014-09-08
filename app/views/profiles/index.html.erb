@@ -1,13 +1,3 @@
-<%= content_for(:javascript) do %>
-<script type="text/javascript" charset="utf-8">
-  $(window).scroll(function(){
-    if ( $(window).scrollTop() > ($(document).height() - $(window).height()) ) {
-      $('.more-button').trigger('click');
-    }
-  });
-</script>
-<% end %>
-
 <div id="bakery">
   <%= render partial: 'index' %>
 </div>
