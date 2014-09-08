@@ -29,11 +29,13 @@
 //= require backbone-model-file-upload
 //= require_tree .
 
-$(document).on("page:load", function() {
+var initialize = function(){
   $('.tooltip-item').tooltip();
   $(window).scroll(function(){
     if ( $(window).scrollTop() > ($(document).height() - $(window).height()) ) {
       $('.more-button').trigger('click');
     }
   });
-});
+};
+$(document).ready(initialize);
+$(document).on("page:load", initialize);
