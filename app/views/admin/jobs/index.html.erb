@@ -1,6 +1,8 @@
 <div class="row-fluid">
-  <div class="span12">
-    <%= render :partial => 'admin/shared/admin_nav' %>
+  <div class="span2">
+    <%= render partial: "my/shared/my_nav" %>
+  </div>
+  <div class="span10">
     <h1>Jobs <small><%= Time.now.utc %></small></h1>
     <table class="table table-condensed">
       <thead>

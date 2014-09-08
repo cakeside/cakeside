@@ -1,6 +1,8 @@
 <div class="row-fluid">
-  <div class="span12">
-    <%= render :partial => 'admin/shared/admin_nav' %>
+  <div class="span2">
+    <%= render partial: "my/shared/my_nav" %>
+  </div>
+  <div class="span10">
     <dl class="dl-horizontal">
       <% @recent_activities.each do |activity| %>
         <%= render "activities/#{activity.subject.class.to_s.downcase}", subject: activity.subject %>
