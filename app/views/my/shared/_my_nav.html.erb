@@ -24,10 +24,17 @@
         <i class="fa fa-pencil-square"></i> New Tutorial
       <% end %>
     </li>
-    <li class="nav-header">Other</li>
     <% if current_user.admin? %>
-    <li><%= link_to t('.admin'), admin_root_path %></li>
+      <li class="nav-header">Admin</li>
+      <li><%= link_to "Users", admin_users_path %></li>
+      <li><%= link_to "Jobs", admin_jobs_path %></li>
+      <li><%= link_to "Activity", admin_activities_path %></li>
+      <li><%= link_to "Subscriptions", admin_subscriptions_path %></li>
+      <li><%= link_to "Photos", admin_photos_path %></li>
+      <li><%= link_to "Blobs", admin_blobs_path %></li>
+      <li><%= link_to "Sessions", admin_sessions_path %></li>
     <% end %>
+    <li class="nav-header">Other</li>
     <li><%= link_to t('.logout'), logout_path, method: :delete %></li>
   </ul>
 </div>

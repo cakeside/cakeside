@@ -1,6 +1,5 @@
 module Admin
   class AdminController < ApplicationController
-    layout "admin"
     before_action :restrict_access!
 
     private
