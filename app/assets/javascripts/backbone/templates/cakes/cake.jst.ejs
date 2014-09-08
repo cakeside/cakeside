@@ -9,11 +9,13 @@
     <%= story %>
     <p>
     <a href="#cakes/<%= id %>/edit">
-      <i class="icon-edit"> edit</i>
+      <i class="fa fa-edit"></i> edit
     </a>
     <a href="<%= Routes.creation_favorites_path(id) %>">
-      <i class="icon-heart"> fanclub </i>
+      <i class="fa fa-heart"></i> fanclub
     </a>
-    <span class="badge badge-warning"><i class="icon-comments"> <a href="/creations/<%= id %>#disqus_thread" data-disqus-identifier="c-<%= id %>"></a></i></span>
+    <span class="badge badge-warning">
+      <i class="fa fa-comment"> </i> <a href="/creations/<%= id %>#disqus_thread" data-disqus-identifier="c-<%= id %>"></a>
+      </span>
     </p>
   </div>
