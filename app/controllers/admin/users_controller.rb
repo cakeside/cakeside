@@ -5,7 +5,7 @@ module Admin
     end
 
     def show
-      @user = User.find(params[:id])
+      @user = User.includes(creations: :photos).find(params[:id])
     end
   end
 end

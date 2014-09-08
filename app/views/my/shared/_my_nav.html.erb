@@ -9,7 +9,7 @@
     <li id="cakes-tab" class="<%= "active" if controller?("cakes") %>"><%= link_to "Creations", my_root_path(anchor: 'cakes') %></li>
     <li id="tutorial-tab"><%= link_to "Tutorials", my_root_path(anchor: 'tutorials') %></li>
     -->
-    <li class="<%= "active" if controller?("favorites") %>"><%= link_to "<i class='fa fa-heart'></i> Favorites".html_safe, my_favorites_path %></li>
+    <li class="<%= "active" if controller?("favorites") %>"><%= link_to "<i class='fa fa-star'></i> Favorites".html_safe, my_favorites_path %></li>
     <li class="<%= 'active' if controller?('settings') %>"><%= link_to "<i class='fa fa-cog'></i> Settings".html_safe, my_settings_path %></li>
     <li class="<%= 'active' if controller?('passwords') %>"><%= link_to "<i class='fa fa-eye'></i> Password".html_safe, my_passwords_path %></li>
     <li class="<%= 'active' if controller?('avatars') %>"><%= link_to "<i class='fa fa-picture-o'></i> Picture".html_safe, edit_my_avatar_path(current_user) %></li>
@@ -26,11 +26,11 @@
     </li>
     <% if current_user.admin? %>
       <li class="nav-header">Admin</li>
-      <li><%= link_to "Users", admin_users_path %></li>
-      <li><%= link_to "Jobs", admin_jobs_path %></li>
-      <li><%= link_to "Activity", admin_activities_path %></li>
+      <li><%= link_to "<i class='fa fa-users'></i> Users".html_safe, admin_users_path %></li>
+      <li><%= link_to "<i class='fa fa-database'></i> Jobs".html_safe, admin_jobs_path %></li>
+      <li><%= link_to "<i class='fa fa-cubes'></i> Activity".html_safe, admin_activities_path %></li>
       <li><%= link_to "Subscriptions", admin_subscriptions_path %></li>
-      <li><%= link_to "Photos", admin_photos_path %></li>
+      <li><%= link_to "<i class='fa fa-photo'></i> Photos".html_safe, admin_photos_path %></li>
       <li><%= link_to "Blobs", admin_blobs_path %></li>
       <li><%= link_to "Sessions", admin_sessions_path %></li>
     <% end %>

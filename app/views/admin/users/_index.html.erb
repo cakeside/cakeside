@@ -1,7 +1,6 @@
 <table class="table table-striped table-condensed">
   <thead>
     <tr>
-      <td>signins</td>
       <td>cakes</td>
       <td>name</td>
       <td>email</td>
@@ -14,7 +13,6 @@
   <tbody>
     <%- @users.each do |user| %>
       <tr>
-        <td><%= user.sign_in_count %></td>
         <td><%= user.creations_count %></td>
         <td><%= link_to user.name, admin_user_path(user) %></td>
         <td><%= mail_to user.email %></td>
