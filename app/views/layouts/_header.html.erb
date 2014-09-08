@@ -23,13 +23,13 @@
           <li class="<%= "active" if params["controller"] == "tutorials" %>"> <%= link_to "Tutorials", tutorials_path %> </li>
         </ul>
         <% if user_signed_in? %>
-        <ul class="nav pull-right">
+        <ul class="nav pull-right" data-no-turbolink>
           <li>
             <%= link_to my_root_path do %>
               <%= avatar_for(current_user, size: 24) %> <%= current_user.name %>
             <% end %>
           </li>
-          <li class="dropdown" data-no-turbolink>
+          <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
               <i class="fa fa-plus"></i> <b class="caret"></b>
             </a>
