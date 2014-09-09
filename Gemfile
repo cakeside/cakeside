@@ -39,6 +39,7 @@ gem 'aws-sdk', '~> 1.42.0'
 gem 'mime-types', '~> 1.25.1'
 gem 'ejs', '~> 1.1.1'
 gem 'js-routes', '~> 0.9.8'
+gem 'geoip'
 
 group :development do
   gem 'capistrano', '~> 3.0', require: false
