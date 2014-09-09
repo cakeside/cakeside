@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :load_header
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :extend_session_cookie
+  #before_action :extend_session_cookie
   helper_method :current_user, :user_signed_in?
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
