@@ -7,6 +7,6 @@ class ProfilesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @creations = @user.creations.includes([:user, :photos])
+    @creations = @user.creations.includes(:photos)
   end
 end
