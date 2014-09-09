@@ -1,6 +1,7 @@
 class UserSession < ActiveRecord::Base
   belongs_to :user
   before_create :set_unique_key
+  attr_readonly :key
   scope :active, -> { where("accessed_at >= ?", 2.weeks.ago).where(revoked_at: nil).includes(:user) }
 
   def revoke!
