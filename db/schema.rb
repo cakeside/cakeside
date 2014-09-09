@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140822032550) do
+ActiveRecord::Schema.define(version: 20140909030826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -145,8 +145,6 @@ ActiveRecord::Schema.define(version: 20140822032550) do
     t.integer "taggings_count", default: 0
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
-
   create_table "tutorials", force: true do |t|
     t.string   "heading"
     t.text     "description"
@@ -170,6 +168,10 @@ ActiveRecord::Schema.define(version: 20140822032550) do
     t.string   "user_agent"
     t.datetime "accessed_at"
     t.datetime "revoked_at"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "city"
+    t.string   "country"
   end
 
   add_index "user_sessions", ["accessed_at"], name: "index_user_sessions_on_accessed_at", using: :btree

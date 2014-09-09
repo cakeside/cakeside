@@ -13,6 +13,7 @@ class UserSession < ActiveRecord::Base
     self.accessed_at = Time.now
     self.ip = request.ip
     self.user_agent = request.user_agent
+    apply_geo_location_information_for(request)
     if save
       {
         value: key,
@@ -35,5 +36,14 @@ class UserSession < ActiveRecord::Base
 
   def set_unique_key
     self.key = SecureRandom.urlsafe_base64(32)
+  end
+
+  def apply_geo_location_information_for(request)
+    city = GeoIP.new('config/GeoLiteCity.dat').city(request.ip)
+    return if city.nil?
+    self.latitude = city.latitude
+    self.longitude = city.longitude
+    self.city = city.city_name
+    self.country = city.country_name
   end
 end
