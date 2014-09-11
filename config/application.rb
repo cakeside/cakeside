@@ -45,5 +45,6 @@ module Cake
       :sender_address => %{"notifier" <notifier@cakeside.com>},
       :exception_recipients => ENV['EXCEPTION_EMAIL_ADDRESS'].split(" "),
     } unless Rails.env.test?
+    config.middleware.use Rack::Attack
   end
 end
