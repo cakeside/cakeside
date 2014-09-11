@@ -5,7 +5,7 @@
   <div class="span10">
     <dl class="dl-horizontal">
       <% @recent_activities.each do |activity| %>
-        <%= render "activities/#{activity.subject.class.to_s.downcase}", subject: activity.subject %>
+        <%= render activity.subject.class.to_s.downcase, subject: activity.subject %>
       <% end %>
     </dl>
   </div>
