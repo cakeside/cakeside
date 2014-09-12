@@ -51,6 +51,7 @@ group :development do
   gem 'better_errors'
   gem 'lol_dba'
   gem 'spring'
+  gem 'pry-rails'
 end
 
 group :development, :test do
