@@ -2,7 +2,7 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
   include BCrypt
-  #before_save :ensure_authentication_token
+  before_save :ensure_authentication_token
   after_create :send_welcome_email unless Rails.env.test?
 
   validates :name,  :presence => true
@@ -75,6 +75,12 @@ class User < ActiveRecord::Base
     creations.create(name: name, category_id: category.id)
   end
 
+  def valid_password?(password)
+    bcrypt = ::BCrypt::Password.new(encrypted_password)
+    password = ::BCrypt::Engine.hash_secret(password, bcrypt.salt)
+    secure_compare(password, encrypted_password)
+  end
+
   class << self
     def ordered
       User.order(:creations_count => :desc)
@@ -88,23 +94,28 @@ class User < ActiveRecord::Base
     def login(username, password)
       user = User.find_by(email: username)
       return false if user.nil?
-      bcrypt = ::BCrypt::Password.new(user.encrypted_password)
-      password = ::BCrypt::Engine.hash_secret(password, bcrypt.salt)
-      if secure_compare(password, user.encrypted_password)
-        UserSession.create!(user: user)
+      if user.valid_password?(password)
+        UserSession.create!(user: self)
       else
         false
       end
     end
 
-    # constant-time comparison algorithm to prevent timing attacks
-    def secure_compare(a, b)
-      return false if a.blank? || b.blank? || a.bytesize != b.bytesize
-      l = a.unpack "C#{a.bytesize}"
+  end
 
-      res = 0
-      b.each_byte { |byte| res |= byte ^ l.shift }
-      res == 0
-    end
+  private
+
+  # constant-time comparison algorithm to prevent timing attacks
+  def secure_compare(a, b)
+    return false if a.blank? || b.blank? || a.bytesize != b.bytesize
+    l = a.unpack "C#{a.bytesize}"
+
+    res = 0
+    b.each_byte { |byte| res |= byte ^ l.shift }
+    res == 0
+  end
+
+  def ensure_authentication_token
+    self.authentication_token = SecureRandom.hex(32) if self.authentication_token.blank?
   end
 end

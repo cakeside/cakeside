@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :load_header
-  before_action :configure_permitted_parameters, if: :devise_controller?
+  #before_action :configure_permitted_parameters, if: :devise_controller?
   #before_action :extend_session_cookie
   helper_method :current_user, :user_signed_in?
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
@@ -20,11 +20,11 @@ class ApplicationController < ActionController::Base
     current_user
   end
 
-  protected
+  #protected
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:user) { |u| u.permit(:name, :city, :email) }
-  end
+  #def configure_permitted_parameters
+    #devise_parameter_sanitizer.for(:user) { |u| u.permit(:name, :city, :email) }
+  #end
 
   private
 
