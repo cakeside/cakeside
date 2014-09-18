@@ -1,5 +1,8 @@
+require 'bcrypt'
+
 class User < ActiveRecord::Base
-  before_save :ensure_authentication_token
+  include BCrypt
+  #before_save :ensure_authentication_token
   after_create :send_welcome_email unless Rails.env.test?
 
   validates :name,  :presence => true
@@ -32,6 +35,15 @@ class User < ActiveRecord::Base
     return false unless password == confirmation
     self.password = password
     self.save
+  end
+
+  def password
+    @password ||= Password.new(password_hash)
+  end
+
+  def password=(new_password)
+    @password = Password.create(new_password)
+    self.encrypted_password = @password
   end
 
   def has_avatar?
@@ -77,7 +89,7 @@ class User < ActiveRecord::Base
       user = User.find_by(email: username)
       return false if user.nil?
       bcrypt = ::BCrypt::Password.new(user.encrypted_password)
-      password = ::BCrypt::Engine.hash_secret("#{password}#{User.pepper}", bcrypt.salt)
+      password = ::BCrypt::Engine.hash_secret(password, bcrypt.salt)
       if secure_compare(password, user.encrypted_password)
         UserSession.create!(user: user)
       else

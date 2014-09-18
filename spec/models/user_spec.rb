@@ -10,7 +10,6 @@ describe User do
     it { should respond_to :latitude }
     it { should respond_to :longitude }
     it { should respond_to :password }
-    it { should respond_to :remember_me }
     it { should respond_to :website }
     it { should respond_to :interests }
     it { should respond_to :creations }
