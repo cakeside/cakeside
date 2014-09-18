@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   validates :name,  :presence => true
   validates :email, presence: true, uniqueness: true, email: true
   validates :website, :format => URI::regexp(%w(http https)), :allow_blank => true
+  validates :password, length: { in: 6..20 }
   #devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
   has_many :creations, :dependent => :destroy
@@ -47,7 +48,7 @@ class User < ActiveRecord::Base
   end
 
   def password
-    @password ||= Password.new(password_hash)
+    @password ||= Password.new(encrypted_password)
   end
 
   def password=(new_password)

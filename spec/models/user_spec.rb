@@ -32,6 +32,12 @@ describe User do
       expect(subject.valid?).to be_falsey
       expect(subject.errors[:email]).to_not be_empty
     end
+
+    it 'validates the presence of a password' do
+      subject.password = nil
+      expect(subject.valid?).to be_falsey
+      expect(subject.errors[:password]).to_not be_empty
+    end
   end
 
   describe "when a website url is supplied" do
