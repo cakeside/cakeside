@@ -18,6 +18,22 @@ describe User do
     it { should respond_to :avatar }
   end
 
+  describe "validations" do
+    subject { build(:user) }
+
+    it 'validates the email' do
+      subject.email = 'blah'
+      expect(subject.valid?).to be_falsey
+      expect(subject.errors[:email]).to_not be_empty
+    end
+
+    it 'validates the presence of the email' do
+      subject.email = nil
+      expect(subject.valid?).to be_falsey
+      expect(subject.errors[:email]).to_not be_empty
+    end
+  end
+
   describe "when a website url is supplied" do
     describe "when the url is valid" do
       let(:user) { build(:user) }

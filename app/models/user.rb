@@ -1,11 +1,20 @@
 require 'bcrypt'
 
+class EmailValidator < ActiveModel::EachValidator
+  def validate_each(record, attribute, value)
+    unless value =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+      record.errors[attribute] << (options[:message] || "is not an email")
+    end
+  end
+end
+
 class User < ActiveRecord::Base
   include BCrypt
   before_save :ensure_authentication_token
   after_create :send_welcome_email unless Rails.env.test?
 
   validates :name,  :presence => true
+  validates :email, presence: true, uniqueness: true, email: true
   validates :website, :format => URI::regexp(%w(http https)), :allow_blank => true
   #devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
 
@@ -118,4 +127,5 @@ class User < ActiveRecord::Base
   def ensure_authentication_token
     self.authentication_token = SecureRandom.hex(32) if self.authentication_token.blank?
   end
+
 end
