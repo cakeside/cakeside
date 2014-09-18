@@ -1,0 +1,27 @@
+<div class="row-fluid">
+  <div class="span12">
+    <h1>Reset My Password</h1>
+    <%= form_for(@user, url: password_path(@user.reset_password_token), html: { method: :put }, class: "form-horizontal") do |f| %>
+      <fieldset>
+        <legend>Enter your new password and confirm it</legend>
+        <div class="control-group">
+          <%= f.label :password, "New password", class: "control-label" %>
+          <div class="controls">
+            <%= f.password_field :password, class: "input-xlarge" %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :password_confirmation, "Confirm new password", class: "control-label" %>
+          <div class="controls">
+            <%= f.password_field :password_confirmation, class: "input-xlarge" %>
+          </div>
+        </div>
+        <div class="form-actions">
+          <%= f.hidden_field :reset_password_token %>
+          <%= f.submit "Change my password", class: 'btn btn-primary' %>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+</div>
+
