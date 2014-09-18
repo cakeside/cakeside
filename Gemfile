@@ -7,14 +7,13 @@ gem 'coffee-rails', '~> 4.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+gem 'bcrypt-ruby'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', '~> 0.4.0'
 end
 
 # to remove
-#gem 'devise', '~> 3.0.0'
-gem 'bcrypt-ruby'
 gem 'carrierwave', '~> 0.9.0'
 gem 'rmagick', '~> 2.13.0'
 gem 'acts-as-taggable-on', '~> 3.3.0'
