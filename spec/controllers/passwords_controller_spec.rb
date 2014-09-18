@@ -44,19 +44,12 @@ describe PasswordsController do
     let(:reset_token) { SecureRandom.hex(32) }
     let(:password) { SecureRandom.hex(8) }
 
-    it "changes the users password" do
-      allow(User).to receive(:find_by).with(reset_password_token: reset_token).and_return(user)
+    it "resets the users password" do
+      allow(PasswordReset).to receive(:reset).with(reset_token, password)
 
       patch :update, id: reset_token, user: { password: password }
-      expect(user).to have_received(:change_password).with(password)
+      expect(PasswordReset).to have_received(:reset).with(reset_token, password)
       expect(response).to redirect_to(new_session_path)
-    end
-
-    it "redirects to the home page if the reset token is not known" do
-      allow(User).to receive(:find_by).with(reset_password_token: reset_token).and_return(nil)
-
-      patch :update, id: reset_token, user: { password: password }
-      expect(response).to redirect_to(root_path)
     end
   end
 end

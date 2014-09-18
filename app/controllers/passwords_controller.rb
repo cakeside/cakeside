@@ -14,10 +14,7 @@ class PasswordsController < ApplicationController
   end
 
   def update
-    user = User.find_by(reset_password_token: params[:id])
-    redirect_to root_path and return if user.nil?
-
-    user.change_password(params[:user][:password])
+    PasswordReset.reset(params[:id], params[:user][:password])
     redirect_to new_session_path
   end
 end
