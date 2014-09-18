@@ -95,7 +95,7 @@ class User < ActiveRecord::Base
       user = User.find_by(email: username)
       return false if user.nil?
       if user.valid_password?(password)
-        UserSession.create!(user: self)
+        UserSession.create!(user: user)
       else
         false
       end
