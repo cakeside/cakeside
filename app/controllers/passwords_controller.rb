@@ -14,7 +14,12 @@ class PasswordsController < ApplicationController
   end
 
   def update
-    PasswordReset.reset(params[:id], params[:user][:password])
-    redirect_to new_session_path
+    user = PasswordReset.reset(params[:id], params[:user][:password])
+    if user.valid?
+      redirect_to new_session_path
+    else
+      flash[:error] = user.errors.full_messages
+      redirect_to edit_password_path(params[:id])
+    end
   end
 end

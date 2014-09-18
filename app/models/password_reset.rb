@@ -9,7 +9,9 @@ class PasswordReset
   def self.reset(reset_token, new_password)
     user = User.find_by(reset_password_token: reset_token)
     return if user.nil?
-    user.change_password(new_password)
-    user.update(reset_password_token: nil, reset_password_sent_at: nil)
+    if user.change_password(new_password)
+      user.update(reset_password_token: nil, reset_password_sent_at: nil)
+    end
+    user
   end
 end
