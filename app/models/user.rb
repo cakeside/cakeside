@@ -48,12 +48,12 @@ class User < ActiveRecord::Base
   end
 
   def password
-    @password ||= Password.new(encrypted_password)
+    @password
   end
 
   def password=(new_password)
-    @password = Password.create(new_password)
-    self.encrypted_password = @password
+    @password = new_password
+    self.encrypted_password = Password.create(new_password)
   end
 
   def has_avatar?
