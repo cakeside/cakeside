@@ -17,4 +17,20 @@ describe "password retrieval", :js => true do
       page.should have_content(I18n.t('devise.passwords.send_instructions'))
     end
   end
+
+  context "when a password is reset" do
+    let(:user) { create(:user, reset_password_token: SecureRandom.hex(32)) }
+
+    it "lets them log in with the new password" do
+      visit edit_password_path(user.reset_password_token)
+      fill_in "user_password", with: 'donkey'
+      click_button "Change my password"
+      within('.form-inline') do
+        fill_in('session_username', with: user.email)
+        fill_in('session_password', with: "donkey")
+      end
+      click_button("Sign In")
+      expect(page).to have_content("Log Out")
+    end
+  end
 end
