@@ -1,13 +1,14 @@
 require 'rails_helper'
 
 describe ProfilesController do
-  include Devise::TestHelpers
+  #include Devise::TestHelpers
 
   let(:user) { create(:user) }
   let!(:creation) { create(:creation, user: user) }
 
   before (:each) do
-    request.env['warden'] = double(Warden, :authenticate => user, :authenticate! => user)
+    #request.env['warden'] = double(Warden, :authenticate => user, :authenticate! => user)
+    http_login(user)
   end
 
   describe "GET 'index'" do
