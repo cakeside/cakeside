@@ -18,7 +18,6 @@ class User < ActiveRecord::Base
   validates :website, :format => URI::regexp(%w(http https)), :allow_blank => true
   #validates :password, length: { in: 6..20 }, unless: Proc.new { |x| x.password.blank? }
 
-  #devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
   validates_presence_of     :password, :if => :password_required?
   validates_confirmation_of :password, :if => :password_required?
   validates_length_of       :password, :within => 6..20, :allow_blank => true
