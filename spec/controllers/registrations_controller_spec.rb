@@ -7,7 +7,7 @@ describe RegistrationsController do
     it 'creates a new user' do
       User.stub(:login).with('mo@cakeside.com', 'password').and_return(user_session)
 
-      post :create, user: { name: 'mo', email: 'mo@cakeside.com', password: 'password', password_confirmation: 'password' }
+      post :create, user: { name: 'mo', email: 'mo@cakeside.com', password: 'password' }
 
       expect(User.count).to eql(1)
       expect(response).to redirect_to(my_root_path)
