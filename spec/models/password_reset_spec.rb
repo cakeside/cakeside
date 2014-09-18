@@ -28,12 +28,25 @@ describe PasswordReset do
   end
 
   describe ".reset" do
+    let(:reset_token) { SecureRandom.hex(32) }
+    let(:password) { SecureRandom.hex(8) }
+    let!(:user) { create(:user, reset_password_token: reset_token) }
+
     it "changes the users password" do
-      
+      PasswordReset.reset(reset_token, password)
+      user.reload
+      expect(user.valid_password?(password)).to be_truthy
     end
 
     it "deletes the reset token" do
-      
+      PasswordReset.reset(reset_token, password)
+      user.reload
+      expect(user.reset_password_token).to be_nil
+      expect(user.reset_password_sent_at).to be_nil
+    end
+
+    it "does nothing if the token cannot be found" do
+      PasswordReset.reset(SecureRandom.hex(32), password)
     end
   end
 end
