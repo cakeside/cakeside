@@ -52,7 +52,7 @@ Cake::Application.routes.draw do
 
   # /users
   #devise_for :users, :controllers => {:registrations => 'registrations'}, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "register" }
-  resources :passwords, only: [:new, :create, :edit]
+  resources :passwords, only: [:new, :create, :edit, :update]
   resource :registration, only: [:create]
 
   # sitemap

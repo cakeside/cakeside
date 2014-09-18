@@ -12,4 +12,12 @@ class PasswordsController < ApplicationController
     @user = User.find_by(reset_password_token: params[:id])
     redirect_to root_path if @user.nil?
   end
+
+  def update
+    user = User.find_by(reset_password_token: params[:id])
+    redirect_to root_path and return if user.nil?
+
+    user.change_password(params[:user][:password])
+    redirect_to new_session_path
+  end
 end
