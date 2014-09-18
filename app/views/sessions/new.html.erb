@@ -31,9 +31,9 @@
           <%= password_field_tag 'session[password]', '', :placeholder => 'Password', :class=> "input-medium" %>
           <%= f.submit "Sign In", :class => "btn" %>
           <br />
-          <label for="checkbox" class="checkbox"> <%= check_box_tag 'session[remember_me]' %> Remember me <%= link_to "Forgot your password?", new_password_path(:user) %></label>
+          <label for="checkbox" class="checkbox"> <%= check_box_tag 'session[remember_me]' %> Remember me <%= link_to "Forgot your password?", new_password_path %></label>
         <% end %>
-        <%= form_for(User.new, as: :user, url: registration_path(:user), html: { :class=> 'form-horizontal' }) do |f| %>
+        <%= form_for(User.new, as: :user, url: registration_path, html: { :class=> 'form-horizontal' }) do |f| %>
           <fieldset>
             <legend>New to CakeSide? Join Us!</legend>
           </fieldset>
@@ -53,12 +53,6 @@
             <%= f.label :password, 'Password', :class => "control-label" %>
             <div class="controls">
               <%= f.password_field :password, :placeholder => 'required' %>
-            </div>
-          </div>
-          <div class="control-group">
-            <%= f.label :password_confirmation, 'Confirm password', :class => "control-label" %>
-            <div class="controls">
-              <%= f.password_field :password_confirmation, :placeholder => 'required' %>
             </div>
           </div>
           <div class="control-group">

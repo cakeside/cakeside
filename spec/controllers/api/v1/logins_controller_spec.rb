@@ -5,7 +5,7 @@ describe Api::V1::LoginsController do
     let(:user) { create(:user) }
 
     it "should return the auth token" do
-      post :create, { :email => user.email, :password => user.password }
+      post :create, { :email => user.email, :password => 'password' }
       response.body.should == { auth_token: user.authentication_token }.to_json
     end
   end

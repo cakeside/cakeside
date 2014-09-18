@@ -33,13 +33,6 @@ module Cake
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    config.to_prepare {
-      Devise::SessionsController.layout "application"
-      # Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "users" }
-      Devise::ConfirmationsController.layout "application"
-      Devise::UnlocksController.layout "application"
-      Devise::PasswordsController.layout "application"
-    }
     config.middleware.use ExceptionNotification::Rack, :email => {
       :email_prefix => "[Boom! #{Rails.env}] ",
       :sender_address => %{"notifier" <notifier@cakeside.com>},

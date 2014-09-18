@@ -1,9 +1,18 @@
-class RegistrationsController < Devise::RegistrationsController
-  def after_sign_in_path_for(resource)
-    my_root_path(anchor: 'cakes')
+class RegistrationsController < ApplicationController
+  def create
+    user = User.create(secure_params)
+    if user.save
+      cookies.signed[:raphael] = User.login(secure_params[:email], secure_params[:password]).access(request)
+      redirect_to my_root_path
+    else
+      flash[:error] = user.errors.full_messages
+      redirect_to new_session_path
+    end
   end
 
-  def sign_up_params
-    params.require(:user).permit(:name, :city, :email, :password, :password_confirmation)
+  private
+
+  def secure_params
+    params.require(:user).permit(:name, :email, :password)
   end
 end

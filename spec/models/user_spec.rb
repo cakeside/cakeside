@@ -10,13 +10,34 @@ describe User do
     it { should respond_to :latitude }
     it { should respond_to :longitude }
     it { should respond_to :password }
-    it { should respond_to :remember_me }
     it { should respond_to :website }
     it { should respond_to :interests }
     it { should respond_to :creations }
     it { should respond_to :favorites }
     it { should respond_to :tutorials }
     it { should respond_to :avatar }
+  end
+
+  describe "validations" do
+    subject { build(:user) }
+
+    it 'validates the email' do
+      subject.email = 'blah'
+      expect(subject.valid?).to be_falsey
+      expect(subject.errors[:email]).to_not be_empty
+    end
+
+    it 'validates the presence of the email' do
+      subject.email = nil
+      expect(subject.valid?).to be_falsey
+      expect(subject.errors[:email]).to_not be_empty
+    end
+
+    it 'validates the presence of a password' do
+      subject.password = nil
+      expect(subject.valid?).to be_falsey
+      expect(subject.errors[:password]).to_not be_empty
+    end
   end
 
   describe "when a website url is supplied" do

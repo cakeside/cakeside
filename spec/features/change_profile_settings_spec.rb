@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "Change settings" do
+describe "Change settings", js: true do
   let(:user) { create(:user, :password => "password") }
 
   before :each do

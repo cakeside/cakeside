@@ -50,8 +50,8 @@ Cake::Application.routes.draw do
   # /search
   get "search" => 'search#index'
 
-  # /users
-  devise_for :users, :controllers => {:registrations => 'registrations'}, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "register" }
+  resources :passwords, only: [:new, :create, :edit, :update]
+  resource :registration, only: [:create]
 
   # sitemap
   get "/sitemap.xml", to: "sitemap#index", defaults: { format: :xml }
