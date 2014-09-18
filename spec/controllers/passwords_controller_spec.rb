@@ -21,4 +21,21 @@ describe PasswordsController do
       expect(flash[:notice]).to_not be_empty
     end
   end
+
+  describe "#edit" do
+    let(:reset_token) { SecureRandom.hex(32) }
+    let(:user) { build(:user) }
+
+    it "loads the password reset token" do
+      allow(User).to receive(:find_by).with(reset_password_token: reset_token).and_return(user)
+      get :edit, id: reset_token
+      expect(assigns(:user)).to eql(user)
+    end
+
+    it "redirects to the homepage if the user cannot be found" do
+      allow(User).to receive(:find_by).with(reset_password_token: reset_token).and_return(nil)
+      get :edit, id: reset_token
+      expect(response).to redirect_to(root_path)
+    end
+  end
 end
