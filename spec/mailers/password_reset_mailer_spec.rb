@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe PasswordResetMailer do
   describe '#send_password_reset_instructions_to' do
-    let(:user) { build(:user) }
+    let(:user) { build(:user, reset_password_token: SecureRandom.hex(32)) }
     let(:mail) { PasswordResetMailer.send_password_reset_instructions_to(user) }
 
     it "adds a subject" do
