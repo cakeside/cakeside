@@ -13,11 +13,15 @@ class User < ActiveRecord::Base
   before_save :ensure_authentication_token
   after_create :send_welcome_email unless Rails.env.test?
 
-  validates :name,  :presence => true
+  validates :name, presence: true
   validates :email, presence: true, uniqueness: true, email: true
   validates :website, :format => URI::regexp(%w(http https)), :allow_blank => true
-  validates :password, length: { in: 6..20 }
+  #validates :password, length: { in: 6..20 }, unless: Proc.new { |x| x.password.blank? }
+
   #devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
+  validates_presence_of     :password, :if => :password_required?
+  validates_confirmation_of :password, :if => :password_required?
+  validates_length_of       :password, :within => 6..20, :allow_blank => true
 
   has_many :creations, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
@@ -86,6 +90,7 @@ class User < ActiveRecord::Base
   end
 
   def valid_password?(password)
+    return false if encrypted_password.blank?
     bcrypt = ::BCrypt::Password.new(encrypted_password)
     password = ::BCrypt::Engine.hash_secret(password, bcrypt.salt)
     secure_compare(password, encrypted_password)
@@ -129,4 +134,7 @@ class User < ActiveRecord::Base
     self.authentication_token = SecureRandom.hex(32) if self.authentication_token.blank?
   end
 
+  def password_required?
+    !persisted? || !password.nil? || !password_confirmation.nil?
+  end
 end
