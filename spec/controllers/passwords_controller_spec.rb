@@ -40,12 +40,12 @@ describe PasswordsController do
   end
 
   describe "#update" do
-    let(:user) { double(change_password: true) }
+    let(:user) { double(change_password: true, valid?: true) }
     let(:reset_token) { SecureRandom.hex(32) }
     let(:password) { SecureRandom.hex(8) }
 
     it "resets the users password" do
-      allow(PasswordReset).to receive(:reset).with(reset_token, password)
+      allow(PasswordReset).to receive(:reset).with(reset_token, password).and_return(user)
 
       patch :update, id: reset_token, user: { password: password }
       expect(PasswordReset).to have_received(:reset).with(reset_token, password)
