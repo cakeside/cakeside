@@ -6,7 +6,7 @@ module My
     end
 
     def update
-      UploadAvatar.new.run(@avatar, params)
+      UploadAvatar.new.run(current_user, params)
       redirect_to edit_my_avatar_path(current_user), :notice => t(:avatar_uploaded)
     end
 

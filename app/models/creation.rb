@@ -3,7 +3,7 @@ class Creation < ActiveRecord::Base
   validates :category_id, presence: true
   belongs_to :user, :counter_cache => true
   belongs_to :category
-  has_many :photos, -> { order :created_at }, :dependent => :destroy
+  has_many :photos, -> { order :created_at }, dependent: :destroy, as: :imageable
   has_many :favorites, :dependent => :destroy
   has_many :comments, dependent: :destroy
   acts_as_taggable

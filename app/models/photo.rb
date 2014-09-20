@@ -1,5 +1,5 @@
 class Photo < ActiveRecord::Base
-  belongs_to :creation, counter_cache: true, touch: true
+  belongs_to :imageable, polymorphic: true, counter_cache: true, touch: true
 
   def url_for(version_key, asset_host = ENV['ASSET_HOST'])
     versions.find { |version| version.for?(version_key) }.url_for(asset_host)

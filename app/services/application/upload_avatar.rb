@@ -3,16 +3,16 @@ class UploadAvatar
     @message_bus = message_bus
   end
 
-  def run(avatar, params)
-    @message_bus.publish(:upload_avatar, create_message_from(avatar, params))
+  def run(user, params)
+    @message_bus.publish(:upload_avatar, create_message_from(user, params))
   end
 
   private
 
-  def create_message_from(avatar, payload)
+  def create_message_from(user, payload)
     image = payload[:avatar][:avatar]
     {
-      cake_id: avatar.id,
+      user_id: user.id,
       file_path: move_to_temporary_storage(image),
       original_filename: image.original_filename,
       content_type: image.content_type,
