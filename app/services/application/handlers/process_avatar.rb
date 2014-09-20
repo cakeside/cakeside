@@ -1,5 +1,6 @@
 class ProcessAvatar
-  def initialize()
+  def initialize(blob_storage)
+    @blob_storage = blob_storage
   end
 
   def handles?(event)
@@ -8,18 +9,8 @@ class ProcessAvatar
 
   def handle(message)
     user = User.find(message[:user_id])
-    #avatar = avatar_for(user)
-  end
-
-  private
-
-  def avatar_for(user)
-    if user.avatar.nil?
-      avatar = user.avatar = Avatar.new
-      user.save
-      return avatar
-    else
-      user.avatar
-    end
+    user.avatar = Photo.create!(image_processing: true)
+    user.avatar.upload(message[:file_path], @blob_storage)
+    user.avatar.save!
   end
 end

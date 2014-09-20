@@ -10,7 +10,7 @@ class UploadAvatar
   private
 
   def create_message_from(user, payload)
-    image = payload[:avatar][:avatar]
+    image = payload[:photo][:image]
     {
       user_id: user.id,
       file_path: move_to_temporary_storage(image),
