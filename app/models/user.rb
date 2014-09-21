@@ -29,7 +29,6 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :user_sessions, dependent: :destroy
   has_and_belongs_to_many :interests, :join_table => 'users_interests', :autosave => true
-  #has_one :avatar
   has_one :avatar, class_name: 'Photo', as: :imageable
   acts_as_tagger
 
