@@ -12,6 +12,16 @@ class BlobStorage
     object.acl = :public_read
   end
 
+  def download(key)
+    object = connection.buckets[bucket_name].objects[key]
+    File.open("#{Dir.tmpdir}/#{key}", "wb") do |tempfile|
+      object.read do |chunk|
+        tempfile.write(chunk)
+      end
+      yield tempfile
+    end
+  end
+
   private
 
   def connection

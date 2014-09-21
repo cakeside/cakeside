@@ -9,7 +9,7 @@ class ProcessAvatar
 
   def handle(message)
     user = User.find(message[:user_id])
-    user.avatar = Photo.create!(image_processing: true)
+    user.avatar = Photo.create!
     user.avatar.upload(message[:file_path], @blob_storage)
     user.avatar.save!
   end
