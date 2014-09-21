@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   end
 
   def has_avatar?
-    self.avatar && self.avatar.avatar.present?
+    self.avatar && self.avatar.image.present?
   end
 
   def to_param
