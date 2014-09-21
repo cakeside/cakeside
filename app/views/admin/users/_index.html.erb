@@ -5,8 +5,6 @@
       <td>name</td>
       <td>email</td>
       <td>location</td>
-      <td>last sign in</td>
-      <td>current sign in</td>
       <td>created at</td>
     </tr>
   </thead>
@@ -17,8 +15,6 @@
         <td><%= link_to user.name, admin_user_path(user) %></td>
         <td><%= mail_to user.email %></td>
         <td><%= user.latitude %>, <%= user.longitude %></td>
-        <td><%= time_ago_in_words(user.last_sign_in_at) %></td>
-        <td><%= time_ago_in_words(user.current_sign_in_at) %></td>
         <td><%= time_ago_in_words(user.created_at) %></td>
       </tr>
     <% end %>
