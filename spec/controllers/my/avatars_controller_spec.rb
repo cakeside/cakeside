@@ -6,19 +6,20 @@ describe My::AvatarsController do
   context "when logged in " do
     before { http_login(user) }
 
-    describe "#update" do
+    describe "#create" do
       context "when uploading a new avatar" do
         let(:image) { Rack::Test::UploadedFile.new('spec/fixtures/images/gorilla.jpg', 'image/jpeg') }
 
-        before { put :update, :id => user.id, :avatar => { :avatar => image } }
+        before { post :create, photo: { image: image } }
 
         it "should save the new avatar" do
-          Avatar.last.should_not be_nil
-          Avatar.last.avatar.should_not be_blank
+          user.reload
+          expect(user.avatar).to_not be_nil
+          expect(user.avatar.image).to_not be_blank
         end
 
         it "should redirect to the avatar page" do
-          response.should redirect_to edit_my_avatar_path(user)
+          expect(response).to redirect_to(new_my_avatar_path)
         end
 
         it "should display a flash notice" do
@@ -27,13 +28,11 @@ describe My::AvatarsController do
       end
     end
 
-    describe "#edit" do
-      before :each do
-        get :edit, :id => user.id
-      end
+    describe "#new" do
+      before { get :new, id: user.id }
 
       it "should display the current avatar" do
-        assigns(:avatar).should_not be_nil
+        expect(assigns(:avatar)).to_not be_nil
       end
     end
   end
