@@ -5,7 +5,7 @@ module My
     end
 
     def create
-      UploadAvatar.new.run(current_user, params)
+      UploadAvatar.new.run(current_user, params[:photo][:image])
       redirect_to new_my_avatar_path, notice: t(:avatar_uploaded)
     end
   end
