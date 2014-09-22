@@ -7,7 +7,7 @@ BlobStorage.new.tap do |blob_storage|
       key = avatar.avatar.path
       blob_storage.download(key) do |file|
         puts file.path
-        UploadAvatar.new.run(avatar.user, { photo: { image: file.path } })
+        UploadAvatar.new.run(avatar.user, OpenStruct.new(path: file.path, original_filename: File.basename(key), content_type: 'image/jpeg'))
       end
     rescue StandardError => error
       puts error.message
