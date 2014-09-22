@@ -14,7 +14,7 @@ class BlobStorage
 
   def download(key)
     object = object_for(key)
-    File.open("#{Dir.tmpdir}/#{key}", "wb") do |tempfile|
+    File.open("#{Dir.tmpdir}/#{File.basename(key)}", "wb") do |tempfile|
       object.read do |chunk|
         tempfile.write(chunk)
       end

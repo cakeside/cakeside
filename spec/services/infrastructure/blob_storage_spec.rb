@@ -17,7 +17,7 @@ describe BlobStorage do
   end
 
   describe "#download" do
-    let(:key) { "test#{SecureRandom.uuid}" }
+    let(:key) { "test/upload/#{SecureRandom.uuid}" }
 
     it 'downloads a file from blob storage' do
       subject.upload(key, file)
