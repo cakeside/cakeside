@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140909030826) do
+ActiveRecord::Schema.define(version: 20140920033516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(version: 20140909030826) do
   end
 
   create_table "photos", force: true do |t|
-    t.integer  "creation_id"
+    t.integer  "imageable_id"
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -120,9 +120,10 @@ ActiveRecord::Schema.define(version: 20140909030826) do
     t.float    "longitude"
     t.string   "sha256"
     t.string   "watermark"
+    t.string   "imageable_type"
   end
 
-  add_index "photos", ["creation_id"], name: "index_photos_on_creation_id", using: :btree
+  add_index "photos", ["imageable_id"], name: "index_photos_on_imageable_id", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

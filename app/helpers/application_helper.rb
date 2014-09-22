@@ -1,7 +1,7 @@
 module ApplicationHelper
   def avatar_for(user, size: 260, clazz: '')
-    return gravatar_for(user, size) if user.avatar == nil || !user.avatar.avatar.present?
-    image_tag(user.avatar.avatar.thumb.url, alt: user.name, class: clazz, style: "width:#{size}px;")
+    return gravatar_for(user, size) if user.avatar == nil || !user.avatar.image.present?
+    image_tag(user.avatar.url_for(:thumb), alt: user.name, class: clazz, style: "width:#{size}px;")
   end
 
   def gravatar_for(user, size)
@@ -19,7 +19,7 @@ module ApplicationHelper
 
   def disqus_auth(user = current_user)
     if user.has_avatar?
-      data = { id: user.id, username: user.name, email: user.email, :avatar => user.avatar.avatar.url, :url => "https://#{request.host_with_port}/profiles/#{user.to_param}" }.to_json
+      data = { id: user.id, username: user.name, email: user.email, :avatar => user.avatar.url_for(:thumb), :url => "https://#{request.host_with_port}/profiles/#{user.to_param}" }.to_json
     else
       data = { id: user.id, username: user.name, email: user.email, :url => "https://#{request.host_with_port}/profiles/#{user.to_param}" }.to_json
     end

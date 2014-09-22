@@ -86,7 +86,7 @@ Cake::Application.routes.draw do
     resources :favorites, only: [:index]
     resources :settings, only: [:index, :update]
     resources :passwords, only: [:index, :update]
-    resources :avatars, only: [:edit, :update]
+    resources :avatars, only: [:new, :create]
     root to: "dashboard#index"
   end
 end

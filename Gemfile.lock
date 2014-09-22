@@ -34,7 +34,9 @@ GEM
     asset_sync (1.0.0)
       activemodel
       fog (>= 1.8.0)
-    aws-sdk (1.42.0)
+    aws-sdk (1.53.0)
+      aws-sdk-v1 (= 1.53.0)
+    aws-sdk-v1 (1.53.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
     bcrypt (3.1.7)
@@ -342,7 +344,7 @@ PLATFORMS
 DEPENDENCIES
   acts-as-taggable-on (~> 3.3.0)
   asset_sync (~> 1.0.0)
-  aws-sdk (~> 1.42.0)
+  aws-sdk
   bcrypt-ruby
   better_errors
   binding_of_caller

@@ -7,12 +7,26 @@ class BlobStorage
 
   def upload(key, file)
     Rails.logger.info "uploading to #{bucket_name}/#{key}"
-    object = connection.buckets[bucket_name].objects[key]
+    object = object_for(key)
     object.write(Pathname.new(file), options_for(file))
     object.acl = :public_read
   end
 
+  def download(key)
+    object = object_for(key)
+    File.open("#{Dir.tmpdir}/#{key}", "wb") do |tempfile|
+      object.read do |chunk|
+        tempfile.write(chunk)
+      end
+      yield tempfile
+    end
+  end
+
   private
+
+  def object_for(key)
+    connection.buckets[bucket_name].objects[key]
+  end
 
   def connection
     @connection ||= AWS::S3.new
@@ -31,6 +45,9 @@ class BlobStorage
 
   class Fake
     def upload(*args)
+    end
+
+    def downlaod(*args)
     end
   end
 end

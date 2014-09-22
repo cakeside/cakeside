@@ -4,10 +4,10 @@
   </div>
   <div class="span10">
     <%= avatar_for(current_user) %>
-    <%= form_for(@avatar, :url => my_avatar_path(@avatar), :method => :put, :multipart => true, remote: true, authenticity_token: true) do |f| %>
+    <%= form_for(@avatar, url: my_avatars_path, method: :post, :multipart => true, remote: true, authenticity_token: true) do |f| %>
       <div class="control-group">
         <div class="controls">
-          <%= f.file_field :avatar %>
+          <%= f.file_field :image %>
         </div>
       </div>
       <div class="control-group">
