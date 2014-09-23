@@ -78,7 +78,7 @@ class Image
     image.write(path)
     image.run_command("identify", path)
   ensure
-    image.destroy!
+    image.try(:destroy!)
   end
 
   def sanitize(name)
