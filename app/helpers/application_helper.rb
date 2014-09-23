@@ -10,20 +10,13 @@ module ApplicationHelper
   end
 
   def full_title(title)
-    if title.blank?
-      "CakeSide - for cake lovers!"
-    else
-      "#{title} - CakeSide"
-    end
+    title.blank? ?  "CakeSide - for cake lovers!" : "#{title} - CakeSide"
   end
 
   def disqus_auth(user = current_user)
-    if user.has_avatar?
-      data = { id: user.id, username: user.name, email: user.email, :avatar => user.avatar.url_for(:thumb), :url => "https://#{request.host_with_port}/profiles/#{user.to_param}" }.to_json
-    else
-      data = { id: user.id, username: user.name, email: user.email, :url => "https://#{request.host_with_port}/profiles/#{user.to_param}" }.to_json
-    end
-    message = Base64.encode64(data).gsub("\n", "")
+    data = { id: user.id, username: user.name, email: user.email, url: "https://#{request.host_with_port}/profiles/#{user.to_param}" }
+    data[:avatar] = user.avatar.url_for(:thumb) if user.has_avatar?
+    message = Base64.encode64(data.to_json).gsub("\n", "")
     timestamp = Time.now.to_i
     signature = OpenSSL::HMAC.hexdigest('sha1', ENV['DISQUS_SECRET_KEY'] || '', "#{message} #{timestamp}")
     "#{message} #{signature} #{timestamp}"
