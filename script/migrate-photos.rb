@@ -15,6 +15,7 @@ class Command
         original = OriginalVersion.new(photo)
         key = original.create_key
         puts "processing #{key}"
+        photo.update_attribute(:watermark, photo.imageable.try(:watermark)) unless photo.imageable.try(:watermark).blank?
         storage.download(key) do |file|
           bus.publish(:upload_photo, {
             photo_id: photo.id,
