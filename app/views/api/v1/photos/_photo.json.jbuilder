@@ -1,5 +1,5 @@
 json.id photo.id
-json.cake_id photo.creation_id
+json.cake_id photo.imageable_id
 json.content_type photo.content_type
 json.original_filename photo.original_filename
 json.thumb_url photo.url_for(:thumb)
