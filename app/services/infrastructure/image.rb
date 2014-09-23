@@ -77,8 +77,10 @@ class Image
     image = yield(image)
     image.write(path)
     image.run_command("identify", path)
+  rescue StandardError => error
+    Rails.logger.error("#{error.message} #{error.backtrace.join(', ')}")
   ensure
-    image.destroy!
+    image.try(:destroy!)
   end
 
   def sanitize(name)
