@@ -23,14 +23,17 @@
           <tr>
             <td><%= link_to job.id, admin_job_path(job) %></td>
             <td><%= job.attempts %></td>
-            <td><%= job.last_error.present? ? link_to('FAILED', admin_job_path(job)) : 'Succeeded' %></td>
+            <td><%= job.last_error.present? ? link_to('FAILED', admin_job_path(job)) : '' %></td>
             <td><%= job.locked_by %> </td>
             <td><%= job.queue %></td>
             <td><%= time_ago_in_words(job.run_at) if job.run_at %></td>
             <td><%= time_ago_in_words(job.locked_at) if job.locked_at %></td>
             <td><%= time_ago_in_words(job.created_at) %></td>
             <td><%= time_ago_in_words(job.updated_at) %></td>
-            <td><%= link_to "Destroy", admin_job_path(job), method: :delete, class: 'btn btn-danger' %></td>
+            <td>
+              <%= link_to "Retry", admin_job_path(job), method: :put, class: 'btn', disable_with: 'Retrying...' %>
+              <%= link_to "Destroy", admin_job_path(job), method: :delete, class: 'btn btn-danger', disable_with: 'Deleting...' %>
+            </td>
           </tr>
         <% end %>
       </tbody>
