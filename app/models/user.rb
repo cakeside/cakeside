@@ -1,13 +1,5 @@
 require 'bcrypt'
 
-class EmailValidator < ActiveModel::EachValidator
-  def validate_each(record, attribute, value)
-    unless value =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-      record.errors[attribute] << (options[:message] || "is not an email")
-    end
-  end
-end
-
 class User < ActiveRecord::Base
   include BCrypt
   before_save :ensure_authentication_token
@@ -81,7 +73,7 @@ class User < ActiveRecord::Base
   end
 
   def favorite_cakes
-    favorites.includes(:creation).map {|f| f.creation }
+    favorites.includes(creation: [:photos, :user]).map { |f| f.creation }
   end
 
   def create_cake(name:, category:)
