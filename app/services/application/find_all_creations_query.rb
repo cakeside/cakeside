@@ -16,7 +16,7 @@ class FindAllCreationsQuery
   end
 
   def sort(params)
-    params[:sort] == "newest" ? :asc : :desc
+    params[:sort] == "oldest" ? :asc : :desc
   end
 end
 
