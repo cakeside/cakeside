@@ -75,7 +75,7 @@ Cake::Application.routes.draw do
     resources :jobs, only: [:index, :show, :update, :destroy]
     resources :activities, only: [:index]
     resources :subscriptions, only: [:index]
-    resources :photos, only: [:index, :show]
+    resources :photos, only: [:index, :show, :update]
     resources :blobs, only: [:index, :show]
     resources :errors, only: [:index, :create]
     resources :sessions, only: [:index, :destroy]

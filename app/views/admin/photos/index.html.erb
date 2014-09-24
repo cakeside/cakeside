@@ -12,16 +12,20 @@
           <th>geolocation</th>
           <th>created</th>
           <th>updated</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <% @photos.each do |photo| %>
           <tr>
-            <td><%= link_to photo.image, admin_photo_path(photo.id) %></td>
+            <td><%= link_to "#{photo.id} #{photo.image}", admin_photo_path(photo.id) %></td>
             <td><%= photo.content_type %></td>
             <td><%= photo.latitude %> <%= photo.longitude %></td>
             <td><%= time_ago_in_words(photo.created_at) %> ago</td>
             <td><%= time_ago_in_words(photo.updated_at) %> ago</td>
+            <td>
+              <%= link_to "Re-Process", admin_photo_path(photo.id), method: :put, class: 'btn', disable_with: 'Re-Processing..'  %>
+          </td>
           </tr>
         <% end %>
       </tbody>
