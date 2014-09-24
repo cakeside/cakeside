@@ -30,6 +30,7 @@
             <td><%= time_ago_in_words(job.locked_at) if job.locked_at %></td>
             <td><%= time_ago_in_words(job.created_at) %></td>
             <td><%= time_ago_in_words(job.updated_at) %></td>
+            <td><%= link_to "Destroy", admin_job_path(job), method: :delete, class: 'btn btn-danger' %></td>
           </tr>
         <% end %>
       </tbody>
