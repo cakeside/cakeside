@@ -10,7 +10,7 @@ class CreationRepository
   end
 
   def visible_creations
-    connection.distinct.includes(:user, :photos).joins(:photos).where('photos.image_processing' => nil)
+    connection.unscoped.distinct.includes(:user, :photos).joins(:photos).where('photos.image_processing' => nil)
   end
 
   private
