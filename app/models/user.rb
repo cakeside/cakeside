@@ -81,7 +81,7 @@ class User < ActiveRecord::Base
   end
 
   def favorite_cakes
-    favorites.includes(:creation).map {|f| f.creation }
+    favorites.includes(creation: [:photos, :user]).map { |f| f.creation }
   end
 
   def create_cake(name:, category:)
