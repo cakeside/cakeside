@@ -10,12 +10,11 @@ class Command
   end
 
   def run
-    Photo.find_each do |photo|
+    Photo.unscoped.order(id: :desc).each do |photo|
       begin
         original = OriginalVersion.new(photo)
         key = original.create_key
         puts "processing #{key}"
-        photo.update_attribute(:watermark, photo.imageable.try(:watermark)) unless photo.imageable.try(:watermark).blank?
         storage.download(key) do |file|
           bus.publish(:upload_photo, {
             photo_id: photo.id,
@@ -30,14 +29,15 @@ class Command
 
   private
 
-  def move_to_temporary_storage(temp_file_path, original_filename)
-    "#{create_tmp_dir}/#{original_filename}".tap do |new_path|
-      FileUtils.mv(temp_file_path, new_path)
+  def move_to_temporary_storage(file_path, original_filename)
+    "#{create_tmp_dir(file_path)}/#{original_filename}".tap do |new_path|
+      FileUtils.mv(file_path, new_path)
     end
   end
 
-  def create_tmp_dir
-    Rails.root.join("tmp/uploads/#{SecureRandom.uuid}").tap do |directory|
+  def create_tmp_dir(file_path)
+    sha = Digest::SHA256.file(file_path).to_s
+    Rails.root.join("tmp/uploads/#{sha}").tap do |directory|
       system "mkdir -p #{directory}"
     end
   end
