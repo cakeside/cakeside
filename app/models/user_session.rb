@@ -39,11 +39,11 @@ class UserSession < ActiveRecord::Base
   end
 
   def apply_geo_location_information_for(request)
-    city = GeoIP.new('config/GeoLiteCity.dat').city(request.ip)
-    return if city.nil?
-    self.latitude = city.latitude
-    self.longitude = city.longitude
-    self.city = city.city_name
-    self.country = city.country_name
+    location = Location.build_from_ip(request.ip)
+    return if location.nil?
+    self.latitude = location.latitude
+    self.longitude = location.longitude
+    self.city = location.city
+    self.country = location.country
   end
 end
