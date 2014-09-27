@@ -14,7 +14,6 @@ group :doc do
 end
 
 # to remove
-gem 'carrierwave', '~> 0.9.0'
 gem 'rmagick', '~> 2.13.0'
 gem 'acts-as-taggable-on', '~> 3.3.0'
 gem 'fog'
