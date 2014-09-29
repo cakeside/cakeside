@@ -13,10 +13,11 @@ describe UserSession do
   describe "#access" do
     let(:request) { double(ip: '192.168.1.1', user_agent: 'blah') }
     let(:location) { build(:location) }
-    let!(:because) { subject.access(request) }
+    let(:because) {  subject.access(request) }
 
     before :each do
       Location.stub(:build_from_ip).with('192.168.1.1').and_return(location)
+      because
     end
 
     it "records the time the session was accessed" do
