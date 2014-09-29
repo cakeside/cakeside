@@ -1,5 +1,6 @@
 class Location < ActiveRecord::Base
   belongs_to :locatable, polymorphic: true
+  validates :locatable, presence: true
 
   GEO_IP=GeoIP.new('config/GeoLiteCity.dat')
 
