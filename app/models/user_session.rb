@@ -14,7 +14,6 @@ class UserSession < ActiveRecord::Base
     self.accessed_at = Time.now
     self.ip = request.ip
     self.user_agent = request.user_agent
-    apply_geo_location_information_for(request)
     self.location = Location.build_from_ip(request.ip)
     if save
       {
@@ -38,9 +37,5 @@ class UserSession < ActiveRecord::Base
 
   def set_unique_key
     self.key = SecureRandom.urlsafe_base64(32)
-  end
-
-  def apply_geo_location_information_for(request)
-    self.location = Location.build_from_ip(request.ip)
   end
 end
