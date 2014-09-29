@@ -12,7 +12,12 @@ describe UserSession do
 
   describe "#access" do
     let(:request) { double(ip: '192.168.1.1', user_agent: 'blah') }
+    let(:location) { build(:location) }
     let!(:because) { subject.access(request) }
+
+    before :each do
+      Location.stub(:build_from_ip).with('192.168.1.1').and_return(location)
+    end
 
     it "records the time the session was accessed" do
       expect(subject.accessed_at).to_not be_nil
@@ -24,6 +29,10 @@ describe UserSession do
 
     it "records the user agent of the request" do
       expect(subject.user_agent).to eql(request.user_agent)
+    end
+
+    it 'records a location for the session' do
+      expect(subject.location).to_not be_nil
     end
 
     it "returns a hash to store in the cookie" do

@@ -58,4 +58,10 @@ FactoryGirl.define do
       admin true
     end
   end
+  factory :location do
+    latitude "107"
+    longitude "99"
+    city "Calgary"
+    country "Canada"
+  end
 end
