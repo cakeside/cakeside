@@ -3,7 +3,7 @@ class UserSession < ActiveRecord::Base
   has_one :location, as: :locatable
   before_create :set_unique_key
   attr_readonly :key
-  scope :active, -> { where("accessed_at >= ?", 2.weeks.ago).where(revoked_at: nil).includes(:user) }
+  scope :active, -> { where("accessed_at >= ?", 2.weeks.ago).where(revoked_at: nil).includes(:user, :location) }
 
   def revoke!
     self.revoked_at = Time.now
