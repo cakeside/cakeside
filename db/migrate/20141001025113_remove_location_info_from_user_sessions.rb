@@ -11,7 +11,6 @@ class RemoveLocationInfoFromUserSessions < ActiveRecord::Migration
     remove_column :users, :last_sign_in_at
     remove_column :users, :current_sign_in_ip
     remove_column :users, :last_sign_in_ip
-    remove_column :users, :city
     remove_column :users, :latitude
     remove_column :users, :longitude
     remove_column :users, :confirmation_token
