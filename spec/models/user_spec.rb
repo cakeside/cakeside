@@ -7,8 +7,6 @@ describe User do
     it { should respond_to :twitter }
     it { should respond_to :facebook }
     it { should respond_to :city }
-    it { should respond_to :latitude }
-    it { should respond_to :longitude }
     it { should respond_to :password }
     it { should respond_to :website }
     it { should respond_to :interests }
