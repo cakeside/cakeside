@@ -50,6 +50,7 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
+    browser_sniffer (1.0.7)
     buftok (0.2.0)
     builder (3.2.2)
     bullet (4.13.2)
@@ -339,6 +340,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass (~> 2.3.0)
+  browser_sniffer
   bullet
   capistrano (~> 3.0)
   capistrano-bundler (~> 1.1)
