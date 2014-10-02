@@ -1,7 +1,7 @@
 module Admin
   class SessionsController < AdminController
     def index
-      @user_sessions = UserSession.active
+      @user_sessions = UserSession.includes(:user, :location).order(created_at: :desc).all
     end
 
     def destroy

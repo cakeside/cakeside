@@ -27,6 +27,10 @@ class UserSession < ActiveRecord::Base
     end
   end
 
+  def browser
+    @browser ||= BrowserSniffer.new(user_agent)
+  end
+
   class << self
     def authenticate(key)
       self.active.find_by(key: key)
