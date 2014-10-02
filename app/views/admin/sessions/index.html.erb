@@ -8,13 +8,13 @@
       <thead>
         <tr>
           <td>user</td>
-          <td>ip</td>
-          <td>city</td>
-          <td>user agent</td>
+          <td><%= link_to "ip", admin_sessions_path(sort: 'ip', direction: @direction) %></td>
+          <td><%= link_to "city", admin_sessions_path(sort: 'city', direction: @direction) %></td>
+          <td><%= link_to "user agent", admin_sessions_path(sort: 'ua', direction: @direction) %></td>
+          <td>device</td>
           <td>browser</td>
+          <td>os</td>
           <td>version</td>
-          <td>platform</td>
-          <td>platform version</td>
           <td>accessed at</td>
           <td>revoked at</td>
           <td></td>
