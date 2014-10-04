@@ -28,6 +28,8 @@ window.CakeSide =
         controller: new CakeSide.Controllers.TutorialsController()
       new CakeSide.Routers.DashboardRouter
         controller: new CakeSide.Controllers.DashboardController()
+      new CakeSide.Routers.ProfileRouter
+        controller: new CakeSide.Controllers.ProfileController()
 
     CakeSide.Application.on 'start', ->
       if Backbone.history
@@ -58,6 +60,8 @@ window.CakeSide =
         photos
     CakeSide.Application.reqres.setHandler 'TutorialsRepository', =>
       @tutorials
+    CakeSide.Application.reqres.setHandler 'ProfilesRepository', =>
+      @profiles ||= new CakeSide.Collections.ProfilesCollection()
 
     @cakes.fetch(reset: true).done ->
       CakeSide.Application.start()

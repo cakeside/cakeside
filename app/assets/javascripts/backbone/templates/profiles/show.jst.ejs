@@ -1,0 +1,35 @@
+<h1>Public Profile</h1>
+<hr />
+<form id="profile-form" class="form-horizontal">
+  <fieldset>
+    <div class="control-group">
+      <label class="control-label" for="user_name">Name</label>
+      <div class="controls"> <input class="input-xlarge" id="user_name" name="user[name]" type="text" value="<%= name %>"> </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="user_email">Email</label>
+      <div class="controls"> <input class="input-xlarge" id="user_email" name="user[email]" type="email" value="<%= email %>"> </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="user_city">City</label>
+      <div class="controls"> <input class="input-xlarge" id="user_city" name="user[city]" type="text" value="<%= city %>"> </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="user_website">Website</label> 
+      <div class="controls"> <input class="input-xlarge url" id="user_website" name="user[website]" placeholder="https://www.cakeside.com" type="url" value="<%= website %>"> </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="user_twitter">Twitter username @</label> 
+      <div class="controls"> <input class="input-xlarge" id="user_twitter" maxlength="255" name="user[twitter]" placeholder="without the @ sign" size="255" type="text" value="<%= twitter %>"> </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="user_facebook">Facebook</label> 
+      <div class="controls"> <input class="input-xlarge" id="user_facebook" maxlength="255" name="user[facebook]" placeholder="http://www.facebook.com/your_profile" size="255" type="text" value="<%= facebook %>"> </div>
+    </div>
+    <div class="form-actions">
+      <input id="save-button" type="submit" class="btn btn-primary" value="Save changes">
+      <button type="reset" class="btn">Cancel</button>
+    </div>
+  </fieldset>
+</form>
+
