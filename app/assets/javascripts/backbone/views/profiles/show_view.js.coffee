@@ -29,6 +29,7 @@ class CakeSide.Views.Profiles.ShowView extends Marionette.ItemView
     @model.save()
 
   enableSaveButton: ->
+    @ui.error.addClass('hidden')
     @ui.save_button.removeAttr('disabled')
 
   disableSaveButton: ->
