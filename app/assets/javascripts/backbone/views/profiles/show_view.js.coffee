@@ -10,6 +10,8 @@ class CakeSide.Views.Profiles.ShowView extends Marionette.ItemView
     facebook: '#user_facebook'
     twitter: '#user_twitter'
     save_button: '#save-button'
+    cancel_button: '#cancel-button'
+    error: '#error-message'
 
   modelEvents:
     'invalid': 'displayError'
@@ -18,6 +20,7 @@ class CakeSide.Views.Profiles.ShowView extends Marionette.ItemView
     "submit #profile-form": "save"
     "keyup input": "refreshStatus"
     "change select": "refreshStatus"
+    'click #cancel-button': 'cancel'
 
   save: (event) ->
     event.preventDefault()
@@ -33,6 +36,8 @@ class CakeSide.Views.Profiles.ShowView extends Marionette.ItemView
 
   displayError: ->
     @disableSaveButton()
+    @ui.error.removeClass('hidden')
+    @ui.error.html(@model.validationError)
 
   refreshStatus: ->
     @enableSaveButton()
@@ -43,4 +48,7 @@ class CakeSide.Views.Profiles.ShowView extends Marionette.ItemView
     @model.set('facebook', @ui.facebook.val())
     @model.set('twitter', @ui.twitter.val())
     @model.isValid()
+
+  cancel: ->
+    @enableSaveButton()
 
