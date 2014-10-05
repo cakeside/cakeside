@@ -7,7 +7,9 @@ module Api
 
       def update
         @profile = current_user
-        @profile.update(secure_params)
+        unless @profile.update(secure_params)
+          render json: @profile.errors, status: :unprocessable_entity
+        end
       end
 
       private

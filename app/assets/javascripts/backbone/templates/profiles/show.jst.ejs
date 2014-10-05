@@ -1,6 +1,6 @@
 <h1>Public Profile</h1>
 <hr />
-<div id="error-message" class="alert alert-error hidden">
+<div id="status-message" class="alert alert-error hidden">
   <a class="close" data-dismiss="alert" href="#">×</a>
 </div>
 <form id="profile-form" class="form-horizontal">
@@ -34,9 +34,12 @@
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label" for="user_twitter">Twitter username @</label> 
+      <label class="control-label" for="user_twitter">Twitter username</label> 
       <div class="controls"> 
-        <input class="input-xlarge" id="user_twitter" maxlength="255" name="user[twitter]" placeholder="without the @ sign" size="255" type="text" value="<%= twitter %>">
+        <div class="input-prepend">
+          <span class="add-on">@</span>
+          <input class="input-xlarge" id="user_twitter" maxlength="15" name="user[twitter]" placeholder="without the @ sign" size="255" type="text" value="<%= twitter %>">
+        </div>
         <span class="help-inline"></span>
       </div>
     </div>

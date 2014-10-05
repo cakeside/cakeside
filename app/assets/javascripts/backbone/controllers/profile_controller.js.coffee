@@ -4,11 +4,11 @@ class CakeSide.Controllers.ProfileController extends Marionette.Controller
     @content_region = CakeSide.Application.content_region
     @comment_view = CakeSide.Application.request('CommentView')
 
-  show: ->
+  show: (id) ->
     @selectTab()
     @comment_view.hide()
     profile = new CakeSide.Models.Profile
-      id: 'me'
+      id: id
     profile.fetch
       success: =>
         @content_region.show(new @views.ShowView(model: profile))

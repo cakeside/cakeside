@@ -11,25 +11,40 @@ class CakeSide.Views.Profiles.ShowView extends Marionette.ItemView
     twitter: '#user_twitter'
     save_button: '#save-button'
     cancel_button: '#cancel-button'
-    error: '#error-message'
+    status: '#status-message'
 
   modelEvents:
     'invalid': 'displayError'
+    'sync': 'syncedUp'
 
   events:
     "submit #profile-form": "save"
     "keyup input": "refreshStatus"
-    "change select": "refreshStatus"
     'click #cancel-button': 'cancel'
 
   save: (event) ->
     event.preventDefault()
     event.stopPropagation()
     @disableSaveButton()
-    @model.save()
+    @model.save(null,
+      success: @savedSuccessfully
+      error: @couldNotSave
+    )
+
+  syncedUp: (event) ->
+    console.log(arguments)
+    console.log('syncd')
+
+  savedSuccessfully: (profile) =>
+    @disableSaveButton()
+    @ui.status.removeClass('hidden')
+    @ui.status.removeClass('alert-error')
+    @ui.status.html("Saved!")
+
+  couldNotSave: =>
+    console.log('fudge')
 
   enableSaveButton: ->
-    @ui.error.addClass('hidden')
     @ui.save_button.removeAttr('disabled')
 
   disableSaveButton: ->
@@ -37,10 +52,12 @@ class CakeSide.Views.Profiles.ShowView extends Marionette.ItemView
 
   displayError: ->
     @disableSaveButton()
-    @ui.error.removeClass('hidden')
-    @ui.error.html(@model.validationError)
+    @ui.status.addClass('alert-error')
+    @ui.status.removeClass('hidden')
+    @ui.status.html(@model.validationError)
 
   refreshStatus: ->
+    @ui.status.addClass('hidden')
     @enableSaveButton()
     @model.set('name', @ui.name.val())
     @model.set('email', @ui.email.val())

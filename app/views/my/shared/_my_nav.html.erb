@@ -10,7 +10,7 @@
     <li id="tutorial-tab"><%= link_to "Tutorials", my_root_path(anchor: 'tutorials') %></li>
     -->
     <!--<li class="<%= 'active' if controller?('settings') %>"><%= link_to "<i class='fa fa-cog'></i> Settings".html_safe, my_settings_path %></li>-->
-    <li id='profile-tab'><%= link_to "<i class='fa fa-cog'></i> Profile".html_safe, my_root_path(anchor: 'profile') %></li>
+    <li id='profile-tab'><%= link_to "<i class='fa fa-cog'></i> Profile".html_safe, my_root_path(anchor: 'profile/me') %></li>
     <li class="<%= 'active' if controller?('passwords') %>"><%= link_to "<i class='fa fa-eye'></i> Account Settings".html_safe, my_passwords_path %></li>
     <li class="<%= "active" if controller?("favorites") %>"><%= link_to "<i class='fa fa-star'></i> Favorites".html_safe, my_favorites_path %></li>
     <li class="<%= 'active' if controller?('avatars') %>"><%= link_to "<i class='fa fa-picture-o'></i> Picture".html_safe, new_my_avatar_path %></li>
