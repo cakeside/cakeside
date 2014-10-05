@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "changing my password" do
+describe "changing my password", js: true do
   context "when changing my password" do
     let(:user) { create(:user, :password => "password") }
 
@@ -11,13 +11,13 @@ describe "changing my password" do
         fill_in('session_password', :with => "password")
       end
       click_button("Sign In")
-      visit my_settings_path
-      click_link("Password")
+      visit my_root_path
+      click_link("Account Settings")
       within(".form-horizontal") do
         fill_in('user_password', :with => "mopass")
         fill_in('user_password_confirmation', :with => "mopass")
       end
-      click_button "Change password"
+      click_button "Update password"
     end
 
     it "should display a confirmation message" do
