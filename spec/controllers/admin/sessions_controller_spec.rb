@@ -10,11 +10,7 @@ module Admin
       end
 
       describe "#index" do
-        let(:active_session) { build(:user_session) }
-
-        before :each do
-          UserSession.stub(:active).and_return([active_session])
-        end
+        let(:active_session) { create(:user_session) }
 
         it "loads all the active sessions" do
           get :index

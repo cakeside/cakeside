@@ -58,14 +58,15 @@ Cake::Application.routes.draw do
 
   root to: "creations#index"
 
-  namespace :api, :defaults => { :format => 'json' }  do
+  namespace :api, defaults: { :format => 'json' }  do
     namespace :v1 do
       resources :cakes, only: [:index, :show, :create, :update, :destroy] do
         resources :photos, only: [:index, :show, :create]
       end
       resources :categories, only: [:index]
       resources :tutorials, only: [:index, :create]
-      resources :logins, :only => [:create]
+      resources :profiles, only: [:show, :update]
+      resources :logins, only: [:create]
     end
   end
 
