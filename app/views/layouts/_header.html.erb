@@ -64,8 +64,8 @@
         </ul>
         <% else %>
           <%= form_for(UserSession.new, url: sessions_path(UserSession.new), html: { class: "navbar-form pull-right" }) do |f| %>
-            <%= email_field_tag 'session[username]', '', placeholder: 'Email', class: 'input-medium' %>
-            <%= password_field_tag 'session[password]', '', placeholder: 'Password', class: 'input-medium' %>
+            <%= email_field_tag 'session[username]', '', placeholder: 'Email', class: 'input-small' %>
+            <%= password_field_tag 'session[password]', '', placeholder: 'Password', class: 'input-small' %>
             <%= f.button "Log In", class: 'btn btn-primary', data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Signing in..." } %>
           <% end %>
         <% end %>
