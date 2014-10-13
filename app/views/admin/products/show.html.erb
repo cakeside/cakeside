@@ -1,0 +1,47 @@
+<div class="row-fluid">
+  <div class="span2">
+    <%= render partial: "my/shared/my_nav" %>
+  </div>
+  <div class="span10">
+    <table class="table">
+    <tr>
+      <td>asin</td>
+      <td><%= link_to @product.asin, @product.detail_page_url %></td>
+    </tr>
+    <tr>
+      <td>attributes</td>
+      <td><%= @product.item_attributes %></td>
+    </tr>
+    <tr>
+      <td>images</td>
+      <td>
+        <% @product.image_sets.image_set.each do |image| %>
+          <%= image_tag image.large_image.url %>
+          <%= image_tag image.medium_image.url %>
+          <%= image_tag image.small_image.url %>
+          <%= image_tag image.swatch_image.url %>
+          <%= image_tag image.thumbnail_image.url %>
+          <%= image_tag image.tiny_image.url %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>reviews</td>
+      <td>
+        <%= @product.editorial_reviews.editorial_review.content %>
+      </td>
+    </tr>
+    <tr>
+      <td>links</td>
+      <td>
+        <ul>
+          <% @product.item_links.item_link.each do |link| %>
+            <li><%= link_to link.description, link.url %></li>
+          <% end %>
+        </ul>
+      </td>
+    </tr>
+    </table>
+  </div>
+</div>
+

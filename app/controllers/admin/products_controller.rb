@@ -8,5 +8,9 @@ module Admin
     def index
       @products = @product_api.search(params[:q])
     end
+
+    def show
+      @product = @product_api.find(params[:id])
+    end
   end
 end
