@@ -7,6 +7,6 @@ class AmazonAPI
 
   def search(query)
     return [] if query.blank?
-    client.search(Keywords: query, SearchIndex: :Kitchen, Sort: :salesrank)
+    client.search(Keywords: query, SearchIndex: :Kitchen, Sort: :salesrank, Availability: :Available, MerchantId: :Amazon)
   end
 end
