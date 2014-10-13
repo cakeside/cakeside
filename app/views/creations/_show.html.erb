@@ -24,12 +24,12 @@
     <% end -%>
     <hr />
     <div class="row-fluid">
+      <% unless user_signed_in? %>
       <div class="span6">
-        <% unless user_signed_in? %>
-          <p><%= link_to "SIGN UP FOR FREE", login_path, :class => "btn btn-primary" %></p>
-        <% end %>
+        <p><%= link_to "SIGN UP FOR FREE", login_path, :class => "btn btn-primary" %></p>
       </div>
+      <% end %>
     </div>
-    <p><%= @creation.story %></p>
+    <p><%= render_markdown(@creation.story).html_safe -%></p>
   </div>
 </div>

@@ -41,6 +41,7 @@ gem 'rack-attack'
 gem 'browser_sniffer'
 gem 'asin'
 gem 'curb'
+gem 'github-markdown'
 
 group :development do
   gem 'capistrano', '~> 3.0', require: false
