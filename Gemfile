@@ -39,6 +39,8 @@ gem 'js-routes', '~> 0.9.8'
 gem 'geoip'
 gem 'rack-attack'
 gem 'browser_sniffer'
+gem 'asin'
+gem 'curb'
 
 group :development do
   gem 'capistrano', '~> 3.0', require: false

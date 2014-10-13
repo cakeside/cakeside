@@ -1,0 +1,13 @@
+<table class="table table-striped">
+  <tbody>
+  <% @products.each do |product| %>
+    <tr>
+      <td><%= link_to product.asin, admin_product_path(product.asin) %></td>
+      <td>
+        <%= link_to product.item_attributes.title, admin_product_path(product.asin) %> is made by <%= product.item_attributes.manufacturer %> in category <%= product.item_attributes.product_group %>
+      </td>
+      <td> <%= link_to 'View on Amazon', product.detail_page_url, class: 'btn', target: "_blank" %> </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

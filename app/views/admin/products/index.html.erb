@@ -1,0 +1,16 @@
+<div class="row-fluid">
+  <div class="span2">
+    <%= render partial: "my/shared/my_nav" %>
+  </div>
+  <div class="span10">
+    <h1>Product Catalog - Amazon</h1>
+    <%= form_tag admin_products_path(js: true), method: :get, name: 'search', class: 'form-horizontal', remote: true do %>
+      <%= text_field_tag :q, params[:q], class: "search-query", placeholder: "Search" %>
+      <%= submit_tag 'Search', class: 'btn btn-primary' %>
+    <% end %>
+    <div id="results-container">
+      <%= render partial: "index" %>
+    </div>
+  </div>
+</div>
+
