@@ -84,6 +84,7 @@ Cake::Application.routes.draw do
     resources :blobs, only: [:index, :show]
     resources :errors, only: [:index, :create]
     resources :sessions, only: [:index, :destroy]
+    resources :tools, only: [:index]
   end
 
   namespace :my do

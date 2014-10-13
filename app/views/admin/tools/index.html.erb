@@ -1,0 +1,33 @@
+<div class="row-fluid">
+  <div class="span2">
+    <%= render partial: "my/shared/my_nav" %>
+  </div>
+  <div class="span10">
+    <h1>Tools</h1>
+    <%= form_tag admin_tools_path, method: :get, name: 'search', class: 'form-horizontal' do %>
+      <%= text_field_tag :q, params[:q], class: "search-query", placeholder: "Search" %>
+      <%= submit_tag 'Search', class: 'btn btn-primary' %>
+    <% end %>
+
+    <table class="table table-striped">
+      <tbody>
+      <% @tools.each do |tool| %>
+        <tr>
+          <td><%= link_to tool.asin, tool.detail_page_url %></td>
+          <td>
+            <%= link_to tool.item_attributes.title, tool.detail_page_url %> is made by <%= tool.item_attributes.manufacturer %> in category <%= tool.item_attributes.product_group %>
+          </td>
+          <td>
+            <ul>
+              <% tool.item_links.item_link.each do |link| %>
+                <li><%= link_to link.description, link.url %></li>
+              <% end %>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
