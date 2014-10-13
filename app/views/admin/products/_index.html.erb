@@ -1,0 +1,12 @@
+<table class="table table-striped">
+  <tbody>
+  <% @products.each do |product| %>
+    <tr>
+      <td><%= link_to product.asin, admin_product_path(product.asin) %></td>
+      <td>
+        <%= link_to product.title, product.url %> is made by <%= product.manufacturer %> in category <%= product.category %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

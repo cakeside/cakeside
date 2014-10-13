@@ -4,30 +4,13 @@
   </div>
   <div class="span10">
     <h1>Product Catalog - Amazon</h1>
-    <%= form_tag admin_products_path, method: :get, name: 'search', class: 'form-horizontal' do %>
+    <%= form_tag admin_products_path(js: true), method: :get, name: 'search', class: 'form-horizontal', remote: true do %>
       <%= text_field_tag :q, params[:q], class: "search-query", placeholder: "Search" %>
       <%= submit_tag 'Search', class: 'btn btn-primary' %>
     <% end %>
-
-    <table class="table table-striped">
-      <tbody>
-      <% @products.each do |product| %>
-        <tr>
-          <td><%= link_to product.asin, admin_product_path(product.asin) %></td>
-          <td>
-            <%= link_to product.title, product.url %> is made by <%= product.manufacturer %> in category <%= product.category %>
-          </td>
-          <td>
-            <ul>
-              <% product.links.each do |link| %>
-                <li><%= link_to link.description, link.url %></li>
-              <% end %>
-            </ul>
-          </td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
+    <div id="results-container">
+      <%= render partial: "index" %>
+    </div>
   </div>
 </div>
 

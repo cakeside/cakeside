@@ -9,19 +9,18 @@
       <td><%= link_to @product.asin, @product.detail_page_url %></td>
     </tr>
     <tr>
-      <td>attributes</td>
-      <td><%= @product.item_attributes %></td>
-    </tr>
-    <tr>
       <td>images</td>
       <td>
-        <% @product.image_sets.image_set.each do |image| %>
-          <%= image_tag image.large_image.url %>
-          <%= image_tag image.medium_image.url %>
-          <%= image_tag image.small_image.url %>
-          <%= image_tag image.swatch_image.url %>
-          <%= image_tag image.thumbnail_image.url %>
-          <%= image_tag image.tiny_image.url %>
+        <%= image_tag(@product.large_image.url) %>
+        <%= image_tag(@product.medium_image.url) %>
+        <%= image_tag(@product.small_image.url) %>
+      </td>
+    </tr>
+    <tr>
+      <td>attributes</td>
+      <td>
+        <% @product.item_attributes.each do |(key, value)| %>
+          <p><%= key %>: <%= value %></p>
         <% end %>
       </td>
     </tr>
