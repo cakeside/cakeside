@@ -3,23 +3,23 @@
     <%= render partial: "my/shared/my_nav" %>
   </div>
   <div class="span10">
-    <h1>Tools</h1>
-    <%= form_tag admin_tools_path, method: :get, name: 'search', class: 'form-horizontal' do %>
+    <h1>Product Catalog - Amazon</h1>
+    <%= form_tag admin_products_path, method: :get, name: 'search', class: 'form-horizontal' do %>
       <%= text_field_tag :q, params[:q], class: "search-query", placeholder: "Search" %>
       <%= submit_tag 'Search', class: 'btn btn-primary' %>
     <% end %>
 
     <table class="table table-striped">
       <tbody>
-      <% @tools.each do |tool| %>
+      <% @products.each do |product| %>
         <tr>
-          <td><%= link_to tool.asin, tool.detail_page_url %></td>
+          <td><%= link_to product.asin, product.detail_page_url %></td>
           <td>
-            <%= link_to tool.item_attributes.title, tool.detail_page_url %> is made by <%= tool.item_attributes.manufacturer %> in category <%= tool.item_attributes.product_group %>
+            <%= link_to product.item_attributes.title, product.detail_page_url %> is made by <%= product.item_attributes.manufacturer %> in category <%= product.item_attributes.product_group %>
           </td>
           <td>
             <ul>
-              <% tool.item_links.item_link.each do |link| %>
+              <% product.item_links.item_link.each do |link| %>
                 <li><%= link_to link.description, link.url %></li>
               <% end %>
             </ul>
