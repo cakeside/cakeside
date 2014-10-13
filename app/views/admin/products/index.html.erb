@@ -13,13 +13,13 @@
       <tbody>
       <% @products.each do |product| %>
         <tr>
-          <td><%= link_to product.asin, product.detail_page_url %></td>
+          <td><%= link_to product.asin, product.url %></td>
           <td>
-            <%= link_to product.item_attributes.title, product.detail_page_url %> is made by <%= product.item_attributes.manufacturer %> in category <%= product.item_attributes.product_group %>
+            <%= link_to product.title, product.url %> is made by <%= product.manufacturer %> in category <%= product.category %>
           </td>
           <td>
             <ul>
-              <% product.item_links.item_link.each do |link| %>
+              <% product.links.each do |link| %>
                 <li><%= link_to link.description, link.url %></li>
               <% end %>
             </ul>
