@@ -5,6 +5,10 @@ class AmazonAPI
     @client = client
   end
 
+  def find(asin)
+    client.lookup(asin).first
+  end
+
   def search(query)
     return [] if query.blank?
     results = client.search(Keywords: query, SearchIndex: :Kitchen, Sort: :salesrank, Availability: :Available, MerchantId: :Amazon)
