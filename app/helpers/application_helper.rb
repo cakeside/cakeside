@@ -25,4 +25,9 @@ module ApplicationHelper
   def controller?(name)
     params[:controller].include?(name)
   end
+
+  def render_markdown(content)
+    return "" if content.nil?
+    GitHub::Markdown.render_gfm(content)
+  end
 end
