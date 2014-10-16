@@ -5,16 +5,16 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true, email: true
-  validates :website, :format => URI::regexp(%w(http https)), :allow_blank => true
-  validates_length_of       :password, :within => 6..20, :allow_blank => true
+  validates :website, format: URI::regexp(%w(http https)), allow_blank: true
+  validates_length_of :password, within: 6..20, allow_blank: true
 
-  has_many :creations, :dependent => :destroy
-  has_many :favorites, :dependent => :destroy
-  has_many :tutorials, :dependent => :destroy
+  has_many :creations, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :tutorials, dependent: :destroy
   has_many :activities, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :user_sessions, dependent: :destroy
-  has_and_belongs_to_many :interests, :join_table => 'users_interests', :autosave => true
+  has_and_belongs_to_many :interests, join_table: 'users_interests', autosave: true
   has_one :avatar, class_name: 'Photo', as: :imageable
   acts_as_tagger
 
@@ -66,15 +66,6 @@ class User < ActiveRecord::Base
   end
 
   class << self
-    def ordered
-      User.order(:creations_count => :desc)
-    end
-
-    def search_by(query)
-      return self.all if query.blank?
-      self.where('name like :query or email like :query', query: "#{query}%")
-    end
-
     def login(username, password)
       user = User.find_by(email: username)
       return false if user.nil?

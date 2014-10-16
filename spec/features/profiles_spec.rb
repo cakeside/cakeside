@@ -2,10 +2,9 @@ require 'rails_helper'
 
 describe "Profiles" do
   describe "GET /profiles" do
-    it "works! (now write some real specs)" do
+    it "it loads" do
       visit profiles_path
-      page.should have_content 'CakeSide'
+      expect(page).to have_content('CakeSide')
     end
   end
-
 end

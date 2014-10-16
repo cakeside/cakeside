@@ -8,7 +8,7 @@
       <% if current_user.already_likes(@creation) %>
         <i class="fa fa-star fa-4x pull-right"></i>
       <% else %>
-        <%= link_to creation_favorites_path(creation_id: @creation.id), method: :post, class: 'pull-right' do %>
+        <%= link_to creation_favorites_path(creation_id: @creation.id), method: :post, id: 'add-to-favorites-button', class: 'pull-right' do %>
           <i class="fa fa-star-o fa-4x"></i>
         <% end %>
       <% end %>
