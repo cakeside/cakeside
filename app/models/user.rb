@@ -38,14 +38,6 @@ class User < ActiveRecord::Base
     self.save
   end
 
-  def password_digest
-    encrypted_password
-  end
-
-  def password_digest=(value)
-    self.encrypted_password = value
-  end
-
   def has_avatar?
     self.avatar && self.avatar.image.present?
   end
