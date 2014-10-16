@@ -32,11 +32,11 @@ describe My::PasswordsController do
         let(:new_password) { 'booyakasham' }
 
         before :each do
-          put :update, :id => user.id, :user => { :password => new_password, :password_confirmation => new_password }
+          put :update, id: user.id, user: { password: new_password, password_confirmation: new_password }
         end
 
         it "should update the users password" do
-          user.reload.valid_password?(new_password).should be_truthy
+          expect(user.reload.authenticate(new_password)).to be_truthy
         end
       end
     end

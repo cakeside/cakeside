@@ -3,7 +3,7 @@ module Api
     class LoginsController < ApplicationController
       def create
         @user = User.find_by_email(params[:email])
-        if @user.valid_password?(params[:password])
+        if @user.authenticate(params[:password])
           render json: { auth_token: @user.authentication_token }
         else
           render json: { auth_token: "" }
