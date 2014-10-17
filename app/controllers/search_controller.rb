@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
-  def initialize(creations_repository = CreationRepository.new)
+  def initialize(cakes = Spank::IOC.resolve(:cakes))
+    @cakes = cakes
     super()
-    @creations_repository = creations_repository
   end
 
   def index
@@ -9,7 +9,7 @@ class SearchController < ApplicationController
     if @search.blank?
       redirect_to(root_url)
     else
-      @creations = @creations_repository.search(@search).page(params[:page]).per(100)
+      @creations = @cakes.search(@search).page(params[:page]).per(100)
       @members = User.includes(:avatar).where("upper(name) like upper(?)", "%#{@search}%")
       @tutorials = Tutorial.where("upper(heading) like upper(?) OR upper(description) like upper(?)", "%#{@search}%", "%#{@search}%")
     end

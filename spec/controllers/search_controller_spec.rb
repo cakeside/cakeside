@@ -6,9 +6,10 @@ describe SearchController do
       before { get :index }
 
       it "should redirect you to the home page" do
-        response.should redirect_to(root_url)
+        expect(response).to redirect_to(root_url)
       end
     end
+
     context "when a valid search query is given" do
       let!(:user) { create(:user, :name => 'cake') }
       let!(:bob) { create(:user, :name => 'bob') }
@@ -19,32 +20,32 @@ describe SearchController do
 
       before { get :index, { :q => 'cake' } }
 
-      it "should be successful" do
-        response.should be_success
+      it "returns a successful response" do
+        expect(response).to be_success
       end
 
-      it "should return all creations that have a matching name" do
-        assigns(:creations).should include(cake)
+      it "returns all creations that have a matching name" do
+        expect(assigns(:creations)).to include(cake)
       end
 
-      it "should not include cakes that do not match" do
-        assigns(:creations).should_not include(donut)
+      it "does not include cakes that do not match" do
+        expect(assigns(:creations)).to_not include(donut)
       end
 
-      it "should return all makers that match" do
-        assigns(:members).should include(user)
+      it "returns all makers that match" do
+        expect(assigns(:members)).to include(user)
       end
 
-      it "should not include makers with names that do not match" do
-        assigns(:members).should_not include(bob)
+      it "does not include makers with names that do not match" do
+        expect(assigns(:members)).to_not include(bob)
       end
 
-      it "should return all tutorials that match" do
-        assigns(:tutorials).should include(tutorial)
+      it "returns all tutorials that match" do
+        expect(assigns(:tutorials)).to include(tutorial)
       end
 
-      it "should not return tutorials that do not match" do
-        assigns(:tutorials).should_not include(other_tutorial)
+      it "does not return tutorials that do not match" do
+        expect(assigns(:tutorials)).to_not include(other_tutorial)
       end
     end
   end
