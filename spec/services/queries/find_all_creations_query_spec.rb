@@ -1,8 +1,8 @@
 require "rails_helper"
 
 describe FindAllCreationsQuery do
-  let(:sut) { FindAllCreationsQuery.new }
-  let(:results) { sut.fetch({}) }
+  subject { FindAllCreationsQuery.new }
+  let(:results) { subject.fetch({}) }
 
   let!(:cake_with_a_photo) { create(:creation) }
   let!(:cake_without_a_photo) { create(:creation, photos: []) }
@@ -13,10 +13,10 @@ describe FindAllCreationsQuery do
   end
 
   it "returns all creations with at least one photo" do
-    results.should include(cake_with_a_photo)
+    expect(results).to include(cake_with_a_photo)
   end
 
   it "ignores cakes without a photo" do
-    results.should_not include(cake_without_a_photo)
+    expect(results).to_not include(cake_without_a_photo)
   end
 end

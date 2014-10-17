@@ -1,7 +1,7 @@
 class FindAllCreationsQuery
   DEFAULT_PER_PAGE=12
 
-  def initialize(repository = CreationRepository.new)
+  def initialize(repository = Spank::IOC.resolve(:cakes))
     @repository = repository
   end
 
