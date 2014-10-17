@@ -7,7 +7,7 @@ class FavoritesController < ApplicationController
   end
 
   def index
-    @creation = FindCreationQuery.new.fetch(params[:creation_id])
+    @creation = Creation.find(params[:creation_id])
     @favorites = @creation.favorites
   end
 

@@ -1,26 +1,32 @@
 require 'rails_helper'
 
 describe CreationsController do
-  let(:user){ create(:user) }
-  let(:creation){ create(:creation, :user => user) }
+  let(:user) { create(:user) }
+  let(:cake) { create(:cake, user: user) }
 
   before(:each) do
     photo = 'spec/fixtures/images/example.png'
-    creation.photos.create(image: photo, image_processing: nil)
+    cake.photos.create(image: photo)
   end
 
   describe "#index" do
     before { get :index }
 
     it "should display all creations" do
-      assigns(:creations).should include(creation)
+      expect(assigns(:creations)).to include(cake)
     end
   end
 
   describe "#show" do
-    it "assigns the requested creation" do
-      get :show, :id => creation.id
-      assigns(:creation).should == creation
+    it "loads the cake" do
+      get :show, id: cake.id
+      expect(assigns(:creation)).to eql(cake)
+    end
+
+    it 'loads the selected image' do
+      photo = cake.photos.first
+      get :show, id: cake.id, photo_id: photo.id
+      expect(assigns(:primary_image)).to eql(photo)
     end
   end
 end

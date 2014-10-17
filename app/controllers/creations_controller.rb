@@ -4,11 +4,7 @@ class CreationsController < ApplicationController
   end
 
   def show
-    @creation = FindCreationQuery.new.fetch(params[:id])
-    if params[:photo_id].present?
-      @primary_image = @creation.photos.find(params[:photo_id])
-    else
-      @primary_image = @creation.primary_image
-    end
+    @creation = Creation.find(params[:id])
+    @primary_image = params[:photo_id].present? ?  @creation.photos.find(params[:photo_id]) : @creation.primary_image
   end
 end
