@@ -5,6 +5,6 @@ class CreationTagsController < ApplicationController
 
   def show
     @tag = params[:id].downcase.parameterize
-    @creations = Creation.includes([:user, :photos]).tagged_with([@tag]).where('photos_count > 0').page(params[:page]).per(12)
+    @creations = Creation.tagged(@tag).page(params[:page]).per(12)
   end
 end

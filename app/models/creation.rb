@@ -30,4 +30,8 @@ class Creation < ActiveRecord::Base
   def liked_by(user)
     favorites.find_or_create_by(user: user)
   end
+
+  def self.tagged(tag)
+    includes([:user, :photos]).tagged_with([tag]).where('photos_count > 0')
+  end
 end
