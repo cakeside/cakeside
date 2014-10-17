@@ -16,7 +16,7 @@ class ConfigureContainerCommand
     end
 
     # repositories
-    container.register(:cakes) { |builder| Creation }
+    container.register(:cakes) { |builder| Creation::Repository.new }.as_singleton
     container.register(:photos) { |builder| Photo }
     container.register(:users) { |builder| User::Repository.new }.as_singleton
   end
