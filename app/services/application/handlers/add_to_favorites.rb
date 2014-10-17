@@ -1,6 +1,6 @@
 class AddToFavorites
   def handles?(event)
-    :add_cake_to_favorites
+    :add_cake_to_favorites == event
   end
 
   def handle(message)
