@@ -1,6 +1,4 @@
 class ProfilesController < ApplicationController
-  before_action :authenticate!, :except => [:index, :show]
-
   def initialize(repository = Spank::IOC.resolve(:users))
     @repository = repository
     super()

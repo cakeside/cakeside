@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe UserRepository do
-  subject { UserRepository.new }
+describe User::Repository do
+  subject { User::Repository.new }
 
   describe "#all" do
     let!(:user) { create(:user) }
