@@ -1,8 +1,8 @@
 class CreateCakeCommand
-  def initialize(context, current_user = context.current_user, message_bus = Spank::IOC.resolve(:message_bus))
+  def initialize(context, current_user = context.current_user, command_bus = Spank::IOC.resolve(:command_bus))
     @context = context
     @current_user = current_user
-    @message_bus = message_bus
+    @command_bus = command_bus
   end
 
   def run(attributes, tags)
@@ -10,7 +10,7 @@ class CreateCakeCommand
     @current_user.tag(cake, with: tags, on: :tags)
 
     if cake.save
-      @message_bus.publish(:cake_published, cake_id: cake.id)
+      @command_bus.publish(:cake_published, cake_id: cake.id)
       @context.create_cake_succeeded(cake)
     else
       @context.create_cake_failed(cake)

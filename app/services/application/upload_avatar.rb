@@ -1,10 +1,10 @@
 class UploadAvatar
-  def initialize(message_bus = Spank::IOC.resolve(:message_bus))
-    @message_bus = message_bus
+  def initialize(command_bus = Spank::IOC.resolve(:command_bus))
+    @command_bus = command_bus
   end
 
   def run(user, image)
-    @message_bus.publish(:upload_avatar, create_message_from(user, image))
+    @command_bus.publish(:upload_avatar, create_message_from(user, image))
   end
 
   private
