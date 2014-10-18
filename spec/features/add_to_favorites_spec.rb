@@ -17,6 +17,6 @@ describe "adding a cake to your favorites", js: true do
   end
 
   it "should redirect you to the cake after" do 
-    expect(page).to have_content("Welcome to the fanclub!")
+    expect(page).to have_content("This has been added to your favorites")
   end
 end
