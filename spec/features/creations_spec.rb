@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-describe "Creations" do
+describe "Creations", js: true do
   describe "GET /creations" do
     before :each do
       visit creations_path
     end
 
-    it "should load the page properly" do
-      page.should have_content("CakeSide")
+    it "loads the page" do
+      expect(page).to have_content("CakeSide")
     end
   end
 end

@@ -1,6 +1,6 @@
 class CreationsController < ApplicationController
   def index
-    @creations = FindAllCreationsQuery.new.fetch(params)
+    @creations = AllCakesQuery.new.fetch(params).page(page).per(per_page)
   end
 
   def show
