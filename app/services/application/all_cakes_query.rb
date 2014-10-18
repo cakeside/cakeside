@@ -12,7 +12,7 @@ class AllCakesQuery
   def search_filters_for(params)
     [
       ->(cakes) { cakes.published },
-      ->(cakes) { params[:category].blank? ? cakes.all : cakes.where(category_id: Category.find_by_slug(params[:category].downcase).id) },
+      ->(cakes) { params[:category].blank? ? cakes.all : cakes.where(category: Category.find_by(slug: params[:category].downcase)) },
       ->(cakes) { cakes.order(created_at: sort(params)) },
     ]
   end
