@@ -2,6 +2,7 @@ module My
   class AvatarsController < BaseController
     def initialize(bus = Spank::IOC.resolve(:command_bus))
       @bus = bus
+      super()
     end
 
     def new
