@@ -10,7 +10,7 @@
       <div class="nav-collapse collapse">
         <ul class="nav">
           <li>
-            <%= form_tag(yield(:search_path) || search_path, method: :get, name: "search", class: "navbar-search pull-left") do %>
+            <%= form_tag(yield(:search_path).blank? ? search_path : yield(:search_path), method: :get, name: "search", class: "navbar-search pull-left") do %>
               <%= text_field_tag :q, params[:q], class: 'search-query', placeholder: 'Search' %>
             <% end %>
           </li>
