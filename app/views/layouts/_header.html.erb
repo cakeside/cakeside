@@ -14,13 +14,13 @@
               <%= text_field_tag :q, params[:q], class: 'search-query', placeholder: 'Search' %>
             <% end %>
           </li>
-          <% cache @categories do %>
+          <% cache [@categories, params[:q]].compact do %>
             <% @categories.each do |category| %>
-              <li class="<%= "active" if params["category"] == category.slug %>"><%= link_to category.name.pluralize, category_path(category) %></li>
+              <li class="<%= "active" if params["category"] == category.slug %>"><%= link_to category.name.pluralize, category_path(category, q: params[:q]) %></li>
             <% end %>
           <% end %>
-          <li class="<%= "active" if params["controller"] == "profiles" %>"> <%= link_to "Artists", profiles_path %> </li>
-          <li class="<%= "active" if params["controller"] == "tutorials" %>"> <%= link_to "Tutorials", tutorials_path %> </li>
+          <li class="<%= "active" if params["controller"] == "profiles" %>"> <%= link_to "Artists", profiles_path(q: params[:q]) %> </li>
+          <li class="<%= "active" if params["controller"] == "tutorials" %>"> <%= link_to "Tutorials", tutorials_path(q: params[:q]) %> </li>
         </ul>
         <% if user_signed_in? %>
         <ul class="nav pull-right" data-no-turbolink>
