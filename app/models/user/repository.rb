@@ -16,6 +16,10 @@ class User
       connection.includes(:avatar).artists
     end
 
+    def search_with(params)
+      artists
+    end
+
     private
 
     attr_reader :connection
