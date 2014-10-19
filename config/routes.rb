@@ -24,19 +24,14 @@ Cake::Application.routes.draw do
       get :oldest, action: 'index', sort: 'oldest'
     end
   end
-
+  get '/categories/:category', to: 'cakes#index', as: :category
+  get '/categories/:category/page/:page', to: 'cakes#index'
   get '/creations' => redirect('/cakes')
   get 'creations/:id', to: redirect('/cakes/%{id}')
   get 'creations/page/:page', to: redirect('/cakes/page/%{page}')
 
   resources :profiles, :only => [:index, :show] do
     get 'page/:page', :action => :index, :on => :collection, as: :paginate
-  end
-
-  resources :categories, only: [:show] do
-    member do
-      get 'page/:page', action: :show, as: :paginate
-    end
   end
 
   # /tags
