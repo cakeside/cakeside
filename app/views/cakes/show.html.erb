@@ -9,15 +9,17 @@
 <% if @creation.photos_count > 1 %>
   <div class="row-fluid">
     <div class="span12">
-      <ul class="thumbnails">
-      <% @creation.photos.each do |photo| %>
-        <li class="span2">
-          <%= link_to cake_path(@creation, photo_id: photo.id), remote: true do %>
-            <%= image_tag(photo.url_for(:thumb), :class => "thumbnail") %>
+      <% @creation.photos.each_slice(12).each do |batch| %>
+        <ul class='thumbnails'>
+          <% batch.each do |photo| %>
+            <li class="span1">
+              <%= link_to cake_path(@creation, photo_id: photo.id), remote: true do %>
+                <%= image_tag(photo.url_for(:thumb), class: "thumbnail") %>
+              <% end %>
+            </li>
           <% end %>
-        </li>
+        </ul>
       <% end %>
-      </ul>
     </div>
   </div>
 <% end %>
