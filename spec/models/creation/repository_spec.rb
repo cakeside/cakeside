@@ -64,7 +64,7 @@ describe Creation::Repository do
     end
 
     it 'returns all cakes that match the search query' do
-      cakes = subject.search_with(q: cake.name[0..2])
+      cakes = subject.search_with(q: cake.name[0..6])
       expect(cakes).to include(cake)
       expect(cakes).to_not include(cookie)
     end
