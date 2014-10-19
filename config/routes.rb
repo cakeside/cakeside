@@ -18,7 +18,7 @@ Cake::Application.routes.draw do
   resources :cakes, only: [:index, :show], path: :cakes do
     resources :photos, only: [:index, :show]
     resources :favorites, :only => [:index, :create]
-    get 'page/:page', :action => :index, :on => :collection, as: :paginate
+    get 'page/:page', action: :index, on: :collection, as: :paginate
     collection do
       get :newest, action: 'index', sort: 'newest'
       get :oldest, action: 'index', sort: 'oldest'

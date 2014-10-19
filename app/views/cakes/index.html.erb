@@ -20,8 +20,8 @@
 <div id="bakery">
   <div class="row-fluid">
     <ul class="nav nav-tabs">
-      <li class="<%= params[:sort].blank? || params[:sort] == "newest" ? "active" : "" %>"><%= link_to "Newest", newest_cakes_path %></li>
-      <li class="<%= params[:sort] == "oldest" ? "active" : "" %>"><%= link_to "Oldest", oldest_cakes_path %></li>
+      <li class="<%= params[:sort] == "oldest" ? "active" : "" %> pull-right"><%= link_to "Oldest", url_for(params.merge(sort: "oldest")) %></li>
+      <li class="<%= params[:sort].blank? || params[:sort] == "newest" ? "active" : "" %> pull-right"><%= link_to "Newest", url_for(params.merge(sort: "newest")) %></li>
     </ul>
   </div>
   <%= render partial: 'index' %>
