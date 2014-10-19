@@ -42,4 +42,15 @@ describe User::Repository do
       expect(results).to_not include(mo)
     end
   end
+
+  describe "#search_with" do
+    let!(:mo) { create(:user, creations_count: 1) }
+    let!(:bob) { create(:user, creations_count: 1) }
+
+    it 'returns all artists with the matching name' do
+      results = subject.search_with(q: bob.name)
+      expect(results).to include(bob)
+      expect(results).to_not include(mo)
+    end
+  end
 end
