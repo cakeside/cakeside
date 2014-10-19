@@ -1,4 +1,4 @@
-class CreationsController < ApplicationController
+class CakesController < ApplicationController
   def index
     @creations = AllCakesQuery.new.fetch(params).page(page).per(per_page)
   end

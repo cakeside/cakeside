@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe CreationsController do
+describe CakesController do
   let(:user) { create(:user) }
   let(:cake) { create(:cake, user: user) }
 

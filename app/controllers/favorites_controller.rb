@@ -7,14 +7,14 @@ class FavoritesController < ApplicationController
   end
 
   def index
-    @creation = Creation.find(params[:creation_id])
+    @creation = Creation.find(params[:cake_id])
     @favorites = @creation.favorites
   end
 
   def create
-    cake = Creation.find(params[:creation_id])
+    cake = Creation.find(params[:cake_id])
     bus.publish(:add_cake_to_favorites, { user_id: current_user.id, cake_id: cake.id })
-    redirect_to cake, notice: "This has been added to your favorites"
+    redirect_to cake_path(cake), notice: "This has been added to your favorites"
   end
 
   private

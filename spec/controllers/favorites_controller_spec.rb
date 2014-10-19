@@ -3,17 +3,17 @@ require "rails_helper"
 describe FavoritesController do
   context "when logged in" do
     let(:user) { create(:user) }
-    let(:creation) { create(:creation) }
+    let(:cake) { create(:cake) }
 
     before { http_login(user) }
 
     context "when loading all the favorites for a cake" do
-      let(:favorite) { create(:favorite, :creation => creation, :user => user) }
+      let(:favorite) { create(:favorite, creation: cake, user: user) }
 
       before :each do
-        creation.favorites << favorite
-        creation.save!
-        get :index, creation_id: creation.id
+        cake.favorites << favorite
+        cake.save!
+        get :index, cake_id: cake.id
       end
 
       it "should return them all" do
@@ -23,7 +23,7 @@ describe FavoritesController do
 
     context "when adding a cake to your favorites" do
       before :each do
-        post :create, creation_id: creation.id
+        post :create, cake_id: cake.id
       end
 
       it "should add the cake to the logged in users favorites" do
@@ -31,7 +31,7 @@ describe FavoritesController do
       end
 
       it "should redirect to the cake detail page" do
-        expect(response).to redirect_to(creation)
+        expect(response).to redirect_to(cake_path(cake))
       end
 
       it "should include a friendly flash message" do
