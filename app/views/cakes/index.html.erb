@@ -20,6 +20,10 @@
 <div id="bakery">
   <div class="row-fluid">
     <ul class="nav nav-tabs">
+      <li class="<%= "active" if params["category"].blank? %>"><%= link_to "All", url_for(params.merge(category: nil)) %></li>
+      <% @categories.each do |category| %>
+        <li class="<%= "active" if params["category"] == category.slug %>"><%= link_to category.name.pluralize, url_for(params.merge(category: category.slug)) %></li>
+      <% end %>
       <li class="<%= params[:sort] == "oldest" ? "active" : "" %> pull-right"><%= link_to "Oldest", url_for(params.merge(sort: "oldest")) %></li>
       <li class="<%= params[:sort].blank? || params[:sort] == "newest" ? "active" : "" %> pull-right"><%= link_to "Newest", url_for(params.merge(sort: "newest")) %></li>
     </ul>
