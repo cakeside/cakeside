@@ -2,6 +2,7 @@ class Creation
   include Filterable
   scope :tagged, ->(tag) { tagged_with([tag]).where('photos_count > 0') }
   scope :published, ->() { unscoped.distinct.includes(:user, :photos).joins(:photos).where('photos.image_processing' => nil) }
+  scope :search, ->(query) { where(["upper(creations.name) like :query OR upper(creations.story) like :query", { query: "%#{query.upcase}%" }]) }
 
   class Repository < SimpleDelegator
     def initialize(connection = Creation)
@@ -14,7 +15,7 @@ class Creation
     end
 
     def search(query)
-      connection.includes(:user, :photos).where(["upper(name) like :query OR upper(story) like :query", { query: "%#{query.upcase}%" }])
+      connection.includes(:user, :photos).search(query)
     end
 
     private

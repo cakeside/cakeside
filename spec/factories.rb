@@ -16,7 +16,7 @@ FactoryGirl.define do
 
   factory :cake, class: Creation do
     name { Faker::Name.name }
-    story 'whats the story morning glory?'
+    story { Faker::HipsterIpsum.words(50).join(' ') }
     association :user
     association :category
   end

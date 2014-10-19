@@ -37,5 +37,11 @@ describe AllCakesQuery do
       expect(cakes).to include(cake)
       expect(cakes).to_not include(cookie)
     end
+
+    it 'returns all cakes that match the search query' do
+      cakes = subject.fetch(q: cake.name[0..2])
+      expect(cakes).to include(cake)
+      expect(cakes).to_not include(cookie)
+    end
   end
 end
