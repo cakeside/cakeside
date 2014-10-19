@@ -3,7 +3,7 @@ require 'rails_helper'
 describe "Creations", js: true do
   describe "GET /creations" do
     before :each do
-      visit creations_path
+      visit cakes_path
     end
 
     it "loads the page" do

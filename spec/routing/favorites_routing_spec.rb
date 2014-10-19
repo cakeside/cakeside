@@ -3,19 +3,11 @@ require "rails_helper"
 describe FavoritesController do
   describe "routing" do
     it "routes to #index" do
-      { get: "/cakes/1/favorites" }.should route_to({
-        :controller => "favorites",
-        :action => "index",
-        :creation_id => "1"
-      })
+      expect(get: "/cakes/1/favorites").to route_to(controller: "favorites", action: "index", cake_id: "1")
     end
 
     it "routes to #create" do
-      { post: "/cakes/1/favorites" }.should route_to({
-        :controller => "favorites",
-        :action => "create",
-        :creation_id => "1"
-      })
+      expect(post: "/cakes/1/favorites").to route_to(controller: "favorites", action: "create", cake_id: "1")
     end
   end
 end

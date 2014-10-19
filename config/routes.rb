@@ -60,7 +60,7 @@ Cake::Application.routes.draw do
   # sitemap
   get "/sitemap.xml", to: "sitemap#index", defaults: { format: :xml }
 
-  root to: "creations#index"
+  root to: "cakes#index"
 
   namespace :api, defaults: { :format => 'json' }  do
     namespace :v1 do

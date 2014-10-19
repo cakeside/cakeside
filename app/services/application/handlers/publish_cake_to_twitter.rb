@@ -19,7 +19,7 @@ class PublishCakeToTwitter
   end
 
   def tweet_for(cake)
-    "#{cake.name} By #{cake.user.name} on #{routes.creation_url(cake)}!"
+    "#{cake.name} By #{cake.user.name} on #{routes.cake_url(cake)}!"
   end
 
   def routes

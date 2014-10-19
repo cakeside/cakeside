@@ -11,7 +11,7 @@
       <ul class="thumbnails">
       <% @creation.photos.each do |photo| %>
         <li class="span2">
-          <%= link_to creation_path(@creation, photo_id: photo.id), remote: true do %>
+          <%= link_to cake_path(@creation, photo_id: photo.id), remote: true do %>
             <%= image_tag(photo.url_for(:thumb), :class => "thumbnail") %>
           <% end %>
         </li>
