@@ -1,7 +1,7 @@
 class User
   include Queryable
-  scope :artists, ->{ where('creations_count > 0').order(creations_count: :desc) }
-  scope :search_by, ->(query) { query.blank? ? self.all : where('users.name like :query or users.email like :query', query: "#{query}%") }
+  scope :artists, ->{ includes(:avatar).where('creations_count > 0').order(creations_count: :desc) }
+  scope :search_by, ->(query) { query.blank? ? all : where('upper(users.name) LIKE :query OR upper(users.email) LIKE :query', query: "#{query.upcase}%") }
 
   class Repository < SimpleDelegator
     def initialize(connection = User)
@@ -11,10 +11,6 @@ class User
 
     def ordered
       connection.order(creations_count: :desc)
-    end
-
-    def artists
-      connection.includes(:avatar).artists
     end
 
     def search_with(params)
