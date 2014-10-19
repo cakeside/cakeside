@@ -1,6 +1,11 @@
 class CakesController < ApplicationController
+  def initialize(repository = Spank::IOC.resolve(:cakes))
+    @repository = repository
+    super()
+  end
+
   def index
-    @creations = AllCakesQuery.new.fetch(params).page(page).per(per_page)
+    @creations = @repository.search_with(params).page(page).per(per_page)
   end
 
   def show

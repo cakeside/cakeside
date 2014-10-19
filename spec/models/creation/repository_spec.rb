@@ -46,4 +46,27 @@ describe Creation::Repository do
       expect(results).to_not include(cup_cake)
     end
   end
+
+  context "#search_with" do
+    let(:cake_category) { create(:category) }
+    let!(:cake) { create(:cake, category: cake_category) }
+    let!(:cookie) { create(:cake) }
+
+    before :each do
+      cake.photos << create(:photo)
+      cookie.photos << create(:photo)
+    end
+
+    it 'returns all cakes in a specific category' do
+      cakes = subject.search_with(category: cake_category.slug)
+      expect(cakes).to include(cake)
+      expect(cakes).to_not include(cookie)
+    end
+
+    it 'returns all cakes that match the search query' do
+      cakes = subject.search_with(q: cake.name[0..2])
+      expect(cakes).to include(cake)
+      expect(cakes).to_not include(cookie)
+    end
+  end
 end
