@@ -1,6 +1,7 @@
 class CreationTagsController < ApplicationController
   def initialize(repository = Spank::IOC.resolve(:cakes))
     @repository = repository
+    super()
   end
 
   def index
