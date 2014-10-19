@@ -7,13 +7,15 @@
         <span class="icon-bar"></span>
       </button>
       <%= link_to "Cakeside", root_path, class: 'brand', style: 'color:hotpink;' %>
+      <ul class="nav">
+        <li>
+          <%= form_tag(yield(:search_path).blank? ? search_path : yield(:search_path), method: :get, name: "search", class: "navbar-search pull-left") do %>
+            <%= text_field_tag :q, params[:q], class: 'search-query', placeholder: 'Search' %>
+          <% end %>
+        </li>
+      </ul>
       <div class="nav-collapse collapse">
         <ul class="nav">
-          <li>
-            <%= form_tag(yield(:search_path).blank? ? search_path : yield(:search_path), method: :get, name: "search", class: "navbar-search pull-left") do %>
-              <%= text_field_tag :q, params[:q], class: 'search-query', placeholder: 'Search' %>
-            <% end %>
-          </li>
           <% cache @categories do %>
             <% @categories.each do |category| %>
               <li class="<%= "active" if params["slug"] == category.slug %>"><%= link_to category.name.pluralize, category_path(category) %></li>
