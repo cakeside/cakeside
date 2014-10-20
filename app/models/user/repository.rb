@@ -23,9 +23,13 @@ class User
 
     def search_filters_for(params)
       [
-        ->(users){ users.artists },
         ->(users){ params[:q].blank? ? users.all : users.search_by(params[:q]) },
+        ->(users) { users.order(created_at: sort(params)) },
       ]
+    end
+
+    def sort(params)
+      params[:sort] == "oldest" ? :asc : :desc
     end
   end
 end

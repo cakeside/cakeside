@@ -6,7 +6,7 @@ module Admin
     end
 
     def index
-      @users = repository.search_by(params[:q])
+      @users = repository.search_with(params)
     end
 
     def show
