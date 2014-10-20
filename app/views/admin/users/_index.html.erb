@@ -9,28 +9,32 @@
         created at
         <%= link_to url_for(params.merge(sort: "newest")), remote: true do %>
           <i class="fa fa-sort-up"></i>
-        <% end %>
+      <% end %>
         <%= link_to url_for(params.merge(sort: "oldest")), remote: true do %>
           <i class="fa fa-sort-down"></i>
-        <% end %>
+      <% end %>
       </td>
     </tr>
   </thead>
   <tbody>
-    <%- @users.each do |user| %>
-      <tr>
-        <td>edit</td>
-        <td><%= link_to "#{user.name} (#{user.creations_count})", admin_user_path(user) %></td>
-        <td><%= mail_to user.email %></td>
-        <td>
-          <ul>
-            <%= "<li>#{user.website}</li>".html_safe unless user.website.blank? %>
-            <%= "<li>#{user.twitter}</li>".html_safe unless user.twitter.blank? %>
-            <%= "<li>#{user.facebook}</li>".html_safe unless user.facebook.blank? %>
-          </ul>
-        </td>
-        <td><%= user.created_at.strftime("%Y-%m-%d") %></td>
-      </tr>
-    <% end %>
+  <%- @users.each do |user| %>
+    <tr>
+    <td>
+      <a href="#edit-user-modal-<%= user.id %>" role="button" data-toggle="modal">edit</a>
+      <%= render partial: 'edit_modal', locals: { user: user } %>
+    </td>
+    <td><%= link_to "#{user.name} (#{user.creations_count})", admin_user_path(user) %></td>
+    <td><%= mail_to user.email %></td>
+    <td>
+      <ul>
+        <%= "<li>#{user.website}</li>".html_safe unless user.website.blank? %>
+        <%= "<li>#{user.twitter}</li>".html_safe unless user.twitter.blank? %>
+        <%= "<li>#{user.facebook}</li>".html_safe unless user.facebook.blank? %>
+      </ul>
+    </td>
+    <td><%= user.created_at.strftime("%Y-%m-%d") %></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
+

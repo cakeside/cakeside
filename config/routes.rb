@@ -7,9 +7,9 @@ Cake::Application.routes.draw do
   post 'comments', to: 'comments#create'
 
   resources :tutorials, only: [:index, :show] do
-    get 'page/:page', :action => :index, :on => :collection
+    get 'page/:page', action: :index, on: :collection
   end
-  resources :tutorial_tags, :only => [:index, :show], :path => :tt do
+  resources :tutorial_tags, only: [:index, :show], path: :tt do
     member do
       get 'page/:page', action: :show
     end
@@ -17,7 +17,7 @@ Cake::Application.routes.draw do
 
   resources :cakes, only: [:index, :show], path: :cakes do
     resources :photos, only: [:index, :show]
-    resources :favorites, :only => [:index, :create]
+    resources :favorites, only: [:index, :create]
     get 'page/:page', action: :index, on: :collection, as: :paginate
     collection do
       get :newest, action: 'index', sort: 'newest'
@@ -30,12 +30,12 @@ Cake::Application.routes.draw do
   get 'creations/:id', to: redirect('/cakes/%{id}')
   get 'creations/page/:page', to: redirect('/cakes/page/%{page}')
 
-  resources :profiles, :only => [:index, :show] do
-    get 'page/:page', :action => :index, :on => :collection, as: :paginate
+  resources :profiles, only: [:index, :show] do
+    get 'page/:page', action: :index, on: :collection, as: :paginate
   end
 
   # /tags
-  resources :creation_tags, :only => [:index, :show], :path => :t do
+  resources :creation_tags, only: [:index, :show], path: :t do
     member do
       get 'page/:page', action: :show
     end
@@ -70,8 +70,8 @@ Cake::Application.routes.draw do
   end
 
   namespace :admin do
-    root :to => "users#index"
-    resources :users, only: [:index, :show]
+    root to: "users#index"
+    resources :users, only: [:index, :show, :update]
     resources :jobs, only: [:index, :show, :update, :destroy]
     resources :activities, only: [:index]
     resources :subscriptions, only: [:index]
