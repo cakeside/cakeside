@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
   private
 
   def load_header
-    @categories = Category.all
+    @categories = Rails.cache.fetch(:categories) { Category.all }
   end
 
   def authenticate!
