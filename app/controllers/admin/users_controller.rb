@@ -10,7 +10,7 @@ module Admin
     end
 
     def show
-      @user = repository.includes(creations: :photos).find(params[:id])
+      @user = repository.includes(creations: [:photos, :tags]).find(params[:id])
     end
 
     def update
@@ -22,7 +22,7 @@ module Admin
     private
 
     def secure_params
-      params.require(:user).permit(:name, :email, :city, :website, :twitter, :facebook)
+      params.require(:user).permit(:name, :email, :city, :full_address, :website, :twitter, :facebook)
     end
 
     attr_reader :repository
