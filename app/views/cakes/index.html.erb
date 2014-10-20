@@ -1,4 +1,5 @@
 <% provide(:description, "CakeSide is a free site to share your cake creations and ideas with other cake fanatics like yourself") -%>
+<% provide(:search_path, request.env['PATH_INFO'] || cakes_path) %>
 <% unless user_signed_in?  -%>
   <div class="row-fluid">
     <div class="span6">
@@ -19,8 +20,12 @@
 <div id="bakery">
   <div class="row-fluid">
     <ul class="nav nav-tabs">
-      <li class="<%= params[:sort].blank? || params[:sort] == "newest" ? "active" : "" %>"><%= link_to "Newest", newest_creations_path %></li>
-      <li class="<%= params[:sort] == "oldest" ? "active" : "" %>"><%= link_to "Oldest", oldest_creations_path %></li>
+      <li class="<%= "active" if params["category"].blank? %>"><%= link_to "All", url_for(params.merge(category: nil)) %></li>
+      <% @categories.each do |category| %>
+        <li class="<%= "active" if params["category"] == category.slug %>"><%= link_to category.name.pluralize, url_for(params.merge(category: category.slug)) %></li>
+      <% end %>
+      <li class="<%= params[:sort] == "oldest" ? "active" : "" %> pull-right"><%= link_to "Oldest", url_for(params.merge(sort: "oldest")) %></li>
+      <li class="<%= params[:sort].blank? || params[:sort] == "newest" ? "active" : "" %> pull-right"><%= link_to "Newest", url_for(params.merge(sort: "newest")) %></li>
     </ul>
   </div>
   <%= render partial: 'index' %>

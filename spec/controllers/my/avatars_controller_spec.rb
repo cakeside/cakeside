@@ -23,7 +23,7 @@ describe My::AvatarsController do
         end
 
         it "should display a flash notice" do
-          flash[:notice].should_not be_nil
+          expect(flash[:notice]).to_not be_nil
         end
       end
     end

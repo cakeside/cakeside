@@ -1,7 +1,7 @@
 <div class="row-fluid">
   <div class="span12">
-    <h1><%= link_to @creation.name, creation_path(@creation) %></h1>
-    <%= link_to creation_photo_path(@creation, @photo) do %>
+    <h1><%= link_to @creation.name, cake_path(@creation) %></h1>
+    <%= link_to cake_photo_path(@creation, @photo) do %>
       <%= image_tag(@photo.url_for(:original), :class => "thumbnail") %>
     <% end %>
   </div>
@@ -12,7 +12,7 @@
     <ul class="thumbnails">
       <% @creation.photos.each do |photo| %>
         <li class="span2">
-          <%= link_to creation_photo_path(@creation, photo) do %>
+          <%= link_to cake_photo_path(@creation, photo) do %>
             <%= image_tag(photo.url_for(:thumb), class: "thumbnail") %>
           <% end %>
         </li>

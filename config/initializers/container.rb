@@ -4,8 +4,9 @@ class ConfigureContainerCommand
     container.register(:message_handler) { |builder| builder.build(PublishCakeToTwitter) }
     container.register(:message_handler) { |builder| builder.build(ProcessPhoto) }
     container.register(:message_handler) { |builder| builder.build(ProcessAvatar) }
+    container.register(:message_handler) { |builder| builder.build(AddToFavorites) }
     container.register(:queue) { |c| Delayed::Job }
-    container.register(:message_bus) { |c| c.build(MessageBus) }.as_singleton
+    container.register(:command_bus) { |c| c.build(CommandBus) }.as_singleton
     container.register(:exif_parser) { |builder| ExifParser.new }
     container.register(:twitter_publisher) { |c| c.build(TwitterPublisher) }.as_singleton
     container.register(:product_api) { |c| AmazonAPI.new }.as_singleton
@@ -16,8 +17,9 @@ class ConfigureContainerCommand
     end
 
     # repositories
-    container.register(:cakes) { |builder| Creation }
+    container.register(:cakes) { |builder| Creation::Repository.new }.as_singleton
     container.register(:photos) { |builder| Photo }
+    container.register(:users) { |builder| User::Repository.new }.as_singleton
   end
 end
 

@@ -1,4 +1,4 @@
-class MessageBus
+class CommandBus
   def initialize(queue = Delayed::Job)
     @queue = queue
   end

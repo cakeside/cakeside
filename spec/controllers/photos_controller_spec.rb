@@ -1,19 +1,19 @@
 require 'rails_helper'
 
 describe PhotosController do
-  let(:creation){ create(:creation) }
+  let(:cake){ create(:cake) }
 
   describe "#index" do
     before :each do
-      get :index, creation_id: creation.id
+      get :index, cake_id: cake.id
     end
 
-    it "loads the creation" do
-      assigns(:creation).should == creation
+    it "loads the cake" do
+      expect(assigns(:creation)).to eql(cake)
     end
 
     it "loads the photos" do
-      assigns(:photos).should == creation.photos
+      expect(assigns(:photos)).to match_array(cake.photos)
     end
   end
 
@@ -21,16 +21,16 @@ describe PhotosController do
     let(:photo) { create(:photo) }
 
     before :each do
-      creation.photos.push(photo)
-      get :show, creation_id: creation.id, id: photo.id
+      cake.photos.push(photo)
+      get :show, cake_id: cake.id, id: photo.id
     end
 
     it "loads the cake" do
-      assigns(:creation).should == creation
+      expect(assigns(:creation)).to eql(cake)
     end
 
     it "loads the photo" do
-      assigns(:photo).should == photo
+      expect(assigns(:photo)).to eql(photo)
     end
   end
 end

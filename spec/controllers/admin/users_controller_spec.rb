@@ -18,7 +18,9 @@ module Admin
 
       it "returns users that match the search results" do
         matching_user = double
-        User.stub(:search_by).with('mo').and_return([matching_user])
+        repository = double
+        controller.stub(:repository).and_return(repository)
+        repository.stub(:search_with).and_return([matching_user])
         get :index, q: 'mo'
         expect(assigns(:users)).to include(matching_user)
       end

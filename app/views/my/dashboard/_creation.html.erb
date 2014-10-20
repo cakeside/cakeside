@@ -9,7 +9,7 @@
     <%= link_to my_root_path(anchor: "cakes/#{item.id}/edit") do %>
       <i class="fa fa-pencil-square-o"></i> edit
     <% end %>
-    <%= link_to creation_favorites_path(:creation_id => item.id) do %>
+    <%= link_to cake_favorites_path(cake_id: item.id) do %>
       <i class="fa fa-heart"></i> fanclub
     <% end %>
     </p>

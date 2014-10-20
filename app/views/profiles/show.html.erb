@@ -1,4 +1,5 @@
-<% provide(:title, "#{@user.name}") -%>
+<% provide(:title, @user.name) -%>
+<% provide(:search_path, profiles_path) %>
 <div class="row">
   <div class="span3">
     <div class="thumbnail">
@@ -29,11 +30,11 @@
       <% batch.each do |creation| %>
         <li class="span2">
           <div class="thumbnail">
-            <%= link_to creation do %>
+            <%= link_to cake_path(creation) do %>
               <%= image_tag creation.primary_image.url_for(:thumb) %>
             <% end %>
             <div class="caption">
-              <h4><%= link_to shrink(creation.name, 12), creation %></h4>
+              <h4><%= link_to shrink(creation.name, 12), cake_path(creation) %></h4>
               <p><%= link_to shrink(creation.user.name, 20), profile_path(creation.user) %></p>
               <p><small><%= time_ago_in_words(creation.created_at) %> ago.</small></p>
             </div>

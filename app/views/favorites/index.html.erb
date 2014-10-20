@@ -1,7 +1,7 @@
 <% provide(:title, "#{@creation.name} by #{@creation.user.name} - fanclub") -%>
 <div class="row-fluid">
   <div class="span12">
-    <h1> Fans of  <%= link_to @creation.name, creation_path(@creation) %> </h1>
+    <h1> Fans of  <%= link_to @creation.name, cake_path(@creation) %> </h1>
     <ul class="thumbnails">
       <% @creation.favorites.each do |favorite| %>
         <li class="span3">

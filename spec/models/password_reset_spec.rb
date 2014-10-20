@@ -35,7 +35,7 @@ describe PasswordReset do
     it "changes the users password" do
       PasswordReset.reset(reset_token, password)
       user.reload
-      expect(user.valid_password?(password)).to be_truthy
+      expect(user.authenticate(password)).to be_truthy
     end
 
     it "deletes the reset token" do

@@ -4,8 +4,8 @@ require File.expand_path(File.join(File.dirname(__FILE__), '..', 'config', 'envi
 class Command
   attr_reader :bus, :storage
 
-  def initialize(message_bus = Spank::IOC.resolve(:message_bus), storage = BlobStorage.new)
-    @bus = message_bus
+  def initialize(command_bus = Spank::IOC.resolve(:command_bus), storage = BlobStorage.new)
+    @bus = command_bus
     @storage = storage
   end
 

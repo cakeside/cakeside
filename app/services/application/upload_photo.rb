@@ -1,12 +1,12 @@
 class UploadPhoto
-  def initialize(message_bus = Spank::IOC.resolve(:message_bus), cakes = Creation)
-    @message_bus = message_bus
+  def initialize(command_bus = Spank::IOC.resolve(:command_bus), cakes = Creation)
+    @command_bus = command_bus
     @cakes = cakes
   end
 
   def run(cake_id, params)
     photo = @cakes.find(cake_id).photos.create!(image_processing: true, watermark: params[:watermark])
-    @message_bus.publish(:upload_photo, create_message_from(cake_id, params, photo))
+    @command_bus.publish(:upload_photo, create_message_from(cake_id, params, photo))
     photo
   end
 

@@ -1,8 +1,8 @@
 module Admin
   class PhotosController < AdminController
-    def initialize(photo_repository = Photo, message_bus = Spank::IOC.resolve(:message_bus), storage = Spank::IOC.resolve(:blob_storage))
+    def initialize(photo_repository = Photo, command_bus = Spank::IOC.resolve(:command_bus), storage = Spank::IOC.resolve(:blob_storage))
       @photo_repository = photo_repository
-      @bus = message_bus
+      @bus = command_bus
       @storage = storage
       super()
     end

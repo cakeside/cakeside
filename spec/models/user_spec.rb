@@ -123,21 +123,6 @@ describe User do
     end
   end
 
-  describe "when loading all the users" do
-    let!(:first_person) { create(:user, :creations_count => 0) }
-    let!(:second_person) { create(:user, :creations_count => 1) }
-
-    let(:results) { User.ordered }
-
-    it "should load the person with the most cakes first" do
-      results.first.should == second_person
-    end
-
-    it "should load the person with the least cakes last" do
-      results.last.should == first_person
-    end
-  end
-
   describe "send welcome email" do
     let(:user) { build(:user) }
     let(:mailer) { double("mailer", welcome_email: true) }
@@ -181,23 +166,6 @@ describe User do
           expect(result.user).to eql(user)
         end
       end
-    end
-  end
-
-  describe ".search_by" do
-    let!(:mo) { create(:user) }
-    let!(:bob) { create(:user) }
-
-    it "returns a user that has a matching email address" do
-      results = User.search_by(mo.email)
-      expect(results).to include(mo)
-      expect(results).to_not include(bob)
-    end
-
-    it "returns a user that has a matching name" do
-      results = User.search_by(bob.name)
-      expect(results).to include(bob)
-      expect(results).to_not include(mo)
     end
   end
 end

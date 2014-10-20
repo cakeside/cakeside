@@ -3,7 +3,7 @@
   <i class="fa fa-heart icon-large"></i>
   <%= avatar_for(subject.user, size: 24) %> 
   <%= link_to subject.user.name, profile_path(subject.user) %> added 
-  <%= link_to subject.creation.name, creation_path(subject.creation) %> to their favorites
+  <%= link_to subject.creation.name, cake_path(subject.creation) %> to their favorites
   <small><%= time_ago_in_words(subject.created_at) %> ago.</small>
   </p>
 </div>

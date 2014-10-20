@@ -1,12 +1,19 @@
 class ProfilesController < ApplicationController
-  before_action :authenticate!, :except => [:index, :show]
+  def initialize(repository = Spank::IOC.resolve(:users))
+    @repository = repository
+    super()
+  end
 
   def index
-    @profiles = User.includes(:avatar).where('creations_count > 0').order(creations_count: :desc).page(params[:page]).per(12)
+    @profiles = repository.search_with(params.merge(artists: true)).page(page).per(per_page)
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = repository.find(params[:id])
     @creations = @user.creations.includes(:photos)
   end
+
+  private
+
+  attr_reader :repository
 end

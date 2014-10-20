@@ -1,8 +1,0 @@
-<% provide(:title, "#{@category.name} Cakes") -%>
-<div id="bakery">
-  <%= render partial: "show" %>
-</div>
-
-<div id='pagination-row' class="row-fluid">
-  <%= render "shared/paging", items: @creations %>
-</div>
