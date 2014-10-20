@@ -42,6 +42,8 @@ gem 'browser_sniffer'
 gem 'asin'
 gem 'curb'
 gem 'github-markdown'
+gem 'chartkick'
+gem 'groupdate'
 
 group :development do
   gem 'capistrano', '~> 3.0', require: false
