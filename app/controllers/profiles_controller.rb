@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
   end
 
   def index
-    @profiles = repository.artists.search_with(params).page(page).per(per_page)
+    @profiles = repository.search_with(params.merge(artists: true)).page(page).per(per_page)
   end
 
   def show

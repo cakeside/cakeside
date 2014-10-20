@@ -1,7 +1,10 @@
 class User
   include Queryable
-  scope :artists, ->{ includes(:avatar).where('creations_count > 0').order(creations_count: :desc) }
+  scope :artists, ->{ includes(:avatar).where('creations_count > 0') }
   scope :search_by, ->(query) { query.blank? ? all : where('upper(users.name) LIKE :query OR upper(users.email) LIKE :query', query: "#{query.upcase}%") }
+  scope :oldest, ->{ order(created_at: :asc) }
+  scope :newest, ->{ order(created_at: :desc) }
+  scope :by_cakes, ->{ order(creations_count: :desc) }
 
   class Repository < SimpleDelegator
     def initialize(connection = User)
@@ -23,13 +26,21 @@ class User
 
     def search_filters_for(params)
       [
-        ->(users){ params[:q].blank? ? users.all : users.search_by(params[:q]) },
-        ->(users) { users.order(created_at: sort(params)) },
+        ->(users){ params[:artists].present? ? users.artists : all },
+        ->(users){ users.search_by(params[:q]) },
+        sort_using(params[:sort])
       ]
     end
 
-    def sort(params)
-      params[:sort] == "oldest" ? :asc : :desc
+    def sort_using(sort_by)
+      case sort_by.try(:downcase)
+      when 'oldest'
+        ->(users) { users.oldest }
+      when 'newest'
+        ->(users) { users.newest }
+      else
+        ->(users) { users.by_cakes }
+      end
     end
   end
 end
