@@ -1,13 +1,7 @@
 ## Environment Setup
 
-Install RVM
-
-    curl -L https://get.rvm.io | bash -s stable --ruby
-
-Install ruby 2.0.0
-
-    rvm install 2.0.0
-
+Install [rbenv](https://github.com/sstephenson/rbenv#installation)
+Install ruby 2.1.2
 Install required gems
 
     bundle install
@@ -20,16 +14,9 @@ Setup database (set password to postgres)
 
 Start server
 
-    rails s
+    bundle exec foreman start
     
 ## Capistrano
 
-[more info](https://github.com/capistrano/capistrano/wiki/2.x-From-The-Beginning)
-
-    cap staging deploy:migrations
-    cap production deploy:migrations
-
-# To Document
-
-* Dependencies to install
-* how to run tests
+    cap staging deploy
+    cap production deploy
