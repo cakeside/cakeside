@@ -31,8 +31,8 @@
             <td><%= user_session.browser.browser %></td>
             <td><%= user_session.browser.os %></td>
             <td><%= user_session.browser.os_version %></td>
-            <td><%= time_ago_in_words(user_session.accessed_at) %></td>
-            <td><%= time_ago_in_words(user_session.revoked_at) if user_session.revoked_at %></td>
+            <td><%= user_session.accessed_at %></td>
+            <td><%= user_session.revoked_at %></td>
             <td><%= link_to "Revoke", admin_session_path(user_session), method: :delete, class: 'btn btn-danger' %></td>
           </tr>
         <% end %>
