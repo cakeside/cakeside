@@ -4,15 +4,14 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to CakeSide.com, <%= @user.name %></h1>
+    <h1><%= @user.name %>,</h1>
     <p>
-    You have successfully signed up to cakeside.com,
-    your username is: <%= @user.email %>.<br/>
+    You have successfully signed up to <%= link_to "www.cakeside.com", root_url(protocol: 'https') %> with the email address <%= @user.email %>
     </p>
     <p>
-    To login to the site, just follow this link: <%= link_to "CakeSide", root_url(protocol: 'https') %>.
+    <%= link_to "Log in", root_url(protocol: 'https') %> to start uploading now!
     </p>
-    <p>Thanks for joining and have a great day!</p>
+    <p>Thank you for joining our community!</p>
   </body>
 </html>
 
