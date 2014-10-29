@@ -9,9 +9,7 @@
                 <%= avatar_for(profile) %>
               <% end %>
               <div class="caption">
-                <h4><%= link_to shrink(profile.name, 12), profile_path(profile) %></h4>
-                <p><%= link_to shrink(profile.city, 20, 'sugarland'), profile_path(profile) %></p>
-                <p><small><%= time_ago_in_words(profile.created_at) %> ago.</small></p>
+                <small><%= link_to shrink(profile.name, 20), profile_path(profile) %></small>
               </div>
             </div>
           </li>
