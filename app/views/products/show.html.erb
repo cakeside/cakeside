@@ -1,18 +1,28 @@
 <%= provide(:search_path, products_path) %>
 <div class="row-fluid">
-  <div class="span6">
-    <img class="thumbnail" src="<%= @product.large_image.url %>" alt="<%= @product.asin %>" />
-  </div>
-  <div class="span6">
+  <div class="page-header">
     <h1><%= link_to @product.item_attributes['title'], @product.detail_page_url %></h1>
     <p>By <%= link_to @product.item_attributes['manufacturer'], @product.detail_page_url %></p>
-    <hr />
+  </div>
+</div>
+<div class="row-fluid">
+  <div class="span6">
+    <%= link_to @product.detail_page_url do %>
+      <img class="thumbnail" src="<%= @product.large_image.url %>" alt="<%= @product.asin %>" />
+    <% end %>
+  </div>
+  <div class="span6">
     <p><%= @product.item_attributes['feature'].join(" ") -%></p>
-    <p><%= @product.editorial_reviews.editorial_review.content %></p>
     <ul>
       <% @product.item_links.item_link.each do |link| %>
         <li><%= link_to link.description, link.url %></li>
       <% end %>
     </ul>
+  </div>
+</div>
+
+<div class="row-fluid">
+  <div class="span12">
+    <p><%= @product.editorial_reviews.editorial_review.content.html_safe %></p>
   </div>
 </div>
