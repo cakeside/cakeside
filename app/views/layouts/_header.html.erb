@@ -14,9 +14,7 @@
               <%= text_field_tag :q, params[:q], class: 'search-query', placeholder: 'Search' %>
             <% end %>
           </li>
-          <% @categories.each do |category| %>
-            <li class="<%= "active" if params["category"] == category.slug %>"><%= link_to category.name.pluralize, category_path(category, q: params[:q]) %></li>
-          <% end %>
+          <li class="<%= "active" if params["controller"] == "cakes" %>"> <%= link_to "Cakes", cakes_path(q: params[:q]) %> </li>
           <li class="<%= "active" if params["controller"] == "profiles" %>"> <%= link_to "Artists", profiles_path(q: params[:q]) %> </li>
           <li class="<%= "active" if params["controller"] == "tutorials" %>"> <%= link_to "Tutorials", tutorials_path(q: params[:q]) %> </li>
         </ul>
