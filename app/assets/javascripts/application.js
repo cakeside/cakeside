@@ -19,6 +19,7 @@
 //= require jquery.embedly
 //= require tag-it
 //= require bootstrap
+//= require bootstrap-multiselect
 //= require underscore
 //= require js-routes
 //= require backbone
