@@ -14,6 +14,10 @@
       <% end %>
     <% end %>
     <p>By <%= link_to @creation.user.name, profile_path(@creation.user) %></p>
+    <p>
+      <i class="fa fa-filter icon-large"></i>
+      <%= link_to @creation.category.name, category_path(@creation.category) %>
+    </p>
     <% if @creation.tags.any? %>
       <span> <i class="icon-tags"></i> </span>
       <% @creation.tags.each do |tag| -%>

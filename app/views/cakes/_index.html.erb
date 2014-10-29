@@ -6,12 +6,8 @@
           <li class="span2">
             <div class="thumbnail">
               <%= link_to cake_path(creation) do %>
-                <%= image_tag creation.primary_image.url_for(:thumb) %>
+                <%= image_tag creation.primary_image.url_for(:thumb), alt: creation.name %>
               <% end %>
-              <div class="caption">
-                <h4><%= link_to shrink(creation.name, 12), cake_path(creation) %></h4>
-                <p><%= link_to shrink(creation.user.name, 20), profile_path(creation.user) %></p>
-              </div>
             </div>
           </li>
         <% end %>

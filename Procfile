@@ -1,2 +1,2 @@
-worker: bundle exec rake jobs:work
-web: bundle exec rails server
+worker: bundle exec spring rake jobs:work
+web: bundle exec spring rails server

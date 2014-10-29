@@ -28,19 +28,19 @@ Cake::Application.routes.draw do
   get '/categories/:category/page/:page', to: 'cakes#index'
   get '/creations' => redirect('/cakes')
   get 'creations/:id', to: redirect('/cakes/%{id}')
+  get 'creations/:id/favorites', to: redirect('/cakes/%{id}/favorites')
   get 'creations/page/:page', to: redirect('/cakes/page/%{page}')
+  get 't' => 'cakes#index'
+  get 't/:tags' => 'cakes#index', as: :creation_tag
+  get 't/:tags/page:page' => 'cakes#index'
+  get 'tags/:tags' => 'cakes#index'
+
+  resources :products, only: [:index, :show]
 
   resources :profiles, only: [:index, :show] do
     get 'page/:page', action: :index, on: :collection, as: :paginate
   end
 
-  # /tags
-  resources :creation_tags, only: [:index, :show], path: :t do
-    member do
-      get 'page/:page', action: :show
-    end
-  end
-  get 'tags/:id' => 'creation_tags#show'
 
   resources :sessions, only: [:new, :create, :destroy]
   get "login" => "sessions#new"

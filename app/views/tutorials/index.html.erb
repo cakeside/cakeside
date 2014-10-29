@@ -6,12 +6,10 @@
         <li class="span2">
           <div class="thumbnail">
             <%= link_to tutorial do %>
-              <%= image_tag tutorial.image_url %>
+              <%= image_tag tutorial.image_url, width: 240 %>
             <% end %>
             <div class="caption">
-              <h4><%= link_to shrink(tutorial.heading, 12), tutorial %></h4>
-              <p><%= link_to shrink(tutorial.user.name, 20), profile_path(tutorial.user) %></p>
-              <p><small><%= time_ago_in_words(tutorial.created_at) %> ago.</small></p>
+              <small><%= link_to shrink(tutorial.heading, 20), tutorial %></small>
             </div>
           </div>
         </li>

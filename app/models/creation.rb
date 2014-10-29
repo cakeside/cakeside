@@ -6,7 +6,7 @@ class Creation < ActiveRecord::Base
   has_many :photos, -> { order :created_at }, dependent: :destroy, as: :imageable
   has_many :favorites, :dependent => :destroy
   has_many :comments, dependent: :destroy
-  acts_as_taggable
+  acts_as_taggable_on :tags
   alias_method :author, :user
 
   default_scope -> { order(created_at: :desc) }

@@ -1,8 +1,0 @@
-<% provide(:title, "Tag, you're it".html_safe) -%>
-<div class="row-fluid">
-  <div class="span12">
-    <% tag_cloud(@tags, %w(btn-mini btn-small btn-large)) do |tag, css_class| %>
-      <%= link_to "#{tag.name} x #{tag.count}", { :action => :show, :id => tag.name }, :class => "#{css_class} btn" %>
-  <% end %>
-  </div>
-</div>
