@@ -1,47 +1,18 @@
-<%= provide(:search_path, admin_products_path) %>
+<%= provide(:search_path, products_path) %>
 <div class="row-fluid">
-  <div class="span2">
-    <%= render partial: "my/shared/my_nav" %>
+  <div class="span6">
+    <img class="thumbnail" src="<%= @product.large_image.url %>" alt="<%= @product.asin %>" />
   </div>
-  <div class="span10">
-    <table class="table">
-    <tr>
-      <td>asin</td>
-      <td><%= link_to @product.asin, @product.detail_page_url %></td>
-    </tr>
-    <tr>
-      <td>images</td>
-      <td>
-        <%= image_tag(@product.large_image.url) %>
-        <%= image_tag(@product.medium_image.url) %>
-        <%= image_tag(@product.small_image.url) %>
-      </td>
-    </tr>
-    <tr>
-      <td>attributes</td>
-      <td>
-        <% @product.item_attributes.each do |(key, value)| %>
-          <p><%= key %>: <%= value %></p>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <td>reviews</td>
-      <td>
-        <%= @product.editorial_reviews.editorial_review.content %>
-      </td>
-    </tr>
-    <tr>
-      <td>links</td>
-      <td>
-        <ul>
-          <% @product.item_links.item_link.each do |link| %>
-            <li><%= link_to link.description, link.url %></li>
-          <% end %>
-        </ul>
-      </td>
-    </tr>
-    </table>
+  <div class="span6">
+    <h1><%= link_to @product.item_attributes['title'], @product.detail_page_url %></h1>
+    <p>By <%= link_to @product.item_attributes['manufacturer'], @product.detail_page_url %></p>
+    <hr />
+    <p><%= @product.item_attributes['feature'].join(" ") -%></p>
+    <p><%= @product.editorial_reviews.editorial_review.content %></p>
+    <ul>
+      <% @product.item_links.item_link.each do |link| %>
+        <li><%= link_to link.description, link.url %></li>
+      <% end %>
+    </ul>
   </div>
 </div>
-
