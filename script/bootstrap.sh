@@ -29,6 +29,6 @@ apt-get -y update
 apt-get -y install nodejs
 
 su postgres<<EOF
-createuser -s -e vagrant
+createuser -s -e -w vagrant
 EOF
 su -c "source /vagrant/script/bootstrap-vagrant-user.sh" vagrant
