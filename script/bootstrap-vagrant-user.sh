@@ -14,10 +14,10 @@ rbenv rehash
 cd /vagrant
 bundle install -j 4
 rbenv rehash
-if [ ! -f /vagrant/config/database.yml ]; then
+if [ ! -f config/database.yml ]; then
   ln -s config/database.yml.vagrant config/database.yml
 fi
-if [ ! -f /vagrant/.env ]; then
+if [ ! -f .env ]; then
   ln -s .env.example .env
 fi
 bundle exec rake db:create db:migrate db:seed
