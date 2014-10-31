@@ -28,24 +28,21 @@ set :scm_verbose, true
 # set :pty, true
 
 # Default value for :linked_files is []
-# set :linked_files, %w{config/database.yml}
 set :linked_files, %w{config/database.yml .env}
 
 # Default value for linked_dirs is []
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for keep_releases is 5
-# set :keep_releases, 5
 set :keep_releases, 3
 #set :normalize_asset_timestamps, false
 set :ssh_options, { forward_agent: true }
 
 set :rbenv_type, :user # or :system, depends on your rbenv setup
-set :rbenv_ruby, '2.1.3'
+set :rbenv_ruby, '2.1.4'
 
 namespace :deploy do
   desc 'Restart application'
