@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: cakeside
+  pool: 5
+  username: vagrant
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: cakeside_test
+  pool: 5
+  username: vagrant
+  password:
