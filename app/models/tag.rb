@@ -1,13 +1,4 @@
 class Tag
-  def self.unique_tools
-    ActsAsTaggableOn::Tag
-      .joins(:taggings)
-      .where(taggings: { context: 'tools' })
-      .order(:name)
-      .pluck(:name)
-      .uniq
-  end
-
   def self.unique_tags
     ActsAsTaggableOn::Tag
       .joins(:taggings)
@@ -15,5 +6,16 @@ class Tag
       .order(:name)
       .pluck(:name)
       .uniq
+  end
+
+  def self.unique_tools
+    #ActsAsTaggableOn::Tag
+      #.joins(:taggings)
+      #.where(taggings: { context: 'tools' })
+      #.where(taggings: { taggable_type: Creation.name })
+      #.order(:name)
+      #.pluck(:name)
+      #.uniq
+    Tool.all
   end
 end
