@@ -20,3 +20,24 @@ Start server
 
     bundle exec cap staging deploy
     bundle exec cap production deploy
+
+## Git Workflow
+
+
+
+
+
+## Run tests
+
+
+
+
+## Creating and restoring from backups
+
+
+
+## Sync logs to S3
+
+
+
+
