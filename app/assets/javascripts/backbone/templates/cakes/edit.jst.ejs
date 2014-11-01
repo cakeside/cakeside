@@ -43,6 +43,17 @@
           <input name="cake_tags" type="text" id="cake_tags" value="<%= tags %>" class="input-xxlarge" autocomplete="off" />
           </div>
         </div>
+        <div class="control-group">
+          <label for="cake_tools" class="control-label">Tools</label>
+          <div class="controls">
+          <% if (typeof(cake.tools) === "string") { %>
+            <% tools = _.map(cake.tools.split(','), function(x){ return x; }) %>
+          <% } else { %>
+            <% tools = _.map(cake.tools, function(x){ return x.name; }) %>
+          <% } %>
+          <input name="cake_tools" type="text" id="cake_tools" value="<%= tools %>" class="input-xxlarge" autocomplete="off" />
+          </div>
+        </div>
         <div class="form-actions">
           <button id='save-button' type="submit" class="btn btn-primary">Publish</button>
           <a href="#cakes/<%= cake.id %>" class="btn">Cancel</a>
