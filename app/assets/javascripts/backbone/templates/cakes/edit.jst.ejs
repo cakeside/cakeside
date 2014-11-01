@@ -1,10 +1,15 @@
 <div class="row-fluid">
   <div class="span12">
-    <p class="pull-right"> <a class="btn btn-primary add-photo">Add Photo...</a> </p>
     <h1><small>Edit</small> <%= cake.name %></h1>
     <hr />
     <form id="edit-cake" name="cake" class="form-horizontal">
       <fieldset>
+        <div class="control-group">
+          <label class="control-label"></label>
+          <div class="controls">
+            <a class="btn btn-primary add-photo">Upload Photo...</a>
+          </div>
+        </div>
         <div class="control-group">
           <label class="control-label" for="cake_name">Name*</label>
           <div class="controls">
