@@ -1,7 +1,8 @@
 <% provide(:title, "Dashboard") -%>
 <%= content_for :javascript do -%>
   <%= javascript_tag do %>
-    var ALL_TAGS = [ <% ActsAsTaggableOn::Tag.pluck(:name).sort!.each { |item| %> '<%= item %>', <% } %> ];
+    var ALL_TAGS = <%= raw unique_tags %>;
+    var ALL_TOOLS = <%= raw unique_tools %>;
     var disqus_shortname = '<%= ENV['DISQUS_SHORTNAME'] %>';
     var disqus_identifier = 'u-<%= current_user.id %>';
     var disqus_config = function(){
