@@ -10,7 +10,6 @@ class CakeSide.Views.Cakes.EditView extends Marionette.CompositeView
     description: "#cake_story"
     category: "#cake_category_id"
     tags: "#cake_tags"
-    tools: "#cake_tools"
     save_button: '#save-button'
 
   modelEvents:
@@ -38,7 +37,6 @@ class CakeSide.Views.Cakes.EditView extends Marionette.CompositeView
   onRender: ->
     @$("#cake_category_id").val(@model.category_id())
     @ui.tags.tagit({ availableTags: ALL_TAGS })
-    @ui.tools.tagit({ availableTags: ALL_TOOLS })
     @disableSaveButton()
 
   savedSuccessfully: (cake) =>
@@ -57,7 +55,6 @@ class CakeSide.Views.Cakes.EditView extends Marionette.CompositeView
     @model.set('story', @ui.description.val())
     @model.set('category_id', @ui.category.val())
     @model.set('tags', @ui.tags.val())
-    @model.set('tools', @ui.tools.val())
     @model.isValid()
 
   displayError: (model, error) ->

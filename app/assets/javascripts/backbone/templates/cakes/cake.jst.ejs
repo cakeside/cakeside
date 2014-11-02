@@ -5,11 +5,9 @@
   </a>
 <% } %>
 <div class="media-body">
-  <h4 class="media-heading"><%= name %></h4>
-  <%= story %>
+  <h4 class="media-heading"><a href="#cakes/<%= id %>"><%= name %></a></h4>
   <p>
     <a href="#cakes/<%= id %>/edit"><i class="fa fa-edit"></i>edit</a>
     <a href="<%= Routes.cake_favorites_path(id) %>"><i class="fa fa-heart"></i>fanclub</a>
-    <span class="badge badge-warning"><i class="fa fa-comment"></i><a href="/creations/<%= id %>#disqus_thread" data-disqus-identifier="c-<%= id %>"></a></span>
   </p>
 </div>

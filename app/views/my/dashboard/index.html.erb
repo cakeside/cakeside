@@ -1,35 +1,9 @@
 <% provide(:title, "Dashboard") -%>
-<%= content_for :javascript do -%>
-  <%= javascript_tag do %>
-    var ALL_TAGS = <%= raw unique_tags %>;
-    var ALL_TOOLS = <%= raw unique_tools %>;
-    var disqus_shortname = '<%= ENV['DISQUS_SHORTNAME'] %>';
-    var disqus_identifier = 'u-<%= current_user.id %>';
-    var disqus_config = function(){
-      this.page.remote_auth_s3 = '<%= disqus_auth %>';
-      this.page.api_key = '<%= ENV['DISQUS_API_KEY'] %>';
-    };
-    $(document).ready(function(){
-      CakeSide.initialize({
-        access_token: '<%= current_user.authentication_token %>',
-        disqus_shortname: disqus_shortname,
-      });
-    });
-    $(document).on('page:load', function(){
-      Backbone.history.stop();
-      CakeSide.initialize({
-        access_token: '<%= current_user.authentication_token %>',
-        disqus_shortname: disqus_shortname,
-      });
-    });
-  <% end %>
-<% end -%>
-
 <div class="row">
   <div class="span2">
     <%= render partial: "my/shared/my_nav" %>
   </div>
-  <div id="backbone-content" class="span10">
+  <div class="span10">
     <div class="row">
       <div class="span5">
         <h5>My Cakes</h5>
@@ -58,5 +32,3 @@
     </div>
   </div>
 </div>
-<div id="disqus_thread" class="row-fluid"></div>
-<div id="modal" class="modal hide fade"></div>

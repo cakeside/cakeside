@@ -89,6 +89,7 @@ Cake::Application.routes.draw do
     resources :settings, only: [:index, :update]
     resources :passwords, only: [:index, :update]
     resources :avatars, only: [:new, :create]
-    root to: "dashboard#index"
+    resource :kitchen, only: [:show]
+    root to: "kitchens#show"
   end
 end
