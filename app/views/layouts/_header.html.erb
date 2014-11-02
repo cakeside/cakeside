@@ -10,7 +10,7 @@
       <div class="nav-collapse collapse">
         <ul class="nav">
           <li>
-            <%= form_tag(yield(:search_path).blank? ? search_path : yield(:search_path), method: :get, name: "search", class: "navbar-search pull-left") do %>
+            <%= form_tag(configuration_for(:search_path, search_path), method: :get, name: "search", class: "navbar-search pull-left") do %>
               <%= text_field_tag :q, params[:q], class: 'search-query', placeholder: 'Search' %>
             <% end %>
           </li>
@@ -30,12 +30,12 @@
               <i class="fa fa-plus"></i> <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li>
+              <li data-no-turbolink>
                 <%= link_to my_root_path(anchor: 'cakes/new') do %>
                   <i class="fa fa-upload"></i> New Cake
                 <% end %>
               </li>
-              <li>
+              <li data-no-turbolink>
                 <%= link_to my_root_path(anchor: 'tutorials/new') do %>
                   <i class="fa fa-pencil-square"></i> New Tutorial
                 <% end %>
@@ -47,7 +47,7 @@
               <i class="fa fa-inbox"></i>
             <% end %>
           </li>
-          <li>
+          <li data-no-turbolink>
             <%= link_to my_root_path(anchor: 'profile/me') do %>
               <i class="fa fa-cog"></i>
             <% end %>

@@ -30,4 +30,8 @@ module ApplicationHelper
     return "" if content.nil?
     GitHub::Markdown.render_gfm(content)
   end
+
+  def configuration_for(key, default)
+    content_for(key) || default
+  end
 end
