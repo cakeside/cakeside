@@ -25,24 +25,36 @@
   <% end %>
 <% end -%>
 
-<div class="row-fluid">
+<div class="row">
   <div class="span2">
     <%= render partial: "my/shared/my_nav" %>
   </div>
   <div id="backbone-content" class="span10">
-    <div class="span5">
-      <% @items.each do |item| %>
-        <%= render item.class.to_s.downcase, item: item %>
-      <% end %>
-    </div>
-    <div class="span5">
-      <% if @activities.empty? %>
-        <p>No new activity to report.</p>
-      <% else %>
-        <% @activities.each do |activity| %>
-          <%= render activity.subject.class.to_s.downcase, subject: activity.subject %>
+    <div class="row">
+      <div class="span5">
+        <h5>My Cakes</h5>
+        <% @cakes.each do |item| %>
+          <%= render item.class.to_s.downcase, item: item %>
         <% end %>
-      <% end %>
+      </div>
+      <div class="span5">
+        <div class="well">
+          <h5>My Notifications</h5>
+          <% if @activities.empty? %>
+            <p>No new activity to report.</p>
+          <% else %>
+            <% @activities.each do |activity| %>
+              <%= render activity.subject.class.to_s.downcase, subject: activity.subject %>
+            <% end %>
+          <% end %>
+        </div>
+        <% if @tutorials.any? %>
+          <h5>My Tutorials</h5>
+          <% @tutorials.each do |item| %>
+            <%= render item.class.to_s.downcase, item: item %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

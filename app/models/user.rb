@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
   end
 
   def recent_activities(limit = 20)
-    activities.includes(:subject).order(created_at: :desc).limit(limit)
+    activities.includes(subject: [{user: :avatar}, :creation]).order(created_at: :desc).limit(limit)
   end
 
   def comment_on(creation, text, disqus_id)

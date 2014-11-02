@@ -1,7 +1,8 @@
 module My
   class DashboardController < BaseController
     def index
-      @items = (current_user.creations.includes(:photos) + current_user.tutorials).sort_by! { |x| x.created_at }.reverse
+      @cakes = current_user.creations.includes(:photos)
+      @tutorials = current_user.tutorials.limit(10)
       @activities = current_user.recent_activities
     end
   end

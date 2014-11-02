@@ -21,8 +21,8 @@ class CakeSide.Controllers.TutorialsController extends Marionette.Controller
     @content_region.show(new @views.ShowView(model: tutorial))
     @comment_view.render
       identifier: "t-#{tutorial.id}"
-      title: tutorial.get('name')
-      url: tutorial.public_url()
+      title: tutorial.get('heading')
+      url: tutorial.get('url')
 
   selectTab: ->
     $('.nav-list').children().removeClass('active')
