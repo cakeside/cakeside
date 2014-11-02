@@ -65,6 +65,10 @@ class User < ActiveRecord::Base
     creations.create(name: name, category_id: category.id)
   end
 
+  def notify_of_activity
+    NotificationMailer.delay.notification_email(self)
+  end
+
   class << self
     def login(username, password)
       user = User.find_by(email: username)

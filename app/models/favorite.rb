@@ -4,6 +4,9 @@ class Favorite < ActiveRecord::Base
   after_create :create_activity
 
   def create_activity
-    Activity.create(user: creation.author, subject: self)
+    transaction do
+      Activity.create(user: creation.author, subject: self)
+      creation.author.notify_of_activity
+    end
   end
 end

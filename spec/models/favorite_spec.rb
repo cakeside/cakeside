@@ -7,7 +7,7 @@ describe Favorite do
     let(:user) { create(:user) }
 
     it "creates a new activity" do
-      creation.favorites.create(:user => user)
+      user.favorites.create(creation: creation)
       creation.author.activities.count.should == 1
     end
   end
