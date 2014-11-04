@@ -35,13 +35,5 @@
       <% end %>
     </div>
     <p><%= render_markdown(@creation.story).html_safe -%></p>
-    <% if @creation.tools.any? %>
-      <p>Tools:</p>
-      <ul>
-      <% @creation.tools.each do |tool| -%>
-        <li><%= link_to tool.name, products_path(q: tool.name, boomerang: cake_path(@creation.id)) %></li>
-      <% end -%>
-      </ul>
-    <% end -%>
   </div>
 </div>
