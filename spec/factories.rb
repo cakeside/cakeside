@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :activity, class: Activity do
-    user { FactoryGirl.create(:user) }
-    subject { FactoryGirl.create(:creation) }
+    user { create(:user) }
+    subject { create(:favorite) }
   end
   factory :category, class: Category do
     name { Faker::Name.name }
@@ -31,15 +31,18 @@ FactoryGirl.define do
   end
 
   factory :favorite do
-    user { FactoryGirl.create(:user) }
-    creation { FactoryGirl.create(:creation) }
+    association :user
+    association :creation
   end
+
   factory :photo, class: Photo do
     image { 'example.png' }
   end
+
   factory :tag, :class => "ActsAsTaggableOn::Tag" do
     name { Faker::Name.name }
   end
+
   factory :tutorial do
     heading { Faker::Name.name }
     description "well hello there"
@@ -48,6 +51,7 @@ FactoryGirl.define do
     author { Faker::Name.name }
     author_url { Faker::Internet.http_url }
   end
+
   factory :user, class: User do
     name { Faker::Name.name }
     email { Faker::Internet.email }
@@ -58,6 +62,7 @@ FactoryGirl.define do
       admin true
     end
   end
+
   factory :location do
     latitude "107"
     longitude "99"

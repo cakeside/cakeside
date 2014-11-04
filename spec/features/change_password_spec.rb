@@ -12,7 +12,7 @@ describe "changing my password", js: true do
       end
       click_button("Sign In")
       visit my_root_path
-      click_link("Account Settings")
+      click_link("Account")
       within(".form-horizontal") do
         fill_in('user_password', :with => "mopass")
         fill_in('user_password_confirmation', :with => "mopass")
