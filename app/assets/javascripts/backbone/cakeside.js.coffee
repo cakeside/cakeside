@@ -37,9 +37,7 @@ window.CakeSide =
 
     @cakes = new CakeSide.Collections.CakesCollection()
     @categories = new CakeSide.Collections.CategoriesCollection()
-    @categories.fetch(reset: true)
     @tutorials = new CakeSide.Collections.TutorialsCollection()
-    @tutorials.fetch(reset: true)
 
     #@disqus_view = new CakeSide.Views.DisqusView
       #disqus_shortname: data.disqus_shortname
@@ -65,3 +63,5 @@ window.CakeSide =
 
     @cakes.fetch(reset: true).done ->
       CakeSide.Application.start()
+    @categories.fetch(reset: true)
+    @tutorials.fetch(reset: true)
