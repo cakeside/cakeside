@@ -1,3 +1,5 @@
 json.cakes @cakes do |cake|
-  json.partial! 'cake', cake: cake
+  json.cache! ['v2', cake] do
+    json.partial! 'cake', cake: cake
+  end
 end
