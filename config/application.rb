@@ -33,17 +33,17 @@ module Cake
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    config.middleware.use ExceptionNotification::Rack, :email => {
-      :email_prefix => "[Boom! #{Rails.env}] ",
-      :sender_address => %{"notifier" <notifier@cakeside.com>},
-      :exception_recipients => ENV['EXCEPTION_EMAIL_ADDRESS'].split(" "),
-    } unless Rails.env.test?
-    config.middleware.use Rack::Attack
     config.middleware.use Rack::Cors do
       allow do
         origins "*"
         resource "*", headers: :any, methods: [:get, :post, :put, :delete, :options]
       end
     end
+    config.middleware.use ExceptionNotification::Rack, :email => {
+      :email_prefix => "[Boom! #{Rails.env}] ",
+      :sender_address => %{"notifier" <notifier@cakeside.com>},
+      :exception_recipients => ENV['EXCEPTION_EMAIL_ADDRESS'].split(" "),
+    } unless Rails.env.test?
+    config.middleware.use Rack::Attack
   end
 end
