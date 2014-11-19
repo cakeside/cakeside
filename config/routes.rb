@@ -68,7 +68,7 @@ Cake::Application.routes.draw do
       resources :logins, only: [:create]
     end
     namespace :v2 do
-      resources :cakes, only: [:index]
+      resources :cakes, only: [:index, :show]
     end
   end
 
