@@ -44,6 +44,7 @@ gem 'curb'
 gem 'github-markdown'
 gem 'chartkick'
 gem 'groupdate'
+gem 'rack-cors', require: 'rack/cors'
 
 group :development do
   gem 'capistrano', '~> 3.0', require: false

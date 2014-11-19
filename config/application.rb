@@ -39,5 +39,11 @@ module Cake
       :exception_recipients => ENV['EXCEPTION_EMAIL_ADDRESS'].split(" "),
     } unless Rails.env.test?
     config.middleware.use Rack::Attack
+    config.middleware.use Rack::Cors do
+      allow do
+        origins "*"
+        resource "*", headers: :any, methods: [:get, :post, :put, :delete, :options]
+      end
+    end
   end
 end
