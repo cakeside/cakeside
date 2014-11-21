@@ -12,4 +12,5 @@ json.categories Category.all do |category|
 end
 json.meta do
   json.totalPages @cakes.total_pages
+  json.total_pages @cakes.total_pages
 end

@@ -3,22 +3,22 @@ FactoryGirl.define do
     user { FactoryGirl.create(:user) }
     subject { FactoryGirl.create(:creation) }
   end
+
   factory :category, class: Category do
     name { Faker::Name.name }
     slug { Faker::Name.name.gsub(/ /, "-").downcase }
   end
-  factory :creation, class: Creation do
-    name { Faker::Name.name }
-    story 'whats the story morning glory?'
-    user { FactoryGirl.create(:user) }
-    association :category
-  end
 
-  factory :cake, class: Creation do
+  factory :cake, class: Creation, aliases: [:creation] do
     name { Faker::Name.name }
     story { Faker::HipsterIpsum.words(50).join(' ') }
     association :user
     association :category
+    factory :published_cake do
+      after(:create) do |cake, evaluator|
+        cake.photos << create(:photo, image: 'spec/fixtures/images/example.png')
+      end
+    end
   end
 
   factory :user_session, class: UserSession do
@@ -34,12 +34,21 @@ FactoryGirl.define do
     user { FactoryGirl.create(:user) }
     creation { FactoryGirl.create(:creation) }
   end
+
   factory :photo, class: Photo do
-    image { 'example.png' }
+    image { 'spec/fixtures/images/example.png' }
+    content_type { "" }
+    original_filename { "" }
+    latitude { "" }
+    longitude { "" }
+    sha256 { "" }
+    watermark { "" }
   end
+
   factory :tag, :class => "ActsAsTaggableOn::Tag" do
     name { Faker::Name.name }
   end
+
   factory :tutorial do
     heading { Faker::Name.name }
     description "well hello there"
@@ -48,6 +57,7 @@ FactoryGirl.define do
     author { Faker::Name.name }
     author_url { Faker::Internet.http_url }
   end
+
   factory :user, class: User do
     name { Faker::Name.name }
     email { Faker::Internet.email }
@@ -58,6 +68,7 @@ FactoryGirl.define do
       admin true
     end
   end
+
   factory :location do
     latitude "107"
     longitude "99"
