@@ -4,5 +4,5 @@ json.cakes @cakes do |cake|
   end
 end
 json.meta do
-  json.total_pages @cakes.total_pages
+  json.totalPages @cakes.total_pages
 end
