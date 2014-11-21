@@ -1,7 +1,14 @@
 json.cakes @cakes do |cake|
-  json.cache! ['v2', cake] do
-    json.partial! 'cake', cake: cake
-  end
+  json.partial! 'cake', cake: cake
+end
+json.users @cakes.map(&:user) do |user|
+  json.partial! user, user: user
+end
+json.photos @cakes.map { |x| x.photos }.flatten do |photo|
+  json.partial! photo, photo: photo
+end
+json.categories Category.all do |category|
+  json.partial! category, category: category
 end
 json.meta do
   json.totalPages @cakes.total_pages
