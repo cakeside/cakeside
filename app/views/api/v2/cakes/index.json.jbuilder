@@ -3,3 +3,6 @@ json.cakes @cakes do |cake|
     json.partial! 'cake', cake: cake
   end
 end
+json.meta do
+  json.total_pages @cakes.total_pages
+end
