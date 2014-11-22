@@ -67,6 +67,12 @@ Cake::Application.routes.draw do
       resources :profiles, only: [:show, :update]
       resources :logins, only: [:create]
     end
+    namespace :v2 do
+      resources :cakes, only: [:index, :show]
+      resources :photos, only: [:index, :show]
+      resources :users, only: [:index, :show]
+      resources :categories, only: [:index, :show]
+    end
   end
 
   namespace :admin do
