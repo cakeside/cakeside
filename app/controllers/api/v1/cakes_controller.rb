@@ -26,8 +26,7 @@ module Api
       def update
         @cake = current_user.creations.find(params[:id])
         current_user.tag(@cake, with: params[:cake][:tags], on: :tags)
-        current_user.tag(@cake, with: params[:cake][:tools], on: :tools)
-        if @cake.update(cake_params.reject { |key, value| key == "tags" || key == "tools" })
+        if @cake.update(cake_params.reject { |key, value| key == "tags" })
           respond_with @cake
         else
           respond_with @cake
