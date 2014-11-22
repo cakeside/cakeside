@@ -72,7 +72,7 @@ Cake::Application.routes.draw do
       resources :photos, only: [:index, :show]
       resources :users, only: [:index, :show]
       resources :categories, only: [:index, :show]
-      resources :tutorials, only: [:index]
+      resources :tutorials, only: [:index, :show]
     end
   end
 
