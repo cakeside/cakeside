@@ -56,6 +56,7 @@ FactoryGirl.define do
     image_url { Faker::Internet.http_url }
     author { Faker::Name.name }
     author_url { Faker::Internet.http_url }
+    association :user
   end
 
   factory :user, class: User do
