@@ -70,7 +70,7 @@ Cake::Application.routes.draw do
     namespace :v2 do
       resources :cakes, only: [:index, :show]
       resources :photos, only: [:index, :show]
-      resources :users, only: [:show]
+      resources :users, only: [:index, :show]
       resources :categories, only: [:index, :show]
     end
   end

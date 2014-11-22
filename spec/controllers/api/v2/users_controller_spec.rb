@@ -3,6 +3,15 @@ require 'rails_helper'
 module Api
   module V2
     describe UsersController do
+      describe "#index" do
+        let!(:user) { create(:user) }
+
+        it 'loads all users' do
+          xhr :get, :index
+          expect(assigns(:users)).to match_array([user])
+        end
+      end
+
       describe "#show" do
         let!(:user) { create(:user) }
 
