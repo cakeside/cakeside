@@ -4,5 +4,5 @@ json.photos @photos do |photo|
   end
 end
 json.meta do
-  json.totalPages @photos.total_pages
+  json.partial! 'api/v2/shared/pagination', items: @photos
 end
