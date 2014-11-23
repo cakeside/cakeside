@@ -7,10 +7,11 @@ end
 json.photos @cakes.map { |x| x.photos }.flatten do |photo|
   json.partial! photo, photo: photo
 end
-json.categories Category.all do |category|
+json.categories @categories do |category|
   json.partial! category, category: category
 end
 json.meta do
+  json.page @cakes.current_page
+  json.perPage @cakes.limit_value
   json.totalPages @cakes.total_pages
-  json.total_pages @cakes.total_pages
 end

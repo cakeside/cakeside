@@ -3,6 +3,8 @@ require 'rails_helper'
 module Api
   module V2
     describe CakesController do
+      render_views
+
       describe "#index" do
         let!(:cake) { create(:published_cake) }
 
