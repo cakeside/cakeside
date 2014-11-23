@@ -1,5 +1,6 @@
 <% provide(:description, "CakeSide is a free site to share your cake creations and ideas with other cake fanatics like yourself") -%>
 <% provide(:search_path, request.env['PATH_INFO'] || cakes_path) %>
+<% provide(:container_class, 'container-fluid') %>
 <% unless user_signed_in?  -%>
   <div class="row-fluid">
     <div class="span6">

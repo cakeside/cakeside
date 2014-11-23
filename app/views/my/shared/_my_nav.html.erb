@@ -4,34 +4,29 @@
   <% end %>
   <ul class="nav nav-list" data-no-turbolink>
     <li class="nav-header"><%= current_user.name %></li>
-    <li class="<%= "active" if controller?("dashboard") %>"><%= link_to "<i class='fa fa-tachometer'></i> Dashboard".html_safe, my_root_path %></li>
-    <!--
-    <li id="cakes-tab" class="<%= "active" if controller?("cakes") %>"><%= link_to "Creations", my_root_path(anchor: 'cakes') %></li>
-    <li id="tutorial-tab"><%= link_to "Tutorials", my_root_path(anchor: 'tutorials') %></li>
-    -->
-    <!--<li class="<%= 'active' if controller?('settings') %>"><%= link_to "<i class='fa fa-cog'></i> Settings".html_safe, my_settings_path %></li>-->
-    <li id='profile-tab'><%= link_to "<i class='fa fa-cog'></i> Profile".html_safe, my_root_path(anchor: 'profile/me') %></li>
-    <li class="<%= 'active' if controller?('passwords') %>"><%= link_to "<i class='fa fa-eye'></i> Account Settings".html_safe, my_passwords_path %></li>
-    <li class="<%= "active" if controller?("favorites") %>"><%= link_to "<i class='fa fa-star'></i> Favorites".html_safe, my_favorites_path %></li>
-    <li class="<%= 'active' if controller?('avatars') %>"><%= link_to "<i class='fa fa-picture-o'></i> Picture".html_safe, new_my_avatar_path %></li>
-    <li class="nav-header">Actions</li>
+    <li class="<%= "active" if controller?(:dashboard) %>"><%= link_to "Dashboard", my_dashboard_path %></li>
+    <li id='profile-tab'><%= link_to "Profile", my_root_path(anchor: 'profile/me') %></li>
+    <li class="<%= 'active' if controller?(:passwords) %>"><%= link_to "Account", my_passwords_path %></li>
+    <li class="<%= "active" if controller?(:favorites) %>"><%= link_to "Favorites", my_favorites_path %></li>
+    <li class="<%= 'active' if controller?(:avatars) %>"><%= link_to "Picture", new_my_avatar_path %></li>
+    <li class="nav-header">New</li>
     <li>
       <%= link_to my_root_path(anchor: 'cakes/new') do %>
-        <i class="fa fa-upload"></i> New Cake
+        <i class="fa fa-upload"></i> Cake
       <% end %>
     </li>
     <li>
       <%= link_to my_root_path(anchor: 'tutorials/new') do %>
-        <i class="fa fa-pencil-square"></i> New Tutorial
+        <i class="fa fa-pencil-square"></i> Tutorial
       <% end %>
     </li>
     <% if current_user.admin? %>
       <li class="nav-header">Admin</li>
-      <li><%= link_to "<i class='fa fa-users'></i> Users".html_safe, admin_users_path %></li>
-      <li><%= link_to "<i class='fa fa-database'></i> Jobs".html_safe, admin_jobs_path %></li>
-      <li><%= link_to "<i class='fa fa-cubes'></i> Activity".html_safe, admin_activities_path %></li>
+      <li><%= link_to "Users", admin_users_path %></li>
+      <li><%= link_to "Jobs", admin_jobs_path %></li>
+      <li><%= link_to "Activity", admin_activities_path %></li>
       <li><%= link_to "Subscriptions", admin_subscriptions_path %></li>
-      <li><%= link_to "<i class='fa fa-photo'></i> Photos".html_safe, admin_photos_path %></li>
+      <li><%= link_to "Photos", admin_photos_path %></li>
       <li><%= link_to "Blobs", admin_blobs_path %></li>
       <li><%= link_to "Sessions", admin_sessions_path %></li>
       <li><%= link_to "Products", admin_products_path %></li>

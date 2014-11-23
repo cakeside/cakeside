@@ -3,8 +3,7 @@
     <img class="media-object" data-src="<%= item.primary_image.url_for(:thumb) %>" alt="64x64" style="width: 64px; height: 64px;" src="<%= item.primary_image.url_for(:thumb) %>">
   <% end %>
   <div class="media-body">
-    <h4 class="media-heading"><%= item.name %></h4>
-    <%= item.story %>
+    <h4 class="media-heading"><%= link_to item.name, my_root_path(anchor: "cakes/#{item.id}") %></h4>
     <p>
     <%= link_to my_root_path(anchor: "cakes/#{item.id}/edit") do %>
       <i class="fa fa-pencil-square-o"></i> edit

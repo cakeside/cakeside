@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery-migrate
 //= require jquery_ujs
 //= require turbolinks

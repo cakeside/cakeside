@@ -23,11 +23,15 @@ module ApplicationHelper
   end
 
   def controller?(name)
-    params[:controller].include?(name)
+    params[:controller].include?(name.to_s)
   end
 
   def render_markdown(content)
     return "" if content.nil?
     GitHub::Markdown.render_gfm(content)
+  end
+
+  def configuration_for(key, default)
+    content_for(key) || default
   end
 end

@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :activity, class: Activity do
-    user { FactoryGirl.create(:user) }
-    subject { FactoryGirl.create(:creation) }
+    user { create(:user) }
+    subject { create(:favorite) }
   end
 
   factory :category, class: Category do
@@ -31,8 +31,8 @@ FactoryGirl.define do
   end
 
   factory :favorite do
-    user { FactoryGirl.create(:user) }
-    creation { FactoryGirl.create(:creation) }
+    association :user
+    association :creation
   end
 
   factory :photo, class: Photo do

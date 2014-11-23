@@ -5,9 +5,11 @@ class UploadPhoto
   end
 
   def run(cake_id, params)
-    photo = @cakes.find(cake_id).photos.create!(image_processing: true, watermark: params[:watermark])
-    @command_bus.publish(:upload_photo, create_message_from(cake_id, params, photo))
-    photo
+    ActiveRecord::Base.transaction do
+      photo = @cakes.find(cake_id).photos.create!(image_processing: true, watermark: params[:watermark])
+      @command_bus.publish(:upload_photo, create_message_from(cake_id, params, photo))
+      photo
+    end
   end
 
   private
