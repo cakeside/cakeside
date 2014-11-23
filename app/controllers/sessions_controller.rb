@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
 
   def destroy
     cookies.delete(:raphael)
+    user_session.revoke!
     redirect_to root_path
   end
 

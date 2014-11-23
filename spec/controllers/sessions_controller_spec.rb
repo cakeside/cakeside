@@ -57,17 +57,18 @@ describe SessionsController do
   end
 
   describe "#destroy" do
+    let(:user_session) { create(:user_session) }
+
     before :each do
-      request.cookies[:raphael] = SecureRandom.uuid
+      request.cookies[:raphael] = user_session.key
+      controller.stub(:user_session).and_return(user_session)
       delete :destroy, id: "me"
     end
 
-    it "removes the cookie" do
-      expect(cookies[:raphael]).to be_nil
-    end
+    it { expect(cookies[:raphael]).to be_nil }
 
-    it "redirects to the homepage" do
-      expect(response).to redirect_to(root_path)
-    end
+    it { expect(user_session.reload.revoked_at).to_not be_nil }
+
+    it { expect(response).to redirect_to(root_path) }
   end
 end
