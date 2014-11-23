@@ -23,7 +23,7 @@ module ApplicationHelper
   end
 
   def controller?(name)
-    params[:controller].include?(name)
+    params[:controller].include?(name.to_s)
   end
 
   def render_markdown(content)
