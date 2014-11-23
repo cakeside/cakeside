@@ -197,6 +197,9 @@ GEM
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-turbolinks (2.1.0)
+      railties (>= 3.1.0)
+      turbolinks
     jquery-ui-rails (4.0.5)
       railties (>= 3.1.0)
     js-routes (0.9.9)
@@ -403,6 +406,7 @@ DEPENDENCIES
   groupdate
   jbuilder
   jquery-rails
+  jquery-turbolinks
   jquery-ui-rails (~> 4.0.0)
   js-routes
   kaminari

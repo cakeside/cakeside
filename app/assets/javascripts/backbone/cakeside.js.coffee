@@ -37,14 +37,12 @@ window.CakeSide =
 
     @cakes = new CakeSide.Collections.CakesCollection()
     @categories = new CakeSide.Collections.CategoriesCollection()
-    @categories.fetch(reset: true)
     @tutorials = new CakeSide.Collections.TutorialsCollection()
-    @tutorials.fetch(reset: true)
 
-    @disqus_view = new CakeSide.Views.DisqusView
-      disqus_shortname: data.disqus_shortname
-    CakeSide.Application.reqres.setHandler 'CommentView', =>
-      @disqus_view
+    #@disqus_view = new CakeSide.Views.DisqusView
+      #disqus_shortname: data.disqus_shortname
+    #CakeSide.Application.reqres.setHandler 'CommentView', =>
+      #@disqus_view
     CakeSide.Application.reqres.setHandler 'CakesRepository', =>
       @cakes
     CakeSide.Application.reqres.setHandler 'CategoriesRepository', =>
@@ -63,5 +61,7 @@ window.CakeSide =
     CakeSide.Application.reqres.setHandler 'ProfilesRepository', =>
       @profiles ||= new CakeSide.Collections.ProfilesCollection()
 
+    @categories.fetch(reset: true)
+    @tutorials.fetch(reset: true)
     @cakes.fetch(reset: true).done ->
       CakeSide.Application.start()

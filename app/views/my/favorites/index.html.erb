@@ -13,9 +13,7 @@
                 <%= image_tag creation.primary_image.url_for(:thumb) %>
               <% end %>
               <div class="caption">
-                <h4><%= link_to shrink(creation.name, 12), cake_path(creation) %></h4>
-                <p><%= link_to shrink(creation.user.name, 20), profile_path(creation.user) %></p>
-                <p><small><%= time_ago_in_words(creation.created_at) %> ago.</small></p>
+                <small><%= link_to shrink(creation.name, 12), cake_path(creation) %></small>
               </div>
             </div>
           </li>

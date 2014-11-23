@@ -24,15 +24,13 @@ module Api
       end
 
       def update
-        UpdateCakeCommand.new(self).run(params[:id], params[:cake][:tags], cake_params)
-      end
-
-      def update_cake_succeeded(cake)
-        respond_with(@cake = cake)
-      end
-
-      def update_cake_failed(cake)
-        respond_with(@cake = cake)
+        @cake = current_user.creations.find(params[:id])
+        current_user.tag(@cake, with: params[:cake][:tags], on: :tags)
+        if @cake.update(cake_params.reject { |key, value| key == "tags" })
+          respond_with @cake
+        else
+          respond_with @cake
+        end
       end
 
       def destroy

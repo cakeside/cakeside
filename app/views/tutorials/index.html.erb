@@ -1,4 +1,5 @@
 <%= provide(:search_path, tutorials_path) %>
+<% provide(:container_class, 'container-fluid') %>
 <div class="row-fluid">
   <% @tutorials.each_slice(6).each do |batch| %>
     <ul class='thumbnails'>

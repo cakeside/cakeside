@@ -10,7 +10,6 @@
           <td>user</td>
           <td><%= link_to "ip", admin_sessions_path(sort: 'ip', direction: @direction) %></td>
           <td><%= link_to "city", admin_sessions_path(sort: 'city', direction: @direction) %></td>
-          <td><%= link_to "user agent", admin_sessions_path(sort: 'ua', direction: @direction) %></td>
           <td>device</td>
           <td>browser</td>
           <td>os</td>
@@ -26,13 +25,12 @@
             <td><%= link_to user_session.user.name, admin_user_path(user_session.user) %></td>
             <td><%= user_session.ip %></td>
             <td><%= user_session.location.try(:city) %></td>
-            <td><%= user_session.user_agent %></td>
             <td><%= user_session.browser.form_factor %></td>
             <td><%= user_session.browser.browser %></td>
             <td><%= user_session.browser.os %></td>
             <td><%= user_session.browser.os_version %></td>
-            <td><%= user_session.accessed_at %></td>
-            <td><%= user_session.revoked_at %></td>
+            <td><%= user_session.accessed_at.try(:to_formatted_s, :short) %></td>
+            <td><%= user_session.revoked_at.try(:to_formatted_s, :short) %></td>
             <td><%= link_to "Revoke", admin_session_path(user_session), method: :delete, class: 'btn btn-danger' %></td>
           </tr>
         <% end %>

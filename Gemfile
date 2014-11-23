@@ -17,6 +17,7 @@ end
 gem 'acts-as-taggable-on'
 
 gem 'jquery-ui-rails', '~> 4.0.0'
+gem 'jquery-turbolinks'
 gem 'mini_magick'
 gem "kaminari"
 gem 'bootstrap-sass', '~> 2.3.0'

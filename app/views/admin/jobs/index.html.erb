@@ -26,10 +26,10 @@
             <td><%= job.last_error.present? ? link_to('FAILED', admin_job_path(job)) : '' %></td>
             <td><%= job.locked_by %> </td>
             <td><%= job.queue %></td>
-            <td><%= time_ago_in_words(job.run_at) if job.run_at %></td>
-            <td><%= time_ago_in_words(job.locked_at) if job.locked_at %></td>
-            <td><%= time_ago_in_words(job.created_at) %></td>
-            <td><%= time_ago_in_words(job.updated_at) %></td>
+            <td><%= job.run_at.try(:to_formatted_s, :short) %></td>
+            <td><%= job.locked_at.try(:to_formatted_s, :short) %></td>
+            <td><%= job.created_at.try(:to_formatted_s, :short) %></td>
+            <td><%= job.updated_at.try(:to_formatted_s, :short) %></td>
             <td>
               <%= link_to "Retry", admin_job_path(job), method: :put, class: 'btn', disable_with: 'Retrying...' %>
               <%= link_to "Destroy", admin_job_path(job), method: :delete, class: 'btn btn-danger', disable_with: 'Deleting...' %>

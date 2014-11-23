@@ -6,6 +6,9 @@ class ProductsController < ApplicationController
 
   def index
     @products = @product_api.search(params[:q])
+    if @products.count == 1
+      redirect_to product_path(@products.first.asin)
+    end
   end
 
   def show

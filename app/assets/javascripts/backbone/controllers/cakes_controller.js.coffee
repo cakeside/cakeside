@@ -3,11 +3,11 @@ class CakeSide.Controllers.CakesController extends Marionette.Controller
   initialize: (options) ->
     @content_region = CakeSide.Application.content_region
     @cakes = CakeSide.Application.request('CakesRepository')
-    @comment_view = CakeSide.Application.request('CommentView')
+    #@comment_view = CakeSide.Application.request('CommentView')
 
   index: ->
     @selectTab()
-    @comment_view.hide()
+    #@comment_view.hide()
     @content_region.show(new @views.IndexView(collection: @cakes))
 
   show: (id, photo_id) ->
@@ -21,13 +21,13 @@ class CakeSide.Controllers.CakesController extends Marionette.Controller
 
   newCake: ->
     @selectTab()
-    @comment_view.hide()
+    #@comment_view.hide()
     @content_region.show(new @views.NewView(collection: @cakes))
 
   edit: (id) ->
     @selectTab()
     @content_region.show(new @views.EditView(model: @cakes.get(id)))
-    @comment_view.hide()
+    #@comment_view.hide()
 
   selectTab: ->
     $('.nav-list').children().removeClass('active')

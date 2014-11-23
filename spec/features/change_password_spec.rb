@@ -11,8 +11,8 @@ describe "changing my password", js: true do
         fill_in('session_password', :with => "password")
       end
       click_button("Sign In")
-      visit my_root_path
-      click_link("Account Settings")
+      visit my_dashboard_path
+      click_link("Account")
       within(".form-horizontal") do
         fill_in('user_password', :with => "mopass")
         fill_in('user_password_confirmation', :with => "mopass")

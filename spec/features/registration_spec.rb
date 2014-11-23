@@ -13,7 +13,7 @@ describe "Registration", :js => true do
     end
 
     it "should let you register with that email address" do
-      expect(page).to have_content("No new activity to report.")
+      expect(page).to have_content("Dashboard")
     end
 
     xit "should take you to the settings page" do

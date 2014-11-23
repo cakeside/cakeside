@@ -17,7 +17,7 @@ describe SessionsController do
 
       it "redirects to the dashboard" do
         get :new
-        expect(response).to redirect_to(my_root_path)
+        expect(response).to redirect_to(my_dashboard_path)
       end
     end
   end
@@ -39,7 +39,7 @@ describe SessionsController do
       end
 
       it "redirects to the dashboard" do
-        expect(response).to redirect_to(my_root_path)
+        expect(response).to redirect_to(my_dashboard_path)
       end
     end
 

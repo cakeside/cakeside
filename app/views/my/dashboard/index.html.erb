@@ -1,49 +1,34 @@
 <% provide(:title, "Dashboard") -%>
-<%= content_for :javascript do -%>
-  <%= javascript_tag do %>
-    var ALL_TAGS = [ <% ActsAsTaggableOn::Tag.pluck(:name).sort!.each { |item| %> '<%= item %>', <% } %> ];
-    var disqus_shortname = '<%= ENV['DISQUS_SHORTNAME'] %>';
-    var disqus_identifier = 'u-<%= current_user.id %>';
-    var disqus_config = function(){
-      this.page.remote_auth_s3 = '<%= disqus_auth %>';
-      this.page.api_key = '<%= ENV['DISQUS_API_KEY'] %>';
-    };
-    $(document).ready(function(){
-      CakeSide.initialize({
-        access_token: '<%= current_user.authentication_token %>',
-        disqus_shortname: disqus_shortname,
-      });
-    });
-    $(document).on('page:load', function(){
-      Backbone.history.stop();
-      CakeSide.initialize({
-        access_token: '<%= current_user.authentication_token %>',
-        disqus_shortname: disqus_shortname,
-      });
-    });
-  <% end %>
-<% end -%>
-
-<div class="row-fluid">
+<div class="row">
   <div class="span2">
     <%= render partial: "my/shared/my_nav" %>
   </div>
-  <div id="backbone-content" class="span10">
-    <div class="span5">
-      <% @items.each do |item| %>
-        <%= render item.class.to_s.downcase, item: item %>
-      <% end %>
-    </div>
-    <div class="span5">
-      <% if @activities.empty? %>
-        <p>No new activity to report.</p>
-      <% else %>
-        <% @activities.each do |activity| %>
-          <%= render activity.subject.class.to_s.downcase, subject: activity.subject %>
+  <div class="span10" data-no-turbolink>
+    <div class="row">
+      <div class="span5">
+        <h5>My Cakes</h5>
+        <% @cakes.each do |item| %>
+          <%= render item.class.to_s.downcase, item: item %>
         <% end %>
-      <% end %>
+      </div>
+      <div class="span5">
+        <div class="well">
+          <h5>My Notifications</h5>
+          <% if @activities.empty? %>
+            <p>No new activity to report.</p>
+          <% else %>
+            <% @activities.each do |activity| %>
+              <%= render activity.subject.class.to_s.downcase, subject: activity.subject %>
+            <% end %>
+          <% end %>
+        </div>
+        <% if @tutorials.any? %>
+          <h5>My Tutorials</h5>
+          <% @tutorials.each do |item| %>
+            <%= render item.class.to_s.downcase, item: item %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-<div id="disqus_thread" class="row-fluid"></div>
-<div id="modal" class="modal hide fade"></div>
