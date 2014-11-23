@@ -61,7 +61,7 @@ window.CakeSide =
     CakeSide.Application.reqres.setHandler 'ProfilesRepository', =>
       @profiles ||= new CakeSide.Collections.ProfilesCollection()
 
-    @cakes.fetch(reset: true).done ->
-      CakeSide.Application.start()
     @categories.fetch(reset: true)
     @tutorials.fetch(reset: true)
+    @cakes.fetch(reset: true).done ->
+      CakeSide.Application.start()
