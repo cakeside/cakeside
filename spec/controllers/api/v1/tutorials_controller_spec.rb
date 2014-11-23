@@ -11,9 +11,8 @@ describe Api::V1::TutorialsController do
     let(:my_tutorial)  { create(:tutorial, user: user) }
     let(:other_tutorial)  { create(:tutorial) }
 
-
     it "returns the users tutorials" do
-      get :index, format: :json
+      xhr :get, :index
       expect(assigns(:tutorials)).to include(my_tutorial)
       expect(assigns(:tutorials)).to_not include(other_tutorial)
     end
@@ -28,7 +27,7 @@ describe Api::V1::TutorialsController do
         description: "Connect with your friends - and other fascinating people. Get in-the-moment updates on the things that interest you. And watch events unfold, in real time, from every angle.",
         tags: "cake,cookie",
       }
-      post :create, tutorial: attributes, format: :json
+      xhr :post, :create, tutorial: attributes
 
       expect(assigns(:tutorial)).to be_present
       expect(assigns(:tutorial).url).to eql(attributes[:url])
