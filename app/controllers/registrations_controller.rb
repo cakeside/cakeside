@@ -3,7 +3,7 @@ class RegistrationsController < ApplicationController
     user = User.create(secure_params)
     if user.save
       cookies.signed[:raphael] = User.login(secure_params[:email], secure_params[:password]).access(request)
-      redirect_to my_root_path
+      redirect_to my_dashboard_path
     else
       flash[:error] = user.errors.full_messages
       redirect_to new_session_path
