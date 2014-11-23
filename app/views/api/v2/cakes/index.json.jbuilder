@@ -11,7 +11,5 @@ json.categories @categories do |category|
   json.partial! category, category: category
 end
 json.meta do
-  json.page @cakes.current_page
-  json.perPage @cakes.limit_value
-  json.totalPages @cakes.total_pages
+  json.partial! 'api/v2/shared/pagination', items: @cakes
 end
