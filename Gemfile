@@ -65,11 +65,10 @@ group :development, :test do
   gem 'teaspoon'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
-  gem 'capybara'
   gem 'simplecov'
   gem 'ffaker'
-  gem 'selenium-webdriver'
   gem 'poltergeist'
+  gem 'phantomjs', :require => 'phantomjs/poltergeist'
   gem 'binding_of_caller'
   gem 'foreman'
 end
