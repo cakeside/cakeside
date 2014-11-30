@@ -20,5 +20,6 @@ fi
 if [ ! -f .env ]; then
   ln -s .env.example .env
 fi
+createdb
 bundle exec rake db:create db:migrate db:seed
 RAILS_ENV=test bundle exec rake db:create db:migrate db:seed
