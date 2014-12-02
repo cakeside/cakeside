@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141102040612) do
+ActiveRecord::Schema.define(version: 20141202033956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20141102040612) do
 
   create_table "avatars", force: true do |t|
     t.integer  "user_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "avatar"
     t.boolean  "avatar_processing"
     t.string   "avatar_tmp"
@@ -85,8 +85,8 @@ ActiveRecord::Schema.define(version: 20141102040612) do
     t.datetime "failed_at"
     t.string   "locked_by"
     t.string   "queue"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
@@ -103,8 +103,8 @@ ActiveRecord::Schema.define(version: 20141102040612) do
 
   create_table "interests", force: true do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "locations", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
@@ -159,13 +159,21 @@ ActiveRecord::Schema.define(version: 20141102040612) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
+  create_table "tools", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "asin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tutorials", force: true do |t|
     t.string   "heading"
     t.text     "description"
     t.string   "url"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "image_url"
     t.string   "author"
     t.string   "author_url"
@@ -190,8 +198,8 @@ ActiveRecord::Schema.define(version: 20141102040612) do
   add_index "user_sessions", ["user_id"], name: "index_user_sessions_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                              default: "", null: false
-    t.string   "password_digest",        limit: 128, default: "", null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "password_digest",        default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "created_at"
@@ -203,7 +211,7 @@ ActiveRecord::Schema.define(version: 20141102040612) do
     t.string   "city"
     t.string   "authentication_token"
     t.string   "full_address"
-    t.integer  "creations_count",                    default: 0
+    t.integer  "creations_count",        default: 0
     t.boolean  "admin"
   end
 
