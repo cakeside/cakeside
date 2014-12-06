@@ -33,5 +33,19 @@ describe Tool do
     expect(tool.asin).to eql("223455")
   end
 
+  context "#validation" do
+    it "has to have a name" do
+      tool = Tool.new
+      expect(tool).to_not be_valid
+      expect(tool.errors[:name]).to_not be_empty
+    end
 
+    it "name has to be unique" do 
+      Tool.create(name: 'blah')
+
+      tool = Tool.new(name: 'blah')
+      tool.valid?
+      expect(tool.errors[:name]).to_not be_empty
+    end
+  end
 end
