@@ -76,4 +76,9 @@ FactoryGirl.define do
     city "Calgary"
     country "Canada"
   end
+
+  factory :tool do
+    name { Faker::Name.name }
+    asin { SecureRandom.uuid }
+  end
 end

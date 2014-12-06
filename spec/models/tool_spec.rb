@@ -34,18 +34,30 @@ describe Tool do
   end
 
   context "#validation" do
+    let(:tool) { build(:tool) }
+
     it "has to have a name" do
-      tool = Tool.new
+      tool.name = nil
       expect(tool).to_not be_valid
       expect(tool.errors[:name]).to_not be_empty
     end
 
     it "name has to be unique" do 
-      Tool.create(name: 'blah')
-
-      tool = Tool.new(name: 'blah')
-      tool.valid?
+      create(:tool, name: 'blah')
+      tool.name = 'blah'
+      
+      expect(tool).to_not be_valid
       expect(tool.errors[:name]).to_not be_empty
+    end
+
+    it "has a ASIN number" do
+      tool.asin = nil
+      expect(tool).to_not be_valid
+      expect(tool.errors[:asin]).to_not be_empty
+    end
+
+    it "validates" do
+      expect(tool).to be_valid
     end
   end
 end
