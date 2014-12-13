@@ -12,5 +12,10 @@ module Admin
     def show
       @product = @product_api.find(params[:id])
     end
+
+    def create
+      Tool.create(:name=>params[:name],:asin=>params[:asin])
+      redirect_to admin_products_path(params[:asin])
+    end
   end
 end
