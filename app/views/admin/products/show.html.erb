@@ -18,6 +18,22 @@
       </td>
     </tr>
     <tr>
+      <td>
+        Add to tools:
+      </td>
+      <td>
+        <% if @tool.present? %>
+          In the toolbox as <%= @tool.name %>
+        <% else %>        
+          <%= form_tag admin_products_path do %>
+            <%= text_field_tag :name, @product.item_attributes['title'] %>
+            <%= hidden_field_tag "asin", @product.asin %>
+            <%= submit_tag("Add to tools",  { data: { disable_with: 'Adding to toolbox...' } }) %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>  
+    <tr>
       <td>attributes</td>
       <td>
         <% @product.item_attributes.each do |(key, value)| %>
