@@ -42,7 +42,7 @@ set :keep_releases, 3
 set :ssh_options, { forward_agent: true }
 
 set :rbenv_type, :user # or :system, depends on your rbenv setup
-set :rbenv_ruby, '2.1.4'
+set :rbenv_ruby, '2.1.5'
 
 namespace :deploy do
   desc 'Restart application'
