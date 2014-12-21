@@ -50,7 +50,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-bundler', '~> 1.1', require: false
   gem 'capistrano-rbenv', '~> 2.0', require: false
-  #gem 'bullet'
+  gem 'bullet'
   gem 'better_errors'
   gem 'lol_dba'
   gem 'pry-rails'

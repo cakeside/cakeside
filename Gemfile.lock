@@ -84,6 +84,9 @@ GEM
     browser_sniffer (1.0.7)
     buftok (0.2.0)
     builder (3.2.2)
+    bullet (4.14.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (>= 1.6.0)
     byebug (3.5.1)
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
@@ -421,6 +424,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uniform_notifier (1.6.2)
     web-console (2.0.0)
       activemodel (~> 4.0)
       binding_of_caller (>= 0.7.2)
@@ -445,6 +449,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (~> 2.3.0)
   browser_sniffer
+  bullet
   byebug
   capistrano-bundler (~> 1.1)
   capistrano-rails
