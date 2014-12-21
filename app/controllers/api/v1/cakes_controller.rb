@@ -1,14 +1,12 @@
 module Api
   module V1
     class CakesController < ApiController
-      respond_to :json
-
       def index
-        respond_with(@cakes = current_user.creations)
+        @cakes = current_user.creations
       end
 
       def show
-        respond_with(@cake = current_user.creations.find(params[:id]))
+        @cake = current_user.creations.find(params[:id])
       end
 
       def create
@@ -16,27 +14,26 @@ module Api
       end
 
       def create_cake_succeeded(cake)
-        respond_with(@cake = cake)
+        @cake = cake
       end
 
       def create_cake_failed(cake)
-        respond_with(@cake = cake)
+        @cake = cake
       end
 
       def update
         @cake = current_user.creations.find(params[:id])
         current_user.tag(@cake, with: params[:cake][:tags], on: :tags)
         if @cake.update(cake_params.reject { |key, value| key == "tags" })
-          respond_with @cake
+          @cake
         else
-          respond_with @cake
+          @cake
         end
       end
 
       def destroy
         @cake = current_user.creations.find(params[:id])
         @cake.destroy!
-        respond_with(@cake)
       end
 
       private
