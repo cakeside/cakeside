@@ -1,17 +1,14 @@
 source 'https://rubygems.org'
 
-gem 'rails'
-gem 'sass-rails'
-gem 'uglifier'
-gem 'coffee-rails'
+gem 'rails', '4.2.0'
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder'
-gem 'bcrypt-ruby'
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', '~> 0.4.0'
-end
+gem 'jbuilder', '~> 2.0'
+gem 'bcrypt', '~> 3.1.7'
+gem 'sdoc', '~> 0.4.0', group: :doc
 
 # to remove
 gem 'acts-as-taggable-on'
@@ -21,8 +18,8 @@ gem 'jquery-turbolinks'
 gem 'mini_magick'
 gem "kaminari"
 gem 'bootstrap-sass', '~> 2.3.0'
-gem 'delayed_job'
-gem 'delayed_job_active_record'
+#gem 'delayed_job'
+#gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'dotenv-rails'
 gem 'pg'
@@ -48,14 +45,14 @@ gem 'groupdate'
 gem 'rack-cors', require: 'rack/cors'
 
 group :development do
-  gem 'capistrano', '~> 3.0', require: false
-  gem 'capistrano-rails', '~> 1.1', require: false
+  #gem 'capistrano', '~> 3.0', require: false
+  #gem 'capistrano-rails', '~> 1.1', require: false
+  gem 'capistrano-rails'
   gem 'capistrano-bundler', '~> 1.1', require: false
   gem 'capistrano-rbenv', '~> 2.0', require: false
-  gem 'bullet'
+  #gem 'bullet'
   gem 'better_errors'
   gem 'lol_dba'
-  gem 'spring'
   gem 'pry-rails'
 end
 
@@ -71,6 +68,9 @@ group :development, :test do
   gem 'phantomjs', :require => 'phantomjs/poltergeist'
   gem 'binding_of_caller'
   gem 'foreman'
+  gem 'spring'
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
 end
 
 group :production, :staging do
