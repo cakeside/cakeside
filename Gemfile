@@ -19,7 +19,7 @@ gem 'mini_magick'
 gem "kaminari"
 gem 'bootstrap-sass', '~> 2.3.0'
 #gem 'delayed_job'
-#gem 'delayed_job_active_record'
+gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'dotenv-rails'
 gem 'pg'

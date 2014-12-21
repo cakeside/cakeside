@@ -113,6 +113,8 @@ GEM
     database_cleaner (1.3.0)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
+    delayed_job (2.0.6)
+      daemons
     diff-lcs (1.2.5)
     docile (1.1.5)
     dotenv (1.0.2)
@@ -438,6 +440,7 @@ DEPENDENCIES
   daemons
   dalli
   database_cleaner
+  delayed_job
   dotenv-deployment
   dotenv-rails
   ejs
