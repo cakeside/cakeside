@@ -1,5 +1,5 @@
 # config valid only for Capistrano 3.1
-lock '3.2.1'
+lock '3.3.5'
 
 set :application, 'cakeside'
 set :repo_url, 'git@bitbucket.org:cakeside/cakeside.git'
@@ -42,7 +42,7 @@ set :keep_releases, 3
 set :ssh_options, { forward_agent: true }
 
 set :rbenv_type, :user # or :system, depends on your rbenv setup
-set :rbenv_ruby, '2.1.4'
+set :rbenv_ruby, '2.2.0'
 
 namespace :deploy do
   desc 'Restart application'

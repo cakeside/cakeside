@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery.turbolinks
-//= require jquery-migrate
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery.ui.all

@@ -17,3 +17,4 @@ coverage
 public/assets
 .env
 vendor/bundle
+.capistrano

@@ -1,6 +1,5 @@
 class SitemapController < ApplicationController
   layout nil
-  respond_to :xml
 
   def index
     @creations = Creation.all
