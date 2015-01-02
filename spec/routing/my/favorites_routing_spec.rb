@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 describe My::FavoritesController do
-  describe "routing" do
-    it "routes to my favorites" do
-      get("/my/favorites").should route_to("my/favorites#index")
-    end
+  it "routes to my favorites" do
+    expect(get("/my/favorites")).to route_to("my/favorites#index")
   end
 end

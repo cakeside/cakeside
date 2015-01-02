@@ -8,7 +8,7 @@ describe Favorite do
 
     it "creates a new activity" do
       user.favorites.create(creation: creation)
-      creation.author.activities.count.should == 1
+      expect(creation.author.activities.count).to eql(1)
     end
   end
 end

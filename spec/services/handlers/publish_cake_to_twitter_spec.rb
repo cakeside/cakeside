@@ -8,7 +8,7 @@ describe PublishCakeToTwitter do
 
   describe "#handles?" do
     it "handles cake_published" do
-      subject.handles?(:cake_published).should be_truthy
+      expect(subject.handles?(:cake_published)).to be_truthy
     end
   end
 
@@ -18,29 +18,29 @@ describe PublishCakeToTwitter do
     let(:id) { 88 }
 
     before :each do
-      cake.stub(:user).and_return(artist)
-      cakes.stub(:find).with(id).and_return(cake)
+      allow(cake).to receive(:user).and_return(artist)
+      allow(cakes).to receive(:find).with(id).and_return(cake)
     end
 
     context "when the cake is published and safe for kids" do
       before :each do
-        cake.stub(:published?).and_return(true)
+        allow(cake).to receive(:published?).and_return(true)
       end
 
       it "tweets new cakes" do
         subject.handle(cake_id: id)
-        twitter.should have_received(:tweet).with("yummy By joe on http://www.blah.com/cakes/88-yummy!")
+        expect(twitter).to have_received(:tweet).with("yummy By joe on http://www.blah.com/cakes/88-yummy!")
       end
     end
 
     context "when the cake is not published" do
       before :each do
-        cake.stub(:published?).and_return(false)
+        allow(cake).to receive(:published?).and_return(false)
       end
 
       it "should not publish any tweets" do
         subject.handle(cake_id: id)
-        twitter.should_not have_received(:tweet)
+        expect(twitter).not_to have_received(:tweet)
       end
     end
   end

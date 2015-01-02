@@ -29,7 +29,7 @@ describe SessionsController do
       let(:password) { "password" }
 
       before :each do
-        User.stub(:login).with(username, password).and_return(user_session)
+        allow(User).to receive(:login).with(username, password).and_return(user_session)
         post :create, session: { username: username, password: password }
       end
 
@@ -45,7 +45,7 @@ describe SessionsController do
 
     context "when the username is not known" do
       before :each do
-        User.stub(:login).and_return(nil)
+        allow(User).to receive(:login).and_return(nil)
       end
 
       it "returns an error" do
@@ -61,7 +61,7 @@ describe SessionsController do
 
     before :each do
       request.cookies[:raphael] = user_session.key
-      controller.stub(:user_session).and_return(user_session)
+      allow(controller).to receive(:user_session).and_return(user_session)
       delete :destroy, id: "me"
     end
 

@@ -7,7 +7,7 @@ describe Comment do
 
     it "creates a new activity" do
       comment = Comment.create(user: user, creation: creation)
-      comment.activities.count.should == 1
+      expect(comment.activities.count).to eql(1)
     end
   end
 end

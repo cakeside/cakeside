@@ -6,7 +6,7 @@ describe My::SettingsController do
       user = create(:user)
       http_login(user)
       get :index
-      assigns(:user).should == user
+      expect(assigns(:user)).to eql(user)
     end
   end
 
@@ -16,24 +16,24 @@ describe My::SettingsController do
     before :each do
       http_login(user)
       patch :update, id: user.id, user: { name: 'mo khan', email: 'mo@mokhan.ca', city: 'Calgary', website: 'http://mokhan.ca/', twitter: 'mocheen', facebook: 'fb' }
+    end
+
+    it "updates the users settings" do
       user.reload
+      expect(user.name).to eql('mo khan')
+      expect(user.email).to eql('mo@mokhan.ca')
+      expect(user.city).to eql('Calgary')
+      expect(user.website).to eql('http://mokhan.ca/')
+      expect(user.twitter).to eql('mocheen')
+      expect(user.facebook).to eql('fb')
     end
 
-    it "should update the users settings" do
-      user.name.should == 'mo khan'
-      user.email.should == 'mo@mokhan.ca'
-      user.city.should == 'Calgary'
-      user.website.should == 'http://mokhan.ca/'
-      user.twitter.should == 'mocheen'
-      user.facebook.should == 'fb'
+    it "redirects to the settings page" do
+      expect(response).to redirect_to(my_settings_path)
     end
 
-    it "should redirect to the settings page" do
-      response.should redirect_to(my_settings_path)
-    end
-
-    it "should include a success message" do
-      flash[:notice].should == I18n.t(:profile_saved)
+    it "includes a success message" do
+      expect(flash[:notice]).to eql(I18n.t(:profile_saved))
     end
   end
 end

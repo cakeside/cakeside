@@ -21,7 +21,7 @@ describe "changing my password", js: true do
     end
 
     it "should display a confirmation message" do
-      page.should have_content(I18n.translate('passwords.updated'))
+      expect(page).to have_content(I18n.translate('passwords.updated'))
     end
   end
 end

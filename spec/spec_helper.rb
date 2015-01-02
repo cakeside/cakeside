@@ -63,8 +63,8 @@ RSpec.configure do |config|
     # Enable only the newer, non-monkey-patching expect syntax.
     # For more details, see:
     #   - http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax
-    #expectations.syntax = :expect
-    expectations.syntax = [:should, :expect]
+    expectations.syntax = :expect
+    #expectations.syntax = [:should, :expect]
   end
 
   # rspec-mocks config goes here. You can use an alternate test double
@@ -73,8 +73,8 @@ RSpec.configure do |config|
     # Enable only the newer, non-monkey-patching expect syntax.
     # For more details, see:
     #   - http://teaisaweso.me/blog/2013/05/27/rspecs-new-message-expectation-syntax/
-    #mocks.syntax = :expect
-    mocks.syntax = [:should, :expect]
+    mocks.syntax = :expect
+    #mocks.syntax = [:should, :expect]
 
     # Prevents you from mocking or stubbing a method that does not exist on
     # a real object. This is generally recommended.

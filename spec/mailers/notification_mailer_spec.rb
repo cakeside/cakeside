@@ -6,19 +6,19 @@ describe NotificationMailer do
     let(:mail) { NotificationMailer.notification_email(user) }
 
     it "adds a subject" do
-      mail.subject.should == "New Activity on CakeSide"
+      expect(mail.subject).to eql("New Activity on CakeSide")
     end
 
     it "sends to the users email" do
-      mail.to.should include user.email
+      expect(mail.to).to match_array([user.email])
     end
 
     it "should send from the correct address" do
-      mail.from.should include 'noreply@cakeside.com'
+      expect(mail.from).to match_array(['noreply@cakeside.com'])
     end
 
     it "includes their name" do
-      mail.body.encoded.should match(user.name)
+      expect(mail.body.encoded).to match(user.name)
     end
   end
 end

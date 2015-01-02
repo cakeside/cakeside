@@ -12,13 +12,13 @@ module Admin
       let(:product_api) { double(find: true) }
 
       before :each do
-        controller.stub(:product_api).and_return(product_api)
+        allow(controller).to receive(:product_api).and_return(product_api)
       end
 
       it 'loads the product details from amazon' do
         asin = 'asin'
         product = "product"
-        product_api.stub(:find).with(asin).and_return(product)
+        allow(product_api).to receive(:find).with(asin).and_return(product)
 
         get :show, id: asin
 

@@ -7,7 +7,7 @@ describe ProcessPhoto do
 
   describe "#handles?" do
     it "handles photo uploads" do
-      subject.handles?(:upload_photo).should be_truthy
+      expect(subject.handles?(:upload_photo)).to be_truthy
     end
   end
 
@@ -16,7 +16,7 @@ describe ProcessPhoto do
     let(:photo) { double(upload: true, save!: true) }
 
     before :each do
-      photos.stub(:find).with(1).and_return(photo)
+      allow(photos).to receive(:find).with(1).and_return(photo)
       message = {
         photo_id: 1,
         file_path: image_path,

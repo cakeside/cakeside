@@ -5,7 +5,7 @@ describe RegistrationsController do
     let(:user_session) { double(access: SecureRandom.hex(12)) }
 
     it 'creates a new user' do
-      User.stub(:login).with('mo@cakeside.com', 'password').and_return(user_session)
+      allow(User).to receive(:login).with('mo@cakeside.com', 'password').and_return(user_session)
 
       post :create, user: { name: 'mo', email: 'mo@cakeside.com', password: 'password' }
 

@@ -21,6 +21,6 @@ describe "Change settings", js: true do
   end
 
   it "should save the changes properly" do
-    page.should have_content(I18n.translate(:profile_saved))
+    expect(page).to have_content(I18n.translate(:profile_saved))
   end
 end

@@ -107,7 +107,7 @@ describe User do
     let(:mailer) { double("mailer", deliver_later: true) }
 
     before :each do
-      UserMailer.stub(:welcome_email).with(user).and_return(mailer)
+      allow(UserMailer).to receive(:welcome_email).with(user).and_return(mailer)
       user.send_welcome_email
     end
 

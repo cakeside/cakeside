@@ -12,7 +12,7 @@ describe My::FavoritesController do
     end
 
     it "loads all my favorite cakes" do
-      assigns(:creations).should include(favorite_cake)
+      expect(assigns(:creations)).to include(favorite_cake)
     end
   end
 end

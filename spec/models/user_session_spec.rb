@@ -16,7 +16,7 @@ describe UserSession do
     let(:because) {  subject.access(request) }
 
     before :each do
-      Location.stub(:build_from_ip).with('192.168.1.1').and_return(location)
+      allow(Location).to receive(:build_from_ip).with('192.168.1.1').and_return(location)
       because
     end
 

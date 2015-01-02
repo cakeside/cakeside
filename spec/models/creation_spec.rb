@@ -8,7 +8,7 @@ describe Creation do
       subject.name="HELLO WORLD"
       subject.category = create(:category)
       subject.save!
-      Creation.find(subject.id).name.should == "HELLO WORLD"
+      expect(Creation.find(subject.id).name).to eql("HELLO WORLD")
     end
   end
 
@@ -18,11 +18,11 @@ describe Creation do
     let(:results) { Creation.all }
 
     it "should load the newest first" do
-      results.first.should == newest
+      expect(results.first).to eql(newest)
     end
 
     it "should load the oldest last" do
-      results.last.should == oldest
+      expect(results.last).to eql(oldest)
     end
   end
 
@@ -35,7 +35,7 @@ describe Creation do
       let(:result) { creation.liked_by(user) }
 
       it "returns the existing favorite" do
-        result.should == favorite
+        expect(result).to eql(favorite)
       end
     end
 
@@ -43,10 +43,10 @@ describe Creation do
       let(:result) { creation.liked_by(user) }
 
       it "creates a new favorite" do
-        result.should_not be_nil
-        result.user.should == user
-        result.creation.should == creation
-        creation.reload.favorites.count.should == 1
+        expect(result).to_not be_nil
+        expect(result.user).to eql(user)
+        expect(result.creation).to eql(creation)
+        expect(creation.reload.favorites.count).to eql(1)
       end
     end
   end

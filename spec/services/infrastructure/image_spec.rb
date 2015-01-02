@@ -25,7 +25,7 @@ describe Image do
 
     it "parses the geolocation info" do
       coordinates = [rand(100), rand(50)]
-      exif.stub(:parse_geolocation_from).with('blah.jpg').and_return(coordinates)
+      allow(exif).to receive(:parse_geolocation_from).with('blah.jpg').and_return(coordinates)
       expect(subject.geolocation).to eql(coordinates)
     end
   end

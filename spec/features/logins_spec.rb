@@ -4,7 +4,7 @@ describe "Logins" do
   describe "GET /login" do
     it "should be able to reach the login page" do
       visit login_path
-      page.should have_content("Got an account? Login!")
+      expect(page).to have_content("Got an account? Login!")
     end
 
     context "when an email is registered", :js => true do
@@ -20,11 +20,11 @@ describe "Logins" do
       end
 
       it "should let the user signin with the proper password" do
-        page.should have_content("Log Out")
+        expect(page).to have_content("Log Out")
       end
 
       it "should not have an error" do
-        page.should_not have_content(I18n.t('devise.failure.invalid'))
+        expect(page).to_not have_content(I18n.t('devise.failure.invalid'))
       end
     end
 
@@ -39,7 +39,7 @@ describe "Logins" do
       end
 
       it "should display an error message" do
-        page.should have_content("invalid email or password.")
+        expect(page).to have_content("invalid email or password.")
       end
     end
   end

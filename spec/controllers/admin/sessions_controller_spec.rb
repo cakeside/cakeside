@@ -22,8 +22,8 @@ module Admin
         let(:user_session) { create(:active_session) }
 
         before :each do
-          UserSession.stub(:find).with(user_session.id).and_return(user_session)
-          user_session.stub(:revoke!).and_return(true)
+          allow(UserSession).to receive(:find).with(user_session.id).and_return(user_session)
+          allow(user_session).to receive(:revoke!).and_return(true)
           delete :destroy, id: user_session.id
         end
 

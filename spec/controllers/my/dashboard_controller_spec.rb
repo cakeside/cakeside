@@ -11,7 +11,7 @@ describe My::DashboardController do
 
     it "loads the most recent activities" do
       get :index
-      assigns(:activities).should include(activity)
+      expect(assigns(:activities)).to match_array([activity])
     end
   end
 end

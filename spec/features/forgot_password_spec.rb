@@ -14,7 +14,7 @@ describe "password retrieval", :js => true do
     end
 
     it "should send them an email with instructions" do
-      page.should have_content(I18n.t('devise.passwords.send_instructions'))
+      expect(page).to have_content(I18n.t('devise.passwords.send_instructions'))
     end
   end
 

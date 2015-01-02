@@ -6,8 +6,8 @@ describe My::PasswordsController do
       let(:user) { create(:user) }
 
       it "should redirect you to the login page" do
-        put :update, :id => user.id
-        response.should redirect_to(login_path)
+        put :update, id: user.id
+        expect(response).to redirect_to(login_path)
       end
     end
 
@@ -20,11 +20,11 @@ describe My::PasswordsController do
         before { put :update, :id => user.id, :user => { :password => 'foobar', :password_confirmation => 'barfoo' } }
 
         it "should display an error on the page" do
-          flash[:error].should == I18n.t(:passwords_do_not_match)
+          expect(flash[:error]).to eql(I18n.t(:passwords_do_not_match))
         end
 
         it "should render the show template" do
-          response.should render_template(:index)
+          expect(response).to render_template(:index)
         end
       end
 
@@ -40,7 +40,6 @@ describe My::PasswordsController do
         end
       end
     end
-
   end
 
   describe "#index" do
@@ -54,10 +53,9 @@ describe My::PasswordsController do
 
       context "when displaying a form to change the current password" do
         it "should load the user" do
-          assigns(:user).should == user
+          expect(assigns(:user)).to eql(user)
         end
       end
-
     end
   end
 end

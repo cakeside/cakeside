@@ -12,9 +12,9 @@ describe CommentsController do
     it "creates a new comment" do
       post :create, id: 1207743539, url: "http://localhost:3000/creations/#{creation.to_param}", comment: { id: 1207743539, text: 'very nice' }
       comment = Comment.last
-      comment.disqus_id.should == 1207743539
-      comment.creation.should == creation
-      comment.text.should == 'very nice'
+      expect(comment.disqus_id).to eql(1207743539)
+      expect(comment.creation).to eql(creation)
+      expect(comment.text).to eql('very nice')
     end
   end
 end

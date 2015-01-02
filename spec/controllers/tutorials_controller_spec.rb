@@ -14,7 +14,7 @@ describe TutorialsController do
     end
 
     it "assigns all tutorials as @tutorials" do
-      assigns(:tutorials).should include(tutorial)
+      expect(assigns(:tutorials)).to match_array([tutorial])
     end
   end
 
@@ -27,7 +27,7 @@ describe TutorialsController do
     end
 
     it "assigns the requested tutorial" do
-      assigns(:tutorial).should == tutorial
+      expect(assigns(:tutorial)).to eql(tutorial)
     end
   end
 end

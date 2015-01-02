@@ -13,11 +13,11 @@ describe Api::V1::CakesController do
     end
 
     it "should return all of my cakes" do
-      assigns(:cakes).should include(my_cake)
+      expect(assigns(:cakes)).to match_array([my_cake])
     end
 
     it "should not return any other cakes" do
-      assigns(:cakes).should_not include(other_cake)
+      expect(assigns(:cakes)).to_not include(other_cake)
     end
   end
 end
