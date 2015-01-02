@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
   end
 
   def send_welcome_email
-    UserMailer.delay.welcome_email(self)
+    UserMailer.welcome_email(self).deliver_later
     Subscription.delay.subscribe(email: email, first_name: name, last_name: '')
   end
 
@@ -66,7 +66,7 @@ class User < ActiveRecord::Base
   end
 
   def notify_of_activity
-    NotificationMailer.delay.notification_email(self)
+    NotificationMailer.notification_email(self).deliver_later
   end
 
   class << self
