@@ -1,0 +1,4 @@
+test:
+  adapter: postgresql
+  database: cakeside_test
+  username: postgres

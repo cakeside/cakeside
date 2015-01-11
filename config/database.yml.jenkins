@@ -1,7 +1,0 @@
-test:
-  adapter: postgresql
-  encoding: unicode
-  database: cakeside_test
-  pool: 5
-  username: jenkins
-  password:
