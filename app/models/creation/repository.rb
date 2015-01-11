@@ -29,7 +29,7 @@ class Creation
     def search_filters_for(params)
       [
         ->(cakes) { cakes.published },
-        ->(cakes) { params[:category].blank? ? cakes.all : cakes.where(category: Category.find_by(slug: params[:category].downcase)) },
+        ->(cakes) { params[:category].blank? ? cakes.all : cakes.where(category: Category.by_slug(params[:category])) },
         ->(cakes) { params[:q].blank? ? cakes.all : cakes.search(params[:q]) },
         ->(cakes) { cakes.order(created_at: sort(params)) },
         ->(cakes) { params[:tags].blank? ? cakes.all : cakes.tagged(params[:tags].downcase.parameterize) },
