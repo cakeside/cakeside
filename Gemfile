@@ -60,7 +60,7 @@ group :development, :test do
   gem 'teaspoon'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
-  gem 'simplecov'
+  gem "codeclimate-test-reporter", require: nil
   gem 'ffaker'
   gem 'poltergeist'
   gem 'phantomjs', :require => 'phantomjs/poltergeist'
