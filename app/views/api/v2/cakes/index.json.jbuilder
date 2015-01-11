@@ -4,7 +4,7 @@ end
 json.users @cakes.map(&:user) do |user|
   json.partial! user, user: user
 end
-json.photos @cakes.map { |x| x.photos }.flatten do |photo|
+json.photos @cakes.map(&:photos).flatten do |photo|
   json.partial! photo, photo: photo
 end
 json.categories @categories do |category|
