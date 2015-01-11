@@ -7,6 +7,7 @@ addons:
 sudo: false
 before_script:
   - cp config/database.yml.travis config/database.yml
+  - cp .env.example .env
   - psql -c 'create database cakeside_test;' -U postgres
 script: 
   - bundle exec rake db:schema:load
