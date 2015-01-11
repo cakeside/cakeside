@@ -7,7 +7,7 @@ module Api
       end
 
       def index
-        @cakes = @repository.search_with(params).includes(:category).page(page).per(per_page)
+        @cakes = paginate(@repository.search_with(params).includes(:category))
       end
 
       def show(id = params[:id])
