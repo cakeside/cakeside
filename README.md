@@ -1,7 +1,8 @@
+[![Code Climate](https://codeclimate.com/github/mokhan/cakeside/badges/gpa.svg)](https://codeclimate.com/github/mokhan/cakeside)
+
 ## Environment Setup
 
 Install [rbenv](https://github.com/sstephenson/rbenv#installation)
-Install ruby 2.1.2
 Install required gems
 
     bundle install
@@ -20,24 +21,3 @@ Start server
 
     bundle exec cap staging deploy
     bundle exec cap production deploy
-
-## Git Workflow
-
-
-
-
-
-## Run tests
-
-
-
-
-## Creating and restoring from backups
-
-
-
-## Sync logs to S3
-
-
-
-
