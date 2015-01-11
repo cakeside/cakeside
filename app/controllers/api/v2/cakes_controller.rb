@@ -1,17 +1,19 @@
 module Api
   module V2
     class CakesController < ApplicationController
+      attr_reader :repository
+
       def initialize(repository = Spank::IOC.resolve(:cakes))
         @repository = repository
         super()
       end
 
       def index
-        @cakes = paginate(@repository.search_with(params).includes(:category))
+        @cakes = paginate(repository.search_with(params).includes(:category))
       end
 
       def show(id = params[:id])
-        @cake = @repository.find(id)
+        @cake = repository.find(id)
       end
     end
   end

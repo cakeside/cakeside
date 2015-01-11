@@ -4,11 +4,12 @@ module Api
   module V2
     describe PhotosController do
       describe "#index" do
-        let!(:photo) { create(:photo) }
+        let!(:processed_photo) { create(:photo, image_processing: nil) }
+        let!(:unprocessed_photo) { create(:photo, image_processing: true) }
 
-        it 'should load all the photos' do
+        it 'loads all processed photos' do
           xhr :get, :index
-          expect(assigns(:photos)).to match_array([photo])
+          expect(assigns(:photos)).to match_array([processed_photo])
         end
       end
 
