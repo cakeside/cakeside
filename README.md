@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/mokhan/cakeside.svg?branch=master)](https://travis-ci.org/mokhan/cakeside)
 [![Code Climate](https://codeclimate.com/github/mokhan/cakeside/badges/gpa.svg)](https://codeclimate.com/github/mokhan/cakeside)
 
 ## Environment Setup
