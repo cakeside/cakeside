@@ -6,7 +6,7 @@ addons:
   postgresql: '9.3'
   codeclimate: 
     repo_token:
-      secure: "KsLxeZiHnIpMhHvIvDEjKjiTTXwRa40qg+4boACuz+9nP861pACOfNVHSSSXx0GiZPg9c+WrENYeQj2yHq7jxSQT7LbG1jD8HCC+wYpvrIAYw4GLwAIuPtXqvSQlvNxJtKFgIBXqrU/LKqCdBXN2kde9mkLiKCDrNr1KmMOqGLY="
+      secure: "V+0yFzUCgRi5AR6oZzApbbNMv62l0QxpGlrcZmF3EYzYlUew/E6aD+qL1JcZwPJ5LZ6trUTXXCKJRKEFST6G2qFtl96oyHu/5BGBCbSHOqXDosgvNkVe/4PicGPOFncQWlLpOfuzYwBMjpkbPyMZS9BFUIEoKXekZU1+aehSOqw="
 sudo: false
 before_script:
   - cp config/database.yml.travis config/database.yml
