@@ -1,7 +1,7 @@
 class Creation
   include Queryable
   scope :tagged, ->(tag) { tagged_with([tag]).where('photos_count > 0') }
-  scope :published, ->() { unscoped.distinct.includes(:user, :photos).joins(:photos).where('photos.image_processing' => nil) }
+  scope :published, ->{ joins(:photos).where(photos: { image_processing: nil }) }
   scope :search, ->(query) { where(["UPPER(creations.name) LIKE :query OR UPPER(creations.story) LIKE :query", { query: "%#{query.upcase}%" }]) }
 
   class Repository < SimpleDelegator

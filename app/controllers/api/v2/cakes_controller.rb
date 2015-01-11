@@ -10,6 +10,7 @@ module Api
 
       def index
         @cakes = paginate(repository.search_with(params).includes(:category))
+        @photos = Photo.processed.where(imageable_id: @cakes.pluck(:id))
       end
 
       def show(id = params[:id])
