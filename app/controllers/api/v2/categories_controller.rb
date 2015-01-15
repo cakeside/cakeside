@@ -1,8 +1,8 @@
 module Api
   module V2
     class CategoriesController < ApplicationController
-      def show
-        @category = @categories.find(params[:id])
+      def show(id = params[:id])
+        @category = @categories.find(id)
       end
     end
   end

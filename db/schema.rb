@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141206152512) do
+ActiveRecord::Schema.define(version: 20150111153140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 20141206152512) do
     t.string   "slug",       limit: 255
   end
 
+  add_index "categories", ["slug"], name: "index_categories_on_slug", using: :btree
+
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "creation_id"
@@ -72,6 +74,7 @@ ActiveRecord::Schema.define(version: 20141206152512) do
     t.integer  "category_id"
   end
 
+  add_index "creations", ["category_id"], name: "index_creations_on_category_id", using: :btree
   add_index "creations", ["created_at"], name: "index_creations_on_created_at", using: :btree
   add_index "creations", ["user_id"], name: "index_creations_on_user_id", using: :btree
 
@@ -118,6 +121,8 @@ ActiveRecord::Schema.define(version: 20141206152512) do
     t.datetime "updated_at"
   end
 
+  add_index "locations", ["locatable_id", "locatable_type"], name: "index_locations_on_locatable_id_and_locatable_type", using: :btree
+
   create_table "photos", force: :cascade do |t|
     t.integer  "imageable_id"
     t.string   "image",             limit: 255
@@ -134,6 +139,7 @@ ActiveRecord::Schema.define(version: 20141206152512) do
     t.string   "imageable_type",    limit: 255
   end
 
+  add_index "photos", ["imageable_id", "imageable_type"], name: "index_photos_on_imageable_id_and_imageable_type", using: :btree
   add_index "photos", ["imageable_id"], name: "index_photos_on_imageable_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|

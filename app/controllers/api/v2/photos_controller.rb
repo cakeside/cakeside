@@ -2,7 +2,7 @@ module Api
   module V2
     class PhotosController < ApplicationController
       def index
-        @photos = Photo.page(page).per(per_page)
+        @photos = paginate(Photo.processed)
       end
 
       def show(id = params[:id])

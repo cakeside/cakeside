@@ -1,7 +1,7 @@
 class Creation
   include Queryable
   scope :tagged, ->(tag) { tagged_with([tag]).where('photos_count > 0') }
-  scope :published, ->() { unscoped.distinct.includes(:user, :photos).joins(:photos).where('photos.image_processing' => nil) }
+  scope :published, ->{ joins(:photos).where(photos: { image_processing: nil }) }
   scope :search, ->(query) { where(["UPPER(creations.name) LIKE :query OR UPPER(creations.story) LIKE :query", { query: "%#{query.upcase}%" }]) }
 
   class Repository < SimpleDelegator
@@ -29,7 +29,7 @@ class Creation
     def search_filters_for(params)
       [
         ->(cakes) { cakes.published },
-        ->(cakes) { params[:category].blank? ? cakes.all : cakes.where(category: Category.find_by(slug: params[:category].downcase)) },
+        ->(cakes) { params[:category].blank? ? cakes.all : cakes.where(category: Category.by_slug(params[:category])) },
         ->(cakes) { params[:q].blank? ? cakes.all : cakes.search(params[:q]) },
         ->(cakes) { cakes.order(created_at: sort(params)) },
         ->(cakes) { params[:tags].blank? ? cakes.all : cakes.tagged(params[:tags].downcase.parameterize) },
