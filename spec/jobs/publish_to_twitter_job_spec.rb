@@ -5,14 +5,10 @@ RSpec.describe PublishToTwitterJob, :type => :job do
 
   describe "#perform" do
     let(:artist) { User.new(name: 'joe') }
-    let(:cake) { Creation.new(id: id, name: 'yummy') }
-    let(:id) { 88 }
+    let(:cake) { Creation.new(id: 88, name: 'yummy', user: artist) }
     let(:twitter) { double(tweet: '') }
-    let(:cakes) { double }
 
     before :each do
-      allow(cake).to receive(:user).and_return(artist)
-      allow(cakes).to receive(:find).with(id).and_return(cake)
       allow(subject).to receive(:twitter).and_return(twitter)
     end
 
@@ -23,7 +19,8 @@ RSpec.describe PublishToTwitterJob, :type => :job do
 
       it "tweets about the new cake" do
         subject.perform(cake)
-        expect(twitter).to have_received(:tweet).with("yummy By joe on http://www.blah.com/cakes/88-yummy!")
+        expect(twitter).to have_received(:tweet).
+          with("yummy By joe on http://www.blah.com/cakes/88-yummy!")
       end
     end
 
