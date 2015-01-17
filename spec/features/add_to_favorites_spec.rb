@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "adding a cake to your favorites", js: true do
+describe "adding a cake to your favorites" do
   let!(:creation) { create(:creation, user: create(:user), photos: [create(:photo)]) }
   let!(:me) { create(:user, password: "password") }
 
@@ -13,10 +13,11 @@ describe "adding a cake to your favorites", js: true do
     click_button("Sign In")
     visit root_path
     click_link(creation.name[0...12])
+    puts page.html
     click_link_or_button("add-to-favorites-button")
   end
 
-  it "should redirect you to the cake after" do 
+  it "redirects you to the cake after" do
     expect(page).to have_content("This has been added to your favorites")
   end
 end
