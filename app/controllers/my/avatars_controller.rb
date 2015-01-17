@@ -10,15 +10,12 @@ module My
     end
 
     def create
-      publish(params[:photo][:image])
+      image = params[:photo][:image]
+      ProcessAvatarJob.perform_later(current_user, move_to_temporary_storage(image))
       redirect_to new_my_avatar_path, notice: t(:avatar_uploaded)
     end
 
     private
-
-    def publish(image)
-      ProcessAvatarJob.perform_later(current_user, move_to_temporary_storage(image))
-    end
 
     def move_to_temporary_storage(image)
       "#{create_tmp_dir}/#{image.original_filename}".tap do |new_path|
