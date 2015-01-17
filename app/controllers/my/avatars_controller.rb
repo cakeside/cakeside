@@ -17,16 +17,7 @@ module My
     private
 
     def publish(image)
-      @bus.publish(:upload_avatar, create_message_from(image))
-    end
-
-    def create_message_from(image)
-      {
-        user_id: current_user.id,
-        file_path: move_to_temporary_storage(image),
-        original_filename: image.original_filename,
-        content_type: image.content_type,
-      }
+      ProcessAvatarJob.perform_later(current_user, move_to_temporary_storage(image))
     end
 
     def move_to_temporary_storage(image)

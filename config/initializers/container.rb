@@ -2,7 +2,6 @@ class ConfigureContainerCommand
   def configure(container)
     container.register(:configuration) { EnvironmentVariables.new }
     container.register(:message_handler) { |builder| builder.build(ProcessPhoto) }
-    container.register(:message_handler) { |builder| builder.build(ProcessAvatar) }
     container.register(:queue) { |c| Delayed::Job }
     container.register(:command_bus) { |c| c.build(CommandBus) }.as_singleton
     container.register(:exif_parser) { |builder| ExifParser.new }
