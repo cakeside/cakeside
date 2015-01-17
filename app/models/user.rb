@@ -18,8 +18,9 @@ class User < ActiveRecord::Base
   has_one :avatar, class_name: 'Photo', as: :imageable
   acts_as_tagger
 
-  def add_favorite(creation)
-    creation.liked_by(self)
+  def add_favorite(cake)
+    return if self.owns(cake)
+    cake.liked_by(self)
   end
 
   def already_likes(creation)

@@ -4,7 +4,6 @@ class ConfigureContainerCommand
     container.register(:message_handler) { |builder| builder.build(PublishCakeToTwitter) }
     container.register(:message_handler) { |builder| builder.build(ProcessPhoto) }
     container.register(:message_handler) { |builder| builder.build(ProcessAvatar) }
-    container.register(:message_handler) { |builder| builder.build(AddToFavorites) }
     container.register(:queue) { |c| Delayed::Job }
     container.register(:command_bus) { |c| c.build(CommandBus) }.as_singleton
     container.register(:exif_parser) { |builder| ExifParser.new }
