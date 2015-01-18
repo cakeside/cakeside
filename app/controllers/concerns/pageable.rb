@@ -9,4 +9,8 @@ module Pageable
   def per_page
     params[:per_page] || DEFAULT_PER_PAGE
   end
+
+  def paginate(items)
+    items.page(page).per(per_page)
+  end
 end

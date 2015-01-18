@@ -15,6 +15,7 @@ FactoryGirl.define do
     association :user
     association :category
     factory :published_cake do
+      photos_count 1
       after(:create) do |cake, evaluator|
         cake.photos << create(:photo, image: 'spec/fixtures/images/example.png')
       end
