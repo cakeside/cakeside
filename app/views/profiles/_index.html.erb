@@ -9,7 +9,7 @@
                 <%= avatar_for(profile) %>
               <% end %>
               <div class="caption">
-                <small><%= link_to shrink(profile.name, 20), profile_path(profile) %></small>
+                <small><%= link_to truncate(profile.name, length: 20), profile_path(profile) %></small>
               </div>
             </div>
           </li>
