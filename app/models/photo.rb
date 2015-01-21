@@ -20,7 +20,7 @@ class Photo < ActiveRecord::Base
     self.sha256 = image.sha256
     versions.each do |version|
       version.adjust(image)
-      blob_storage.upload(version.create_key, image.path)
+      blob_storage.upload(version.blob_key, image.path)
     end
   end
 
