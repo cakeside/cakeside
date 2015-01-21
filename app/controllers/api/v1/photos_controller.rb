@@ -10,7 +10,8 @@ module Api
       end
 
       def create
-        @photo = UploadPhoto.new.run(params[:cake_id], params)
+        cake = current_user.creations.find(params[:cake_id])
+        @photo = UploadPhoto.new(cake).run(params)
       end
     end
   end
