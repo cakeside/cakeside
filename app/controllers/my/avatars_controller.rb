@@ -1,10 +1,5 @@
 module My
   class AvatarsController < BaseController
-    def initialize(bus = Spank::IOC.resolve(:command_bus))
-      @bus = bus
-      super()
-    end
-
     def new
       @avatar = current_user.avatar || Photo.new
     end

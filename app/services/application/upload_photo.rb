@@ -1,13 +1,13 @@
 class UploadPhoto
-  def initialize(command_bus = Spank::IOC.resolve(:command_bus), cakes = Creation)
-    @command_bus = command_bus
+  def initialize(cakes = Creation)
     @cakes = cakes
   end
 
   def run(cake_id, params)
     ActiveRecord::Base.transaction do
       photo = @cakes.find(cake_id).photos.create!(image_processing: true, watermark: params[:watermark])
-      @command_bus.publish(:upload_photo, create_message_from(cake_id, params, photo))
+      tempfile = move_to_temporary_storage(params[:image].path, params[:image].original_filename)
+      ProcessPhotoJob.perform_later(photo, tempfile)
       photo
     end
   end
@@ -24,15 +24,5 @@ class UploadPhoto
     directory = Rails.root.join("tmp/uploads/#{SecureRandom.uuid}")
     system "mkdir -p #{directory}"
     directory
-  end
-
-  def create_message_from(cake_id, payload, photo)
-    {
-      cake_id: cake_id,
-      photo_id: photo.id,
-      file_path: move_to_temporary_storage(payload[:image].path, payload[:image].original_filename),
-      original_filename: payload[:image].original_filename,
-      content_type: payload[:image].content_type,
-    }
   end
 end
