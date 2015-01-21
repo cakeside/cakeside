@@ -1,7 +1,7 @@
 class ConfigureContainerCommand
   def configure(container)
     container.register(:exif_parser) { |builder| ExifParser.new }
-    container.register(:twitter_publisher) { |c| c.build(TwitterPublisher) }.as_singleton
+    container.register(:twitter_publisher) { |c| c.build(TwitterPublisher) }
     container.register(:product_api) { |c| AmazonAPI.new }.as_singleton
     if Rails.env.test?
       container.register(:blob_storage) { |builder| BlobStorage::Fake.new }
