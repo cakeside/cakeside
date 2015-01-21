@@ -43,6 +43,7 @@ gem 'github-markdown'
 gem 'chartkick'
 gem 'groupdate'
 gem 'rack-cors', require: 'rack/cors'
+gem 'email_validator'
 
 group :development do
   gem 'capistrano-rails'

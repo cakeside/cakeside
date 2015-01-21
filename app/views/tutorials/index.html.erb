@@ -10,7 +10,7 @@
               <%= image_tag tutorial.image_url, width: 240 %>
             <% end %>
             <div class="caption">
-              <small><%= link_to shrink(tutorial.heading, 20), tutorial %></small>
+              <small><%= link_to truncate(tutorial.heading, length: 20), tutorial %></small>
             </div>
           </div>
         </li>

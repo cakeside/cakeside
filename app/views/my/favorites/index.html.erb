@@ -13,7 +13,7 @@
                 <%= image_tag creation.primary_image.url_for(:thumb) %>
               <% end %>
               <div class="caption">
-                <small><%= link_to shrink(creation.name, 12), cake_path(creation) %></small>
+                <small><%= link_to truncate(creation.name, length: 12), cake_path(creation) %></small>
               </div>
             </div>
           </li>

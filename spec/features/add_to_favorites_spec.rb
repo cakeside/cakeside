@@ -13,7 +13,6 @@ describe "adding a cake to your favorites" do
     click_button("Sign In")
     visit root_path
     click_link(creation.name[0...12])
-    puts page.html
     click_link_or_button("add-to-favorites-button")
   end
 

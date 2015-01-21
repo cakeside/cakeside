@@ -3,10 +3,13 @@ require "rails_helper"
 describe PasswordReset do
   describe ".send_reset_instructions_to" do
     let(:user) { create(:user, reset_password_token: nil, reset_password_sent_at: nil) }
-    let(:mailer) { double(send_password_reset_instructions_to: true) }
+    let(:mailer) { double(deliver_later: true) }
 
     before :each do
-      allow(PasswordResetMailer).to receive(:delay).and_return(mailer)
+      allow(PasswordResetMailer).
+        to receive(:send_password_reset_instructions_to).
+        with(user).
+        and_return(mailer)
     end
 
     it "creates a new reset token for the user" do
@@ -18,12 +21,12 @@ describe PasswordReset do
 
     it "sends an email to the user" do
       PasswordReset.send_reset_instructions_to(user.email)
-      expect(mailer).to have_received(:send_password_reset_instructions_to).with(user)
+      expect(mailer).to have_received(:deliver_later)
     end
 
     it "does nothing if the email is not known" do
       PasswordReset.send_reset_instructions_to(Faker::Internet.email)
-      expect(mailer).to_not have_received(:send_password_reset_instructions_to)
+      expect(mailer).to_not have_received(:deliver_later)
     end
   end
 

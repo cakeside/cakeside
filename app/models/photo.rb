@@ -3,7 +3,7 @@ class Photo < ActiveRecord::Base
   scope :processed, ->{ where(image_processing: nil) }
 
   def url_for(version_key, asset_host = ENV['ASSET_HOST'])
-    versions.find { |version| version.for?(version_key) }.url_for(asset_host)
+    version(version_key).url_for(asset_host)
   end
 
   def is_processed?
@@ -20,8 +20,12 @@ class Photo < ActiveRecord::Base
     self.sha256 = image.sha256
     versions.each do |version|
       version.adjust(image)
-      blob_storage.upload(version.create_key, image.path)
+      blob_storage.upload(version.blob_key, image.path)
     end
+  end
+
+  def version(key)
+    versions.detect { |version| version.for?(key) }
   end
 
   private
