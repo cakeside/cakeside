@@ -23,7 +23,9 @@ describe ReProcessPhotoJob, type: :job do
 
       subject.perform(photo)
 
-      expect(ProcessPhotoJob).to have_received(:perform_later).with(photo, temp_file)
+      expect(ProcessPhotoJob).
+        to have_received(:perform_later).
+        with(photo, temp_file)
     end
   end
 end

@@ -6,7 +6,8 @@ describe PasswordReset do
     let(:mailer) { double(deliver_later: true) }
 
     before :each do
-      allow(PasswordResetMailer).to receive(:send_password_reset_instructions_to).
+      allow(PasswordResetMailer).
+        to receive(:send_password_reset_instructions_to).
         with(user).
         and_return(mailer)
     end

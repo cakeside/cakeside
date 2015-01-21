@@ -25,7 +25,7 @@ class Photo < ActiveRecord::Base
   end
 
   def version(key)
-    versions.find { |version| version.for?(key) }
+    versions.detect { |version| version.for?(key) }
   end
 
   private

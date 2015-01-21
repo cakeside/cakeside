@@ -7,7 +7,7 @@ class Version
     @photo = photo
   end
 
-  def adjust(image)
+  def adjust(_image)
     fail "Please override with version specific behaviours"
   end
 
