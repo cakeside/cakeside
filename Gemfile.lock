@@ -131,6 +131,8 @@ GEM
     dotenv-rails (1.0.2)
       dotenv (= 1.0.2)
     ejs (1.1.1)
+    email_validator (1.5.0)
+      activemodel
     equalizer (0.0.9)
     erubis (2.7.0)
     exception_notification (4.0.1)
@@ -456,6 +458,7 @@ DEPENDENCIES
   dotenv-deployment
   dotenv-rails
   ejs
+  email_validator
   exception_notification
   exifr
   factory_girl_rails
