@@ -12,17 +12,17 @@ describe My::AvatarsController do
 
         before { post :create, photo: { image: image } }
 
-        it "should save the new avatar" do
+        it "saves the new avatar" do
           user.reload
           expect(user.avatar).to_not be_nil
           expect(user.avatar.image).to_not be_blank
         end
 
-        it "should redirect to the avatar page" do
+        it "redirects to the avatar page" do
           expect(response).to redirect_to(new_my_avatar_path)
         end
 
-        it "should display a flash notice" do
+        it "displays a flash notice" do
           expect(flash[:notice]).to_not be_nil
         end
       end
@@ -31,7 +31,7 @@ describe My::AvatarsController do
     describe "#new" do
       before { get :new, id: user.id }
 
-      it "should display the current avatar" do
+      it "displays the current avatar" do
         expect(assigns(:avatar)).to_not be_nil
       end
     end
