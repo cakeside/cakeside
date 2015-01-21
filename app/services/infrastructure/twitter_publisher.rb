@@ -1,5 +1,5 @@
 class TwitterPublisher
-  def initialize(configuration)
+  def initialize(configuration = ENV)
     @configuration = configuration
   end
 

@@ -1,6 +1,5 @@
 class ConfigureContainerCommand
   def configure(container)
-    container.register(:configuration) { EnvironmentVariables.new }
     container.register(:exif_parser) { |builder| ExifParser.new }
     container.register(:twitter_publisher) { |c| c.build(TwitterPublisher) }.as_singleton
     container.register(:product_api) { |c| AmazonAPI.new }.as_singleton
