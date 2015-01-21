@@ -3,7 +3,7 @@ class Photo < ActiveRecord::Base
   scope :processed, ->{ where(image_processing: nil) }
 
   def url_for(version_key, asset_host = ENV['ASSET_HOST'])
-    versions.find { |version| version.for?(version_key) }.url_for(asset_host)
+    version(version_key).url_for(asset_host)
   end
 
   def is_processed?
@@ -22,6 +22,10 @@ class Photo < ActiveRecord::Base
       version.adjust(image)
       blob_storage.upload(version.create_key, image.path)
     end
+  end
+
+  def version(key)
+    versions.find { |version| version.for?(key) }
   end
 
   private

@@ -2,10 +2,8 @@ class ReProcessPhotoJob < ActiveJob::Base
   queue_as :default
 
   def perform(photo)
-    key = OriginalVersion.new(photo).create_key
-    blob_storage.download(key) do |file|
-      temp_file = file_storage.store(file)
-      ProcessPhotoJob.perform_later(photo, temp_file)
+    photo.version(:original).download(blob_storage) do |file|
+      ProcessPhotoJob.perform_later(photo, file_storage.store(file))
     end
   end
 
