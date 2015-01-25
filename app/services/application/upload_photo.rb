@@ -23,7 +23,7 @@ class UploadPhoto
   end
 
   def create_photo!(watermark)
-    cake.photos.create!(image_processing: true, watermark: watermark) do |photo|
+    cake.photos.create!(image_processing: true, watermark: watermark).tap do |photo|
       yield photo
     end
   end
