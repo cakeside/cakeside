@@ -4,4 +4,4 @@ configuration = {
   expire_after: 1.day,
   secure: Rails.env.production? || Rails.env.staging?,
 }
-Cake::Application.config.session_store ActionDispatch::Session::CacheStore, configuration
+Rails.application.config.session_store :cookie_store, configuration
