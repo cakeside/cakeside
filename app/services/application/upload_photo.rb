@@ -23,6 +23,6 @@ class UploadPhoto
   end
 
   def create_photo!(watermark)
-    cake.photos.create!(image_processing: true, watermark: watermark)
+    yield cake.photos.create!(image_processing: true, watermark: watermark)
   end
 end
