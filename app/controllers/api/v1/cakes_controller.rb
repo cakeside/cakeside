@@ -34,6 +34,7 @@ module Api
       def destroy
         @cake = current_user.creations.find(params[:id])
         @cake.destroy!
+        render nothing: true
       end
 
       private
