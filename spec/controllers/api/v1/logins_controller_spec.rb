@@ -1,12 +1,15 @@
 require "rails_helper"
 
 describe Api::V1::LoginsController do
+  render_views
+
   context "when logging in with proper credentials" do
     let(:user) { create(:user) }
 
-    it "should return the auth token" do
+    it "returns the auth token" do
       post :create, { email: user.email, password: 'password' }
-      expect(response.body).to eql({ auth_token: user.authentication_token }.to_json)
+      expected_json = { auth_token: user.authentication_token }.to_json
+      expect(response.body).to eql(expected_json)
     end
   end
 
@@ -15,8 +18,8 @@ describe Api::V1::LoginsController do
 
     before { post :create, { email: user.email, password: user.password.reverse } }
 
-    it "should return an empty auth token" do
-      expect(response.body).to eql({ :auth_token => "" }.to_json)
+    it "returns an empty auth token" do
+      expect(response.body).to eql({ auth_token: "" }.to_json)
     end
   end
 end
