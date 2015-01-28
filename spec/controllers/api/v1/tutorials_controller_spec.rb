@@ -4,7 +4,7 @@ describe Api::V1::TutorialsController do
   let(:user) { create(:user) }
 
   before :each do
-    request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Token.encode_credentials(user.authentication_token)
+    api_login(user)
   end
 
   describe "#index" do
@@ -22,9 +22,9 @@ describe Api::V1::TutorialsController do
     it "creates a new tutorial" do
       attributes = {
         url: "https://twitter.com/",
-        image_url: "https://abs.twimg.com/a/1405611403/img/t1/front_page/exp_wc2014_gen_laurenlemon.jpg",
+        image_url: "https://abs.twimg.com/a/img/t1/lemon.jpg",
         heading: "Twitter",
-        description: "Connect with your friends - and other fascinating people. Get in-the-moment updates on the things that interest you. And watch events unfold, in real time, from every angle.",
+        description: "Connect with your friends - and other fascinating people",
         tags: "cake,cookie",
       }
       xhr :post, :create, tutorial: attributes
@@ -34,8 +34,8 @@ describe Api::V1::TutorialsController do
       expect(assigns(:tutorial).description).to eql(attributes[:description])
       expect(assigns(:tutorial).heading).to eql(attributes[:heading])
       expect(assigns(:tutorial).tags.count).to eql(2)
-      expect(assigns(:tutorial).tags.first.name).to eql('cake')
-      expect(assigns(:tutorial).tags.last.name).to eql('cookie')
+      expect(assigns(:tutorial).tags.first.name).to eql("cake")
+      expect(assigns(:tutorial).tags.last.name).to eql("cookie")
     end
   end
 end

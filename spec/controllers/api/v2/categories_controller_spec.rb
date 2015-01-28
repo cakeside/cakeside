@@ -1,12 +1,14 @@
-require 'rails_helper'
+require "rails_helper"
 
 module Api
   module V2
     describe CategoriesController do
+      render_views
+
       describe "#index" do
         let!(:category) { create(:category) }
 
-        it 'loads all the categories' do
+        it "loads all the categories" do
           xhr :get, :index
           expect(assigns(:categories)).to match_array([category])
         end
@@ -16,7 +18,7 @@ module Api
         let!(:other_category) { create(:category) }
         let!(:category) { create(:category) }
 
-        it 'loads the specified category' do
+        it "loads the specified category" do
           xhr :get, :show, id: category.id
           expect(assigns(:category)).to eql(category)
         end

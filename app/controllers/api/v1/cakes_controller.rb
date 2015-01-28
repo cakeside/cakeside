@@ -10,17 +10,19 @@ module Api
       end
 
       def create
+        name = cake_params[:name]
         category = Category.find(cake_params[:category_id])
-        @cake = current_user.create_cake(name: cake_params[:name], category: category)
+        @cake = current_user.create_cake(name: name, category: category)
         if @cake.save
-          PublishToTwitterJob.set(wait_until: 1.hour.from_now).perform_later(@cake)
+          one_hour = 1.hour.from_now
+          PublishToTwitterJob.set(wait_until: one_hour).perform_later(@cake)
         end
       end
 
       def update
         @cake = current_user.creations.find(params[:id])
         current_user.tag(@cake, with: params[:cake][:tags], on: :tags)
-        @cake.update!(cake_params.reject { |key, value| key == "tags" })
+        @cake.update!(cake_params.reject { |key, _| key == "tags" })
       end
 
       def destroy

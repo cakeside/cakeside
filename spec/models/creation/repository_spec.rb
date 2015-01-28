@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe Creation::Repository do
   describe "#tagged" do
@@ -25,7 +25,7 @@ describe Creation::Repository do
     let!(:published_cake){ create(:creation, user: user) }
 
     before :each do
-      published_cake.photos.create(image: 'example.png', image_processing: nil)
+      published_cake.photos.create(image: "example.png", image_processing: nil)
     end
 
     let(:results) { subject.published }
@@ -37,11 +37,11 @@ describe Creation::Repository do
   end
 
   describe "#search" do
-    let(:cake) { create(:creation, name: 'Cake') }
-    let(:cup_cake) { create(:creation, name: 'Cup Cake') }
+    let(:cake) { create(:creation, name: "Cake") }
+    let(:cup_cake) { create(:creation, name: "Cup Cake") }
 
     it "returns cakes with a matching name" do
-      expect(subject.search('cake')).to match_array([cake])
+      expect(subject.search("cake")).to match_array([cake])
     end
   end
 
@@ -55,12 +55,12 @@ describe Creation::Repository do
       cookie.photos << create(:photo)
     end
 
-    it 'returns all cakes in a specific category' do
+    it "returns all cakes in a specific category" do
       cakes = subject.search_with(category: cake_category.slug)
       expect(cakes).to match_array([cake])
     end
 
-    it 'returns all cakes that match the search query' do
+    it "returns all cakes that match the search query" do
       cakes = subject.search_with(q: cake.name[0..6])
       expect(cakes).to match_array([cake])
     end

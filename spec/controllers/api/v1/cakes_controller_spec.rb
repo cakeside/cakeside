@@ -7,7 +7,7 @@ describe Api::V1::CakesController do
     let(:user) { create(:user) }
 
     before :each do
-      request.env["HTTP_AUTHORIZATION"] = ActionController::HttpAuthentication::Token.encode_credentials(user.authentication_token)
+      api_login(user)
     end
 
     describe "#index" do
@@ -58,10 +58,11 @@ describe Api::V1::CakesController do
       let(:cake) { create(:cake, user: user) }
 
       it "tags the cake" do
-        xhr :patch, :update, id: cake.id, cake: { tags: "cake, cookies, yummy" }
+        tags = ["cake", "cookies", "yummy"]
+        xhr :patch, :update, id: cake.id, cake: { tags: tags.join(", ") }
 
         cake.reload
-        expect(cake.tags.pluck(:name)).to match_array(["cake", "cookies", "yummy"])
+        expect(cake.tags.pluck(:name)).to match_array(tags)
       end
 
       it "updates the description" do
@@ -72,7 +73,7 @@ describe Api::V1::CakesController do
         expect(cake.story).to eql(new_story)
       end
 
-      it 'updates the category' do
+      it "updates the category" do
         category = create(:category)
         xhr :patch, :update, id: cake.id, cake: { category_id: category.id }
 
