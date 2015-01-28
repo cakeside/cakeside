@@ -20,11 +20,7 @@ module Api
       def update
         @cake = current_user.creations.find(params[:id])
         current_user.tag(@cake, with: params[:cake][:tags], on: :tags)
-        if @cake.update(cake_params.reject { |key, value| key == "tags" })
-          @cake
-        else
-          @cake
-        end
+        @cake.update!(cake_params.reject { |key, value| key == "tags" })
       end
 
       def destroy
