@@ -32,7 +32,7 @@ describe Creation::Repository do
 
     it "returns cakes that do not have photos that are processing" do
       expect(results.count).to eql(1)
-      expect(results).to include(published_cake)
+      expect(results).to match_array([published_cake])
     end
   end
 
@@ -41,9 +41,7 @@ describe Creation::Repository do
     let(:cup_cake) { create(:creation, name: 'Cup Cake') }
 
     it "returns cakes with a matching name" do
-      results = subject.search('cake')
-      expect(results).to include(cake)
-      expect(results).to_not include(cup_cake)
+      expect(subject.search('cake')).to match_array([cake])
     end
   end
 
@@ -59,14 +57,12 @@ describe Creation::Repository do
 
     it 'returns all cakes in a specific category' do
       cakes = subject.search_with(category: cake_category.slug)
-      expect(cakes).to include(cake)
-      expect(cakes).to_not include(cookie)
+      expect(cakes).to match_array([cake])
     end
 
     it 'returns all cakes that match the search query' do
       cakes = subject.search_with(q: cake.name[0..6])
-      expect(cakes).to include(cake)
-      expect(cakes).to_not include(cookie)
+      expect(cakes).to match_array([cake])
     end
   end
 end
