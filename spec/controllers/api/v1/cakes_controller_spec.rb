@@ -72,6 +72,13 @@ describe Api::V1::CakesController do
         expect(cake.story).to eql(new_story)
       end
 
+      it 'updates the category' do
+        category = create(:category)
+        xhr :patch, :update, id: cake.id, cake: { category_id: category.id }
+
+        cake.reload
+        expect(cake.category).to eql(category)
+      end
     end
 
     describe "#destroy" do
