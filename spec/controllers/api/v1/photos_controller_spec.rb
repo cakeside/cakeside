@@ -27,6 +27,22 @@ module Api
           expect(assigns(:photo)).to eql(photo)
         end
       end
+
+      describe "#create" do
+        let(:file) { fixture_file_upload('images/example.png', 'image/png') }
+
+        it 'attaches a new photo to a cake' do
+          allow(ProcessPhotoJob).to receive(:perform_later)
+
+          xhr :post, :create, cake_id: cake.id, watermark: 'watery', image: file
+
+          cake.reload
+          expect(cake.photos.count).to eql(1)
+          expect(cake.photos.first.watermark).to eql('watery')
+          expect(cake.photos.first.image_processing).to be_truthy
+          expect(ProcessPhotoJob).to have_received(:perform_later)
+        end
+      end
     end
   end
 end
