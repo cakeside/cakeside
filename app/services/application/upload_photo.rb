@@ -6,10 +6,10 @@ class UploadPhoto
     @storage = TemporaryStorage.new
   end
 
-  def run(params)
+  def run(attributes)
     with_transaction do
-      create_photo!(params[:watermark]) do |photo|
-        ProcessPhotoJob.perform_later(photo, storage.store(params[:image]))
+      create_photo!(attributes[:watermark]) do |photo|
+        ProcessPhotoJob.perform_later(photo, storage.store(attributes[:image]))
       end
     end
   end

@@ -10,30 +10,25 @@ module Api
       end
 
       def create
-        CreateCakeCommand.new(self).run(cake_params, params[:cake][:tags])
-      end
-
-      def create_cake_succeeded(cake)
-        @cake = cake
-      end
-
-      def create_cake_failed(cake)
-        @cake = cake
+        name = cake_params[:name]
+        category = Category.find(cake_params[:category_id])
+        @cake = current_user.create_cake(name: name, category: category)
+        if @cake.save
+          one_hour = 1.hour.from_now
+          PublishToTwitterJob.set(wait_until: one_hour).perform_later(@cake)
+        end
       end
 
       def update
         @cake = current_user.creations.find(params[:id])
         current_user.tag(@cake, with: params[:cake][:tags], on: :tags)
-        if @cake.update(cake_params.reject { |key, value| key == "tags" })
-          @cake
-        else
-          @cake
-        end
+        @cake.update!(cake_params.reject { |key, _| key == "tags" })
       end
 
       def destroy
         @cake = current_user.creations.find(params[:id])
         @cake.destroy!
+        render nothing: true
       end
 
       private
