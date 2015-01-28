@@ -41,8 +41,15 @@ describe Api::V1::CakesController do
       end
     end
 
-    xdescribe "#create" do
+    describe "#create" do
+      let(:category) { create(:category) }
 
+      it 'creates a new project' do
+        xhr :post, :create, cake: { name: 'new-cake', category_id: category.id }
+        expect(Creation.count).to eql(1)
+        expect(Creation.first.name).to eql('new-cake')
+        expect(Creation.first.category).to eql(category)
+      end
     end
 
     xdescribe "#update" do
