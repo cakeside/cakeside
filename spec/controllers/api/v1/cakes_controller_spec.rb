@@ -46,9 +46,11 @@ describe Api::V1::CakesController do
 
       it 'creates a new project' do
         xhr :post, :create, cake: { name: 'new-cake', category_id: category.id }
+
         expect(Creation.count).to eql(1)
         expect(Creation.first.name).to eql('new-cake')
         expect(Creation.first.category).to eql(category)
+        expect(Creation.first.user).to eql(user)
       end
     end
 

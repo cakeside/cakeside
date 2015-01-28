@@ -10,15 +10,11 @@ module Api
       end
 
       def create
-        CreateCakeCommand.new(self).run(cake_params, params[:cake][:tags])
-      end
-
-      def create_cake_succeeded(cake)
-        @cake = cake
-      end
-
-      def create_cake_failed(cake)
-        @cake = cake
+        category = Category.find(cake_params[:category_id])
+        @cake = current_user.create_cake(name: cake_params[:name], category: category)
+        if @cake.save
+          PublishToTwitterJob.set(wait_until: 1.hour.from_now).perform_later(@cake)
+        end
       end
 
       def update
