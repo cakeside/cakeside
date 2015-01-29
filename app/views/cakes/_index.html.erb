@@ -1,12 +1,12 @@
 <div class="row-fluid">
-  <% @creations.each_slice(6).each do |batch| %>
+  <% @cakes.each_slice(6).each do |batch| %>
     <ul class='thumbnails'>
-      <% batch.each do |creation| %>
-        <% cache creation do %>
+      <% batch.each do |cake| %>
+        <% cache cake do %>
           <li class="span2">
             <div class="thumbnail">
-              <%= link_to cake_path(creation) do %>
-                <%= image_tag creation.primary_image.url_for(:thumb), alt: creation.name %>
+              <%= link_to cake_path(cake) do %>
+                <%= image_tag cake.primary_image.url_for(:thumb), alt: cake.name %>
               <% end %>
             </div>
           </li>
@@ -16,5 +16,5 @@
   <% end %>
 </div>
 <div id='more-button-row' class="row-fluid">
-  <%= link_to_next_page @creations, 'More...', params: { cache: false, sort: params[:sort], q: params[:q] }, remote: true, class: 'btn pull-right more-button hidden', data: { disable_with: 'loading...' } %>
+  <%= link_to_next_page @cakes, 'More...', params: { cache: false, sort: params[:sort], q: params[:q] }, remote: true, class: 'btn pull-right more-button hidden', data: { disable_with: 'loading...' } %>
 </div>

@@ -19,7 +19,7 @@ class Creation
     end
 
     def search_with(params)
-      all_matching(search_filters_for(params))
+      all_matching(search_filters_for(params)).distinct
     end
 
     private
