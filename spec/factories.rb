@@ -6,7 +6,7 @@ FactoryGirl.define do
 
   factory :category, class: Category do
     name { Faker::Name.name }
-    slug { Faker::Name.name.gsub(/ /, "-").downcase }
+    slug { Faker::Name.name.parameterize }
   end
 
   factory :cake, class: Creation, aliases: [:creation] do
