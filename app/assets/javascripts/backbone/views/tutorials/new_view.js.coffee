@@ -30,7 +30,7 @@ class CakeSide.Views.Tutorials.NewView extends Marionette.ItemView
       url: attributes.url
       heading: attributes.title
       description: attributes.description
-      image_url: attributes.thumbnail_url
+      image_url: if _.any(attributes.images) then attributes.images[0].url else ''
       author: attributes.provider_name
       author_url: attributes.provider_url
 
