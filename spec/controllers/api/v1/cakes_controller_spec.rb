@@ -66,7 +66,7 @@ describe Api::V1::CakesController do
       end
 
       it "updates the description" do
-        new_story = "what's the haps on the craps"
+        new_story = "what is the haps on the craps"
         xhr :patch, :update, id: cake.id, cake: { story: new_story }
 
         cake.reload
@@ -92,6 +92,11 @@ describe Api::V1::CakesController do
 
       it "deletes the specified cake" do
         expect(Creation.exists?(cake.id)).to be_falsey
+      end
+
+      it "returns an empty json response" do
+        json = JSON.parse(response.body)
+        expect(json["id"]).to eql(cake.id)
       end
     end
   end
