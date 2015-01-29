@@ -21,21 +21,23 @@ class CakeSide.Views.Tutorials.NewView extends Marionette.ItemView
     @service = new EmbedlyService()
 
   loadUrl: ->
-    @updateTutorial(url: @ui.url.val())
     if @model.isValidUrl(@ui.url.val())
       @service.retrieve_info_on(@ui.url.val(), @updateTutorial)
+    @validate()
 
   updateTutorial: (attributes) =>
     @model.set
       url: attributes.url
       heading: attributes.title
       description: attributes.description
-      image_url: attributes.thumbnail_url
+      image_url: if _.any(attributes.images) then attributes.images[0].url else ''
       author: attributes.provider_name
       author_url: attributes.provider_url
 
   onRender: ->
     @ui.tags.tagit({ availableTags: ALL_TAGS })
+
+  validate: ->
     @model.isValid()
 
   displayError: (model, error) ->

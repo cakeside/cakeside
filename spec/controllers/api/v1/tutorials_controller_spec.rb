@@ -1,6 +1,7 @@
 require "rails_helper"
 
 describe Api::V1::TutorialsController do
+  render_views
   let(:user) { create(:user) }
 
   before :each do
@@ -8,13 +9,12 @@ describe Api::V1::TutorialsController do
   end
 
   describe "#index" do
-    let(:my_tutorial)  { create(:tutorial, user: user) }
-    let(:other_tutorial)  { create(:tutorial) }
+    let!(:my_tutorial) { create(:tutorial, user: user) }
+    let!(:other_tutorial) { create(:tutorial) }
 
     it "returns the users tutorials" do
       xhr :get, :index
-      expect(assigns(:tutorials)).to include(my_tutorial)
-      expect(assigns(:tutorials)).to_not include(other_tutorial)
+      expect(assigns(:tutorials)).to match_array([my_tutorial])
     end
   end
 
@@ -34,8 +34,7 @@ describe Api::V1::TutorialsController do
       expect(assigns(:tutorial).description).to eql(attributes[:description])
       expect(assigns(:tutorial).heading).to eql(attributes[:heading])
       expect(assigns(:tutorial).tags.count).to eql(2)
-      expect(assigns(:tutorial).tags.first.name).to eql("cake")
-      expect(assigns(:tutorial).tags.last.name).to eql("cookie")
+      expect(assigns(:tutorial).tags.pluck(:name)).to match_array(["cake", "cookie"])
     end
   end
 end
