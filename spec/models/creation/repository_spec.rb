@@ -47,8 +47,9 @@ describe Creation::Repository do
 
   context "#search_with" do
     let(:cake_category) { create(:category) }
-    let!(:cake) { create(:cake, category: cake_category) }
-    let!(:cookie) { create(:cake) }
+    let(:cookie_category) { create(:category) }
+    let!(:cake) { create(:cake, name: "cake", category: cake_category) }
+    let!(:cookie) { create(:cake, name: "cookie", category: cookie_category) }
 
     before :each do
       cake.photos << create(:photo)
