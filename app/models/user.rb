@@ -71,14 +71,10 @@ class User < ActiveRecord::Base
   end
 
   class << self
-    def login(username, password)
-      user = User.find_by(email: username)
+    def login(email, password)
+      user = User.find_by(email: email)
       return false if user.nil?
-      if user.authenticate(password)
-        UserSession.create!(user: user)
-      else
-        false
-      end
+      user.user_sessions.create! if user.authenticate(password)
     end
   end
 
