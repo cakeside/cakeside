@@ -3,6 +3,8 @@ require 'rails_helper'
 module Api
   module V1
     describe CategoriesController do
+      render_views
+
       describe "#index" do
         it 'loads all the categories' do
           xhr :get, :index

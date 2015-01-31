@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe CakesController do
   let(:user) { create(:user) }
-  let(:cake) { create(:cake, user: user) }
 
   before(:each) do
     photo = 'spec/fixtures/images/example.png'
@@ -10,14 +9,44 @@ describe CakesController do
   end
 
   describe "#index" do
-    before { get :index }
+    let!(:cakes) { create(:category, slug: "cakes") }
+    let!(:cookies) { create(:category, slug: "cookies") }
+    let!(:cake) { create(:published_cake, name: "cake", category: cakes) }
+    let!(:cookie) do
+      create(:published_cake, name: "cookie", category: cookies)
+    end
 
-    it "should display all creations" do
-      expect(assigns(:creations)).to include(cake)
+    let!(:unpublished_cake) do
+      create(:cake, name: "unpublished", category: cakes)
+    end
+
+    it "returns all published cakes" do
+      get :index
+      expect(assigns(:cakes)).to match_array([cake, cookie])
+    end
+
+    it "returns all cakes in the category" do
+      get :index, category: cookie.category.slug
+      expect(assigns(:cakes)).to match_array([cookie])
+    end
+
+    it "returns all cakes matching the search query" do
+      get :index, q: cake.name[0..2]
+      expect(assigns(:cakes)).to match_array([cake])
+    end
+
+    it "returns all cakes tagged with the tag" do
+      cake.tag_list = "cakes"
+      cake.save!
+
+      get :index, tags: "cakes"
+      expect(assigns(:cakes)).to match_array([cake])
     end
   end
 
   describe "#show" do
+    let(:cake) { create(:cake, user: user) }
+
     it "loads the cake" do
       get :show, id: cake.id
       expect(assigns(:creation)).to eql(cake)

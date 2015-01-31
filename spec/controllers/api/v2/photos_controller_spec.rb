@@ -1,13 +1,15 @@
-require 'rails_helper'
+require "rails_helper"
 
 module Api
   module V2
     describe PhotosController do
+      render_views
+
       describe "#index" do
         let!(:processed_photo) { create(:photo, image_processing: nil) }
         let!(:unprocessed_photo) { create(:photo, image_processing: true) }
 
-        it 'loads all processed photos' do
+        it "loads all processed photos" do
           xhr :get, :index
           expect(assigns(:photos)).to match_array([processed_photo])
         end
@@ -17,7 +19,7 @@ module Api
         let!(:other_photo) { create(:photo) }
         let!(:photo) { create(:photo) }
 
-        it 'loads the specified photo' do
+        it "loads the specified photo" do
           xhr :get, :show, id: photo.id
           expect(assigns(:photo)).to eql(photo)
         end
