@@ -37,9 +37,7 @@ describe UserSession do
     end
 
     it "returns a hash to store in the cookie" do
-      expect(because[:value]).to eql(subject.key)
-      expect(because[:httponly]).to be_truthy
-      expect(because[:expires].to_i).to eql(2.weeks.from_now.to_i)
+      expect(because).to eql(subject.key)
     end
   end
 
