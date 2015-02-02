@@ -52,7 +52,7 @@ describe "Logins" do
 
     it "redirects you to the home page" do
       subject.visit_page
-      subject.login_with(email: user.email, password: 'password')
+      subject.login_with(email: user.email, password: "password")
       dashboard_page.logout
       expect(current_path).to eql(root_path)
     end
