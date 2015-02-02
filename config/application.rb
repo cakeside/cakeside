@@ -22,7 +22,6 @@ module Cake
 
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += %W(#{config.root}/app/services/application)
-    config.autoload_paths += %W(#{config.root}/app/services/application/handlers)
     config.autoload_paths += %W(#{config.root}/app/services/domain)
     config.autoload_paths += %W(#{config.root}/app/services/infrastructure)
 
