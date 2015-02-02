@@ -33,3 +33,7 @@ en:
       my_nav:
         admin: 'Admin'
         logout: 'Log Out'
+  sessions:
+    create:
+      failure:
+        invalid: 'Invalid email or password.'

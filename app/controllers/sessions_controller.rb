@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       session[:raphael] = @session.access(request)
       redirect_to my_dashboard_path
     else
-      flash[:error] = "Ooops... invalid email or password."
+      flash[:error] = t("sessions.create.failure.invalid")
       redirect_to login_path
     end
   end
