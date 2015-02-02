@@ -25,7 +25,8 @@ describe My::PasswordsController do
         end
 
         it "displays an error on the page" do
-          expect(flash[:error]).to eql(I18n.t("my.passwords.passwords_do_not_match"))
+          error_message = I18n.t("my.passwords.passwords_do_not_match")
+          expect(flash[:error]).to eql(error_message)
         end
 
         it "renders the show template" do
