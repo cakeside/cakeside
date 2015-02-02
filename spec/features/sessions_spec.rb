@@ -1,38 +1,5 @@
 require 'rails_helper'
 
-class WebPage
-  include Capybara::DSL
-  include Rails.application.routes.url_helpers
-  attr_reader :page_path
-
-  def initialize(page_path)
-    @page_path = page_path
-  end
-
-  def visit_page
-    visit page_path
-    self
-  end
-
-  def on_page?
-    current_path == page_path
-  end
-end
-
-class LoginPage < WebPage
-  def initialize
-    super(new_session_path)
-  end
-
-  def login_with(email:, password: 'password')
-    within('.form-inline') do
-      fill_in('session_username', with: email)
-      fill_in('session_password', with: password)
-    end
-    click_button("Sign In")
-  end
-end
-
 describe "Logins" do
   describe "GET /login" do
     subject { LoginPage.new }
@@ -41,7 +8,7 @@ describe "Logins" do
       subject.visit_page
     end
 
-    context "when an email is registered", js: true do
+    context "when an email is registered" do
       let!(:user) { create(:user, password: "password") }
 
       before :each do
@@ -57,7 +24,7 @@ describe "Logins" do
       end
     end
 
-    context "when an email is not known", js: true do
+    context "when an email is not known" do
       before :each do
         subject.login_with(email: 'test@example.com', password: 'password')
       end
