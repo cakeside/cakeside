@@ -10,7 +10,6 @@ module My
 
     def password_changed(user)
       @user = user
-      sign_in(@user, bypass: true) unless Rails.env.test?
       flash[:notice] = t("my.passwords.updated")
       render :index
     end
