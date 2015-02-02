@@ -70,6 +70,7 @@ group :development, :test do
   gem 'spring'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
+  gem 'i18n-tasks'
 end
 
 group :production, :staging do
