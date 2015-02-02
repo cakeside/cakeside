@@ -3,6 +3,7 @@ require "rails_helper"
 describe "password retrieval", :js => true do
   context "when a user attempts to retrieve their password" do
     let(:user) { create(:user) }
+    let(:error_message) { I18n.t('passwords.send_instructions') }
 
     before :each do
       visit login_path
@@ -13,8 +14,8 @@ describe "password retrieval", :js => true do
       click_button "Send me reset password instructions"
     end
 
-    it "should send them an email with instructions" do
-      expect(page).to have_content(I18n.t('devise.passwords.send_instructions'))
+    it "sends them an email with instructions" do
+      expect(page).to have_content(error_message)
     end
   end
 
