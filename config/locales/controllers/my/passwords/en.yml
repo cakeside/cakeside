@@ -1,0 +1,5 @@
+en:
+  my:
+    passwords:
+      updated: 'Your password was updated.'
+      passwords_do_not_match: 'The passwords should match and should be a minimum of 6 characters.'

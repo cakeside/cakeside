@@ -22,11 +22,7 @@
 en:
   hello: "Hello world"
   share_something: "You have not uploaded anything!"
-  passwords_do_not_match: 'The passwords should match and should be a minimum of 6 characters.'
   tutorial_saved: 'Your tutorial was added.'
-  passwords:
-    send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
-    updated: 'Your password was updated.'
   profile_saved: 'Your settings have been updated successfully!'
   avatar_uploaded: 'Your avatar has been updated.'
   my:
