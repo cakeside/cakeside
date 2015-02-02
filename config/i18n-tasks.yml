@@ -15,9 +15,9 @@ data:
 
   # Locale files to read from
   read:
-    - config/locales/%{locale}.yml
-    # - config/locales/*.%{locale}.yml
-    # - config/locales/**/*.%{locale}.yml
+    - config/locales/*.%{locale}.yml
+    - config/locales/**/**/*.%{locale}.yml
+    - config/locales/**/**/**/*.%{locale}.yml
 
   # key => file routes, matched top to bottom
   write:
@@ -85,5 +85,5 @@ search:
 #     - common.brand
 
 ## Exclude these keys from all of the reports
-# ignore:
-#  - kaminari.*
+ignore:
+  - kaminari.*
