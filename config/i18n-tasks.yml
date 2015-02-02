@@ -15,9 +15,12 @@ data:
 
   # Locale files to read from
   read:
-    - config/locales/*.%{locale}.yml
-    - config/locales/**/**/*.%{locale}.yml
-    - config/locales/**/**/**/*.%{locale}.yml
+    - config/locales/%{locale}.yml
+    - config/locales/controllers/passwords/%{locale}.yml
+    - config/locales/controllers/sessions/%{locale}.yml
+    - config/locales/controllers/my/passwords/%{locale}.yml
+    # - config/locales/*.%{locale}.yml
+    # - config/locales/**/*.%{locale}.yml
 
   # key => file routes, matched top to bottom
   write:
@@ -65,9 +68,10 @@ search:
 #   api_key: "AbC-dEf5"
 
 ## Consider these keys not missing
-# ignore_missing:
+ignore_missing:
 # - 'errors.messages.{accepted,blank,invalid,too_short,too_long}'
 # - '{devise,simple_form}.*'
+  - views.pagination.*
 
 ## Consider these keys used
 # ignore_unused:
@@ -85,5 +89,5 @@ search:
 #     - common.brand
 
 ## Exclude these keys from all of the reports
-ignore:
-  - kaminari.*
+# ignore:
+#  - kaminari.*
