@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :user_signed_in?
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
-  def user_session(session_key = cookies.signed[:raphael])
+  def user_session(session_key = session[:raphael])
     @user_session ||= UserSession.authenticate(session_key)
   end
 
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
 
   def extend_session_cookie
-    cookies.signed[:raphael] = user_session.access(request) if user_signed_in?
+    session[:raphael] = user_session.access(request) if user_signed_in?
   end
 
   def record_not_found

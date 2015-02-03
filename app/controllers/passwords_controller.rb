@@ -5,7 +5,7 @@ class PasswordsController < ApplicationController
 
   def create
     PasswordReset.send_reset_instructions_to(params[:user][:email])
-    redirect_to new_session_path, notice: t('devise.passwords.send_instructions')
+    redirect_to new_session_path, notice: t("passwords.send_instructions")
   end
 
   def edit

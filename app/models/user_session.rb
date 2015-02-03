@@ -15,16 +15,7 @@ class UserSession < ActiveRecord::Base
     self.ip = request.ip
     self.user_agent = request.user_agent
     self.location = Location.build_from_ip(request.ip)
-    if save
-      {
-        value: key,
-        secure: Rails.env.production? || Rails.env.staging?,
-        httponly: true,
-        expires: 2.weeks.from_now,
-      }
-    else
-      {}
-    end
+    save ? key : nil
   end
 
   def browser

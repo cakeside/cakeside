@@ -11,8 +11,8 @@ describe RegistrationsController do
 
       expect(User.count).to eql(1)
       expect(response).to redirect_to(my_dashboard_path)
-      expect(cookies.signed[:raphael]).to_not be_nil
-      expect(cookies.signed[:raphael]).to eql(user_session.access)
+      expect(session[:raphael]).to_not be_nil
+      expect(session[:raphael]).to eql(user_session.access)
     end
 
     it 'displays errors' do

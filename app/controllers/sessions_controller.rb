@@ -6,17 +6,17 @@ class SessionsController < ApplicationController
 
   def create
     if @session = User.login(session_params[:username], session_params[:password])
-      cookies.signed[:raphael] = @session.access(request)
+      session[:raphael] = @session.access(request)
       redirect_to my_dashboard_path
     else
-      flash[:error] = "Ooops... invalid email or password."
+      flash[:error] = t("sessions.create.failure.invalid")
       redirect_to login_path
     end
   end
 
   def destroy
     user_session.revoke!
-    cookies.delete(:raphael)
+    reset_session
     redirect_to root_path
   end
 

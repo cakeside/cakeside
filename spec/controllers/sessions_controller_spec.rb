@@ -34,8 +34,7 @@ describe SessionsController do
       end
 
       it "returns a valid session" do
-        expect(cookies.signed[:raphael]).to_not be_nil
-        expect(cookies.signed[:raphael]).to eql(user_session.key)
+        expect(session[:raphael]).to eql(user_session.key)
       end
 
       it "redirects to the dashboard" do
@@ -60,12 +59,12 @@ describe SessionsController do
     let(:user_session) { create(:user_session) }
 
     before :each do
-      request.cookies[:raphael] = user_session.key
+      session[:raphael] = user_session.key
       allow(controller).to receive(:user_session).and_return(user_session)
       delete :destroy, id: "me"
     end
 
-    it { expect(cookies[:raphael]).to be_nil }
+    it { expect(session[:raphael]).to be_nil }
 
     it { expect(user_session.reload.revoked_at).to_not be_nil }
 

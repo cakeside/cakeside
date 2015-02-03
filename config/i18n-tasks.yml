@@ -1,0 +1,25 @@
+base_locale: en
+data:
+  read:
+    - config/locales/%{locale}.yml
+    - config/locales/controllers/passwords/%{locale}.yml
+    - config/locales/controllers/sessions/%{locale}.yml
+    - config/locales/controllers/my/passwords/%{locale}.yml
+  write:
+    - config/locales/%{locale}.yml
+  yaml:
+    write:
+      # do not wrap lines at 80 characters
+      line_width: -1
+  json:
+    write:
+      # pretty print JSON
+      indent: '  '
+      space: ' '
+      object_nl: "\n"
+      array_nl: "\n"
+search:
+  paths:
+    - app/
+ignore_missing:
+  - views.pagination.*

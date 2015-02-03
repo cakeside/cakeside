@@ -10,14 +10,13 @@ module My
 
     def password_changed(user)
       @user = user
-      sign_in(@user, bypass: true) unless Rails.env.test?
-      flash[:notice] = t('passwords.updated')
+      flash[:notice] = t("my.passwords.updated")
       render :index
     end
 
     def password_changed_failed(user)
       @user = user
-      flash[:error] = t(:passwords_do_not_match)
+      flash[:error] = t("my.passwords.passwords_do_not_match")
       render :index
     end
   end

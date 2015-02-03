@@ -1,0 +1,6 @@
+---
+en:
+  sessions:
+    create:
+      failure:
+        invalid: Invalid email or password.
