@@ -5,6 +5,6 @@ class TutorialTagsController < ApplicationController
 
   def show
     @tag = params[:id].downcase.gsub(/ /, '-')
-    @tutorials = Tutorial.includes(:user).tagged_with(@tag).page(params[:page]).per(12)
+    @tutorials = Tutorial.tagged_with(@tag).includes([:tags]).page(params[:page]).per(12)
   end
 end
