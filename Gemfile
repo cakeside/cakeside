@@ -71,6 +71,7 @@ group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'i18n-tasks'
+  gem 'puma'
 end
 
 group :production, :staging do
