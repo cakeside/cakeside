@@ -5,7 +5,10 @@ class CakesController < ApplicationController
   end
 
   def index
-    @cakes = @repository.search_with(params).distinct.page(page).per(per_page)
+    @cakes = @repository.search_with(params).
+      distinct.
+      includes([:photos]).
+      page(page).per(per_page)
   end
 
   def show
