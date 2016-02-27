@@ -8,11 +8,6 @@ apt-get -y install zlib1g-dev libssl-dev
 apt-get -y install libreadline-gplv2-dev
 apt-get -y install libxml2 libxml2-dev libxslt1-dev
 apt-get -y install gawk libreadline6-dev libyaml-dev libsqlite3-dev sqlite3 autoconf libgdbm-dev libncurses5-dev automake libtool bison pkg-config libffi-dev
-apt-get -y install build-essential
-apt-get -y install tklib
-apt-get -y install zlib1g-dev libssl-dev
-apt-get -y install libreadline-gplv2-dev
-apt-get -y install libxml2 libxml2-dev libxslt1-dev
 apt-get -y install curl libcurl3 libcurl3-gnutls libcurl4-openssl-dev
 apt-get -y install exuberant-ctags
 apt-get -y autoremove
