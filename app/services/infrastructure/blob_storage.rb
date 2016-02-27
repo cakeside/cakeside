@@ -29,7 +29,7 @@ class BlobStorage
   end
 
   def connection
-    @connection ||= AWS::S3.new
+    @connection ||= AWS::S3::Client.new
   end
 
   def content_type_for(file)

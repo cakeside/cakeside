@@ -11,7 +11,7 @@ module Admin
     private
 
     def connection
-      @connection ||= AWS::S3.new
+      @connection ||= Aws::S3::Client.new
     end
 
     def bucket
