@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :load_header
   #before_action :extend_session_cookie
-  helper_method :current_user, :user_signed_in?
+  helper_method :current_user, :signed_in?
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def user_session(session_key = session[:raphael])
@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     user_session.try(:user)
   end
 
-  def user_signed_in?
+  def signed_in?
     current_user
   end
 
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
 
   def extend_session_cookie
-    session[:raphael] = user_session.access(request) if user_signed_in?
+    session[:raphael] = user_session.access(request) if signed_in?
   end
 
   def record_not_found

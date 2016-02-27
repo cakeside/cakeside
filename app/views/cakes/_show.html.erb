@@ -4,7 +4,7 @@
   </div>
   <div class="span6">
     <h1><%= link_to @creation.name, cake_path(@creation) %></h1>
-    <% if user_signed_in? && current_user != @creation.user %>
+    <% if signed_in? && current_user != @creation.user %>
       <% if current_user.already_likes(@creation) %>
         <i class="fa fa-star fa-4x pull-right"></i>
       <% else %>
@@ -28,7 +28,7 @@
     <% end -%>
     <hr />
     <div class="row-fluid">
-      <% unless user_signed_in? %>
+      <% unless signed_in? %>
       <div class="span6">
         <p><%= link_to "SIGN UP FOR FREE", login_path, :class => "btn btn-primary" %></p>
       </div>
