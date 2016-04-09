@@ -5,7 +5,7 @@
   <div class="span10">
     <dl class="dl-horizontal">
       <% @recent_activities.each do |activity| %>
-        <%= render activity.subject.class.to_s.downcase, subject: activity.subject %>
+        <%= render(activity.subject.class.to_s.downcase, subject: activity.subject) if activity.subject.present? %>
       <% end %>
     </dl>
   </div>
