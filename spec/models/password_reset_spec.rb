@@ -25,7 +25,7 @@ describe PasswordReset do
     end
 
     it "does nothing if the email is not known" do
-      PasswordReset.send_reset_instructions_to(Faker::Internet.email)
+      PasswordReset.send_reset_instructions_to(FFaker::Internet.email)
       expect(mailer).to_not have_received(:deliver_later)
     end
   end

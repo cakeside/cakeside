@@ -5,13 +5,13 @@ FactoryGirl.define do
   end
 
   factory :category, class: Category do
-    name { Faker::Name.name }
-    slug { Faker::Name.name.parameterize }
+    name { FFaker::Name.name }
+    slug { FFaker::Name.name.parameterize }
   end
 
   factory :cake, class: Creation, aliases: [:creation] do
-    name { Faker::Name.name }
-    story { Faker::HipsterIpsum.words(50).join(' ') }
+    name { FFaker::Name.name }
+    story { FFaker::HipsterIpsum.words(50).join(' ') }
     association :user
     association :category
     factory :published_cake do
@@ -25,7 +25,7 @@ FactoryGirl.define do
   factory :user_session, class: UserSession do
     association :user
     key SecureRandom.urlsafe_base64(32)
-    ip Faker::Internet.ip_v4_address
+    ip FFaker::Internet.ip_v4_address
     factory :active_session do
       accessed_at Time.now
     end
@@ -47,24 +47,24 @@ FactoryGirl.define do
   end
 
   factory :tag, :class => "ActsAsTaggableOn::Tag" do
-    name { Faker::Name.name }
+    name { FFaker::Name.name }
   end
 
   factory :tutorial do
-    heading { Faker::Name.name }
+    heading { FFaker::Name.name }
     description "well hello there"
-    url { Faker::Internet.http_url }
-    image_url { Faker::Internet.http_url }
-    author { Faker::Name.name }
-    author_url { Faker::Internet.http_url }
+    url { FFaker::Internet.http_url }
+    image_url { FFaker::Internet.http_url }
+    author { FFaker::Name.name }
+    author_url { FFaker::Internet.http_url }
     association :user
   end
 
   factory :user, class: User do
-    name { Faker::Name.name }
-    email { Faker::Internet.email }
+    name { FFaker::Name.name }
+    email { FFaker::Internet.email }
     password 'password'
-    website { Faker::Internet.http_url }
+    website { FFaker::Internet.http_url }
     city 'calgary'
     factory :admin do
       admin true
@@ -79,7 +79,7 @@ FactoryGirl.define do
   end
 
   factory :tool do
-    name { Faker::Name.name }
+    name { FFaker::Name.name }
     asin { SecureRandom.uuid }
   end
 end

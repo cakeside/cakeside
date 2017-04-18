@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.8'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
@@ -53,25 +53,25 @@ group :development do
   gem 'better_errors'
   gem 'lol_dba'
   gem 'pry-rails'
+  gem 'web-console', '~> 2.0'
 end
 
 group :development, :test do
-  gem 'sqlite3'
-  gem 'rspec-rails'
-  gem 'teaspoon'
+  gem 'binding_of_caller'
+  gem 'byebug'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
-  gem "codeclimate-test-reporter", require: nil
   gem 'ffaker'
-  gem 'poltergeist'
-  gem 'phantomjs', :require => 'phantomjs/poltergeist'
-  gem 'binding_of_caller'
   gem 'foreman'
-  gem 'spring'
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
   gem 'i18n-tasks'
+  gem 'phantomjs', :require => 'phantomjs/poltergeist'
+  gem 'poltergeist'
   gem 'puma'
+  gem 'rspec-rails'
+  gem 'simplecov', require: false
+  gem 'spring'
+  gem 'sqlite3'
+  gem 'teaspoon-jasmine'
 end
 
 group :production, :staging do

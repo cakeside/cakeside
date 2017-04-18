@@ -9,7 +9,7 @@ describe PasswordsController do
   end
 
   describe "#create" do
-    let(:email) { Faker::Internet.email }
+    let(:email) { FFaker::Internet.email }
 
     it "sends a password reset email for the user" do
       allow(PasswordReset).to receive(:send_reset_instructions_to)

@@ -45,7 +45,7 @@ describe Image do
     end
 
     it "returns the correct content type for bmp" do
-      expect(Image.new('blah.bmp').content_type).to eql('image/x-bmp')
+      expect(Image.new('blah.bmp').content_type).to eql('image/bmp')
     end
 
     it "returns the correct content type for tif" do
