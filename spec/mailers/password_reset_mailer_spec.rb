@@ -18,7 +18,7 @@ describe PasswordResetMailer do
     end
 
     it "includes their name" do
-      expect(mail.body.encoded).to match(user.name)
+      expect(mail.body.encoded).to match(CGI.escapeHTML(user.name))
     end
   end
 end
