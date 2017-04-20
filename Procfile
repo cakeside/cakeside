@@ -1,2 +1,2 @@
 worker: bundle exec rake jobs:work
-web: bundle exec rails server -b 0.0.0.0
+web: bundle exec puma -b 'ssl://0.0.0.0:3000?key=config/server.key&cert=config/server.crt' config.ru

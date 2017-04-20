@@ -1,10 +1,20 @@
 version: '2'
 services:
+  www1:
+    image: nginx:latest
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/nginx.conf
+      - ./public:/var/www/public
+      - ./config/server.crt:/etc/nginx/server.crt
+      - ./config/server.key:/etc/nginx/server.key
+    links:
+      - web
+    ports:
+      - "80:80"
+      - "443:443"
   web:
     build: .
     command: bundle exec foreman start web
-    ports:
-      - "3000:3000"
     volumes:
       - .:/app
     links:
