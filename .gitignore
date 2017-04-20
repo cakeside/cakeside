@@ -4,7 +4,7 @@ log/*.log
 tmp
 *.swp
 public/uploads/
-db/sphinx/
+db/backups/
 log/*
 .DS_Store
 NERD_tree_*
