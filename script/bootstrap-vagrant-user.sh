@@ -7,12 +7,12 @@ git clone https://github.com/tpope/rbenv-ctags.git ~/.rbenv/plugins/rbenv-ctags
 git clone https://github.com/rkh/rbenv-update.git ~/.rbenv/plugins/rbenv-update
 git clone https://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash
 rbenv update
-rbenv install 2.2.0
-rbenv global 2.2.0
+rbenv install 2.4.1
+rbenv global 2.4.1
 gem install bundler --no-ri --no-rdoc
 rbenv rehash
 cd /vagrant
-bundle install -j 4
+bundle install -j 4 --path vendor/bundle
 rbenv rehash
 if [ ! -f config/database.yml ]; then
   ln -s config/database.yml.vagrant config/database.yml
