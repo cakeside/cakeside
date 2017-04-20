@@ -46,6 +46,7 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'email_validator'
 
 group :development do
+  gem 'capistrano', '3.3.5'
   gem 'capistrano-rails'
   gem 'capistrano-bundler', '~> 1.1', require: false
   gem 'capistrano-rbenv', '~> 2.0', require: false
