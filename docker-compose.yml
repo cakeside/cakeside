@@ -1,6 +1,6 @@
 version: '2'
 services:
-  www1:
+  www:
     image: nginx:latest
     volumes:
       - ./config/nginx.conf:/etc/nginx/nginx.conf
