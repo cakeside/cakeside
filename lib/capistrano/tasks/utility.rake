@@ -1,4 +1,4 @@
-desc "tail the logs on an app server (cap staging logs)"
+desc "tail the logs on an app server (cap production logs)"
 task :logs do
   on roles(:app) do
     execute "tail -F #{shared_path}/log/#{fetch(:rails_env)}.log"

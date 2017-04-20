@@ -21,5 +21,4 @@ Start server
     
 ## Capistrano
 
-    bundle exec cap staging deploy
     bundle exec cap production deploy

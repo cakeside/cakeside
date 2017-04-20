@@ -74,7 +74,7 @@ group :development, :test do
   gem 'teaspoon-jasmine'
 end
 
-group :production, :staging do
+group :production do
   gem 'newrelic_rpm'
   gem 'dalli'
   gem 'unicorn'

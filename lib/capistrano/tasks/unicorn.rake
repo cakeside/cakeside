@@ -8,7 +8,7 @@ namespace :unicorn do
     end
   end
 
-  desc "tail the logs on an app server (cap staging unicorn:logs)"
+  desc "tail the logs on an app server (cap production unicorn:logs)"
   task :logs do
     on roles(:app) do
       execute "tail -F #{shared_path}/log/unicorn.log"
