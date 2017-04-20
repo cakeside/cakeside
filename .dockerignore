@@ -1,0 +1,10 @@
+.git*
+log/*
+tmp/*
+Dockerfile
+README.md
+vendor/bundle/*
+.vagrant/*
+.bundle/*
+db/data
+.env*
