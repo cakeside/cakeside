@@ -1,6 +1,4 @@
 [![Build Status](https://travis-ci.org/cakeside/cakeside.svg?branch=master)](https://travis-ci.org/cakeside/cakeside)
-[![Code Climate](https://codeclimate.com/github/cakeside/cakeside/badges/gpa.svg)](https://codeclimate.com/github/cakeside/cakeside)
-[![Test Coverage](https://codeclimate.com/github/cakeside/cakeside/badges/coverage.svg)](https://codeclimate.com/github/cakeside/cakeside)
 
 ## Environment Setup
 
@@ -19,6 +17,6 @@ Start server
 
     bundle exec foreman start
     
-## Capistrano
+## Deployment
 
     bundle exec cap production deploy

@@ -4,9 +4,6 @@ rvm:
 cache: bundler
 addons:
   postgresql: '9.3'
-  codeclimate: 
-    repo_token:
-      secure: "V+0yFzUCgRi5AR6oZzApbbNMv62l0QxpGlrcZmF3EYzYlUew/E6aD+qL1JcZwPJ5LZ6trUTXXCKJRKEFST6G2qFtl96oyHu/5BGBCbSHOqXDosgvNkVe/4PicGPOFncQWlLpOfuzYwBMjpkbPyMZS9BFUIEoKXekZU1+aehSOqw="
 sudo: false
 before_script:
   - cp config/database.yml.travis config/database.yml
