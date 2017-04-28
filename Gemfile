@@ -17,7 +17,6 @@ gem 'jquery-ui-rails', '~> 4.0.0'
 gem 'jquery-turbolinks'
 gem 'mini_magick'
 gem "kaminari"
-gem 'bootstrap-sass', '~> 2.3.0'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'daemons'
@@ -44,6 +43,8 @@ gem 'chartkick'
 gem 'groupdate'
 gem 'rack-cors', require: 'rack/cors'
 gem 'email_validator'
+gem 'font-awesome-rails'
+gem 'bootstrap-sass', '~> 2.3.0'
 
 group :development do
   gem 'capistrano', '3.3.5'

@@ -12,8 +12,6 @@
 <meta name="apple-mobile-web-app-title" content="Cakeside">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <%= stylesheet_link_tag "application", media: "all", 'data-turbolinks-track' => true %>
-<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <%= favicon_link_tag 'favicon.ico' %>
 <%= favicon_link_tag 'apple-touch-icon-57x57.png', rel: 'apple-touch-startup-image', type: 'image/png' %>
 <%= favicon_link_tag 'apple-touch-icon-57x57.png', rel: 'apple-touch-icon', type: 'image/png', sizes: "57x57" %>
@@ -21,7 +19,7 @@
 <%= favicon_link_tag 'apple-touch-icon-114x114.png', rel: 'apple-touch-icon', type: 'image/png', sizes: "114x114" %>
 <%= yield :head %>
 <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+<%# javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
 <!--[if lt IE 9]>
   <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
@@ -36,8 +34,8 @@
   <%= yield %>
 </div> <!-- /container -->
 <%= render "layouts/footer" %>
-<%= render "layouts/uservoice_feedback"%>
-<%= render "layouts/disqus_comments_count" %>
+<%# render "layouts/uservoice_feedback"%>
+<%# render "layouts/disqus_comments_count" %>
 <%= render "layouts/google_analytics" %>
 </body>
 </html>
