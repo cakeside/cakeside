@@ -56,6 +56,7 @@ group :development do
   gem 'lol_dba'
   gem 'pry-rails'
   gem 'web-console', '~> 2.0'
+  gem 'spring-commands-rspec'
 end
 
 group :development, :test do

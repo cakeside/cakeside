@@ -484,6 +484,8 @@ GEM
     spank (1.0.1441140881)
     spring (2.0.1)
       activesupport (>= 4.2)
+    spring-commands-rspec (1.0.4)
+      spring (>= 0.9.1)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -609,6 +611,7 @@ DEPENDENCIES
   simplecov
   spank
   spring
+  spring-commands-rspec
   sqlite3
   teaspoon-jasmine
   turbolinks
