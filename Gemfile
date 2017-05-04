@@ -8,7 +8,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'bcrypt', '~> 3.1.7'
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'json', '~> 2.1.0'
 
 # to remove
 gem 'acts-as-taggable-on'
@@ -22,7 +22,8 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'dotenv-rails'
 gem 'pg'
-gem 'asset_sync', '~> 1.0.0'
+gem 'asset_sync', '~> 2.0.0'
+gem 'fog-aws'
 gem 'unf'
 gem 'exception_notification'
 gem 'gibbon'
