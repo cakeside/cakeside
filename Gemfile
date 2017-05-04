@@ -73,12 +73,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'simplecov', require: false
   gem 'spring'
-  gem 'sqlite3'
-  gem 'teaspoon-jasmine'
+  gem 'teaspoon-jasmine', '~> 2.3.4'
 end
 
 group :production do
-  gem 'newrelic_rpm'
   gem 'dalli'
   gem 'unicorn'
   gem 'dotenv-deployment'
