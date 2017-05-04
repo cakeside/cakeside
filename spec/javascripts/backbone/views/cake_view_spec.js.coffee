@@ -2,15 +2,15 @@ describe "CakeSide.Views.Cakes.CakeView", ->
   cake = new CakeSide.Models.Cake
     id: '1'
     name: 'chocolate'
-  view = new CakeSide.Views.Cakes.CakeView
+  subject = new CakeSide.Views.Cakes.CakeView
     model: cake
 
   describe "when there are no photos", ->
     beforeEach ->
-      view.render()
+      subject.render()
 
     it 'renders the cake', ->
-      expect(view.$el.html()).toMatch(/chocolate/)
+      expect(subject.$el.html()).toMatch(/chocolate/)
 
     it 'does not display any photos', ->
-      expect(view.$el.html()).not.toMatch(/img/)
+      expect(subject.$el.html()).not.toMatch(/img/)
