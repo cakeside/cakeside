@@ -48,16 +48,17 @@ gem 'font-awesome-rails'
 gem 'bootstrap-sass', '~> 2.3.0'
 
 group :development do
-  gem 'capistrano', '3.3.5'
-  gem 'capistrano-rails'
-  gem 'capistrano-bundler', '~> 1.1', require: false
-  gem 'capistrano-rbenv', '~> 2.0', require: false
-  gem 'bullet'
   gem 'better_errors'
+  gem 'bullet'
+  gem 'capistrano', '3.3.5'
+  gem 'capistrano-bundler', '~> 1.1', require: false
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv', '~> 2.0', require: false
+  gem 'chef'
   gem 'lol_dba'
   gem 'pry-rails'
-  gem 'web-console', '~> 2.0'
   gem 'spring-commands-rspec'
+  gem 'web-console', '~> 2.0'
 end
 
 group :development, :test do

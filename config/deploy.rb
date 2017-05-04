@@ -2,9 +2,8 @@
 lock '3.3.5'
 
 set :application, 'cakeside'
-set :repo_url, 'git@github.com:cakeside/cakeside.git'
+set :repo_url, 'git@gitlab.com:cakeside/cakeside.git'
 set :branch, 'master'
-
 set :user, "deployer"
 
 # Default branch is :master

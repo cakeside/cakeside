@@ -1,4 +1,5 @@
 # Load DSL and Setup Up Stages
+$LOAD_PATH.unshift("#{Dir.pwd}/lib")
 require 'capistrano/setup'
 
 # Includes default deployment tasks
@@ -20,6 +21,7 @@ require 'capistrano/rbenv'
 require 'capistrano/bundler'
 require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
+require 'capistrano/chef_search'
 
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }

@@ -1,46 +1,8 @@
-# Simple Role Syntax
-# ==================
-# Supports bulk-adding hosts to roles, the primary server in each group
-# is considered to be the first unless any hosts have the primary
-# property set.  Don't declare `role :all`, it's a meta role.
+servers = ChefSearch.new("production")
 
-role :app, %w{deployer@green.cakeside.com}
-role :web, %w{deployer@green.cakeside.com}
-role :db,  %w{deployer@green.cakeside.com}
+role :app, servers.find_by(:app).map { |x| "#{fetch(:user)}@#{x}" }
+role :web, servers.find_by(:www).map { |x| "#{fetch(:user)}@#{x}" }
+role :db, servers.find_by(:db).map { |x| "#{fetch(:user)}@#{x}" }
 
-
-# Extended Server Syntax
-# ======================
-# This can be used to drop a more detailed server definition into the
-# server list. The second argument is a, or duck-types, Hash and is
-# used to set extended properties on the server.
-
-server 'green.cakeside.com', user: 'deployer', roles: %w{web app db}
 set :rails_env, 'production'
 set :domain, 'www.cakeside.com'
-
-# Custom SSH Options
-# ==================
-# You may pass any option but keep in mind that net/ssh understands a
-# limited set of options, consult[net/ssh documentation](http://net-ssh.github.io/net-ssh/classes/Net/SSH.html#method-c-start).
-#
-# Global options
-# --------------
-#  set :ssh_options, {
-#    keys: %w(/home/rlisowski/.ssh/id_rsa),
-#    forward_agent: false,
-#    auth_methods: %w(password)
-#  }
-#
-# And/or per server (overrides global)
-# ------------------------------------
-# server 'example.com',
-#   user: 'user_name',
-#   roles: %w{web app},
-#   ssh_options: {
-#     user: 'user_name', # overrides user setting above
-#     keys: %w(/home/user_name/.ssh/id_rsa),
-#     forward_agent: false,
-#     auth_methods: %w(publickey password)
-#     # password: 'please use keys'
-#   }
