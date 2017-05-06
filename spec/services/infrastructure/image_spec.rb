@@ -54,7 +54,7 @@ describe Image do
   end
 
   it "raises an errorwhen the file is not in the whitelist" do
-    expect(-> { Image.new('blah.exe') }).to raise_error
+    expect(-> { Image.new('blah.exe') }).to raise_error(/not in the whitelist/)
   end
 
   context "resizing" do
