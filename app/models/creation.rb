@@ -9,8 +9,6 @@ class Creation < ActiveRecord::Base
   acts_as_taggable_on :tags
   alias_method :author, :user
 
-  default_scope -> { order(created_at: :desc) }
-
   def to_param
     "#{id}-#{name.parameterize}"
   end
