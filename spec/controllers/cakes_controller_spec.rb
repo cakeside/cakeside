@@ -3,11 +3,6 @@ require 'rails_helper'
 describe CakesController do
   let(:user) { create(:user) }
 
-  before :each do
-    #photo = 'spec/fixtures/images/example.png'
-    #cake.photos.create(image: photo)
-  end
-
   describe "#index" do
     let!(:cakes) { create(:category, slug: "cakes") }
     let!(:cookies) { create(:category, slug: "cookies") }

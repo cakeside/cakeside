@@ -12,20 +12,6 @@ describe Creation do
     end
   end
 
-  describe "when loading a bunch of creations" do
-    let!(:oldest) { create(:creation) }
-    let!(:newest) { create(:creation) }
-    let(:results) { Creation.all }
-
-    it "should load the newest first" do
-      expect(results.first).to eql(newest)
-    end
-
-    it "should load the oldest last" do
-      expect(results.last).to eql(oldest)
-    end
-  end
-
   describe "#liked_by" do
     let(:user) { create(:user) }
     let(:creation) { create(:creation) }

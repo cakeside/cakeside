@@ -17,7 +17,7 @@ class User
     end
 
     def search_with(params)
-      all_matching(search_filters_for(params))
+      filter_by(search_filters_for(params))
     end
 
     private
@@ -25,21 +25,23 @@ class User
     attr_reader :connection
 
     def search_filters_for(params)
-      [
-        ->(users){ params[:artists].present? ? users.artists : all },
-        ->(users){ users.search_by(params[:q]) },
-        sort_using(params[:sort])
-      ]
-    end
-
-    def sort_using(sort_by)
-      case sort_by.try(:downcase)
-      when 'oldest'
-        ->(users) { users.oldest }
-      when 'newest'
-        ->(users) { users.newest }
-      else
-        ->(users) { users.by_cakes }
+      query_builder_for(params) do |builder|
+        builder.if_present(:artists) do |relation, _|
+          relation.artists
+        end
+        builder.if_present(:q) do |relation, search_term|
+          relation.search_by(search_term)
+        end
+        builder.if_present(:sort) do |relation, direction|
+          case direction.try(:downcase)
+          when 'oldest'
+            relation.oldest
+          when 'newest'
+            relation.newest
+          else
+            relation.by_cakes
+          end
+        end
       end
     end
   end
