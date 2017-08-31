@@ -41,6 +41,13 @@ module Queryable
       end
     end
 
+    def if_missing(key, &filter)
+      return if params[key].present?
+      add do |relation|
+        filter.call(relation, normalize(params[key]))
+      end
+    end
+
     def each(&block)
       @filters.each(&block)
     end

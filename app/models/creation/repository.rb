@@ -46,6 +46,9 @@ class Creation
         builder.if_present(:sort) do |relation, sort_order|
           relation.sorted_by(sort_order)
         end
+        builder.if_missing(:sort) do |relation, sort_order|
+          relation.sorted_by("newest")
+        end
       end
     end
   end
