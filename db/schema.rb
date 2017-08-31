@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150111153140) do
+ActiveRecord::Schema.define(version: 20170831205234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
   create_table "activities", force: :cascade do |t|
-    t.integer  "subject_id",   null: false
-    t.string   "subject_type", null: false
-    t.integer  "user_id",      null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "subject_id",               null: false
+    t.string   "subject_type", limit: 255, null: false
+    t.integer  "user_id",                  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "activities", ["subject_id"], name: "index_activities_on_subject_id", using: :btree
@@ -31,20 +31,20 @@ ActiveRecord::Schema.define(version: 20150111153140) do
 
   create_table "avatars", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "avatar"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "avatar",            limit: 255
     t.boolean  "avatar_processing"
-    t.string   "avatar_tmp"
+    t.string   "avatar_tmp",        limit: 255
   end
 
   add_index "avatars", ["user_id"], name: "index_avatars_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug"
+    t.string   "slug",       limit: 255
   end
 
   add_index "categories", ["slug"], name: "index_categories_on_slug", using: :btree
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20150111153140) do
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "creation_id"
-    t.string   "text"
+    t.string   "text",        limit: 255
     t.integer  "disqus_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -62,15 +62,15 @@ ActiveRecord::Schema.define(version: 20150111153140) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "creations", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",            limit: 255
     t.text     "story"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "image"
-    t.string   "watermark"
-    t.integer  "photos_count",    default: 0
-    t.integer  "favorites_count", default: 0
+    t.string   "image",           limit: 255
+    t.string   "watermark",       limit: 255
+    t.integer  "photos_count",                default: 0
+    t.integer  "favorites_count",             default: 0
     t.integer  "category_id"
   end
 
@@ -79,17 +79,17 @@ ActiveRecord::Schema.define(version: 20150111153140) do
   add_index "creations", ["user_id"], name: "index_creations_on_user_id", using: :btree
 
   create_table "delayed_jobs", force: :cascade do |t|
-    t.integer  "priority",   default: 0
-    t.integer  "attempts",   default: 0
+    t.integer  "priority",               default: 0
+    t.integer  "attempts",               default: 0
     t.text     "handler"
     t.text     "last_error"
     t.datetime "run_at"
     t.datetime "locked_at"
     t.datetime "failed_at"
-    t.string   "locked_by"
-    t.string   "queue"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "locked_by",  limit: 255
+    t.string   "queue",      limit: 255
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
@@ -105,18 +105,18 @@ ActiveRecord::Schema.define(version: 20150111153140) do
   add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
 
   create_table "interests", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "locations", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "locatable_id"
-    t.string   "locatable_type"
-    t.string   "latitude"
-    t.string   "longitude"
-    t.string   "city"
-    t.string   "country"
+    t.string   "locatable_type", limit: 255
+    t.string   "latitude",       limit: 255
+    t.string   "longitude",      limit: 255
+    t.string   "city",           limit: 255
+    t.string   "country",        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -125,18 +125,18 @@ ActiveRecord::Schema.define(version: 20150111153140) do
 
   create_table "photos", force: :cascade do |t|
     t.integer  "imageable_id"
-    t.string   "image"
+    t.string   "image",             limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "image_tmp"
+    t.string   "image_tmp",         limit: 255
     t.boolean  "image_processing"
-    t.string   "content_type"
-    t.string   "original_filename"
+    t.string   "content_type",      limit: 255
+    t.string   "original_filename", limit: 255
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "sha256"
-    t.string   "watermark"
-    t.string   "imageable_type"
+    t.string   "sha256",            limit: 255
+    t.string   "watermark",         limit: 255
+    t.string   "imageable_type",    limit: 255
   end
 
   add_index "photos", ["imageable_id", "imageable_type"], name: "index_photos_on_imageable_id_and_imageable_type", using: :btree
@@ -145,22 +145,27 @@ ActiveRecord::Schema.define(version: 20150111153140) do
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
-    t.string   "taggable_type"
+    t.string   "taggable_type", limit: 255
     t.integer  "tagger_id"
-    t.string   "tagger_type"
+    t.string   "tagger_type",   limit: 255
     t.string   "context",       limit: 128
     t.datetime "created_at"
   end
 
+  add_index "taggings", ["context"], name: "index_taggings_on_context", using: :btree
   add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
   add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy", using: :btree
+  add_index "taggings", ["taggable_id"], name: "index_taggings_on_taggable_id", using: :btree
   add_index "taggings", ["taggable_type"], name: "index_taggings_on_taggable_type", using: :btree
+  add_index "taggings", ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type", using: :btree
   add_index "taggings", ["tagger_id"], name: "index_taggings_on_tagger_id", using: :btree
   add_index "taggings", ["tagger_type"], name: "index_taggings_on_tagger_type", using: :btree
 
   create_table "tags", force: :cascade do |t|
-    t.string  "name"
-    t.integer "taggings_count", default: 0
+    t.string  "name",           limit: 255
+    t.integer "taggings_count",             default: 0
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
@@ -177,15 +182,15 @@ ActiveRecord::Schema.define(version: 20150111153140) do
   add_index "tools", ["name"], name: "index_tools_on_name", unique: true, using: :btree
 
   create_table "tutorials", force: :cascade do |t|
-    t.string   "heading"
+    t.string   "heading",     limit: 255
     t.text     "description"
-    t.string   "url"
+    t.string   "url",         limit: 255
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "image_url"
-    t.string   "author"
-    t.string   "author_url"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "image_url",   limit: 255
+    t.string   "author",      limit: 255
+    t.string   "author_url",  limit: 255
   end
 
   add_index "tutorials", ["user_id"], name: "index_tutorials_on_user_id", using: :btree
@@ -194,8 +199,8 @@ ActiveRecord::Schema.define(version: 20150111153140) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "key"
-    t.string   "ip"
+    t.string   "key",         limit: 255
+    t.string   "ip",          limit: 255
     t.text     "user_agent"
     t.datetime "accessed_at"
     t.datetime "revoked_at"
@@ -207,20 +212,20 @@ ActiveRecord::Schema.define(version: 20150111153140) do
   add_index "user_sessions", ["user_id"], name: "index_user_sessions_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "password_digest",        default: "", null: false
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255, default: "", null: false
+    t.string   "password_digest",        limit: 128, default: "", null: false
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
-    t.string   "website"
-    t.string   "twitter"
-    t.string   "facebook"
-    t.string   "city"
-    t.string   "authentication_token"
-    t.string   "full_address"
-    t.integer  "creations_count",        default: 0
+    t.string   "name",                   limit: 255
+    t.string   "website",                limit: 255
+    t.string   "twitter",                limit: 255
+    t.string   "facebook",               limit: 255
+    t.string   "city",                   limit: 255
+    t.string   "authentication_token",   limit: 255
+    t.string   "full_address",           limit: 255
+    t.integer  "creations_count",                    default: 0
     t.boolean  "admin"
   end
 

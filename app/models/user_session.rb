@@ -1,4 +1,5 @@
 class UserSession < ActiveRecord::Base
+  include Queryable
   belongs_to :user
   has_one :location, as: :locatable
   before_create :set_unique_key
@@ -25,10 +26,6 @@ class UserSession < ActiveRecord::Base
   class << self
     def authenticate(key)
       self.active.find_by(key: key)
-    end
-
-    def filter_by(filters)
-      filters.inject(all) { |chain, filter| filter.call(chain) }
     end
   end
 

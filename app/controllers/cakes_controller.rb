@@ -13,6 +13,6 @@ class CakesController < ApplicationController
 
   def show
     @creation = Creation.find(params[:id])
-    @primary_image = params[:photo_id].present? ?  @creation.photos.find(params[:photo_id]) : @creation.primary_image
+    @primary_image = params[:photo_id].present? ? @creation.photos.find(params[:photo_id]) : @creation.primary_image
   end
 end

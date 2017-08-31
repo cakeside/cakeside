@@ -1,3 +1,5 @@
+require 'exifr/jpeg'
+
 class ExifParser
   def parse_geolocation_from(file)
     exif = EXIFR::JPEG.new(file)

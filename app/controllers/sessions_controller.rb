@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
 
   def create
     if @session = User.login(session_params[:username], session_params[:password])
+      reset_session
       session[:raphael] = @session.access(request)
       redirect_to my_dashboard_path
     else

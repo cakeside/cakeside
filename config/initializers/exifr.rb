@@ -1,0 +1,1 @@
+EXIFR.logger = Rails.logger
