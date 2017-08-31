@@ -1,23 +1,16 @@
-<div class="row-fluid">
-  <% @profiles.each_slice(6).each do |batch| %>
-    <ul class='thumbnails'>
-      <% batch.each do |profile| %>
-        <% cache profile do %>
-          <li class="span2">
-            <div class="thumbnail">
-              <%= link_to profile_path(profile) do %>
-                <%= avatar_for(profile) %>
-              <% end %>
-              <div class="caption">
-                <small><%= link_to truncate(profile.name, length: 20), profile_path(profile) %></small>
-              </div>
-            </div>
-          </li>
-        <% end %>
+<div class="card-columns">
+  <% @profiles.each do |profile| %>
+    <div class="card">
+      <%= link_to profile_path(profile) do %>
+        <%= avatar_for(profile, clazz: 'card-img-top') %>
       <% end %>
-    </ul>
+      <div class="card-body">
+        <h4 class="card-title"><%= truncate(profile.name, length: 20) %></h4>
+        <p class="card-text"><small class="text-muted">joined <%= distance_of_time_in_words_to_now profile.created_at %> ago</small></p>
+      </div>
+    </div>
   <% end %>
 </div>
-<div id='more-button-row' class="row-fluid">
+<div id='more-button-row' class="row">
   <%= link_to_next_page @profiles, 'More...', params: { cache: false }, remote: true, class: 'more-button hidden', data: { disable_with: 'loading...' } %>
 </div>

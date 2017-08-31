@@ -1,8 +1,8 @@
 <%= provide(:search_path, profiles_path) %>
-<% provide(:container_class, 'container-fluid') %>
+<% provide(:container_class, 'container') %>
 <div id="bakery">
   <%= render partial: 'index' %>
 </div>
-<div id="pagination-row" class="row-fluid">
+<div id="pagination-row" class="row">
   <%= render "shared/paging", items: @profiles %>
 </div>
