@@ -1,20 +1,17 @@
-<div class="row-fluid">
-  <% @cakes.each_slice(6).each do |batch| %>
-    <ul class='thumbnails'>
-      <% batch.each do |cake| %>
-        <% cache cake do %>
-          <li class="span2">
-            <div class="thumbnail">
-              <%= link_to cake_path(cake) do %>
-                <%= image_tag cake.primary_image.url_for(:thumb), alt: cake.name %>
-              <% end %>
-            </div>
-          </li>
-        <% end %>
+<div class="card-columns">
+  <% @cakes.each do |cake| %>
+    <div class='card'>
+      <%= link_to cake_path(cake) do %>
+        <%= image_tag cake.primary_image.url_for(:thumb), alt: cake.name, class: 'card-img-top' %>
       <% end %>
-    </ul>
+      <div class="card-body">
+        <h4 class="card-title"><%= cake.name %></h4>
+        <p class="card-text"><%= cake.story %></p>
+        <p class="card-text"><small class="text-muted"><%= cake.created_at %></small></p>
+      </div>
+    </div>
   <% end %>
 </div>
-<div id='more-button-row' class="row-fluid">
+<div id='more-button-row' class="row">
   <%= link_to_next_page @cakes, 'More...', params: { cache: false, sort: params[:sort], q: params[:q] }, remote: true, class: 'btn pull-right more-button hidden', data: { disable_with: 'loading...' } %>
 </div>
