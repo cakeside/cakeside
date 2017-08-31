@@ -43,7 +43,7 @@ gem 'groupdate'
 gem 'rack-cors', require: 'rack/cors'
 gem 'email_validator'
 gem 'font-awesome-rails'
-gem 'bootstrap', "~> 4.0.0"
+gem 'bootstrap', '4.0.0.beta'
 
 group :development do
   gem 'better_errors'
