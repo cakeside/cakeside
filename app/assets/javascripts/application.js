@@ -6,6 +6,7 @@
 //= require jquery.validate
 //= require jquery.embedly
 //= require tag-it
+//= require popper
 //= require bootstrap
 //= require bootstrap-multiselect
 //= require underscore
