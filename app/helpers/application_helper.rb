@@ -34,4 +34,17 @@ module ApplicationHelper
   def configuration_for(key, default)
     content_for(key) || default
   end
+
+  def flash_to_alert(key)
+    case key.to_sym
+    when :success
+      'primary'
+    when :error
+      'danger'
+    when :warning
+      'warning'
+    else
+      'info'
+    end
+  end
 end

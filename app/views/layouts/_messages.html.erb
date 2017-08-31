@@ -1,15 +1,12 @@
 <% if(flash.any?) -%>
-<div class="row-fluid">
-  <div class="span12">
-    <% flash.each do |key, value| -%>
-      <% Array(value).uniq.each do |message| -%>
-        <div class="alert alert-<%= key %>">
-          <a class="close" data-dismiss="alert" href="#">×</a>
-          <%= message %>
-        </div>
-      <% end -%>
+  <% flash.each do |key, value| -%>
+    <% Array(value).uniq.each do |message| -%>
+      <div class="alert alert-dismissible fade show alert-<%= flash_to_alert(key) %>" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <%= message %>
+      </div>
     <% end -%>
-    &nbsp;
-  </div>
-</div>
+  <% end -%>
 <% end %>
