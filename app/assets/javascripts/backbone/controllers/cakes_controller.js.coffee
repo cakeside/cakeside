@@ -30,5 +30,5 @@ class CakeSide.Controllers.CakesController extends Marionette.Controller
     #@comment_view.hide()
 
   selectTab: ->
-    $('.nav-list').children().removeClass('active')
-    $('#cakes-tab').addClass('active')
+    $('.nav-link').removeClass('active')
+    $('a[href="/my#cakes/new"]').addClass('active')

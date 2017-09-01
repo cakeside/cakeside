@@ -1,31 +1,31 @@
-<div class="row-fluid">
-  <div class="span12">
-    <p>
-    <a href="#cakes/<%= id %>/edit" class="btn">
-      <i class="icon-edit"></i> <strong>Edit</strong>
-    </a>
-    <a class="btn add-photo">
-      <i class="icon-plus"></i><strong>Add Photo</strong>
-    </a>
-    <a href="<%= Routes.cake_favorites_path(id) %>" class="btn">
-      <i class="icon-heart"></i> <strong>Fan Club</strong>
-    </a>
-    <a id="remove-cake-button" class="btn btn-danger pull-right">
+<div class="row">
+  <div class="col">
+    <a id="remove-cake-button" class="btn btn-danger float-right">
       <i class="icon-white icon-remove"></i> <strong>Delete this cake</strong>
     </a>
-    </p>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a href="#cakes/<%= id %>/edit" class="nav-link active">Edit</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link add-photo">Add Photo</a>
+      </li>
+      <li class="nav-item">
+        <a href="<%= Routes.cake_favorites_path(id) %>" class="nav-link">Fan Club</a>
+      </li>
+    </ul>
   </div>
 </div>
-<div class="row-fluid">
-  <div class="span6">
+<div class="row">
+  <div class="col-6">
     <% if (hasImage()) { %>
     <% photo = randomPhoto()%>
     <a href="#cakes/<%= id %>/photos/<%= photo.id %>">
-      <img class="thumbnail" src="<%= photo.large_url %>" alt="<%= name %>" />
+      <img class="img-fluid" src="<%= photo.large_url %>" alt="<%= name %>" />
     </a>
     <% } %>
   </div>
-  <div class="span6">
+  <div class="col-6">
     <h1><a href="#cakes/<%= id %>"><%= name %></a></h1>
     <span> <i class="icon-tags"></i> </span>
     <% if (typeof(tags) === "string") { %>
@@ -45,6 +45,6 @@
     <p><%= story %></p>
   </div>
 </div>
-<div class="row-fluid">
-  <ul class="thumbnails"></ul>
+<div class="row">
+  <ul class="card-columns"></ul>
 </div>
