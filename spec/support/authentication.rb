@@ -11,4 +11,10 @@ module Authentication
       encode_credentials(user.authentication_token)
     request.env["HTTP_AUTHORIZATION"] = encoded_credentials
   end
+
+  module Capybara
+    def http_login(user)
+      LoginPage.new.visit_page.login_with(email: user.email, password: "password")
+    end
+  end
 end
