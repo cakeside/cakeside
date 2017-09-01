@@ -37,8 +37,8 @@ class CakeSide.Views.Profiles.ShowView extends Marionette.ItemView
 
   savedSuccessfully: (profile) =>
     @disableSaveButton()
-    @ui.status.removeClass('hidden')
-    @ui.status.removeClass('alert-error')
+    @ui.status.removeClass('hide')
+    @ui.status.removeClass('alert-danger')
     @ui.status.html("Saved!")
 
   couldNotSave: =>
@@ -52,12 +52,12 @@ class CakeSide.Views.Profiles.ShowView extends Marionette.ItemView
 
   displayError: ->
     @disableSaveButton()
-    @ui.status.addClass('alert-error')
-    @ui.status.removeClass('hidden')
+    @ui.status.addClass('alert-danger')
+    @ui.status.removeClass('hide')
     @ui.status.html(@model.validationError)
 
   refreshStatus: ->
-    @ui.status.addClass('hidden')
+    @ui.status.addClass('hide')
     @enableSaveButton()
     @model.set('name', @ui.name.val())
     @model.set('email', @ui.email.val())
@@ -69,4 +69,3 @@ class CakeSide.Views.Profiles.ShowView extends Marionette.ItemView
 
   cancel: ->
     @enableSaveButton()
-
