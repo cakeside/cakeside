@@ -7,55 +7,49 @@
 </script>
 <% end %>
 
-<div class="row-fluid">
-  <div class="span2">
+<div class="row">
+  <div class="col-3">
     <%= render partial: "my/shared/my_nav" %>
   </div>
-  <div class="span10">
+  <div class="col-9">
     <%= form_for(@user, :url => my_setting_path(@user), :html => { :method => :put, :class => "form-horizontal" }) do |f| %>
       <fieldset>
-        <div class="control-group">
-          <%= f.label :name, :class => "control-label"  %>
-          <div class="controls"> <%= f.text_field :name, :class => "input-xlarge" %> </div>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control" %>
         </div>
-        <div class="control-group">
-          <%= f.label :email, :class => "control-label"  %>
-          <div class="controls"> <%= f.email_field :email, :class => "input-xlarge"  %> </div>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, class: "form-control" %>
         </div>
-        <div class="control-group">
-          <%= f.label :city, :class => 'control-label' %>
-          <div class="controls"> <%= f.text_field :city, :class => "input-xlarge" %> </div>
+        <div class="form-group">
+          <%= f.label :city %>
+          <%= f.text_field :city, class: "form-control" %>
         </div>
-        <div class="control-group">
-          <%= f.label :website, :class => "control-label" %> 
-          <div class="controls"> <%= f.url_field :website, :class => "input-xlarge url", :placeholder => "http://cakeside.com" %> </div>
+        <div class="form-group">
+          <%= f.label :website %>
+          <%= f.url_field :website, class: "form-control url", placeholder: "http://cakeside.com" %>
         </div>
-        <div class="control-group">
-          <%= f.label :twitter, "Twitter username @", :class => "control-label" %> 
-          <div class="controls"> <%= f.text_field :twitter, :class => "input-xlarge", :placeholder => "without the @ sign", :maxlength => "255" %> </div>
+        <div class="form-group">
+          <%= f.label :twitter, "Twitter username @" %>
+          <%= f.text_field :twitter, class: "form-control", placeholder: "without the @ sign", maxlength: "255" %>
         </div>
-        <div class="control-group">
-          <%= f.label :facebook, :class => "control-label" %> 
-          <div class="controls"> <%= f.text_field :facebook, :class => "input-xlarge", :placeholder => "http://www.facebook.com/your_profile", :maxlength => "255" %> </div>
+        <div class="form-group">
+          <%= f.label :facebook %>
+          <%= f.text_field :facebook, class: "form-control", placeholder: "http://www.facebook.com/your_profile", maxlength: "255" %>
         </div>
-        <p class="help-block">
-        <strong>Note:</strong> Help us better serve you by checking off what best describes you?
-        </p>
-        <div class="control-group">
-          <label class="control-label">About me:</label>
-          <div class="controls">
-            <% for interest in Interest.all %>
-              <label class="checkbox">
-                <%= check_box_tag "user[interest_ids][]", interest.id, current_user.interests.include?(interest) %>
-                <%= interest.name %>
-              </label>
-            <% end %>
-          </div>
-        </div><!-- /control-group -->
-        <div class="form-actions">
-          <input type="submit" class="btn btn-primary" value="Save changes" />
-          <button type="reset" class="btn">Cancel</button>
+        <p class="help-block"><strong>Note:</strong> Help us better serve you by checking off what best describes you?</p>
+        <div class="form-check">
+          <label class="">About me:</label>
+          <% for interest in Interest.all %>
+            <label class="form-check-label">
+              <%= check_box_tag "user[interest_ids][]", interest.id, current_user.interests.include?(interest), class: 'form-check-input' %>
+              <%= interest.name %>
+            </label>
+          <% end %>
         </div>
+        <input type="submit" class="btn btn-primary" value="Save changes" />
+        <button type="reset" class="btn btn-secondary">Cancel</button>
       </fieldset>
     <% end %>
   </div>
