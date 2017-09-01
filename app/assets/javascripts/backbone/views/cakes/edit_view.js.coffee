@@ -4,7 +4,7 @@ CakeSide.Views.Cakes ||= {}
 class CakeSide.Views.Cakes.EditView extends Marionette.CompositeView
   template : JST["backbone/templates/cakes/edit"]
   childView: CakeSide.Views.Cakes.ThumbnailView
-  childViewContainer: '.thumbnails'
+  childViewContainer: '.card-columns'
   ui:
     name: "#cake_name"
     description: "#cake_story"

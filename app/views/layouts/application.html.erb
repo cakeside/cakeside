@@ -23,7 +23,7 @@
 <%= yield :javascript %>
 <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= params[:controller].parameterize %> <%= params[:action] %>">
 <%= render "layouts/header" %>
 <div class="<%= configuration_for(:container_class, 'container') %>">
   <%= render "layouts/messages" %>
