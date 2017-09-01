@@ -1,18 +1,24 @@
-<div class="modal-header">
-  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-  <h4>Upload Photo</h4>
-</div>
-<div class="modal-body">
-  <span class="btn btn-default btn-file">
-    + Browse... <input id="photo-attachment" name="attachment" type="file" accept="image/*">
-  </span>
-  <p class='pull-right'>
-    <input id="watermark" name="watermark" maxlength="30" size="30" type="text" placeholder="watermark" /> on CakeSide.com
-    <a class="tooltip-item" data-placement="right" rel="tooltip" href="#" data-original-title="Watermark your name or company on each uploaded image" data-animation="true"><i class="icon-question-sign"></i></a>
-  </p>
-  <img id="preview-image" src="#" alt="your image" class="hide hidden-phone" />
-</div>
-<div class="modal-footer">
-  <a href="#" class="btn" data-dismiss="modal">Cancel</a>
-  <button id="upload-photo-button" type="submit" class="btn btn-primary">Upload Photo</button>
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Upload Photo</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form class="form-horizontal">
+        <span class="btn btn-default btn-file">
+          <input id="photo-attachment" name="attachment" type="file" accept="image/*">
+        </span>
+        <input id="watermark" name="watermark" maxlength="30" size="30" type="text" placeholder="watermark" class="form-control" />
+        <small class="form-text muted"> on CakeSide.com</small>
+      </form>
+      <img id="preview-image" src="#" alt="your image" class="hide" />
+    </div>
+    <div class="modal-footer">
+      <button id="upload-photo-button" type="button" class="btn btn-primary">Save changes</button>
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+  </div>
 </div>
