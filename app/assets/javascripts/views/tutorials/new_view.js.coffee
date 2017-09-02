@@ -19,7 +19,7 @@ class CakeSide.Views.Tutorials.NewView extends Marionette.ItemView
 
   initialize: ->
     @model = new @collection.model()
-    @service = new EmbedlyService()
+    @service = new CakeSide.EmbedlyService()
 
   loadUrl: ->
     if @model.isValidUrl(@ui.url.val())
