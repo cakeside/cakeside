@@ -17,9 +17,6 @@ class CakeSide.Views.Photos.NewModalView extends Marionette.ItemView
     @cake = options.cake
     @model = new @collection.model(cake_id: @cake.id)
 
-  onRender: ->
-    @$('.tooltip-item').tooltip()
-
   save: (e) ->
     e.preventDefault()
     e.stopPropagation()
