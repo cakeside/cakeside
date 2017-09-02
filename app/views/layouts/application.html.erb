@@ -19,7 +19,7 @@
 <%= favicon_link_tag 'apple-touch-icon-114x114.png', rel: 'apple-touch-icon', type: 'image/png', sizes: "114x114" %>
 <%= yield :head %>
 <%= javascript_include_tag "application" %>
-<%# render "layouts/embedly"%>
+<%= render "layouts/embedly"%>
 <%= yield :javascript %>
 <%= csrf_meta_tags %>
 </head>
