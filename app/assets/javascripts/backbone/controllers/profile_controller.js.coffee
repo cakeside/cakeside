@@ -14,5 +14,5 @@ class CakeSide.Controllers.ProfileController extends Marionette.Controller
         @content_region.show(new @views.ShowView(model: profile))
 
   selectTab: ->
-    $('.nav-list').children().removeClass('active')
-    $('#profile-tab').addClass('active')
+    $('.nav-link').removeClass('active')
+    $('a[href="/my#profile/me"]').addClass('active')

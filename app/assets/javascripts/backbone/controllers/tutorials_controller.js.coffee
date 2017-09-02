@@ -25,5 +25,5 @@ class CakeSide.Controllers.TutorialsController extends Marionette.Controller
       #url: tutorial.get('url')
 
   selectTab: ->
-    $('.nav-list').children().removeClass('active')
-    $('#tutorial-tab').addClass('active')
+    $('.nav-link').removeClass('active')
+    $('a[href="/my#tutorials/new"]').addClass('active')
