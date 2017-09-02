@@ -10,4 +10,3 @@ class CakeSide.Behaviour
       window.addEventListener event, () =>
         for behaviour in @events[event]
           new behaviour().execute()
-

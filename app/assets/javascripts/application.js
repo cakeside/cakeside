@@ -17,12 +17,4 @@
 //= require cakeside
 //= require_self
 
-CakeSide.Behaviour.install()
-var initialize = function(){
-  $(window).scroll(function(){
-    if ($(window).scrollTop() >= ($(document).height() - $(window).height())*0.8){
-      $('.more-button').trigger('click');
-    }
-  });
-};
-$(document).ready(initialize);
+CakeSide.Behaviour.install();

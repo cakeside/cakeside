@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" data-autoview="cakes#show">
   <div class="col">
     <h1><%= link_to @creation.name, cake_path(@creation) %></h1>
     <p>By <%= link_to @creation.user.name, profile_path(@creation.user) %></p>

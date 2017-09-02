@@ -4,6 +4,7 @@ class CakeSide.AutoView extends Backbone.View
 
   @viewName: (name) ->
     @constructors[name] = this
+    @::name = name
 
   @install: (element) ->
     name = $(element).data('autoview')
