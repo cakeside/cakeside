@@ -9,7 +9,7 @@ Cake::Application.routes.draw do
   resources :tutorials, only: [:index, :show] do
     get 'page/:page', action: :index, on: :collection
   end
-  resources :tutorial_tags, only: [:index, :show], path: :tt do
+  resources :tutorial_tags, only: [:show], path: :tt do
     member do
       get 'page/:page', action: :show
     end
