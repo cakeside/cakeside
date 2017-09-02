@@ -521,7 +521,6 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    chartkick (2.2.4)
     chef (12.21.4)
       addressable
       bundler (>= 1.10)
@@ -642,14 +641,9 @@ GEM
     formatador (0.2.5)
     fuzzyurl (0.9.0)
     geoip (1.6.3)
-    gibbon (3.1.0)
-      faraday (>= 0.9.1)
-      multi_json (>= 1.11.0)
     github-markdown (0.6.9)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
-    groupdate (3.2.0)
-      activesupport (>= 3)
     hashie (3.5.6)
     highline (1.7.8)
     http (2.2.2)
@@ -955,7 +949,6 @@ DEPENDENCIES
   capistrano-bundler (~> 1.1)
   capistrano-rails
   capistrano-rbenv (~> 2.0)
-  chartkick
   chef
   coffee-rails (~> 4.1.0)
   curb
@@ -974,9 +967,7 @@ DEPENDENCIES
   font-awesome-rails
   foreman
   geoip
-  gibbon
   github-markdown
-  groupdate
   i18n-tasks
   jbuilder (~> 2.0)
   jquery-rails

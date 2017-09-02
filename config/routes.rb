@@ -86,7 +86,6 @@ Cake::Application.routes.draw do
     resources :errors, only: [:index, :create]
     resources :sessions, only: [:index, :destroy]
     resources :products, only: [:index, :show, :create]
-    resources :charts, only: [:index]
   end
 
   namespace :my do
