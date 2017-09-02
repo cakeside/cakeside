@@ -1,5 +1,1 @@
-<div class="media">
-  <div class="media-body">
-    <h4 class="media-heading"><%= link_to item.heading, my_root_path(anchor: "tutorials/#{item.id}") %></h4>
-  </div>
-</div>
+<li><%= link_to truncate(item.heading, length: 40), my_root_path(anchor: "tutorials/#{item.id}") %></li>

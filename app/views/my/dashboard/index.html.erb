@@ -5,13 +5,15 @@
   </div>
   <div class="col-9" data-no-turbolink>
     <div class="row">
-      <div class="col-5">
+      <div class="col">
         <h5>My Cakes</h5>
-        <% @cakes.each do |item| %>
-          <%= render item.class.to_s.downcase, item: item %>
-        <% end %>
+        <ul class="list-unstyled">
+          <% @cakes.each do |item| %>
+            <%= render item.class.to_s.downcase, item: item %>
+          <% end %>
+        </ul>
       </div>
-      <div class="col-5">
+      <div class="col">
         <div class="well">
           <h5>My Notifications</h5>
           <% if @activities.empty? %>
@@ -22,11 +24,14 @@
             <% end %>
           <% end %>
         </div>
+
         <% if @tutorials.any? %>
           <h5>My Tutorials</h5>
-          <% @tutorials.each do |item| %>
-            <%= render item.class.to_s.downcase, item: item %>
-          <% end %>
+          <ol>
+            <% @tutorials.each do |item| %>
+              <%= render item.class.to_s.downcase, item: item %>
+            <% end %>
+          </ol>
         <% end %>
       </div>
     </div>
