@@ -16,7 +16,6 @@ Cake::Application.routes.draw do
   end
 
   resources :cakes, only: [:index, :show], path: :cakes do
-    resources :photos, only: [:index, :show]
     resources :favorites, only: [:create]
     get 'page/:page', action: :index, on: :collection, as: :paginate
     collection do
