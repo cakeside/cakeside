@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def full_title(title)
-    title.blank? ?  "CakeSide - for cake lovers!" : "#{title} - CakeSide"
+    title.blank? ? "CakeSide - for cake lovers!" : "#{title} - CakeSide"
   end
 
   def disqus_auth(user = current_user)
