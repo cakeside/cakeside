@@ -4,15 +4,6 @@
   </div>
   <div class="col">
     <h1><%= link_to @creation.name, cake_path(@creation) %></h1>
-    <% if user_signed_in? && current_user != @creation.user %>
-      <% if current_user.already_likes(@creation) %>
-        <i class="fa fa-star fa-4x float-right"></i>
-      <% else %>
-        <%= link_to cake_favorites_path(cake_id: @creation.id), method: :post, id: 'add-to-favorites-button', class: 'float-right' do %>
-          <i class="fa fa-star-o fa-4x"></i>
-        <% end %>
-      <% end %>
-    <% end %>
     <p>By <%= link_to @creation.user.name, profile_path(@creation.user) %></p>
     <p>
       <i class="fa fa-filter icon-large"></i>
@@ -27,6 +18,13 @@
       <% end -%>
     <% end -%>
     <hr />
+    <% if user_signed_in? && current_user != @creation.user %>
+      <% if current_user.already_likes(@creation) %>
+        <i class="fa fa-star fa-4x float-right"></i>
+      <% else %>
+        <%= link_to "Add To Favorites", cake_favorites_path(cake_id: @creation.id), method: :post, id: 'add-to-favorites-button', class: 'btn btn-secondary float-right' %>
+      <% end %>
+    <% end %>
     <p><%= render_markdown(@creation.story).html_safe -%></p>
   </div>
 </div>
