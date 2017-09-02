@@ -1,9 +1,9 @@
 <% provide(:container_class, 'container-fluid') %>
-<div class="row-fluid">
-  <div class="span2">
+<div class="row">
+  <div class="col-3">
     <%= render partial: "my/shared/my_nav" %>
   </div>
-  <div class="span10">
+  <div class="col-9">
     <h1><%= @job.handler %></h1>
     <p><%= link_to "<< Back", admin_jobs_path %></p>
     <table class="table table-condensed">

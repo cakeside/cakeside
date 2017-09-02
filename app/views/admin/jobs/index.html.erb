@@ -1,8 +1,8 @@
-<div class="row-fluid">
-  <div class="span2">
+<div class="row">
+  <div class="col-3">
     <%= render partial: "my/shared/my_nav" %>
   </div>
-  <div class="span10">
+  <div class="col-9">
     <h1>Jobs <small><%= Time.now.utc %></small></h1>
     <table class="table table-condensed">
       <thead>
@@ -19,7 +19,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @jobs.each do |job| %>
+        <% @jobs.find_each do |job| %>
           <tr>
             <td><%= link_to job.id, admin_job_path(job) %></td>
             <td><%= job.attempts %></td>
@@ -31,7 +31,7 @@
             <td><%= job.created_at.try(:to_formatted_s, :short) %></td>
             <td><%= job.updated_at.try(:to_formatted_s, :short) %></td>
             <td>
-              <%= link_to "Retry", admin_job_path(job), method: :put, class: 'btn', disable_with: 'Retrying...' %>
+              <%= link_to "Retry", admin_job_path(job), method: :put, class: 'btn btn-primary', disable_with: 'Retrying...' %>
               <%= link_to "Destroy", admin_job_path(job), method: :delete, class: 'btn btn-danger', disable_with: 'Deleting...' %>
             </td>
           </tr>
