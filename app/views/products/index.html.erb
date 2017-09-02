@@ -1,7 +1,8 @@
 <%= provide(:search_path, products_path) %>
-<div class="row-fluid">
-  <div class="span12">
+<div class="row">
+  <div class="col">
     <%= link_to "back", params[:boomerang] %>
+
     <div id="results-container">
       <%= render partial: "index" %>
     </div>
