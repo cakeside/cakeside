@@ -3,6 +3,4 @@
 <div id="bakery">
   <%= render partial: 'index' %>
 </div>
-<div id="pagination-row" class="row">
-  <%= render "shared/paging", items: @profiles %>
-</div>
+<%= render "shared/paging", items: @profiles %>
