@@ -8,7 +8,8 @@ describe "changing my password", js: true do
 
     it "displays a confirmation message" do
       visit my_dashboard_path
-      click_link("Account")
+      click_link(I18n.t("my.shared.my_nav.change_password"))
+
       within(".form-horizontal") do
         fill_in("user_password", with: "secret")
         fill_in("user_password_confirmation", with: "secret")

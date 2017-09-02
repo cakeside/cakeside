@@ -12,7 +12,7 @@
   <%= link_to "My Profile", my_root_path(anchor: 'profile/me'), class: "nav-link" %>
   <%= link_to "My Favorites", my_favorites_path, class: "nav-link #{"active" if controller?(:favorites)}" %>
   <%= link_to "My Photo", new_my_avatar_path, class: "nav-link #{"active" if controller?(:avatars)}" %>
-  <%= link_to "Change My Password", my_passwords_path, class: "nav-link #{"active" if controller?(:passwords)}" %>
+  <%= link_to t('.change_password'), my_passwords_path, class: "nav-link #{"active" if controller?(:passwords)}" %>
 
   <% if current_user.admin? %>
     <h5>Admin</h5>
