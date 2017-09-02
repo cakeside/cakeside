@@ -78,14 +78,13 @@ Cake::Application.routes.draw do
 
   namespace :admin do
     root to: "users#index"
-    resources :users, only: [:index, :show, :update]
-    resources :jobs, only: [:index, :show, :update, :destroy]
     resources :activities, only: [:index]
-    resources :subscriptions, only: [:index]
-    resources :photos, only: [:index, :show, :update]
     resources :errors, only: [:index, :create]
-    resources :sessions, only: [:index, :destroy]
+    resources :jobs, only: [:index, :show, :update, :destroy]
+    resources :photos, only: [:index, :show, :update]
     resources :products, only: [:index, :show, :create]
+    resources :sessions, only: [:index, :destroy]
+    resources :users, only: [:index, :show, :update]
   end
 
   namespace :my do

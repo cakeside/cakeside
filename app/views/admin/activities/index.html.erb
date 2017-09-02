@@ -1,12 +1,12 @@
-<div class="row-fluid">
-  <div class="span2">
+<div class="row">
+  <div class="col-3">
     <%= render partial: "my/shared/my_nav" %>
   </div>
-  <div class="span10">
-    <dl class="dl-horizontal">
-      <% @recent_activities.each do |activity| %>
-        <%= render activity.subject.class.to_s.downcase, subject: activity.subject %>
+  <div class="col-9">
+    <div class="card-columns">
+      <% @recent_activities.find_each do |activity| %>
+        <%= render(activity.subject.class.to_s.downcase, subject: activity.subject) if activity.subject %>
       <% end %>
-    </dl>
+    </div>
   </div>
 </div>

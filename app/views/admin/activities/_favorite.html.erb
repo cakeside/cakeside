@@ -1,9 +1,14 @@
-<div>
-  <p>
-  <i class="fa fa-heart icon-large"></i>
-  <%= avatar_for(subject.user, size: 24) %> 
-  <%= link_to subject.user.name, profile_path(subject.user) %> added 
-  <%= link_to subject.creation.name, cake_path(subject.creation) %> to their favorites
-  <small><%= time_ago_in_words(subject.created_at) %> ago.</small>
-  </p>
+<div class="card">
+  <%= avatar_for(subject.user, clazz: 'card-img-top') %>
+  <div class="card-body">
+    <h4 class="card-title">Favorite Added</h4>
+    <p class="card-text">
+      <%= link_to subject.user.name, profile_path(subject.user) %> added
+      <%= link_to subject.creation.name, cake_path(subject.creation) %> to their favorites
+    </p>
+  </div>
+  <div class="card-footer">
+    <i class="fa fa-heart icon-large"></i>
+    <small class="text-muted"><%= time_ago_in_words(subject.created_at) %> ago.</small>
+  </div>
 </div>
