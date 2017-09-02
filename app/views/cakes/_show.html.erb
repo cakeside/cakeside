@@ -1,10 +1,5 @@
 <div class="row">
   <div class="col">
-    <img class="rounded img-fluid mx-auto d-block" src="<%= @primary_image.url_for(:large) %>" alt="<%= @creation.name %>" />
-  </div>
-</div>
-<div class="row">
-  <div class="col">
     <h1><%= link_to @creation.name, cake_path(@creation) %></h1>
     <p>By <%= link_to @creation.user.name, profile_path(@creation.user) %></p>
     <% if user_signed_in? && current_user != @creation.user %>
@@ -29,4 +24,11 @@
     <hr />
     <p><%= render_markdown(@creation.story).html_safe -%></p>
   </div>
+</div>
+<div class="card-columns">
+  <% @creation.photos.each do |photo| %>
+    <div class="card">
+      <%= image_tag photo.url_for(:thumb), class: "card-img-top" %>
+    </div>
+  <% end %>
 </div>

@@ -6,16 +6,4 @@
   <%= render partial: 'show' %>
 </div>
 
-<% if @creation.photos_count > 1 %>
-  <div class="card-columns">
-    <% @creation.photos.each do |photo| %>
-      <div class="card">
-        <%= link_to cake_path(@creation, photo_id: photo.id), remote: true do %>
-          <%= image_tag photo.url_for(:thumb), class: "card-img-top" %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-<% end %>
-
 <%# render partial: "shared/disqus", locals: { id: "c-#{@creation.id}" } %>
