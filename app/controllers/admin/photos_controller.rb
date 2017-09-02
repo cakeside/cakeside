@@ -7,7 +7,7 @@ module Admin
     end
 
     def index
-      @photos = @photo_repository.order(id: :desc)
+      @photos = paginate(@photo_repository.order(id: :desc))
     end
 
     def show
