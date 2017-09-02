@@ -1,5 +1,3 @@
-CakeSide.Views.Photos ||= {}
-
 class CakeSide.Views.Photos.NewModalView extends Marionette.ItemView
   template: JST["templates/photos/new-modal"]
   ui:

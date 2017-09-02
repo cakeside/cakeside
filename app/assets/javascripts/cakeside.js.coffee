@@ -1,7 +1,7 @@
 #= require_self
 #= require_tree ./templates
 #= require_tree ./models
-#= require_tree ./views
+#= require ./views
 #= require_tree ./controllers
 #= require_tree ./routers
 #= require_tree ./service

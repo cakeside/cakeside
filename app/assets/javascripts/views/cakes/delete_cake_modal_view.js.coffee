@@ -1,5 +1,3 @@
-CakeSide.Views.Cakes ||= {}
-
 class CakeSide.Views.Cakes.DeleteCakeModalView extends Marionette.ItemView
   template: JST["templates/cakes/delete_modal"]
   ui:

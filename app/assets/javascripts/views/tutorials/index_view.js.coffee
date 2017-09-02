@@ -1,8 +1,6 @@
 #= require views/tutorials/no_tutorials_view
 #= require views/tutorials/tutorial_view
 
-CakeSide.Views.Tutorials ||= {}
-
 class CakeSide.Views.Tutorials.IndexView extends Marionette.CollectionView
   childView: CakeSide.Views.Tutorials.TutorialView
   emptyView: CakeSide.Views.Tutorials.NoTutorialsView

@@ -1,5 +1,3 @@
-CakeSide.Views.Cakes ||= {}
-
 class CakeSide.Views.Cakes.NewView extends Marionette.ItemView
   template: JST["templates/cakes/new"]
   ui:

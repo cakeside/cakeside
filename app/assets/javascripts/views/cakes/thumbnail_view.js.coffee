@@ -1,5 +1,3 @@
-CakeSide.Views.Cakes ||= {}
-
 class CakeSide.Views.Cakes.ThumbnailView extends Marionette.ItemView
   template: JST['templates/cakes/thumbnail']
   tagName: 'div'

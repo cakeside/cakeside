@@ -1,5 +1,3 @@
-CakeSide.Views.Profiles ||= {}
-
 class CakeSide.Views.Profiles.ShowView extends Marionette.ItemView
   template: JST["templates/profiles/show"]
   ui:

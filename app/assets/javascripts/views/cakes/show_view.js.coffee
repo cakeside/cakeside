@@ -1,7 +1,5 @@
 #= require views/cakes/thumbnail_view
 
-CakeSide.Views.Cakes ||= {}
-
 class CakeSide.Views.Cakes.ShowView extends Marionette.CompositeView
   template: JST["templates/cakes/show"]
   childView: CakeSide.Views.Cakes.ThumbnailView
