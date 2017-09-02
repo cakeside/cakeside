@@ -1,7 +1,7 @@
 CakeSide.Views.Profiles ||= {}
 
 class CakeSide.Views.Profiles.ShowView extends Marionette.ItemView
-  template: JST["backbone/templates/profiles/show"]
+  template: JST["templates/profiles/show"]
   ui:
     name: '#user_name'
     email: '#user_email'

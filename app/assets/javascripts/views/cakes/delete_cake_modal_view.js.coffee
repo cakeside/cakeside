@@ -1,7 +1,7 @@
 CakeSide.Views.Cakes ||= {}
 
 class CakeSide.Views.Cakes.DeleteCakeModalView extends Marionette.ItemView
-  template: JST["backbone/templates/cakes/delete_modal"]
+  template: JST["templates/cakes/delete_modal"]
   ui:
     remove_button: "#remove-button"
     confirmation_textbox: '#confirmation-textbox'

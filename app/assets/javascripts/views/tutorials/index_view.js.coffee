@@ -1,5 +1,6 @@
-#= require backbone/views/tutorials/no_tutorials_view
-#= require backbone/views/tutorials/tutorial_view
+#= require views/tutorials/no_tutorials_view
+#= require views/tutorials/tutorial_view
+
 CakeSide.Views.Tutorials ||= {}
 
 class CakeSide.Views.Tutorials.IndexView extends Marionette.CollectionView

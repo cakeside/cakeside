@@ -13,9 +13,8 @@
 //= require backbone.marionette
 //= require backbone_rails_sync
 //= require backbone_datalink
-//= require backbone/cakeside
 //= require backbone-model-file-upload
-//= require_tree .
+//= require cakeside
 
 var initialize = function(){
   $(window).scroll(function(){
@@ -25,4 +24,3 @@ var initialize = function(){
   });
 };
 $(document).ready(initialize);
-$(document).on("page:load", initialize);

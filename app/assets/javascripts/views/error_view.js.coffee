@@ -1,5 +1,3 @@
-CakeSide.Views.Cakes ||= {}
-
 class CakeSide.Views.ErrorView extends Backbone.View
   initialize: (options) ->
     @attributesWithErrors = options.attributesWithErrors

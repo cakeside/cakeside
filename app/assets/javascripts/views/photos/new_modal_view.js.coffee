@@ -1,7 +1,7 @@
 CakeSide.Views.Photos ||= {}
 
 class CakeSide.Views.Photos.NewModalView extends Marionette.ItemView
-  template: JST["backbone/templates/photos/new-modal"]
+  template: JST["templates/photos/new-modal"]
   ui:
     watermark: '#watermark'
     upload_button: "#upload-photo-button"

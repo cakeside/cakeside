@@ -4,6 +4,7 @@
 #= require_tree ./views
 #= require_tree ./controllers
 #= require_tree ./routers
+#= require_tree ./service
 
 window.CakeSide =
   Models: {}

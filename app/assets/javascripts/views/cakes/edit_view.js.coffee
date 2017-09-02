@@ -1,50 +1,61 @@
+#= require views/cakes/thumbnail_view
+
 CakeSide.Views.Cakes ||= {}
 
-class CakeSide.Views.Cakes.NewView extends Marionette.ItemView
-  template: JST["backbone/templates/cakes/new"]
+class CakeSide.Views.Cakes.EditView extends Marionette.CompositeView
+  template : JST["templates/cakes/edit"]
+  childView: CakeSide.Views.Cakes.ThumbnailView
+  childViewContainer: '.card-columns'
   ui:
     name: "#cake_name"
+    description: "#cake_story"
     category: "#cake_category_id"
+    tags: "#cake_tags"
     save_button: '#save-button'
 
   modelEvents:
     'invalid': 'displayError'
 
-  events:
+  events :
     "keyup input": "refreshStatus"
     "change select": "refreshStatus"
-    "submit #new-cake": "save"
+    "submit #edit-cake" : "update"
+    "click .add-photo": "launchAddPhoto"
 
   constructor: (options) ->
-    super(_.extend(options, { model: new options.collection.model() }))
+    super(options)
+    @collection = @model.photos()
 
-  save: (e) ->
+  update : (e) ->
     e.preventDefault()
     e.stopPropagation()
     @disableSaveButton()
-    @collection.create(@model,
+    @model.save(null,
       success: @savedSuccessfully
       error: @couldNotSave
     )
 
   onRender: ->
-    @$("#cake_category_id").val($("#cake_category_id option:first").val())
-    @model.isValid()
+    @$("#cake_category_id").val(@model.category_id())
+    @ui.tags.tagit({ availableTags: ALL_TAGS })
+    @disableSaveButton()
 
   savedSuccessfully: (cake) =>
-    window.location.hash = "cakes/#{cake.id}/edit"
+    window.location.hash = "cakes/#{cake.id}"
 
   couldNotSave: (cake, xhr) =>
     @enableSaveButton()
     error = new CakeSide.Views.ErrorView
-      el: @$('form#new-cake'),
+      el: @$('form#edit-cake'),
       attributesWithErrors: $.parseJSON(xhr.responseText)
     error.render()
 
   refreshStatus: ->
     @enableSaveButton()
     @model.set('name', @ui.name.val())
+    @model.set('story', @ui.description.val())
     @model.set('category_id', @ui.category.val())
+    @model.set('tags', @ui.tags.val())
     @model.isValid()
 
   displayError: (model, error) ->
@@ -61,3 +72,10 @@ class CakeSide.Views.Cakes.NewView extends Marionette.ItemView
       cake: @model.toJSON(),
       categories: CakeSide.Application.request('CategoriesRepository').toJSON(),
     }
+
+  launchAddPhoto: ->
+    @displayModal(new CakeSide.Views.Photos.NewModalView(cake: @model))
+
+  displayModal: (view) ->
+    $("#modal").html(view.render().el)
+    $("#modal").modal()
