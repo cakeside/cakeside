@@ -1,12 +1,22 @@
 ---
 en:
   avatar_uploaded: Your avatar has been updated.
+  logout: Sign Out
   my:
     shared:
       my_nav:
-        logout: Log Out
+        activity: "Activity"
+        admin: "Admin"
+        avatar: "My Photo"
+        change_password: "Change My Password"
+        dashboard: "Dashboard"
+        favorites: "My Favorites"
+        jobs: "Jobs"
+        my_profile: "My Profile"
+        new_cake: "Cake"
+        new_tutorial: "Tutorial"
+        photos: "Photos"
+        products: "Products"
+        sessions: "Sessions"
+        users: "Users"
   profile_saved: Your settings have been updated successfully!
-  shared:
-    account_nav:
-      admin: Admin
-      logout: Logout

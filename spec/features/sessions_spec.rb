@@ -17,7 +17,7 @@ describe "Logins" do
       end
 
       it "logs the user in" do
-        expect(page).to have_content("Log Out")
+        expect(page).to have_content(I18n.t("logout"))
       end
 
       it "has no errors" do

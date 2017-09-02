@@ -2,26 +2,26 @@
   <%= avatar_for(current_user) %>
 <% end %>
 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
-  <%= link_to "Dashboard", my_dashboard_path, class: "nav-link #{"active" if controller?(:dashboard)}" %>
+  <%= link_to t('.dashboard'), my_dashboard_path, class: "nav-link #{"active" if controller?(:dashboard)}" %>
   <%= link_to my_root_path(anchor: 'cakes/new'), class: "nav-link" do %>
-    <i class="fa fa-upload"></i> Cake
+    <i class="fa fa-upload"></i> <%= t(".new_cake") %>
   <% end %>
   <%= link_to my_root_path(anchor: 'tutorials/new'), class: "nav-link" do %>
-    <i class="fa fa-pencil-square"></i> Tutorial
+    <i class="fa fa-pencil-square"></i> <%= t('.new_tutorial') %>
   <% end %>
-  <%= link_to "My Profile", my_root_path(anchor: 'profile/me'), class: "nav-link" %>
-  <%= link_to "My Favorites", my_favorites_path, class: "nav-link #{"active" if controller?(:favorites)}" %>
-  <%= link_to "My Photo", new_my_avatar_path, class: "nav-link #{"active" if controller?(:avatars)}" %>
+  <%= link_to t(".my_profile"), my_root_path(anchor: 'profile/me'), class: "nav-link" %>
+  <%= link_to t(".favorites"), my_favorites_path, class: "nav-link #{"active" if controller?(:favorites)}" %>
+  <%= link_to t('.avatar'), new_my_avatar_path, class: "nav-link #{"active" if controller?(:avatars)}" %>
   <%= link_to t('.change_password'), my_passwords_path, class: "nav-link #{"active" if controller?(:passwords)}" %>
 
   <% if current_user.admin? %>
-    <h5>Admin</h5>
-    <%= link_to "Users", admin_users_path, class: "nav-link" %>
-    <%= link_to "Jobs", admin_jobs_path, class: "nav-link" %>
-    <%= link_to "Activity", admin_activities_path, class: "nav-link" %>
-    <%= link_to "Photos", admin_photos_path, class: "nav-link" %>
-    <%= link_to "Sessions", admin_sessions_path, class: "nav-link" %>
-    <%= link_to "Products", admin_products_path, class: "nav-link" %>
+    <h5><%= t(".admin") %></h5>
+    <%= link_to t(".users"), admin_users_path, class: "nav-link" %>
+    <%= link_to t(".jobs"), admin_jobs_path, class: "nav-link" %>
+    <%= link_to t(".activity"), admin_activities_path, class: "nav-link" %>
+    <%= link_to t(".photos"), admin_photos_path, class: "nav-link" %>
+    <%= link_to t(".sessions"), admin_sessions_path, class: "nav-link" %>
+    <%= link_to t(".products"), admin_products_path, class: "nav-link" %>
   <% end %>
 
   <%= link_to t('.logout'), logout_path, method: :delete, class: "nav-link" %>
