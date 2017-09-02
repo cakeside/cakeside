@@ -1,4 +1,5 @@
 #= require_self
+#= require_tree ./infrastructure
 #= require_tree ./templates
 #= require_tree ./models
 #= require ./views
@@ -11,7 +12,7 @@ window.CakeSide =
   Collections: {}
   Routers: {}
   Views: {}
-  Controllers: {}
+  Controllers: { My: {} }
   initialize: (data) ->
     $(document).ajaxSend  (event, xhr) ->
       if data.access_token
@@ -24,13 +25,13 @@ window.CakeSide =
 
     CakeSide.Application.addInitializer (options) ->
       new CakeSide.Routers.CakesRouter
-        controller: new CakeSide.Controllers.CakesController()
+        controller: new CakeSide.Controllers.My.CakesController()
       new CakeSide.Routers.TutorialsRouter
-        controller: new CakeSide.Controllers.TutorialsController()
+        controller: new CakeSide.Controllers.My.TutorialsController()
       new CakeSide.Routers.DashboardRouter
-        controller: new CakeSide.Controllers.DashboardController()
+        controller: new CakeSide.Controllers.My.DashboardController()
       new CakeSide.Routers.ProfileRouter
-        controller: new CakeSide.Controllers.ProfileController()
+        controller: new CakeSide.Controllers.My.ProfileController()
 
     CakeSide.Application.on 'start', ->
       if Backbone.history

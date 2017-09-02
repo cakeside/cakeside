@@ -1,7 +1,8 @@
 #= require_self
 #= require_tree .
 
-CakeSide.Views.Cakes ||= {}
-CakeSide.Views.Photos ||= {}
-CakeSide.Views.Profiles ||= {}
-CakeSide.Views.Tutorials ||= {}
+CakeSide.Views.My ||= {}
+CakeSide.Views.My.Cakes ||= {}
+CakeSide.Views.My.Photos ||= {}
+CakeSide.Views.My.Profiles ||= {}
+CakeSide.Views.My.Tutorials ||= {}

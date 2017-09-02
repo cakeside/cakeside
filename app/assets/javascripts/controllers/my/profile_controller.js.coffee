@@ -1,5 +1,5 @@
-class CakeSide.Controllers.ProfileController extends Marionette.Controller
-  views: CakeSide.Views.Profiles
+class CakeSide.Controllers.My.ProfileController extends Marionette.Controller
+  views: CakeSide.Views.My.Profiles
   initialize: (options) ->
     @content_region = CakeSide.Application.content_region
     #@comment_view = CakeSide.Application.request('CommentView')

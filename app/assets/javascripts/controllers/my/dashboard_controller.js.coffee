@@ -1,4 +1,4 @@
-class CakeSide.Controllers.DashboardController extends Marionette.Controller
+class CakeSide.Controllers.My.DashboardController extends Marionette.Controller
   initialize: (options) ->
     #@comment_view = CakeSide.Application.request('CommentView')
 

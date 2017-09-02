@@ -15,7 +15,9 @@
 //= require backbone_datalink
 //= require backbone-model-file-upload
 //= require cakeside
+//= require_self
 
+CakeSide.Behaviour.install()
 var initialize = function(){
   $(window).scroll(function(){
     if ($(window).scrollTop() >= ($(document).height() - $(window).height())*0.8){

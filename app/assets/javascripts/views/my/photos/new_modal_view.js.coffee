@@ -1,5 +1,5 @@
-class CakeSide.Views.Photos.NewModalView extends Marionette.ItemView
-  template: JST["templates/photos/new-modal"]
+class CakeSide.Views.My.Photos.NewModalView extends Marionette.ItemView
+  template: JST["templates/my/photos/new-modal"]
   ui:
     watermark: '#watermark'
     upload_button: "#upload-photo-button"

@@ -1,5 +1,5 @@
-class CakeSide.Controllers.CakesController extends Marionette.Controller
-  views: CakeSide.Views.Cakes
+class CakeSide.Controllers.My.CakesController extends Marionette.Controller
+  views: CakeSide.Views.My.Cakes
   initialize: (options) ->
     @content_region = CakeSide.Application.content_region
     @cakes = CakeSide.Application.request('CakesRepository')

@@ -1,7 +1,7 @@
 #= require service/embedly_service
 
-class CakeSide.Views.Tutorials.NewView extends Marionette.ItemView
-  template: JST['templates/tutorials/new']
+class CakeSide.Views.My.Tutorials.NewView extends Marionette.ItemView
+  template: JST['templates/my/tutorials/new']
   ui:
     url: '#tutorial_url'
     url_group: '#url-group'

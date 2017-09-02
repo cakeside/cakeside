@@ -1,8 +1,8 @@
-#= require views/cakes/thumbnail_view
+#= require views/my/cakes/thumbnail_view
 
-class CakeSide.Views.Cakes.ShowView extends Marionette.CompositeView
-  template: JST["templates/cakes/show"]
-  childView: CakeSide.Views.Cakes.ThumbnailView
+class CakeSide.Views.My.Cakes.ShowView extends Marionette.CompositeView
+  template: JST["templates/my/cakes/show"]
+  childView: CakeSide.Views.My.Cakes.ThumbnailView
   childViewContainer: '.card-columns'
 
   events:

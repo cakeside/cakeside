@@ -1,8 +1,8 @@
-describe "CakeSide.Views.Cakes.CakeView", ->
+describe "CakeSide.Views.My.Cakes.CakeView", ->
   cake = new CakeSide.Models.Cake
     id: '1'
     name: 'chocolate'
-  subject = new CakeSide.Views.Cakes.CakeView
+  subject = new CakeSide.Views.My.Cakes.CakeView
     model: cake
 
   describe "when there are no photos", ->
