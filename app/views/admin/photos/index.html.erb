@@ -1,34 +1,32 @@
-<div class="row-fluid">
-  <div class="span2">
+<div class="row">
+  <div class="col-3">
     <%= render partial: "my/shared/my_nav" %>
   </div>
-  <div class="span10">
-    <h1>Photos <small><%= @photos.count %></small></h1>
-    <table class="table table-condensed">
-      <thead>
-        <tr>
-          <th>filename</th>
-          <th>content type</th>
-          <th>geolocation</th>
-          <th>created</th>
-          <th>updated</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @photos.each do |photo| %>
-          <tr>
-            <td><%= link_to "#{photo.id} #{photo.image}", admin_photo_path(photo.id) %></td>
-            <td><%= photo.content_type %></td>
-            <td><%= photo.latitude %> <%= photo.longitude %></td>
-            <td><%= time_ago_in_words(photo.created_at) %> ago</td>
-            <td><%= time_ago_in_words(photo.updated_at) %> ago</td>
-            <td>
-              <%= link_to "Re-Process", admin_photo_path(photo.id), method: :put, class: 'btn', disable_with: 'Re-Processing..'  %>
-          </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <div class="col-9">
+    <h1><%= @photos.total_count %> photos submitted</h1>
+    <div class="card-columns">
+      <% @photos.each do |photo| %>
+        <div class="card">
+          <%= image_tag photo.url_for(:thumb), class: "card-img-top" %>
+          <div class="card-body">
+            <h4 class="card-title"><%= photo.image %></h4>
+            <p class="card-text">
+              This photo has a content type of <em><%= photo.content_type || "unknown" %></em>.
+              <% if photo.latitude && photo.longitude %>
+                It was taken at <%= photo.latitude %>,<%= photo.longitude %>.
+              <% end %>
+              <p>
+                <%= link_to "Re-Process", admin_photo_path(photo.id), method: :put, class: 'btn btn-secondary', disable_with: 'Re-Processing..'  %>
+              </p>
+            </p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Created at <%= time_ago_in_words(photo.created_at) %> ago</small>
+            <small class="text-muted">Last updated <%= time_ago_in_words(photo.updated_at) %> ago</small>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
+<%= render "shared/paging", items: @photos %>

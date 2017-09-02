@@ -1,8 +1,4 @@
 class TutorialTagsController < ApplicationController
-  def index
-    @tags = Tutorial.tag_counts_on(:tags)
-  end
-
   def show
     @tag = params[:id].downcase.gsub(/ /, '-')
     @tutorials = Tutorial.

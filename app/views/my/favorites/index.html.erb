@@ -1,24 +1,23 @@
 <% provide(:title, "My Favorites") -%>
-<div class="row-fluid">
-  <div class="span2">
+<div class="row">
+  <div class="col-3">
     <%= render partial: "my/shared/my_nav" %>
   </div>
-  <div class="span10">
-    <% @creations.each_slice(6).each do |batch| %>
-      <ul class='thumbnails'>
-        <% batch.each do |creation| %>
-          <li class="span2">
-            <div class="thumbnail">
-              <%= link_to cake_path(creation) do %>
-                <%= image_tag creation.primary_image.url_for(:thumb) %>
-              <% end %>
-              <div class="caption">
-                <small><%= link_to truncate(creation.name, length: 12), cake_path(creation) %></small>
-              </div>
-            </div>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
+  <div class="col-9">
+    <div class="card-columns">
+      <% @creations.each do |cake| %>
+        <div class="card">
+          <%= link_to cake_path(cake) do %>
+            <%= image_tag cake.primary_image.url_for(:thumb), class: 'card-img-top' %>
+          <% end %>
+          <div class="card-body">
+            <h4 class="card-title"><%= truncate(cake.name, length: 12) %></h4>
+            <p class="card-text"><%= link_to truncate(cake.author.name, length: 25), profile_path(cake.author) %></p>
+            <p class="card-text"><%= truncate(cake.story, length: 25) %></p>
+            <p class="card-text"><small class="text-muted"><%= cake.created_at %></small></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

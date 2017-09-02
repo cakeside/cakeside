@@ -1,0 +1,23 @@
+<h1>Share a tutorial link</h1>
+<hr />
+<form id="new-tutorial" name='tutorial' class='form-horizontal'>
+  <div id="url-group" class="form-group">
+    <label for="tutorial_url">Tutorial URL</label>
+    <input class="form-control" id="tutorial_url" name="url" type="text" value="<%= url %>" placeholder="http://www.cakeside.com/" autofocus>
+  </div>
+  <div class="form-group">
+    <label for="tags">Tags</label>
+      <input type="text" id="tutorial_tags" name="tags" value="" class="form-control" autocomplete="off" />
+      <p class="help-block"> Note: help people find this tutorial by adding some keyword tags </p>
+  </div>
+  <button id='save-button' type="submit" class="btn btn-primary">Save</button>
+  <a href="#tutorials" class="btn btn-secondary">Cancel</a>
+</form>
+<div id="preview-panel" class="thumbnail">
+  <img class="embed-thumb" src="<%= image_url %>" />
+  <div class="caption">
+    <h3 class="tutorial-heading"><%= heading %></h3>
+    <p id="tag-list"></p>
+    <p class="tutorial-description"><%= description %></p>
+  </div>
+</div>

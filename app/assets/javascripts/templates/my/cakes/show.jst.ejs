@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col">
+    <h1><a href="#cakes/<%= id %>"><%= name %></a></h1>
+    <hr />
+    <% if (typeof(tags) === "string") { %>
+      <% _.each(tags.split(','), function(tag){ %>
+        <a href="<%= Routes.creation_tag_path(tag) %>">
+          <span class="badge badge-info"><%= tag %></span>
+        </a>
+      <% }); %>
+    <% } else { %>
+      <% _.each(tags, function(tag){ %>
+        <a href="<%= Routes.creation_tag_path(tag.name) %>">
+          <span class="badge badge-info"><%= tag.name %></span>
+        </a>
+      <% }); %>
+    <% } %>
+    <div class="float-right">
+      <a href="#cakes/<%= id %>/edit" class="btn btn-primary">Edit</a>
+      <a class="add-photo btn btn-secondary">Add Photo</a>
+      <a id="remove-cake-button" class="btn btn-danger">Delete this cake</a>
+    </div>
+    <p><%= story %></p>
+  </div>
+</div>
+<div class="card-columns"></div>

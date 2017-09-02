@@ -4,7 +4,6 @@
       <td></td>
       <td>name</td>
       <td>email</td>
-      <td>urls</td>
       <td>
         created at
         <%= link_to url_for(params.merge(sort: "newest")), remote: true do %>
@@ -17,21 +16,14 @@
     </tr>
   </thead>
   <tbody>
-  <%- @users.each do |user| %>
+  <% @users.find_each do |user| %>
     <tr>
     <td>
       <a href="#edit-user-modal-<%= user.id %>" role="button" data-toggle="modal">edit</a>
       <%= render partial: 'edit_modal', locals: { user: user } %>
     </td>
-    <td><%= link_to "#{user.name} (#{user.creations_count})", admin_user_path(user) %></td>
+    <td><%= link_to user.name, admin_user_path(user) %></td>
     <td><%= mail_to user.email %></td>
-    <td>
-      <ul>
-        <%= "<li>#{user.website}</li>".html_safe unless user.website.blank? %>
-        <%= "<li>#{user.twitter}</li>".html_safe unless user.twitter.blank? %>
-        <%= "<li>#{user.facebook}</li>".html_safe unless user.facebook.blank? %>
-      </ul>
-    </td>
     <td><%= user.created_at.to_formatted_s(:short) %></td>
     </tr>
   <% end %>

@@ -1,17 +1,19 @@
 <% provide(:title, "Dashboard") -%>
 <div class="row">
-  <div class="span2">
+  <div class="col-3">
     <%= render partial: "my/shared/my_nav" %>
   </div>
-  <div class="span10" data-no-turbolink>
+  <div class="col-9" data-no-turbolink>
     <div class="row">
-      <div class="span5">
+      <div class="col">
         <h5>My Cakes</h5>
-        <% @cakes.each do |item| %>
-          <%= render item.class.to_s.downcase, item: item %>
-        <% end %>
+        <ul class="list-unstyled">
+          <% @cakes.each do |item| %>
+            <%= render item.class.to_s.downcase, item: item %>
+          <% end %>
+        </ul>
       </div>
-      <div class="span5">
+      <div class="col">
         <div class="well">
           <h5>My Notifications</h5>
           <% if @activities.empty? %>
@@ -22,11 +24,14 @@
             <% end %>
           <% end %>
         </div>
+
         <% if @tutorials.any? %>
           <h5>My Tutorials</h5>
-          <% @tutorials.each do |item| %>
-            <%= render item.class.to_s.downcase, item: item %>
-          <% end %>
+          <ol>
+            <% @tutorials.each do |item| %>
+              <%= render item.class.to_s.downcase, item: item %>
+            <% end %>
+          </ol>
         <% end %>
       </div>
     </div>

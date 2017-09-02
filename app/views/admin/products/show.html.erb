@@ -1,9 +1,9 @@
 <%= provide(:search_path, admin_products_path) %>
-<div class="row-fluid">
-  <div class="span2">
+<div class="row">
+  <div class="col-3">
     <%= render partial: "my/shared/my_nav" %>
   </div>
-  <div class="span10">
+  <div class="col-9">
     <table class="table">
     <tr>
       <td>asin</td>
@@ -24,7 +24,7 @@
       <td>
         <% if @tool.present? %>
           In the toolbox as <%= @tool.name %>
-        <% else %>        
+        <% else %>
           <%= form_tag admin_products_path do %>
             <%= text_field_tag :name, @product.item_attributes['title'] %>
             <%= hidden_field_tag "asin", @product.asin %>
@@ -32,7 +32,7 @@
           <% end %>
         <% end %>
       </td>
-    </tr>  
+    </tr>
     <tr>
       <td>attributes</td>
       <td>
@@ -60,4 +60,3 @@
     </table>
   </div>
 </div>
-

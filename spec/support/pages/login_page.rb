@@ -6,10 +6,10 @@ class LoginPage < WebPage
   end
 
   def login_with(email:, password: "password")
-    within(".form-inline") do
+    within("#new_user_session") do
       fill_in("session_username", with: email)
       fill_in("session_password", with: password)
     end
-    click_button("Sign In")
+    click_button(I18n.t('sessions.new.sign_in'))
   end
 end

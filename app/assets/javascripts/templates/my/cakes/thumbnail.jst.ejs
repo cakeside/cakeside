@@ -1,0 +1,8 @@
+<% if (uploading()) { %>
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width: <%= percentComplete %>%" aria-valuenow="<%= percentComplete %>" aria-valuemin="<%= percentComplete %>" aria-valuemax="100"><%= percentComplete %>%</div>
+  </div>
+<% } %>
+<a href="#cakes/<%= cake_id %>/photos/<%= id %>">
+  <img src="<%= thumb_url %>" class="card-img-top" />
+</a>

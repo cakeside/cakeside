@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col">
+    <h3><a href="#tutorials/<%= id %>"><%= heading %></a> <small><%= displayDate(created_at) %></small></h3>
+    <a href="#tutorials/<%= id %>">
+      <img src="<%= image_url %>" />
+    </a>
+    <p>
+      <% _.each(tags, function(tag) { %>
+        <a href="/tt/<%= tag.name %>">
+          <span class="label"><%= tag.name %></span>
+        </a>
+      <% }); %>
+    </p>
+    <p><%= description %></p>
+  </div>
+</div>

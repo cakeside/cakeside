@@ -1,19 +1,14 @@
-<div class="row-fluid">
-  <div class="span6">
-    <img class="thumbnail" src="<%= @primary_image.url_for(:large) %>" alt="<%= @creation.name %>" />
-  </div>
-  <div class="span6">
+<div class="row" data-autoview="cakes#show">
+  <div class="col">
     <h1><%= link_to @creation.name, cake_path(@creation) %></h1>
+    <p>By <%= link_to @creation.user.name, profile_path(@creation.user) %></p>
     <% if user_signed_in? && current_user != @creation.user %>
       <% if current_user.already_likes(@creation) %>
-        <i class="fa fa-star fa-4x pull-right"></i>
+        <i class="fa fa-star fa-4x float-right"></i>
       <% else %>
-        <%= link_to cake_favorites_path(cake_id: @creation.id), method: :post, id: 'add-to-favorites-button', class: 'pull-right' do %>
-          <i class="fa fa-star-o fa-4x"></i>
-        <% end %>
+        <%= link_to "Add To Favorites", cake_favorites_path(cake_id: @creation.id), method: :post, id: 'add-to-favorites-button', class: 'btn btn-secondary float-right' %>
       <% end %>
     <% end %>
-    <p>By <%= link_to @creation.user.name, profile_path(@creation.user) %></p>
     <p>
       <i class="fa fa-filter icon-large"></i>
       <%= link_to @creation.category.name, category_path(@creation.category) %>
@@ -22,18 +17,18 @@
       <span> <i class="icon-tags"></i> </span>
       <% @creation.tags.each do |tag| -%>
         <%= link_to creation_tag_path(tag.name) do %>
-          <span class="label"><%= tag.name %></span>
+          <span class="badge badge-info"><%= tag.name %></span>
         <% end %>
       <% end -%>
     <% end -%>
     <hr />
-    <div class="row-fluid">
-      <% unless user_signed_in? %>
-      <div class="span6">
-        <p><%= link_to "SIGN UP FOR FREE", login_path, :class => "btn btn-primary" %></p>
-      </div>
-      <% end %>
-    </div>
     <p><%= render_markdown(@creation.story).html_safe -%></p>
   </div>
+</div>
+<div class="card-columns">
+  <% @creation.photos.each do |photo| %>
+    <div class="card">
+      <%= image_tag photo.url_for(:thumb), class: "card-img-top" %>
+    </div>
+  <% end %>
 </div>

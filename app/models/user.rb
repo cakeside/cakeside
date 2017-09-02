@@ -47,7 +47,6 @@ class User < ActiveRecord::Base
 
   def send_welcome_email
     UserMailer.welcome_email(self).deliver_later
-    Subscription.delay.subscribe(email: email, first_name: name, last_name: '')
   end
 
   def recent_activities(limit = 20)

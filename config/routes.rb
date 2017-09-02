@@ -9,15 +9,14 @@ Cake::Application.routes.draw do
   resources :tutorials, only: [:index, :show] do
     get 'page/:page', action: :index, on: :collection
   end
-  resources :tutorial_tags, only: [:index, :show], path: :tt do
+  resources :tutorial_tags, only: [:show], path: :tt do
     member do
       get 'page/:page', action: :show
     end
   end
 
   resources :cakes, only: [:index, :show], path: :cakes do
-    resources :photos, only: [:index, :show]
-    resources :favorites, only: [:index, :create]
+    resources :favorites, only: [:create]
     get 'page/:page', action: :index, on: :collection, as: :paginate
     collection do
       get :newest, action: 'index', sort: 'newest'
@@ -78,16 +77,13 @@ Cake::Application.routes.draw do
 
   namespace :admin do
     root to: "users#index"
-    resources :users, only: [:index, :show, :update]
-    resources :jobs, only: [:index, :show, :update, :destroy]
     resources :activities, only: [:index]
-    resources :subscriptions, only: [:index]
-    resources :photos, only: [:index, :show, :update]
-    resources :blobs, only: [:index, :show]
     resources :errors, only: [:index, :create]
-    resources :sessions, only: [:index, :destroy]
+    resources :jobs, only: [:index, :show, :update, :destroy]
+    resources :photos, only: [:index, :show, :update]
     resources :products, only: [:index, :show, :create]
-    resources :charts, only: [:index]
+    resources :sessions, only: [:index, :destroy]
+    resources :users, only: [:index, :show, :update]
   end
 
   namespace :my do

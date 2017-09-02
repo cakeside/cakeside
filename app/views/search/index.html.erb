@@ -1,96 +1,92 @@
 <% provide(:title, "#{@search}") -%>
-<div class="row-fluid">
-  <div class="span12">
-    <div class="tabbable tabs-left">
-      <ul class="nav nav-tabs">
-        <li class="active"><a href="#tab1" data-toggle="tab">Creations</a></li>
-        <li><a href="#tab2" data-toggle="tab">Tutorials</a></li>
-        <li><a href="#tab3" data-toggle="tab">Artists</a></li>
-      </ul>
-      <div class="tab-content">
-        <div class="tab-pane active" id="tab1">
-          <% if @creations.any? %>
-          <table class="table table-striped">
-            <thead>
-              <th></th>
-              <th>Artist</th>
-              <th>Name</th>
-              <th>Description</th>
-            </thead>
-            <tbody>
-            <% @creations.each_with_index do |creation, index| %>
-              <% cache creation do %>
-              <tr>
-                <td>
-                  <%= link_to cake_path(creation) do %>
-                    <%= image_tag creation.primary_image.url_for(:thumb), class: 'thumbnail', style: "width:65px;" %>
-                  <% end %>
-                </td>
-                <td><%= link_to creation.user.name, profile_path(creation.user) %></td>
-                <td><%= creation.name %></td>
-                <td><%= creation.story %></td>
-              </tr>
-              <% end %>
+<div class="row">
+  <div class="col">
+    <ul class="nav nav-tabs">
+      <li class="nav-item"><a class="nav-link active" href="#tab1" data-toggle="tab">Creations</a></li>
+      <li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab">Tutorials</a></li>
+      <li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab">Artists</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane show active" id="tab1">
+        <% if @creations.any? %>
+        <table class="table table-striped">
+          <thead>
+            <th></th>
+            <th>Artist</th>
+            <th>Name</th>
+            <th>Description</th>
+          </thead>
+          <tbody>
+          <% @creations.each_with_index do |creation, index| %>
+            <% cache creation do %>
+            <tr>
+              <td>
+                <%= link_to cake_path(creation) do %>
+                  <%= image_tag creation.primary_image.url_for(:thumb), class: 'thumbnail', style: "width:65px;" %>
+                <% end %>
+              </td>
+              <td><%= link_to creation.user.name, profile_path(creation.user) %></td>
+              <td><%= creation.name %></td>
+              <td><%= creation.story %></td>
+            </tr>
             <% end %>
-            </tbody>
-          </table>
-          <% else %>
-            <p>No creations found.</p>
           <% end %>
-        </div>
-        <div class="tab-pane" id="tab2">
-          <% if @tutorials.any? %>
-          <table class="table table-striped">
-            <thead>
-              <th>Name</th>
-              <th>Description</th>
-            </thead>
-            <tbody>
-            <% @tutorials.each_with_index do |tutorial, index| %>
-              <% cache tutorial do %>
-              <tr>
-                <td><%= link_to tutorial.heading, tutorial_path(tutorial) %></td>
-                <td><%= tutorial.description %></td>
-              </tr>
-              <% end %>
+          </tbody>
+        </table>
+        <% else %>
+          <p>No creations found.</p>
+        <% end %>
+      </div>
+      <div class="tab-pane" id="tab2">
+        <% if @tutorials.any? %>
+        <table class="table table-striped">
+          <thead>
+            <th>Name</th>
+            <th>Description</th>
+          </thead>
+          <tbody>
+          <% @tutorials.each_with_index do |tutorial, index| %>
+            <% cache tutorial do %>
+            <tr>
+              <td><%= link_to tutorial.heading, tutorial_path(tutorial) %></td>
+              <td><%= tutorial.description %></td>
+            </tr>
             <% end %>
-            </tbody>
-          </table>
-          <% else %>
-            <p>No tutorials found.</p>
           <% end %>
-        </div>
-        <div class="tab-pane" id="tab3">
-          <% if @members.any? %>
-          <table class="table table-striped">
-            <thead>
-              <th>Artists</th>
-              <th>Name</th>
-            </thead>
-            <tbody>
-            <% @members.each_with_index do |artist, index| %>
-              <tr>
-                <td>
-                  <%= link_to profile_path(artist) do %>
-                    <%= avatar_for(artist, size: 65) %>
-                  <% end %>
-                </td>
-                <td><%= link_to artist.name, profile_path(artist) %></td>
-                <td><%= link_to artist.website, artist.website if artist.website %></td>
-                <td><%= link_to artist.twitter, "https://twitter.com/#{artist.twitter}" if artist.twitter.present? %></td>
-                <td><%= link_to artist.facebook, artist.facebook if artist.facebook %></td>
-                <td><%= artist.city %></td>
-              </tr>
-            <% end %>
-            </tbody>
-          </table>
-          <% else %>
-            <p>No artists found.</p>
+          </tbody>
+        </table>
+        <% else %>
+          <p>No tutorials found.</p>
+        <% end %>
+      </div>
+      <div class="tab-pane" id="tab3">
+        <% if @members.any? %>
+        <table class="table table-striped">
+          <thead>
+            <th>Artists</th>
+            <th>Name</th>
+          </thead>
+          <tbody>
+          <% @members.each_with_index do |artist, index| %>
+            <tr>
+              <td>
+                <%= link_to profile_path(artist) do %>
+                  <%= avatar_for(artist, size: 65) %>
+                <% end %>
+              </td>
+              <td><%= link_to artist.name, profile_path(artist) %></td>
+              <td><%= link_to artist.website, artist.website if artist.website %></td>
+              <td><%= link_to artist.twitter, "https://twitter.com/#{artist.twitter}" if artist.twitter.present? %></td>
+              <td><%= link_to artist.facebook, artist.facebook if artist.facebook %></td>
+              <td><%= artist.city %></td>
+            </tr>
           <% end %>
-        </div>
+          </tbody>
+        </table>
+        <% else %>
+          <p>No artists found.</p>
+        <% end %>
       </div>
     </div>
-
-
   </div>
 </div>

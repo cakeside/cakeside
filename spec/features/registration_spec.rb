@@ -1,23 +1,17 @@
 require "rails_helper"
 
-describe "Registration", :js => true do
+describe "Registration", js: true do
   context "when an email is not registered" do
-    before :each do
+    it "lets you register with that email address" do
       visit login_path
-      within(".form-horizontal") do
-        fill_in('user_name', :with => 'John Smith')
-        fill_in('user_email',:with => FFaker::Internet.email)
-        fill_in('user_password', :with => 'password')
+      within("#new_user") do
+        fill_in('user_name', with: 'John Smith')
+        fill_in('user_email', with: FFaker::Internet.email)
+        fill_in('user_password', with: 'password')
+        check('accepted')
         click_button "submit-registration"
       end
-    end
-
-    it "should let you register with that email address" do
       expect(page).to have_content("Dashboard")
-    end
-
-    xit "should take you to the settings page" do
-      page.should have_content("Settings")
     end
   end
 end

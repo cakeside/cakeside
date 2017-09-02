@@ -7,20 +7,6 @@ describe FavoritesController do
 
     before { http_login(user) }
 
-    context "when loading all the favorites for a cake" do
-      let(:favorite) { create(:favorite, creation: cake, user: user) }
-
-      before :each do
-        cake.favorites << favorite
-        cake.save!
-        get :index, cake_id: cake.id
-      end
-
-      it "should return them all" do
-        expect(assigns(:favorites)).to include(favorite)
-      end
-    end
-
     context "when adding a cake to your favorites" do
       before :each do
         post :create, cake_id: cake.id

@@ -1,12 +1,13 @@
 <% provide(:description, "CakeSide is a free site to share your cake creations and ideas with other cake fanatics like yourself") -%>
 <% provide(:search_path, request.env['PATH_INFO'] || cakes_path) %>
-<% provide(:container_class, 'container-fluid') %>
+<% provide(:container_class, 'container') %>
+
 <% unless user_signed_in?  -%>
-  <div class="row-fluid">
-    <div class="span6">
+  <div class="row">
+    <div class="col">
       <%= image_tag "cakeside-logo.png", :alt => "Welcome to Cakeside", style: 'max-height:186px' %>
     </div>
-    <div class="span6">
+    <div class="col">
       <h1>Welcome cake enthusiast!</h1>
       <p style="font-size:15px;">
       <strong>Make</strong> cakes, <strong>sell</strong> cakes, or just <strong>love</strong> eating them? You've come to the right place!
@@ -19,19 +20,25 @@
 <% end -%>
 
 <div id="bakery">
-  <div class="row-fluid">
-    <ul class="nav nav-tabs">
-      <li class="<%= "active" if params["category"].blank? %>"><%= link_to "All", url_for(params.merge(category: nil)) %></li>
-      <% @categories.each do |category| %>
-        <li class="<%= "active" if params["category"] == category.slug %>"><%= link_to category.name.pluralize, url_for(params.merge(category: category.slug)) %></li>
-      <% end %>
-      <li class="<%= params[:sort] == "oldest" ? "active" : "" %> pull-right"><%= link_to "Oldest", url_for(params.merge(sort: "oldest")) %></li>
-      <li class="<%= params[:sort].blank? || params[:sort] == "newest" ? "active" : "" %> pull-right"><%= link_to "Newest", url_for(params.merge(sort: "newest")) %></li>
-    </ul>
+  <div class="dropdown float-right">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Sort
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <%= link_to "Newest", url_for(params.merge(sort: "newest")), class: "dropdown-item" %>
+      <%= link_to "Oldest", url_for(params.merge(sort: "oldest")), class: "dropdown-item" %>
+    </div>
   </div>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <%= link_to "All", url_for(params.merge(category: nil)), class: "nav-link #{"active" if params["category"].blank?}" %>
+    </li>
+    <% @categories.each do |category| %>
+      <li class="nav-item ">
+        <%= link_to category.name.pluralize, url_for(params.merge(category: category.slug)), class: "nav-link #{"active" if params["category"] == category.slug}" %>
+      </li>
+    <% end %>
+  </ul>
   <%= render partial: 'index' %>
 </div>
-
-<div id='pagination-row' class="row-fluid">
-  <%= render "shared/paging", items: @cakes %>
-</div>
+<%= render "shared/paging", items: @cakes %>

@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def full_title(title)
-    title.blank? ?  "CakeSide - for cake lovers!" : "#{title} - CakeSide"
+    title.blank? ? "CakeSide - for cake lovers!" : "#{title} - CakeSide"
   end
 
   def disqus_auth(user = current_user)
@@ -33,5 +33,18 @@ module ApplicationHelper
 
   def configuration_for(key, default)
     content_for(key) || default
+  end
+
+  def flash_to_alert(key)
+    case key.to_sym
+    when :success
+      'primary'
+    when :error
+      'danger'
+    when :warning
+      'warning'
+    else
+      'info'
+    end
   end
 end

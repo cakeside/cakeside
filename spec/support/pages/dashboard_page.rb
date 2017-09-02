@@ -6,6 +6,6 @@ class DashboardPage < WebPage
   end
 
   def logout
-    click_link("Sign Out")
+    click_link(I18n.t("logout"))
   end
 end

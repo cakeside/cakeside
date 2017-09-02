@@ -1,16 +1,13 @@
 <div class="media">
-  <%= link_to my_root_path(anchor: "cakes/#{item.id}"), class: 'pull-left' do %>
-    <img class="media-object" data-src="<%= item.primary_image.url_for(:thumb) %>" alt="64x64" style="width: 64px; height: 64px;" src="<%= item.primary_image.url_for(:thumb) %>">
+  <%= link_to my_root_path(anchor: "cakes/#{item.id}") do %>
+    <%= image_tag item.primary_image.url_for(:thumb), class: 'd-flex mr-3', width: '64px' %>
   <% end %>
   <div class="media-body">
-    <h4 class="media-heading"><%= link_to item.name, my_root_path(anchor: "cakes/#{item.id}") %></h4>
+    <h5 class="mt-0 mb-1"><%= item.name %></h5>
     <p>
-    <%= link_to my_root_path(anchor: "cakes/#{item.id}/edit") do %>
-      <i class="fa fa-pencil-square-o"></i> edit
-    <% end %>
-    <%= link_to cake_favorites_path(cake_id: item.id) do %>
-      <i class="fa fa-heart"></i> fanclub
-    <% end %>
+      <%= link_to my_root_path(anchor: "cakes/#{item.id}/edit") do %>
+        <i class="fa fa-pencil-square-o"></i> edit
+      <% end %>
     </p>
   </div>
 </div>

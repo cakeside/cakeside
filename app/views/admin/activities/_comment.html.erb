@@ -1,9 +1,11 @@
-<div>
-  <i class="fa fa-comment icon-large"></i>
-  <%= avatar_for(subject.user, size: 24) %> 
-  <%= link_to subject.user.name, profile_path(subject.user) %> commented on <%= link_to subject.creation.name, cake_path(subject.creation) %>
-  <small><%= time_ago_in_words(subject.created_at) %> ago.</small>
-  <blockquote>
-    <%= subject.text %>
-  </blockquote>
+<div class="card">
+  <%= avatar_for(subject.user, clazz: 'card-img-top') %>
+  <div class="card-body">
+    <h4 class="card-title"><%= link_to subject.user.name, profile_path(subject.user) %> commented on <%= link_to subject.creation.name, cake_path(subject.creation) %></h4>
+    <p class="card-text"><%= subject.text %></p>
+  </div>
+  <div class="card-footer">
+    <i class="fa fa-comment icon-large"></i>
+    <small class="text-muted"><%= time_ago_in_words(subject.created_at) %> ago.</small>
+  </div>
 </div>

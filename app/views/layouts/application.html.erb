@@ -2,37 +2,34 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 <title><%= full_title(yield(:title)) %></title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="description" content="<%= yield(:description) %>" />
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="application-name" content="Cakeside">
 <meta name="apple-mobile-web-app-title" content="Cakeside">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<%= stylesheet_link_tag "application", media: "all", 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag "application", media: "all" %>
 <%= favicon_link_tag 'favicon.ico' %>
 <%= favicon_link_tag 'apple-touch-icon-57x57.png', rel: 'apple-touch-startup-image', type: 'image/png' %>
 <%= favicon_link_tag 'apple-touch-icon-57x57.png', rel: 'apple-touch-icon', type: 'image/png', sizes: "57x57" %>
 <%= favicon_link_tag 'apple-touch-icon-72x72.png', rel: 'apple-touch-icon', type: 'image/png', sizes: "72x72" %>
 <%= favicon_link_tag 'apple-touch-icon-114x114.png', rel: 'apple-touch-icon', type: 'image/png', sizes: "114x114" %>
 <%= yield :head %>
-<%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-<!--[if lt IE 9]>
-  <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
+<%= javascript_include_tag "application" %>
 <%= render "layouts/embedly"%>
 <%= yield :javascript %>
 <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= params[:controller].parameterize %> <%= params[:action] %>">
 <%= render "layouts/header" %>
 <div class="<%= configuration_for(:container_class, 'container') %>">
   <%= render "layouts/messages" %>
   <%= yield %>
 </div> <!-- /container -->
 <%= render "layouts/footer" %>
-<%= render "layouts/google_analytics" %>
+<%# render "layouts/google_analytics" %>
 </body>
 </html>
