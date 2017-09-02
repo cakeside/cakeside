@@ -3,7 +3,7 @@
     <%= render partial: "my/shared/my_nav" %>
   </div>
   <div class="col-9">
-    <h1><%= @photos.count %> photos submitted</h1>
+    <h1><%= @photos.total_count %> photos submitted</h1>
     <div class="card-columns">
       <% @photos.each do |photo| %>
         <div class="card">
@@ -29,3 +29,4 @@
     </div>
   </div>
 </div>
+<%= render "shared/paging", items: @photos %>
