@@ -12,5 +12,5 @@
   <% end %>
 </div>
 <div id='more-button-row' class="row">
-  <%= link_to_next_page @profiles, 'More...', params: { cache: false }, remote: true, class: 'more-button hidden', data: { disable_with: 'loading...' } %>
+  <%= link_to_next_page @profiles, 'More...', params: { cache: false }, remote: true, class: 'hidden', data: { disable_with: 'loading...', infinite_scroll: true } %>
 </div>

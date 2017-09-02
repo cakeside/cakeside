@@ -13,5 +13,5 @@
   <% end %>
 </div>
 <div id='more-button-row' class="row">
-  <%= link_to_next_page @cakes, 'More...', params: { cache: false, sort: params[:sort], q: params[:q] }, remote: true, class: 'btn pull-right more-button hidden', data: { disable_with: 'loading...' } %>
+  <%= link_to_next_page @cakes, 'More...', params: { cache: false, sort: params[:sort], q: params[:q] }, remote: true, class: 'btn pull-right hidden', data: { disable_with: 'loading...', infinite_scroll: true } %>
 </div>
