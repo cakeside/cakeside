@@ -1,5 +1,5 @@
 #= require_self
-#= require_tree ./infrastructure
+#= require_tree ./initializers
 #= require_tree ./templates
 #= require_tree ./models
 #= require ./views
