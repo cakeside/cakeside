@@ -6,6 +6,8 @@ class DashboardPage < WebPage
   end
 
   def logout
-    click_link(I18n.t("logout"))
+    within ".nav-pills" do
+      click_link(I18n.t("logout"))
+    end
   end
 end
