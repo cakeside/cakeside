@@ -1,4 +1,4 @@
-#= require infrastructure/auto_view
+#= require views/auto_view
 
 class CakeSide.Views.Cakes.ShowPage extends CakeSide.AutoView
   @viewName "cakes#show"

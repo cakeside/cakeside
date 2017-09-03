@@ -20,4 +20,5 @@ class CakeSide.AutoView extends Backbone.View
     @views[name] ?= []
     @views[name].push(view)
 
-  render: -> { }
+  render: ->
+    @

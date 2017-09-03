@@ -1,7 +1,7 @@
 #= require ./behaviour
 
 class CakeSide.AutoViewSetup extends CakeSide.Behaviour
-  @on "load"
+  @on "ready"
 
   execute: ->
     for element in $('[data-autoview]')

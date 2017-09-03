@@ -16,5 +16,3 @@
 //= require backbone-model-file-upload
 //= require cakeside
 //= require_self
-
-CakeSide.Behaviour.install();
