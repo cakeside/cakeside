@@ -13,7 +13,6 @@ class CakeSide.Views.My.Profiles.ShowView extends Marionette.ItemView
 
   modelEvents:
     'invalid': 'displayError'
-    'sync': 'syncedUp'
 
   events:
     "submit #profile-form": "save"
@@ -28,10 +27,6 @@ class CakeSide.Views.My.Profiles.ShowView extends Marionette.ItemView
       success: @savedSuccessfully
       error: @couldNotSave
     )
-
-  syncedUp: (event) ->
-    console.log(arguments)
-    console.log('syncd')
 
   savedSuccessfully: (profile) =>
     @disableSaveButton()

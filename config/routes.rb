@@ -4,8 +4,6 @@ Cake::Application.routes.draw do
   get "about_us" => "home#about_us"
   get "why_cakeside" => "home#why_cakeside"
 
-  post 'comments', to: 'comments#create'
-
   resources :tutorials, only: [:index, :show] do
     get 'page/:page', action: :index, on: :collection
   end

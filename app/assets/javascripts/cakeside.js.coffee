@@ -21,7 +21,6 @@ window.CakeSide =
     CakeSide.Application = new Marionette.Application()
     CakeSide.Application.addRegions
       content_region: '#backbone-content'
-      comment_region: '#disqus_thread'
 
     CakeSide.Application.addInitializer (options) ->
       new CakeSide.Routers.CakesRouter
@@ -41,10 +40,6 @@ window.CakeSide =
     @categories = new CakeSide.Collections.CategoriesCollection()
     @tutorials = new CakeSide.Collections.TutorialsCollection()
 
-    #@disqus_view = new CakeSide.Views.DisqusView
-      #disqus_shortname: data.disqus_shortname
-    #CakeSide.Application.reqres.setHandler 'CommentView', =>
-      #@disqus_view
     CakeSide.Application.reqres.setHandler 'CakesRepository', =>
       @cakes
     CakeSide.Application.reqres.setHandler 'CategoriesRepository', =>
