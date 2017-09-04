@@ -9,16 +9,21 @@ class CakeSide.AutoView extends Backbone.View
   @install: (element) ->
     name = $(element).data('autoview')
     constructor = @constructors[name]
+    @create(name, element, constructor)
+
+  @create: (name, element, constructor) ->
     if constructor == undefined
-      console.error("Could not find autoview for #{name}")
+      console.error("Could not find autoview at #{name}")
       return
 
     view = new constructor
       el: element
       $el: $(element)
     view.render()
-    @views[name] ?= []
-    @views[name].push(view)
+    key = name.replace(".", '-')
+    @views[key] ?= []
+    @views[key].push(view)
 
-  render: ->
-    @
+  field: (name) -> $("##{@fieldName(name)}")
+  fieldName: (name) -> "#{@modelKey()}_#{name}"
+  render: -> @
