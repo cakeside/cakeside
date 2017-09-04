@@ -7,7 +7,7 @@
       <div class="card-body">
         <h4 class="card-title"><%= cake.name %></h4>
         <p class="card-text"><%= cake.story %></p>
-        <p class="card-text"><small class="text-muted"><%= cake.created_at %></small></p>
+        <p class="card-text"><small class="text-muted"><%= local_time(cake.created_at) %></small></p>
       </div>
     </div>
   <% end %>

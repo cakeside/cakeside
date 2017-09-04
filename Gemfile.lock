@@ -699,6 +699,7 @@ GEM
     kaminari-core (1.0.1)
     kgio (2.11.0)
     libyajl2 (1.2.0)
+    local_time (2.0.0)
     lol_dba (2.1.4)
       actionpack (>= 3.0)
       activerecord (>= 3.0)
@@ -975,6 +976,7 @@ DEPENDENCIES
   js-routes
   json (~> 2.1.0)
   kaminari
+  local_time
   lol_dba
   mime-types
   mini_magick

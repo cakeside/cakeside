@@ -8,6 +8,7 @@
 //= require bootstrap
 //= require bootstrap-multiselect
 //= require underscore
+//= require local-time
 //= require js-routes
 //= require backbone
 //= require backbone.marionette

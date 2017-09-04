@@ -39,6 +39,7 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'email_validator'
 gem 'font-awesome-rails'
 gem 'bootstrap', '4.0.0.beta'
+gem 'local_time'
 
 group :development do
   gem 'better_errors'
