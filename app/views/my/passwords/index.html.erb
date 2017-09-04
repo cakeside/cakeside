@@ -2,7 +2,7 @@
   <div class="col-3">
     <%= render partial: "my/shared/my_nav" %>
   </div>
-  <div class="col-9">
+  <div class="col-9" data-autoview="My.ChangePassword">
     <h1>Change Password</h1>
     <%= form_for @user, url: my_password_path(@user), html: { method: :patch, class: "form-horizontal" } do |f| %>
       <div class="form-group">

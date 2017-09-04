@@ -1,5 +1,6 @@
 #= require_self
 #= require_tree ./initializers
+#= require_tree ./lib
 #= require_tree ./templates
 #= require_tree ./models
 #= require ./views
