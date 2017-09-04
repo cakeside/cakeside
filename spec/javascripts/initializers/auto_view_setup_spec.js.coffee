@@ -3,10 +3,8 @@ describe "CakeSide.AutoViewSetup", ->
   logger = null
 
   beforeEach ->
-    logger =
-      error: () -> {}
-    spyOn(logger, 'error')
-    subject = new CakeSide.AutoViewSetup(logger)
+    spyOn(console, 'error')
+    subject = new CakeSide.AutoViewSetup()
 
   describe "#execute", ->
     beforeEach ->
@@ -23,4 +21,4 @@ describe "CakeSide.AutoViewSetup", ->
       subject.execute()
 
       expect(_.isEmpty(CakeSide.AutoViewSetup.views)).toEqual(true)
-      expect(logger.error).toHaveBeenCalled()
+      expect(console.error).toHaveBeenCalled()
