@@ -30,7 +30,6 @@ class CakeSide.Views.LoginForm extends CakeSide.AutoView
     @render()
 
   onSubmit: (event) ->
-    console.log("SUBMITTED")
     @validate()
     if !@isValid()
       event.preventDefault()
