@@ -8,6 +8,7 @@ class CakeSide.Views.LoginForm extends CakeSide.AutoView
     'keyup #session_password': 'onKeyUp'
     'submit form': 'onSubmit'
 
+
   initialize: () ->
     @model = new CakeSide.Models.Session()
 
