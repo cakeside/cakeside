@@ -10,6 +10,7 @@
 //= require underscore
 //= require local-time
 //= require js-routes
+//= require i18n/translations
 //= require backbone
 //= require backbone.marionette
 //= require backbone_rails_sync

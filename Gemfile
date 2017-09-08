@@ -40,6 +40,7 @@ gem 'email_validator'
 gem 'font-awesome-rails'
 gem 'bootstrap', '4.0.0.beta'
 gem 'local_time'
+gem 'i18n-js'
 
 group :development do
   gem 'better_errors'

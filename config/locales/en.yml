@@ -20,3 +20,8 @@ en:
         sessions: "Sessions"
         users: "Users"
   profile_saved: Your settings have been updated successfully!
+  activerecord:
+    attributes:
+      session:
+        username: 'Email'
+        password: 'Password'
