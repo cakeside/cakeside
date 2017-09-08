@@ -8,30 +8,26 @@ class CakeSide.Views.LoginForm extends CakeSide.AutoView
     'keyup #session_password': 'onKeyUp'
     'submit form': 'onSubmit'
 
+  initialize: () ->
+    @model = new CakeSide.Models.Session()
+
   render: ->
-    @hideErrors()
-    @$('input[type=submit]').prop('disabled', !@isValid())
-    _.each _.keys(@errors), (key) =>
-      @showError(@field(key), @errors[key])
-
-  isValid: ->
-    _.keys(@errors).length == 0
-
-  validate: ->
-    @errors = {}
-    if _.isEmpty(@field("username").val())
-      @errors['username'] = "Email is required"
-
-    if _.isEmpty(@field("password").val())
-      @errors['password'] = "Password is required"
+    @renderErrors(@model.validationError)
 
   onKeyUp: (event) ->
-    @validate()
+    @model.set('username', @field('username').val())
+    @model.set('password', @field('password').val())
+    @$('input[type=submit]').prop('disabled', !@model.isValid())
     @render()
 
   onSubmit: (event) ->
-    @validate()
-    if !@isValid()
+    if !@model.isValid()
+      @$('input[type=submit]').prop('disabled', true)
       event.preventDefault()
       event.stopPropagation()
     @render()
+
+  renderErrors: (errors) ->
+    @hideErrors()
+    _.each _.keys(errors), (key) =>
+      @showError(@field(key), errors[key])

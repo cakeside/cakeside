@@ -25,7 +25,7 @@
 
   <div class="col">
     <div data-autoview="login-form">
-      <%= form_for(@session, url: sessions_path(@session), html: { class: "form-horizontal needs-validation" }) do |f| %>
+      <%= form_for(@session, url: sessions_path(@session), html: { class: "form-horizontal needs-validation", novalidate: :novalidate }) do |f| %>
         <legend>Got an account? Login!</legend>
         <div class="form-group">
           <%= email_field_tag 'session[username]', '', placeholder: 'Email', class: "form-control", required: :required %>

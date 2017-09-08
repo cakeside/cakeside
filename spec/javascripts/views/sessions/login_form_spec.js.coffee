@@ -28,14 +28,14 @@ describe "CakeSide.Views.LoginForm", ->
     subject.$('form').submit()
 
     expect(subject.$('input[type=submit]').prop('disabled')).toEqual(true)
-    expect(subject.field('username').siblings('.invalid-feedback').html()).toEqual("Email is required")
+    expect(subject.field('username').siblings('.invalid-feedback').html()).toEqual("Email can't be blank")
 
   it "disables the submit button when the password is missing", ->
     subject.field('username').val('user@email.com')
     subject.$('form').submit()
 
     expect(subject.$('input[type=submit]').prop('disabled')).toEqual(true)
-    expect(subject.field("password").siblings('.invalid-feedback').html()).toEqual("Password is required")
+    expect(subject.field("password").siblings('.invalid-feedback').html()).toEqual("Password can't be blank")
 
   it "enables the submit button when all required fields are specified", ->
     subject.field('username').val('user@email.com').change()
