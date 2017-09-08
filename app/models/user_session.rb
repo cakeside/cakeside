@@ -25,6 +25,7 @@ class UserSession < ActiveRecord::Base
 
   class << self
     def authenticate(key)
+      return nil if key.blank?
       self.active.find_by(key: key)
     end
   end
