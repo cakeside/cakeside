@@ -31,6 +31,11 @@ class CakeSide.AutoView extends Backbone.View
   showError: (field, message) ->
     @$(field).addClass('is-invalid').siblings('.invalid-feedback').html(message)
 
+  renderErrors: (errors) ->
+    @hideErrors()
+    _.each _.keys(errors), (key) =>
+      @showError(@field(key), errors[key])
+
   field: (name) -> @$("##{@fieldName(name)}")
   fieldName: (name) -> "#{@modelKey}_#{name}"
   render: -> @
