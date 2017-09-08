@@ -21,6 +21,11 @@
 <%= javascript_include_tag "application" %>
 <%= render "layouts/embedly"%>
 <%= yield :javascript %>
+<script type="text/javascript">
+  I18n.defaultLocale = "<%= I18n.default_locale %>";
+  I18n.locale = "<%= I18n.locale %>";
+  I18n.fallbacks = true;
+</script>
 <%= csrf_meta_tags %>
 </head>
 <body class="<%= params[:controller].parameterize %> <%= params[:action] %>">
