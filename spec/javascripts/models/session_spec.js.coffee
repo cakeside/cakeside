@@ -5,17 +5,13 @@ describe "CakeSide.Models.Session", ->
     subject = new CakeSide.Models.Session()
 
   it "is invalid, when the email is missing", ->
-    attributeName = I18n.t("activerecord.attributes.session.username")
-    error = I18n.t("activerecord.errors.messages.blank")
-    expectedError = "#{attributeName} #{error}"
+    expectedError = "Email can't be blank"
 
     expect(subject.isValid()).toEqual(false)
     expect(subject.validationError['username']).toEqual(expectedError)
 
   it "is invalid, when the password is missing", ->
-    attributeName = I18n.t("activerecord.attributes.session.password")
-    error = I18n.t("activerecord.errors.messages.blank")
-    expectedError = "#{attributeName} #{error}"
+    expectedError = "Password can't be blank"
 
     expect(subject.isValid()).toEqual(false)
     expect(subject.validationError['password']).toEqual(expectedError)
