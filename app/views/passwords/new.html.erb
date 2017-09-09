@@ -1,14 +1,12 @@
 <div class="row">
-  <div class="col">
+  <div class="col" data-autoview="password-reset-form">
     <h1>Forgot your password?</h1>
-    <%= form_for(@user, url: passwords_path) do |f| %>
-      <fieldset>
-        <legend>Type your email address below to reset your password.</legend>
-        <div class="form-group">
-          <%= f.email_field :email, placeholder: "Email", class: "form-control", required: :required %>
-        </div>
-        <button type="submit" class="btn btn-primary">Send me reset password instructions</button>
-      </fieldset>
+    <%= form_for(@user, url: passwords_path, html: { class: "form-horizontal needs-validation", novalidate: :novalidate }) do |f| %>
+      <div class="form-group">
+        <%= f.email_field :email, placeholder: "Email", class: "form-control", required: :required %>
+        <div class="invalid-feedback"></div>
+      </div>
+      <%= f.submit "Send me reset password instructions", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
