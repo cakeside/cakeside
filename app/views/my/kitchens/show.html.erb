@@ -2,7 +2,7 @@
 <%= content_for :javascript do -%>
   <%= javascript_tag do %>
     var ALL_TAGS = <%= raw @tags.pluck(:name) %>;
-    CakeSide.initialize({ access_token: '<%= current_user.authentication_token %>' });
+    csx.initialize({ access_token: '<%= current_user.authentication_token %>' });
   <% end %>
 <% end %>
 
