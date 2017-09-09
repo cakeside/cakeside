@@ -1,7 +1,7 @@
 module ApplicationHelper
-  def avatar_for(user, size: 260, clazz: '')
+  def avatar_for(user, size: 260, clazz: 'img-thumbnail')
     return gravatar_for(user, size) if user.avatar == nil || !user.avatar.image.present?
-    image_tag(user.avatar.url_for(:thumb), alt: user.name, class: clazz, style: "width:#{size}px;")
+    image_tag(user.avatar.url_for(:thumb), alt: user.name, class: clazz)
   end
 
   def gravatar_for(user, size)
