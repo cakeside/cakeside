@@ -11,7 +11,7 @@ class CakeSide.Views.RegistrationForm extends CakeSide.AutoView
     'submit form': 'onSubmit'
 
   initialize: () ->
-    @model = new CakeSide.Models.User()
+    @model = new CakeSide.Models.Registration()
 
   render: ->
     @renderErrors(@model.validationError)

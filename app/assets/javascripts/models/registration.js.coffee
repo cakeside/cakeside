@@ -1,7 +1,6 @@
 #= require ./translation
 
-class CakeSide.Models.User extends Backbone.Model
-  modelKey: 'user'
+class CakeSide.Models.Registration extends Backbone.Model
   translation: new CakeSide.Translation('user')
   defaults:
     name: null
