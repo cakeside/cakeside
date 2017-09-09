@@ -41,7 +41,7 @@
         <% end %>
       </ul>
       <%= form_tag(configuration_for(:search_path, search_path), method: :get, name: "search", class: "form-inline my-2 my-lg-0") do %>
-        <%= text_field_tag :q, params[:q], class: 'form-control mr-sm-2', placeholder: 'Search', 'aria-label' => "Search" %>
+        <%= text_field_tag :q, params[:q], class: 'form-control mr-sm-2', placeholder: 'Search', 'aria-label' => "Search", required: :required %>
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       <% end %>
     </div>
