@@ -1,4 +1,4 @@
-class CakeSide.Views.My.Cakes.NewView extends Marionette.ItemView
+class csx.Views.My.Cakes.NewView extends Marionette.ItemView
   template: JST["templates/my/cakes/new"]
   ui:
     name: "#cake_name"
@@ -34,7 +34,7 @@ class CakeSide.Views.My.Cakes.NewView extends Marionette.ItemView
 
   couldNotSave: (cake, xhr) =>
     @enableSaveButton()
-    error = new CakeSide.Views.ErrorView
+    error = new csx.Views.ErrorView
       el: @$('form#new-cake'),
       attributesWithErrors: $.parseJSON(xhr.responseText)
     error.render()
@@ -57,5 +57,5 @@ class CakeSide.Views.My.Cakes.NewView extends Marionette.ItemView
   serializeData: ->
     {
       cake: @model.toJSON(),
-      categories: CakeSide.Application.request('CategoriesRepository').toJSON(),
+      categories: csx.Application.request('CategoriesRepository').toJSON(),
     }

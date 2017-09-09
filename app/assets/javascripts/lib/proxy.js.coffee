@@ -1,7 +1,7 @@
-class CakeSide.Proxy
+class csx.Proxy
   @create: do ->
     parse = (object, path) ->
-      return unless CakeSide.Proxy.typeOf(object) == 'object' and path?
+      return unless csx.Proxy.typeOf(object) == 'object' and path?
       return [object, path] if path.indexOf('.') == -1
       path = path.split('.')
       tail = path.pop()
@@ -23,7 +23,7 @@ class CakeSide.Proxy
     (object, path, value) ->
       return read(object, path) if arguments.length == 2
       return write(object, path, value) if arguments.length == 3
-      console.error '[CakeSide.Proxy.create] incorrect number of arguments'
+      console.error '[csx.Proxy.create] incorrect number of arguments'
 
   @typeOf: (object) ->
     return 'array' if _.isArray(object)

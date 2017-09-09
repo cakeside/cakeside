@@ -1,4 +1,4 @@
-class CakeSide.Translation
+class csx.Translation
   constructor: (modelKey) ->
     @modelKey = modelKey
 

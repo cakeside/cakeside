@@ -1,7 +1,7 @@
 #= require ./translation
 
-class CakeSide.Models.Registration extends Backbone.Model
-  translation: new CakeSide.Translation('user')
+class csx.Models.Registration extends Backbone.Model
+  translation: new csx.Translation('user')
   defaults:
     name: null
     email: null
@@ -12,7 +12,7 @@ class CakeSide.Models.Registration extends Backbone.Model
   validate: (attributes, options) ->
     errors = {}
 
-    unless new CakeSide.Models.Email(attributes.email).isValid()
+    unless new csx.Models.Email(attributes.email).isValid()
       errors['email'] = @translation.errorFor('email', 'invalid')
 
     _.each @requiredFields, (field) =>

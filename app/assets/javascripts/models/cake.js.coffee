@@ -1,4 +1,4 @@
-class CakeSide.Models.Cake extends Backbone.Model
+class csx.Models.Cake extends Backbone.Model
   paramRoot: 'cake'
 
   defaults:
@@ -14,7 +14,7 @@ class CakeSide.Models.Cake extends Backbone.Model
     return "Category can't be blank" unless attributes.category_id
 
   photos: ->
-    CakeSide.Application.request('PhotosRepository', @id)
+    csx.Application.request('PhotosRepository', @id)
 
   public_url: ->
     "#{window.location.origin}/creations/#{@get('slug')}"
@@ -22,6 +22,6 @@ class CakeSide.Models.Cake extends Backbone.Model
   category_id: ->
     @get('category_id') || @get('category').id
 
-class CakeSide.Collections.CakesCollection extends Backbone.Collection
-  model: CakeSide.Models.Cake
+class csx.Collections.CakesCollection extends Backbone.Collection
+  model: csx.Models.Cake
   url: '/api/v1/cakes'

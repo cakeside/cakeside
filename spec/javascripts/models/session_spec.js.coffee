@@ -1,8 +1,8 @@
-describe "CakeSide.Models.Session", ->
+describe "csx.Models.Session", ->
   subject = null
 
   beforeEach ->
-    subject = new CakeSide.Models.Session()
+    subject = new csx.Models.Session()
 
   it "is invalid, when the email is missing", ->
     expectedError = "Email can't be blank"

@@ -1,4 +1,4 @@
-describe "CakeSide.Views.LoginForm", ->
+describe "csx.Views.LoginForm", ->
   subject = null
 
   beforeEach ->
@@ -21,7 +21,7 @@ describe "CakeSide.Views.LoginForm", ->
 </div>
 '''
 
-    subject = new CakeSide.Views.LoginForm
+    subject = new csx.Views.LoginForm
       el: $('[data-autoview=login-form]')
 
   it "disables the submit button when the email is missing", ->

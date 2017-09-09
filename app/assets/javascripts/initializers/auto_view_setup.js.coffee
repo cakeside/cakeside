@@ -1,6 +1,6 @@
 #= require ./behaviour
 
-class CakeSide.AutoViewSetup extends CakeSide.Behaviour
+class csx.AutoViewSetup extends csx.Behaviour
   @on "ready"
   @on "ajaxComplete"
 
@@ -12,8 +12,8 @@ class CakeSide.AutoViewSetup extends CakeSide.Behaviour
   install: (element) ->
     viewName = element.data('autoview')
     if viewName.indexOf("-") > 0
-      CakeSide.AutoView.install(element)
+      csx.AutoView.install(element)
     else
-      constructor = CakeSide.Proxy.create(CakeSide.Views, viewName)
-      CakeSide.AutoView.create(viewName, element, constructor)
+      constructor = csx.Proxy.create(csx.Views, viewName)
+      csx.AutoView.create(viewName, element, constructor)
     element.data('autoview-setup-complete', true)

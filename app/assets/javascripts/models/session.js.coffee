@@ -1,8 +1,8 @@
 #= require ./translation
 
-class CakeSide.Models.Session extends Backbone.Model
+class csx.Models.Session extends Backbone.Model
   modelKey: 'session'
-  translation: new CakeSide.Translation('session')
+  translation: new csx.Translation('session')
   defaults:
     email: null
     password: null
@@ -12,7 +12,7 @@ class CakeSide.Models.Session extends Backbone.Model
   validate: (attributes, options) ->
     errors = {}
 
-    unless new CakeSide.Models.Email(attributes.email).isValid()
+    unless new csx.Models.Email(attributes.email).isValid()
       errors['email'] = @translation.errorFor('email', 'invalid')
 
     _.each @requiredFields, (field) =>

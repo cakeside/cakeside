@@ -1,13 +1,11 @@
-class CakeSide.Controllers.My.ProfileController extends Marionette.Controller
-  views: CakeSide.Views.My.Profiles
+class csx.Controllers.My.ProfileController extends Marionette.Controller
+  views: csx.Views.My.Profiles
   initialize: (options) ->
-    @content_region = CakeSide.Application.content_region
-    #@comment_view = CakeSide.Application.request('CommentView')
+    @content_region = csx.Application.content_region
 
   show: (id) ->
     @selectTab()
-    #@comment_view.hide()
-    profile = new CakeSide.Models.Profile
+    profile = new csx.Models.Profile
       id: id
     profile.fetch
       success: =>

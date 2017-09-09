@@ -1,6 +1,6 @@
-describe "CakeSide.Models.Cake", ->
+describe "csx.Models.Cake", ->
   subject = (attributes) ->
-    new CakeSide.Models.Cake(attributes)
+    new csx.Models.Cake(attributes)
 
   describe "#validate", ->
     it "returns an error when the name is null", ->

@@ -1,6 +1,6 @@
 #= require service/embedly_service
 
-class CakeSide.Views.My.Tutorials.NewView extends Marionette.ItemView
+class csx.Views.My.Tutorials.NewView extends Marionette.ItemView
   template: JST['templates/my/tutorials/new']
   ui:
     url: '#tutorial_url'
@@ -19,7 +19,7 @@ class CakeSide.Views.My.Tutorials.NewView extends Marionette.ItemView
 
   initialize: ->
     @model = new @collection.model()
-    @service = new CakeSide.EmbedlyService()
+    @service = new csx.EmbedlyService()
 
   loadUrl: ->
     if @model.isValidUrl(@ui.url.val())
@@ -63,7 +63,7 @@ class CakeSide.Views.My.Tutorials.NewView extends Marionette.ItemView
 
   couldNotSave: (cake, xhr) =>
     @ui.save_button.removeAttr('disabled')
-    error = new CakeSide.Views.ErrorView
+    error = new csx.Views.ErrorView
       el: @$('form#new-tutorial'),
       attributesWithErrors: $.parseJSON(xhr.responseText)
     error.render()

@@ -1,6 +1,6 @@
 #= require views/auto_view
 
-class CakeSide.Views.My.ChangePassword extends CakeSide.AutoView
+class csx.Views.My.ChangePassword extends csx.AutoView
   @viewName 'change-password'
 
   render: () ->

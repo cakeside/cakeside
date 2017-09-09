@@ -1,4 +1,4 @@
 #= require views/auto_view
 
-class CakeSide.Views.Cakes.Card extends CakeSide.AutoView
+class csx.Views.Cakes.Card extends csx.AutoView
   @viewName 'cake-card'

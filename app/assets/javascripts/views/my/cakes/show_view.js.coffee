@@ -1,8 +1,8 @@
 #= require views/my/cakes/thumbnail_view
 
-class CakeSide.Views.My.Cakes.ShowView extends Marionette.CompositeView
+class csx.Views.My.Cakes.ShowView extends Marionette.CompositeView
   template: JST["templates/my/cakes/show"]
-  childView: CakeSide.Views.My.Cakes.ThumbnailView
+  childView: csx.Views.My.Cakes.ThumbnailView
   childViewContainer: '.card-columns'
 
   events:
@@ -26,10 +26,10 @@ class CakeSide.Views.My.Cakes.ShowView extends Marionette.CompositeView
     @model.set('primary_photo_id', options.photo_id) if options.photo_id
 
   launchAddPhoto: ->
-    @displayModal(new CakeSide.Views.Photos.NewModalView(cake: @model))
+    @displayModal(new csx.Views.Photos.NewModalView(cake: @model))
 
   removeCake: ->
-    @displayModal(new CakeSide.Views.Cakes.DeleteCakeModalView(model: @model))
+    @displayModal(new csx.Views.Cakes.DeleteCakeModalView(model: @model))
 
   displayModal: (view) ->
     $("#modal").html(view.render().el)

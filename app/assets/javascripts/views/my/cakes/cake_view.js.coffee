@@ -1,4 +1,4 @@
-class CakeSide.Views.My.Cakes.CakeView extends Marionette.ItemView
+class csx.Views.My.Cakes.CakeView extends Marionette.ItemView
   template: JST["templates/my/cakes/cake"]
   tagName: 'div'
   className: 'media'

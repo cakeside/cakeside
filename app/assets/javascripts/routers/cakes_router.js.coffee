@@ -1,4 +1,4 @@
-class CakeSide.Routers.CakesRouter extends Marionette.AppRouter
+class csx.Routers.CakesRouter extends Marionette.AppRouter
   appRoutes:
     "cakes/new": "newCake"
     "cakes/:id/edit": "edit"

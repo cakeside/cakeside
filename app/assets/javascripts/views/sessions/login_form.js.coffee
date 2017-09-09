@@ -1,6 +1,6 @@
 #= require views/auto_view
 
-class CakeSide.Views.LoginForm extends CakeSide.AutoView
+class csx.Views.LoginForm extends csx.AutoView
   @viewName 'login-form'
   modelKey: "session"
   events:
@@ -9,7 +9,7 @@ class CakeSide.Views.LoginForm extends CakeSide.AutoView
     'submit form': 'onSubmit'
 
   initialize: () ->
-    @model = new CakeSide.Models.Session()
+    @model = new csx.Models.Session()
 
   render: ->
     @renderErrors(@model.validationError)

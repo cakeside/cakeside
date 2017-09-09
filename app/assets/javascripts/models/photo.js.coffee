@@ -1,4 +1,4 @@
-class CakeSide.Models.Photo extends Backbone.Model
+class csx.Models.Photo extends Backbone.Model
   paramRoot: 'photo'
   fileAttribute: 'image'
 
@@ -22,8 +22,8 @@ class CakeSide.Models.Photo extends Backbone.Model
 
     super(options)
 
-class CakeSide.Collections.PhotosCollection extends Backbone.Collection
-  model: CakeSide.Models.Photo
+class csx.Collections.PhotosCollection extends Backbone.Collection
+  model: csx.Models.Photo
 
   initialize: (options) ->
     @set('cake_id', options.cake_id)

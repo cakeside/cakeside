@@ -1,4 +1,4 @@
-class CakeSide.Views.ErrorView extends Backbone.View
+class csx.Views.ErrorView extends Backbone.View
   initialize: (options) ->
     @attributesWithErrors = options.attributesWithErrors
     _.bindAll(@, "clearOldErrors", "renderErrors", "renderError", "fieldFor")

@@ -1,4 +1,4 @@
-class CakeSide.Views.My.Photos.NewModalView extends Marionette.ItemView
+class csx.Views.My.Photos.NewModalView extends Marionette.ItemView
   template: JST["templates/my/photos/new-modal"]
   ui:
     watermark: '#watermark'
@@ -11,7 +11,7 @@ class CakeSide.Views.My.Photos.NewModalView extends Marionette.ItemView
 
   constructor: (options) ->
     super(options)
-    @collection = CakeSide.Application.request('PhotosRepository', options.cake.id)
+    @collection = csx.Application.request('PhotosRepository', options.cake.id)
     @cake = options.cake
     @model = new @collection.model(cake_id: @cake.id)
 

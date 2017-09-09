@@ -8,7 +8,7 @@
 #= require_tree ./routers
 #= require_tree ./service
 
-window.CakeSide =
+window.csx =
   Models: {}
   Collections: {}
   Routers: {}
@@ -19,47 +19,47 @@ window.CakeSide =
       if data.access_token
         xhr.setRequestHeader "Authorization", "Token token=#{data.access_token}"
 
-    CakeSide.Application = new Marionette.Application()
-    CakeSide.Application.addRegions
+    csx.Application = new Marionette.Application()
+    csx.Application.addRegions
       content_region: '#backbone-content'
 
-    CakeSide.Application.addInitializer (options) ->
-      new CakeSide.Routers.CakesRouter
-        controller: new CakeSide.Controllers.My.CakesController()
-      new CakeSide.Routers.TutorialsRouter
-        controller: new CakeSide.Controllers.My.TutorialsController()
-      new CakeSide.Routers.DashboardRouter
-        controller: new CakeSide.Controllers.My.DashboardController()
-      new CakeSide.Routers.ProfileRouter
-        controller: new CakeSide.Controllers.My.ProfileController()
+    csx.Application.addInitializer (options) ->
+      new csx.Routers.CakesRouter
+        controller: new csx.Controllers.My.CakesController()
+      new csx.Routers.TutorialsRouter
+        controller: new csx.Controllers.My.TutorialsController()
+      new csx.Routers.DashboardRouter
+        controller: new csx.Controllers.My.DashboardController()
+      new csx.Routers.ProfileRouter
+        controller: new csx.Controllers.My.ProfileController()
 
-    CakeSide.Application.on 'start', ->
+    csx.Application.on 'start', ->
       if Backbone.history
         Backbone.history.start()
 
-    @cakes = new CakeSide.Collections.CakesCollection()
-    @categories = new CakeSide.Collections.CategoriesCollection()
-    @tutorials = new CakeSide.Collections.TutorialsCollection()
+    @cakes = new csx.Collections.CakesCollection()
+    @categories = new csx.Collections.CategoriesCollection()
+    @tutorials = new csx.Collections.TutorialsCollection()
 
-    CakeSide.Application.reqres.setHandler 'CakesRepository', =>
+    csx.Application.reqres.setHandler 'CakesRepository', =>
       @cakes
-    CakeSide.Application.reqres.setHandler 'CategoriesRepository', =>
+    csx.Application.reqres.setHandler 'CategoriesRepository', =>
       @categories
     @photos_cache = {}
-    CakeSide.Application.reqres.setHandler 'PhotosRepository', (cake_id) =>
+    csx.Application.reqres.setHandler 'PhotosRepository', (cake_id) =>
       if @photos_cache[cake_id]
         @photos_cache[cake_id]
       else
-        photos = new CakeSide.Collections.PhotosCollection(cake_id: cake_id)
+        photos = new csx.Collections.PhotosCollection(cake_id: cake_id)
         @photos_cache[cake_id] = photos
         photos.fetch(reset: true)
         photos
-    CakeSide.Application.reqres.setHandler 'TutorialsRepository', =>
+    csx.Application.reqres.setHandler 'TutorialsRepository', =>
       @tutorials
-    CakeSide.Application.reqres.setHandler 'ProfilesRepository', =>
-      @profiles ||= new CakeSide.Collections.ProfilesCollection()
+    csx.Application.reqres.setHandler 'ProfilesRepository', =>
+      @profiles ||= new csx.Collections.ProfilesCollection()
 
     @categories.fetch(reset: true)
     @tutorials.fetch(reset: true)
     @cakes.fetch(reset: true).done ->
-      CakeSide.Application.start()
+      csx.Application.start()

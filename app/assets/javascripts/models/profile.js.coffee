@@ -1,4 +1,4 @@
-class CakeSide.Models.Profile extends Backbone.Model
+class csx.Models.Profile extends Backbone.Model
   paramRoot: 'profile'
   urlRoot: '/api/v1/profiles'
   modelEvents:
@@ -33,6 +33,6 @@ class CakeSide.Models.Profile extends Backbone.Model
     regex = /^@?(\w){1,15}$/
     regex.test(twitter)
 
-class CakeSide.Collections.ProfilesCollection extends Backbone.Collection
-  model: CakeSide.Models.Profile
+class csx.Collections.ProfilesCollection extends Backbone.Collection
+  model: csx.Models.Profile
   url: '/api/v1/profiles'

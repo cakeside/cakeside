@@ -1,6 +1,6 @@
 #= require views/auto_view
 
-class CakeSide.Views.RegistrationForm extends CakeSide.AutoView
+class csx.Views.RegistrationForm extends csx.AutoView
   @viewName 'registration-form'
   modelKey: "user"
   events:
@@ -11,7 +11,7 @@ class CakeSide.Views.RegistrationForm extends CakeSide.AutoView
     'submit form': 'onSubmit'
 
   initialize: () ->
-    @model = new CakeSide.Models.Registration()
+    @model = new csx.Models.Registration()
 
   render: ->
     @renderErrors(@model.validationError)

@@ -1,9 +1,9 @@
-describe "CakeSide.Proxy", ->
+describe "csx.Proxy", ->
   subject = null
 
   describe "#create", ->
     object = null
-    subject = CakeSide.Proxy
+    subject = csx.Proxy
 
     beforeEach ->
       object =

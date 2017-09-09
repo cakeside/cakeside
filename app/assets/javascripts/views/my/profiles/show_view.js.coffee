@@ -1,4 +1,4 @@
-class CakeSide.Views.My.Profiles.ShowView extends Marionette.ItemView
+class csx.Views.My.Profiles.ShowView extends Marionette.ItemView
   template: JST["templates/my/profiles/show"]
   ui:
     name: '#user_name'

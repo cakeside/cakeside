@@ -1,6 +1,6 @@
 #= require views/auto_view
 
-class CakeSide.Views.Cakes.ShowPage extends CakeSide.AutoView
+class csx.Views.Cakes.ShowPage extends csx.AutoView
   @viewName "cakes#show"
 
   render: ->

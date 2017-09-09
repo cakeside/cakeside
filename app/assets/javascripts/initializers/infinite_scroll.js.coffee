@@ -1,6 +1,6 @@
 #= require ./behaviour
 
-class CakeSide.InfiniteScroll extends CakeSide.Behaviour
+class csx.InfiniteScroll extends csx.Behaviour
   PERCENTAGE=0.8
   @on "scroll"
 

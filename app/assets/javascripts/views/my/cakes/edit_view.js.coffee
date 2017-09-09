@@ -1,8 +1,8 @@
 #= require views/my/cakes/thumbnail_view
 
-class CakeSide.Views.My.Cakes.EditView extends Marionette.CompositeView
+class csx.Views.My.Cakes.EditView extends Marionette.CompositeView
   template : JST["templates/my/cakes/edit"]
-  childView: CakeSide.Views.My.Cakes.ThumbnailView
+  childView: csx.Views.My.Cakes.ThumbnailView
   childViewContainer: '.card-columns'
   ui:
     name: "#cake_name"
@@ -43,7 +43,7 @@ class CakeSide.Views.My.Cakes.EditView extends Marionette.CompositeView
 
   couldNotSave: (cake, xhr) =>
     @enableSaveButton()
-    error = new CakeSide.Views.ErrorView
+    error = new csx.Views.ErrorView
       el: @$('form#edit-cake'),
       attributesWithErrors: $.parseJSON(xhr.responseText)
     error.render()
@@ -68,11 +68,11 @@ class CakeSide.Views.My.Cakes.EditView extends Marionette.CompositeView
   serializeData: ->
     {
       cake: @model.toJSON(),
-      categories: CakeSide.Application.request('CategoriesRepository').toJSON(),
+      categories: csx.Application.request('CategoriesRepository').toJSON(),
     }
 
   launchAddPhoto: ->
-    @displayModal(new CakeSide.Views.Photos.NewModalView(cake: @model))
+    @displayModal(new csx.Views.Photos.NewModalView(cake: @model))
 
   displayModal: (view) ->
     $("#modal").html(view.render().el)

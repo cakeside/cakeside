@@ -1,4 +1,4 @@
-class CakeSide.AutoView extends Backbone.View
+class csx.AutoView extends Backbone.View
   @views: {}
   @constructors: {}
 

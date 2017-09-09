@@ -1,4 +1,4 @@
-class CakeSide.Views.My.Cakes.DeleteCakeModalView extends Marionette.ItemView
+class csx.Views.My.Cakes.DeleteCakeModalView extends Marionette.ItemView
   template: JST["templates/my/cakes/delete_modal"]
   ui:
     remove_button: "#remove-button"

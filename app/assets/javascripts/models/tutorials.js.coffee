@@ -1,4 +1,4 @@
-class CakeSide.Models.Tutorial extends Backbone.Model
+class csx.Models.Tutorial extends Backbone.Model
   paramRoot: 'tutorial'
 
   defaults:
@@ -19,6 +19,6 @@ class CakeSide.Models.Tutorial extends Backbone.Model
   hasImage: (image_url) ->
     image_url
 
-class CakeSide.Collections.TutorialsCollection extends Backbone.Collection
-  model: CakeSide.Models.Tutorial
+class csx.Collections.TutorialsCollection extends Backbone.Collection
+  model: csx.Models.Tutorial
   url: '/api/v1/tutorials'
