@@ -8,8 +8,8 @@
     <h1><%= @user.name %> <small>A member since <%= @user.created_at.to_s :foomat %>, with <%= @user.creations.length %> creations.</small> </h1>
     <h5><%= @user.city %></h5>
     <hr>
-    <% unless @user.website.blank? %>
-      <p><a href="<%= @user.website %>" target="_blank">Website</a></p>
+    <% if @user.website.present? %>
+      <p><a href="<%= @user.website %>" target="_blank"><%= @user.website %></a></p>
     <% end %>
     <% unless @user.twitter.blank? %>
       <p><a href="https://twitter.com/<%= @user.twitter %>" target="_blank" class="twitter-follow-button" data-show-count="false">Follow @<%= @user.twitter %></a></p>
