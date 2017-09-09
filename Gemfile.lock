@@ -575,6 +575,7 @@ GEM
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     curb (0.9.4)
+    daemons (1.2.4)
     dalli (2.7.6)
     database_cleaner (1.6.1)
     debug_inspector (0.0.3)
@@ -955,6 +956,7 @@ DEPENDENCIES
   chef
   coffee-rails (~> 4.1.0)
   curb
+  daemons
   dalli
   database_cleaner
   delayed_job_active_record
