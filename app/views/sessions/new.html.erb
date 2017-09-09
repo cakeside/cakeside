@@ -10,7 +10,7 @@
   </div>
 
   <div class="col">
-    <div data-autoview="login-form">
+    <div data-autoview="login-form" data-automodel="Session">
       <%= form_for(@session, url: sessions_path(@session), html: { class: "form-horizontal needs-validation", novalidate: :novalidate }) do |f| %>
         <legend>Got an account? Login!</legend>
         <div class="form-group">
@@ -26,7 +26,7 @@
       <% end %>
     </div>
 
-    <div data-autoview="registration-form">
+    <div data-autoview="registration-form" data-automodel="Registration">
       <%= form_for(User.new, as: :user, url: registration_path, html: { class: 'form-horizontal', novalidate: :novalidate }) do |f| %>
         <fieldset>
           <legend>New to CakeSide? Join Us!</legend>

@@ -7,6 +7,3 @@ class csx.Views.LoginForm extends csx.FormView
     'input #session_email': 'onInput'
     'input #session_password': 'onInput'
     'submit form': 'onSubmit'
-
-  initialize: () ->
-    @model = new csx.Models.Session()

@@ -4,6 +4,3 @@ class csx.Views.PasswordResetForm extends csx.FormView
   events:
     'input #user_email': 'onInput'
     'submit form': 'onSubmit'
-
-  initialize: () ->
-    @model = new csx.Models.PasswordReset()

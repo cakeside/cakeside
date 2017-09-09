@@ -7,6 +7,7 @@ describe "csx.AutoViewSetup", ->
     subject = new csx.AutoViewSetup()
 
   describe "#execute", ->
+
     beforeEach ->
       csx.AutoView.views = {}
 
@@ -23,3 +24,17 @@ describe "csx.AutoViewSetup", ->
 
       expect(_.isEmpty(csx.AutoView.views)).toEqual(true)
       expect(console.error).toHaveBeenCalled()
+
+    it "attaches the auto model to the auto view", ->
+      class csx.TestView extends csx.AutoView
+        @viewName 'test-view'
+
+      class csx.Models.Test extends Backbone.Model
+        defaults:
+          test: null
+
+      fixture.set '<div id="item" data-autoview="test-view" data-automodel="Test"></div>'
+      subject.execute()
+      result = csx.AutoView.views['test-view'][0]
+      expect(result instanceof csx.TestView).toEqual(true)
+      expect(result.model instanceof csx.Models.Test).toEqual(true)

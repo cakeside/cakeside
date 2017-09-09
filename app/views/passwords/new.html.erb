@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col" data-autoview="password-reset-form">
+  <div class="col" data-autoview="password-reset-form" data-automodel="PasswordReset">
     <h1>Forgot your password?</h1>
     <%= form_for(@user, url: passwords_path, html: { class: "form-horizontal needs-validation", novalidate: :novalidate }) do |f| %>
       <div class="form-group">

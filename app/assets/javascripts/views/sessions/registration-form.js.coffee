@@ -9,6 +9,3 @@ class csx.Views.RegistrationForm extends csx.FormView
     'input #user_password': 'onInput'
     'change #user_accepted': 'onInput'
     'submit form': 'onSubmit'
-
-  initialize: () ->
-    @model = new csx.Models.Registration()

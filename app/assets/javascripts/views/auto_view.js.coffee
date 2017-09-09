@@ -19,9 +19,15 @@ class csx.AutoView extends Backbone.View
     view = new constructor
       el: element
       $el: $(element)
+      model: @discoverModel($(element))
     view.render()
     key = name.replace(".", '-')
     @views[key] ?= []
     @views[key].push(view)
+
+  @discoverModel: (element) ->
+    modelName = element.data('automodel')
+    return if _.isUndefined(modelName)
+    new csx.Models[modelName]()
 
   render: -> @
