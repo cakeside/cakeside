@@ -42,6 +42,9 @@ class User
             relation.by_cakes
           end
         end
+        builder.if_missing(:sort) do |relation, direction|
+          relation.ordered
+        end
       end
     end
   end
