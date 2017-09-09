@@ -18,7 +18,7 @@
         <% if user_signed_in? %>
         <li class="nav-item dropdown">
           <%= link_to my_dashboard_path, id: 'navbarDropdownMenuLink', class: 'nav-link dropdown-toggle', data: { toggle: 'dropdown' }, 'aria-haspopup'=>"true", 'aria-expanded'=>"false" do %>
-            <%= avatar_for(current_user, size: 24) %> <%= current_user.name %>
+            <%= current_user.name %>
           <% end %>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" data-no-turbolink>
             <%= link_to my_root_path(anchor: 'cakes/new'), class: 'dropdown-item' do %>
