@@ -1,13 +1,14 @@
 #= require ./translation
 
-class CakeSide.Models.Session extends Backbone.Model
-  modelKey: 'session'
-  translation: new CakeSide.Translation('session')
+class CakeSide.Models.User extends Backbone.Model
+  modelKey: 'user'
+  translation: new CakeSide.Translation('user')
   defaults:
+    name: null
     email: null
     password: null
 
-  requiredFields: ['email', 'password']
+  requiredFields: ['name', 'email', 'password']
 
   validate: (attributes, options) ->
     errors = {}
@@ -18,5 +19,8 @@ class CakeSide.Models.Session extends Backbone.Model
     _.each @requiredFields, (field) =>
       if _.isEmpty(attributes[field])
         errors[field] = @translation.errorFor(field, 'blank')
+
+    unless attributes.accepted
+      errors['accepted'] = @translation.errorFor('accepted', 'accepted')
 
     return errors if _.keys(errors).length > 0

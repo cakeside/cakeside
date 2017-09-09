@@ -25,3 +25,8 @@ en:
       session:
         email: 'Email'
         password: 'Password'
+      user:
+        accepted: "Terms and conditions"
+        email: 'Email'
+        name: 'Full name'
+        password: 'Password'
