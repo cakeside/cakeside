@@ -38,4 +38,5 @@ class CakeSide.AutoView extends Backbone.View
 
   field: (name) -> @$("##{@fieldName(name)}")
   fieldName: (name) -> "#{@modelKey}_#{name}"
+  fieldNameFor: (element) -> element.attr('id').replace("#{@modelKey}_", '')
   render: -> @

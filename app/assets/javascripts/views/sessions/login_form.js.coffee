@@ -4,7 +4,7 @@ class CakeSide.Views.LoginForm extends CakeSide.AutoView
   @viewName 'login-form'
   modelKey: "session"
   events:
-    'input #session_username': 'onInput'
+    'input #session_email': 'onInput'
     'input #session_password': 'onInput'
     'submit form': 'onSubmit'
 
@@ -15,8 +15,8 @@ class CakeSide.Views.LoginForm extends CakeSide.AutoView
     @renderErrors(@model.validationError)
 
   onInput: (event) ->
-    @model.set('email', @field('email').val())
-    @model.set('password', @field('password').val())
+    $element = $(event.target)
+    @model.set(@fieldNameFor($element), $element.val())
     @$('input[type=submit]').prop('disabled', !@model.isValid())
     @render()
 
