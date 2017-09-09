@@ -23,5 +23,5 @@ en:
   activerecord:
     attributes:
       session:
-        username: 'Email'
+        email: 'Email'
         password: 'Password'

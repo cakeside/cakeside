@@ -2,16 +2,16 @@ class CakeSide.Models.Session extends Backbone.Model
   EMAIL_REGEX=/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
   modelKey: 'session'
   defaults:
-    username: null
+    email: null
     password: null
 
-  requiredFields: ['username', 'password']
+  requiredFields: ['email', 'password']
 
   validate: (attributes, options) ->
     errors = {}
 
-    if !EMAIL_REGEX.test(attributes.username)
-      errors['username'] = @errorFor('username', 'invalid')
+    if !EMAIL_REGEX.test(attributes.email)
+      errors['email'] = @errorFor('email', 'invalid')
 
     _.each @requiredFields, (field) =>
       if _.isEmpty(attributes[field])

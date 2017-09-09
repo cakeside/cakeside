@@ -8,7 +8,7 @@ describe "uploading a new creation", :js => true do
   before :each do
     visit login_path
     within('.form-inline') do
-      fill_in('session_username', with: user.email)
+      fill_in('session_email', with: user.email)
       fill_in('session_password', with: "password")
     end
     click_button("Sign In")

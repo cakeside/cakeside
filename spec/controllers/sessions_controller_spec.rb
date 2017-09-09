@@ -23,14 +23,14 @@ describe SessionsController do
   end
 
   describe "#create" do
-    context "when the username and password is correct" do
+    context "when the email and password is correct" do
       let(:user_session) { build(:user_session, id: SecureRandom.uuid) }
-      let(:username) { "joe" }
+      let(:email) { "joe" }
       let(:password) { "password" }
 
       before :each do
-        allow(User).to receive(:login).with(username, password).and_return(user_session)
-        post :create, session: { username: username, password: password }
+        allow(User).to receive(:login).with(email, password).and_return(user_session)
+        post :create, session: { email: email, password: password }
       end
 
       it "returns a valid session" do
@@ -42,13 +42,13 @@ describe SessionsController do
       end
     end
 
-    context "when the username is not known" do
+    context "when the email is not known" do
       before :each do
         allow(User).to receive(:login).and_return(nil)
       end
 
       it "returns an error" do
-        post :create, session: { username: 'x', password: 'y' }
+        post :create, session: { email: 'x', password: 'y' }
         expect(response).to redirect_to(login_path)
         expect(flash[:error]).to_not be_empty
       end

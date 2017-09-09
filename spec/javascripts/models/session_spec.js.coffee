@@ -8,14 +8,14 @@ describe "CakeSide.Models.Session", ->
     expectedError = "Email can't be blank"
 
     expect(subject.isValid()).toEqual(false)
-    expect(subject.validationError['username']).toEqual(expectedError)
+    expect(subject.validationError['email']).toEqual(expectedError)
 
   it "is invalid, when the email is not a valid email addrees", ->
-    subject.set('username', 'blah')
+    subject.set('email', 'blah')
     expectedError = "Email is invalid"
 
     expect(subject.isValid()).toEqual(false)
-    expect(subject.validationError['username']).toEqual(expectedError)
+    expect(subject.validationError['email']).toEqual(expectedError)
 
   it "is invalid, when the password is missing", ->
     expectedError = "Password can't be blank"
@@ -24,7 +24,7 @@ describe "CakeSide.Models.Session", ->
     expect(subject.validationError['password']).toEqual(expectedError)
 
   it "is valid", ->
-    subject.set('username', 'test@example.com')
+    subject.set('email', 'test@example.com')
     subject.set('password', 'password')
     expect(subject.isValid()).toEqual(true)
     expect(subject.validationError).toEqual(null)

@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if @session = User.login(session_params[:username], session_params[:password])
+    if @session = User.login(session_params[:email], session_params[:password])
       reset_session
       session[:raphael] = @session.access(request)
       redirect_to my_dashboard_path
@@ -24,6 +24,6 @@ class SessionsController < ApplicationController
   private
 
   def session_params
-    params.require(:session).permit(:username, :password)
+    params.require(:session).permit(:email, :password)
   end
 end

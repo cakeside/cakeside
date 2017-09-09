@@ -8,7 +8,7 @@ describe "CakeSide.Views.LoginForm", ->
     <input name="utf8" type="hidden" value="✓">
     <input type="hidden" name="authenticity_token" value="NUk9vz3sVMzi09PgQrzOTDcJIki2RgCzHgtpFw0ooSha4lgMt/bUsuAk//Wvi7wb/K6qh+pVrDkKr5a5e66QTw==">
     <div class="form-group">
-      <input type="email" name="session[username]" id="session_username" value="" placeholder="Email" class="form-control" required="required">
+      <input type="email" name="session[email]" id="session_email" value="" placeholder="Email" class="form-control" required="required">
       <div class="invalid-feedback"></div>
     </div>
     <div class="form-group">
@@ -28,19 +28,19 @@ describe "CakeSide.Views.LoginForm", ->
     subject.$('form').submit()
 
     expect(subject.$('input[type=submit]').prop('disabled')).toEqual(true)
-    expect(subject.field('username').siblings('.invalid-feedback').html()).toEqual("Email can't be blank")
+    expect(subject.field('email').siblings('.invalid-feedback').html()).toEqual("Email can't be blank")
 
   it "disables the submit button when the password is missing", ->
-    subject.field('username').val('user@email.com')
+    subject.field('email').val('user@email.com')
     subject.$('form').submit()
 
     expect(subject.$('input[type=submit]').prop('disabled')).toEqual(true)
     expect(subject.field("password").siblings('.invalid-feedback').html()).toEqual("Password can't be blank")
 
   it "enables the submit button when all required fields are specified", ->
-    subject.field('username').val('user@email.com').change()
+    subject.field('email').val('user@email.com').change()
     subject.field('password').val('password').change()
 
     expect(subject.$('input[type=submit]').prop('disabled')).toEqual(false)
-    expect(subject.field('username').siblings('.invalid-feedback').html()).toEqual('')
+    expect(subject.field('email').siblings('.invalid-feedback').html()).toEqual('')
     expect(subject.field('password').siblings('.invalid-feedback').html()).toEqual('')

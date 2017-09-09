@@ -15,7 +15,7 @@ class CakeSide.Views.LoginForm extends CakeSide.AutoView
     @renderErrors(@model.validationError)
 
   onInput: (event) ->
-    @model.set('username', @field('username').val())
+    @model.set('email', @field('email').val())
     @model.set('password', @field('password').val())
     @$('input[type=submit]').prop('disabled', !@model.isValid())
     @render()
