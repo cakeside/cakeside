@@ -2,10 +2,12 @@
 
 class CakeSide.AutoViewSetup extends CakeSide.Behaviour
   @on "ready"
+  @on "ajaxComplete"
 
   execute: ->
     for element in $('[data-autoview]')
-      @install($(element))
+      $element = $(element)
+      @install($element) unless $element.data('autoview-setup-complete')
 
   install: (element) ->
     viewName = element.data('autoview')
@@ -14,3 +16,4 @@ class CakeSide.AutoViewSetup extends CakeSide.Behaviour
     else
       constructor = CakeSide.Proxy.create(CakeSide.Views, viewName)
       CakeSide.AutoView.create(viewName, element, constructor)
+    element.data('autoview-setup-complete', true)
