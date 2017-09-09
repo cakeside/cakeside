@@ -28,7 +28,7 @@
 <div class="card-columns">
   <% @creation.photos.each do |photo| %>
     <div class="card">
-      <%= image_tag photo.url_for(:thumb), class: "card-img-top" %>
+      <%= image_tag photo.url_for(:large), class: "card-img-top" %>
     </div>
   <% end %>
 </div>
