@@ -2,22 +2,18 @@
 <% provide(:search_path, request.env['PATH_INFO'] || cakes_path) %>
 <% provide(:container_class, 'container') %>
 
-<% unless user_signed_in?  -%>
-  <div class="row">
-    <div class="col">
-      <%= image_tag "cakeside-logo.png", :alt => "Welcome to Cakeside", style: 'max-height:186px' %>
-    </div>
-    <div class="col">
-      <h1>Welcome cake enthusiast!</h1>
-      <p style="font-size:15px;">
-      <strong>Make</strong> cakes, <strong>sell</strong> cakes, or just <strong>love</strong> eating them? You've come to the right place!
-      <strong>CakeSide</strong> is a free site to <strong>share</strong> your cake <strong>creations</strong> and <strong>ideas</strong> with other cake fanatics like yourself!</p><br/>
-      <p style="text-align: center;">
-      Get your cakes featured on this page <%= link_to "Sign Up For Free!", login_path, class: "btn btn-primary btn-large" %> or <%= link_to "sign in", new_session_path %>
-      </p>
-    </div>
+<% unless user_signed_in? %>
+<div class="row jumbotron">
+  <div class="col text-center">
+    <%= image_tag "cakeside-logo.png", alt: "CakeSide", class: "img-fluid" %>
+    <h1>Welcome cake enthusiast!</h1>
+    <p> Do you make cakes, sell cakes, or just love eating them? Then you've come to the right place. </p>
+    <p> CakeSide is a free site to share your cake creations and ideas with other cake fanatics like yourself. </p>
+    <p> Get your cakes featured on this page. </p>
+    <%= link_to "Sign Up For Free", login_path, class: "btn btn-primary btn-large" %> or <%= link_to "Sign in", new_session_path %>
   </div>
-<% end -%>
+</div>
+<% end %>
 
 <div class="row">
   <div class="col">
