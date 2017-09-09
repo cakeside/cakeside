@@ -43,7 +43,7 @@ class User
           end
         end
         builder.if_missing(:sort) do |relation, direction|
-          relation.ordered
+          relation.order(creations_count: :desc)
         end
       end
     end
