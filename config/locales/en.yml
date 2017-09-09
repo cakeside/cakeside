@@ -22,6 +22,8 @@ en:
   profile_saved: Your settings have been updated successfully!
   activerecord:
     attributes:
+      search:
+        q: "Search query"
       session:
         email: 'Email'
         password: 'Password'

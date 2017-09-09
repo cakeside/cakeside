@@ -35,6 +35,9 @@ class csx.FormView extends csx.AutoView
     else
       element.val()
 
+  fieldName: (name) ->
+    return name if _.isEmpty(@modelKey)
+    "#{@modelKey}_#{name}"
+
   field: (name) -> @$("##{@fieldName(name)}")
-  fieldName: (name) -> "#{@modelKey}_#{name}"
   fieldNameFor: (element) -> element.attr('id').replace("#{@modelKey}_", '')
