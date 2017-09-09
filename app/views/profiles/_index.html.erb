@@ -6,7 +6,7 @@
       <% end %>
       <div class="card-body">
         <h4 class="card-title"><%= truncate(profile.name, length: 20) %></h4>
-        <p class="card-text"><small class="text-muted">joined <%= distance_of_time_in_words_to_now profile.created_at %> ago</small></p>
+        <p class="card-text"><small class="text-muted">joined <%= local_time(profile.created_at) %></small></p>
       </div>
     </div>
   <% end %>
