@@ -19,26 +19,22 @@
   </div>
 <% end -%>
 
-<div id="bakery">
-  <div class="dropdown float-right">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Sort
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <%= link_to "Newest", url_for(params.merge(sort: "newest")), class: "dropdown-item" %>
-      <%= link_to "Oldest", url_for(params.merge(sort: "oldest")), class: "dropdown-item" %>
-    </div>
+<div class="row">
+  <div class="col">
+    <nav class="nav nav-pills nav-fill">
+      <%= link_to "All", url_for(params.merge(category: nil)), class: "nav-item nav-link #{"active" if params["category"].blank?}" %>
+      <% @categories.each do |category| %>
+        <%= link_to category.name.pluralize, url_for(params.merge(category: category.slug)), class: "nav-item nav-link #{"active" if params["category"] == category.slug}" %>
+      <% end %>
+      <%= link_to "Newest", url_for(params.merge(sort: "newest")), class: "nav-item nav-link #{"active" if "newest" == params["sort"]}" %>
+      <%= link_to "Oldest", url_for(params.merge(sort: "oldest")), class: "nav-item nav-link #{"active" if "oldest" == params["sort"]}" %>
+    </nav>
   </div>
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <%= link_to "All", url_for(params.merge(category: nil)), class: "nav-link #{"active" if params["category"].blank?}" %>
-    </li>
-    <% @categories.each do |category| %>
-      <li class="nav-item ">
-        <%= link_to category.name.pluralize, url_for(params.merge(category: category.slug)), class: "nav-link #{"active" if params["category"] == category.slug}" %>
-      </li>
-    <% end %>
-  </ul>
-  <%= render partial: 'index' %>
+</div>
+
+<div class="row">
+  <div id="bakery" class="col">
+    <%= render partial: 'index' %>
+  </div>
 </div>
 <%# render "shared/paging", items: @cakes %>
