@@ -23,6 +23,7 @@ describe "csx.Views.LoginForm", ->
 
     subject = new csx.Views.LoginForm
       el: $('[data-autoview=login-form]')
+      model: new csx.Models.Session()
 
   it "disables the submit button when the email is missing", ->
     subject.$('form').submit()
