@@ -1,4 +1,4 @@
-class Tutorial < ActiveRecord::Base
+class Tutorial < ApplicationRecord
   validates :url, presence: true
   belongs_to :user
   acts_as_taggable

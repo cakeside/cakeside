@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   has_secure_password
   before_save :ensure_authentication_token
   after_create :send_welcome_email unless Rails.env.test?

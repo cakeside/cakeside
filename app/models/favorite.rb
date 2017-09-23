@@ -1,4 +1,4 @@
-class Favorite < ActiveRecord::Base
+class Favorite < ApplicationRecord
   belongs_to :user
   belongs_to :creation, counter_cache: true, touch: true
   after_create :create_activity

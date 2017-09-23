@@ -1,4 +1,4 @@
-class UserSession < ActiveRecord::Base
+class UserSession < ApplicationRecord
   include Queryable
   belongs_to :user
   has_one :location, as: :locatable

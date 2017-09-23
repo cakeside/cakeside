@@ -1,4 +1,4 @@
-class Photo < ActiveRecord::Base
+class Photo < ApplicationRecord
   belongs_to :imageable, polymorphic: true, counter_cache: true, touch: true
   scope :processed, ->{ where(image_processing: nil) }
 
