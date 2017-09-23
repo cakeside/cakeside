@@ -1,0 +1,9 @@
+<div id="cake-<%= cake.id %>" class='card' data-autoview="cake-card">
+  <%= link_to cake_path(cake) do %>
+    <%= image_tag cake.primary_image.url_for(:thumb), alt: cake.name, class: 'card-img-top' %>
+  <% end %>
+  <div class="card-body">
+    <h4 class="card-title"><%= cake.name %></h4>
+    <p class="card-text"><small class="text-muted"><%= local_time(cake.created_at) %></small></p>
+  </div>
+</div>

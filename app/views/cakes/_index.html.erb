@@ -1,15 +1,5 @@
 <div class="card-columns">
-  <% @cakes.each do |cake| %>
-    <div id="cake-<%= cake.id %>" class='card' data-autoview="cake-card">
-      <%= link_to cake_path(cake) do %>
-        <%= image_tag cake.primary_image.url_for(:thumb), alt: cake.name, class: 'card-img-top' %>
-      <% end %>
-      <div class="card-body">
-        <h4 class="card-title"><%= cake.name %></h4>
-        <p class="card-text"><small class="text-muted"><%= local_time(cake.created_at) %></small></p>
-      </div>
-    </div>
-  <% end %>
+  <%= render partial: 'cakes/cake', collection: @cakes, cached: true %>
 </div>
 <div id='more-button-row' class="row">
   <%= link_to_next_page @cakes, 'More...', params: { cache: false, sort: params[:sort], q: params[:q] }, remote: true, class: 'btn pull-right hidden', data: { disable_with: 'loading...', infinite_scroll: true } %>
