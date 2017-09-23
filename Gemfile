@@ -55,6 +55,11 @@ group :development do
   gem 'pry-rails'
   gem 'spring-commands-rspec'
   gem 'web-console', '~> 2.0'
+  gem 'rack-mini-profiler'
+  gem 'memory_profiler'
+  gem 'flamegraph'
+  gem 'stackprof'
+  gem 'fast_stack'
 end
 
 group :development, :test do
