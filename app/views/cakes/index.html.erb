@@ -18,12 +18,12 @@
 <div class="row">
   <div class="col">
     <nav class="nav nav-pills nav-fill">
-      <%= link_to "All", url_for(params.merge(category: nil)), class: "nav-item nav-link #{"active" if params["category"].blank?}" %>
+      <%= link_to "All", cakes_path(sort: params[:sort]), class: "nav-item nav-link #{"active" if params["category"].blank?}" %>
       <% @categories.each do |category| %>
-        <%= link_to category.name.pluralize, url_for(params.merge(category: category.slug)), class: "nav-item nav-link #{"active" if params["category"] == category.slug}" %>
+        <%= link_to category.name.pluralize, cakes_path(category: category.slug, sort: params[:sort]), class: "nav-item nav-link #{"active" if params["category"] == category.slug}" %>
       <% end %>
-      <%= link_to "Newest", url_for(params.merge(sort: "newest")), class: "nav-item nav-link #{"active" if "newest" == params["sort"]}" %>
-      <%= link_to "Oldest", url_for(params.merge(sort: "oldest")), class: "nav-item nav-link #{"active" if "oldest" == params["sort"]}" %>
+      <%= link_to "Newest", cakes_path(category: params[:category], sort: "newest"), class: "nav-item nav-link #{"active" if "newest" == params["sort"]}" %>
+      <%= link_to "Oldest", cakes_path(category: params[:category], sort: "oldest"), class: "nav-item nav-link #{"active" if "oldest" == params["sort"]}" %>
     </nav>
   </div>
 </div>
