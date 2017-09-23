@@ -1,4 +1,4 @@
-class ProcessAvatarJob < ActiveJob::Base
+class ProcessAvatarJob < ApplicationJob
   queue_as :default
 
   def perform(user, file_path)

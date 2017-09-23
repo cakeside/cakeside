@@ -1,4 +1,4 @@
-class ProcessPhotoJob < ActiveJob::Base
+class ProcessPhotoJob < ApplicationJob
   queue_as :default
 
   def perform(photo, file_path)

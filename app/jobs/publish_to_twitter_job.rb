@@ -1,4 +1,4 @@
-class PublishToTwitterJob < ActiveJob::Base
+class PublishToTwitterJob < ApplicationJob
   queue_as :default
 
   def perform(cake)
