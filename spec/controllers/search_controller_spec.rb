@@ -18,7 +18,7 @@ describe SearchController do
       let!(:tutorial) { create(:tutorial, :description => 'cake') }
       let!(:other_tutorial) { create(:tutorial, :description => 'donut') }
 
-      before { get :index, { :q => 'cake' } }
+      before { get :index, params: { q: 'cake' } }
 
       it "returns a successful response" do
         expect(response).to be_success

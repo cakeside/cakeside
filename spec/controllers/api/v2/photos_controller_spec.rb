@@ -10,7 +10,7 @@ module Api
         let!(:unprocessed_photo) { create(:photo, image_processing: true) }
 
         it "loads all processed photos" do
-          xhr :get, :index
+          get :index, xhr: true
           expect(assigns(:photos)).to match_array([processed_photo])
         end
       end
@@ -20,7 +20,7 @@ module Api
         let!(:photo) { create(:photo) }
 
         it "loads the specified photo" do
-          xhr :get, :show, id: photo.id
+          get :show, params: { id: photo.id }, xhr: true
           expect(assigns(:photo)).to eql(photo)
         end
       end

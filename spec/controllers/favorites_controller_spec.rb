@@ -9,7 +9,7 @@ describe FavoritesController do
 
     context "when adding a cake to your favorites" do
       before :each do
-        post :create, cake_id: cake.id
+        post :create, params: { cake_id: cake.id }
       end
 
       it "should add the cake to the logged in users favorites" do

@@ -14,7 +14,7 @@ module Api
 
       describe "#index" do
         it "loads the cakes photos" do
-          xhr :get, :index, cake_id: cake.id
+          get :index, params: { cake_id: cake.id }, xhr: true
           expect(assigns(:photos)).to match_array(cake.photos)
         end
       end
@@ -23,7 +23,7 @@ module Api
         let(:photo) { create(:photo, imageable: cake) }
 
         it "loads the photo" do
-          xhr :get, :show, cake_id: cake.id, id: photo.id
+          get :show, params: { cake_id: cake.id, id: photo.id }, xhr: true
           expect(assigns(:photo)).to eql(photo)
         end
       end
@@ -34,7 +34,7 @@ module Api
         it "attaches a new photo to a cake" do
           allow(ProcessPhotoJob).to receive(:perform_later)
 
-          xhr :post, :create, cake_id: cake.id, watermark: "watery", image: file
+          post :create, params: { cake_id: cake.id, watermark: "watery", image: file }, xhr: true
 
           cake.reload
           expect(cake.photos.count).to eql(1)

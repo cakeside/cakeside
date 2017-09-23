@@ -24,7 +24,7 @@ module Admin
         before :each do
           allow(UserSession).to receive(:find).with(user_session.id).and_return(user_session)
           allow(user_session).to receive(:revoke!).and_return(true)
-          delete :destroy, id: user_session.id
+          delete :destroy, params: { id: user_session.id }
         end
 
         it "revokes the specified session" do

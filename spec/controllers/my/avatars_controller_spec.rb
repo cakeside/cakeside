@@ -10,7 +10,7 @@ describe My::AvatarsController do
       context "when uploading a new avatar" do
         let(:image) { Rack::Test::UploadedFile.new('spec/fixtures/images/gorilla.jpg', 'image/jpeg') }
 
-        before { post :create, photo: { image: image } }
+        before { post :create, params: { photo: { image: image } } }
 
         it "saves the new avatar" do
           user.reload
@@ -29,7 +29,7 @@ describe My::AvatarsController do
     end
 
     describe "#new" do
-      before { get :new, id: user.id }
+      before { get :new, params: { id: user.id } }
 
       it "displays the current avatar" do
         expect(assigns(:avatar)).to_not be_nil

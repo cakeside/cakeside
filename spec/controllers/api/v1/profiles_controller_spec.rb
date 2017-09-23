@@ -12,7 +12,7 @@ module Api
 
       describe "#show" do
         it "loads the current users profile" do
-          xhr :get, :show, id: "me"
+          get :show, params: { id: "me" }, xhr: true
           expect(assigns(:profile)).to eql(user)
         end
       end
@@ -28,7 +28,7 @@ module Api
             facebook: "facebookie",
           }
 
-          xhr :patch, :update, id: "me", profile: new_attributes
+          patch :update, params: { id: "me", profile: new_attributes }, xhr: true
 
           user.reload
           expect(user.name).to eql("new name")
@@ -40,7 +40,7 @@ module Api
         end
 
         it "returns errors" do
-          xhr :patch, :update, id: "me", profile: { email: "" }
+          patch :update, params: { id: "me", profile: { email: "" } }, xhr: true
           json = JSON.parse(response.body)
           expect(json["email"]).to_not be_empty
         end

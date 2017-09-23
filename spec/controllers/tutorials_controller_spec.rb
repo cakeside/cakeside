@@ -23,7 +23,7 @@ describe TutorialsController do
 
     before :each do
       user.tutorials << tutorial
-      get :show, :id => tutorial.to_param
+      get :show, params: { id: tutorial.to_param }
     end
 
     it "assigns the requested tutorial" do

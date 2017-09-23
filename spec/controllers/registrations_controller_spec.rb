@@ -7,7 +7,7 @@ describe RegistrationsController do
     it 'creates a new user' do
       allow(User).to receive(:login).with('mo@cakeside.com', 'password').and_return(user_session)
 
-      post :create, user: { name: 'mo', email: 'mo@cakeside.com', password: 'password' }
+      post :create, params: {  user: { name: 'mo', email: 'mo@cakeside.com', password: 'password' } }
 
       expect(User.count).to eql(1)
       expect(response).to redirect_to(my_dashboard_path)
@@ -16,7 +16,7 @@ describe RegistrationsController do
     end
 
     it 'displays errors' do
-      post :create, user: { name: 'mo', email: 'mo', password: 'password', password_confirmation: 'password' }
+      post :create, params: { user: { name: 'mo', email: 'mo', password: 'password', password_confirmation: 'password' } }
       expect(response).to redirect_to(new_session_path)
       expect(flash[:error]).to_not be_empty
     end

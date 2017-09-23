@@ -13,7 +13,7 @@ describe Api::V1::TutorialsController do
     let!(:other_tutorial) { create(:tutorial) }
 
     it "returns the users tutorials" do
-      xhr :get, :index
+      get :index, xhr: true
       expect(assigns(:tutorials)).to match_array([my_tutorial])
     end
   end
@@ -27,7 +27,7 @@ describe Api::V1::TutorialsController do
         description: "Connect with your friends - and other fascinating people",
         tags: "cake,cookie",
       }
-      xhr :post, :create, tutorial: attributes
+      post :create, params: { tutorial: attributes }, xhr: true
 
       expect(assigns(:tutorial)).to be_present
       expect(assigns(:tutorial).url).to eql(attributes[:url])

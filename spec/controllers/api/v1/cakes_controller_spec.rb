@@ -16,7 +16,7 @@ describe Api::V1::CakesController do
 
       before :each do
         user.creations << my_cake
-        xhr :get, :index
+        get :index, xhr: true
       end
 
       it "returns all of my cakes" do
@@ -33,7 +33,7 @@ describe Api::V1::CakesController do
 
       before :each do
         user.creations << cake
-        xhr :get, :show, id: cake.id
+        get :show, params: { id: cake.id }, xhr: true
       end
 
       it "loads a specific cake" do
@@ -45,7 +45,7 @@ describe Api::V1::CakesController do
       let(:category) { create(:category) }
 
       it "creates a new project" do
-        xhr :post, :create, cake: { name: "new-cake", category_id: category.id }
+        post :create, params: { cake: { name: "new-cake", category_id: category.id } }, xhr: true
 
         expect(Creation.count).to eql(1)
         expect(Creation.first.name).to eql("new-cake")
@@ -59,7 +59,7 @@ describe Api::V1::CakesController do
 
       it "tags the cake" do
         tags = ["cake", "cookies", "yummy"]
-        xhr :patch, :update, id: cake.id, cake: { tags: tags.join(", ") }
+        patch :update, params: { id: cake.id, cake: { tags: tags.join(", ") } }, xhr: true
 
         cake.reload
         expect(cake.tags.pluck(:name)).to match_array(tags)
@@ -67,7 +67,7 @@ describe Api::V1::CakesController do
 
       it "updates the description" do
         new_story = "what is the haps on the craps"
-        xhr :patch, :update, id: cake.id, cake: { story: new_story }
+        patch :update, params: { id: cake.id, cake: { story: new_story } }, xhr: true
 
         cake.reload
         expect(cake.story).to eql(new_story)
@@ -75,7 +75,7 @@ describe Api::V1::CakesController do
 
       it "updates the category" do
         category = create(:category)
-        xhr :patch, :update, id: cake.id, cake: { category_id: category.id }
+        patch :update, params: { id: cake.id, cake: { category_id: category.id } }, xhr: true
 
         cake.reload
         expect(cake.category).to eql(category)
@@ -87,7 +87,7 @@ describe Api::V1::CakesController do
 
       before :each do
         user.creations << cake
-        xhr :delete, :destroy, id: cake.id
+        delete :destroy, params: { id: cake.id }, xhr: true
       end
 
       it "deletes the specified cake" do

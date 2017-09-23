@@ -9,7 +9,7 @@ module Api
         let!(:user) { create(:user) }
 
         it "loads all users" do
-          xhr :get, :index
+          get :index, xhr: true
           expect(assigns(:users)).to match_array([user])
         end
       end
@@ -18,7 +18,7 @@ module Api
         let!(:user) { create(:user) }
 
         it "loads the info on the user" do
-          xhr :get, :show, id: user.id
+          get :show, params: { id: user.id }, xhr: true
           expect(assigns(:user)).to eql(user)
         end
       end

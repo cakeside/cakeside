@@ -30,7 +30,7 @@ describe SessionsController do
 
       before :each do
         allow(User).to receive(:login).with(email, password).and_return(user_session)
-        post :create, session: { email: email, password: password }
+        post :create, params: { session: { email: email, password: password } }
       end
 
       it "returns a valid session" do
@@ -48,7 +48,7 @@ describe SessionsController do
       end
 
       it "returns an error" do
-        post :create, session: { email: 'x', password: 'y' }
+        post :create, params: { session: { email: 'x', password: 'y' } }
         expect(response).to redirect_to(login_path)
         expect(flash[:error]).to_not be_empty
       end
@@ -61,7 +61,7 @@ describe SessionsController do
     before :each do
       session[:raphael] = user_session.key
       allow(controller).to receive(:user_session).and_return(user_session)
-      delete :destroy, id: "me"
+      delete :destroy, params: { id: "me" }
     end
 
     it { expect(session[:raphael]).to be_nil }

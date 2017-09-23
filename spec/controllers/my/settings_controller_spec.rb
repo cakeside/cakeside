@@ -15,7 +15,17 @@ describe My::SettingsController do
 
     before :each do
       http_login(user)
-      patch :update, id: user.id, user: { name: 'mo khan', email: 'mo@mokhan.ca', city: 'Calgary', website: 'http://mokhan.ca/', twitter: 'mocheen', facebook: 'fb' }
+      patch :update, params: {
+        id: user.id,
+        user: {
+          name: 'mo khan',
+          email: 'mo@mokhan.ca',
+          city: 'Calgary',
+          website: 'http://mokhan.ca/',
+          twitter: 'mocheen',
+          facebook: 'fb'
+        }
+      }
     end
 
     it "updates the users settings" do

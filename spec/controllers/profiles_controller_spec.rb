@@ -16,7 +16,7 @@ describe ProfilesController do
     let(:creation) { create(:creation, user: user) }
 
     before :each do
-      get :show, id: user.id
+      get :show, params: { id: user.id }
     end
 
     it "returns a successful response" do

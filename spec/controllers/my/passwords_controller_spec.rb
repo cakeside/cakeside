@@ -6,7 +6,7 @@ describe My::PasswordsController do
       let(:user) { create(:user) }
 
       it "redirects you to the login page" do
-        put :update, id: user.id
+        put :update, params: { id: user.id }
         expect(response).to redirect_to(login_path)
       end
     end
@@ -18,9 +18,12 @@ describe My::PasswordsController do
 
       context "when the new password and the confirmation password does not match" do
         before :each do
-          put :update, id: user.id, user: {
-            password: "foobar",
-            password_confirmation: "barfoo"
+          put :update, params: {
+            id: user.id,
+            user: {
+              password: "foobar",
+              password_confirmation: "barfoo"
+            }
           }
         end
 
@@ -38,9 +41,12 @@ describe My::PasswordsController do
         let(:new_password) { "booyakasham" }
 
         before :each do
-          put :update, id: user.id, user: {
-            password: new_password,
-            password_confirmation: new_password
+          put :update, params: {
+            id: user.id,
+            user: {
+              password: new_password,
+              password_confirmation: new_password
+            }
           }
         end
 

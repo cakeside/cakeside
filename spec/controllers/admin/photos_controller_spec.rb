@@ -14,7 +14,7 @@ module Admin
       it "re-processes the photo" do
         allow(ReProcessPhotoJob).to receive(:perform_later)
 
-        put :update, id: photo.id
+        put :update, params: { id: photo.id }
 
         expect(ReProcessPhotoJob).to have_received(:perform_later).with(photo)
       end

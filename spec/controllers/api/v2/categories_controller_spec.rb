@@ -9,7 +9,7 @@ module Api
         let!(:category) { create(:category) }
 
         it "loads all the categories" do
-          xhr :get, :index
+          get :index, xhr: true
           expect(assigns(:categories)).to match_array([category])
         end
       end
@@ -19,7 +19,7 @@ module Api
         let!(:category) { create(:category) }
 
         it "loads the specified category" do
-          xhr :get, :show, id: category.id
+          get :show, params: { id: category.id }, xhr: true
           expect(assigns(:category)).to eql(category)
         end
       end

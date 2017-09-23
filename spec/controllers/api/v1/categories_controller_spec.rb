@@ -7,7 +7,7 @@ module Api
 
       describe "#index" do
         it 'loads all the categories' do
-          xhr :get, :index
+          get :index, xhr: true
           expect(assigns(:categories)).to match_array(Category.all)
         end
       end

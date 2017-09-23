@@ -21,7 +21,7 @@ module Admin
         repository = double
         allow(controller).to receive(:repository).and_return(repository)
         allow(repository).to receive(:search_with).and_return([matching_user])
-        get :index, q: 'mo'
+        get :index, params: { q: 'mo' }
         expect(assigns(:users)).to include(matching_user)
       end
     end
@@ -30,7 +30,7 @@ module Admin
       let!(:user) { create(:user) }
 
       it "loads the details on the specific user" do
-        get :show, id: user.id
+        get :show, params: { id: user.id }
         expect(assigns(:user)).to eql(user)
       end
     end

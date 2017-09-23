@@ -9,7 +9,7 @@ module Api
         let!(:tutorial) { create(:tutorial) }
 
         before :each do
-          xhr :get, :index
+          get :index, xhr: true
         end
 
         it "loads all the tutorials" do
@@ -33,7 +33,7 @@ module Api
         let!(:tutorial) { create(:tutorial) }
 
         it "loads the single tutorial" do
-          xhr :get, :show, id: tutorial.id
+          get :show, params: { id: tutorial.id }, xhr: true
           expect(assigns(:tutorial)).to eql(tutorial)
         end
       end
