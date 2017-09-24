@@ -4,6 +4,6 @@ class Tag
       .joins(:taggings)
       .where(taggings: { context: 'tags' })
       .order(:name)
-      .uniq
+      .distinct
   end
 end

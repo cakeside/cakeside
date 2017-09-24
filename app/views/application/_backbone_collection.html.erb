@@ -1,0 +1,5 @@
+<% cache items do %>
+<%= javascript_tag do %>
+csx.<%= items.name.split('::').last.pluralize %> = new Backbone.Collection(<%= items.to_json.html_safe %>);
+<% end %>
+<% end %>

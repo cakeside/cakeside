@@ -38,4 +38,8 @@ module ApplicationHelper
       'info'
     end
   end
+
+  def backbone_collection_for(items)
+    render partial: 'backbone_collection', locals: { items: items }
+  end
 end
