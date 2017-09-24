@@ -6,7 +6,7 @@
       <% @tutorials.each do |tutorial| %>
         <tr>
           <td>
-            <h4><%= link_to tutorial.heading, tutorial.url %> <small><%= tutorial.created_at.to_s :foomat %></small></h4>
+            <h4><%= link_to tutorial.heading, tutorial.url %> <small><%= local_time(tutorial.created_at) %></small></h4>
             <% tutorial.tags.each do |tag| -%>
               <%= link_to tutorial_tag_path(tag.name) do %>
                 <span class="badge badge-light"><%= tag.name %></span>

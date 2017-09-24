@@ -85,7 +85,10 @@ describe Photo do
       end
 
       def path_to(image_filename)
-        ActionController::Base.helpers.asset_path(image_filename)
+        ActionController::Base.helpers.asset_path(
+          image_filename,
+          skip_pipeline: true
+        )
       end
     end
   end

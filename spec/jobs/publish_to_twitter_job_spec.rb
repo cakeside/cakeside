@@ -20,7 +20,7 @@ RSpec.describe PublishToTwitterJob, :type => :job do
       it "tweets about the new cake" do
         subject.perform(cake)
         expect(twitter).to have_received(:tweet).
-          with("yummy By joe on http://www.blah.com/cakes/88-yummy!")
+          with("yummy By joe on http://www.example.com/cakes/88-yummy!")
       end
     end
 

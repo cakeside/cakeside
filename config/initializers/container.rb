@@ -21,7 +21,7 @@ if Rails.configuration.cache_classes
   ConfigureContainerCommand.new.configure(container)
   Spank::IOC.bind_to(container)
 else
-  ActionDispatch::Reloader.to_prepare do
+  ActiveSupport::Reloader.to_prepare do
     container = Spank::Container.new
     ConfigureContainerCommand.new.configure(container)
     Spank::IOC.bind_to(container)

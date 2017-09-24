@@ -1,5 +1,5 @@
 class Photo < ApplicationRecord
-  belongs_to :imageable, polymorphic: true, counter_cache: true, touch: true
+  belongs_to :imageable, polymorphic: true, counter_cache: true, touch: true, optional: true
   scope :processed, ->{ where(image_processing: nil) }
 
   def url_for(version_key, asset_host = ENV['ASSET_HOST'])

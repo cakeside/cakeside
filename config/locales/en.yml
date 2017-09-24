@@ -1,8 +1,23 @@
 ---
 en:
+  activerecord:
+    attributes:
+      search:
+        q: "Search query"
+      session:
+        email: 'Email'
+        password: 'Password'
+      user:
+        accepted: "Terms and conditions"
+        email: 'Email'
+        name: 'Full name'
+        password: 'Password'
   avatar_uploaded: Your avatar has been updated.
   logout: Sign Out
   my:
+    passwords:
+      passwords_do_not_match: The passwords should match and should be a minimum of 6 characters.
+      updated: Your password was updated.
     shared:
       my_nav:
         activity: "Activity"
@@ -19,16 +34,12 @@ en:
         products: "Products"
         sessions: "Sessions"
         users: "Users"
+  passwords:
+    send_instructions: You will receive an email with instructions about how to reset your password in a few minutes.
   profile_saved: Your settings have been updated successfully!
-  activerecord:
-    attributes:
-      search:
-        q: "Search query"
-      session:
-        email: 'Email'
-        password: 'Password'
-      user:
-        accepted: "Terms and conditions"
-        email: 'Email'
-        name: 'Full name'
-        password: 'Password'
+  sessions:
+    new:
+      sign_in: "Sign In"
+    create:
+      failure:
+        invalid: Invalid email or password.

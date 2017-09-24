@@ -6,7 +6,7 @@
   </div>
   <div class="col">
     <h3><%= @tutorial.heading %></h3>
-    <small><%= @tutorial.created_at.to_s :foomat %></small>
+    <small><%= local_time(@tutorial.created_at) %></small>
     <p>
     <% @tutorial.tags.each do |tag| -%>
       <%= link_to tutorial_tag_path(tag.name) do %>

@@ -1,3 +1,4 @@
+Rails.application.config.middleware.use Rack::Attack
 # Always allow requests from localhost
 # (blacklist & throttles are skipped)
 Rack::Attack.safelist('allow from localhost') do |request|

@@ -1,8 +1,0 @@
----
-en:
-  sessions:
-    new:
-      sign_in: "Sign In"
-    create:
-      failure:
-        invalid: Invalid email or password.

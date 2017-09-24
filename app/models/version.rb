@@ -19,7 +19,10 @@ class Version
     if photo.is_processed?
       "#{asset_host}/#{blob_key}"
     else
-      ActionController::Base.helpers.asset_path("#{key}_default.png")
+      ActionController::Base.helpers.asset_path(
+        "#{key}_default.png",
+        skip_pipeline: true
+      )
     end
   end
 

@@ -1,23 +1,14 @@
 require 'rails_helper'
 
 describe Creation do
-  subject { Creation.new }
-
-  describe "should be able to set attributes" do
-    it "should save name" do
-      subject.name="HELLO WORLD"
-      subject.category = create(:category)
-      subject.save!
-      expect(Creation.find(subject.id).name).to eql("HELLO WORLD")
-    end
-  end
+  subject { build(:creation) }
 
   describe "#liked_by" do
     let(:user) { create(:user) }
     let(:creation) { create(:creation) }
 
     context "when the user already likes the creation" do
-      let!(:favorite) { creation.favorites.create(:user => user) }
+      let!(:favorite) { creation.favorites.create(user: user) }
       let(:result) { creation.liked_by(user) }
 
       it "returns the existing favorite" do

@@ -4,15 +4,20 @@ class UserSession < ApplicationRecord
   has_one :location, as: :locatable
   before_create :set_unique_key
   attr_readonly :key
-  scope :active, -> { where("accessed_at >= ?", 2.weeks.ago).where(revoked_at: nil).includes(:user) }
+  scope :active, -> do
+    where("accessed_at >= ?", 20.minutes.ago)
+      .where("created_at >= ?", 1.day.ago)
+      .where(revoked_at: nil)
+      .includes(:user)
+  end
 
   def revoke!
-    self.revoked_at = Time.now
+    self.revoked_at = Time.current
     save!
   end
 
   def access(request)
-    self.accessed_at = Time.now
+    self.accessed_at = Time.current
     self.ip = request.ip
     self.user_agent = request.user_agent
     self.location = Location.build_from_ip(request.ip)
@@ -27,6 +32,10 @@ class UserSession < ApplicationRecord
     def authenticate(key)
       return nil if key.blank?
       self.active.find_by(key: key)
+    end
+
+    def sweep(time = 1.day)
+      delete_all("accessed_at < ?", time.ago)
     end
   end
 
