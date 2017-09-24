@@ -40,6 +40,12 @@ module ApplicationHelper
   end
 
   def backbone_collection_for(items)
-    render partial: 'backbone_collection', locals: { items: items }
+    safe_name = items.name.split('::').last
+    collection_name = safe_name.pluralize
+    render partial: 'backbone_collection', locals: {
+      collection_name: collection_name,
+      items: items,
+      partial_name: collection_name.downcase,
+    }
   end
 end

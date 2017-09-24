@@ -1,5 +1,5 @@
 <% cache items do %>
-<%= javascript_tag do %>
-csx.<%= items.name.split('::').last.pluralize %> = new Backbone.Collection(<%= items.to_json.html_safe %>);
-<% end %>
+  <%= javascript_tag do %>
+    csx.<%= collection_name %> = new Backbone.Collection(<%= raw render partial: "application/json/#{partial_name}", locals: { items: items } %>);
+  <% end %>
 <% end %>
