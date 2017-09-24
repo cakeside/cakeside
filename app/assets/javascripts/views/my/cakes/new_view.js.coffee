@@ -57,5 +57,5 @@ class csx.Views.My.Cakes.NewView extends Marionette.ItemView
   serializeData: ->
     {
       cake: @model.toJSON(),
-      categories: csx.Application.request('CategoriesRepository').toJSON(),
+      categories: csx.Categories.toJSON(),
     }

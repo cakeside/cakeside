@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :load_header
-  #before_action :extend_session_cookie
-  helper_method :current_user, :user_signed_in?
+  before_action :extend_session_cookie
+  helper_method :current_user, :current_user?
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def user_session(session_key = session[:raphael])
@@ -16,8 +16,8 @@ class ApplicationController < ActionController::Base
     user_session.try(:user)
   end
 
-  def user_signed_in?
-    current_user
+  def current_user?
+    current_user.present?
   end
 
   private
@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
 
   def extend_session_cookie
-    session[:raphael] = user_session.access(request) if user_signed_in?
+    session[:raphael] = user_session.access(request) if current_user?
   end
 
   def record_not_found

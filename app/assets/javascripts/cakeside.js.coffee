@@ -38,13 +38,10 @@ window.csx =
         Backbone.history.start()
 
     @cakes = new csx.Collections.CakesCollection()
-    @categories = new csx.Collections.CategoriesCollection()
     @tutorials = new csx.Collections.TutorialsCollection()
 
     csx.Application.reqres.setHandler 'CakesRepository', =>
       @cakes
-    csx.Application.reqres.setHandler 'CategoriesRepository', =>
-      @categories
     @photos_cache = {}
     csx.Application.reqres.setHandler 'PhotosRepository', (cake_id) =>
       if @photos_cache[cake_id]
@@ -59,7 +56,6 @@ window.csx =
     csx.Application.reqres.setHandler 'ProfilesRepository', =>
       @profiles ||= new csx.Collections.ProfilesCollection()
 
-    @categories.fetch(reset: true)
     @tutorials.fetch(reset: true)
     @cakes.fetch(reset: true).done ->
       csx.Application.start()

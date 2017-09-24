@@ -2,7 +2,7 @@
 <% provide(:search_path, cakes_path) %>
 <% provide(:container_class, 'container') %>
 
-<% unless user_signed_in? %>
+<% unless current_user? %>
 <div class="row jumbotron">
   <div class="col text-center">
     <%= image_tag "cakeside-logo.png", alt: "CakeSide", class: "img-fluid" %>

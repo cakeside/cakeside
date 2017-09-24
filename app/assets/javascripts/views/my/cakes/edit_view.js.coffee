@@ -68,7 +68,7 @@ class csx.Views.My.Cakes.EditView extends Marionette.CompositeView
   serializeData: ->
     {
       cake: @model.toJSON(),
-      categories: csx.Application.request('CategoriesRepository').toJSON(),
+      categories: csx.Categories.toJSON(),
     }
 
   launchAddPhoto: ->

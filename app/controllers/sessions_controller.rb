@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    redirect_to my_dashboard_path if user_signed_in?
+    redirect_to my_dashboard_path if current_user?
     @session = UserSession.new
   end
 

@@ -2,7 +2,7 @@
   <div class="col">
     <h1><%= link_to @creation.name, cake_path(@creation) %></h1>
     <p>By <%= link_to @creation.user.name, profile_path(@creation.user) %></p>
-    <% if user_signed_in? && current_user != @creation.user %>
+    <% if current_user? && current_user != @creation.user %>
       <% if current_user.already_likes(@creation) %>
         <i class="fa fa-star fa-4x float-right"></i>
       <% else %>

@@ -7,9 +7,11 @@ class csx.AutoViewSetup extends csx.Behaviour
   execute: ->
     for element in $('[data-autoview]')
       $element = $(element)
-      @install($element) unless $element.data('autoview-setup-complete')
+      @install($element)
 
   install: (element) ->
+    return if element.data('autoview-setup-complete')
+
     viewName = element.data('autoview')
     if viewName.indexOf("-") > 0
       csx.AutoView.install(element)

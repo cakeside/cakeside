@@ -15,7 +15,7 @@
         <li class="nav-item <%= "active" if params["controller"] == "tutorials" %>">
           <%= link_to "Tutorials", tutorials_path(q: params[:q]), class: 'nav-link' %>
         </li>
-        <% if user_signed_in? %>
+        <% if current_user? %>
         <li class="nav-item dropdown">
           <%= link_to my_dashboard_path, id: 'navbarDropdownMenuLink', class: 'nav-link dropdown-toggle', data: { toggle: 'dropdown' }, 'aria-haspopup'=>"true", 'aria-expanded'=>"false" do %>
             <%= current_user.name %>
