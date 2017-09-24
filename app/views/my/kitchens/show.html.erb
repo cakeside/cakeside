@@ -1,11 +1,4 @@
 <% provide(:title, "Kitchen") -%>
-<%= content_for :javascript do -%>
-  <%= backbone_collection_for @categories %>
-  <%= backbone_collection_for @tags %>
-  <%= javascript_tag do %>
-    csx.initialize({ access_token: '<%= current_user.authentication_token %>' });
-  <% end %>
-<% end %>
 
 <div class="row">
   <div class="col-3">
@@ -14,3 +7,10 @@
   <div id="backbone-content" class="col-9"></div>
 </div>
 <div id="modal" class="modal hide fade"></div>
+
+<%= backbone_collection_for @categories %>
+<%= backbone_collection_for @tags %>
+
+<%= javascript_tag do %>
+  csx.initialize({ access_token: '<%= current_user.authentication_token %>' });
+<% end %>

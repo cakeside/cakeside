@@ -1,5 +1,5 @@
 <% cache items do %>
   <%= javascript_tag do %>
-    csx.<%= collection_name %> = new Backbone.Collection(<%= raw render partial: "application/json/#{partial_name}", locals: { items: items } %>);
+    csx.AutoCollection.install('<%= collection_name %>', <%= raw render partial: "application/json/#{partial_name}", locals: { items: items } %>);
   <% end %>
 <% end %>
