@@ -41,9 +41,9 @@ module ApplicationHelper
 
   def backbone_collection_for(items)
     render partial: 'backbone_collection', locals: {
-      collection_name: items.model_name.human,
       items: items,
-      partial_name: items.model_name.plural,
+      model_name: items.model_name.human,
+      plural_name: items.model_name.plural,
     }
   end
 end
