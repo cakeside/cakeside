@@ -5,5 +5,10 @@
   <div class="card-body">
     <h4 class="card-title"><%= cake.name %></h4>
     <p class="card-text"><small class="text-muted"><%= local_time(cake.created_at) %></small></p>
+    <% if current_user && current_user.id == cake.user_id %>
+      <%= link_to my_root_path(anchor: "cakes/#{cake.id}/edit"), class: 'card-link' do %>
+        <i class="fa fa-pencil-square-o"></i> edit
+      <% end %>
+    <% end %>
   </div>
 </div>

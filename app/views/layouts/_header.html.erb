@@ -20,7 +20,7 @@
           <%= link_to my_dashboard_path, id: 'navbarDropdownMenuLink', class: 'nav-link dropdown-toggle', data: { toggle: 'dropdown' }, 'aria-haspopup'=>"true", 'aria-expanded'=>"false" do %>
             <%= current_user.name %>
           <% end %>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" data-no-turbolink>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <%= link_to my_root_path(anchor: 'cakes/new'), class: 'dropdown-item' do %>
               <i class="fa fa-upload"></i> New Cake
             <% end %>

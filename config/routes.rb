@@ -86,6 +86,7 @@ Cake::Application.routes.draw do
 
   namespace :my do
     get 'dashboard', to: 'dashboard#index'
+    resources :cakes, only: [:index]
     resources :favorites, only: [:index]
     resources :settings, only: [:index, :update]
     resources :passwords, only: [:index, :update]

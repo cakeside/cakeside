@@ -3,16 +3,16 @@
   <div class="col-3">
     <%= render partial: "my/shared/my_nav" %>
   </div>
-  <div class="col-9" data-no-turbolink>
+  <div class="col-9">
     <div class="row">
       <div class="col">
-        <h5>My Cakes</h5>
-        <ul class="list-unstyled">
-          <% @cakes.each do |item| %>
-            <%= render item.class.to_s.downcase, item: item %>
-          <% end %>
-        </ul>
+        <h5><%= link_to "My Cakes", my_cakes_path %></h5>
+        <div class="card-columns">
+          <%= render partial: 'cakes/cake', collection: @cakes, cached: true %>
+        </div>
       </div>
+    </div>
+    <div class="row">
       <div class="col">
         <div class="well">
           <h5>My Notifications</h5>
@@ -24,7 +24,8 @@
             <% end %>
           <% end %>
         </div>
-
+      </div>
+      <div class="col">
         <% if @tutorials.any? %>
           <h5>My Tutorials</h5>
           <ol>
