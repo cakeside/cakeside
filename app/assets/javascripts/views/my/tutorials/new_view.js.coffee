@@ -36,7 +36,7 @@ class csx.Views.My.Tutorials.NewView extends Marionette.ItemView
       author_url: attributes.provider_url
 
   onRender: ->
-    @ui.tags.tagit({ availableTags: csx.Tags.pluck('name') })
+    @ui.tags.tagit({ availableTags: csx.Collections.Tag.pluck('name') })
 
   validate: ->
     @model.isValid()

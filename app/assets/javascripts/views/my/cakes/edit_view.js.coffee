@@ -35,7 +35,7 @@ class csx.Views.My.Cakes.EditView extends Marionette.CompositeView
 
   onRender: ->
     @$("#cake_category_id").val(@model.category_id())
-    @ui.tags.tagit({ availableTags: csx.Tags.pluck('name') })
+    @ui.tags.tagit({ availableTags: csx.Collections.Tag.pluck('name') })
     @disableSaveButton()
 
   savedSuccessfully: (cake) =>
@@ -68,7 +68,7 @@ class csx.Views.My.Cakes.EditView extends Marionette.CompositeView
   serializeData: ->
     {
       cake: @model.toJSON(),
-      categories: csx.Categories.toJSON(),
+      categories: csx.Collections.Category.toJSON(),
     }
 
   launchAddPhoto: ->
