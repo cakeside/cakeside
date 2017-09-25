@@ -5,8 +5,7 @@ class csx.Controllers.My.ProfileController extends Marionette.Controller
 
   show: (id) ->
     @selectTab()
-    profile = new csx.Models.Profile
-      id: id
+    profile = new csx.Models.Profile(id: id)
     profile.fetch
       success: =>
         @content_region.show(new @views.ShowView(model: profile))

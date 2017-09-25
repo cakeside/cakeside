@@ -32,7 +32,3 @@ class csx.Models.Profile extends Backbone.Model
     return true unless twitter
     regex = /^@?(\w){1,15}$/
     regex.test(twitter)
-
-class csx.Collections.ProfilesCollection extends Backbone.Collection
-  model: csx.Models.Profile
-  url: '/api/v1/profiles'
