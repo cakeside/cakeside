@@ -2,7 +2,7 @@ class csx.Controllers.My.TutorialsController extends Marionette.Controller
   views: csx.Views.My.Tutorials
   initialize: (options) ->
     @content_region = csx.Application.content_region
-    @tutorials = csx.Application.request('TutorialsRepository')
+    @tutorials = csx.Collections.Tutorial
 
   index: ->
     @selectTab()

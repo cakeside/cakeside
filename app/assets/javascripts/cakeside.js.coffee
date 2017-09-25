@@ -14,6 +14,7 @@ window.csx =
   Routers: {}
   Views: {}
   Controllers: { My: {} }
+
   initialize: (data) ->
     $(document).ajaxSend  (event, xhr) ->
       if data.access_token
@@ -38,7 +39,6 @@ window.csx =
         Backbone.history.start()
 
     @cakes = new csx.Collections.CakesCollection()
-    @tutorials = new csx.Collections.TutorialsCollection()
 
     csx.Application.reqres.setHandler 'CakesRepository', =>
       @cakes
@@ -51,11 +51,8 @@ window.csx =
         @photos_cache[cake_id] = photos
         photos.fetch(reset: true)
         photos
-    csx.Application.reqres.setHandler 'TutorialsRepository', =>
-      @tutorials
     csx.Application.reqres.setHandler 'ProfilesRepository', =>
       @profiles ||= new csx.Collections.ProfilesCollection()
 
-    @tutorials.fetch(reset: true)
     @cakes.fetch(reset: true).done ->
       csx.Application.start()

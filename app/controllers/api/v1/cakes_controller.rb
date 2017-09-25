@@ -2,7 +2,7 @@ module Api
   module V1
     class CakesController < ApiController
       def index
-        @cakes = current_user.creations
+        @cakes = current_user.creations.includes(:category, :photos, :tags, :tag_taggings)
       end
 
       def show
