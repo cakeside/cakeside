@@ -18,7 +18,3 @@ class csx.Models.Tutorial extends Backbone.Model
 
   hasImage: (image_url) ->
     image_url
-
-class csx.Collections.TutorialsCollection extends Backbone.Collection
-  model: csx.Models.Tutorial
-  url: '/api/v1/tutorials'
