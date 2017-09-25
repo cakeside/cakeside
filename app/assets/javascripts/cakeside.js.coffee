@@ -51,8 +51,8 @@ window.csx =
         @photos_cache[cake_id] = photos
         photos.fetch(reset: true)
         photos
-    csx.Application.reqres.setHandler 'ProfilesRepository', =>
-      @profiles ||= new csx.Collections.ProfilesCollection()
+    #csx.Application.reqres.setHandler 'ProfilesRepository', =>
+      #@profiles ||= new csx.Collections.ProfilesCollection()
 
     @cakes.fetch(reset: true).done ->
       csx.Application.start()
