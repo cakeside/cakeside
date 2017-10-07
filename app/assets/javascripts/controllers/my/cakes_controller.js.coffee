@@ -2,7 +2,7 @@ class csx.Controllers.My.CakesController extends Marionette.Controller
   views: csx.Views.My.Cakes
   initialize: (options) ->
     @content_region = csx.Application.content_region
-    @cakes = csx.Application.request('CakesRepository')
+    @cakes = csx.Collections.Creation
 
   index: ->
     @selectTab()

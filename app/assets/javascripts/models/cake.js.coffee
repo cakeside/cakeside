@@ -14,7 +14,8 @@ class csx.Models.Cake extends Backbone.Model
     return "Category can't be blank" unless attributes.category_id
 
   photos: ->
-    csx.Application.request('PhotosRepository', @id)
+    cake_id = @id
+    new Backbone.Collection(csx.Collections.Photo.filter((photo) => photo.get("cake_id") == cake_id))
 
   public_url: ->
     "#{window.location.origin}/creations/#{@get('slug')}"
@@ -25,3 +26,5 @@ class csx.Models.Cake extends Backbone.Model
 class csx.Collections.CakesCollection extends Backbone.Collection
   model: csx.Models.Cake
   url: '/api/v1/cakes'
+
+csx.Models.Creation = csx.Models.Cake
